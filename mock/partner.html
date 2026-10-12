@@ -986,9 +986,8 @@
   }
   .form-field { display: flex; flex-direction: column; gap: 6px; }
   .form-field-wide { grid-column: 1 / -1; }
-  /* 일렬 배치(1열) — 가맹점 상세 회원정보 탭. 입력란 폭은 560px로 제한 */
+  /* 일렬 배치(1열, 전체 폭) — 가맹점 상세 회원정보 탭 */
   .form-grid.form-grid-single { grid-template-columns: 1fr; }
-  .fd-member-col { max-width: 560px; margin: 0 auto; }  /* 회원정보 탭 전 섹션(회원·사업자·PayApp)을 같은 폭으로 가운데 정렬 */
   .form-field label {
     font-size: 14px;
     font-weight: 700;
@@ -2682,8 +2681,7 @@
 
   function franchiseMemberTabHTML(f) {
     return `
-      <div class="fd-member-col">
-      <section class="form-section">
+            <section class="form-section">
         <h3 class="form-section-title">회원 정보</h3>
         <div class="form-error-banner" id="fdMemberError" hidden></div>
         <div class="form-grid form-grid-single">
@@ -2774,8 +2772,7 @@
       <section class="form-section">
         <h3 class="form-section-title">PayApp 연동 정보</h3>
         ${franchisePayappHTML(f)}
-      </section>
-      </div>`;
+      </section>`;
   }
 
   function franchiseFeeTabHTML(f) {
