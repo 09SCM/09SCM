@@ -986,6 +986,8 @@
   }
   .form-field { display: flex; flex-direction: column; gap: 6px; }
   .form-field-wide { grid-column: 1 / -1; }
+  /* 일렬 배치(1열) — 가맹점 상세 회원정보 탭. 입력란 폭은 560px로 제한 */
+  .form-grid.form-grid-single { grid-template-columns: 1fr; max-width: 560px; }
   .form-field label {
     font-size: 14px;
     font-weight: 700;
@@ -2682,7 +2684,7 @@
       <section class="form-section">
         <h3 class="form-section-title">회원 정보</h3>
         <div class="form-error-banner" id="fdMemberError" hidden></div>
-        <div class="form-grid">
+        <div class="form-grid form-grid-single">
           <div class="form-field">
             <label>회원 유형</label>
             <div class="input-pair"><span class="tag tag-success">가맹점</span></div>
@@ -2709,7 +2711,7 @@
       <section class="form-section">
         <h3 class="form-section-title">사업자 정보</h3>
         <div class="field-hint" style="margin-bottom:12px;">본사 관리자 권한으로 수정할 수 있는 항목입니다(가맹점 본인은 회원관리 화면에서 조회만 가능).</div>
-        <div class="form-grid">
+        <div class="form-grid form-grid-single">
           <div class="form-field">
             <label>사업자 유형<span class="req">*</span></label>
             <select class="form-select" id="fdBizPersonType">
