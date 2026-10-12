@@ -2709,6 +2709,25 @@
       </section>
 
       <section class="form-section">
+        <h3 class="form-section-title">비밀번호 변경</h3>
+        <div class="form-grid form-grid-single">
+          <div class="form-field">
+            <label>새 비밀번호<span class="req">*</span></label>
+            <input type="password" class="form-input" id="fdNewPw" autocomplete="new-password">
+          </div>
+          <div class="form-field">
+            <label>새 비밀번호 확인<span class="req">*</span></label>
+            <input type="password" class="form-input" id="fdNewPwConfirm" autocomplete="new-password">
+          </div>
+        </div>
+        <div id="fdPwError" class="field-error" style="padding-top:8px;" hidden></div>
+        <div style="display:flex; align-items:center; gap:10px; padding-top:12px;">
+          <button type="button" class="btn-secondary" id="fdSavePwBtn">비밀번호 변경</button>
+          <span class="inline-confirm" id="fdPwConfirm" hidden>비밀번호가 변경되었습니다.</span>
+        </div>
+      </section>
+
+      <section class="form-section">
         <h3 class="form-section-title">사업자 정보</h3>
         <div class="field-hint" style="margin-bottom:12px;">본사 관리자 권한으로 수정할 수 있는 항목입니다(가맹점 본인은 회원관리 화면에서 조회만 가능).</div>
         <div class="form-grid form-grid-single">
@@ -2959,6 +2978,30 @@
           wrapper.querySelector('#fdDetailAddress').focus();
         });
       }
+
+      wrapper.querySelector('#fdSavePwBtn').addEventListener('click', () => {
+        const pw = wrapper.querySelector('#fdNewPw').value;
+        const pwConfirm = wrapper.querySelector('#fdNewPwConfirm').value;
+        const pwErrorEl = wrapper.querySelector('#fdPwError');
+        const pwConfirmEl = wrapper.querySelector('#fdPwConfirm');
+        if (!pw && !pwConfirm) {
+          pwErrorEl.hidden = false;
+          pwErrorEl.textContent = '새 비밀번호를 입력해주세요.';
+          pwConfirmEl.hidden = true;
+          return;
+        }
+        if (pw !== pwConfirm) {
+          pwErrorEl.hidden = false;
+          pwErrorEl.textContent = '비밀번호가 일치하지 않습니다.';
+          pwConfirmEl.hidden = true;
+          return;
+        }
+        pwErrorEl.hidden = true;
+        pwConfirmEl.hidden = false;
+        wrapper.querySelector('#fdNewPw').value = '';
+        wrapper.querySelector('#fdNewPwConfirm').value = '';
+        setTimeout(() => { pwConfirmEl.hidden = true; }, 2000);
+      });
 
       wrapper.querySelector('#fdSaveMemberBtn').addEventListener('click', () => {
         const val = id => wrapper.querySelector('#' + id).value.trim();
