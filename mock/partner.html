@@ -7160,7 +7160,7 @@
       return `<div class="field-hint">등록된 배달지가 없습니다.</div>`;
     }
     return `
-      <div class="form-grid" style="padding:12px 0;">
+      <div class="form-grid form-grid-single" style="padding:12px 0;">
         <div class="form-field"><label>배달지명</label><input class="form-input" type="text" id="memberAddrName" value="${escapeHtml(a.name)}"></div>
         <div class="form-field"><label>배달 주소</label><input class="form-input" type="text" id="memberAddrAddress" value="${escapeHtml(a.address)}"></div>
         <div class="form-field form-field-wide"><label>배달 요청사항</label><input class="form-input" type="text" id="memberAddrRequest" value="${a.request ? escapeHtml(a.request) : ''}"></div>
@@ -7171,7 +7171,7 @@
     return `
       <section class="form-section">
         <h3 class="form-section-title">기본정보</h3>
-        <div class="form-grid">
+        <div class="form-grid form-grid-single">
           <div class="form-field">
             <label>이름</label>
             <input class="form-input" type="text" id="memberNameInput" value="${escapeHtml(m.name)}">
@@ -7215,7 +7215,7 @@
       <section class="form-section">
         <h3 class="form-section-title">휴대폰번호</h3>
         <div id="memberPhoneDisplayBlock">
-          <div class="form-grid">
+          <div class="form-grid form-grid-single">
             <div class="form-field">
               <label>휴대폰번호</label>
               <div class="input-pair">
@@ -7226,7 +7226,7 @@
           </div>
         </div>
         <div id="memberPhoneChangeForm" hidden>
-          <div class="form-grid">
+          <div class="form-grid form-grid-single">
             <div class="form-field">
               <label>휴대폰번호</label>
               <div class="input-pair">
