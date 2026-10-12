@@ -987,7 +987,8 @@
   .form-field { display: flex; flex-direction: column; gap: 6px; }
   .form-field-wide { grid-column: 1 / -1; }
   /* 일렬 배치(1열) — 가맹점 상세 회원정보 탭. 입력란 폭은 560px로 제한 */
-  .form-grid.form-grid-single { grid-template-columns: 1fr; max-width: 560px; }
+  .form-grid.form-grid-single { grid-template-columns: 1fr; }
+  .fd-member-col { max-width: 560px; margin: 0 auto; }  /* 회원정보 탭 전 섹션(회원·사업자·PayApp)을 같은 폭으로 가운데 정렬 */
   .form-field label {
     font-size: 14px;
     font-weight: 700;
@@ -2681,6 +2682,7 @@
 
   function franchiseMemberTabHTML(f) {
     return `
+      <div class="fd-member-col">
       <section class="form-section">
         <h3 class="form-section-title">회원 정보</h3>
         <div class="form-error-banner" id="fdMemberError" hidden></div>
@@ -2720,6 +2722,14 @@
             </select>
           </div>
           <div class="form-field">
+            <label>상호명<span class="req">*</span></label>
+            <input type="text" class="form-input" id="fdCompanyName" value="${escapeHtml(f.companyName)}">
+          </div>
+          <div class="form-field">
+            <label>대표자명<span class="req">*</span></label>
+            <input type="text" class="form-input" id="fdCeoName" value="${escapeHtml(f.ceoName)}">
+          </div>
+          <div class="form-field">
             <label>사업자등록번호<span class="req">*</span></label>
             <div class="input-pair">
               <input type="text" class="form-input" id="fdBizRegNo" value="${escapeHtml(f.bizRegNo)}" data-fmt="biz" inputmode="numeric" maxlength="12" placeholder="000-00-00000">
@@ -2730,14 +2740,6 @@
           <div class="form-field" id="fdCorpRegNoField" ${f.bizPersonType === 'corp' ? '' : 'hidden'}>
             <label>법인등록번호<span class="req">*</span></label>
             <input type="text" class="form-input" id="fdCorpRegNo" value="${escapeHtml(f.corpRegNo || '')}" data-fmt="corp" inputmode="numeric" maxlength="14" placeholder="000000-0000000">
-          </div>
-          <div class="form-field">
-            <label>상호명<span class="req">*</span></label>
-            <input type="text" class="form-input" id="fdCompanyName" value="${escapeHtml(f.companyName)}">
-          </div>
-          <div class="form-field">
-            <label>대표자명<span class="req">*</span></label>
-            <input type="text" class="form-input" id="fdCeoName" value="${escapeHtml(f.ceoName)}">
           </div>
           <div class="form-field">
             <label>업태</label>
@@ -2772,7 +2774,8 @@
       <section class="form-section">
         <h3 class="form-section-title">PayApp 연동 정보</h3>
         ${franchisePayappHTML(f)}
-      </section>`;
+      </section>
+      </div>`;
   }
 
   function franchiseFeeTabHTML(f) {
