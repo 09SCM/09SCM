@@ -9573,7 +9573,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           <div class="detail-item"><span class="detail-label">처리 주체</span><span class="detail-value">${o.cancelReturnInitiator === 'noshow' ? '노쇼 처리' : o.cancelReturnInitiator === 'supplier' ? '공급자 직권' : o.cancelReturnInitiator === 'buyer' ? '구매자 즉시취소' : '구매자 요청'}</span></div>
           ${refundDecisionBlock}
           ${refundBlock}
-          <div class="detail-item detail-item-wide"><span class="detail-label">요청 사유</span><span class="detail-value">${escapeHtml(o.cancelReturnReason || '-')}</span></div>
+          <div class="detail-item detail-item-wide"><span class="detail-label">구매자 요청 사유</span><span class="detail-value">${escapeHtml(o.cancelReturnReason || '-')}</span></div>
           ${o.cancelReturnSellerNote ? `<div class="detail-item detail-item-wide"><span class="detail-label">공급자 처리 사유</span><span class="detail-value">${escapeHtml(o.cancelReturnSellerNote)}</span></div>` : ''}
         </div>
       </section>`;
