@@ -404,12 +404,30 @@ window.GUIDE_CONTENT['retail-product-list'] = {
           "device": "pc",
           "src": "../assets/img/partner/product-delete-confirm-pc.webp",
           "alt": "09SCM 삭제 확인 PC 화면",
-          "ratio": 0.96
+          "ratio": 1.7224
         }
       ],
       "shotCaption": "09SCM 삭제 확인 화면",
-      "overview": "<p>소매정보가 있는 행의 [삭제]를 누르거나, 여러 건을 체크한 뒤 [일괄삭제]를 눌러요. 체크박스 선택은 현재 페이지에서만 유지되고, 다른 페이지로 넘어가면 해제돼요. 선택 없이 [일괄삭제]를 누르면 &quot;삭제할 상품을 선택해주세요.&quot; 안내가 나와요.</p>",
-      "steps": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>내도매상품, 도매주문상품</td><td>소매정보만 삭제 (소매몰에서 사라지고 원래 도매상품과 주문 이력은 유지, 목록에 [소매정보등록] 다시 노출)</td></tr><tr><td>내소매상품</td><td>상품 자체가 삭제되어 목록에서 사라짐</td></tr></tbody></table></div><p>진행 중인 주문이 있어도 삭제할 수 있어요. 삭제하기 전 확인 창에서 &quot;삭제 시 도매·소매 주문 처리 중 혼선이 생길 수 있습니다.&quot;와 &quot;삭제한 데이터는 복구할 수 없습니다.&quot; 안내를 보여줘요. 이미 들어온 주문은 주문 당시 정보 그대로 남아서 계속 처리할 수 있어요. 소매몰에서 보이던 상품 페이지만 사라져요.</p>"
+      "overview": "<p>소매정보가 있는 행의 [삭제]를 누르거나, 여러 건을 체크한 뒤 [일괄삭제]를 눌러요. 체크박스 선택은 현재 페이지에서만 유지되고, 다른 페이지로 넘어가면 해제돼요.</p>",
+      "steps": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>내도매상품, 도매주문상품</td><td>소매정보만 삭제 (소매몰에서 사라지고 원래 도매상품과 주문 이력은 유지, 목록에 [소매정보등록] 다시 노출)</td></tr><tr><td>내소매상품</td><td>상품 자체가 삭제되어 목록에서 사라짐</td></tr></tbody></table></div><p>진행 중인 주문이 있어도 삭제할 수 있어요. 삭제하기 전 확인 창에서 &quot;삭제 시 도매·소매 주문 처리 중 혼선이 생길 수 있습니다.&quot;와 &quot;삭제한 데이터는 복구할 수 없습니다.&quot; 안내를 보여줘요. 이미 들어온 주문은 주문 당시 정보 그대로 남아서 계속 처리할 수 있어요. 소매몰에서 보이던 상품 페이지만 사라져요.</p>",
+      "cases": [
+        {
+          "title": "일괄삭제 확인 창",
+          "shots": [
+            { "device": "pc", "src": "../assets/img/partner/product-bulk-confirm-pc.webp", "alt": "09SCM 일괄삭제 확인 PC 화면", "ratio": 1.7224 }
+          ],
+          "shotCaption": "09SCM 일괄삭제 확인 화면",
+          "html": "<p>체크한 건수가 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 나와요. 연동된 상품이 포함되어 있으면 그 안내도 함께 보여요.</p>"
+        },
+        {
+          "title": "선택 없이 일괄삭제를 눌렀어요",
+          "shots": [
+            { "device": "pc", "src": "../assets/img/partner/product-bulk-none-pc.webp", "alt": "09SCM 일괄삭제 선택 안내 PC 화면", "ratio": 2.5208 }
+          ],
+          "shotCaption": "09SCM 일괄삭제 선택 안내 화면",
+          "html": "<p>&quot;삭제할 상품을 선택해주세요.&quot; 안내가 나와요. 삭제할 상품을 체크한 뒤 다시 눌러주세요.</p>"
+        }
+      ]
     }
   ]
 };
