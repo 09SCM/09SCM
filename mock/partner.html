@@ -754,6 +754,8 @@
   /* 상태 뱃지 + 해당 상태로 전환된 일시를 한 줄로 표기 — 처리상태·결제취소·취소·반품 상태 공통 */
   .state-stamp { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; }
   .state-stamp-note { color: var(--text-secondary); }
+  .state-stamp-badges { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; }
+  @media (max-width: 860px) { .state-stamp-split { flex-direction: column; align-items: flex-start; gap: 4px; } }
   .noshow-warn-text { background: transparent; color: var(--error); }
   th.fs-key-col, td.fs-key-col { background: var(--key-tint); }
   td.fs-key-col { font-weight: 700; }
@@ -5743,10 +5745,8 @@
     if (o.paymentStatus === '결제완료') return stateStampHTML(badge, o.paidAt || '');
     if (o.paymentStatus !== '결제취소') return badge;
     const sub = o.refundType ? `<span class="tag refund-sub-text">${o.refundType === 'full' ? '전체환불' : '부분환불'}</span>` : '';
-    const lines = [`<span class="state-stamp">${badge}${sub}</span>`];
-    if (o.cancelReturnResolvedAt) lines.push(`<span>${o.cancelReturnResolvedAt}</span>`);
-    if (o.paidAt) lines.push(`<span class="state-stamp-note">(${o.paidAt} 결제완료)</span>`);
-    return `<div class="status-stack">${lines.join('')}</div>`;
+    const at = o.cancelReturnResolvedAt || '';
+    return `<span class="state-stamp state-stamp-split"><span class="state-stamp-badges">${badge}${sub}</span>${at ? `<span>${at}</span>` : ''}${o.paidAt ? `<span class="state-stamp-note">(${o.paidAt} 결제완료)</span>` : ''}</span>`;
   }
 
   // 도매 자동 배송확정 기준일 — 배송중 전환일시. 반품반려로 배송중에 복귀한 건은 반려 일시와 비교해 더 늦은 일시를 기준으로 다시 센다.
