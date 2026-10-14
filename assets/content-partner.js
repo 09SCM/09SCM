@@ -973,7 +973,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
         {
           title: '메시지가 어떻게 분류되나요',
           html:
-            '<p>메시지를 받으면 시스템이 아래 순서로 확인해요. 앞 단계에서 걸리면 뒤 단계는 확인하지 않아요.</p>' +
+            '<p>메시지를 받으면 시스템이 아래 순서로 확인해요. 앞 단계에서 걸리면 뒤 단계는 확인하지 않아요. 손님 안내 문구는 이 화면의 안내 박스 &quot;상황별 발송 문구&quot;에 있는 7가지예요.</p>' +
             '<ol>' +
               '<li><b>형식과 상품명</b> 정해진 형식인지, 적힌 상품명이 모두 현재 판매중이고 소매몰에 노출 중인 채팅주문 허용 상품(채팅주문상품명)과 일치하는지 확인해요.</li>' +
               '<li><b>회원 확인</b> 메시지 끝의 코드로 회원을 찾고, 보낸 사람의 채팅방 닉네임이 등록된 채팅주문 닉네임과 같은지 확인해요. 코드와 닉네임이 모두 맞아야 본인으로 인정돼요.</li>' +
@@ -982,25 +982,25 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
             '</ol>' +
 
             '<p><b>1. 정상 처리돼요</b></p>' +
-            '<div class="table-wrap"><table class="wide"><thead><tr><th>조건</th><th>처리</th><th class="c">손님 안내</th></tr></thead><tbody>' +
-              '<tr><td>형식과 상품명이 모두 맞고, 코드·닉네임이 일치하고, 이용제한이 아니며, 모든 상품이 한도 이내</td><td>상품마다 개별 주문 생성</td><td class="c">접수 안내 발송</td></tr>' +
-              '<tr><td>위 조건에서 일부 상품만 판매가능수량 부족 또는 1회 최대구매수량 초과</td><td>한도 이내인 상품만 주문 생성, 나머지는 미접수</td><td class="c">접수분과 미접수 사유 발송</td></tr>' +
+            '<div class="table-wrap"><table class="wide"><thead><tr><th>조건</th><th>처리</th><th class="c">손님 안내 문구</th></tr></thead><tbody>' +
+              '<tr><td>형식과 상품명이 모두 맞고, 코드·닉네임이 일치하고, 이용제한이 아니며, 모든 상품이 한도 이내</td><td>상품마다 개별 주문 생성</td><td class="c">정상 접수(단일 상품) 또는 정상 접수(여러 상품)</td></tr>' +
+              '<tr><td>위 조건에서 일부 상품만 판매가능수량 부족 또는 1회 최대구매수량 초과</td><td>한도 이내인 상품만 주문 생성, 나머지는 미접수</td><td class="c">일부 상품만 접수</td></tr>' +
             '</tbody></table></div>' +
 
             '<p><b>2. 매칭 실패 건에 쌓여요</b></p>' +
-            '<div class="table-wrap"><table class="wide"><thead><tr><th>조건</th><th>처리</th><th class="c">손님 안내</th></tr></thead><tbody>' +
-              '<tr><td>형식과 상품명은 맞지만 코드와 일치하는 회원이 없음</td><td>매칭 실패 건에 대기</td><td class="c">발송 안 함</td></tr>' +
-              '<tr><td>형식과 상품명은 맞고 코드로 회원이 조회되지만, 보낸 사람의 닉네임이 등록된 닉네임과 다름 (이용제한 회원이면 해당 없음)</td><td>매칭 실패 건에 대기</td><td class="c">발송 안 함</td></tr>' +
+            '<div class="table-wrap"><table class="wide"><thead><tr><th>조건</th><th>처리</th><th class="c">손님 안내 문구</th></tr></thead><tbody>' +
+              '<tr><td>형식과 상품명은 맞지만 코드와 일치하는 회원이 없음</td><td>매칭 실패 건에 대기</td><td class="c">발송 안 함 (매칭 적용으로 접수되면 정상 접수 문구 발송)</td></tr>' +
+              '<tr><td>형식과 상품명은 맞고 코드로 회원이 조회되지만, 보낸 사람의 닉네임이 등록된 닉네임과 다름 (이용제한 회원이면 해당 없음)</td><td>매칭 실패 건에 대기</td><td class="c">발송 안 함 (매칭 적용으로 접수되면 정상 접수 문구 발송)</td></tr>' +
             '</tbody></table></div>' +
             '<p>사장님이 <a href="#chat-fail">매칭 실패 건 처리</a>에서 회원을 직접 확인해 매칭하거나 삭제해요. 매칭으로 주문이 접수되면 그때 접수 안내가 발송돼요.</p>' +
 
             '<p><b>3. 접수되지 않아요</b></p>' +
             '<p>주문이 만들어지지 않고 매칭 실패 건에도 쌓이지 않아요. 손님 안내가 가는 경우와 가지 않는 경우로 나뉘어요.</p>' +
-            '<div class="table-wrap"><table class="wide"><thead><tr><th>조건</th><th>처리</th><th class="c">손님 안내</th></tr></thead><tbody>' +
-              '<tr><td>코드로 조회된 회원이 이용제한 상태 (닉네임이 일치·불일치·미등록이어도 동일)</td><td>주문 미생성</td><td class="c">이용제한 안내 발송</td></tr>' +
-              '<tr><td>코드로 조회된 회원에 등록된 닉네임이 없음</td><td>주문 미생성</td><td class="c">닉네임 등록 안내 발송</td></tr>' +
-              '<tr><td>모든 상품이 판매가능수량 부족</td><td>주문 미생성</td><td class="c">재고 부족 안내 발송</td></tr>' +
-              '<tr><td>모든 상품이 1회 최대구매수량 초과</td><td>주문 미생성</td><td class="c">최대구매수량 안내 발송</td></tr>' +
+            '<div class="table-wrap"><table class="wide"><thead><tr><th>조건</th><th>처리</th><th class="c">손님 안내 문구</th></tr></thead><tbody>' +
+              '<tr><td>코드로 조회된 회원이 이용제한 상태 (닉네임이 일치·불일치·미등록이어도 동일)</td><td>주문 미생성</td><td class="c">이용제한 회원의 주문 시도</td></tr>' +
+              '<tr><td>코드로 조회된 회원에 등록된 닉네임이 없음</td><td>주문 미생성</td><td class="c">닉네임 미등록 회원의 주문 시도</td></tr>' +
+              '<tr><td>모든 상품이 판매가능수량 부족</td><td>주문 미생성</td><td class="c">재고부족/판매가능수량 초과</td></tr>' +
+              '<tr><td>모든 상품이 1회 최대구매수량 초과</td><td>주문 미생성</td><td class="c">1회 최대구매수량 초과</td></tr>' +
               '<tr><td>정해진 형식이 아닌 메시지</td><td>아무 기록도 남지 않음</td><td class="c">발송 안 함</td></tr>' +
               '<tr><td>적힌 상품명 중 하나라도 판매중·노출중인 채팅주문 허용 상품과 다름</td><td>전체 미접수, 아무 기록도 남지 않음</td><td class="c">발송 안 함</td></tr>' +
             '</tbody></table></div>' +
