@@ -1338,10 +1338,11 @@ window.GUIDE_CONTENT['retail-member'] = {
         '</ul>',
       steps:
         '<h3>기본정보</h3>' +
+        '<p>이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>이름</td><td>회원 이름 (필수)</td></tr>' +
-          '<tr><td>이메일</td><td>회원 이메일 (필수)</td></tr>' +
-          '<tr><td>회원주문 코드</td><td>숫자 4자리 (필수, 같은 소매몰 안에서 중복 불가, 바꾸면 [중복확인] 필요)</td></tr>' +
+          '<tr><td>이름*</td><td>회원 이름</td></tr>' +
+          '<tr><td>이메일*</td><td>회원 이메일</td></tr>' +
+          '<tr><td>회원주문 코드*</td><td>숫자 4자리 (같은 소매몰 안에서 중복 불가, 바꾸면 [중복확인] 필요)</td></tr>' +
           '<tr><td>채팅주문 닉네임</td><td>오픈채팅방에서 사용하는 닉네임 (선택, 등록하지 않으면 채팅주문을 이용할 수 없음)</td></tr>' +
           '<tr><td>회원가입일시, 최종로그인일시</td><td>조회 전용</td></tr>' +
           '<tr><td>노쇼 이력</td><td>이 회원의 주문 중 노쇼 처리된 건수 (조회 전용)</td></tr>' +
@@ -1411,11 +1412,11 @@ window.GUIDE_CONTENT['retail-member'] = {
         {
           title: '배달지가 없는 회원',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/member-noaddr-pc.webp', alt: '09SCM 배달지 없는 회원 PC 화면', ratio: 2880 / 2746 },
-            { device: 'mobile', src: '../assets/img/partner/member-noaddr-mobile.webp', alt: '09SCM 배달지 없는 회원 모바일 화면', ratio: 880 / 2698 }
+            { device: 'pc', src: '../assets/img/partner/member-noaddr-pc.webp', alt: '09SCM 배달지 없는 회원 PC 화면', ratio: 2880 / 3212 },
+            { device: 'mobile', src: '../assets/img/partner/member-noaddr-mobile.webp', alt: '09SCM 배달지 없는 회원 모바일 화면', ratio: 880 / 3164 }
           ],
           shotCaption: '09SCM 배달지 없는 회원 화면 (PC / 모바일)',
-          html: '<p>가입할 때 배달지를 입력하지 않은 회원은 배달지 정보 영역에 &quot;등록된 배달지가 없습니다.&quot;가 나와요.</p>'
+          html: '<p>가입할 때 배달지를 입력하지 않은 회원은 배달지명, 배달 주소, 배달 요청사항이 빈 입력칸으로 나와요. 직접 입력해서 [저장]하면 배달지가 등록돼요.</p>'
         },
         {
           title: '내부메모 탭',

@@ -7298,10 +7298,7 @@
   // 탈퇴회원은 개인정보처리방침상 이 상세 페이지에 진입할 수 없다 — renderRetailMemberDetailPage()에서 목록(탈퇴회원 탭)으로 되돌린다.
   // 회원가입(고객용 프론트)에서 배달지는 1개만 입력 가능하므로, 배열이 아닌 단일 객체(또는 미등록 시 null)로 관리한다.
   function retailMemberAddressEditListHTML(member) {
-    const a = member.address;
-    if (!a) {
-      return `<div class="field-hint">등록된 배달지가 없습니다.</div>`;
-    }
+    const a = member.address || { name: '', address: '', request: '' };
     return `
       <div class="form-grid form-grid-single" style="padding:12px 0;">
         <div class="form-field"><label>배달지명</label><input class="form-input" type="text" id="memberAddrName" value="${escapeHtml(a.name)}"></div>
@@ -7316,15 +7313,15 @@
         <h3 class="form-section-title">기본정보</h3>
         <div class="form-grid form-grid-single">
           <div class="form-field">
-            <label>이름</label>
+            <label>이름<span class="req">*</span></label>
             <input class="form-input" type="text" id="memberNameInput" value="${escapeHtml(m.name)}">
           </div>
           <div class="form-field">
-            <label>이메일</label>
+            <label>이메일<span class="req">*</span></label>
             <input class="form-input" type="text" id="memberEmailInput" value="${escapeHtml(m.email)}">
           </div>
           <div class="form-field">
-            <label>회원주문 코드</label>
+            <label>회원주문 코드<span class="req">*</span></label>
             <div class="input-pair">
               <input class="form-input" type="text" id="memberNicknameInput" value="${escapeHtml(m.nicknameCode)}" maxlength="4" inputmode="numeric" placeholder="숫자 4자리">
               <button type="button" class="btn-secondary" id="memberNicknameDupCheckBtn">중복확인</button>
@@ -7360,7 +7357,7 @@
         <div id="memberPhoneDisplayBlock">
           <div class="form-grid form-grid-single">
             <div class="form-field">
-              <label>휴대폰번호</label>
+              <label>휴대폰번호<span class="req">*</span></label>
               <div class="input-pair">
                 <input class="form-input" type="text" value="${escapeHtml(m.phone)}" disabled>
                 <button type="button" class="btn-secondary" id="memberPhoneChangeStartBtn">번호변경</button>
@@ -7371,7 +7368,7 @@
         <div id="memberPhoneChangeForm" hidden>
           <div class="form-grid form-grid-single">
             <div class="form-field">
-              <label>휴대폰번호</label>
+              <label>휴대폰번호<span class="req">*</span></label>
               <div class="input-pair">
                 <input type="text" class="form-input" id="newMemberPhone" placeholder="010-0000-0000" data-fmt="phone" inputmode="numeric" maxlength="13">
                 <button type="button" class="btn-secondary" id="memberPhoneDupCheckBtn">중복확인</button>
@@ -7736,14 +7733,12 @@
     const addressSaveBtn = wrapper.querySelector('#memberAddressSaveBtn');
     if (addressSaveBtn) {
       addressSaveBtn.addEventListener('click', () => {
-        if (m.address) {
-          const nameInput = wrapper.querySelector('#memberAddrName');
-          const addressInput = wrapper.querySelector('#memberAddrAddress');
-          const requestInput = wrapper.querySelector('#memberAddrRequest');
-          if (nameInput) m.address.name = nameInput.value.trim();
-          if (addressInput) m.address.address = addressInput.value.trim();
-          if (requestInput) m.address.request = requestInput.value.trim();
-        }
+        const addrName = wrapper.querySelector('#memberAddrName').value.trim();
+        const addrAddress = wrapper.querySelector('#memberAddrAddress').value.trim();
+        const addrRequest = wrapper.querySelector('#memberAddrRequest').value.trim();
+        m.address = (addrName || addrAddress || addrRequest)
+          ? { name: addrName, address: addrAddress, request: addrRequest }
+          : null;
         renderRetailMemberDetailPage();
         const confirmEl = wrapper.querySelector('#memberAddressSaveConfirm');
         if (confirmEl) {
