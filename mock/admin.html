@@ -2117,7 +2117,7 @@
       status: '이용제한', wholesaleSupply: true,
       appliedAt: '2026-08-11 10:15', lastLoginAt: '2026-09-15 13:20',
       payapp: { userid: 'hj365store', linkkey: 'FR29CD41EF01', linkval: 'FV77KJ12MN01', verified: true }, payappEditing: false, payappDraft: null, payappAlertPending: false,
-      feeAmount: 30000, feeRegistered: true, paymentMethod: '신용카드', billingDay: 11,
+      feeAmount: 30000, feeRegistered: true, paymentMethod: '신용카드', billingDay: 11, termsMarketing: true,
     },
     {
       id: 'hm7218', hqId: 'hq2',
@@ -2128,7 +2128,7 @@
       status: '이용승인', wholesaleSupply: true,
       appliedAt: '2026-07-20 15:45', lastLoginAt: '2026-09-27 17:05',
       payapp: { userid: '', linkkey: '', linkval: '', verified: false }, payappEditing: false, payappDraft: null, payappAlertPending: false,
-      feeAmount: 30000, feeRegistered: true, paymentMethod: '계좌이체', billingDay: 5,
+      feeAmount: 30000, feeRegistered: true, paymentMethod: '계좌이체', billingDay: 5, termsMarketing: false,
     },
     {
       id: 'wj9021', hqId: 'hq3',
@@ -2386,6 +2386,13 @@
           </section>
 
           ${franchisePayappSectionHTML(f)}
+
+          <section class="form-section">
+            <h3 class="form-section-title">이용약관 동의</h3>
+            <div class="terms-row"><span>이용약관</span><span class="tag-required">[필수]</span><span class="terms-status">동의</span></div>
+            <div class="terms-row"><span>개인정보처리방침</span><span class="tag-required">[필수]</span><span class="terms-status">동의</span></div>
+            <div class="terms-row"><span>마케팅정보 수신동의</span><span class="tag-optional">[선택]</span><span class="terms-status">${f.termsMarketing ? '동의' : '미동의'}</span></div>
+          </section>
         </div>
       </div>
       ${f.payappAlertPending ? franchisePayappAlertHTML() : ''}`;

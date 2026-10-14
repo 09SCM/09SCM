@@ -1369,6 +1369,15 @@
   }
 
   /* ---------- 취소·반품 요청 팝업(모달) ---------- */
+  .terms-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .terms-row:last-child { border-bottom: none; }
+  .tag-required { font-size: 12px; font-weight: 700; color: var(--error); }
+  .tag-optional { font-size: 12px; font-weight: 700; color: var(--text-secondary); }
+  .terms-status { margin-left: auto; font-size: 14px; color: var(--text-body); }
+  .terms-actions { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .terms-actions .terms-status { margin-left: 0; min-width: 48px; text-align: right; }
+  .term-modal { max-width: 640px; }
+  .term-viewer { padding: 16px; border: 1px solid var(--border); border-radius: 4px; max-height: 320px; overflow-y: auto; font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
   .modal-scrim {
     position: fixed;
     inset: 0;
@@ -1935,7 +1944,7 @@
       // 결제 실패에 따른 이용상태 변경은 자동화하지 않으며, 본사가 확인 후 가맹점 상세 하단에서 수동으로
       // 이용상태를 변경한다.
       // 결제수단은 페이앱 정기결제(PayApp.rebill()) 특성상 신용카드 또는 휴대전화 중 하나로 등록된다.
-      feeRegistered: true, paymentMethod: '신용카드', billingDay: 11,
+      feeRegistered: true, paymentMethod: '신용카드', billingDay: 11, termsMarketing: true,
       hasInProgressOrders: true, inProgressOrderCount: 3,
       memos: [
         { id: 2, text: '결제 실패 확인 후 본사 직권으로 이용제한 처리(26.09.14). 카드 재등록 확인 후 해제 예정.', createdAt: '26.09.14 09:32' },
@@ -1952,7 +1961,7 @@
       appliedAt: '26.07.02 12:46', lastLoginAt: '26.09.15 09:10',
       payapp: { linked: true, userid: 'ga03mart', linkkey: 'CD56EF78GH90', linkval: 'IJ12KL34MN56', linkedAt: '26.07.03 19:35' },
       feeCustomApplied: false, feeCustomAmount: null,
-      feeRegistered: true, paymentMethod: '신용카드', billingDay: 2,
+      feeRegistered: true, paymentMethod: '신용카드', billingDay: 2, termsMarketing: false,
       hasInProgressOrders: false, inProgressOrderCount: 0,
       memos: [],
     },
@@ -1966,7 +1975,7 @@
       appliedAt: '26.09.01 14:40', lastLoginAt: null,
       payapp: { linked: false, userid: '', linkkey: '', linkval: '', linkedAt: null },
       feeCustomApplied: false, feeCustomAmount: null,
-      feeRegistered: false, paymentMethod: null, billingDay: null,
+      feeRegistered: false, paymentMethod: null, billingDay: null, termsMarketing: true,
       hasInProgressOrders: false, inProgressOrderCount: 0,
       memos: [
         { id: 1, text: '가입신청서 확인 중. 사업자등록증 사본 추가 요청함.', createdAt: '26.09.01 15:10' },
@@ -1982,7 +1991,7 @@
       appliedAt: '26.09.10 16:42', lastLoginAt: '26.09.12 10:42',
       payapp: { linked: true, userid: 'ga06biz', linkkey: 'MN34OP56QR78', linkval: 'ST90UV12WX34', linkedAt: '26.09.10 12:04' },
       feeCustomApplied: true, feeCustomAmount: 20000,
-      feeRegistered: true, paymentMethod: '휴대전화', billingDay: 10,
+      feeRegistered: true, paymentMethod: '휴대전화', billingDay: 10, termsMarketing: false,
       hasInProgressOrders: false, inProgressOrderCount: 0,
       memos: [
         { id: 1, text: '본사 직권으로 이용불가 처리(계약 위반, 26.09.12).', createdAt: '26.09.12 11:00' },
@@ -1998,7 +2007,7 @@
       appliedAt: '26.07.20 10:15', lastLoginAt: '26.09.16 08:52',
       payapp: { linked: true, userid: 'ga02food', linkkey: 'EF78GH90IJ12', linkval: 'KL34MN56OP78', linkedAt: '26.07.21 11:20' },
       feeCustomApplied: false, feeCustomAmount: null,
-      feeRegistered: true, paymentMethod: '신용카드', billingDay: 21,
+      feeRegistered: true, paymentMethod: '신용카드', billingDay: 21, termsMarketing: true,
       hasInProgressOrders: true, inProgressOrderCount: 2,
       memos: [
         { id: 1, text: '가맹 계약 체결 시 도매공급권한 부여 협의 완료.', createdAt: '26.07.22 10:05' },
@@ -2014,7 +2023,7 @@
       appliedAt: '26.08.03 13:40', lastLoginAt: '26.09.17 09:30',
       payapp: { linked: true, userid: 'ga05basket', linkkey: 'QR90ST12UV34', linkval: 'WX56YZ78AB90', linkedAt: '26.08.04 15:12' },
       feeCustomApplied: false, feeCustomAmount: null,
-      feeRegistered: true, paymentMethod: '신용카드', billingDay: 4,
+      feeRegistered: true, paymentMethod: '신용카드', billingDay: 4, termsMarketing: false,
       hasInProgressOrders: false, inProgressOrderCount: 0,
       memos: [
         { id: 1, text: '결제 미납 확인 후 본사 직권으로 이용제한 처리(26.09.16).', createdAt: '26.09.16 14:20' },
@@ -2791,6 +2800,11 @@
       <section class="form-section">
         <h3 class="form-section-title">PayApp 연동 정보</h3>
         ${franchisePayappHTML(f)}
+      </section>
+
+      <section class="form-section">
+        <h3 class="form-section-title">이용약관 동의</h3>
+        ${termsConsentRowsHTML(false, f.termsMarketing)}
       </section>`;
   }
 
@@ -5253,12 +5267,65 @@
   // (zero-scm-homepage-mockup.../apply)의 "회원정보"·"사업자 정보" 입력 항목 구성을 그대로 따랐다.
   // 상호명은 소매몰 노출값("온마을마켓")이 아니라 현 시스템 전반의 공급자명 기준인 "우리마켓 본사"(MY_SELLER_NAME)로
   // 통일한다 — 소매몰 쪽 노출값과의 불일치는 소매몰 측 확인 필요 항목으로 남는다.
+  // ---- 이용약관 동의 [보기] 팝업용 현재 시행본(통합관리자 > 약관 관리의 현재 시행본과 동일 기준) ----
+  const MEMBER_TERMS = [
+    { key: 'service', label: '이용약관', required: true, ver: 2, effective: '26.07.01',
+      common: '제1조 (목적)\n이 약관은 UDID가 제공하는 0SCM 솔루션(본사·가맹점 관리자 및 소매몰)의 이용과 관련하여 회사와 본사·가맹점 간의 권리, 의무 및 책임사항을 정함을 목적으로 합니다.\n\n제2조 (이용 승인 및 제한)\n회사는 심사 후 이용을 승인하며, 약관 위반 시 이용을 제한할 수 있습니다.',
+      hq: '[본사 가입]\n본사는 도입 신청 후 회사의 승인을 거쳐 운영을 시작하며, 소매몰 및 도매 공급 기능을 운영할 책임을 부담합니다.',
+      fr: '[가맹점 가입]\n가맹점은 본사의 소매몰을 통해 가입하고 본사의 이용 승인을 거쳐 이용하며, 이용료는 정기결제 방식으로 납부합니다.' },
+    { key: 'privacy', label: '개인정보처리방침', required: true, ver: 2, effective: '26.08.01',
+      common: '제1조 (수집 항목 및 이용 목적)\n회사는 회원 가입, 계약 이행, 결제 및 고객 응대를 위해 필요한 최소한의 개인정보를 수집·이용합니다.\n\n제2조 (보유 및 이용 기간)\n관계 법령 및 내부 방침에 따른 보유 기간 동안 보관 후 지체 없이 파기합니다.',
+      hq: '[본사 가입]\n본사 담당자, 사업자 및 정산 계좌 정보를 수집합니다.',
+      fr: '[가맹점 가입]\n가맹점 담당자, 사업자 및 정기결제 관련 정보를 수집합니다.' },
+    { key: 'marketing', label: '마케팅정보 수신동의', required: false, ver: 1, effective: '26.03.01',
+      common: '제1조 (수신 정보)\n회사는 서비스 소식, 이벤트 및 혜택 안내를 전송할 수 있습니다.\n\n제2조 (동의 거부 및 철회)\n동의하지 않아도 솔루션을 이용할 수 있으며, 동의 후에도 언제든지 수신을 거부할 수 있습니다.',
+      hq: '', fr: '' },
+  ];
+
+  function termsConsentRowsHTML(editable, marketingChecked) {
+    return MEMBER_TERMS.map(t => {
+      const tag = `<span class="${t.required ? 'tag-required' : 'tag-optional'}">${t.required ? '[필수]' : '[선택]'}</span>`;
+      if (!editable) return `<div class="terms-row"><span>${t.label}</span>${tag}<span class="terms-status">${t.required || marketingChecked ? '동의' : '미동의'}</span></div>`;
+      const ctl = t.required
+        ? '<span class="terms-status">동의</span>'
+        : `<label class="radio-label" style="margin:0;"><input type="checkbox" id="memberTermsMarketing" ${marketingChecked ? 'checked' : ''}> 동의</label>`;
+      return `<div class="terms-row"><span>${t.label}</span>${tag}<div class="terms-actions">${ctl}<button type="button" class="btn-secondary" style="height:32px;padding:0 12px;" data-terms-view="${t.key}">보기</button></div></div>`;
+    }).join('');
+  }
+
+  function openMemberTermsViewModal(key) {
+    const t = MEMBER_TERMS.find(x => x.key === key);
+    if (!t) return;
+    const old = document.getElementById('memberTermsViewRoot'); if (old) old.remove();
+    const part = MEMBER_ACCOUNT.accountType === '본사' ? t.hq : t.fr;
+    const body = t ? [t.common, part].filter(Boolean).join('\n\n') : '';
+    const root = document.createElement('div');
+    root.id = 'memberTermsViewRoot';
+    root.innerHTML = `
+      <div class="modal-scrim" id="memberTermsViewScrim">
+        <div class="modal-box term-modal">
+          <h3>${t.label}</h3>
+          <div class="detail-grid">
+            <div class="detail-item"><span class="detail-label">버전</span><span class="detail-value">v${t.ver}</span></div>
+            <div class="detail-item"><span class="detail-label">시행일</span><span class="detail-value">${t.effective}</span></div>
+          </div>
+          ${body ? `<div class="term-viewer">${escapeHtml(body)}</div>` : '<div class="term-viewer">등록된 약관이 없습니다.</div>'}
+          <div class="modal-actions"><button type="button" class="btn-secondary" id="memberTermsViewClose">닫기</button></div>
+        </div>
+      </div>`;
+    document.body.appendChild(root);
+    const close = () => root.remove();
+    root.querySelector('#memberTermsViewClose').addEventListener('click', close);
+    root.querySelector('#memberTermsViewScrim').addEventListener('click', e => { if (e.target.id === 'memberTermsViewScrim') close(); });
+  }
+
   let MEMBER_ACCOUNT = {
     managerName: MY_PROFILE.managerName, // 담당자 이름 — 가입신청서 "회원정보 > 이름"에 대응
     email: MY_PROFILE.email,
     loginId: 'bonsa',                    // 가입 후 변경 불가(가입신청서 안내 문구와 동일)
     phone: MY_PROFILE.phone,
     wholesaleSupply: true,               // 도매공급권한 보유 여부 — 대시보드 도매 판매 영역 노출 조건
+    termsMarketing: true,                // 마케팅정보 수신동의[선택] 동의 여부 — 필수 2종은 가입 시 동의 완료 상태로 고정
     accountType: '본사',                  // '본사' | '가맹점' — 본사/가맹점 여부 상관없이 회원정보는 공통 관리되지만 구분 표시는 필요
   };
 
@@ -13935,6 +14002,15 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
             <h3 class="form-section-title">PayApp 연동 정보</h3>
             ${pagePayappLinkHTML()}
           </section>
+
+          <section class="form-section">
+            <h3 class="form-section-title">이용약관 동의</h3>
+            ${termsConsentRowsHTML(true, MEMBER_ACCOUNT.termsMarketing)}
+            <div style="display:flex; align-items:center; gap:10px; padding-top:20px;">
+              <button type="button" class="btn-primary" id="saveMemberTermsBtn" disabled>저장</button>
+              <span class="inline-confirm" id="memberTermsConfirm" hidden>저장되었습니다.</span>
+            </div>
+          </section>
         </div>
       </div>`;
   }
@@ -14045,6 +14121,18 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       wrapper.querySelector('#memberNewPwConfirm').value = '';
       setTimeout(() => { confirm.hidden = true; }, 2000);
     });
+
+    const termsMkt = wrapper.querySelector('#memberTermsMarketing');
+    const termsSaveBtn = wrapper.querySelector('#saveMemberTermsBtn');
+    termsMkt.addEventListener('change', () => { termsSaveBtn.disabled = termsMkt.checked === MEMBER_ACCOUNT.termsMarketing; });
+    termsSaveBtn.addEventListener('click', () => {
+      MEMBER_ACCOUNT.termsMarketing = termsMkt.checked;
+      termsSaveBtn.disabled = true;
+      const c = wrapper.querySelector('#memberTermsConfirm');
+      c.hidden = false;
+      setTimeout(() => { c.hidden = true; }, 2000);
+    });
+    wrapper.querySelectorAll('[data-terms-view]').forEach(b => b.addEventListener('click', () => openMemberTermsViewModal(b.dataset.termsView)));
 
     wrapper.querySelector('#saveBankAccountBtn').addEventListener('click', () => {
       const bankErr = wrapper.querySelector('#bankAccountError');
