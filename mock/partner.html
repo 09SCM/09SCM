@@ -560,6 +560,7 @@
   .tpl-table:not(.tpl-sticky-first) tbody td[data-label]:not(.tc-nolabel)::before { content: attr(data-label); white-space: pre-line; font-size: 12px; font-weight: 300; line-height: 20px; color: var(--text-secondary); }
   .tpl-table:not(.tpl-sticky-first) tbody td .tc-val { display: block; min-width: 0; }
   .tpl-table:not(.tpl-sticky-first) tbody td .status-stack { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+  .tpl-table:not(.tpl-sticky-first) tbody td .status-stack.status-stack-process { flex-direction: row-reverse; justify-content: flex-end; }
   .tpl-table:not(.tpl-sticky-first) tbody td.tc-check, .tpl-table:not(.tpl-sticky-first) tbody td.tc-img, .tpl-table:not(.tpl-sticky-first) tbody td.tc-lead, .tpl-table:not(.tpl-sticky-first) tbody td.tc-sub, .tpl-table:not(.tpl-sticky-first) tbody td.tc-head, .tpl-table:not(.tpl-sticky-first) tbody td.tc-price, .tpl-table:not(.tpl-sticky-first) tbody td.tc-badge, .tpl-table:not(.tpl-sticky-first) tbody td.tc-actions, .tpl-table:not(.tpl-sticky-first) tbody td.tc-empty { display: block; }
   .tpl-table:not(.tpl-sticky-first) tbody td.tc-nolabel { grid-template-columns: minmax(0, 1fr); }
   .tpl-table:not(.tpl-sticky-first) tbody td.tc-hide { display: none; }
@@ -5729,8 +5730,8 @@
     const at = orderProcessedAt(o);
     const done = o.processStatus === '픽업완료' || o.processStatus === '배달완료';
     const note = done && !o.cancelReturnStatus ? `(${stampAddDays(at, RETURN_WINDOW_DAYS)} 까지 반품요청 가능)` : '';
-    const stamp = stateStampHTML(statusTag(o.processStatus), at, note);
-    return isNoShow ? `<div class="status-stack">${stamp}<span class="tag noshow-warn-text">노쇼후보</span></div>` : stamp;
+    const noShowTag = isNoShow ? '<span class="tag noshow-warn-text">노쇼후보</span>' : '';
+    return stateStampHTML(statusTag(o.processStatus) + noShowTag, at, note);
   }
   // 취소·반품 상태의 최근 처리 일시 — 요청 단계에서는 요청일시, 승인·반려 후에는 처리일시.
   function cancelReturnLatestAt(o) {
@@ -5742,7 +5743,10 @@
     if (o.paymentStatus === '결제완료') return stateStampHTML(badge, o.paidAt || '');
     if (o.paymentStatus !== '결제취소') return badge;
     const sub = o.refundType ? `<span class="tag refund-sub-text">${o.refundType === 'full' ? '전체환불' : '부분환불'}</span>` : '';
-    return stateStampHTML(badge + sub, o.cancelReturnResolvedAt || '', o.paidAt ? `(${o.paidAt} 결제완료)` : '');
+    const lines = [`<span class="state-stamp">${badge}${sub}</span>`];
+    if (o.cancelReturnResolvedAt) lines.push(`<span>${o.cancelReturnResolvedAt}</span>`);
+    if (o.paidAt) lines.push(`<span class="state-stamp-note">(${o.paidAt} 결제완료)</span>`);
+    return `<div class="status-stack">${lines.join('')}</div>`;
   }
 
   // 도매 자동 배송확정 기준일 — 배송중 전환일시. 반품반려로 배송중에 복귀한 건은 반려 일시와 비교해 더 늦은 일시를 기준으로 다시 센다.
@@ -10693,7 +10697,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           <td>${methodLabel}</td>
           <td>${RETAIL_ORDER_PAYMETHOD_LABELS[o.paymentMethod]}</td>
           <td>${paymentStatusHTML(o)}</td>
-          <td><div class="status-stack">${o.processStatus ? statusTag(o.processStatus) : '-'}${retailNoShowCandidate(o) ? '<span class="tag noshow-warn-text">노쇼후보</span>' : ''}</div></td>
+          <td><div class="status-stack status-stack-process">${o.processStatus ? statusTag(o.processStatus) : '-'}${retailNoShowCandidate(o) ? '<span class="tag noshow-warn-text">노쇼후보</span>' : ''}</div></td>
           <td>${orderBadgeHTML(o) || '-'}</td>
           <td class="num">${o.grandTotal.toLocaleString()}원</td>
           <td class="col-actions">${retailOrderRowActionsHTML(o)}</td>
