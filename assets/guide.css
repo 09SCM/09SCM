@@ -394,48 +394,18 @@ body.lb-open { overflow: hidden; }
   .lb-nav { width: 36px; height: 52px; font-size: 26px; }
 }
 
-/* ---------- 섹션 카드 ---------- */
-:root { --border-strong: #DADADA; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --border-strong: #3E4045; } }
-
+/* ---------- 섹션 구분 띠(종이 칸 구분) ---------- */
 .main-col .guide-section,
-.main-col .guide-section:first-of-type,
-.main-col .shot + .guide-section {
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  padding: 20px;
-  margin: 0 0 16px;
-}
-.main-col .guide-section:has(> details.guide-more) { background: transparent; border: 0; padding: 0; }
-.main-col .guide-section > h2,
-.main-col .guide-section > h3.sec-label {
-  margin: -20px -20px 20px;
-  padding: 14px 20px;
-  background: var(--bg);
-  border: 0;
-  border-bottom: 1px solid var(--border-strong);
-  border-radius: 5px 5px 0 0;
-  font-size: 16px;
-  line-height: 1.3;
-}
-.main-col .guide-section > h2 { font-size: 18px; }
-
-/* 화면(screens) 구분: 첫 화면에는 구분선 없이, 화면 사이에만 */
+.main-col .shot + .guide-section { border-top: 10px solid var(--border); padding: 28px 0; }
+.main-col .screen-head + .guide-section { border-top: 0; padding-top: 0; }
 .guide-screen, .guide-screen:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
-.guide-screen + .guide-screen { margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border-strong); }
-.screen-title { margin: 0 0 16px; }
-.guide-screen > .shot { margin-bottom: 16px; }
+.guide-screen + .guide-screen { border-top: 10px solid var(--border); padding-top: 28px; }
+.screen-title { margin: 0 0 20px; }
+.guide-screen > .shot { margin-bottom: 28px; }
 
 @media (max-width: 860px) {
   .main-col .guide-section,
-  .main-col .guide-section:first-of-type,
-  .main-col .shot + .guide-section {
-    margin: 0 -16px 8px;
-    padding: 16px;
-    border-left: 0; border-right: 0; border-radius: 0;
-  }
-  .main-col .guide-section:has(> details.guide-more) { margin: 0 0 8px; padding: 0; }
-  .main-col .guide-section > h2,
-  .main-col .guide-section > h3.sec-label { margin: -16px -16px 16px; padding: 12px 16px; border-radius: 0; }
+  .main-col .shot + .guide-section { margin-left: -16px; margin-right: -16px; padding: 24px 16px; }
+  .main-col .screen-head + .guide-section { padding: 0 16px; }
+  .guide-screen { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
 }
