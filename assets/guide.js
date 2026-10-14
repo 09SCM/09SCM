@@ -193,6 +193,8 @@
       a.addEventListener('click', function (e) {
         e.preventDefault();
         var target = document.getElementById(a.dataset.anchor);
+        spyClicked = a.dataset.anchor;
+        if (spyHandler) spyHandler();
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
@@ -454,20 +456,35 @@
   initSearch();
 
   /* ---------- 바로가기 현재 위치 표시 ---------- */
-  var spyHandler = null;
+  var spyHandler = null, spyClicked = null, spyBound = false;
   function initSpy() {
     if (spyHandler) { window.removeEventListener('scroll', spyHandler); spyHandler = null; }
+    spyClicked = null;
     var links = Array.prototype.slice.call(contentEl.querySelectorAll('.mini-toc [data-anchor]'));
     if (!links.length) return;
+    function byAnchor(id) { return links.filter(function (a) { return a.dataset.anchor === id; })[0]; }
     spyHandler = function () {
       var cur = null;
       links.forEach(function (a) {
         var t = document.getElementById(a.dataset.anchor);
         if (t && t.getBoundingClientRect().top <= 120) cur = a;
       });
+      var atBottom = window.scrollY > 0 && (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 4;
+      if (atBottom) {
+        var c = spyClicked && byAnchor(spyClicked);
+        var ct = c && document.getElementById(spyClicked);
+        cur = (ct && ct.getBoundingClientRect().top < window.innerHeight) ? c : links[links.length - 1];
+      }
+      if (!cur) cur = links[0];
       links.forEach(function (a) { a.classList.toggle('current', a === cur); });
     };
     window.addEventListener('scroll', spyHandler, { passive: true });
+    if (!spyBound) {
+      spyBound = true;
+      ['wheel', 'touchmove', 'keydown'].forEach(function (ev) {
+        window.addEventListener(ev, function () { spyClicked = null; }, { passive: true });
+      });
+    }
     spyHandler();
   }
 
