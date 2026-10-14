@@ -1410,15 +1410,6 @@ window.GUIDE_CONTENT['retail-member'] = {
             '<p>번호를 다시 고치면 중복확인과 인증을 처음부터 다시 해야 해요. 탈퇴한 회원이 쓰던 번호와 회원주문 코드는 중복으로 보지 않아요.</p>'
         },
         {
-          title: '배달지가 없는 회원',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/member-noaddr-pc.webp', alt: '09SCM 배달지 없는 회원 PC 화면', ratio: 2880 / 3212 },
-            { device: 'mobile', src: '../assets/img/partner/member-noaddr-mobile.webp', alt: '09SCM 배달지 없는 회원 모바일 화면', ratio: 880 / 3164 }
-          ],
-          shotCaption: '09SCM 배달지 없는 회원 화면 (PC / 모바일)',
-          html: '<p>가입할 때 배달지를 입력하지 않은 회원은 배달지명, 배달 주소, 배달 요청사항이 빈 입력칸으로 나와요. 직접 입력해서 [저장]하면 배달지가 등록돼요.</p>'
-        },
-        {
           title: '내부메모 탭',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-memo-pc.webp', alt: '09SCM 내부메모 PC 화면', ratio: 2880 / 1400 },
