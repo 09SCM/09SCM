@@ -1181,22 +1181,28 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
             '<p>조회된 회원이 [이용제한]이면 &quot;이용제한 회원 — 매칭 적용 시 주문접수가 제한됩니다&quot; 경고가 함께 나와요.</p>'
         },
         {
-          title: '삭제할 때는 확인 창이 나와요',
+          title: '삭제 확인 창',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-delete-pc.webp', alt: '09SCM 매칭 실패 건 삭제 확인 PC 화면', ratio: 2.0422 }
           ],
-          shotCaption: '09SCM 매칭 실패 건 삭제 확인 화면 (PC)',
-          html:
-            '<p>[삭제]를 누르면 &quot;매칭 실패 건을 삭제하시겠습니까?&quot; 확인 창이 나와요. 삭제한 건은 복구할 수 없고 이력도 남지 않아요.</p>' +
-            '<p>[일괄삭제]는 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 물어봐요. 현재 페이지에서 고른 건만 대상이고, 페이지를 넘기면 선택이 풀려요.</p>'
+          shotCaption: '09SCM 삭제 확인 화면',
+          html: '<p>[삭제]를 누르면 &quot;매칭 실패 건을 삭제하시겠습니까?&quot; 확인 창이 나와요. 삭제한 건은 복구할 수 없고 이력도 남지 않아요.</p>'
         },
         {
-          title: '선택하지 않고 일괄삭제를 누르면 알려줘요',
+          title: '일괄삭제 확인 창',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/chat-bulkconfirm-pc.webp', alt: '09SCM 일괄삭제 확인 PC 화면', ratio: 2.0422 }
+          ],
+          shotCaption: '09SCM 일괄삭제 확인 화면',
+          html: '<p>체크한 건수가 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 나와요. 현재 페이지에서 고른 건만 대상이고, 페이지를 넘기면 선택이 풀려요.</p>'
+        },
+        {
+          title: '선택 없이 일괄삭제를 눌렀어요',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-bulkalert-pc.webp', alt: '09SCM 일괄삭제 선택 안내 PC 화면', ratio: 2.5208 }
           ],
-          shotCaption: '09SCM 일괄삭제 선택 안내 화면 (PC)',
-          html: '<p>고른 건이 없으면 &quot;삭제할 매칭 실패 건을 선택해주세요.&quot; 안내가 나와요.</p>'
+          shotCaption: '09SCM 일괄삭제 선택 안내 화면',
+          html: '<p>&quot;삭제할 매칭 실패 건을 선택해주세요.&quot; 안내가 나와요. 삭제할 건을 체크한 뒤 다시 눌러주세요.</p>'
         },
         {
           title: '조건에 맞는 건이 없어요',
