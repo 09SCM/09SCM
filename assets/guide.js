@@ -89,6 +89,11 @@
   /* 화면(screens) 단위 콘텐츠: 화면마다 캡처 + 한눈에/이렇게/상황별로(/안 될 때/더 자세히)를 가진다 */
   function demote(html) { return String(html).replace(/<h3/g, '<h4').replace(/<\/h3>/g, '</h4>'); }
 
+  function flatCases(v) {
+    if (!Array.isArray(v)) return v;
+    return v.map(function (it) { return (it.title ? '<h3>' + it.title + '</h3>' : '') + shotsHTML(it.shots, it.shotCaption) + (it.html || ''); }).join('');
+  }
+
   function screenParts(scr) {
     var parts = [];
     SCREEN_SECTIONS.forEach(function (s) {
@@ -163,7 +168,7 @@
     } else {
       SCREEN_SECTIONS.forEach(function (s) {
         if (c && !c[s.id]) { return; }
-        main += sectionHTML(s.id, s.label, c ? c[s.id] : placeholder());
+        main += sectionHTML(s.id, s.label, c ? flatCases(c[s.id]) : placeholder());
         toc += '<a href="#' + s.id + '" data-anchor="' + s.id + '">' + s.label + '</a>';
       });
       if (!c || c.more) {
@@ -299,7 +304,7 @@
           screenParts(scr).forEach(function (p) { secs.push({ id: p.id, label: scr.label + ' · ' + p.label, html: p.html }); });
         });
       } else {
-        SCREEN_SECTIONS.forEach(function (s) { if (c[s.id]) secs.push({ id: s.id, label: s.label, html: c[s.id] }); });
+        SCREEN_SECTIONS.forEach(function (s) { if (c[s.id]) secs.push({ id: s.id, label: s.label, html: flatCases(c[s.id]) }); });
         if (c.more) secs.push({ id: 'more', label: '더 자세히 보기', html: c.more });
       }
       secs.forEach(function (sec) {
