@@ -3947,7 +3947,7 @@
     function updateWholesaleAvailableNote() {
       const stock = parseInt(stockInput.value, 10) || 0;
       const allocated = parseInt(retailQtyInput.value, 10) || 0;
-      wholesaleAvailableNote.textContent = `도매 판매 가능재고: ${Math.max(stock - allocated, 0)}개 (소매배정 ${allocated}개 제외)`;
+      wholesaleAvailableNote.textContent = `도매 가용재고: ${Math.max(stock - allocated, 0)}개 (소매 판매가능수량 ${allocated}개 제외)`;
     }
 
     function validateRetailQty() {
