@@ -1217,3 +1217,240 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
     }
   ]
 };
+
+window.GUIDE_CONTENT['retail-member'] = {
+  screens: [
+    {
+      id: 'member-list',
+      label: '회원 목록',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/member-list-pc.webp', alt: '09SCM 회원관리 PC 화면', ratio: 0.96 },
+        { device: 'mobile', src: '../assets/img/partner/member-list-mobile.webp', alt: '09SCM 회원관리 모바일 화면', ratio: 0.3667 }
+      ],
+      shotCaption: '09SCM 회원관리 화면 (PC / 모바일)',
+      overview:
+        '<p>내 소매몰에 가입한 회원을 조회하고, 탈퇴한 회원을 정리하는 화면이에요. 다른 가맹점의 회원은 보이지 않아요.</p>' +
+        '<ul>' +
+          '<li>회원 아이디는 휴대폰번호예요. 주문은 이 번호로 식별되는 회원과 연결돼요.</li>' +
+          '<li>일반회원과 탈퇴회원 탭으로 나뉘고, 일반회원 탭에는 이용상태별 탭(전체·정상·이용제한)이 있어요.</li>' +
+          '<li>정보 수정, 이용상태 변경, 탈퇴 처리는 [상세보기]로 들어가는 회원정보 상세에서 해요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>회원 찾기</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>기간</td><td>시작일~종료일 (일반회원 탭은 회원가입일시, 탈퇴회원 탭은 탈퇴일시 기준)</td></tr>' +
+          '<tr><td>검색</td><td>이름, 휴대폰번호, 이메일, 회원주문 코드, 채팅주문 닉네임을 한 번에 검색 (대소문자 구분 없음, 하이픈(-) 무시)</td></tr>' +
+          '<tr><td>정렬</td><td>일반회원 탭은 회원가입일시순·최종로그인일시순·이름순 중 선택, 탈퇴회원 탭은 탈퇴일시순 고정</td></tr>' +
+          '<tr><td>페이지</td><td>한 페이지에 20건씩 표시</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>일반회원 목록</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>회원명</td><td>회원 이름</td></tr>' +
+          '<tr><td>휴대폰번호</td><td>회원 아이디</td></tr>' +
+          '<tr><td>이메일</td><td>회원 이메일</td></tr>' +
+          '<tr><td>회원주문 코드</td><td>회원을 식별하는 숫자 4자리 코드 (채팅주문 매칭과 링크주문 주문자정보에 사용)</td></tr>' +
+          '<tr><td>채팅주문 닉네임</td><td>오픈채팅방에서 사용하는 닉네임 (등록하지 않은 회원은 &quot;-&quot;)</td></tr>' +
+          '<tr><td>상품주문건수</td><td>결제가 완료된 주문 건수 (취소·반품이 승인된 주문은 제외)</td></tr>' +
+          '<tr><td>주문금액</td><td>위 주문의 총 결제금액(상품금액 + 배달비) 합계</td></tr>' +
+          '<tr><td>이용상태</td><td>[정상], [이용제한] 구분</td></tr>' +
+          '<tr><td>회원가입일시</td><td>회원가입을 완료한 일시</td></tr>' +
+          '<tr><td>최종로그인일시</td><td>소매몰에 마지막으로 로그인한 일시</td></tr>' +
+          '<tr><td>관리</td><td>[상세보기] (누르면 회원정보 상세로 이동)</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>탈퇴회원 목록</h3>' +
+        '<p>탈퇴회원은 상세정보를 볼 수 없어서 회원명, 휴대폰번호, 탈퇴일시만 보여줘요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>체크박스</td><td>일괄삭제할 회원 선택 (현재 페이지에서만 유지되고, 다른 페이지로 넘어가면 해제)</td></tr>' +
+          '<tr><td>회원명, 휴대폰번호, 탈퇴일시</td><td>탈퇴한 회원의 이름, 아이디였던 번호, 탈퇴 처리된 일시</td></tr>' +
+          '<tr><td>관리</td><td>[상세보기] (탈퇴 사유 확인 창), [삭제] (완전 삭제)</td></tr>' +
+        '</tbody></table></div>',
+      cases: [
+        {
+          title: '탈퇴회원 탭',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-withdrawn-pc.webp', alt: '09SCM 탈퇴회원 PC 화면', ratio: 0.96 },
+            { device: 'mobile', src: '../assets/img/partner/member-withdrawn-mobile.webp', alt: '09SCM 탈퇴회원 모바일 화면', ratio: 0.3667 }
+          ],
+          shotCaption: '09SCM 탈퇴회원 화면 (PC / 모바일)',
+          html: '<p>삭제는 탈퇴회원만 할 수 있어요. 일반회원에게는 [삭제]가 없어요.</p>'
+        },
+        {
+          title: '탈퇴 사유 확인 창',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-reason-pc.webp', alt: '09SCM 탈퇴 사유 PC 화면', ratio: 968 / 742 },
+            { device: 'mobile', src: '../assets/img/partner/member-reason-mobile.webp', alt: '09SCM 탈퇴 사유 모바일 화면', ratio: 880 / 860 }
+          ],
+          shotCaption: '09SCM 탈퇴 사유 확인 화면 (PC / 모바일)',
+          html: '<p>[상세보기]를 누르면 회원명, 휴대폰번호, 탈퇴일시, 탈퇴 사유를 확인하는 창이 열려요. 읽기만 할 수 있어요.</p>'
+        },
+        {
+          title: '삭제 확인 창',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-delete-pc.webp', alt: '09SCM 회원 삭제 확인 PC 화면', ratio: 968 / 474 }
+          ],
+          shotCaption: '09SCM 삭제 확인 화면',
+          html: '<p>[삭제]를 누르면 확인 창이 나와요. 삭제한 회원은 복구할 수 없어요. 삭제해도 기존 주문내역은 주문 당시 정보로 남아서 주문 진행에는 영향이 없어요.</p>'
+        },
+        {
+          title: '일괄삭제 확인 창',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-bulk-confirm-pc.webp', alt: '09SCM 회원 일괄삭제 확인 PC 화면', ratio: 968 / 474 }
+          ],
+          shotCaption: '09SCM 일괄삭제 확인 화면',
+          html: '<p>체크한 건수가 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 나와요. 현재 페이지에서 고른 회원만 대상이에요.</p>'
+        },
+        {
+          title: '선택 없이 일괄삭제를 눌렀어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-bulk-none-pc.webp', alt: '09SCM 회원 일괄삭제 선택 안내 PC 화면', ratio: 968 / 384 }
+          ],
+          shotCaption: '09SCM 일괄삭제 선택 안내 화면',
+          html: '<p>&quot;삭제할 회원을 선택해주세요.&quot; 안내가 나와요. 삭제할 회원을 체크한 뒤 다시 눌러주세요.</p>'
+        },
+        {
+          title: '조건에 맞는 회원이 없어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-empty-pc.webp', alt: '09SCM 회원 검색 결과 없음 PC 화면', ratio: 2784 / 258 },
+            { device: 'mobile', src: '../assets/img/partner/member-empty-mobile.webp', alt: '09SCM 회원 검색 결과 없음 모바일 화면', ratio: 816 / 200 }
+          ],
+          shotCaption: '09SCM 회원 검색 결과 없음 화면 (PC / 모바일)',
+          html: '<p>기간, 검색어, 이용상태 탭에 맞는 회원이 없으면 &quot;조건에 맞는 회원이 없습니다.&quot;가 나와요.</p>'
+        }
+      ]
+    },
+    {
+      id: 'member-detail',
+      label: '회원정보 상세',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/member-detail-pc.webp', alt: '09SCM 회원정보 상세 PC 화면', ratio: 2880 / 3212 },
+        { device: 'mobile', src: '../assets/img/partner/member-detail-mobile.webp', alt: '09SCM 회원정보 상세 모바일 화면', ratio: 880 / 3164 }
+      ],
+      shotCaption: '09SCM 회원정보 상세 화면 (PC / 모바일)',
+      overview:
+        '<p>회원 정보를 고치고, 이용상태를 바꾸고, 탈퇴 처리하는 화면이에요. 일반회원 목록의 [상세보기]로 들어와요.</p>' +
+        '<ul>' +
+          '<li>회원정보와 내부메모 두 탭이 있어요. 하단의 이용상태 변경과 탈퇴 처리는 어느 탭에서나 보여요.</li>' +
+          '<li>기본정보, 휴대폰번호, 배달지 정보는 영역마다 [저장]이 따로 있어요. 저장하지 않은 영역의 수정 내용은 반영되지 않아요.</li>' +
+          '<li>탈퇴회원은 이 화면에 들어올 수 없어요. 탈퇴 처리하면 바로 탈퇴회원 목록으로 돌아가요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>기본정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>이름</td><td>회원 이름 (필수)</td></tr>' +
+          '<tr><td>이메일</td><td>회원 이메일 (필수)</td></tr>' +
+          '<tr><td>회원주문 코드</td><td>숫자 4자리 (필수, 같은 소매몰 안에서 중복 불가, 바꾸면 [중복확인] 필요)</td></tr>' +
+          '<tr><td>채팅주문 닉네임</td><td>오픈채팅방에서 사용하는 닉네임 (선택, 등록하지 않으면 채팅주문을 이용할 수 없음)</td></tr>' +
+          '<tr><td>회원가입일시, 최종로그인일시</td><td>조회 전용</td></tr>' +
+          '<tr><td>노쇼 이력</td><td>이 회원의 주문 중 노쇼 처리된 건수 (조회 전용)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>진행 중인 주문이 있어도 회원주문 코드는 바꿀 수 있어요. 코드를 바꿔도 기존 주문 연결과 노쇼 이력은 그대로 유지돼요.</p>' +
+
+        '<h3>휴대폰번호</h3>' +
+        '<p>회원 대신 관리자가 번호를 바꿀 수 있어요. 중복확인과 본인확인을 모두 거쳐야 저장돼요.</p>' +
+        '<ol>' +
+          '<li><b>번호변경 누르기</b> [번호변경]을 누르면 변경 입력창이 열려요.</li>' +
+          '<li><b>중복확인하기</b> 새 번호를 입력하고 [중복확인]을 눌러요. 다른 회원이 쓰는 번호는 쓸 수 없어요.</li>' +
+          '<li><b>본인확인하기</b> 중복확인을 통과하면 [인증번호발송]이 활성화돼요. 인증번호(숫자 6자리)를 입력하고 [확인]을 눌러요.</li>' +
+          '<li><b>저장하기</b> 인증이 끝나야 [저장]이 활성화돼요.</li>' +
+        '</ol>' +
+        '<p>번호를 바꾸면 회원 아이디도 새 번호로 바뀌어요. 기존 주문 연결은 유지되고, 이미 접수된 주문에 표시된 주문자 휴대폰번호는 주문 당시 값 그대로예요.</p>' +
+
+        '<h3>배달지 정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>배달지명</td><td>회원이 가입할 때 입력한 배달지 이름</td></tr>' +
+          '<tr><td>배달 주소</td><td>배달 받을 주소</td></tr>' +
+          '<tr><td>배달 요청사항</td><td>배달 시 전달할 요청사항</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>배달지는 회원당 1개만 관리해요. 등록된 배달지가 없으면 &quot;등록된 배달지가 없습니다&quot;가 나오고, 관리자가 새로 등록할 수는 없어요.</p>' +
+
+        '<h3>이용상태 변경·탈퇴 처리</h3>' +
+        '<p>화면 하단에 고정되어 있어요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>이용상태</td><td>[정상], [이용제한] 중 선택 (선택만으로는 적용되지 않음)</td></tr>' +
+          '<tr><td>[변경확인]</td><td>선택한 이용상태를 적용</td></tr>' +
+          '<tr><td>[탈퇴 처리]</td><td>탈퇴 처리 창 열기</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>[이용제한] 회원은 채팅주문과 링크주문 모두 새 주문을 만들 수 없고 소매몰에도 로그인할 수 없어요. 진행 중인 주문이 있어도 이용상태를 바꿀 수 있어요.</p>',
+      cases: [
+        {
+          title: '저장이 막히는 경우',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-error-pc.webp', alt: '09SCM 회원정보 저장 오류 PC 화면', ratio: 2880 / 3264 },
+            { device: 'mobile', src: '../assets/img/partner/member-error-mobile.webp', alt: '09SCM 회원정보 저장 오류 모바일 화면', ratio: 880 / 3216 }
+          ],
+          shotCaption: '09SCM 회원정보 저장 오류 화면 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>이름, 이메일, 회원주문 코드 중 비어 있음</td><td>&quot;이름 · 이메일 · 회원주문 코드를 모두 입력해주세요.&quot;</td></tr>' +
+              '<tr><td>회원주문 코드가 숫자 4자리가 아님</td><td>&quot;회원주문 코드는 숫자 4자리로 입력해주세요.&quot;</td></tr>' +
+              '<tr><td>바꾼 코드의 중복확인을 하지 않음</td><td>&quot;변경한 회원주문 코드의 중복확인을 먼저 완료해주세요.&quot;</td></tr>' +
+              '<tr><td>다른 회원이 쓰는 코드</td><td>&quot;이미 다른 회원이 사용 중인 코드입니다.&quot;</td></tr>' +
+            '</tbody></table></div>'
+        },
+        {
+          title: '휴대폰번호를 바꾸는 중',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-phone-pc.webp', alt: '09SCM 휴대폰번호 변경 PC 화면', ratio: 2880 / 3570 },
+            { device: 'mobile', src: '../assets/img/partner/member-phone-mobile.webp', alt: '09SCM 휴대폰번호 변경 모바일 화면', ratio: 880 / 3522 }
+          ],
+          shotCaption: '09SCM 휴대폰번호 변경 화면 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>번호를 비워둠</td><td>&quot;변경할 휴대폰번호를 입력해주세요.&quot;</td></tr>' +
+              '<tr><td>번호 형식이 올바르지 않음</td><td>&quot;휴대폰번호 형식이 올바르지 않습니다.&quot;</td></tr>' +
+              '<tr><td>다른 회원이 쓰는 번호</td><td>&quot;이미 다른 회원이 사용 중인 번호입니다.&quot;</td></tr>' +
+              '<tr><td>사용 가능한 번호</td><td>&quot;사용 가능한 번호입니다. 인증번호를 발송해주세요.&quot;</td></tr>' +
+              '<tr><td>인증번호가 6자리가 아님</td><td>&quot;인증번호 6자리를 입력해주세요.&quot;</td></tr>' +
+              '<tr><td>인증 완료</td><td>&quot;휴대폰번호 인증이 완료되었습니다.&quot; ([저장] 활성화)</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>번호를 다시 고치면 중복확인과 인증을 처음부터 다시 해야 해요. 탈퇴한 회원이 쓰던 번호와 회원주문 코드는 중복으로 보지 않아요.</p>'
+        },
+        {
+          title: '내부메모 탭',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-memo-pc.webp', alt: '09SCM 내부메모 PC 화면', ratio: 2880 / 1400 },
+            { device: 'mobile', src: '../assets/img/partner/member-memo-mobile.webp', alt: '09SCM 내부메모 모바일 화면', ratio: 880 / 1400 }
+          ],
+          shotCaption: '09SCM 내부메모 화면 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>메모 입력창, [추가]</td><td>관리자끼리 공유할 메모 등록</td></tr>' +
+              '<tr><td>메모 목록</td><td>등록일시와 함께 최신순으로 표시 (메모가 없으면 &quot;등록된 메모가 없습니다.&quot;)</td></tr>' +
+              '<tr><td>[삭제]</td><td>메모 1건 삭제</td></tr>' +
+            '</tbody></table></div>'
+        },
+        {
+          title: '이용상태를 바꿨어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-usage-pc.webp', alt: '09SCM 이용상태 변경 PC 화면', ratio: 2880 / 188 },
+            { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 288 }
+          ],
+          shotCaption: '09SCM 이용상태 변경 화면 (PC / 모바일)',
+          html: '<p>[변경확인]을 누르면 &quot;변경사항이 반영되었습니다.&quot;가 잠깐 나와요. [이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
+        },
+        {
+          title: '탈퇴 처리 창',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-withdraw-pc.webp', alt: '09SCM 탈퇴 처리 PC 화면', ratio: 968 / 702 },
+            { device: 'mobile', src: '../assets/img/partner/member-withdraw-mobile.webp', alt: '09SCM 탈퇴 처리 모바일 화면', ratio: 880 / 702 }
+          ],
+          shotCaption: '09SCM 탈퇴 처리 화면 (PC / 모바일)',
+          html:
+            '<p>탈퇴 처리 사유를 입력하고 [탈퇴 처리]를 누르면 회원이 탈퇴 상태로 바뀌고 탈퇴일시가 기록돼요. 처리 즉시 탈퇴회원 목록으로 이동하고, 탈퇴한 회원의 정보는 복원할 수 없어요.</p>' +
+            '<p>같은 번호로 다시 가입할 수 있지만 새 회원으로 가입되고, 이전 주문과는 연결되지 않아요.</p>'
+        },
+        {
+          title: '사유를 입력하지 않았어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-withdraw-error-pc.webp', alt: '09SCM 탈퇴 사유 미입력 PC 화면', ratio: 968 / 754 },
+            { device: 'mobile', src: '../assets/img/partner/member-withdraw-error-mobile.webp', alt: '09SCM 탈퇴 사유 미입력 모바일 화면', ratio: 880 / 754 }
+          ],
+          shotCaption: '09SCM 탈퇴 사유 미입력 화면 (PC / 모바일)',
+          html: '<p>&quot;탈퇴 처리 사유를 입력해주세요.&quot;가 나오고 탈퇴 처리되지 않아요.</p>'
+        }
+      ]
+    }
+  ]
+};
