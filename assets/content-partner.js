@@ -999,8 +999,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
             '<div class="table-wrap"><table class="wide"><thead><tr><th>조건</th><th>처리</th><th class="c">손님 안내 문구</th></tr></thead><tbody>' +
               '<tr><td>코드로 조회된 회원이 이용제한 상태 (닉네임이 일치·불일치·미등록이어도 동일)</td><td>주문 미생성</td><td class="c">이용제한 회원의 주문 시도</td></tr>' +
               '<tr><td>코드로 조회된 회원에 등록된 닉네임이 없음</td><td>주문 미생성</td><td class="c">닉네임 미등록 회원의 주문 시도</td></tr>' +
-              '<tr><td>모든 상품이 판매가능수량 부족</td><td>주문 미생성</td><td class="c">재고부족/판매가능수량 초과</td></tr>' +
-              '<tr><td>모든 상품이 1회 최대구매수량 초과</td><td>주문 미생성</td><td class="c">1회 최대구매수량 초과</td></tr>' +
+              '<tr><td>상품명은 모두 일치하지만, 모든 상품이 수량 한도(판매가능수량 부족 또는 1회 최대구매수량 초과)에 걸려 접수할 수 없음</td><td>주문 미생성</td><td class="c">일부 상품만 접수 (접수된 상품 없이 미접수 상품과 사유만 표시)</td></tr>' +
               '<tr><td>정해진 형식이 아닌 메시지</td><td>아무 기록도 남지 않음</td><td class="c">발송 안 함</td></tr>' +
               '<tr><td>적힌 상품명 중 하나라도 판매중·노출중인 채팅주문 허용 상품과 다름</td><td>전체 미접수, 아무 기록도 남지 않음</td><td class="c">발송 안 함</td></tr>' +
             '</tbody></table></div>' +
