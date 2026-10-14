@@ -1364,7 +1364,7 @@ window.GUIDE_CONTENT['retail-member'] = {
           '<tr><td>배달 주소</td><td>배달 받을 주소</td></tr>' +
           '<tr><td>배달 요청사항</td><td>배달 시 전달할 요청사항</td></tr>' +
         '</tbody></table></div>' +
-        '<p>배달지는 회원당 1개만 관리해요.</p>' +
+        '<p>배달지는 회원이 소매몰에서 가입할 때 입력하는 선택 정보예요. 회원당 1개만 관리해요.</p>' +
 
         '<h3>이용상태 변경·탈퇴 처리</h3>' +
         '<p>화면 하단에 고정되어 있어요.</p>' +
@@ -1407,6 +1407,15 @@ window.GUIDE_CONTENT['retail-member'] = {
               '<tr><td>인증 완료</td><td>&quot;휴대폰번호 인증이 완료되었습니다.&quot; ([저장] 활성화)</td></tr>' +
             '</tbody></table></div>' +
             '<p>번호를 다시 고치면 중복확인과 인증을 처음부터 다시 해야 해요. 탈퇴한 회원이 쓰던 번호와 회원주문 코드는 중복으로 보지 않아요.</p>'
+        },
+        {
+          title: '배달지가 없는 회원',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-noaddr-pc.webp', alt: '09SCM 배달지 없는 회원 PC 화면', ratio: 2880 / 2746 },
+            { device: 'mobile', src: '../assets/img/partner/member-noaddr-mobile.webp', alt: '09SCM 배달지 없는 회원 모바일 화면', ratio: 880 / 2698 }
+          ],
+          shotCaption: '09SCM 배달지 없는 회원 화면 (PC / 모바일)',
+          html: '<p>가입할 때 배달지를 입력하지 않은 회원은 배달지 정보 영역에 &quot;등록된 배달지가 없습니다.&quot;가 나와요.</p>'
         },
         {
           title: '내부메모 탭',
