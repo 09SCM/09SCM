@@ -3279,7 +3279,7 @@
     const pgWs = pgSlice('productList', JSON.stringify([productFilterCat1, productFilterCat2, productSearch, productFilterScope, productFilterStatus, productFilterVisible, productSort]), rows, { onMove: () => productChecked.clear() });
     selCountReg.productList = () => pgWs.rows.filter(p => productChecked.has(p.code)).length;
     const tr = pgWs.rows.map(p => {
-      // 도매수량 0, 또는 소매 배정수량에 도달해 도매 가용재고가 소진되면 [품절]로 자동 표시·잠금. 그 외에는 공급자가 지정한 판매상태를 표시한다.
+      // 보유수량 0, 또는 소매 판매가능수량에 도달해 도매 가용재고가 소진되면 [품절]로 자동 표시·잠금. 그 외에는 공급자가 지정한 판매상태를 표시한다.
       const displayStatus = wholesaleEffectiveStatus(p) === 'soldout' ? '품절' : '판매중';
       return `
         <tr>
@@ -3663,7 +3663,7 @@
       cat2.innerHTML = cat2FormOptionsHTML(cat1.value, '');
     });
 
-    // 도매수량이 변경되면 잠금 조건(도매수량 0, 또는 소매 배정수량 도달)을 다시 계산해 판매상태 선택을 즉시 반영한다.
+    // 보유수량이 변경되면 잠금 조건(보유수량 0, 또는 판매가능수량 도달)을 다시 계산해 판매상태 선택을 즉시 반영한다.
     const editStockInput = wrapper.querySelector('#editStock');
     const editSaleStatusSelect = wrapper.querySelector('#editSaleStatus');
     const editSaleStatusHint = wrapper.querySelector('#editSaleStatusHint');
@@ -3715,7 +3715,7 @@
       }
       banner.hidden = true;
 
-      // 잠금 상태(도매수량 0, 또는 소매 배정수량 도달)에서는 무조건 품절로 저장하고, 그 외에는 선택한 판매상태를 그대로 저장한다.
+      // 잠금 상태(보유수량 0, 또는 판매가능수량 도달)에서는 무조건 품절로 저장하고, 그 외에는 선택한 판매상태를 그대로 저장한다.
       const saleStatusLocked = wholesaleLockState(stock, p.retailAllocatedQty).locked;
       const saleStatus = saleStatusLocked ? 'soldout' : editSaleStatusSelect.value;
 
@@ -4088,7 +4088,7 @@
       const retailExposed = retailToggle.checked;
       const retailAllocatedQty = retailExposed ? allocated : 0;
       const detailContent = wrapper.querySelector('#regDetailEditor').textContent.trim();
-      // 등록 시점의 도매수량을 기준으로 판매상태를 자동 산정한다: 0이면 품절, 0 초과면 판매중(빈 값이 저장될 일이 없다). 이후 수정 화면에서 조건에 따라 자유롭게 전환할 수 있다.
+      // 등록 시점의 보유수량을 기준으로 판매상태를 자동 산정한다: 0이면 품절, 0 초과면 판매중(빈 값이 저장될 일이 없다). 이후 수정 화면에서 조건에 따라 자유롭게 전환할 수 있다.
       // 배송방식은 상품 필드가 아니므로 등록 시 별도로 저장하지 않는다 — 항상 WHOLESALE_SETTINGS(도매설정)을 조회해 표시한다.
       PRODUCT_LIST.unshift({
         code, name, cat1: cat1.value, cat2: cat2.value || null,
@@ -4339,7 +4339,7 @@
   let currentOrder = null;     // { seller, items: [{ code, qty }], fromCart } — 주문서 작성 화면 진입 시 설정
   let orderCompleteInfo = null; // 주문 완료 후 표시할 결과 정보
 
-  // 구매자 주문가능수량 = 도매 가용재고(도매수량 − 소매배정수량). 소매 배정분은 구매자가 주문할 수 없다.
+  // 구매자 주문가능수량 = 도매 가용재고(보유수량 − 판매가능수량). 소매 배정분은 구매자가 주문할 수 없다.
   function marketAvailableQty(p) { return p.saleStatus === 'soldout' ? 0 : Math.max(0, (p.stock || 0) - (p.retailAllocatedQty || 0)); }
   // 구매자 도매상품 주문하기의 상품 전체 = 타 공급자 상품 + 본인 내 도매상품(PRODUCT_LIST 단일 원본 참조)
   function ownMarketProducts() {
@@ -5597,7 +5597,7 @@
 
   // 본인 도매상품 재고 차감/복원.
   // - 차감 시점: 접수처리(주문확인)가 아니라 "주문접수건이 생겨난 시점"(주문 생성 즉시)이다.
-  // - 대상: order.seller === MY_SELLER_NAME인 주문(본인이 판매자인 건)의 품목만 — 타 공급자 상품을 구매한 주문(주문내역)은 내 도매수량과 무관하므로 대상에서 제외한다.
+  // - 대상: order.seller === MY_SELLER_NAME인 주문(본인이 판매자인 건)의 품목만 — 타 공급자 상품을 구매한 주문(주문내역)은 내 보유수량과 무관하므로 대상에서 제외한다.
   // - 매칭: 품목의 code로 PRODUCT_LIST를 찾는다. code가 없거나 PRODUCT_LIST에서 찾을 수 없는 품목(마켓 노출 상품과 내 도매상품이 별도 코드로 등록된 경우 등)은 조용히 건너뛴다 —
   //   공급자가 동일 상품을 도매상품과 마켓 노출 상품으로 이중 등록하는 것 자체는 정상 시나리오이므로 시스템이 강제 정합시키지 않는다.
   function deductOwnWholesaleStock(order) {
@@ -6296,9 +6296,24 @@
       : `<span class="tag tag-success">정상</span>`;
   }
 
+  // 도매주문상품 보유수량 — 계정 + 상품코드 단위 저장값(목업은 단일 계정이라 상품코드가 키).
+  // 배송확정 시 구매 수량만큼 1회 증가하고, 소매 주문 접수·취소·반품 재고 반영에 따라 증감한다.
+  const PURCHASE_HOLDINGS = {};
+  const PURCHASE_HOLDING_COUNTED = new Set();
+  function syncPurchaseHoldings() {
+    myPurchases().filter(o => o.processStatus === '배송확정' && !PURCHASE_HOLDING_COUNTED.has(o.orderNo)).forEach(o => {
+      PURCHASE_HOLDING_COUNTED.add(o.orderNo);
+      o.items.forEach(item => {
+        const key = item.code || item.name;
+        PURCHASE_HOLDINGS[key] = (PURCHASE_HOLDINGS[key] || 0) + item.qty;
+      });
+    });
+  }
+
   // 도매주문상품 원본 — 배송확정(수령완료)된 건만 대상이며, 주문 단위가 아니라 상품코드 단위로 집계한다.
   // 같은 상품을 여러 번 구매(배송확정)하면 보유수량이 누적되고, 상품정보 초기값은 가장 최근 배송확정 구매분을 사용한다.
   function retailPurchaseSourceRows() {
+    syncPurchaseHoldings();
     const byCode = new Map();
     myPurchases().filter(o => o.processStatus === '배송확정')
       .sort((a, b) => (a.createdAt < b.createdAt ? -1 : a.createdAt > b.createdAt ? 1 : 0))
@@ -6306,7 +6321,6 @@
         o.items.forEach(item => {
           const key = item.code || item.name;
           const mp = item.code ? findMarketProduct(item.code) : null;
-          const prev = byCode.get(key);
           byCode.set(key, {
             source: 'purchase',
             sourceCode: key,
@@ -6316,8 +6330,7 @@
             expiry: mp ? mp.expiry : '',
             detailContent: mp ? mp.detailContent : '',
             purchasedAt: orderDatePart(o),
-            // 보유수량 — 목업 범위에서는 소매 판매로 인한 실시간 차감 시뮬레이션 없이 배송확정 구매수량을 누적한다
-            holdingQty: (prev ? prev.holdingQty : 0) + item.qty,
+            holdingQty: PURCHASE_HOLDINGS[key] || 0,
           });
         });
       });
@@ -6408,7 +6421,7 @@
     return !!listing && listing.salesMethod !== 'delivery' && !!listing.pickupEndDate && listing.pickupEndDate < RETAIL_MOCK_TODAY;
   }
 
-  // 소매정보의 현재 보유수량 — 출처(내도매상품: 도매수량, 도매주문상품: 구매수량, 내소매상품: 자체 보유수량)에서 읽는다.
+  // 소매정보의 현재 보유수량 — 출처(내도매상품: 도매상품 보유수량, 도매주문상품: 구매 누적 보유수량, 내소매상품: 자체 보유수량)에서 읽는다.
   function retailListingHoldingQty(listing) {
     if (!listing) return 0;
     if (listing.source === 'retail') return listing.stock;
@@ -6416,8 +6429,8 @@
       const p = PRODUCT_LIST.find(x => x.code === listing.sourceCode);
       return p ? p.stock : 0;
     }
-    const row = retailPurchaseSourceRows().find(r => r.sourceCode === listing.sourceCode);
-    return row ? row.holdingQty : 0;
+    syncPurchaseHoldings();
+    return PURCHASE_HOLDINGS[listing.sourceCode] || 0;
   }
 
   // 소매판매상태 실효값 — 보유수량 0 또는 판매가능수량 0이면 저장값과 무관하게 품절로 표시한다(자동 전환, 저장 불필요). 픽업가능종료일 경과는 판매상태에 영향을 주지 않는다.
@@ -6450,21 +6463,34 @@
       retailEffectiveExposed(r) && retailEffectiveSaleStatus(r) !== 'soldout');
   }
 
-  // 소매상품 판매가능수량 차감/복원 — 주문 품목에 저장된 소매정보 ID(listingId)로 RETAIL_LISTINGS를 찾는다.
+  // 소매 주문의 수량 차감/복원 — 주문 품목에 저장된 소매정보 ID(listingId)로 RETAIL_LISTINGS를 찾는다.
   // ID가 없는 기존 주문 품목은 상품명(name) 또는 채팅주문상품명(chatOrderName)으로 매칭한다.
-  // 판매가능수량(availableQty)만 조정한다. 보유수량은 출처(내도매상품은 PRODUCT_LIST.stock, 매입상품은 매입수량)에서
-  // 별도로 관리되어 이 함수가 건드리지 않는다 — 다만 내소매상품(source:'retail')은 보유수량과 판매가능수량이 항상
-  // 동일해야 하므로 stock 필드도 함께 조정한다.
+  // 상품출처와 관계없이 판매가능수량(소매정보 단위)과 보유수량(계정 + 상품코드 단위)을 같은 수량만큼 함께 증감한다.
   function findRetailListingByOrderItem(it) {
     if (it.listingId) return RETAIL_LISTINGS.find(r => r.id === it.listingId) || null;
     return RETAIL_LISTINGS.find(r => r.name === it.name || (r.chatOrderEnabled && r.chatOrderName === it.name)) || null;
+  }
+  // 보유수량 증감 — 내도매상품: 도매상품(PRODUCT_LIST) 보유수량, 도매주문상품: 구매 누적 보유수량, 내소매상품: 소매정보 자체 보유수량
+  function adjustListingHolding(listing, delta) {
+    if (listing.source === 'retail') {
+      listing.stock = Math.max(0, listing.stock + delta);
+    } else if (listing.source === 'own') {
+      const p = PRODUCT_LIST.find(x => x.code === listing.sourceCode);
+      if (p) {
+        p.stock = Math.max(0, p.stock + delta);
+        p.retailAllocatedQty = listing.availableQty; // 도매 가용재고(= 보유수량 − 판매가능수량) 산출에 쓰는 소매 판매가능수량을 항상 최신으로 유지한다.
+      }
+    } else {
+      syncPurchaseHoldings();
+      PURCHASE_HOLDINGS[listing.sourceCode] = Math.max(0, (PURCHASE_HOLDINGS[listing.sourceCode] || 0) + delta);
+    }
   }
   function deductRetailAvailableQty(order) {
     order.items.forEach(it => {
       const listing = findRetailListingByOrderItem(it);
       if (!listing) return;
       listing.availableQty = Math.max(0, listing.availableQty - it.qty);
-      if (listing.source === 'retail') listing.stock = listing.availableQty;
+      adjustListingHolding(listing, -it.qty);
     });
   }
   function restoreRetailAvailableQty(order) {
@@ -6472,7 +6498,7 @@
       const listing = findRetailListingByOrderItem(it);
       if (!listing) return;
       listing.availableQty = listing.availableQty + it.qty;
-      if (listing.source === 'retail') listing.stock = listing.availableQty;
+      adjustListingHolding(listing, it.qty);
     });
   }
 
@@ -6482,7 +6508,7 @@
     return order.items.some(it => !!findRetailListingByOrderItem(it));
   }
 
-  // 도매수량이 0이거나, 도매수량이 소매에 배정된 판매가능수량(retailAllocatedQty)에 다다르면(=도매 가용재고 소진)
+  // 보유수량이 0이거나, 보유수량이 소매에 배정된 판매가능수량(retailAllocatedQty)에 다다르면(=도매 가용재고 소진)
   // 자동으로 [품절]로 전환·잠금한다. 그 외에는 공급자가 판매중/품절을 자유롭게 전환할 수 있다.
   function wholesaleLockState(stock, retailAllocatedQty) {
     const allocated = retailAllocatedQty || 0;
@@ -10105,7 +10131,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       <div class="stock-restore-box" id="supplierCrStockRestoreBox">
         <label>
           <input type="checkbox" id="supplierCrStockRestoreCheckbox" checked>
-          <span>재고 반영 — 체크 시 이 주문의 품목 수량만큼 도매수량을 복원합니다.</span>
+          <span>재고 반영 — 체크 시 이 주문의 품목 수량만큼 보유수량을 복원합니다.</span>
         </label>
         <div class="field-hint">현재는 주문 전체 단위로만 처리됩니다. 품목이 여러 건이어도 전체 품목의 수량이 함께 복원됩니다.</div>
       </div>` : '';
@@ -10211,7 +10237,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       // 결제대기 건은 승인해도 결제취소만 일어날 뿐 환불이 발생하지 않으므로 환불값을 남기지 않는다.
       if (decision) applyCrRefund(o, decision, 'wholesale');
 
-      // 재고 반영 — 취소·반품이 승인으로 확정되는 시점에만, 체크박스가 노출·선택된 경우 주문 전체 품목 수량을 도매수량에 복원한다.
+      // 재고 반영 — 취소·반품이 승인으로 확정되는 시점에만, 체크박스가 노출·선택된 경우 주문 전체 품목 수량을 보유수량에 복원한다.
       const stockRestoreCheckbox = root.querySelector('#supplierCrStockRestoreCheckbox');
       const stockRestoreVisible = stockRestoreBox && !stockRestoreBox.hidden;
       if (approvedNow && stockRestoreVisible && stockRestoreCheckbox && stockRestoreCheckbox.checked) {
@@ -11147,7 +11173,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       <div class="stock-restore-box" id="retailSupplierCrStockRestoreBox">
         <label>
           <input type="checkbox" id="retailSupplierCrStockRestoreCheckbox" checked>
-          <span>재고 반영 — 체크 시 이 주문의 품목 수량만큼 판매가능수량을 복원합니다.</span>
+          <span>재고 반영 — 체크 시 이 주문의 품목 수량만큼 판매가능수량과 보유수량을 복원합니다.</span>
         </label>
         <div class="field-hint">현재는 주문 전체 단위로만 처리됩니다. 품목이 여러 건이어도 전체 품목의 수량이 함께 복원됩니다.</div>
       </div>` : '';
@@ -11266,7 +11292,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       // 결제대기 건은 승인해도 결제취소만 일어날 뿐 환불이 발생하지 않으므로 환불값을 남기지 않는다.
       if (decision) applyCrRefund(o, decision, 'retail');
 
-      // 재고 반영 — 취소·반품이 승인으로 확정되는 시점에만, 체크박스가 노출·선택된 경우 주문 전체 품목 수량을 판매가능수량에 복원한다.
+      // 재고 반영 — 취소·반품이 승인으로 확정되는 시점에만, 체크박스가 노출·선택된 경우 주문 전체 품목 수량을 판매가능수량과 보유수량에 복원한다.
       const stockRestoreCheckbox = root.querySelector('#retailSupplierCrStockRestoreCheckbox');
       const stockRestoreVisible = stockRestoreBox && !stockRestoreBox.hidden;
       if (approvedNow && stockRestoreVisible && stockRestoreCheckbox && stockRestoreCheckbox.checked) {
