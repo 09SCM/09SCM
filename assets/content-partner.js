@@ -1427,8 +1427,8 @@ window.GUIDE_CONTENT['retail-member'] = {
         {
           title: '이용상태를 바꿨어요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/member-usage-pc.webp', alt: '09SCM 이용상태 변경 PC 화면', ratio: 2880 / 188 },
-            { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 288 }
+            { device: 'pc', src: '../assets/img/partner/member-usage-pc.webp', alt: '09SCM 이용상태 변경 PC 화면', ratio: 2880 / 134 },
+            { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 234 }
           ],
           shotCaption: '09SCM 이용상태 변경 화면 (PC / 모바일)',
           html: '<p>[변경]을 누르면 &quot;처리되었습니다.&quot;가 잠깐 나와요. [이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
