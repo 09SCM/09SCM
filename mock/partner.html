@@ -6034,22 +6034,22 @@
   ];
   let retailListingSeq = 6;
 
-  // 소매설정 > 기본정보 — 상호명/픽업주소는 사업자정보(MEMBER_BUSINESS)의 기본값으로 초기화한다.
+  // 소매설정 > 기본정보 — 최초 기본값은 가입 정보(사업자정보)이며 이후 자유롭게 수정할 수 있다. 목업 값은 소매몰 목업 표시값에 맞춘다.
   // 상품 신규 등록 시 수령방식 초기값 — 소매설정의 기본 수령방식을 따른다(픽업만→픽업, 배달만→배달, 픽업·배달 모두→픽업+배달).
   function retailDefaultSalesMethod() { return RETAIL_MALL_INFO.salesMethod || 'both'; }
   let RETAIL_MALL_INFO = {
-    name: MEMBER_BUSINESS.companyName,
+    name: '온마을 공동구매',
     pickupZipcode: MEMBER_BUSINESS.zipcode,
     pickupRoadAddress: MEMBER_BUSINESS.roadAddress,
-    pickupDetailAddress: MEMBER_BUSINESS.detailAddress,
+    pickupDetailAddress: '1층',
     phone: '031-205-0927',
-    businessHours: '매일 10:00~20:00',
+    businessHours: '매일 10:00–20:00',
     mallName: '온마을 공동구매',
     mallLogo: null,
     shareImage: null, // 카카오톡 등 링크 공유 시 노출되는 OG(오픈그래프) 이미지 — 신규 항목
     salesMethod: 'both', // 'pickup' | 'delivery' | 'both'
     baseDeliveryFee: 3000,
-    bizRegistrationNo: '', // 통신판매업 신고번호 — 소매설정에서만 입력하는 신규 항목
+    bizRegistrationNo: '제2026-수원영통-0001호', // 통신판매업 신고번호 — 소매설정에서만 입력하는 신규 항목
   };
   const RETAIL_TERMS_DEFAULT = '제1조(목적)\n이 약관은 소매몰이 제공하는 서비스의 이용조건 및 절차, 회원과 소매몰의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.\n\n제2조(용어의 정의)\n이 약관에서 사용하는 용어의 정의는 관련 법령 및 개별 서비스의 정책에서 정하는 바에 따릅니다.';
   const RETAIL_PRIVACY_DEFAULT = '1. 수집하는 개인정보 항목\n소매몰은 주문·배송·픽업 처리를 위해 이름, 연락처, 주소 등의 정보를 수집합니다.\n\n2. 개인정보의 수집 및 이용목적\n주문 접수, 배송·픽업 처리, 고객 문의 응대를 위해 이용합니다.';
