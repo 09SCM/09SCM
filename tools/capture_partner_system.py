@@ -48,6 +48,19 @@ def card_clip(page, w, text):
     page.wait_for_timeout(200)
     return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']}, full_page=True)
 
+def between_clip(page, start, end):
+    """제목 start부터 제목 end 직전까지 세로로 잘라낸다(같은 카드 안의 연속 영역)"""
+    r = page.evaluate("""([a, b]) => {
+      const hs = [...document.querySelectorAll('h2,h3')];
+      const h1 = hs.find(e => e.textContent.trim() === a), h2 = hs.find(e => e.textContent.trim() === b);
+      h1.scrollIntoView({block: 'start'}); window.scrollBy(0, -100);
+      const r1 = h1.getBoundingClientRect(), r2 = h2.getBoundingClientRect();
+      const box = h1.closest('.card') || h1.parentElement; const rb = box.getBoundingClientRect();
+      return {x: Math.max(rb.left, 0), y: Math.max(r1.top - 12, 0) + window.scrollY, w: rb.width, h: r2.top - r1.top - 4};
+    }""", [start, end])
+    page.wait_for_timeout(200)
+    return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']}, full_page=True)
+
 def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
     for label, w, h in (('pc', 1440, 1500), ('mobile', 440, 1200)):
         ctx, page = new_page(b, w, h, acct)
@@ -58,6 +71,10 @@ def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
             fit(page, w); png = page.screenshot()
         elif mode == 'clip':
             png = card_clip(page, w, clip_text)
+        elif mode == 'between':
+            png = between_clip(page, clip_text[0], clip_text[1])
+        elif mode == 'sel':
+            png = page.locator(clip_text).first.screenshot()
         else:
             png = page.screenshot()
         save(png, '%s-%s' % (name, label))
@@ -106,7 +123,8 @@ STEPS = [
     ('sys-member-pw', 'ga02', '회원정보', seq(fill('#memberNewPw', 'b1234'), fill('#memberNewPwConfirm', 'b12345'), click('#savePwBtn'), focus_title('비밀번호 변경')), 'view', None),
     ('sys-member-account', 'ga02', '회원정보', seq(clear('#bankAccountNumber'), clear('#bankAccountHolder'), click('#saveBankAccountBtn'), focus_title('계좌정보')), 'view', None),
     ('sys-member-payapp', 'ga01', '회원정보', focus_title('PayApp 연동 정보'), 'view', None),
-    ('sys-member-terms', 'ga02', '회원정보', seq(focus_title('이용약관 동의'), click('[data-terms-view]')), 'view', None),
+    ('sys-member-terms', 'ga02', '회원정보', click('[data-terms-view]', 2), 'sel', '#memberTermsViewRoot .modal-box'),
+    ('sys-member-corp', 'bonsa', '회원정보', None, 'between', ('사업자 정보', '계좌정보')),
     # 알림설정
     ('sys-noti-main', 'bonsa', '알림설정', None, 'view', None),
     ('sys-noti-low', 'ga03', '알림설정', click('#notiMasterToggle'), 'view', None),

@@ -1599,7 +1599,7 @@ window.GUIDE_CONTENT['retail-settings'] = {
 
         '<h3>계좌정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>은행, 계좌번호, 예금주</td><td>회원정보의 계좌정보 (수정 불가, 알림톡과 소매몰 계좌이체 안내에 표시)</td></tr>' +
+          '<tr><td>은행, 계좌번호, 예금주</td><td>회원정보의 계좌정보 (수정 불가, 알림톡과 소매몰·도매몰의 계좌이체 안내에 표시)</td></tr>' +
         '</tbody></table></div>' +
         '<p>계좌정보는 <a href="#system-member">시스템관리 &gt; 회원정보</a>에 있는 값을 가져와요. 수정하고 싶으면 그곳에서 직접 바꿀 수 있어요.</p>',
       cases: [
@@ -1836,7 +1836,7 @@ window.GUIDE_CONTENT['system-member'] = {
     '<ul>' +
       '<li>영역마다 [저장] 또는 [비밀번호 변경] 버튼이 따로 있어요. 바꾼 영역에서 해당 버튼을 눌러야 반영돼요.</li>' +
       '<li>사업자 정보는 보기만 할 수 있어요.</li>' +
-      '<li>계좌정보는 소매몰의 계좌이체 안내와 알림톡에 쓰여요.</li>' +
+      '<li>계좌정보는 소매몰·도매몰에서 구매자가 계좌이체할 때 안내되는 입금 계좌와 알림톡에 함께 쓰여요.</li>' +
     '</ul>',
   steps:
     '<h3>회원 정보</h3>' +
@@ -1858,6 +1858,7 @@ window.GUIDE_CONTENT['system-member'] = {
     '<h3>사업자 정보</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
       '<tr><td>사업자 유형, 사업자등록번호, 상호명, 대표자명, 업태, 업종, 사업장 주소</td><td>가입할 때 입력한 정보 (수정 불가)</td></tr>' +
+      '<tr><td>법인등록번호</td><td>사업자 유형이 법인사업자일 때만 표시</td></tr>' +
     '</tbody></table></div>' +
     '<p>수정이 필요하면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해 주세요. 이 정보는 <a href="#retail-settings">소매설정</a>의 사업자정보에도 그대로 쓰여요.</p>' +
 
@@ -1867,7 +1868,7 @@ window.GUIDE_CONTENT['system-member'] = {
       '<tr><td>계좌번호 *</td><td>숫자만 최대 20자리</td></tr>' +
       '<tr><td>예금주 *</td><td>계좌 예금주</td></tr>' +
     '</tbody></table></div>' +
-    '<p>세 항목을 모두 입력해야 저장돼요. 소매몰에서 계좌이체로 결제하는 구매자에게 이 계좌가 입금 계좌로 안내돼요.</p>' +
+    '<p>세 항목을 모두 입력해야 저장돼요. 소매몰과 도매몰에서 계좌이체로 결제하는 구매자에게 이 계좌가 입금 계좌로 안내되며, 두 곳에서 같은 계좌를 공용으로 써요.</p>' +
 
     '<h3>PayApp 연동 정보</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -1919,26 +1920,31 @@ window.GUIDE_CONTENT['system-member'] = {
       ],
       shotCaption: '09SCM PayApp 미연동 화면 (PC / 모바일)',
       html:
-        '<p>연동 전에는 연동 상태가 미연동으로 보이고 세 값을 직접 입력할 수 있어요. 값을 입력하고 [연동하기]를 누르면 연동이 진행돼요. 연동 후에는 바꾸거나 해제할 수 없으니 입력값을 한 번 더 확인해 주세요. 본사가 대신 연동해 줄 수도 있어요.</p>' +
+        '<p>연동 전에는 연동 상태가 미연동으로 보이고 세 값을 직접 입력할 수 있어요. 값을 입력하고 [연동하기]를 누르면 연동이 진행돼요. 연동 후에는 바꾸거나 해제할 수 없으니 입력값을 한 번 더 확인해 주세요.</p>' +
         '<p>PayApp 연동은 이용승인으로 바뀌는 조건이에요. 연동이 끝나기 전에는 이용대기 상태로 남아 있어요.</p>'
     },
     {
       title: '마케팅정보 수신동의를 바꿔요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-member-terms-pc.webp', alt: '09SCM 약관 보기 PC 화면', ratio: 2880 / 3000 },
-        { device: 'mobile', src: '../assets/img/partner/sys-member-terms-mobile.webp', alt: '09SCM 약관 보기 모바일 화면', ratio: 880 / 2400 }
+        { device: 'pc', src: '../assets/img/partner/sys-member-terms-pc.webp', alt: '09SCM 마케팅정보 수신동의 보기 PC 팝업', ratio: 840 / 1052 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-terms-mobile.webp', alt: '09SCM 마케팅정보 수신동의 보기 모바일 팝업', ratio: 816 / 1168 }
       ],
-      shotCaption: '09SCM 약관 보기 화면 (PC / 모바일)',
+      shotCaption: '09SCM 마케팅정보 수신동의 보기 팝업 (PC / 모바일)',
       html: '<p>[보기]를 누르면 약관 내용을 팝업으로 볼 수 있어요. 바꿀 수 있는 항목은 마케팅정보 수신동의[선택]뿐이에요. 동의 여부를 바꾸면 [저장]이 활성화돼요.</p>'
     },
     {
-      title: '계정에 따라 달라져요',
+      title: '사업자 유형에 따라 달라져요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-member-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 2784 / 780 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 816 / 1170 }
+      ],
+      shotCaption: '09SCM 법인사업자 사업자 정보 화면 (PC / 모바일)',
       html:
-        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>화면</th></tr></thead><tbody>' +
-          '<tr><td>본사 계정</td><td>회원 유형이 본사이고, 사업자등록번호 외에 법인등록번호가 함께 표시됨</td></tr>' +
-          '<tr><td>가맹점 계정</td><td>회원 유형이 가맹점</td></tr>' +
+        '<div class="table-wrap"><table><thead><tr><th>사업자 유형</th><th>화면</th></tr></thead><tbody>' +
+          '<tr><td>개인사업자</td><td>사업자등록번호만 표시</td></tr>' +
+          '<tr><td>법인사업자</td><td>사업자등록번호와 함께 법인등록번호 표시</td></tr>' +
         '</tbody></table></div>' +
-        '<p>사업자 문의처만 다를 뿐 나머지 영역은 두 계정이 같아요.</p>'
+        '<p>사업자 유형은 가입할 때 개인사업자와 법인사업자 중에서 선택한 값이고, 법인사업자는 법인등록번호도 함께 입력해요. 본사 계정과 가맹점 계정 모두 같은 구성이에요.</p>'
     }
   ],
   trouble:
@@ -1947,7 +1953,7 @@ window.GUIDE_CONTENT['system-member'] = {
     '<h3>사업자정보를 바꾸고 싶어요</h3>' +
     '<p>이 화면에서는 고칠 수 없어요. 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해 주세요.</p>' +
     '<h3>PayApp 연동을 바꾸거나 풀고 싶어요</h3>' +
-    '<p>최초 연동 이후에는 직접 바꾸거나 해제할 수 없어요. 본사에 문의해 주세요.</p>'
+    '<p>최초 연동 이후에는 직접 바꾸거나 해제할 수 없어요. 09SCM 고객센터에 문의해 주세요.</p>'
 };
 
 window.GUIDE_CONTENT['system-notification'] = {
