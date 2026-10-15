@@ -40,10 +40,14 @@ def _doc_clip(page, js, arg=None):
     page.evaluate("window.scrollTo(0, 0)"); page.wait_for_timeout(150)
     r = page.evaluate("""([js, arg]) => {
       const [a, b] = (0, eval)(js)(arg);
-      const box = a.closest('.col-12.card') || a.closest('.card') || a, rb = box.getBoundingClientRect();
       const r1 = a.getBoundingClientRect(), r2 = b.getBoundingClientRect();
-      const top = Math.max(r1.top - 12, 0);
-      return {x: Math.max(rb.left, 0), y: top, w: rb.width, h: r2.bottom + 8 - top};
+      const pv = a.previousElementSibling, nx = b.nextElementSibling;
+      // 섹션 사이 공백의 절반씩만 여유로 포함(이웃 섹션 제목이 보이지 않도록), 이웃이 없으면 24px
+      const half = (gap) => Math.min(Math.max(gap, 0) / 2, 24);
+      const up = pv ? half(r1.top - pv.getBoundingClientRect().bottom) : 24;
+      const down = nx ? half(nx.getBoundingClientRect().top - r2.bottom) : 24;
+      const top = Math.max(r1.top - up, 61);   // 상단 바(61px)는 제외
+      return {x: 0, y: top, w: innerWidth, h: r2.bottom + down - top};   // 가로는 LNB만 숨기고 전체 폭
     }""", [js, arg])
     return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']}, full_page=True)
 
@@ -55,7 +59,7 @@ def card_clip(page, w, text):
 
 def between_clip(page, start, end):
     """제목 start부터 제목 end 직전까지 세로로 잘라낸다(같은 카드 안의 연속 영역)"""
-    js = "([s, e]) => { const h1 = (%s)(s), h2 = (%s)(e); const prev = h2.closest('.form-section') || h2; const bottom = prev.previousElementSibling || h1; return [h1, bottom]; }" % (HEAD, HEAD)
+    js = "([s, e]) => { const h1 = (%s)(s), h2 = (%s)(e); const sec1 = h1.closest('.form-section') || h1, sec2 = h2.closest('.form-section') || h2; return [sec1, sec2.previousElementSibling || sec1]; }" % (HEAD, HEAD)
     return _doc_clip(page, js, [start, end])
 
 def section_range(page, first, last):

@@ -1709,8 +1709,8 @@ window.GUIDE_CONTENT['system-notice'] = {
     {
       title: '작성자별로 골라 봐요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 2784 / 962 },
-        { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 816 / 1434 }
+        { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 2880 / 1010 },
+        { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 880 / 1474 }
       ],
       shotCaption: '09SCM 우리본사 공지 화면 (PC / 모바일)',
       html: '<p>[09SCM], [우리본사] 탭을 누르면 해당 작성자의 공지만 모아서 볼 수 있어요. 건수도 선택한 탭 기준으로 바뀌어요.</p>'
@@ -1718,8 +1718,8 @@ window.GUIDE_CONTENT['system-notice'] = {
     {
       title: '첨부파일이 있는 공지를 열어요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-notice-detail-pc.webp', alt: '09SCM 공지 상세 PC 화면', ratio: 2784 / 686 },
-        { device: 'mobile', src: '../assets/img/partner/sys-notice-detail-mobile.webp', alt: '09SCM 공지 상세 모바일 화면', ratio: 816 / 804 }
+        { device: 'pc', src: '../assets/img/partner/sys-notice-detail-pc.webp', alt: '09SCM 공지 상세 PC 화면', ratio: 2880 / 734 },
+        { device: 'mobile', src: '../assets/img/partner/sys-notice-detail-mobile.webp', alt: '09SCM 공지 상세 모바일 화면', ratio: 880 / 844 }
       ],
       shotCaption: '09SCM 공지 상세 화면 (PC / 모바일)',
       html: '<p>[상세보기]를 누르면 본문과 첨부파일을 볼 수 있어요. [공지사항으로]를 누르면 보던 목록으로 돌아가요.</p>'
@@ -1788,8 +1788,8 @@ window.GUIDE_CONTENT['system-fee'] = {
     {
       title: '카드를 등록해요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-fee-card-pc.webp', alt: '09SCM 카드 미등록 PC 화면', ratio: 2784 / 304 },
-        { device: 'mobile', src: '../assets/img/partner/sys-fee-card-mobile.webp', alt: '09SCM 카드 미등록 모바일 화면', ratio: 816 / 346 }
+        { device: 'pc', src: '../assets/img/partner/sys-fee-card-pc.webp', alt: '09SCM 카드 미등록 PC 화면', ratio: 2880 / 324 },
+        { device: 'mobile', src: '../assets/img/partner/sys-fee-card-mobile.webp', alt: '09SCM 카드 미등록 모바일 화면', ratio: 880 / 366 }
       ],
       shotCaption: '09SCM 카드 미등록 화면 (PC / 모바일)',
       html:
@@ -1799,8 +1799,8 @@ window.GUIDE_CONTENT['system-fee'] = {
     {
       title: '결제가 실패했어요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-fee-history-pc.webp', alt: '09SCM 결제 내역 PC 화면', ratio: 2784 / 1734 },
-        { device: 'mobile', src: '../assets/img/partner/sys-fee-history-mobile.webp', alt: '09SCM 결제 내역 모바일 화면', ratio: 816 / 2904 }
+        { device: 'pc', src: '../assets/img/partner/sys-fee-history-pc.webp', alt: '09SCM 결제 내역 PC 화면', ratio: 2880 / 1782 },
+        { device: 'mobile', src: '../assets/img/partner/sys-fee-history-mobile.webp', alt: '09SCM 결제 내역 모바일 화면', ratio: 880 / 2944 }
       ],
       shotCaption: '09SCM 결제 내역 화면 (PC / 모바일)',
       html:
@@ -1888,8 +1888,8 @@ window.GUIDE_CONTENT['system-member'] = {
     {
       title: '휴대폰번호를 바꿔요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-member-phone-pc.webp', alt: '09SCM 휴대폰번호 인증 PC 화면', ratio: 2784 / 780 },
-        { device: 'mobile', src: '../assets/img/partner/sys-member-phone-mobile.webp', alt: '09SCM 휴대폰번호 인증 모바일 화면', ratio: 816 / 1238 }
+        { device: 'pc', src: '../assets/img/partner/sys-member-phone-pc.webp', alt: '09SCM 휴대폰번호 인증 PC 화면', ratio: 2880 / 796 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-phone-mobile.webp', alt: '09SCM 휴대폰번호 인증 모바일 화면', ratio: 880 / 1254 }
       ],
       shotCaption: '09SCM 휴대폰번호 인증 화면 (PC / 모바일)',
       html: '<p>번호를 바꾸고 [인증번호 발송]을 누르면 인증번호 입력란이 나타나요. 받은 6자리를 입력하고 [확인]을 누른 뒤 [저장]을 눌러야 새 번호가 반영돼요.</p>'
@@ -1897,8 +1897,8 @@ window.GUIDE_CONTENT['system-member'] = {
     {
       title: '비밀번호를 바꿔요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-member-pw-pc.webp', alt: '09SCM 비밀번호 불일치 PC 화면', ratio: 2784 / 444 },
-        { device: 'mobile', src: '../assets/img/partner/sys-member-pw-mobile.webp', alt: '09SCM 비밀번호 불일치 모바일 화면', ratio: 816 / 606 }
+        { device: 'pc', src: '../assets/img/partner/sys-member-pw-pc.webp', alt: '09SCM 비밀번호 불일치 PC 화면', ratio: 2880 / 444 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-pw-mobile.webp', alt: '09SCM 비밀번호 불일치 모바일 화면', ratio: 880 / 606 }
       ],
       shotCaption: '09SCM 비밀번호 불일치 화면 (PC / 모바일)',
       html: '<p>새 비밀번호와 확인 값이 다르면 안내가 나오고 변경되지 않아요. 두 값을 같게 입력한 뒤 다시 [비밀번호 변경]을 눌러요.</p>'
@@ -1906,8 +1906,8 @@ window.GUIDE_CONTENT['system-member'] = {
     {
       title: '계좌정보를 입력해요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-member-account-pc.webp', alt: '09SCM 계좌정보 미입력 PC 화면', ratio: 2784 / 690 },
-        { device: 'mobile', src: '../assets/img/partner/sys-member-account-mobile.webp', alt: '09SCM 계좌정보 미입력 모바일 화면', ratio: 816 / 852 }
+        { device: 'pc', src: '../assets/img/partner/sys-member-account-pc.webp', alt: '09SCM 계좌정보 미입력 PC 화면', ratio: 2880 / 690 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-account-mobile.webp', alt: '09SCM 계좌정보 미입력 모바일 화면', ratio: 880 / 852 }
       ],
       shotCaption: '09SCM 계좌정보 미입력 화면 (PC / 모바일)',
       html: '<p>은행, 계좌번호, 예금주 중 하나라도 비어 있으면 안내가 나오고 저장되지 않아요. 세 항목을 모두 입력한 뒤 [저장]을 눌러요.</p>'
@@ -1915,8 +1915,8 @@ window.GUIDE_CONTENT['system-member'] = {
     {
       title: 'PayApp 연동 전이에요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-member-payapp-pc.webp', alt: '09SCM PayApp 미연동 PC 화면', ratio: 2784 / 918 },
-        { device: 'mobile', src: '../assets/img/partner/sys-member-payapp-mobile.webp', alt: '09SCM PayApp 미연동 모바일 화면', ratio: 816 / 954 }
+        { device: 'pc', src: '../assets/img/partner/sys-member-payapp-pc.webp', alt: '09SCM PayApp 미연동 PC 화면', ratio: 2880 / 918 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-payapp-mobile.webp', alt: '09SCM PayApp 미연동 모바일 화면', ratio: 880 / 954 }
       ],
       shotCaption: '09SCM PayApp 미연동 화면 (PC / 모바일)',
       html:
@@ -1935,8 +1935,8 @@ window.GUIDE_CONTENT['system-member'] = {
     {
       title: '사업자 유형에 따라 달라져요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-member-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 2784 / 788 },
-        { device: 'mobile', src: '../assets/img/partner/sys-member-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 816 / 1178 }
+        { device: 'pc', src: '../assets/img/partner/sys-member-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 2880 / 788 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 880 / 1178 }
       ],
       shotCaption: '09SCM 법인사업자 사업자 정보 화면 (PC / 모바일)',
       html:
@@ -2022,8 +2022,8 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '잔여 건수가 부족해요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-low-pc.webp', alt: '09SCM 잔여 건수 부족 PC 화면', ratio: 2784 / 884 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-low-mobile.webp', alt: '09SCM 잔여 건수 부족 모바일 화면', ratio: 816 / 1272 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-low-pc.webp', alt: '09SCM 잔여 건수 부족 PC 화면', ratio: 2880 / 892 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-low-mobile.webp', alt: '09SCM 잔여 건수 부족 모바일 화면', ratio: 880 / 1280 }
           ],
           shotCaption: '09SCM 잔여 건수 부족 화면 (PC / 모바일)',
           html:
@@ -2036,8 +2036,8 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '발송 내역을 찾아요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-history-pc.webp', alt: '09SCM 발송내역 PC 화면', ratio: 2784 / 2618 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-history-mobile.webp', alt: '09SCM 발송내역 모바일 화면', ratio: 816 / 7540 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-history-pc.webp', alt: '09SCM 발송내역 PC 화면', ratio: 2880 / 2626 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-history-mobile.webp', alt: '09SCM 발송내역 모바일 화면', ratio: 880 / 7548 }
           ],
           shotCaption: '09SCM 발송내역 화면 (PC / 모바일)',
           html: '<p>기간, 발송 메시지, 발송채널을 고른 뒤 [검색]을 누르면 조건에 맞는 내역만 볼 수 있어요. 특정 고객에게 알림이 갔는지 확인할 때 쓰면 좋아요.</p>'
@@ -2089,8 +2089,8 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '알림 종류를 끄고 싶어요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-category-pc.webp', alt: '09SCM 알림 종류 끄기 PC 화면', ratio: 2784 / 990 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-category-mobile.webp', alt: '09SCM 알림 종류 끄기 모바일 화면', ratio: 816 / 1506 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-category-pc.webp', alt: '09SCM 알림 종류 끄기 PC 화면', ratio: 2880 / 950 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-category-mobile.webp', alt: '09SCM 알림 종류 끄기 모바일 화면', ratio: 880 / 1466 }
           ],
           shotCaption: '09SCM 알림 종류 끄기 화면 (PC / 모바일)',
           html: '<p>알림 종류의 스위치를 끄면 그 종류에 속한 개별 알림이 화면에서 사라져요. 개별 알림의 설정값은 그대로 보관돼서, 다시 켜면 이전 상태로 돌아와요.</p>'
