@@ -57,10 +57,6 @@ def run_sales(b):
     both(b, 'sales-monthly', SALES, lambda p, l: (p.click('[data-retail-sales-trend-mode="monthly"]'), p.wait_for_timeout(300)))
     both(b, 'sales-today', SALES, lambda p, l: (p.click('[data-retail-sales-period="today"]'), p.wait_for_timeout(300)))
 
-def bar_clip(page, w, name, above=0):
-    r = page.evaluate("(() => { const r = document.querySelector('.market-buybar').getBoundingClientRect(); return {y: r.top, h: r.height}; })()")
-    save(page.screenshot(clip={'x': 0, 'y': r['y'] - above, 'width': w, 'height': r['h'] + above}), name)
-
 def run_settings(b):
     TERMS_TAB = '[data-retail-basic-tab="terms"]'
     both(b, 'settings-basic', SETTINGS, full=True)
@@ -69,11 +65,6 @@ def run_settings(b):
         p.fill('#rbMallName', ''); p.fill('#rbMallDisplayName', '')
         p.click('#rbSaveBtn'); p.wait_for_timeout(300)
     both(b, 'settings-error', SETTINGS, err, full=True)
-    # 저장 완료 안내(하단 바 클로즈업)
-    for label, w, h in (('pc', 1440, 900), ('mobile', 440, 900)):
-        ctx, page = new_page(b, w, h); goto_menu(page, SETTINGS)
-        page.click('#rbSaveBtn'); page.wait_for_timeout(300)
-        bar_clip(page, w, 'settings-saved-' + label, above=40 if w <= 860 else 0); ctx.close()
     # 기본 수령방식 '픽업만' — 기본 배달비 입력란 숨김(수령방식 영역 크롭)
     for label, w, h in (('pc', 1440, 1500), ('mobile', 440, 1200)):
         ctx, page = new_page(b, w, h); goto_menu(page, SETTINGS)

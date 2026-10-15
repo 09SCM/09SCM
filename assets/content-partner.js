@@ -1431,7 +1431,7 @@ window.GUIDE_CONTENT['retail-member'] = {
             { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 234 }
           ],
           shotCaption: '09SCM 이용상태 변경 화면 (PC / 모바일)',
-          html: '<p>[변경]을 누르면 &quot;처리되었습니다.&quot;가 잠깐 나와요. [이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
+          html: '<p>[이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
         },
         {
           title: '탈퇴 처리 창',
@@ -1557,28 +1557,29 @@ window.GUIDE_CONTENT['retail-settings'] = {
       overview:
         '<p>소매몰 운영에 필요한 기본 정보를 등록하고 수정하는 화면이에요. 입력한 내용은 소매몰과 알림톡에 쓰여요.</p>' +
         '<ul>' +
+          '<li>상호명, 소매몰명, 픽업주소는 가입할 때 입력한 정보가 처음에 기본으로 들어와 있고, 이후 직접 수정할 수 있어요.</li>' +
           '<li>필수 항목(*)을 모두 입력하고 아래의 [저장]을 눌러야 반영돼요.</li>' +
           '<li>사업자정보와 계좌정보는 보기만 할 수 있어요.</li>' +
         '</ul>',
       steps:
         '<h3>상호정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>상호명 *</td><td>알림톡의 상호명과 소매몰 운영 상호로 사용</td></tr>' +
-          '<tr><td>문의전화</td><td>구매자에게 안내할 전화번호</td></tr>' +
-          '<tr><td>영업시간</td><td>구매자에게 안내할 영업시간</td></tr>' +
+          '<tr><td>상호명 *</td><td>소매몰 전용 상호명 (처음에는 가입 상호명이 입력됨, 알림톡 제목의 [상호명], 소매몰 메인 매장정보의 상호, 주문서·주문완료의 픽업 장소에 표시)</td></tr>' +
+          '<tr><td>문의전화</td><td>구매자에게 안내할 전화번호 (알림톡의 문의전화, 소매몰 메인 매장정보에 표시)</td></tr>' +
+          '<tr><td>영업시간</td><td>구매자에게 안내할 영업시간 (소매몰 메인 매장정보에 표시)</td></tr>' +
         '</tbody></table></div>' +
 
         '<h3>픽업주소</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>우편번호 *</td><td>[우편번호 검색]으로 선택 (직접 입력 불가)</td></tr>' +
-          '<tr><td>기본주소 *</td><td>우편번호 검색 시 자동 입력</td></tr>' +
-          '<tr><td>상세주소</td><td>건물명, 층, 호수 등 직접 입력</td></tr>' +
+          '<tr><td>우편번호 *</td><td>[우편번호 검색]으로 선택 (직접 입력 불가, 처음에는 가입 사업장 주소가 입력됨)</td></tr>' +
+          '<tr><td>기본주소 *</td><td>우편번호 검색 시 자동 입력 (알림톡의 픽업주소, 소매몰 메인 매장정보의 픽업 주소, 주문서·주문완료의 픽업 장소에 표시)</td></tr>' +
+          '<tr><td>상세주소</td><td>건물명, 층, 호수 등 직접 입력 (처음에는 가입 상세주소가 입력됨)</td></tr>' +
         '</tbody></table></div>' +
 
         '<h3>소매몰정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>소매몰명 *</td><td>소매몰에 표시되는 이름</td></tr>' +
-          '<tr><td>소매몰로고</td><td>이미지 1장 (JPG, PNG, WEBP / 5MB 이하)</td></tr>' +
+          '<tr><td>소매몰명 *</td><td>소매몰 상단에 표시되는 이름 (처음에는 가입 상호명이 입력됨, 브라우저 탭 제목과 링크 공유 시 이름으로도 사용)</td></tr>' +
+          '<tr><td>소매몰로고</td><td>소매몰명 텍스트 대신 상단에 표시할 로고 이미지 1장 (JPG, PNG, WEBP / 5MB 이하, 등록하지 않으면 소매몰명 텍스트 표시)</td></tr>' +
           '<tr><td>공유 이미지</td><td>소매몰 링크를 카카오톡으로 공유할 때 미리보기에 나오는 이미지 1장 (JPG, PNG, WEBP / 5MB 이하, 없으면 기본 이미지 사용)</td></tr>' +
         '</tbody></table></div>' +
 
@@ -1590,13 +1591,13 @@ window.GUIDE_CONTENT['retail-settings'] = {
 
         '<h3>사업자정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>사업자 상호명, 대표자명, 사업자등록번호, 사업장 주소</td><td>가맹점 정보 (수정 불가)</td></tr>' +
+          '<tr><td>사업자 상호명, 대표자명, 사업자등록번호, 사업장 주소</td><td>가입 정보 (수정 불가, 소매몰 하단에 표시)</td></tr>' +
           '<tr><td>통신판매업 신고번호</td><td>소매몰 하단에 표시 (입력하지 않으면 소매몰에 표시하지 않음)</td></tr>' +
         '</tbody></table></div>' +
 
         '<h3>계좌정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>은행, 계좌번호, 예금주</td><td>정산 계좌 정보 (수정 불가)</td></tr>' +
+          '<tr><td>은행, 계좌번호, 예금주</td><td>회원정보의 계좌 정보 (수정 불가, 알림톡과 소매몰 계좌이체 안내에 표시)</td></tr>' +
         '</tbody></table></div>' +
         '<p>사업자정보·계좌정보를 바꿔야 하면 본사에 문의해 주세요.</p>',
       cases: [
@@ -1628,20 +1629,11 @@ window.GUIDE_CONTENT['retail-settings'] = {
               '<tr><td>기본 배달비가 0 이상의 정수가 아님</td><td>&quot;기본 배달비는 0 이상의 정수로 입력해주세요.&quot;</td></tr>' +
             '</tbody></table></div>' +
             '<p>안내가 나오면 저장되지 않아요. 해당 항목을 입력한 뒤 다시 [저장]을 눌러요.</p>'
-        },
-        {
-          title: '저장했어요',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/settings-saved-pc.webp', alt: '09SCM 저장 완료 PC 화면', ratio: 2880 / 134 },
-            { device: 'mobile', src: '../assets/img/partner/settings-saved-mobile.webp', alt: '09SCM 저장 완료 모바일 화면', ratio: 880 / 206 }
-          ],
-          shotCaption: '09SCM 저장 완료 화면 (PC / 모바일)',
-          html: '<p>[저장]을 누르면 &quot;저장되었습니다.&quot;가 [저장] 옆에 잠깐 나오고, 같은 화면에 그대로 있어요.</p>'
         }
       ],
       trouble:
-        '<h3>알림톡이나 소매몰에 보이는 이름이 달라요</h3>' +
-        '<p>알림톡과 소매몰 운영 상호에는 상호정보의 상호명이, 소매몰 화면 이름에는 소매몰명이 쓰여요. 두 항목이 서로 다른지 확인해요.</p>' +
+        '<h3>소매몰에 보이는 이름이 서로 달라요</h3>' +
+        '<p>상호명은 알림톡과 매장정보에, 소매몰명은 소매몰 상단과 브라우저 탭 제목에, 소매몰 하단에는 사업자정보의 상호명이 표시돼요. 세 값은 각각 따로 관리돼요.</p>' +
         '<h3>기본 수령방식을 바꿨는데 기존 상품은 그대로예요</h3>' +
         '<p>기본 수령방식은 새 상품 등록 시 기본값만 정해요. 기존 상품은 상품관리에서 상품별로 바꿔요.</p>' +
         '<h3>통신판매업 신고번호가 소매몰에 안 보여요</h3>' +
@@ -1671,7 +1663,7 @@ window.GUIDE_CONTENT['retail-settings'] = {
         '</tbody></table></div>',
       trouble:
         '<h3>저장했는데 소매몰에 바로 안 보여요</h3>' +
-        '<p>[저장]을 눌러 &quot;저장되었습니다.&quot;가 나왔는지 확인해요. 다른 탭만 수정하고 저장하지 않았다면 반영되지 않아요.</p>'
+        '<p>수정한 뒤 [저장]을 눌러야 반영돼요. 기본정보 탭만 저장했다면 이 탭의 수정 내용은 반영되지 않아요.</p>'
     }
   ]
 };

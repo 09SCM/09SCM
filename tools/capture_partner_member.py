@@ -66,8 +66,6 @@ with sync_playwright() as p:
         # 이용상태 변경(하단 바 클로즈업)
         ctx, page = fresh()
         page.check('input[name="memberUsageStatus"][value="이용제한"]'); page.wait_for_timeout(200)
-        if label == 'pc':
-            page.click('#memberUsageStatusChangeBtn'); page.wait_for_timeout(300)
         r = page.evaluate("(() => { const r = document.querySelector('.market-buybar').getBoundingClientRect(); return {y: r.top, h: r.height}; })()")
         save(page.screenshot(clip={'x': 0, 'y': r['y'], 'width': w, 'height': r['h']}), 'member-usage-' + label); ctx.close()
     b.close()
