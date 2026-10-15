@@ -1372,7 +1372,7 @@ window.GUIDE_CONTENT['retail-member'] = {
         '<p>화면 하단에 고정되어 있어요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>이용상태</td><td>[정상], [이용제한] 중 선택 (선택만으로는 적용되지 않음)</td></tr>' +
-          '<tr><td>[변경확인]</td><td>선택한 이용상태를 적용</td></tr>' +
+          '<tr><td>[변경]</td><td>선택한 이용상태를 적용 (현재 상태와 같게 선택하면 누를 수 없음)</td></tr>' +
           '<tr><td>[탈퇴 처리]</td><td>탈퇴 처리 창 열기</td></tr>' +
         '</tbody></table></div>' +
         '<p>[이용제한] 회원은 채팅주문과 링크주문 모두 새 주문을 만들 수 없고 소매몰에도 로그인할 수 없어요. 진행 중인 주문이 있어도 이용상태를 바꿀 수 있어요.</p>',
@@ -1431,7 +1431,7 @@ window.GUIDE_CONTENT['retail-member'] = {
             { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 288 }
           ],
           shotCaption: '09SCM 이용상태 변경 화면 (PC / 모바일)',
-          html: '<p>[변경확인]을 누르면 &quot;처리되었습니다.&quot;가 잠깐 나와요. [이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
+          html: '<p>[변경]을 누르면 &quot;처리되었습니다.&quot;가 잠깐 나와요. [이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
         },
         {
           title: '탈퇴 처리 창',
