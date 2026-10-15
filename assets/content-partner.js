@@ -1457,3 +1457,221 @@ window.GUIDE_CONTENT['retail-member'] = {
     }
   ]
 };
+
+window.GUIDE_CONTENT['retail-sales'] = {
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/sales-main-pc.webp', alt: '09SCM 소매매출조회 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/sales-main-mobile.webp', alt: '09SCM 소매매출조회 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 소매매출조회 화면 (PC / 모바일)',
+  overview:
+    '<p>내 소매몰의 결제·취소·환불 금액과 매출액을 기간별로 확인하는 화면이에요. 도매에서 매입한 금액도 함께 볼 수 있어요.</p>' +
+    '<ul>' +
+      '<li>처음 열면 이번달 기준으로 보여줘요.</li>' +
+      '<li>매출액은 결제총액에서 취소·환불액을 뺀 금액이에요.</li>' +
+      '<li>주문 한 건씩의 목록은 없고, 일별·월별로 합산한 금액만 보여줘요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>기간 선택</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>오늘 / 이번주 / 이번달</td><td>선택한 기간의 매출 조회</td></tr>' +
+      '<tr><td>기간</td><td>시작일과 종료일을 직접 선택 (최대 6개월)</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>매출 요약</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>결제총액</td><td>기간 안에 결제가 완료된 주문의 총 결제금액(상품금액 + 배달비) 합계</td></tr>' +
+      '<tr><td>취소·환불액</td><td>기간 안에 취소·반품이 승인된 주문의 총 환불금액 합계</td></tr>' +
+      '<tr><td>매출액</td><td>결제총액 - 취소·환불액</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>매출 추이</h3>' +
+    '<p>[일별], [월별] 탭으로 합산 단위를 바꿀 수 있고, 아래 표는 최신 기간부터 10건씩 보여줘요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>기간</td><td>일별 또는 월별 구분</td></tr>' +
+      '<tr><td>총주문건수 / 총결제액</td><td>주문접수 건수 (결제·취소 여부와 관계없음) / 결제완료 금액</td></tr>' +
+      '<tr><td>카드결제 주문건수 / 결제액</td><td>카드로 결제한 주문의 건수와 금액</td></tr>' +
+      '<tr><td>현장결제·계좌이체 주문건수 / 결제액</td><td>현장결제 또는 계좌이체로 결제한 주문의 건수와 금액</td></tr>' +
+      '<tr><td>취소환불건수 / 취소환불액</td><td>취소·반품이 승인된 건수와 환불금액</td></tr>' +
+      '<tr><td>매출액</td><td>결제액 - 취소환불액 (마이너스일 수 있음)</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>도매 매입 지출</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>매입총액</td><td>기간 안에 도매에서 구매한 금액 합계</td></tr>' +
+      '<tr><td>취소·환불액</td><td>도매 주문의 취소·환불 금액 합계</td></tr>' +
+      '<tr><td>지출액</td><td>매입총액 - 취소·환불액 (매입이 없으면 0원)</td></tr>' +
+      '<tr><td>도매 주문내역 보기</td><td>도매관리 &gt; 주문내역으로 이동</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>엑셀 다운로드</h3>' +
+    '<p>[엑셀 다운로드]를 누르면 조회 기간, 매출 요약, 지금 보고 있는 매출 추이를 파일로 받을 수 있어요.</p>',
+  cases: [
+    {
+      title: '기간을 직접 선택해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sales-custom-pc.webp', alt: '09SCM 기간 선택 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sales-custom-mobile.webp', alt: '09SCM 기간 선택 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 기간 선택 화면 (PC / 모바일)',
+      html: '<p>[기간]을 누르면 시작일과 종료일을 고를 수 있어요. 매출 조회 기간은 최대 6개월까지 선택할 수 있어서, 종료일은 시작일 기준 6개월 안으로만 선택돼요.</p>'
+    },
+    {
+      title: '월별로 보고 싶어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sales-monthly-pc.webp', alt: '09SCM 월별 매출 추이 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sales-monthly-mobile.webp', alt: '09SCM 월별 매출 추이 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 월별 매출 추이 화면 (PC / 모바일)',
+      html: '<p>[월별] 탭을 누르면 그래프와 표가 월 단위로 바뀌어요. 요약 금액은 선택한 기간 전체 기준으로 그대로 유지돼요.</p>'
+    },
+    {
+      title: '선택한 기간에 매출이 없어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sales-today-pc.webp', alt: '09SCM 매출 없음 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sales-today-mobile.webp', alt: '09SCM 매출 없음 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 매출 없음 화면 (PC / 모바일)',
+      html: '<p>해당 기간에 주문이 없으면 금액은 0원으로, 표에는 &quot;데이터가 없습니다.&quot;가 나와요.</p>'
+    }
+  ],
+  trouble:
+    '<h3>매출액이 마이너스예요</h3>' +
+    '<p>결제는 지난 기간에 되고 취소·환불은 이번 기간에 승인된 경우예요. 결제액은 결제완료일, 취소·환불은 승인일 기준으로 집계해서 기간이 다르면 이렇게 나올 수 있어요.</p>' +
+    '<h3>주문건수와 결제액이 서로 맞지 않아요</h3>' +
+    '<p>주문건수는 주문접수일, 결제액은 결제완료일 기준이에요. 결제 전 주문이나 다음 기간에 결제된 주문은 건수와 금액이 서로 다른 기간에 잡혀요.</p>' +
+    '<h3>도매에서 구매한 금액이 궁금해요</h3>' +
+    '<p>[도매 주문내역 보기]를 눌러 도매관리 &gt; 주문내역에서 주문별로 확인해요.</p>'
+};
+
+window.GUIDE_CONTENT['retail-settings'] = {
+  screens: [
+    {
+      id: 'settings-basic',
+      label: '기본정보',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/settings-basic-pc.webp', alt: '09SCM 소매설정 기본정보 PC 화면', ratio: 2880 / 3910 },
+        { device: 'mobile', src: '../assets/img/partner/settings-basic-mobile.webp', alt: '09SCM 소매설정 기본정보 모바일 화면', ratio: 880 / 4640 }
+      ],
+      shotCaption: '09SCM 소매설정 기본정보 화면 (PC / 모바일)',
+      overview:
+        '<p>소매몰 운영에 필요한 기본 정보를 등록하고 수정하는 화면이에요. 입력한 내용은 소매몰과 알림톡에 쓰여요.</p>' +
+        '<ul>' +
+          '<li>필수 항목(*)을 모두 입력하고 아래의 [저장]을 눌러야 반영돼요.</li>' +
+          '<li>사업자정보와 계좌정보는 보기만 할 수 있어요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>상호정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>상호명 *</td><td>알림톡의 상호명과 소매몰 운영 상호로 사용</td></tr>' +
+          '<tr><td>문의전화</td><td>구매자에게 안내할 전화번호</td></tr>' +
+          '<tr><td>영업시간</td><td>구매자에게 안내할 영업시간</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>픽업주소</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>우편번호 *</td><td>[우편번호 검색]으로 선택 (직접 입력 불가)</td></tr>' +
+          '<tr><td>기본주소 *</td><td>우편번호 검색 시 자동 입력</td></tr>' +
+          '<tr><td>상세주소</td><td>건물명, 층, 호수 등 직접 입력</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>소매몰정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>소매몰명 *</td><td>소매몰에 표시되는 이름</td></tr>' +
+          '<tr><td>소매몰로고</td><td>이미지 1장 (JPG, PNG, WEBP / 5MB 이하)</td></tr>' +
+          '<tr><td>공유 이미지</td><td>소매몰 링크를 카카오톡으로 공유할 때 미리보기에 나오는 이미지 1장 (JPG, PNG, WEBP / 5MB 이하, 없으면 기본 이미지 사용)</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>수령방식</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>기본 수령방식 *</td><td>[픽업만], [배달만], [픽업, 배달 모두] 중 선택 (새 상품을 등록할 때 기본값으로 적용)</td></tr>' +
+          '<tr><td>기본 배달비</td><td>0 이상의 정수 (비워두면 0원, [픽업만]을 선택하면 숨김)</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>사업자정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>사업자 상호명, 대표자명, 사업자등록번호, 사업장 주소</td><td>가맹점 정보 (수정 불가)</td></tr>' +
+          '<tr><td>통신판매업 신고번호</td><td>소매몰 하단에 표시 (입력하지 않으면 소매몰에 표시하지 않음)</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>계좌정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>은행, 계좌번호, 예금주</td><td>정산 계좌 정보 (수정 불가)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>사업자정보·계좌정보를 바꿔야 하면 본사에 문의해 주세요.</p>',
+      cases: [
+        {
+          title: '수령방식을 정해요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/settings-pickup-pc.webp', alt: '09SCM 수령방식 PC 화면', ratio: 2880 / 290 },
+            { device: 'mobile', src: '../assets/img/partner/settings-pickup-mobile.webp', alt: '09SCM 수령방식 모바일 화면', ratio: 880 / 290 }
+          ],
+          shotCaption: '09SCM 수령방식 화면 (PC / 모바일)',
+          html:
+            '<ul>' +
+              '<li>기본 수령방식은 새 상품을 등록할 때 처음 선택되는 값이에요. 이미 등록한 상품의 수령방식은 바뀌지 않아요.</li>' +
+              '<li>기본 배달비는 배달 주문이 생길 때의 금액이 주문에 저장돼요. 나중에 바꿔도 이미 접수된 주문의 배달비는 그대로예요.</li>' +
+            '</ul>'
+        },
+        {
+          title: '필수 항목을 비웠어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/settings-error-pc.webp', alt: '09SCM 필수 항목 미입력 PC 화면', ratio: 2880 / 4006 },
+            { device: 'mobile', src: '../assets/img/partner/settings-error-mobile.webp', alt: '09SCM 필수 항목 미입력 모바일 화면', ratio: 880 / 4736 }
+          ],
+          shotCaption: '09SCM 필수 항목 미입력 화면 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>상호명 미입력</td><td>&quot;상호명을 입력해주세요.&quot;</td></tr>' +
+              '<tr><td>픽업주소 미입력</td><td>&quot;픽업주소를 입력해주세요.&quot; (우편번호 검색으로 입력)</td></tr>' +
+              '<tr><td>소매몰명 미입력</td><td>&quot;소매몰명을 입력해주세요.&quot;</td></tr>' +
+              '<tr><td>기본 배달비가 0 이상의 정수가 아님</td><td>&quot;기본 배달비는 0 이상의 정수로 입력해주세요.&quot;</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>안내가 나오면 저장되지 않아요. 해당 항목을 입력한 뒤 다시 [저장]을 눌러요.</p>'
+        },
+        {
+          title: '저장했어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/settings-saved-pc.webp', alt: '09SCM 저장 완료 PC 화면', ratio: 2880 / 134 },
+            { device: 'mobile', src: '../assets/img/partner/settings-saved-mobile.webp', alt: '09SCM 저장 완료 모바일 화면', ratio: 880 / 206 }
+          ],
+          shotCaption: '09SCM 저장 완료 화면 (PC / 모바일)',
+          html: '<p>[저장]을 누르면 &quot;저장되었습니다.&quot;가 [저장] 옆에 잠깐 나오고, 같은 화면에 그대로 있어요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>알림톡이나 소매몰에 보이는 이름이 달라요</h3>' +
+        '<p>알림톡과 소매몰 운영 상호에는 상호정보의 상호명이, 소매몰 화면 이름에는 소매몰명이 쓰여요. 두 항목이 서로 다른지 확인해요.</p>' +
+        '<h3>기본 수령방식을 바꿨는데 기존 상품은 그대로예요</h3>' +
+        '<p>기본 수령방식은 새 상품 등록 시 기본값만 정해요. 기존 상품은 상품관리에서 상품별로 바꿔요.</p>' +
+        '<h3>통신판매업 신고번호가 소매몰에 안 보여요</h3>' +
+        '<p>신고번호를 입력하고 저장해야 소매몰 하단에 표시돼요.</p>'
+    },
+    {
+      id: 'settings-terms',
+      label: '이용약관·개인정보처리방침',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/settings-terms-pc.webp', alt: '09SCM 이용약관·개인정보처리방침 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/settings-terms-mobile.webp', alt: '09SCM 이용약관·개인정보처리방침 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 이용약관·개인정보처리방침 화면 (PC / 모바일)',
+      overview:
+        '<p>내 소매몰 이용자에게 보여줄 이용약관과 개인정보처리방침을 작성하는 화면이에요. 가맹점별로 따로 관리해요.</p>' +
+        '<ul>' +
+          '<li>처음에는 기본 문구가 들어 있어요. 내 소매몰에 맞게 고쳐서 쓰세요.</li>' +
+          '<li>기본정보 탭과 같은 [저장]으로 저장해요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>작성 방법</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>이용약관</td><td>소매몰 이용약관 본문</td></tr>' +
+          '<tr><td>개인정보처리방침</td><td>소매몰 개인정보처리방침 본문</td></tr>' +
+          '<tr><td>편집 도구</td><td>굵게, 기울임, 밑줄, 이미지 삽입, 링크</td></tr>' +
+          '<tr><td>저장</td><td>화면 아래 [저장]으로 두 항목을 함께 저장</td></tr>' +
+        '</tbody></table></div>',
+      trouble:
+        '<h3>저장했는데 소매몰에 바로 안 보여요</h3>' +
+        '<p>[저장]을 눌러 &quot;저장되었습니다.&quot;가 나왔는지 확인해요. 다른 탭만 수정하고 저장하지 않았다면 반영되지 않아요.</p>'
+    }
+  ]
+};
