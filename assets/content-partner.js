@@ -1572,8 +1572,9 @@ window.GUIDE_CONTENT['retail-settings'] = {
         '<h3>픽업주소</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>우편번호 *</td><td>[우편번호 검색]으로 선택 (직접 입력 불가, 처음에는 가입 사업장 주소가 입력됨)</td></tr>' +
-          '<tr><td>기본주소 *</td><td>우편번호 검색 시 자동 입력 (알림톡의 픽업주소, 소매몰 메인 매장정보의 픽업 주소, 주문서·주문완료의 픽업 장소에 표시)</td></tr>' +
+          '<tr><td>기본주소 *</td><td>우편번호 검색 시 자동 입력</td></tr>' +
           '<tr><td>상세주소</td><td>건물명, 층, 호수 등 직접 입력 (처음에는 가입 상세주소가 입력됨)</td></tr>' +
+          '<tr><td>소매몰 표시</td><td>우편번호, 기본주소, 상세주소를 이어서 표시 (알림톡의 픽업주소, 소매몰 메인 매장정보의 픽업 주소, 주문서·주문완료의 픽업 장소)</td></tr>' +
         '</tbody></table></div>' +
 
         '<h3>소매몰정보</h3>' +
@@ -1591,15 +1592,15 @@ window.GUIDE_CONTENT['retail-settings'] = {
 
         '<h3>사업자정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>사업자 상호명, 대표자명, 사업자등록번호, 사업장 주소</td><td>가입 정보 (수정 불가, 소매몰 하단에 표시)</td></tr>' +
+          '<tr><td>사업자 상호명, 대표자명, 사업자등록번호, 사업장 주소</td><td>가입 정보 (이 화면에서 수정 불가, 변경은 본사에 문의, 소매몰 하단에 표시)</td></tr>' +
           '<tr><td>통신판매업 신고번호</td><td>소매몰 하단에 표시 (입력하지 않으면 소매몰에 표시하지 않음)</td></tr>' +
         '</tbody></table></div>' +
 
         '<h3>계좌정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>은행, 계좌번호, 예금주</td><td>회원정보의 계좌 정보 (수정 불가, 알림톡과 소매몰 계좌이체 안내에 표시)</td></tr>' +
+          '<tr><td>은행, 계좌번호, 예금주</td><td>회원정보의 계좌 정보 (이 화면에서 수정 불가, 알림톡과 소매몰 계좌이체 안내에 표시)</td></tr>' +
         '</tbody></table></div>' +
-        '<p>사업자정보·계좌정보를 바꿔야 하면 본사에 문의해 주세요.</p>',
+        '<p>사업자정보는 본사에 문의해서 바꾸고, 계좌정보는 <a href="#system-member">시스템관리 &gt; 회원정보</a>에서 언제든 직접 바꿀 수 있어요.</p>',
       cases: [
         {
           title: '수령방식을 정해요',
@@ -1658,7 +1659,6 @@ window.GUIDE_CONTENT['retail-settings'] = {
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>이용약관</td><td>소매몰 이용약관 본문</td></tr>' +
           '<tr><td>개인정보처리방침</td><td>소매몰 개인정보처리방침 본문</td></tr>' +
-          '<tr><td>편집 도구</td><td>굵게, 기울임, 밑줄, 이미지 삽입, 링크</td></tr>' +
           '<tr><td>저장</td><td>화면 아래 [저장]으로 두 항목을 함께 저장</td></tr>' +
         '</tbody></table></div>',
       trouble:
