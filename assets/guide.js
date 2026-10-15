@@ -153,6 +153,7 @@
     var main = '';
     var toc = '';
     var c = (window.GUIDE_CONTENT || {})[leaf.id];
+    if (c && c.only) { head = head.replace(/<\/div>$/, '<div class="screen-banner"></div></div>'); }
     var shots = c ? shotsHTML(c.shots, c.shotCaption) : '';
     if (leaf.type === 'page') {
       var secs = c && c.sections ? c.sections : [{ id: 'body', label: leaf.label, html: placeholder() }];
@@ -193,6 +194,8 @@
     contentEl.querySelector('.screen-head h1').textContent = leaf.label;
     var eb = contentEl.querySelector('.screen-head .eyebrow');
     if (eb) eb.textContent = sub;
+    var bn = contentEl.querySelector('.screen-head .screen-banner');
+    if (bn) bn.textContent = c.only;
 
     contentEl.querySelectorAll('[data-anchor]').forEach(function (a) {
       a.addEventListener('click', function (e) {

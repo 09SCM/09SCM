@@ -222,6 +222,7 @@ body.home .content-wrapper { flex: 1; }
 .screen-head { flex-direction: column; align-items: flex-start; gap: 4px; }
 .screen-head .eyebrow { font-size: 12px; font-weight: 300; color: var(--text-secondary); }
 .screen-head h1 { font-size: 24px; font-weight: 700; margin: 0; }
+.screen-head .screen-banner { align-self: stretch; margin-top: 12px; padding: 10px 14px; border: 1px solid rgba(229, 161, 0, 0.45); border-radius: 4px; background: rgba(229, 161, 0, 0.14); color: var(--text-body); font-size: 14px; font-weight: 400; }
 
 .guide-section { margin: 0; padding: 32px 0; border-top: 1px solid var(--border); }
 .guide-section:first-of-type { border-top: 0; padding-top: 0; }

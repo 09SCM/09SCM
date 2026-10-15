@@ -1595,7 +1595,7 @@ window.GUIDE_CONTENT['retail-settings'] = {
           '<tr><td>사업자 상호명, 대표자명, 사업자등록번호, 사업장 주소</td><td>회원정보의 사업자정보 (수정 불가, 소매몰 하단에 표시)</td></tr>' +
           '<tr><td>통신판매업 신고번호</td><td>소매몰 하단에 표시 (입력하지 않으면 소매몰에 표시하지 않음)</td></tr>' +
         '</tbody></table></div>' +
-        '<p>사업자정보는 가입 시 입력한 회원정보를 그대로 가져와요. 수정하고 싶으면 본사에 문의해 주세요.</p>' +
+        '<p>사업자정보는 가입 시 입력한 회원정보를 그대로 가져와요. 수정하고 싶으면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해 주세요.</p>' +
 
         '<h3>계좌정보</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -1665,6 +1665,506 @@ window.GUIDE_CONTENT['retail-settings'] = {
       trouble:
         '<h3>저장했는데 소매몰에 바로 안 보여요</h3>' +
         '<p>수정한 뒤 [저장]을 눌러야 반영돼요. 기본정보 탭만 저장했다면 이 탭의 수정 내용은 반영되지 않아요.</p>'
+    }
+  ]
+};
+
+window.GUIDE_CONTENT['system-notice'] = {
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/sys-notice-list-pc.webp', alt: '09SCM 공지사항 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/sys-notice-list-mobile.webp', alt: '09SCM 공지사항 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 공지사항 화면 (PC / 모바일)',
+  overview:
+    '<p>09SCM과 소속 본사가 올린 공지를 한곳에서 확인하는 화면이에요. 보기만 할 수 있고, 공지를 쓰거나 고치는 곳은 아니에요.</p>' +
+    '<ul>' +
+      '<li>목록은 최신 공지부터 20건씩 보여줘요.</li>' +
+      '<li>이용대기 상태의 가맹점도 공지를 볼 수 있어요.</li>' +
+      '<li>본사가 올린 공지는 소속 가맹점 모두에게 보여요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>공지 목록</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>번호</td><td>공지 순번 (최신 공지가 가장 큰 번호)</td></tr>' +
+      '<tr><td>작성자</td><td>공지를 올린 곳 (09SCM 또는 우리본사)</td></tr>' +
+      '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘으로 표시)</td></tr>' +
+      '<tr><td>등록일</td><td>공지를 올린 날짜</td></tr>' +
+      '<tr><td>상세보기</td><td>공지 상세 화면으로 이동</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>공지 찾기</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>전체 / 09SCM / 우리본사</td><td>작성자별로 나눠서 보기</td></tr>' +
+      '<tr><td>제목 검색</td><td>입력한 단어가 제목에 들어간 공지만 보기 ([검색]을 누르거나 Enter)</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>공지 상세</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>제목, 작성자, 등록일</td><td>공지의 기본 정보</td></tr>' +
+      '<tr><td>첨부파일</td><td>첨부된 파일 이름 (눌러서 내려받기)과 용량 (첨부가 있는 공지만 표시)</td></tr>' +
+      '<tr><td>본문</td><td>공지 내용</td></tr>' +
+      '<tr><td>공지사항으로</td><td>보던 목록으로 돌아가기</td></tr>' +
+    '</tbody></table></div>',
+  cases: [
+    {
+      title: '작성자별로 골라 봐요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 우리본사 공지 화면 (PC / 모바일)',
+      html: '<p>[09SCM], [우리본사] 탭을 누르면 해당 작성자의 공지만 모아서 볼 수 있어요. 건수도 선택한 탭 기준으로 바뀌어요.</p>'
+    },
+    {
+      title: '첨부파일이 있는 공지를 열어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-notice-detail-pc.webp', alt: '09SCM 공지 상세 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-notice-detail-mobile.webp', alt: '09SCM 공지 상세 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 공지 상세 화면 (PC / 모바일)',
+      html: '<p>[상세보기]를 누르면 본문과 첨부파일을 볼 수 있어요. [공지사항으로]를 누르면 보던 목록으로 돌아가요.</p>'
+    },
+    {
+      title: '계정에 따라 달라져요',
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>보이는 공지</th></tr></thead><tbody>' +
+          '<tr><td>가맹점 계정</td><td>09SCM이 가맹점에게 알리는 공지, 소속 본사(우리본사)의 공지</td></tr>' +
+          '<tr><td>본사 계정</td><td>09SCM이 본사에게 알리는 공지, 우리본사 이름으로 올린 공지</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>같은 09SCM 공지라도 본사에게만 알리는 공지는 가맹점 계정에 보이지 않아요.</p>'
+    }
+  ],
+  trouble:
+    '<h3>공지가 보이지 않아요</h3>' +
+    '<p>09SCM이 공지를 올릴 때 알림 대상을 본사나 가맹점으로 나눠서 정해요. 대상이 아닌 계정에는 보이지 않아요. 본사가 공지를 숨김 처리한 경우에도 가맹점에는 보이지 않아요.</p>' +
+    '<h3>조회수가 보이지 않아요</h3>' +
+    '<p>이 화면에서는 조회수를 보여주지 않아요. 본사 계정은 <a href="#franchise-notice">가맹점관리 &gt; 공지사항</a>에서 공지별 조회수를 확인할 수 있어요.</p>'
+};
+
+window.GUIDE_CONTENT['system-fee'] = {
+  only: '가맹점 계정 전용 화면입니다. 본사 계정에는 이 메뉴가 보이지 않아요.',
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/sys-fee-main-pc.webp', alt: '09SCM 이용료관리 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/sys-fee-main-mobile.webp', alt: '09SCM 이용료관리 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 이용료관리 화면 (PC / 모바일)',
+  overview:
+    '<p>09SCM 이용료의 정기결제 카드를 등록하고, 결제 내역을 확인하는 화면이에요.</p>' +
+    '<ul>' +
+      '<li>정기결제 카드는 가맹점 본인만 등록할 수 있어요.</li>' +
+      '<li>카드 정보는 PayApp 결제창에서 입력해요. 09SCM은 카드 정보를 저장하지 않아요.</li>' +
+      '<li>처음 카드를 등록한 날짜의 일(day)이 매월 정기결제일이 돼요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>이용 안내</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>소속 본사</td><td>내가 속한 본사 이름</td></tr>' +
+      '<tr><td>이용료</td><td>월 이용료</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>결제 정보</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>정기결제여부</td><td>카드 등록 여부</td></tr>' +
+      '<tr><td>결제수단</td><td>등록한 결제수단 (신용카드)</td></tr>' +
+      '<tr><td>정기결제일</td><td>매월 결제되는 일</td></tr>' +
+      '<tr><td>다음 결제일</td><td>다음 정기결제 예정일</td></tr>' +
+      '<tr><td>카드 등록하기</td><td>등록된 카드가 없을 때만 표시, PayApp 결제창으로 이동</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>결제 내역</h3>' +
+    '<p>최신 결제부터 보여줘요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>결제일시</td><td>결제를 시도한 날짜와 시간</td></tr>' +
+      '<tr><td>결제수단</td><td>결제에 사용한 수단</td></tr>' +
+      '<tr><td>납부상태</td><td>결제완료 / 결제실패 / 수기완납</td></tr>' +
+      '<tr><td>결제금액</td><td>해당 회차 결제금액</td></tr>' +
+    '</tbody></table></div>' +
+    '<div class="table-wrap"><table><thead><tr><th>납부상태</th><th>의미</th></tr></thead><tbody>' +
+      '<tr><td>결제완료</td><td>정기결제가 정상적으로 처리됨</td></tr>' +
+      '<tr><td>결제실패</td><td>정기결제가 처리되지 않음</td></tr>' +
+      '<tr><td>수기완납</td><td>본사가 이용료를 직접 수납하고 완납으로 처리함</td></tr>' +
+    '</tbody></table></div>',
+  cases: [
+    {
+      title: '카드를 등록해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-fee-card-pc.webp', alt: '09SCM 카드 미등록 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-fee-card-mobile.webp', alt: '09SCM 카드 미등록 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 카드 미등록 화면 (PC / 모바일)',
+      html:
+        '<p>카드를 등록하기 전에는 결제 정보에 안내 문구와 [카드 등록하기]만 보여요. [카드 등록하기]를 누르면 PayApp 결제창이 열리고, 카드 정보를 입력하면 등록이 끝나요.</p>' +
+        '<p>등록한 날짜의 일이 매월 정기결제일로 정해져요. 이후 카드를 바꾸거나 정기결제를 해지하려면 본사에 문의해 주세요.</p>'
+    },
+    {
+      title: '결제가 실패했어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-fee-history-pc.webp', alt: '09SCM 결제 내역 PC 화면', ratio: 2784 / 1694 },
+        { device: 'mobile', src: '../assets/img/partner/sys-fee-history-mobile.webp', alt: '09SCM 결제 내역 모바일 화면', ratio: 816 / 2864 }
+      ],
+      shotCaption: '09SCM 결제 내역 화면 (PC / 모바일)',
+      html:
+        '<p>결제 내역의 납부상태가 [결제실패]로 표시돼요. 결제실패가 되어도 이용상태가 자동으로 바뀌거나 별도 안내가 나오지는 않아요.</p>' +
+        '<p>재결제와 이용료 수납은 본사가 처리하니, 결제실패 내역이 있으면 본사에 문의해 주세요. 본사가 직접 수납하면 납부상태가 [수기완납]으로 바뀌어요.</p>'
+    },
+    {
+      title: '이용상태에 따라 달라져요',
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>화면</th></tr></thead><tbody>' +
+          '<tr><td>카드 미등록</td><td>결제 정보에 안내 문구와 [카드 등록하기] 표시, 결제 내역은 비어 있음</td></tr>' +
+          '<tr><td>카드 등록</td><td>정기결제여부·결제수단·정기결제일·다음 결제일 표시</td></tr>' +
+        '</tbody></table></div>'
+    }
+  ],
+  trouble:
+    '<h3>카드를 바꾸거나 정기결제를 해지하고 싶어요</h3>' +
+    '<p>이 화면에서는 바꾸거나 해지할 수 없어요. 정기결제는 본사의 PayApp 계정에서 관리하니, 본사에 문의해 주세요.</p>' +
+    '<h3>결제 내역이 비어 있어요</h3>' +
+    '<p>아직 결제가 한 번도 일어나지 않은 경우예요. 카드를 등록하기 전이거나, 등록 후 첫 정기결제일이 오기 전에는 내역이 없어요.</p>' +
+    '<h3>이 메뉴가 보이지 않아요</h3>' +
+    '<p>이용료관리는 가맹점 계정에만 있어요. 본사 계정은 <a href="#franchise-fee">가맹점관리</a>에서 가맹점별 이용료를 확인해요.</p>'
+};
+
+window.GUIDE_CONTENT['system-member'] = {
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/sys-member-main-pc.webp', alt: '09SCM 회원정보 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/sys-member-main-mobile.webp', alt: '09SCM 회원정보 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 회원정보 화면 (PC / 모바일)',
+  overview:
+    '<p>내 계정의 회원 정보, 비밀번호, 계좌정보, PayApp 연동 정보, 약관 동의 상태를 확인하고 바꾸는 화면이에요.</p>' +
+    '<ul>' +
+      '<li>영역마다 [저장] 또는 [비밀번호 변경] 버튼이 따로 있어요. 바꾼 영역에서 해당 버튼을 눌러야 반영돼요.</li>' +
+      '<li>사업자 정보는 보기만 할 수 있어요.</li>' +
+      '<li>계좌정보는 소매몰의 계좌이체 안내와 알림톡에 쓰여요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>회원 정보</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>회원 유형</td><td>본사 또는 가맹점 (수정 불가)</td></tr>' +
+      '<tr><td>아이디</td><td>로그인 아이디 (수정 불가)</td></tr>' +
+      '<tr><td>이름 *</td><td>담당자 이름</td></tr>' +
+      '<tr><td>이메일 *</td><td>담당자 이메일</td></tr>' +
+      '<tr><td>휴대폰번호 *</td><td>번호를 바꾸면 [인증번호 발송]으로 받은 6자리 인증번호를 확인해야 저장 가능</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>비밀번호 변경</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>새 비밀번호 *</td><td>바꿀 비밀번호</td></tr>' +
+      '<tr><td>새 비밀번호 확인 *</td><td>새 비밀번호와 같게 한 번 더 입력</td></tr>' +
+      '<tr><td>비밀번호 변경</td><td>두 값이 같을 때 변경</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>사업자 정보</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>사업자 유형, 사업자등록번호, 상호명, 대표자명, 업태, 업종, 사업장 주소</td><td>가입할 때 입력한 정보 (수정 불가)</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>수정이 필요하면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해 주세요. 이 정보는 <a href="#retail-settings">소매설정</a>의 사업자정보에도 그대로 쓰여요.</p>' +
+
+    '<h3>계좌정보</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>은행 *</td><td>입금받을 은행</td></tr>' +
+      '<tr><td>계좌번호 *</td><td>숫자만 최대 20자리</td></tr>' +
+      '<tr><td>예금주 *</td><td>계좌 예금주</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>세 항목을 모두 입력해야 저장돼요. 소매몰에서 계좌이체로 결제하는 구매자에게 이 계좌가 입금 계좌로 안내돼요.</p>' +
+
+    '<h3>PayApp 연동 정보</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>연동 상태</td><td>미연동 / 연동완료 (연동한 날짜와 시간 표시)</td></tr>' +
+      '<tr><td>판매자 회원 아이디(userid)</td><td>PayApp 판매자 아이디</td></tr>' +
+      '<tr><td>연동 KEY(linkkey), 연동 VALUE(linkval)</td><td>PayApp에서 발급받은 연동 값</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>최초 연동 이후에는 직접 바꾸거나 해제할 수 없어요.</p>' +
+
+    '<h3>이용약관 동의</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>이용약관 [필수]</td><td>동의 상태 확인, [보기]로 내용 확인 (변경 불가)</td></tr>' +
+      '<tr><td>개인정보처리방침 [필수]</td><td>동의 상태 확인, [보기]로 내용 확인 (변경 불가)</td></tr>' +
+      '<tr><td>마케팅정보 수신동의 [선택]</td><td>동의 여부를 직접 변경, [보기]로 내용 확인</td></tr>' +
+    '</tbody></table></div>',
+  cases: [
+    {
+      title: '휴대폰번호를 바꿔요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-member-phone-pc.webp', alt: '09SCM 휴대폰번호 인증 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-phone-mobile.webp', alt: '09SCM 휴대폰번호 인증 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 휴대폰번호 인증 화면 (PC / 모바일)',
+      html: '<p>번호를 바꾸고 [인증번호 발송]을 누르면 인증번호 입력란이 나타나요. 받은 6자리를 입력하고 [확인]을 누른 뒤 [저장]을 눌러야 새 번호가 반영돼요.</p>'
+    },
+    {
+      title: '비밀번호를 바꿔요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-member-pw-pc.webp', alt: '09SCM 비밀번호 불일치 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-pw-mobile.webp', alt: '09SCM 비밀번호 불일치 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 비밀번호 불일치 화면 (PC / 모바일)',
+      html: '<p>새 비밀번호와 확인 값이 다르면 안내가 나오고 변경되지 않아요. 두 값을 같게 입력한 뒤 다시 [비밀번호 변경]을 눌러요.</p>'
+    },
+    {
+      title: '계좌정보를 입력해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-member-account-pc.webp', alt: '09SCM 계좌정보 미입력 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-account-mobile.webp', alt: '09SCM 계좌정보 미입력 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 계좌정보 미입력 화면 (PC / 모바일)',
+      html: '<p>은행, 계좌번호, 예금주 중 하나라도 비어 있으면 안내가 나오고 저장되지 않아요. 세 항목을 모두 입력한 뒤 [저장]을 눌러요.</p>'
+    },
+    {
+      title: 'PayApp 연동 전이에요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-member-payapp-pc.webp', alt: '09SCM PayApp 미연동 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-payapp-mobile.webp', alt: '09SCM PayApp 미연동 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM PayApp 미연동 화면 (PC / 모바일)',
+      html:
+        '<p>연동 전에는 연동 상태가 미연동으로 보이고 세 값을 직접 입력할 수 있어요. 값을 입력하고 [연동하기]를 누르면 연동이 진행돼요. 연동 후에는 바꾸거나 해제할 수 없으니 입력값을 한 번 더 확인해 주세요. 본사가 대신 연동해 줄 수도 있어요.</p>' +
+        '<p>PayApp 연동은 이용승인으로 바뀌는 조건이에요. 연동이 끝나기 전에는 이용대기 상태로 남아 있어요.</p>'
+    },
+    {
+      title: '마케팅정보 수신동의를 바꿔요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-member-terms-pc.webp', alt: '09SCM 약관 보기 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-terms-mobile.webp', alt: '09SCM 약관 보기 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 약관 보기 화면 (PC / 모바일)',
+      html: '<p>[보기]를 누르면 약관 내용을 팝업으로 볼 수 있어요. 바꿀 수 있는 항목은 마케팅정보 수신동의[선택]뿐이에요. 동의 여부를 바꾸면 [저장]이 활성화돼요.</p>'
+    },
+    {
+      title: '계정에 따라 달라져요',
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>화면</th></tr></thead><tbody>' +
+          '<tr><td>본사 계정</td><td>회원 유형이 본사이고, 사업자등록번호 외에 법인등록번호가 함께 표시됨</td></tr>' +
+          '<tr><td>가맹점 계정</td><td>회원 유형이 가맹점</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>사업자 문의처만 다를 뿐 나머지 영역은 두 계정이 같아요.</p>'
+    }
+  ],
+  trouble:
+    '<h3>저장이 안 돼요</h3>' +
+    '<p>휴대폰번호를 바꿨다면 인증을 먼저 끝내야 해요. 계좌정보는 세 항목이 모두 입력돼 있어야 하고, 비밀번호는 확인 값이 일치해야 해요. 각 영역마다 버튼이 따로 있어서 바꾼 영역의 버튼을 눌렀는지도 확인해 주세요.</p>' +
+    '<h3>사업자정보를 바꾸고 싶어요</h3>' +
+    '<p>이 화면에서는 고칠 수 없어요. 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해 주세요.</p>' +
+    '<h3>PayApp 연동을 바꾸거나 풀고 싶어요</h3>' +
+    '<p>최초 연동 이후에는 직접 바꾸거나 해제할 수 없어요. 본사에 문의해 주세요.</p>'
+};
+
+window.GUIDE_CONTENT['system-notification'] = {
+  screens: [
+    {
+      id: 'noti-alimtalk',
+      label: '소매몰 알림톡 설정',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-noti-main-pc.webp', alt: '09SCM 소매몰 알림톡 설정 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-noti-main-mobile.webp', alt: '09SCM 소매몰 알림톡 설정 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 소매몰 알림톡 설정 화면 (PC / 모바일)',
+      overview:
+        '<p>내 소매몰 구매자에게 주문 진행 상황을 카카오 알림톡으로 자동 발송하는 기능을 켜고 끄는 화면이에요. 알림톡은 유료 부가서비스라서 충전한 건수만큼 사용할 수 있어요.</p>' +
+        '<ul>' +
+          '<li>[알림톡 사용하기]를 켜면 아래 발송 메시지가 주문 상태에 따라 자동으로 나가요.</li>' +
+          '<li>알림톡 발송에 실패하면 LMS(문자)로 대신 보내요.</li>' +
+          '<li>처음 시작하는 계정은 잔여 0건, 사용하기 꺼짐 상태예요. 충전한 뒤에 직접 켜야 해요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>사용 현황</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>잔여알림톡 건수</td><td>지금 남아 있는 발송 가능 건수</td></tr>' +
+          '<tr><td>충전하기</td><td>알림톡 건수 충전 (PayApp 결제)</td></tr>' +
+          '<tr><td>이번달 발송 건수</td><td>이번 달에 보낸 전체 건수와 알림톡·LMS 구분</td></tr>' +
+          '<tr><td>알림톡 사용하기</td><td>켜면 자동 발송, 끄면 발송하지 않음</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>건수는 알림톡 1건이 1건, LMS 1건이 4건으로 차감돼요.</p>' +
+
+        '<h3>발송 메시지</h3>' +
+        '<p>아래 8종이 정해진 양식으로 발송돼요. 양식은 이 화면에서 미리 확인할 수 있고, 직접 고칠 수는 없어요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>발송 메시지</th><th>발송 시점</th></tr></thead><tbody>' +
+          '<tr><td>주문접수완료(카드결제/현장결제)</td><td>주문이 접수됐을 때 (채팅주문은 제외)</td></tr>' +
+          '<tr><td>주문접수완료(계좌이체)</td><td>계좌이체 주문이 접수됐을 때</td></tr>' +
+          '<tr><td>결제확인완료</td><td>결제가 확인됐을 때</td></tr>' +
+          '<tr><td>픽업대기</td><td>픽업 준비가 완료됐을 때</td></tr>' +
+          '<tr><td>배달대기</td><td>배달 준비를 시작했을 때</td></tr>' +
+          '<tr><td>배달중</td><td>배달이 시작됐을 때</td></tr>' +
+          '<tr><td>픽업/배달완료</td><td>수령이 완료됐을 때</td></tr>' +
+          '<tr><td>취소/반품승인</td><td>취소·반품이 처리됐을 때</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>메시지에 들어가는 정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>가져오는 곳</th></tr></thead><tbody>' +
+          '<tr><td>상호명, 문의전화, 픽업주소</td><td><a href="#retail-settings">소매관리 &gt; 소매설정</a>의 기본정보</td></tr>' +
+          '<tr><td>계좌정보(은행, 계좌번호, 예금주)</td><td><a href="#system-member">시스템관리 &gt; 회원정보</a>의 계좌정보</td></tr>' +
+          '<tr><td>주문정보(주문번호, 상품, 금액, 수령방식 등)</td><td>해당 주문</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>발송 정보를 바꾸고 싶으면 위 화면에서 값을 고치면 이후 발송부터 반영돼요.</p>' +
+
+        '<h3>충전</h3>' +
+        '<p>[충전하기]를 누르면 충전 팝업이 열려요. 충전 금액에는 부가세 10%가 더해지고, SMS 이용약관에 동의해야 결제할 수 있어요. 결제는 PayApp 결제창에서 진행돼요.</p>' +
+        '<p>충전해도 [알림톡 사용하기]는 자동으로 켜지지 않아요. 충전한 뒤 직접 켜 주세요.</p>' +
+
+        '<h3>발송내역</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>기간</td><td>전체 / 1개월 / 3개월 / 6개월 중 선택하거나 시작일·종료일 직접 선택</td></tr>' +
+          '<tr><td>발송 메시지</td><td>8종 중 하나만 골라 보기</td></tr>' +
+          '<tr><td>발송채널</td><td>알림톡 / LMS 구분해서 보기</td></tr>' +
+          '<tr><td>발송일시</td><td>발송한 날짜와 시간</td></tr>' +
+          '<tr><td>수신자</td><td>받은 사람의 휴대폰번호 (가운데 번호는 가려서 표시)</td></tr>' +
+          '<tr><td>발송 메시지 / 발송채널</td><td>발송한 메시지 종류와 알림톡·LMS 구분</td></tr>' +
+          '<tr><td>차감</td><td>이 발송으로 차감된 건수 (알림톡 1건, LMS 4건)</td></tr>' +
+        '</tbody></table></div>',
+      cases: [
+        {
+          title: '잔여 건수가 부족해요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-noti-low-pc.webp', alt: '09SCM 잔여 건수 부족 PC 화면', ratio: 2880 / 3000 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-low-mobile.webp', alt: '09SCM 잔여 건수 부족 모바일 화면', ratio: 880 / 2400 }
+          ],
+          shotCaption: '09SCM 잔여 건수 부족 화면 (PC / 모바일)',
+          html:
+            '<ul>' +
+              '<li>잔여 건수가 5건 미만이면 [알림톡 사용하기]를 켤 수 없고, 안내만 나와요.</li>' +
+              '<li>사용 중에 5건 미만이 되면 자동으로 꺼지고, 시스템 알림이 한 번 와요.</li>' +
+              '<li>충전해서 5건 이상이 된 뒤에 [알림톡 사용하기]를 직접 켜 주세요.</li>' +
+            '</ul>'
+        },
+        {
+          title: '발송 내역을 찾아요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-noti-history-pc.webp', alt: '09SCM 발송내역 PC 화면', ratio: 2880 / 3000 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-history-mobile.webp', alt: '09SCM 발송내역 모바일 화면', ratio: 880 / 2400 }
+          ],
+          shotCaption: '09SCM 발송내역 화면 (PC / 모바일)',
+          html: '<p>기간, 발송 메시지, 발송채널을 고른 뒤 [검색]을 누르면 조건에 맞는 내역만 볼 수 있어요. 특정 고객에게 알림이 갔는지 확인할 때 쓰면 좋아요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>알림톡 사용하기가 갑자기 꺼졌어요</h3>' +
+        '<p>잔여 건수가 5건 미만이 되면 자동으로 꺼져요. 충전한 뒤 [알림톡 사용하기]를 직접 켜 주세요.</p>' +
+        '<h3>고객에게 알림톡이 가지 않아요</h3>' +
+        '<p>사용하기가 켜져 있는지, 잔여 건수가 있는지 먼저 확인해 주세요. 채팅주문으로 접수된 주문은 주문접수완료 알림톡이 발송되지 않아요. 발송 여부는 발송내역에서 확인해요.</p>' +
+        '<h3>문자(LMS)로 보내졌어요</h3>' +
+        '<p>알림톡 발송에 실패하면 LMS로 대신 보내요. LMS는 1건에 4건이 차감돼서 잔여 건수가 더 빨리 줄어요.</p>'
+    },
+    {
+      id: 'noti-system',
+      label: '시스템 알림 설정',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-noti-system-pc.webp', alt: '09SCM 시스템 알림 설정 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-noti-system-mobile.webp', alt: '09SCM 시스템 알림 설정 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 시스템 알림 설정 화면 (PC / 모바일)',
+      overview:
+        '<p>주문, 결제, 이용료처럼 관리자에게 필요한 알림을 어떤 종류로 받을지 정하는 화면이에요. 켜 둔 알림은 브라우저 푸시와 알림센터(상단 벨 아이콘)에 함께 들어와요.</p>' +
+        '<ul>' +
+          '<li>전체 → 알림 종류 → 개별 알림 순서로 켜고 끌 수 있어요.</li>' +
+          '<li>상위 항목을 끄면 아래 항목은 숨겨지고, 다시 켜면 이전 설정 그대로 돌아와요.</li>' +
+          '<li>꺼 둔 동안 발생한 알림은 나중에 다시 보내지 않아요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>브라우저 알림 상태</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>상태</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>허용됨</td><td>이 기기·브라우저에서 푸시 알림을 받을 수 있음</td></tr>' +
+          '<tr><td>차단됨</td><td>브라우저에서 알림을 막아 둔 상태, [허용 방법 보기]로 방법 확인</td></tr>' +
+          '<tr><td>설정 안 함</td><td>아직 허용 여부를 정하지 않은 상태</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>브라우저 알림 허용은 기기와 브라우저마다 따로 설정해야 해요.</p>' +
+
+        '<h3>알림 종류</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>받는 알림</th></tr></thead><tbody>' +
+          '<tr><td>전체 알림 받기</td><td>모든 알림을 한꺼번에 켜고 끔</td></tr>' +
+          '<tr><td>도매구매 알림</td><td>내가 도매에서 구매한 주문의 결제확인·배송대기·배송중·배송확정·취소/반품 결과</td></tr>' +
+          '<tr><td>도매판매 알림</td><td>내가 공급하는 도매 주문의 신규 접수(결제완료/결제대기)·배송확정·취소/반품 접수</td></tr>' +
+          '<tr><td>소매 알림</td><td>소매몰 주문의 신규 접수(결제완료/결제대기)·취소/반품 접수·노쇼후보·채팅주문 매칭실패</td></tr>' +
+          '<tr><td>시스템 알림</td><td>가맹점 이용료 결제실패, 알림톡 잔여건수 부족</td></tr>' +
+          '<tr><td>도매상품 알림</td><td>본사가 새로 등록한 도매상품 안내</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>신규주문접수 알림은 주문 1건마다 오기 때문에 처음에는 꺼져 있어요. 필요할 때 직접 켜 주세요.</p>',
+      cases: [
+        {
+          title: '알림 종류를 끄고 싶어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-noti-category-pc.webp', alt: '09SCM 알림 종류 끄기 PC 화면', ratio: 2880 / 3000 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-category-mobile.webp', alt: '09SCM 알림 종류 끄기 모바일 화면', ratio: 880 / 2400 }
+          ],
+          shotCaption: '09SCM 알림 종류 끄기 화면 (PC / 모바일)',
+          html: '<p>알림 종류의 스위치를 끄면 그 종류에 속한 개별 알림이 화면에서 사라져요. 개별 알림의 설정값은 그대로 보관돼서, 다시 켜면 이전 상태로 돌아와요.</p>'
+        },
+        {
+          title: '브라우저 알림을 허용해요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-noti-push-pc.webp', alt: '09SCM 브라우저 알림 허용 방법 PC 화면', ratio: 2880 / 3000 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-push-mobile.webp', alt: '09SCM 브라우저 알림 허용 방법 모바일 화면', ratio: 880 / 2400 }
+          ],
+          shotCaption: '09SCM 브라우저 알림 허용 방법 화면 (PC / 모바일)',
+          html:
+            '<p>[허용 방법 보기]를 누르면 기기별 허용 방법이 나와요.</p>' +
+            '<ul>' +
+              '<li>안드로이드: Chrome 또는 삼성 인터넷에서 알림 허용</li>' +
+              '<li>아이폰: Safari에서 홈 화면에 추가한 뒤 알림 허용</li>' +
+            '</ul>'
+        },
+        {
+          title: '계정에 따라 달라져요',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>알림</th><th>받는 계정</th></tr></thead><tbody>' +
+              '<tr><td>가맹점 이용료 결제실패</td><td>본사 계정 (소속 가맹점의 결제가 실패했을 때)</td></tr>' +
+              '<tr><td>도매상품 알림</td><td>가맹점 계정 (소속 본사가 새 도매상품을 등록했을 때)</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>도매 주문과 소매 주문 알림은 주문을 처리한 쪽이 아니라 상대방에게 발송돼요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>알림이 오지 않아요</h3>' +
+        '<p>전체 알림, 알림 종류, 개별 알림이 모두 켜져 있는지 확인해 주세요. 꺼 둔 동안 발생한 알림은 나중에 켜도 받을 수 없어요. 브라우저 푸시는 브라우저 알림 상태가 허용됨이어야 해요.</p>' +
+        '<h3>주문 알림을 놓쳤어요</h3>' +
+        '<p>푸시를 놓쳤더라도 켜 둔 알림은 알림센터(상단 벨 아이콘)에서 확인할 수 있어요.</p>' +
+        '<h3>다른 기기에서는 알림이 안 와요</h3>' +
+        '<p>브라우저 알림 허용은 기기와 브라우저마다 따로예요. 알림을 받으려는 기기에서도 허용해 주세요.</p>'
+    },
+    {
+      id: 'noti-center',
+      label: '알림센터',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-center-pc.webp', alt: '09SCM 알림센터 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-center-mobile.webp', alt: '09SCM 알림센터 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 알림센터 화면 (PC / 모바일)',
+      overview:
+        '<p>상단의 벨 아이콘을 누르면 열리는 알림 모음이에요. 시스템 알림 설정에서 켜 둔 알림이 최신순으로 쌓여요.</p>' +
+        '<ul>' +
+          '<li>확인하지 않은 알림 건수가 맨 위에 표시돼요.</li>' +
+          '<li>소매몰 알림톡 발송 내역은 여기에 나오지 않아요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>알림 목록</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>태그</td><td>알림 종류 (도매구매 / 도매판매 / 소매 / 시스템)</td></tr>' +
+          '<tr><td>시간</td><td>방금 / N분 전 / N시간 전 (하루가 지나면 날짜)</td></tr>' +
+          '<tr><td>내용</td><td>알림 내용 (주문번호, 금액 등)</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>알림 지우기</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>알림 확인</td><td>알림을 확인하면 목록에서 삭제됨</td></tr>' +
+          '<tr><td>모두 확인</td><td>미확인 알림을 한꺼번에 삭제</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>알림을 지워도 주문 같은 원래 데이터는 그대로 남아 있어요.</p>',
+      cases: [
+        {
+          title: '알림이 모두 사라졌어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-center-empty-pc.webp', alt: '09SCM 알림센터 비어 있음 PC 화면', ratio: 2880 / 3000 },
+            { device: 'mobile', src: '../assets/img/partner/sys-center-empty-mobile.webp', alt: '09SCM 알림센터 비어 있음 모바일 화면', ratio: 880 / 2400 }
+          ],
+          shotCaption: '09SCM 알림센터 비어 있음 화면 (PC / 모바일)',
+          html: '<p>모든 알림을 확인하면 알림센터가 비어 있는 상태로 보여요. 새 알림이 생기면 다시 쌓여요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>지운 알림을 다시 보고 싶어요</h3>' +
+        '<p>확인한 알림은 삭제돼서 다시 볼 수 없어요. 주문 알림이라면 해당 주문 목록에서 내용을 확인해 주세요.</p>' +
+        '<h3>알림톡 발송 내역을 보고 싶어요</h3>' +
+        '<p>알림톡 발송 내역은 알림센터가 아니라 소매몰 알림톡 설정의 발송내역에서 확인해요.</p>'
     }
   ]
 };
