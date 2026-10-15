@@ -2932,7 +2932,7 @@
             <label><input type="radio" name="fdSupply" value="no" ${!f.wholesaleSupply ? 'checked' : ''}> 미보유</label>
           </div>
           <button type="button" class="btn-secondary" id="fdSupplyChangeBtn" disabled>변경</button>
-          <span class="inline-confirm" id="fdStatusChangeConfirm" hidden>변경사항이 반영되었습니다.</span>
+          <span class="inline-confirm" id="fdStatusChangeConfirm" hidden>처리되었습니다.</span>
         </div>
         <div class="buybar-actions">
           ${statusHint ? `<span class="buybar-unit-hint">${statusHint}</span>` : ''}
@@ -3730,6 +3730,7 @@
 
       currentItem = 'wholesale-product-mylist';
       renderAll();
+      showBulkToast('저장되었습니다.');
     });
   }
 
@@ -4124,6 +4125,7 @@
 
       currentItem = 'wholesale-product-mylist';
       renderAll();
+      showBulkToast('저장되었습니다.');
     });
   }
 
@@ -7465,7 +7467,7 @@
           </div>
         </div>
         <div class="buybar-actions">
-          <span class="inline-confirm" id="memberUsageStatusConfirm" hidden>변경사항이 반영되었습니다.</span>
+          <span class="inline-confirm" id="memberUsageStatusConfirm" hidden>처리되었습니다.</span>
           <button type="button" class="btn-primary" id="memberUsageStatusChangeBtn">변경확인</button>
           <button type="button" class="btn-danger" id="memberWithdrawBtn">탈퇴 처리</button>
         </div>
@@ -8572,6 +8574,7 @@
 
       currentItem = 'retail-product';
       renderAll();
+      showBulkToast('저장되었습니다.');
     });
   }
 
@@ -8833,6 +8836,7 @@
 
       currentItem = 'retail-product';
       renderAll();
+      showBulkToast('저장되었습니다.');
     });
   }
 
@@ -9026,6 +9030,7 @@
       currentConvertRef = null;
       currentItem = 'wholesale-product-mylist';
       renderAll();
+      showBulkToast('저장되었습니다.');
     });
   }
 
@@ -13688,7 +13693,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
         if (pgState.franchiseNotice) pgState.franchiseNotice.page = 1;
         currentItem = 'franchise-notice';
         renderAll();
-        showBulkToast('등록되었습니다.');
+        showBulkToast('저장되었습니다.');
       }
     });
   }

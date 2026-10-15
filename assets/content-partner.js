@@ -1431,7 +1431,7 @@ window.GUIDE_CONTENT['retail-member'] = {
             { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 288 }
           ],
           shotCaption: '09SCM 이용상태 변경 화면 (PC / 모바일)',
-          html: '<p>[변경확인]을 누르면 &quot;변경사항이 반영되었습니다.&quot;가 잠깐 나와요. [이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
+          html: '<p>[변경확인]을 누르면 &quot;처리되었습니다.&quot;가 잠깐 나와요. [이용제한] 회원은 <a href="#retail-order-chat">채팅주문</a> 매칭 화면에서 경고가 함께 나와요.</p>'
         },
         {
           title: '탈퇴 처리 창',

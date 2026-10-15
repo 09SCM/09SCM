@@ -2024,22 +2024,22 @@
       h.status = '운영중';
       if (!h.provisioned) {
         h.provisioned = true;
-        hqStatusMessage = '운영중으로 전환되었고, 09SCM 본사 계정과 소매몰이 생성되었습니다.';
+        hqStatusMessage = '처리되었습니다.';
       } else {
-        hqStatusMessage = '변경사항이 반영되었습니다.';
+        hqStatusMessage = '처리되었습니다.';
       }
       reRenderHq();
     });
     const rejectBtn = document.getElementById('hqRejectBtn');
     if (rejectBtn) rejectBtn.addEventListener('click', () => {
       h.status = '승인불가';
-      hqStatusMessage = '승인불가로 처리되었습니다.';
+      hqStatusMessage = '처리되었습니다.';
       reRenderHq();
     });
     const revokeBtn = document.getElementById('hqRevokeBtn');
     if (revokeBtn) revokeBtn.addEventListener('click', () => {
       h.status = '승인대기';
-      hqStatusMessage = '반려가 철회되어 승인대기로 돌아갔습니다.';
+      hqStatusMessage = '처리되었습니다.';
       reRenderHq();
     });
     const statusChangeBtn = document.getElementById('hqStatusChangeBtn');
@@ -2055,7 +2055,7 @@
       const picked = document.querySelector('input[name="hqStatusRadio"]:checked');
       if (!picked || picked.value === h.status) return;
       h.status = picked.value;
-      hqStatusMessage = '변경사항이 반영되었습니다.';
+      hqStatusMessage = '처리되었습니다.';
       reRenderHq();
     });
 
@@ -3670,7 +3670,7 @@
         noticeSeq += 1;
         NOTICES.push({ id: 'n' + noticeSeq, seq: noticeSeq, title: f.title.trim(), target: f.target, exposed: f.exposed === '노출', author: '0SCM 운영자', date: f.date, views: 0, files: f.files.map(x => ({ ...x })), content: f.content });
         noticeView = 'list'; noticePage = 1;
-        renderContent(); showToast('등록되었습니다.');
+        renderContent(); showToast('저장되었습니다.');
       }
     });
   }
@@ -3904,7 +3904,7 @@
         onOk: () => {
           TERMS[type].push({ ver, regDate: SALES_TODAY + ' ' + new Date().toTimeString().slice(0, 5), effective: f.effective.trim(), regBy: '0SCM 운영자', reason: f.reason.trim(), content: f.content });
           termsView = 'main'; termsPage[type] = 1;
-          renderContent(); showToast('등록되었습니다.');
+          renderContent(); showToast('저장되었습니다.');
         },
       });
     });
