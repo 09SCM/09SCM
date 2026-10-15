@@ -35,31 +35,48 @@ def fit(page, w):
     height = page.evaluate('document.documentElement.scrollHeight')
     page.set_viewport_size({'width': w, 'height': height}); page.wait_for_timeout(300)
 
-def card_clip(page, w, text):
-    """제목 텍스트가 text인 카드·섹션 하나를 잘라낸다"""
-    r = page.evaluate("""(text) => {
-      const h = [...document.querySelectorAll('h2,h3')].find(e => e.textContent.trim() === text);
-      const box = h && (h.closest('.card') || h.closest('.form-section') || h.parentElement);
-      if (!box) return null;
-      box.scrollIntoView({block: 'start'}); window.scrollBy(0, -16);
-      const r = box.getBoundingClientRect();
-      return {x: Math.max(r.left, 0), y: Math.max(r.top, 0), w: r.width, h: r.height};
-    }""", text)
-    page.wait_for_timeout(200)
+def _doc_clip(page, js, arg=None):
+    """js는 [시작요소, 끝요소]를 돌려준다. 문서 좌표 기준으로 두 요소 사이를 세로로 잘라낸다(맨 위로 스크롤한 상태에서 계산)"""
+    page.evaluate("window.scrollTo(0, 0)"); page.wait_for_timeout(150)
+    r = page.evaluate("""([js, arg]) => {
+      const [a, b] = (0, eval)(js)(arg);
+      const box = a.closest('.col-12.card') || a.closest('.card') || a, rb = box.getBoundingClientRect();
+      const r1 = a.getBoundingClientRect(), r2 = b.getBoundingClientRect();
+      const top = Math.max(r1.top - 12, 0);
+      return {x: Math.max(rb.left, 0), y: top, w: rb.width, h: r2.bottom + 8 - top};
+    }""", [js, arg])
     return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']}, full_page=True)
+
+HEAD = "(t) => [...document.querySelectorAll('h2,h3')].find(e => e.textContent.trim() === t)"
+
+def card_clip(page, w, text):
+    """제목이 text인 카드·섹션 하나를 잘라낸다"""
+    return _doc_clip(page, "(t) => { const h = (%s)(t); const box = h.closest('.card') || h.closest('.form-section') || h.parentElement; return [box, box]; }" % HEAD, text)
 
 def between_clip(page, start, end):
     """제목 start부터 제목 end 직전까지 세로로 잘라낸다(같은 카드 안의 연속 영역)"""
-    r = page.evaluate("""([a, b]) => {
-      const hs = [...document.querySelectorAll('h2,h3')];
-      const h1 = hs.find(e => e.textContent.trim() === a), h2 = hs.find(e => e.textContent.trim() === b);
-      h1.scrollIntoView({block: 'start'}); window.scrollBy(0, -100);
-      const r1 = h1.getBoundingClientRect(), r2 = h2.getBoundingClientRect();
-      const box = h1.closest('.card') || h1.parentElement; const rb = box.getBoundingClientRect();
-      return {x: Math.max(rb.left, 0), y: Math.max(r1.top - 12, 0) + window.scrollY, w: rb.width, h: r2.top - r1.top - 4};
-    }""", [start, end])
+    js = "([s, e]) => { const h1 = (%s)(s), h2 = (%s)(e); const prev = h2.closest('.form-section') || h2; const bottom = prev.previousElementSibling || h1; return [h1, bottom]; }" % (HEAD, HEAD)
+    return _doc_clip(page, js, [start, end])
+
+def section_range(page, first, last):
+    """form-section 제목이 first인 섹션부터 last인 섹션까지 (first가 '#card'면 첫 잔여 현황 카드부터)"""
+    js = """([f, l]) => {
+      const secs = [...document.querySelectorAll('section.form-section')];
+      const by = t => secs.find(e => e.textContent.trim().startsWith(t));
+      const a = f === '#card' ? document.querySelector('#contentWrapper .col-6.card') : by(f);
+      return [a, by(l)];
+    }"""
+    return _doc_clip(page, "(arg) => (" + js + ")", [first, last]) if False else _doc_clip(page, js, [first, last])
+
+def popup_clip(page, pad=24):
+    """열려 있는 팝업(.modal-box)을 주변 딤 영역 pad만큼 포함해 잘라낸다(고정 레이어라 현재 화면 좌표 사용)"""
     page.wait_for_timeout(200)
-    return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']}, full_page=True)
+    r = page.evaluate("""(pad) => {
+      const m = [...document.querySelectorAll('.modal-box')].pop(); const r = m.getBoundingClientRect();
+      const x = Math.max(r.left - pad, 0), y = Math.max(r.top - pad, 0);
+      return {x, y, w: Math.min(r.right + pad, innerWidth) - x, h: Math.min(r.bottom + pad, innerHeight) - y};
+    }""", pad)
+    return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']})
 
 def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
     for label, w, h in (('pc', 1440, 1500), ('mobile', 440, 1200)):
@@ -73,8 +90,12 @@ def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
             png = card_clip(page, w, clip_text)
         elif mode == 'between':
             png = between_clip(page, clip_text[0], clip_text[1])
-        elif mode == 'sel':
-            png = page.locator(clip_text).first.screenshot()
+        elif mode == 'sections':
+            png = section_range(page, clip_text[0], clip_text[1])
+        elif mode == 'popup':
+            png = popup_clip(page)
+        elif mode == 'card':
+            png = _doc_clip(page, "() => { const c = document.querySelector('#contentWrapper .card'); return [c, c]; }")
         else:
             png = page.screenshot()
         save(png, '%s-%s' % (name, label))
@@ -111,29 +132,29 @@ def focus_title(text):
 STEPS = [
     # 공지사항
     ('sys-notice-list', 'ga02', '공지사항', None, 'view', None),
-    ('sys-notice-tab', 'ga02', '공지사항', click('[data-notice-tab="hq"]'), 'view', None),
-    ('sys-notice-detail', 'ga02', '공지사항', click('[data-notice-view]'), 'view', None),
+    ('sys-notice-tab', 'ga02', '공지사항', click('[data-notice-tab="hq"]'), 'card', None),
+    ('sys-notice-detail', 'ga02', '공지사항', click('[data-notice-view]'), 'card', None),
     # 이용료관리
     ('sys-fee-main', 'ga02', '이용료관리', None, 'view', None),
-    ('sys-fee-card', 'ga01', '이용료관리', None, 'view', None),
+    ('sys-fee-card', 'ga01', '이용료관리', None, 'between', ('결제 정보', '결제 내역')),
     ('sys-fee-history', 'ga02', '이용료관리', None, 'clip', '결제 내역'),
     # 회원정보
     ('sys-member-main', 'ga02', '회원정보', None, 'view', None),
-    ('sys-member-phone', 'ga02', '회원정보', seq(fill('#memberPhone', '010-9999-0000'), click('#memberPhoneAuthSendBtn')), 'view', None),
-    ('sys-member-pw', 'ga02', '회원정보', seq(fill('#memberNewPw', 'b1234'), fill('#memberNewPwConfirm', 'b12345'), click('#savePwBtn'), focus_title('비밀번호 변경')), 'view', None),
-    ('sys-member-account', 'ga02', '회원정보', seq(clear('#bankAccountNumber'), clear('#bankAccountHolder'), click('#saveBankAccountBtn'), focus_title('계좌정보')), 'view', None),
-    ('sys-member-payapp', 'ga01', '회원정보', focus_title('PayApp 연동 정보'), 'view', None),
-    ('sys-member-terms', 'ga02', '회원정보', click('[data-terms-view]', 2), 'sel', '#memberTermsViewRoot .modal-box'),
+    ('sys-member-phone', 'ga02', '회원정보', seq(fill('#memberPhone', '010-9999-0000'), click('#memberPhoneAuthSendBtn')), 'between', ('회원 정보', '비밀번호 변경')),
+    ('sys-member-pw', 'ga02', '회원정보', seq(fill('#memberNewPw', 'b1234'), fill('#memberNewPwConfirm', 'b12345'), click('#savePwBtn')), 'between', ('비밀번호 변경', '사업자 정보')),
     ('sys-member-corp', 'bonsa', '회원정보', None, 'between', ('사업자 정보', '계좌정보')),
+    ('sys-member-account', 'ga02', '회원정보', seq(clear('#bankAccountNumber'), clear('#bankAccountHolder'), click('#saveBankAccountBtn')), 'between', ('계좌정보', 'PayApp 연동 정보')),
+    ('sys-member-payapp', 'ga01', '회원정보', None, 'between', ('PayApp 연동 정보', '이용약관 동의')),
+    ('sys-member-terms', 'ga02', '회원정보', click('[data-terms-view]', 2), 'popup', None),
     # 알림설정
     ('sys-noti-main', 'bonsa', '알림설정', None, 'view', None),
-    ('sys-noti-low', 'ga03', '알림설정', click('#notiMasterToggle'), 'view', None),
-    ('sys-noti-history', 'bonsa', '알림설정', seq(focus_title('발송내역')), 'view', None),
+    ('sys-noti-low', 'ga03', '알림설정', click('#notiMasterToggle'), 'sections', ('#card', '알림톡 사용하기')),
+    ('sys-noti-history', 'bonsa', '알림설정', None, 'sections', ('발송내역', '발송내역')),
     ('sys-noti-system', 'bonsa', '알림설정', click('[data-noti-tab="wholesale"]'), 'view', None),
-    ('sys-noti-push', 'bonsa', '알림설정', seq(click('[data-noti-tab="wholesale"]'), click_text('허용 방법 보기')), 'view', None),
-    ('sys-noti-category', 'bonsa', '알림설정', seq(click('[data-noti-tab="wholesale"]'), click('[data-noti-category-toggle]', 2), focus_text('소매 알림')), 'view', None),
-    ('sys-center', 'bonsa', '알림설정', click('#notificationCenterBtn'), 'view', None),
-    ('sys-center-empty', 'bonsa', '알림설정', seq(click('#notificationCenterBtn'), click_text('모두 확인')), 'view', None),
+    ('sys-noti-push', 'bonsa', '알림설정', seq(click('[data-noti-tab="wholesale"]'), click_text('허용 방법 보기')), 'popup', None),
+    ('sys-noti-category', 'bonsa', '알림설정', seq(click('[data-noti-tab="wholesale"]'), click('[data-noti-category-toggle]', 2)), 'sections', ('도매판매 알림', '시스템 알림')),
+    ('sys-center', 'bonsa', '알림설정', click('#notificationCenterBtn'), 'popup', None),
+    ('sys-center-empty', 'bonsa', '알림설정', seq(click('#notificationCenterBtn'), click_text('모두 확인')), 'popup', None),
 ]
 
 if __name__ == '__main__':
