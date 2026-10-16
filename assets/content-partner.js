@@ -1726,29 +1726,26 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: '관리자접속을 눌러요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-list-remote-pc.webp', alt: '09SCM 관리자접속 안내 팝업 PC 화면', ratio: 936 / 396 },
-            { device: 'mobile', src: '../assets/img/partner/fr-list-remote-mobile.webp', alt: '09SCM 관리자접속 안내 팝업 모바일 화면', ratio: 880 / 396 }
+            { device: 'pc', src: '../assets/img/partner/fr-list-remote-pc.webp', alt: '09SCM 관리자접속 안내 팝업 PC 화면', ratio: 936 / 396 }
           ],
-          shotCaption: '09SCM 관리자접속 안내 팝업 (PC / 모바일)',
+          shotCaption: '09SCM 관리자접속 안내 팝업',
           html:
-            '<p>안내 팝업에서 [접속]을 누르면 새 창에서 해당 가맹점의 관리자 화면이 열려요. [취소]를 누르면 접속하지 않아요. 접속 이력은 남지 않아요.</p>' +
+            '<p>안내 팝업에서 [접속]을 누르면 새 창에서 해당 가맹점의 관리자 화면이 열려요. [취소]를 누르면 접속하지 않아요.</p>' +
             '<p>이용불가 가맹점은 로그인이 막혀 있어서 [관리자접속]을 누를 수 없어요.</p>'
         },
         {
           title: '가맹점을 삭제해요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-list-delete-pc.webp', alt: '09SCM 가맹점 삭제 확인 팝업 PC 화면', ratio: 936 / 442 },
-            { device: 'mobile', src: '../assets/img/partner/fr-list-delete-mobile.webp', alt: '09SCM 가맹점 삭제 확인 팝업 모바일 화면', ratio: 880 / 442 }
+            { device: 'pc', src: '../assets/img/partner/fr-list-delete-pc.webp', alt: '09SCM 가맹점 삭제 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
-          shotCaption: '09SCM 가맹점 삭제 확인 팝업 (PC / 모바일)',
+          shotCaption: '09SCM 가맹점 삭제 확인 팝업',
           html:
             '<p>이용대기·이용불가 가맹점만 삭제할 수 있어요. 삭제하면 복구할 수 없어요.</p>' +
             '<ul>' +
               '<li>해당 가맹점의 관리자 로그인과 소매몰이 종료돼요.</li>' +
               '<li>삭제한 아이디와 소매몰 주소는 다시 사용할 수 없어요.</li>' +
-              '<li>이용료 결제내역은 이력으로 남아요.</li>' +
-            '</ul>' +
-            '<p>여러 가맹점을 한꺼번에 삭제하는 기능은 없어요.</p>'
+              '<li>삭제된 가맹점의 이용료 결제내역과 매출 정보도 확인할 수 있어요.</li>' +
+            '</ul>'
         }
       ],
       trouble:
@@ -1767,21 +1764,19 @@ window.GUIDE_CONTENT['franchise-list'] = {
       shotCaption: '09SCM 가맹점 상세 화면 (PC / 모바일)',
       overview:
         '<p>가맹점 상세 화면 아래 고정 바에서 이용상태와 도매공급권한을 바꿔요. 이용상태는 정해진 순서로만 바꿀 수 있어요.</p>' +
-        '<div class="table-wrap"><table><thead><tr><th>현재 이용상태</th><th>누를 수 있는 버튼</th><th>바뀌는 이용상태</th></tr></thead><tbody>' +
-          '<tr><td rowspan="2">이용대기</td><td>[이용승인]</td><td>이용승인</td></tr>' +
-          '<tr><td>[이용불가]</td><td>이용불가</td></tr>' +
-          '<tr><td>이용승인</td><td>[이용제한]</td><td>이용제한</td></tr>' +
-          '<tr><td rowspan="2">이용제한</td><td>[이용승인]</td><td>이용승인</td></tr>' +
-          '<tr><td>[이용불가]</td><td>이용불가</td></tr>' +
-          '<tr><td>이용불가</td><td>[이용불가 해제]</td><td>이용대기</td></tr>' +
+        '<div class="table-wrap"><table><thead><tr><th>이용상태</th><th>누를 수 있는 버튼</th></tr></thead><tbody>' +
+          '<tr><td>이용대기</td><td>[이용승인]을 누르면 이용승인, [이용불가]를 누르면 이용불가</td></tr>' +
+          '<tr><td>이용승인</td><td>[이용제한]을 누르면 이용제한</td></tr>' +
+          '<tr><td>이용제한</td><td>[이용승인]을 누르면 이용승인, [이용불가]를 누르면 이용불가</td></tr>' +
+          '<tr><td>이용불가</td><td>[이용불가 해제]를 누르면 이용대기</td></tr>' +
         '</tbody></table></div>' +
         '<p>표에 없는 변경은 할 수 없어요. 이용승인에서 바로 이용불가로 바꿀 수 없고, 이용제한을 거쳐야 해요.</p>' +
         '<h3>이용상태별 이용 범위</h3>' +
-        '<div class="table-wrap"><table><thead><tr><th>이용상태</th><th>로그인</th><th>가맹점이 할 수 있는 일</th></tr></thead><tbody>' +
-          '<tr><td>이용대기</td><td>가능</td><td>시스템관리만 사용 (PayApp 연동, 정기결제 카드 등록 등 준비), 소매몰은 접근제한 화면</td></tr>' +
-          '<tr><td>이용승인</td><td>가능</td><td>모든 메뉴를 정상 사용</td></tr>' +
-          '<tr><td>이용제한</td><td>가능</td><td>신규 주문·상품 등록은 막히고, 진행 중인 주문 처리는 계속 가능</td></tr>' +
-          '<tr><td>이용불가</td><td>불가</td><td>로그인할 수 없음</td></tr>' +
+        '<div class="table-wrap"><table><thead><tr><th>이용상태</th><th>가맹점 이용 범위</th></tr></thead><tbody>' +
+          '<tr><td>이용대기</td><td>로그인 가능, 시스템관리만 사용 (PayApp 연동, 정기결제 카드 등록 등 준비), 소매몰은 접근제한 화면</td></tr>' +
+          '<tr><td>이용승인</td><td>로그인 가능, 모든 메뉴를 정상 사용</td></tr>' +
+          '<tr><td>이용제한</td><td>로그인 가능, 신규 주문·상품 등록은 막히고 진행 중인 주문 처리는 계속 가능</td></tr>' +
+          '<tr><td>이용불가</td><td>로그인 불가</td></tr>' +
         '</tbody></table></div>',
       steps:
         '<h3>상세 화면 구성</h3>' +
@@ -1803,7 +1798,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           '<li>[이용승인]과 [이용불가 해제]는 확인 창 없이 바로 처리돼요.</li>' +
           '<li>처리되면 이용상태 표시와 하단 버튼이 바뀐 상태에 맞게 달라져요.</li>' +
         '</ol>' +
-        '<p>변경한 이유는 <b>내부메모</b> 탭에 직접 남겨두세요. 이용상태를 바꿀 때 사유를 따로 입력하는 항목은 없어요.</p>' +
+        '<p>가맹점과 관련해 처리 내용을 남겨야 하면 <b>내부메모</b> 탭에 입력해주세요.</p>' +
 
         '<h3>도매공급권한 바꾸기</h3>' +
         '<p>도매공급권한은 이용상태와 따로 바꿀 수 있어요. 보유·미보유를 고르고 [변경]을 눌러요. 선택을 바꾸기 전에는 [변경]을 누를 수 없어요.</p>' +
@@ -1814,78 +1809,57 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '</ul>',
       cases: [
         {
-          title: '이용대기이고 PayApp 연동 전이에요',
+          title: '이용대기 가맹점은 이렇게 보여요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-wait-unlinked-pc.webp', alt: '09SCM 이용대기 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-wait-unlinked-mobile.webp', alt: '09SCM 이용대기 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+            { device: 'pc', src: '../assets/img/partner/fr-st-wait-pc.webp', alt: '09SCM 이용대기 가맹점 PC 화면', ratio: 2880 / 1520 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용대기 · PayApp 미연동 (PC / 모바일)',
+          shotCaption: '이용대기 가맹점 화면 (PC / 모바일)',
           html:
-            '<p>[이용승인]이 흐리게 표시되어 누를 수 없어요. 가맹점이 PayApp 연동을 마치면 눌러요.</p>' +
-            '<p>[이용불가]와 [삭제]는 연동 여부와 상관없이 사용할 수 있어요.</p>'
+            '<p>로그인하면 시스템관리만 보여요. 회원정보에서 PayApp 연동을 하고, 이용료관리에서 정기결제 카드를 등록하며 이용 시작을 준비해요. 소매몰은 접근제한 화면이 보여요.</p>' +
+            '<p>본사는 PayApp 연동이 끝나기 전에는 [이용승인]을 누를 수 없어요. [이용불가]와 [삭제]는 연동 여부와 상관없이 쓸 수 있어요.</p>'
         },
         {
-          title: '이용대기이고 PayApp 연동이 끝났어요',
+          title: '이용승인 가맹점은 이렇게 보여요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-wait-linked-pc.webp', alt: '09SCM PayApp 연동 완료된 이용대기 가맹점 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-wait-linked-mobile.webp', alt: '09SCM PayApp 연동 완료된 이용대기 가맹점 모바일 화면', ratio: 880 / 2000 }
+            { device: 'pc', src: '../assets/img/partner/fr-st-approved-user-pc.webp', alt: '09SCM 이용승인 가맹점 PC 화면', ratio: 2880 / 1520 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-approved-user-mobile.webp', alt: '09SCM 이용승인 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용대기 · PayApp 연동완료 (PC / 모바일)',
+          shotCaption: '이용승인 가맹점 화면 (PC / 모바일)',
           html:
-            '<p>[이용승인]을 누를 수 있어요. 누르면 확인 창 없이 바로 이용승인으로 바뀌고, 가맹점은 모든 메뉴를 사용할 수 있어요.</p>'
-        },
-        {
-          title: '이용승인 가맹점이에요',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-approved-pc.webp', alt: '09SCM 이용승인 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-approved-mobile.webp', alt: '09SCM 이용승인 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
-          ],
-          shotCaption: '이용승인 (PC / 모바일)',
-          html:
-            '<p>이용승인 상태에서는 [이용제한]만 누를 수 있어요.</p>' +
+            '<p>대시보드부터 모든 메뉴를 정상적으로 사용할 수 있고, 소매몰도 정상으로 열려요. 본사는 [이용제한]만 누를 수 있어요.</p>' +
             '<p>결제 실패가 생겨도 이용상태는 자동으로 바뀌지 않아요. 본사가 이용료관리에서 결제내역을 확인한 뒤 직접 처리해요.</p>'
         },
         {
           title: '이용제한으로 바꿔요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-confirm-pc.webp', alt: '09SCM 이용제한 변경 확인 팝업 PC 화면', ratio: 936 / 396 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-confirm-mobile.webp', alt: '09SCM 이용제한 변경 확인 팝업 모바일 화면', ratio: 880 / 442 }
+            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-confirm-pc.webp', alt: '09SCM 이용제한 변경 확인 팝업 PC 화면', ratio: 936 / 396 }
           ],
-          shotCaption: '이용제한 변경 확인 팝업 (PC / 모바일)',
+          shotCaption: '이용제한 변경 확인 팝업',
           html:
             '<p>[이용제한]을 누르면 확인 창이 열려요. [변경]을 누르면 신규 도매 주문, 도매상품 등록, 소매상품 등록이 막혀요. 이미 진행 중인 주문 처리는 계속할 수 있어요.</p>'
         },
         {
-          title: '이용제한이고 진행 중인 주문이 있어요',
+          title: '이용제한 가맹점은 이렇게 보여요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-busy-pc.webp', alt: '09SCM 진행중 주문이 있는 이용제한 가맹점 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-busy-mobile.webp', alt: '09SCM 진행중 주문이 있는 이용제한 가맹점 모바일 화면', ratio: 880 / 2000 }
+            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점 PC 화면', ratio: 2880 / 1520 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용제한 · 진행중 주문 있음 (PC / 모바일)',
+          shotCaption: '이용제한 가맹점 화면 (PC / 모바일)',
           html:
-            '<p>하단 바에 진행중 주문 건수가 표시되고, [이용불가]는 누를 수 없어요. [이용승인]으로는 언제든 되돌릴 수 있어요.</p>' +
-            '<p>진행 중인 주문은 도매 주문이 배송확정되기 전, 소매 주문이 픽업·배달완료되기 전인 주문이에요. 시스템에서 따로 처리해주지 않아서, 가맹점과 협의해 주문을 마무리한 뒤 이용불가로 바꿔요.</p>'
+            '<p>모든 화면 맨 위에 이용제한 안내 배너가 계속 보여요. 메뉴는 모두 보이지만 신규 주문과 상품 등록은 할 수 없고, 진행 중인 주문은 계속 처리할 수 있어요.</p>' +
+            '<p>본사는 [이용승인]으로 언제든 되돌릴 수 있어요. [이용불가]는 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수가 표시돼요.</p>'
         },
         {
-          title: '이용제한이고 진행 중인 주문이 없어요',
+          title: '이용불가 가맹점은 로그인할 수 없어요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-free-pc.webp', alt: '09SCM 진행중 주문이 없는 이용제한 가맹점 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-free-mobile.webp', alt: '09SCM 진행중 주문이 없는 이용제한 가맹점 모바일 화면', ratio: 880 / 2000 }
+            { device: 'pc', src: '../assets/img/partner/fr-st-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 로그인 PC 화면', ratio: 2880 / 1520 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 로그인 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용제한 · 진행중 주문 없음 (PC / 모바일)',
+          shotCaption: '이용불가 가맹점 로그인 화면 (PC / 모바일)',
           html:
-            '<p>[이용승인]과 [이용불가]를 모두 누를 수 있어요. [이용불가]는 확인 창에서 [변경]을 누르면 해당 계정이 로그인할 수 없게 돼요.</p>'
-        },
-        {
-          title: '이용불가 가맹점이에요',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
-          ],
-          shotCaption: '이용불가 (PC / 모바일)',
-          html:
-            '<p>[이용불가 해제]와 [삭제]를 누를 수 있어요. [이용불가 해제]를 누르면 이용대기로 돌아가고, 이후 이용승인은 다시 본사 검토를 거쳐요.</p>' +
-            '<p>가입 반려를 철회할 때와 계약이 끝난 가맹점을 다시 받을 때 모두 같은 방법이에요. [관리자접속]은 누를 수 없어요.</p>'
+            '<p>아이디와 비밀번호를 맞게 입력해도 로그인이 막히고 본사로 문의하라는 안내가 나와요. 본사의 [관리자접속]도 누를 수 없어요.</p>' +
+            '<p>본사는 [이용불가 해제]로 이용대기로 되돌릴 수 있어요. 가입 반려를 철회할 때와 계약이 끝난 가맹점을 다시 받을 때 모두 같은 방법이고, 이후 이용승인은 다시 본사 검토를 거쳐요.</p>'
         }
       ],
       trouble:
