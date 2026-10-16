@@ -31,7 +31,7 @@ window.GUIDE_NAV = [
       { id: 'wholesale-sales', label: '도매매출조회' },
       { id: 'wholesale-settings', label: '도매설정' }
     ]},
-    { id: 'franchise', label: '가맹점관리', children: [
+    { id: 'franchise', label: '가맹점관리', only: '본사 계정 전용 화면입니다. 가맹점 계정에는 이 메뉴가 보이지 않아요.', children: [
       { id: 'franchise-list', label: '가맹점 목록' },
       { id: 'franchise-fee', label: '이용료관리' },
       { id: 'franchise-sales', label: '통합매출조회' },
