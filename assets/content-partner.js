@@ -1513,7 +1513,7 @@ window.GUIDE_CONTENT['retail-sales'] = {
     '<p>[엑셀 다운로드]를 누르면 조회 중인 내용을 엑셀에서 열 수 있는 CSV 파일로 저장해요.</p>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
       '<tr><td>파일명</td><td>소매매출조회_시작일-종료일.csv (예: 소매매출조회_261001-261017.csv)</td></tr>' +
-      '<tr><td>조회기간</td><td>선택한 시작일 ~ 종료일</td></tr>' +
+      '<tr><td>조회 조건</td><td>조회기간</td></tr>' +
       '<tr><td>매출 요약</td><td>결제총액, 취소·환불액, 매출액</td></tr>' +
       '<tr><td>매출 추이</td><td>기간, 총주문건수, 총결제액, 카드결제 주문건수, 카드결제액, 현장결제·계좌이체 주문건수, 현장결제·계좌이체 결제액, 취소환불건수, 취소환불액, 매출액 (선택한 일별 또는 월별 전체 기간)</td></tr>' +
     '</tbody></table></div>',
@@ -2153,7 +2153,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
       '<tr><td>결제일시</td><td>결제를 시도한 날짜와 시간</td></tr>' +
       '<tr><td>아이디</td><td>가맹점이 로그인할 때 쓰는 아이디</td></tr>' +
       '<tr><td>상호명</td><td>사업자 정보의 상호명</td></tr>' +
-      '<tr><td>결제수단</td><td>가맹점이 등록한 결제수단 (신용카드 또는 휴대전화)</td></tr>' +
+      '<tr><td>결제수단</td><td>결제에 사용한 수단</td></tr>' +
       '<tr><td>납부상태</td><td>결제완료 / 결제실패 / 수기완납</td></tr>' +
       '<tr><td>결제금액</td><td>해당 회차 결제금액</td></tr>' +
       '<tr><td>처리일시</td><td>결제완료는 결제일시와 동일, 수기완납은 수납처리한 날짜 (결제실패는 빈칸)</td></tr>' +
@@ -2227,7 +2227,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     }
   ],
   trouble:
-    '<h3>가맹점 카드 변경·해지 버튼이 없어요</h3>' +
+    '<h3>카드를 바꾸거나 정기결제를 해지하고 싶어요</h3>' +
     '<p>이 화면에서는 바꾸거나 해지할 수 없어요. 정기결제는 본사의 PayApp 계정에서 관리해요.</p>'
 };
 
@@ -2258,8 +2258,8 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         '<h3>매출 요약</h3>' +
         '<p>[본사], [가맹점] 중에서 골라 볼 수 있어요. [본사]는 본사 계정의 소매 주문과 도매 공급 주문 매출, [가맹점]은 소속 가맹점 매출을 모두 합한 금액이에요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>결제총액</td><td>기간 안에 결제가 완료된 주문의 결제금액 합계</td></tr>' +
-          '<tr><td>취소·환불액</td><td>기간 안에 취소·반품이 승인된 주문의 환불금액 합계</td></tr>' +
+          '<tr><td>결제총액</td><td>기간 안에 결제가 완료된 주문의 총 결제금액 합계</td></tr>' +
+          '<tr><td>취소·환불액</td><td>기간 안에 취소·반품이 승인된 주문의 총 환불금액 합계 (결제대기 상태에서 취소된 주문은 환불이 없어 제외)</td></tr>' +
           '<tr><td>매출액</td><td>결제총액 - 취소·환불액</td></tr>' +
           '<tr><td>이용료 수납액</td><td>정기결제로 결제된 이용료와 수기완납 처리한 이용료의 합계 (처리일시 기준, 매출액에 미포함, [본사]에서만 표시)</td></tr>' +
         '</tbody></table></div>' +
@@ -2433,7 +2433,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
       steps:
         '<h3>공지 찾기</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>노출여부</td><td>전체 / 노출 / 미노출 구분</td></tr>' +
+          '<tr><td>노출여부</td><td>전체 / 노출 / 미노출</td></tr>' +
           '<tr><td>검색</td><td>제목으로 검색 (영문 대소문자 구분 없음)</td></tr>' +
         '</tbody></table></div>' +
         '<p>목록은 등록일이 최근인 공지부터 한 페이지에 20건씩 보여줘요.</p>' +
@@ -2441,7 +2441,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         '<h3>목록 항목</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>체크박스</td><td>일괄삭제할 공지 선택</td></tr>' +
-          '<tr><td>번호</td><td>목록 순번</td></tr>' +
+          '<tr><td>번호</td><td>공지 순번 (최신 공지가 가장 큰 번호)</td></tr>' +
           '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘으로 표시)</td></tr>' +
           '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
           '<tr><td>등록일</td><td>공지 등록일</td></tr>' +
@@ -2485,8 +2485,8 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         }
       ],
       trouble:
-        '<h3>올린 공지가 가맹점에게 보이지 않는다고 해요</h3>' +
-        '<p>공지의 노출여부가 [미노출]인지 확인해 주세요. 미노출 공지는 가맹점의 공지 목록과 대시보드에 나오지 않아요.</p>' +
+        '<h3>올린 공지가 가맹점에게 보이지 않아요</h3>' +
+        '<p>노출여부가 [미노출]인 공지는 가맹점의 공지 목록과 대시보드에 나오지 않아요.</p>' +
         '<h3>조회수가 오르지 않아요</h3>' +
         '<p>조회수는 가맹점이 공지 상세를 열 때만 올라요. 본사 계정이 직접 열어본 건 집계하지 않아요.</p>' +
         '<h3>09SCM이 올린 공지가 이 목록에 없어요</h3>' +
@@ -2563,14 +2563,15 @@ window.GUIDE_CONTENT['franchise-notice'] = {
       steps:
         '<h3>화면 구성</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>← 공지사항으로</td><td>공지 목록 이동</td></tr>' +
           '<tr><td>제목</td><td>공지 제목</td></tr>' +
           '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
           '<tr><td>등록일</td><td>공지 등록일</td></tr>' +
           '<tr><td>조회수</td><td>가맹점이 공지 상세를 열어본 횟수</td></tr>' +
           '<tr><td>첨부파일</td><td>첨부된 파일 이름과 용량 (누르면 내려받기, 없으면 &quot;첨부파일 없음&quot;)</td></tr>' +
           '<tr><td>상세정보</td><td>공지 내용</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>하단 바의 [수정]을 누르면 수정 화면으로, [삭제]를 누르면 삭제 확인 후 목록으로 이동해요.</p>'
+          '<tr><td>[수정], [삭제] (하단 바)</td><td>공지 수정 화면 이동 / 공지 삭제</td></tr>' +
+        '</tbody></table></div>'
     }
   ]
 };
@@ -2586,25 +2587,25 @@ window.GUIDE_CONTENT['system-notice'] = {
       ],
       shotCaption: '09SCM 공지사항 화면 (PC / 모바일)',
       overview:
-        '<p>09SCM과 소속 본사가 올린 공지를 한곳에서 확인하는 화면이에요. 보기만 할 수 있고, 공지를 쓰거나 고치는 곳은 아니에요.</p>' +
+        '<p>09SCM과 소속 본사가 올린 공지를 한곳에서 확인하는 화면이에요.</p>' +
         '<ul>' +
-          '<li>목록은 최신 공지부터 20건씩 보여줘요.</li>' +
           '<li>이용대기 상태의 가맹점도 공지를 볼 수 있어요.</li>' +
           '<li>본사가 올린 공지는 소속 가맹점 모두에게 보여요.</li>' +
         '</ul>',
       steps:
         '<h3>공지 찾기</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>작성자</td><td>전체 / 09SCM / 우리본사 구분</td></tr>' +
+          '<tr><td>작성자</td><td>전체 / 09SCM / 우리본사</td></tr>' +
           '<tr><td>검색</td><td>제목으로 검색 (영문 대소문자 구분 없음)</td></tr>' +
         '</tbody></table></div>' +
+        '<p>목록은 등록일이 최근인 공지부터 한 페이지에 20건씩 보여줘요.</p>' +
 
         '<h3>목록 항목</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>번호</td><td>공지 순번 (최신 공지가 가장 큰 번호)</td></tr>' +
           '<tr><td>작성자</td><td>공지를 올린 곳 (09SCM 또는 우리본사)</td></tr>' +
           '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘으로 표시)</td></tr>' +
-          '<tr><td>등록일</td><td>공지를 올린 날짜</td></tr>' +
+          '<tr><td>등록일</td><td>공지 등록일</td></tr>' +
           '<tr><td>관리</td><td>[상세보기] 버튼</td></tr>' +
         '</tbody></table></div>',
       cases: [
@@ -2646,13 +2647,13 @@ window.GUIDE_CONTENT['system-notice'] = {
       steps:
         '<h3>화면 구성</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>← 공지사항으로</td><td>공지 목록 이동</td></tr>' +
           '<tr><td>제목</td><td>공지 제목</td></tr>' +
           '<tr><td>작성자</td><td>공지를 올린 곳 (09SCM 또는 우리본사)</td></tr>' +
-          '<tr><td>등록일</td><td>공지를 올린 날짜</td></tr>' +
-          '<tr><td>첨부파일</td><td>첨부된 파일 이름과 용량 (누르면 내려받기, 첨부가 있는 공지만 표시)</td></tr>' +
+          '<tr><td>등록일</td><td>공지 등록일</td></tr>' +
+          '<tr><td>첨부파일</td><td>첨부된 파일 이름과 용량 (누르면 내려받기, 없으면 &quot;첨부파일 없음&quot;)</td></tr>' +
           '<tr><td>내용</td><td>공지 내용</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>[공지사항으로]를 누르면 보던 목록으로 돌아가요.</p>'
+        '</tbody></table></div>'
     }
   ]
 };
@@ -2690,17 +2691,17 @@ window.GUIDE_CONTENT['system-fee'] = {
     '<p>이 정기결제는 소매몰·도매 카드결제에 쓰는 PayApp 연동(회원정보)과는 별개예요.</p>' +
 
     '<h3>결제 내역</h3>' +
-    '<p>최신 결제부터 보여줘요.</p>' +
+    '<p>결제일시가 최근인 건부터 한 페이지에 20건씩 보여줘요.</p>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
       '<tr><td>결제일시</td><td>결제를 시도한 날짜와 시간</td></tr>' +
       '<tr><td>결제수단</td><td>결제에 사용한 수단</td></tr>' +
       '<tr><td>납부상태</td><td>결제완료 / 결제실패 / 수기완납</td></tr>' +
       '<tr><td>결제금액</td><td>해당 회차 결제금액</td></tr>' +
     '</tbody></table></div>' +
-    '<div class="table-wrap"><table><thead><tr><th>납부상태</th><th>의미</th></tr></thead><tbody>' +
-      '<tr><td>결제완료</td><td>정기결제가 정상적으로 처리됨</td></tr>' +
-      '<tr><td>결제실패</td><td>정기결제가 처리되지 않음</td></tr>' +
-      '<tr><td>수기완납</td><td>본사가 이용료를 직접 수납하고 완납으로 처리함</td></tr>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>[결제완료]</td><td>정기결제가 정상 처리된 상태</td></tr>' +
+      '<tr><td>[결제실패]</td><td>정기결제가 실패해 아직 처리되지 않은 상태</td></tr>' +
+      '<tr><td>[수기완납]</td><td>결제실패 건을 본사가 직접 수납해 완납으로 처리한 상태</td></tr>' +
     '</tbody></table></div>',
   cases: [
     {
