@@ -2079,6 +2079,15 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shotCaption: '이용불가 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용불가 해제]와 [삭제]가 보여요. [관리자접속]은 누를 수 없어요. [이용불가 해제]를 누르면 이용대기로 돌아가지만, 품절·미노출로 바뀐 상품은 자동으로 되돌아오지 않아요. 가맹점이 상품별로 직접 바꿔야 해요.</p>'
+        },
+        {
+          title: '도매공급권한을 회수해요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-st-supply-revoke-confirm-pc.webp', alt: '09SCM 도매공급권한 회수 확인 팝업 PC 화면', ratio: 936 / 442 }
+          ],
+          shotCaption: '도매공급권한 회수 확인 팝업',
+          html:
+            '<p>미보유를 고르고 [변경]을 누르면 확인 창이 열려요. [변경]을 누르면 도매공급 메뉴가 막히고, 가맹점이 등록한 도매상품이 모두 품절·미노출로 바뀌어요. 소매정보는 그대로 유지돼요.</p>'
         }
       ],
       trouble:
