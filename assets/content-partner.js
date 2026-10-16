@@ -2364,11 +2364,11 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         { device: 'pc', src: '../assets/img/partner/frm-notice-list-pc.webp', alt: '09SCM 가맹점관리 공지사항 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/frm-notice-list-mobile.webp', alt: '09SCM 가맹점관리 공지사항 모바일 화면', ratio: 880 / 2400 }
       ],
-      shotCaption: '09SCM 공지사항 관리 화면 (PC / 모바일)',
+      shotCaption: '09SCM 공지사항 화면 (PC / 모바일)',
       overview:
-        '<p>본사가 가맹점에게 알리는 공지(우리본사 공지)를 올리고 관리하는 화면이에요. 등록, 수정, 삭제를 할 수 있어요.</p>' +
+        '<p>본사가 가맹점에게 알리는 공지(우리본사 공지)를 올리고 관리하는 화면이에요. 공지 등록, 수정, 삭제를 할 수 있어요.</p>' +
         '<ul>' +
-          '<li>올린 공지는 소속 가맹점 전체에게 보여요. 가맹점을 골라서 알릴 수는 없어요.</li>' +
+          '<li>올린 공지는 소속 가맹점 전체에게 보여요.</li>' +
           '<li>노출 중인 공지뿐 아니라 미노출 공지도 이 목록에 모두 보여요.</li>' +
           '<li>가맹점은 시스템관리 &gt; 공지사항과 대시보드에서 공지를 확인해요.</li>' +
         '</ul>',
@@ -2376,20 +2376,19 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         '<h3>공지 찾기</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>노출여부</td><td>전체 / 노출 / 미노출 구분</td></tr>' +
-          '<tr><td>제목 검색</td><td>입력한 단어가 제목에 들어간 공지만 보기 ([검색]을 누르거나 Enter)</td></tr>' +
-          '<tr><td>정렬</td><td>등록일 최신순 (등록일이 같으면 나중에 올린 공지가 먼저)</td></tr>' +
+          '<tr><td>검색</td><td>제목으로 검색 (영문 대소문자 구분 없음)</td></tr>' +
         '</tbody></table></div>' +
-        '<p>목록은 한 페이지에 20건씩 보여줘요. 목록 위에 전체 건수와 선택한 건수가 표시돼요. 공지가 없으면 &quot;등록된 공지사항이 없습니다.&quot;, 찾는 결과가 없으면 &quot;검색 결과가 없습니다.&quot;가 나와요.</p>' +
+        '<p>목록은 등록일이 최근인 공지부터 한 페이지에 20건씩 보여줘요.</p>' +
 
-        '<h3>공지 목록</h3>' +
+        '<h3>목록 항목</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>체크박스</td><td>일괄삭제할 공지 선택</td></tr>' +
           '<tr><td>번호</td><td>목록 순번</td></tr>' +
           '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘으로 표시)</td></tr>' +
           '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
           '<tr><td>등록일</td><td>공지 등록일</td></tr>' +
-          '<tr><td>조회수</td><td>가맹점이 공지를 열어본 횟수</td></tr>' +
-          '<tr><td>관리</td><td>[상세보기] [수정] [삭제]</td></tr>' +
+          '<tr><td>조회수</td><td>가맹점이 공지 상세를 열어본 횟수</td></tr>' +
+          '<tr><td>관리</td><td>[상세보기], [수정], [삭제] 버튼</td></tr>' +
         '</tbody></table></div>' +
         '<p>[+ 공지사항등록]을 누르면 공지 등록 화면으로 이동해요.</p>',
       cases: [
@@ -2400,46 +2399,38 @@ window.GUIDE_CONTENT['franchise-notice'] = {
             { device: 'mobile', src: '../assets/img/partner/frm-notice-filter-mobile.webp', alt: '09SCM 미노출 공지 모바일 화면', ratio: 880 / 2400 }
           ],
           shotCaption: '09SCM 미노출 공지 화면 (PC / 모바일)',
-          html: '<p>노출여부를 [미노출]로 고르면 가맹점에 보이지 않는 공지만 모아서 볼 수 있어요. 공지를 미리 써 두었다가 나중에 노출로 바꾸고 싶을 때 쓰면 편해요.</p>'
+          html: '<p>노출여부를 [미노출]로 고르면 가맹점에 보이지 않는 공지만 볼 수 있어요.</p>'
         },
         {
-          title: '공지를 삭제해요',
+          title: '삭제 확인 창',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-delete-pc.webp', alt: '09SCM 공지 삭제 확인 PC 화면', ratio: 936 / 442 }
           ],
-          shotCaption: '09SCM 공지 삭제 확인 창 (PC)',
-          html:
-            '<p>[삭제]를 누르면 확인 창이 나와요. [삭제]를 누르면 공지와 첨부파일이 함께 지워지고, 가맹점 화면과 대시보드에서도 바로 사라져요. 삭제한 공지는 복구할 수 없어요.</p>' +
-            '<p>가맹점에게 보이는 것만 멈추고 싶다면 삭제하지 말고 노출여부를 [미노출]로 바꿔 주세요.</p>'
+          shotCaption: '09SCM 삭제 확인 화면',
+          html: '<p>[삭제]를 누르면 &quot;공지사항을 삭제하시겠습니까?&quot; 확인 창이 나와요. 삭제하면 첨부파일도 함께 지워지고, 가맹점 화면과 대시보드에서도 바로 사라져요. 삭제한 공지는 복구할 수 없어요.</p>'
         },
         {
-          title: '여러 공지를 한 번에 삭제해요',
+          title: '일괄삭제 확인 창',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-confirm-pc.webp', alt: '09SCM 공지 일괄삭제 확인 PC 화면', ratio: 936 / 442 }
           ],
-          shotCaption: '09SCM 일괄삭제 확인 창 (PC)',
-          html:
-            '<p>삭제할 공지의 체크박스를 선택하고 [일괄삭제]를 누르면 선택한 건수를 확인하는 창이 나와요. [삭제]를 누르면 선택한 공지와 첨부파일이 함께 지워지고, 삭제한 공지는 복구할 수 없어요.</p>' +
-            '<p>현재 보고 있는 페이지에서 선택한 공지만 삭제할 수 있어요.</p>'
+          shotCaption: '09SCM 일괄삭제 확인 화면',
+          html: '<p>체크박스로 고른 공지가 있는 상태에서 [일괄삭제]를 누르면 &quot;선택한 N건을 삭제하시겠습니까?&quot; 확인 창이 나와요. 체크박스 선택은 현재 페이지에서만 유지돼요.</p>'
         },
         {
           title: '선택 없이 일괄삭제를 눌렀어요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-empty-pc.webp', alt: '09SCM 일괄삭제 선택 없음 PC 화면', ratio: 936 / 352 }
+            { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-empty-pc.webp', alt: '09SCM 일괄삭제 선택 안내 PC 화면', ratio: 936 / 352 }
           ],
-          shotCaption: '09SCM 일괄삭제 선택 없음 안내 (PC)',
-          html: '<p>선택한 공지가 없는 상태에서 [일괄삭제]를 누르면 &quot;삭제할 공지사항을 선택해주세요.&quot;가 나와요. 체크박스로 공지를 고른 뒤 다시 눌러 주세요.</p>'
+          shotCaption: '09SCM 일괄삭제 선택 안내 화면',
+          html: '<p>선택한 공지가 없으면 &quot;삭제할 공지사항을 선택해주세요.&quot; 안내가 나와요.</p>'
         }
       ],
       trouble:
         '<h3>올린 공지가 가맹점에게 보이지 않는다고 해요</h3>' +
-        '<p>노출여부가 [미노출]인지 확인해 주세요. 미노출 공지는 가맹점의 공지 목록과 대시보드에서 보이지 않아요. [수정]에서 노출로 바꾸면 다시 보여요.</p>' +
+        '<p>공지의 노출여부가 [미노출]인지 확인해 주세요. 미노출 공지는 가맹점의 공지 목록과 대시보드에 나오지 않아요.</p>' +
         '<h3>조회수가 오르지 않아요</h3>' +
-        '<p>가맹점이 공지 상세를 열 때마다 1씩 올라가요. 본사 계정이 직접 열어본 건 집계하지 않아서, 이 화면의 [상세보기]로 확인해도 조회수는 오르지 않아요. 조회수는 가맹점 계정에는 보이지 않아요.</p>' +
-        '<h3>특정 가맹점에게만 공지하고 싶어요</h3>' +
-        '<p>우리본사 공지는 전체 가맹점에 보여요. 가맹점을 골라서 알리는 기능은 없어요.</p>' +
-        '<h3>삭제한 공지를 되돌리고 싶어요</h3>' +
-        '<p>삭제한 공지는 첨부파일까지 함께 지워져서 복구할 수 없어요. 같은 내용을 다시 등록해야 해요.</p>' +
+        '<p>조회수는 가맹점이 공지 상세를 열 때만 올라요. 본사 계정이 직접 열어본 건 집계하지 않아요.</p>' +
         '<h3>09SCM이 올린 공지가 이 목록에 없어요</h3>' +
         '<p>이 화면에는 본사가 올린 공지만 나와요. 09SCM이 올린 공지는 <a href="#system-notice">시스템관리 &gt; 공지사항</a>에서 확인해요.</p>'
     },
@@ -2452,42 +2443,52 @@ window.GUIDE_CONTENT['franchise-notice'] = {
       ],
       shotCaption: '09SCM 공지사항 등록 화면 (PC / 모바일)',
       overview:
-        '<p>공지를 새로 올리거나 올린 공지를 고치는 화면이에요. 등록과 수정은 같은 항목을 써요.</p>',
+        '<p>공지를 새로 올리거나, 올린 공지를 고치는 화면이에요. 등록과 수정은 같은 항목을 써요.</p>' +
+        '<ul>' +
+          '<li>필수 항목(*)을 모두 입력하고 아래의 [저장]을 눌러야 반영돼요.</li>' +
+        '</ul>',
       steps:
         '<h3>입력 항목</h3>' +
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>필수</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>노출여부</td><td>필수</td><td>노출 / 미노출 중 선택 (처음에는 선택된 값이 없음)</td></tr>' +
-          '<tr><td>등록일</td><td>필수</td><td>날짜 선택 (등록할 때는 오늘이 기본값, 수정 가능). 가맹점 목록의 정렬 기준이며, 미래 날짜로 예약 게시하는 기능은 없음</td></tr>' +
-          '<tr><td>제목</td><td>필수</td><td>100자 이내</td></tr>' +
-          '<tr><td>내용</td><td>필수</td><td>공지 본문 (상품 상세정보와 같은 에디터 사용)</td></tr>' +
-          '<tr><td>첨부파일</td><td>선택</td><td>최대 5개, 파일당 10MB 이내 (문서·이미지·압축 파일만 가능, 실행 파일은 불가). 수정할 때 기존 첨부파일을 하나씩 삭제 가능</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>작성자(우리본사)와 알림 대상(전체 가맹점)은 정해져 있어서 입력하지 않아요. 등록하면 공지 목록으로, 수정하면 공지 상세로 이동하고 &quot;저장되었습니다.&quot;가 나와요. 수정해도 조회수는 그대로 유지돼요.</p>',
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>노출여부 *</td><td>노출 / 미노출 중 선택 (미노출은 가맹점에 보이지 않음)</td></tr>' +
+          '<tr><td>등록일 *</td><td>공지 등록일 (처음에는 오늘 날짜, 수정 가능, 목록의 정렬 기준)</td></tr>' +
+          '<tr><td>제목 *</td><td>공지 제목 (100자 이내)</td></tr>' +
+          '<tr><td>내용 *</td><td>공지 본문 (상품 상세정보와 같은 기본 에디터)</td></tr>' +
+          '<tr><td>첨부파일</td><td>공지에 첨부할 파일 (최대 5개, 파일당 10MB 이내, 문서·이미지·압축 파일만 가능)</td></tr>' +
+        '</tbody></table></div>',
       cases: [
         {
-          title: '필수 항목을 빠뜨렸어요',
+          title: '올린 공지를 수정해요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/frm-notice-edit-pc.webp', alt: '09SCM 공지사항 수정 PC 화면', ratio: 2880 / 2300 },
+            { device: 'mobile', src: '../assets/img/partner/frm-notice-edit-mobile.webp', alt: '09SCM 공지사항 수정 모바일 화면', ratio: 880 / 3000 }
+          ],
+          shotCaption: '09SCM 공지사항 수정 화면 (PC / 모바일)',
+          html: '<p>수정 화면에는 올린 내용이 채워져 있고, 첨부된 파일은 파일마다 [삭제]할 수 있어요.</p>'
+        },
+        {
+          title: '필수 항목을 비웠어요',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-form-error-pc.webp', alt: '09SCM 공지사항 등록 오류 PC 화면', ratio: 2880 / 2300 },
             { device: 'mobile', src: '../assets/img/partner/frm-notice-form-error-mobile.webp', alt: '09SCM 공지사항 등록 오류 모바일 화면', ratio: 880 / 3000 }
           ],
-          shotCaption: '09SCM 공지사항 등록 오류 화면 (PC / 모바일)',
+          shotCaption: '09SCM 필수 항목 미입력 화면 (PC / 모바일)',
           html:
-            '<p>비어 있는 필수 항목마다 안내 문구가 나오고 저장되지 않아요.</p>' +
-            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>안내 문구</th></tr></thead><tbody>' +
-              '<tr><td>노출여부</td><td>노출여부를 선택해주세요.</td></tr>' +
-              '<tr><td>등록일</td><td>등록일을 선택해주세요.</td></tr>' +
-              '<tr><td>제목</td><td>제목을 입력해주세요.</td></tr>' +
-              '<tr><td>내용</td><td>내용을 입력해주세요.</td></tr>' +
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>노출여부 미선택</td><td>&quot;노출여부를 선택해주세요.&quot;</td></tr>' +
+              '<tr><td>등록일 미선택</td><td>&quot;등록일을 선택해주세요.&quot;</td></tr>' +
+              '<tr><td>제목 미입력</td><td>&quot;제목을 입력해주세요.&quot;</td></tr>' +
+              '<tr><td>내용 미입력</td><td>&quot;내용을 입력해주세요.&quot;</td></tr>' +
             '</tbody></table></div>' +
-            '<p>첨부파일이 허용되지 않는 형식이거나 10MB를 넘거나 5개를 넘으면 그 이유가 파일 아래에 따로 나와요.</p>'
+            '<p>안내가 나오면 저장되지 않아요. 해당 항목을 입력한 뒤 다시 [저장]을 눌러요.</p>'
         },
         {
           title: '작성하다가 나가려고 해요',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-leave-pc.webp', alt: '09SCM 작성 중 나가기 확인 PC 화면', ratio: 936 / 396 }
           ],
-          shotCaption: '09SCM 작성 중 나가기 확인 창 (PC)',
-          html: '<p>내용을 입력한 뒤 [취소]나 뒤로가기를 누르면 &quot;작성 중인 내용을 버리고 돌아가시겠습니까?&quot; 확인 창이 나와요. [나가기]를 누르면 입력한 내용이 저장되지 않고 돌아가요. 입력한 내용이 없으면 확인 없이 바로 돌아가요.</p>'
+          shotCaption: '09SCM 작성 중 나가기 확인 화면',
+          html: '<p>내용을 입력한 뒤 [취소]나 뒤로가기를 누르면 &quot;작성 중인 내용을 버리고 돌아가시겠습니까?&quot; 확인 창이 나와요. [나가기]를 누르면 입력한 내용은 저장되지 않아요.</p>'
         }
       ]
     },
@@ -2504,85 +2505,98 @@ window.GUIDE_CONTENT['franchise-notice'] = {
       steps:
         '<h3>화면 구성</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>제목, 노출여부, 등록일, 조회수</td><td>공지의 기본 정보</td></tr>' +
-          '<tr><td>첨부파일</td><td>파일 이름과 용량 (눌러서 내려받기), 없으면 &quot;첨부파일 없음&quot;</td></tr>' +
+          '<tr><td>제목</td><td>공지 제목</td></tr>' +
+          '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
+          '<tr><td>등록일</td><td>공지 등록일</td></tr>' +
+          '<tr><td>조회수</td><td>가맹점이 공지 상세를 열어본 횟수</td></tr>' +
+          '<tr><td>첨부파일</td><td>첨부된 파일 이름과 용량 (누르면 내려받기, 없으면 &quot;첨부파일 없음&quot;)</td></tr>' +
           '<tr><td>상세정보</td><td>공지 내용</td></tr>' +
-          '<tr><td>수정 / 삭제</td><td>수정 화면으로 이동 / 삭제 확인 후 목록으로 이동</td></tr>' +
-        '</tbody></table></div>'
+        '</tbody></table></div>' +
+        '<p>하단 바의 [수정]을 누르면 수정 화면으로, [삭제]를 누르면 삭제 확인 후 목록으로 이동해요.</p>'
     }
   ]
 };
 
 window.GUIDE_CONTENT['system-notice'] = {
-  shots: [
-    { device: 'pc', src: '../assets/img/partner/sys-notice-list-pc.webp', alt: '09SCM 공지사항 PC 화면', ratio: 2880 / 3000 },
-    { device: 'mobile', src: '../assets/img/partner/sys-notice-list-mobile.webp', alt: '09SCM 공지사항 모바일 화면', ratio: 880 / 2400 }
-  ],
-  shotCaption: '09SCM 공지사항 화면 (PC / 모바일)',
-  overview:
-    '<p>09SCM과 소속 본사가 올린 공지를 한곳에서 확인하는 화면이에요. 보기만 할 수 있고, 공지를 쓰거나 고치는 곳은 아니에요.</p>' +
-    '<ul>' +
-      '<li>목록은 최신 공지부터 20건씩 보여줘요.</li>' +
-      '<li>이용대기 상태의 가맹점도 공지를 볼 수 있어요.</li>' +
-      '<li>본사가 올린 공지는 소속 가맹점 모두에게 보여요.</li>' +
-    '</ul>',
-  steps:
-    '<h3>공지 목록</h3>' +
-    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>번호</td><td>공지 순번 (최신 공지가 가장 큰 번호)</td></tr>' +
-      '<tr><td>작성자</td><td>공지를 올린 곳 (09SCM 또는 우리본사)</td></tr>' +
-      '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘으로 표시)</td></tr>' +
-      '<tr><td>등록일</td><td>공지를 올린 날짜</td></tr>' +
-      '<tr><td>상세보기</td><td>공지 상세 화면으로 이동</td></tr>' +
-    '</tbody></table></div>' +
-
-    '<h3>공지 찾기</h3>' +
-    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>전체 / 09SCM / 우리본사</td><td>작성자별로 나눠서 보기</td></tr>' +
-      '<tr><td>제목 검색</td><td>입력한 단어가 제목에 들어간 공지만 보기 ([검색]을 누르거나 Enter)</td></tr>' +
-    '</tbody></table></div>' +
-
-    '<h3>공지 상세</h3>' +
-    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>제목, 작성자, 등록일</td><td>공지의 기본 정보</td></tr>' +
-      '<tr><td>첨부파일</td><td>첨부된 파일 이름 (눌러서 내려받기)과 용량 (첨부가 있는 공지만 표시)</td></tr>' +
-      '<tr><td>본문</td><td>공지 내용</td></tr>' +
-      '<tr><td>공지사항으로</td><td>보던 목록으로 돌아가기</td></tr>' +
-    '</tbody></table></div>',
-  cases: [
+  screens: [
     {
-      title: '작성자별로 골라 봐요',
+      id: 'list',
+      label: '공지 목록',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 2880 / 1010 },
-        { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 880 / 1474 }
+        { device: 'pc', src: '../assets/img/partner/sys-notice-list-pc.webp', alt: '09SCM 공지사항 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/sys-notice-list-mobile.webp', alt: '09SCM 공지사항 모바일 화면', ratio: 880 / 2400 }
       ],
-      shotCaption: '09SCM 우리본사 공지 화면 (PC / 모바일)',
-      html: '<p>[09SCM], [우리본사] 탭을 누르면 해당 작성자의 공지만 모아서 볼 수 있어요. 건수도 선택한 탭 기준으로 바뀌어요.</p>'
+      shotCaption: '09SCM 공지사항 화면 (PC / 모바일)',
+      overview:
+        '<p>09SCM과 소속 본사가 올린 공지를 한곳에서 확인하는 화면이에요. 보기만 할 수 있고, 공지를 쓰거나 고치는 곳은 아니에요.</p>' +
+        '<ul>' +
+          '<li>목록은 최신 공지부터 20건씩 보여줘요.</li>' +
+          '<li>이용대기 상태의 가맹점도 공지를 볼 수 있어요.</li>' +
+          '<li>본사가 올린 공지는 소속 가맹점 모두에게 보여요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>공지 찾기</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>작성자</td><td>전체 / 09SCM / 우리본사 구분</td></tr>' +
+          '<tr><td>검색</td><td>제목으로 검색 (영문 대소문자 구분 없음)</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>목록 항목</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>번호</td><td>공지 순번 (최신 공지가 가장 큰 번호)</td></tr>' +
+          '<tr><td>작성자</td><td>공지를 올린 곳 (09SCM 또는 우리본사)</td></tr>' +
+          '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘으로 표시)</td></tr>' +
+          '<tr><td>등록일</td><td>공지를 올린 날짜</td></tr>' +
+          '<tr><td>관리</td><td>[상세보기] 버튼</td></tr>' +
+        '</tbody></table></div>',
+      cases: [
+        {
+          title: '작성자별로 골라 봐요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 2880 / 1010 },
+            { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 880 / 1474 }
+          ],
+          shotCaption: '09SCM 우리본사 공지 화면 (PC / 모바일)',
+          html: '<p>[09SCM], [우리본사] 탭을 누르면 해당 작성자의 공지만 모아서 볼 수 있어요. 건수도 선택한 탭 기준으로 바뀌어요.</p>'
+        },
+        {
+          title: '계정에 따라 달라져요',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>구분</th><th>보이는 공지</th></tr></thead><tbody>' +
+              '<tr><td>가맹점 계정</td><td>09SCM이 가맹점에게 알리는 공지, 소속 본사(우리본사)의 공지</td></tr>' +
+              '<tr><td>본사 계정</td><td>09SCM이 본사에게 알리는 공지, 우리본사 이름으로 올린 공지</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>같은 09SCM 공지라도 본사에게만 알리는 공지는 가맹점 계정에 보이지 않아요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>공지가 보이지 않아요</h3>' +
+        '<p>09SCM이 공지를 올릴 때 알림 대상을 본사나 가맹점으로 나눠서 정해요. 대상이 아닌 계정에는 보이지 않아요. 본사가 공지를 숨김 처리한 경우에도 가맹점에는 보이지 않아요.</p>' +
+        '<h3>조회수가 보이지 않아요</h3>' +
+        '<p>이 화면에서는 조회수를 보여주지 않아요. 본사 계정은 <a href="#franchise-notice">가맹점관리 &gt; 공지사항</a>에서 공지별 조회수를 확인할 수 있어요.</p>'
     },
     {
-      title: '첨부파일이 있는 공지를 열어요',
+      id: 'detail',
+      label: '공지 상세',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-notice-detail-pc.webp', alt: '09SCM 공지 상세 PC 화면', ratio: 2880 / 734 },
-        { device: 'mobile', src: '../assets/img/partner/sys-notice-detail-mobile.webp', alt: '09SCM 공지 상세 모바일 화면', ratio: 880 / 844 }
+        { device: 'pc', src: '../assets/img/partner/sys-notice-detail-pc.webp', alt: '09SCM 공지 상세 PC 화면', ratio: 2880 / 1800 },
+        { device: 'mobile', src: '../assets/img/partner/sys-notice-detail-mobile.webp', alt: '09SCM 공지 상세 모바일 화면', ratio: 880 / 2000 }
       ],
       shotCaption: '09SCM 공지 상세 화면 (PC / 모바일)',
-      html: '<p>[상세보기]를 누르면 본문과 첨부파일을 볼 수 있어요. [공지사항으로]를 누르면 보던 목록으로 돌아가요.</p>'
-    },
-    {
-      title: '계정에 따라 달라져요',
-      html:
-        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>보이는 공지</th></tr></thead><tbody>' +
-          '<tr><td>가맹점 계정</td><td>09SCM이 가맹점에게 알리는 공지, 소속 본사(우리본사)의 공지</td></tr>' +
-          '<tr><td>본사 계정</td><td>09SCM이 본사에게 알리는 공지, 우리본사 이름으로 올린 공지</td></tr>' +
+      overview:
+        '<p>공지의 내용을 확인하는 화면이에요. 목록에서 [상세보기]를 누르면 열려요.</p>',
+      steps:
+        '<h3>화면 구성</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>제목</td><td>공지 제목</td></tr>' +
+          '<tr><td>작성자</td><td>공지를 올린 곳 (09SCM 또는 우리본사)</td></tr>' +
+          '<tr><td>등록일</td><td>공지를 올린 날짜</td></tr>' +
+          '<tr><td>첨부파일</td><td>첨부된 파일 이름과 용량 (누르면 내려받기, 첨부가 있는 공지만 표시)</td></tr>' +
+          '<tr><td>내용</td><td>공지 내용</td></tr>' +
         '</tbody></table></div>' +
-        '<p>같은 09SCM 공지라도 본사에게만 알리는 공지는 가맹점 계정에 보이지 않아요.</p>'
+        '<p>[공지사항으로]를 누르면 보던 목록으로 돌아가요.</p>'
     }
-  ],
-  trouble:
-    '<h3>공지가 보이지 않아요</h3>' +
-    '<p>09SCM이 공지를 올릴 때 알림 대상을 본사나 가맹점으로 나눠서 정해요. 대상이 아닌 계정에는 보이지 않아요. 본사가 공지를 숨김 처리한 경우에도 가맹점에는 보이지 않아요.</p>' +
-    '<h3>조회수가 보이지 않아요</h3>' +
-    '<p>이 화면에서는 조회수를 보여주지 않아요. 본사 계정은 <a href="#franchise-notice">가맹점관리 &gt; 공지사항</a>에서 공지별 조회수를 확인할 수 있어요.</p>'
+  ]
 };
 
 window.GUIDE_CONTENT['system-fee'] = {

@@ -84,6 +84,7 @@ def popup_clip(page, pad=24):
 
 def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
     for label, w, h in (('pc', 1440, 1500), ('mobile', 440, 1200)):
+        if name == 'sys-notice-detail': w, h = (1440, 900) if label == 'pc' else (440, 1000)
         ctx, page = new_page(b, w, h, acct)
         goto_menu(page, menu)
         if prep: prep(page, label)
@@ -137,7 +138,7 @@ STEPS = [
     # 공지사항
     ('sys-notice-list', 'ga02', '공지사항', None, 'view', None),
     ('sys-notice-tab', 'ga02', '공지사항', click('[data-notice-tab="hq"]'), 'card', None),
-    ('sys-notice-detail', 'ga02', '공지사항', click('[data-notice-view]'), 'card', None),
+    ('sys-notice-detail', 'ga02', '공지사항', click('[data-notice-view]'), 'view', None),
     # 이용료관리
     ('sys-fee-main', 'ga02', '이용료관리', None, 'view', None),
     ('sys-fee-card', 'ga01', '이용료관리', None, 'between', ('결제 정보', '결제 내역')),
