@@ -2457,12 +2457,20 @@ window.GUIDE_CONTENT['franchise-notice'] = {
     {
       title: '여러 공지를 한 번에 삭제해요',
       shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-confirm-pc.webp', alt: '09SCM 공지 일괄삭제 확인 PC 화면', ratio: 936 / 442 }
+      ],
+      shotCaption: '09SCM 일괄삭제 확인 창 (PC)',
+      html:
+        '<p>삭제할 공지의 체크박스를 선택하고 [일괄삭제]를 누르면 선택한 건수를 확인하는 창이 나와요. [삭제]를 누르면 선택한 공지와 첨부파일이 함께 지워지고, 삭제한 공지는 복구할 수 없어요.</p>' +
+        '<p>현재 보고 있는 페이지에서 선택한 공지만 삭제할 수 있어요.</p>'
+    },
+    {
+      title: '선택 없이 일괄삭제를 눌렀어요',
+      shots: [
         { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-empty-pc.webp', alt: '09SCM 일괄삭제 선택 없음 PC 화면', ratio: 936 / 352 }
       ],
       shotCaption: '09SCM 일괄삭제 선택 없음 안내 (PC)',
-      html:
-        '<p>삭제할 공지의 체크박스를 선택하고 [일괄삭제]를 누르면 선택한 건수를 확인하는 창이 나와요. 현재 보고 있는 페이지에서 선택한 공지만 삭제할 수 있어요.</p>' +
-        '<p>선택한 공지가 없는 상태에서 [일괄삭제]를 누르면 &quot;삭제할 공지사항을 선택해주세요.&quot;가 나와요.</p>'
+      html: '<p>선택한 공지가 없는 상태에서 [일괄삭제]를 누르면 &quot;삭제할 공지사항을 선택해주세요.&quot;가 나와요. 체크박스로 공지를 고른 뒤 다시 눌러 주세요.</p>'
     },
     {
       title: '작성하다가 나가려고 해요',

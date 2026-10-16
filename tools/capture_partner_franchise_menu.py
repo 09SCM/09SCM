@@ -37,6 +37,7 @@ STEPS = [
     ('frm-notice-form-error', '공지사항', seq(click('#fnoticeNewBtn'), click('#fnoticeSaveBtn')), 'view', None, True),
     ('frm-notice-detail', '공지사항', click('[data-fnotice-view]'), 'view', None, True),
     ('frm-notice-delete', '공지사항', click('[data-fnotice-delete]'), 'popup', None, False),
+    ('frm-notice-bulk-confirm', '공지사항', seq(click('tbody input[type=checkbox]', 0), click('tbody input[type=checkbox]', 1), click('#fnoticeBulkDeleteBtn')), 'popup', None, False),
     ('frm-notice-bulk-empty', '공지사항', click('#fnoticeBulkDeleteBtn'), 'popup', None, False),
     ('frm-notice-leave', '공지사항', seq(click('#fnoticeNewBtn'), fill('#fnoticeTitle', '임시 제목'), click('#fnoticeCancelBtn')), 'popup', None, False),
 ]
