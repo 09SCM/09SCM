@@ -41,6 +41,7 @@ STEPS = [
     ('fr-list-delete', '가맹점 목록', seq(tab_status('이용불가'), click('[data-franchise-delete]', 0)), 'popup', None, LIST_PC, None),
     ('fr-st-approved', '가맹점 목록', open_detail('ga03'), 'view', None, DET_PC, DET_MO),
     ('fr-st-restricted-confirm', '가맹점 목록', seq(open_detail('ga03'), click_btn('이용제한')), 'popup', None, DET_PC, None),
+    ('fr-st-unavailable-confirm', '가맹점 목록', seq(open_detail('ga05'), click_btn('이용불가')), 'popup', None, DET_PC, None),
     # 본사 시점 상태별 화면(하단 고정 바 포함)
     ('fr-st-b-wait', '가맹점 목록', open_detail('ga01'), 'view', None, DET_PC, DET_MO),
     ('fr-st-b-restricted', '가맹점 목록', open_detail('ga04'), 'view', None, DET_PC, DET_MO),
