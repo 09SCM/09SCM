@@ -41,6 +41,10 @@ STEPS = [
     ('fr-list-delete', '가맹점 목록', seq(tab_status('이용불가'), click('[data-franchise-delete]', 0)), 'popup', None, LIST_PC, None),
     ('fr-st-approved', '가맹점 목록', open_detail('ga03'), 'view', None, DET_PC, DET_MO),
     ('fr-st-restricted-confirm', '가맹점 목록', seq(open_detail('ga03'), click_btn('이용제한')), 'popup', None, DET_PC, None),
+    # 본사 시점 상태별 화면(하단 고정 바 포함)
+    ('fr-st-b-wait', '가맹점 목록', open_detail('ga01'), 'view', None, DET_PC, DET_MO),
+    ('fr-st-b-restricted', '가맹점 목록', open_detail('ga04'), 'view', None, DET_PC, DET_MO),
+    ('fr-st-b-blocked', '가맹점 목록', open_detail('ga06'), 'view', None, DET_PC, DET_MO),
 ]
 
 
@@ -53,9 +57,13 @@ def do(fn):
 FEE_CUSTOM = "() => [document.querySelector('#fdFeeCustomToggle').closest('.form-grid'), document.querySelector('#fdSaveFeeBtn').parentElement]"
 def SEC(t):
     return "() => { const h = [...document.querySelectorAll('h3')].find(e => e.textContent.trim() === '%s'); const s = h.closest('.form-section'); return [s, s]; }" % t
+TAB_RANGE = "() => { const t = document.querySelector('[data-franchise-detail-tab]').parentElement; const s = [...document.querySelectorAll('.form-section')]; return [t, s[s.length - 1]]; }"
 DET_FULL = (1440, 1500); DET_FULL_MO = (440, 1200)
 TAB_STEPS = [
     ('fr-d-main', open_detail('ga04'), 'view', None, (1440, 900), (440, 900)),
+    ('fr-d-tab-member', seq(open_detail('ga04'), hide_bar), 'custom', TAB_RANGE, (1440, 2400), (440, 3600)),
+    ('fr-d-tab-fee', seq(open_detail('ga04', 'fee'), hide_bar), 'custom', TAB_RANGE, DET_FULL, DET_FULL_MO),
+    ('fr-d-tab-memo', seq(open_detail('ga04', 'memo'), hide_bar), 'custom', TAB_RANGE, DET_FULL, DET_FULL_MO),
     ('fr-d-error', seq(open_detail('ga03'), hide_bar, fill('#fdManagerName', ''), fill('#fdBizRegNo', '123-45-67890'), click('#fdSaveMemberBtn')), 'between', ('회원 정보', '비밀번호 변경'), DET_FULL, DET_FULL_MO),
     ('fr-d-corp', seq(open_detail('ga03'), hide_bar, do(lambda p: p.select_option('#fdBizPersonType', 'corp'))), 'between', ('사업자 정보', 'PayApp 연동 정보'), DET_FULL, DET_FULL_MO),
     ('fr-d-payapp-unlinked', seq(open_detail('ga01'), hide_bar), 'between', ('PayApp 연동 정보', '이용약관 동의'), DET_FULL, DET_FULL_MO),
@@ -70,7 +78,18 @@ TAB_STEPS = [
 MEMBER_PC = (1440, 760); MEMBER_MO = (440, 900)
 def open_drawer(p, l):
     if l == 'mobile': p.click('#menuBtn'); p.wait_for_timeout(400)
+def goto_menu(group, label):
+    def run(p, l):
+        if l == 'mobile': p.click('#menuBtn'); p.wait_for_timeout(400)
+        p.evaluate("""([g, t]) => {
+          const find = x => [...document.querySelectorAll('a,button,li,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === x);
+          const a = find(g); a && a.click();
+          const b = find(t); b && b.click();
+        }""", [group, label])
+        p.wait_for_timeout(600)
+    return run
 MEMBER_STEPS = [
+    ('fr-st-restricted-supply', 'ga04', goto_menu('도매관리', '내 도매상품')),
     ('fr-st-wait', 'ga01', open_drawer),
     ('fr-st-approved-user', 'ga02', None),
     ('fr-st-restricted', 'ga05', None),

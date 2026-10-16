@@ -1756,56 +1756,79 @@ window.GUIDE_CONTENT['franchise-list'] = {
     },
     {
       id: 'detail-tabs',
-      label: '가맹점 정보 관리',
+      label: '가맹점 상세',
       shots: [
         { device: 'pc', src: '../assets/img/partner/fr-d-main-pc.webp', alt: '09SCM 가맹점 상세 PC 화면', ratio: 2880 / 1800 },
         { device: 'mobile', src: '../assets/img/partner/fr-d-main-mobile.webp', alt: '09SCM 가맹점 상세 모바일 화면', ratio: 880 / 1800 }
       ],
       shotCaption: '09SCM 가맹점 상세 화면 (PC / 모바일)',
       overview:
-        '<p>목록에서 [상세보기]를 누르면 가맹점의 정보를 확인하고 수정하는 화면이 열려요. 위쪽에는 상호명과 이용상태, [소매몰 바로가기], [관리자접속]이 있고, 아래는 탭 3개로 나뉘어요.</p>' +
+        '<p>가맹점의 정보를 확인하고 수정하는 화면이에요. 가맹점 목록의 [상세보기]로 들어와요. 위쪽에는 상호명과 이용상태, [소매몰 바로가기], [관리자접속]이 있고, 아래는 탭 3개로 나뉘어요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>탭</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>회원정보</td><td>회원정보, 비밀번호, 사업자 정보 수정, PayApp 연동 정보와 이용약관 동의 확인</td></tr>' +
-          '<tr><td>이용료정보</td><td>개별 이용료 적용, 정기결제 등록 정보 확인</td></tr>' +
+          '<tr><td>회원정보</td><td>회원 정보, 비밀번호, 사업자 정보 수정과 PayApp 연동, 이용약관 동의 확인</td></tr>' +
+          '<tr><td>이용료정보</td><td>개별 이용료 적용과 정기결제 등록 정보 확인</td></tr>' +
           '<tr><td>내부메모</td><td>본사끼리 보는 메모 (가맹점에게는 보이지 않음)</td></tr>' +
         '</tbody></table></div>' +
-        '<p>[소매몰 바로가기]는 가맹점 소매몰을 새 창으로 열고, [관리자접속]은 해당 가맹점 계정의 관리자 화면을 새 창으로 열어요. 이용상태와 도매공급권한은 화면 아래 고정 바에서 바꿔요. 방법은 <a href="#franchise-list/status-change">이용상태 변경하기</a>에서 확인해주세요.</p>',
-      steps:
-        '<h3>회원정보 탭</h3>' +
-        '<p>섹션은 위에서부터 회원 정보, 비밀번호 변경, 사업자 정보, PayApp 연동 정보, 이용약관 동의 순서예요.</p>' +
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>회원 정보</td><td>회원 유형, 아이디(수정 불가), 이름, 이메일, 휴대폰번호 (숫자만 입력하면 하이픈이 자동으로 들어감)</td></tr>' +
-          '<tr><td>비밀번호 변경</td><td>새 비밀번호와 새 비밀번호 확인을 입력하고 [비밀번호 변경]으로 따로 저장</td></tr>' +
-          '<tr><td>사업자 정보</td><td>사업자 유형, 상호명, 대표자명, 사업자등록번호([사업자인증]), 법인등록번호(법인사업자만), 업태, 업종, 우편번호([우편번호 검색]), 기본주소, 상세주소</td></tr>' +
-          '<tr><td>PayApp 연동 정보</td><td>연동 상태(연동완료 / 미연동)와 판매자 회원 아이디, 연동 KEY, 연동 VALUE</td></tr>' +
-          '<tr><td>이용약관 동의</td><td>이용약관·개인정보처리방침[필수], 마케팅정보 수신동의[선택]의 동의 여부 (확인만 가능)</td></tr>' +
-        '</tbody></table></div>' +
         '<ul>' +
-          '<li>필수 항목에는 빨간 *가 붙어 있어요.</li>' +
-          '<li>[저장]은 회원 정보와 사업자 정보를 함께 저장해요. 비밀번호는 [비밀번호 변경]으로 따로 바꿔요.</li>' +
-          '<li>휴대폰번호는 본사가 인증 없이 바꿀 수 있어요. 휴대폰 인증과 마케팅정보 수신동의 변경은 가맹점이 직접 해요.</li>' +
-          '<li>임시 비밀번호는 자동으로 발급되지 않아요. 이용상태와 상관없이 언제든 새 비밀번호로 바꿀 수 있어요.</li>' +
-          '<li>사업자등록번호를 바꾸면 인증이 풀려서 [사업자인증]을 다시 해야 저장할 수 있어요.</li>' +
-          '<li>우편번호와 기본주소는 [우편번호 검색]으로만 입력해요.</li>' +
-        '</ul>' +
-
-        '<h3>이용료정보 탭</h3>' +
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>기본 이용료</td><td>전체 가맹점에 공통으로 적용되는 월 이용료 (이용료관리에서 설정)</td></tr>' +
-          '<tr><td>개별 이용료 적용</td><td>체크하면 이 가맹점에만 적용할 이용료를 입력 (기본 이용료가 바뀌어도 영향을 받지 않음)</td></tr>' +
-          '<tr><td>정기결제여부</td><td>등록 / 미등록</td></tr>' +
-          '<tr><td>결제수단</td><td>정기결제를 등록한 방식 (신용카드 / 휴대전화)</td></tr>' +
-          '<tr><td>정기결제일</td><td>매월 결제되는 날짜 (처음 카드를 등록한 날짜의 일)</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>개별 이용료는 [저장]을 눌러야 적용돼요. 정기결제 정보는 확인만 할 수 있어요. 카드 등록은 가맹점이 시스템관리 > 이용료관리에서 직접 하고, 해지와 카드 변경은 PayApp 리셀러 계정에서 직접 관리해요.</p>' +
-
-        '<h3>내부메모 탭</h3>' +
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>메모 입력</td><td>메모를 입력하고 [추가]를 누르면 목록에 등록</td></tr>' +
-          '<tr><td>메모 목록</td><td>최근에 쓴 메모가 위에 보이고, 내용과 등록일시 표시</td></tr>' +
-          '<tr><td>[삭제]</td><td>메모를 삭제 (누르면 바로 삭제됨)</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>이용상태를 바꾼 이유처럼 가맹점과 관련해 처리한 내용을 남겨야 하면 이 탭에 입력해주세요.</p>',
+          '<li>[소매몰 바로가기]는 가맹점 소매몰을, [관리자접속]은 해당 가맹점 계정의 관리자 화면을 새 창으로 열어요.</li>' +
+          '<li>하단 고정 바에서 도매공급권한과 이용상태를 바꿔요. 어느 탭에서나 보이고, 방법은 <a href="#franchise-list/status-change">이용상태 변경하기</a>에서 확인해주세요.</li>' +
+        '</ul>',
+      steps: [
+        {
+          title: '회원정보 탭',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-tab-member-pc.webp', alt: '09SCM 가맹점 회원정보 탭 PC 화면', ratio: 2880 / 4604 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-tab-member-mobile.webp', alt: '09SCM 가맹점 회원정보 탭 모바일 화면', ratio: 880 / 4640 }
+          ],
+          shotCaption: '09SCM 가맹점 회원정보 탭 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>회원 정보</td><td>회원 유형, 아이디(수정 불가), 이름, 이메일, 휴대폰번호</td></tr>' +
+              '<tr><td>비밀번호 변경</td><td>새 비밀번호, 새 비밀번호 확인, [비밀번호 변경]</td></tr>' +
+              '<tr><td>사업자 정보</td><td>사업자 유형, 상호명, 대표자명, 사업자등록번호([사업자인증]), 법인등록번호(법인사업자만), 업태, 업종, 우편번호([우편번호 검색]), 기본주소, 상세주소, [저장]</td></tr>' +
+              '<tr><td>PayApp 연동 정보</td><td>연동 상태(연동완료 / 미연동), 판매자 회원 아이디, 연동 KEY, 연동 VALUE, [연동하기]</td></tr>' +
+              '<tr><td>이용약관 동의</td><td>이용약관·개인정보처리방침[필수], 마케팅정보 수신동의[선택]의 동의 여부 (확인만 가능)</td></tr>' +
+            '</tbody></table></div>' +
+            '<ul>' +
+              '<li>이름 옆에 빨간 *가 붙은 항목은 꼭 입력해야 해요.</li>' +
+              '<li>[저장]은 회원 정보와 사업자 정보를 함께 저장해요. 비밀번호는 [비밀번호 변경]으로 따로 바꿔요.</li>' +
+              '<li>사업자등록번호를 바꾸면 [사업자인증]을 다시 해야 저장할 수 있어요.</li>' +
+              '<li>우편번호와 기본주소는 [우편번호 검색]으로만 입력해요.</li>' +
+              '<li>가맹점이 PayApp 연동을 직접 하기 어려우면 본사가 이 화면에서 대신 연동할 수 있어요. 판매자 회원 아이디, 연동 KEY, 연동 VALUE를 입력하고 [연동하기]를 눌러요.</li>' +
+            '</ul>'
+        },
+        {
+          title: '이용료정보 탭',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-tab-fee-pc.webp', alt: '09SCM 가맹점 이용료정보 탭 PC 화면', ratio: 2880 / 980 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-tab-fee-mobile.webp', alt: '09SCM 가맹점 이용료정보 탭 모바일 화면', ratio: 880 / 1098 }
+          ],
+          shotCaption: '09SCM 가맹점 이용료정보 탭 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>기본 이용료</td><td>전체 가맹점에 공통으로 적용되는 월 이용료 (이용료관리에서 설정)</td></tr>' +
+              '<tr><td>개별 이용료 적용</td><td>체크하면 이 가맹점에만 적용할 이용료를 입력 (기본 이용료가 바뀌어도 영향을 받지 않음), [저장]</td></tr>' +
+              '<tr><td>정기결제여부</td><td>등록 / 미등록</td></tr>' +
+              '<tr><td>결제수단</td><td>정기결제를 등록한 방식 (신용카드 / 휴대전화)</td></tr>' +
+              '<tr><td>정기결제일</td><td>매월 결제되는 날짜</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>개별 이용료는 [저장]을 눌러야 적용돼요. 정기결제 정보는 확인만 할 수 있어요. 카드 등록은 가맹점이 시스템관리 > 이용료관리에서 직접 하고, 해지와 카드 변경은 PayApp 리셀러 계정에서 직접 관리해요.</p>'
+        },
+        {
+          title: '내부메모 탭',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-tab-memo-pc.webp', alt: '09SCM 가맹점 내부메모 탭 PC 화면', ratio: 2880 / 794 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-tab-memo-mobile.webp', alt: '09SCM 가맹점 내부메모 탭 모바일 화면', ratio: 880 / 836 }
+          ],
+          shotCaption: '09SCM 가맹점 내부메모 탭 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>메모 입력창, [추가]</td><td>본사 관리자끼리 공유할 메모 등록</td></tr>' +
+              '<tr><td>메모 목록</td><td>등록일시와 함께 최신순으로 표시 (메모가 없으면 &quot;등록된 메모가 없습니다.&quot;)</td></tr>' +
+              '<tr><td>[삭제]</td><td>메모 1건 삭제</td></tr>' +
+            '</tbody></table></div>'
+        }
+      ],
       cases: [
         {
           title: '필수 항목이 비어 있어요',
@@ -1835,7 +1858,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
           ],
           shotCaption: '09SCM PayApp 연동 전 (PC / 모바일)',
           html:
-            '<p>연동 상태가 미연동이고 연동 정보 입력란이 보여요. 미연동 가맹점은 [이용승인]을 누를 수 없어요.</p>'
+            '<p>연동 상태가 미연동이고 연동 정보 입력란이 보여요. 판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력하고 [연동하기]를 누르면 연동이 끝나요. 하나라도 비어 있으면 오류 안내가 나와요.</p>' +
+            '<p>가맹점이 직접 해도 되고, 어려워하면 본사가 대신 해도 돼요. 미연동 가맹점은 [이용승인]을 누를 수 없어요.</p>'
         },
         {
           title: 'PayApp 연동이 끝났어요',
@@ -1845,7 +1869,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           ],
           shotCaption: '09SCM PayApp 연동 완료 (PC / 모바일)',
           html:
-            '<p>연동 상태가 연동완료로 보이고 연동한 정보를 확인할 수 있어요. 최초 연동 이후에는 바꾸거나 해제할 수 없어요.</p>'
+            '<p>연동 상태가 연동완료로 보이고 연동한 정보를 확인할 수 있어요. 연동 KEY와 VALUE는 일부만 보여요. 최초 연동 이후에는 바꾸거나 해제할 수 없어요.</p>'
         },
         {
           title: '개별 이용료를 적용해요',
@@ -1856,7 +1880,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shotCaption: '09SCM 개별 이용료 적용 (PC / 모바일)',
           html:
             '<p>[이 가맹점에 개별 이용료 적용]을 체크하면 개별 이용료 입력란이 나타나요. 숫자만 입력할 수 있고, 1원 이상이어야 저장돼요. 입력하지 않고 [저장]을 누르면 오류 안내가 나와요.</p>' +
-            '<p>목록의 적용이용료에는 개별 이용료가 적용된 가맹점에 [개별] 표시가 붙어요.</p>'
+            '<p>가맹점 목록의 적용이용료에는 개별 이용료가 적용된 가맹점에 [개별] 표시가 붙어요.</p>'
         },
         {
           title: '정기결제를 등록한 가맹점이에요',
@@ -1877,16 +1901,6 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shotCaption: '09SCM 정기결제 미등록 가맹점 (PC / 모바일)',
           html:
             '<p>정기결제여부가 미등록이고 결제수단과 정기결제일은 -로 표시돼요. 카드 등록은 가맹점이 직접 해야 해서, 본사가 대신 등록할 수 없어요.</p>'
-        },
-        {
-          title: '메모를 남겨요',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-memo-pc.webp', alt: '09SCM 내부메모 PC 화면', ratio: 2880 / 680 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-memo-mobile.webp', alt: '09SCM 내부메모 모바일 화면', ratio: 880 / 722 }
-          ],
-          shotCaption: '09SCM 내부메모 (PC / 모바일)',
-          html:
-            '<p>메모를 입력하고 [추가]를 누르면 목록 맨 위에 등록돼요. 내부메모는 본사 내부 참고용이라 가맹점에게는 보이지 않아요.</p>'
         }
       ],
       trouble:
@@ -1929,37 +1943,60 @@ window.GUIDE_CONTENT['franchise-list'] = {
           '<li>[이용승인]과 [이용불가 해제]는 확인 창 없이 바로 처리돼요.</li>' +
           '<li>처리되면 이용상태 표시와 하단 버튼이 바뀐 상태에 맞게 달라져요.</li>' +
         '</ol>' +
-        '<p>가맹점과 관련해 처리 내용을 남겨야 하면 <b>내부메모</b> 탭에 입력해주세요.</p>' +
+        '<p>처리 내용은 <b>내부메모</b> 탭에 메모로 남길 수 있어요.</p>' +
 
         '<h3>도매공급권한 바꾸기</h3>' +
-        '<p>도매공급권한은 이용상태와 따로 바꿀 수 있어요. 보유·미보유를 고르고 [변경]을 눌러요. 선택을 바꾸기 전에는 [변경]을 누를 수 없어요.</p>' +
+        '<p>도매공급권한은 이용상태와 따로 바꿀 수 있어요. 보유·미보유를 고르고 [변경]을 눌러요. 선택을 바꾸기 전에는 [변경]을 누를 수 없어요. 회수(보유 → 미보유)는 확인 창이 열리고, 진행 중인 공급 주문이 있어도 바로 처리돼요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>영향을 받는 메뉴·버튼</th><th>보유</th><th>미보유</th></tr></thead><tbody>' +
+          '<tr><td>도매관리 > 내 도매상품·주문접수관리·도매매출조회·도매설정</td><td>메뉴 노출</td><td>메뉴 없음</td></tr>' +
+          '<tr><td>소매관리 > 상품목록 [도매상품전환]</td><td>버튼 노출</td><td>버튼 없음</td></tr>' +
+          '<tr><td>대시보드 > 도매 판매 영역, 매출추이·이번주 판매현황의 도매 탭</td><td>노출</td><td>없음</td></tr>' +
+          '<tr><td>도매관리 > 도매상품 주문하기·주문내역 (구매)</td><td>사용</td><td>사용</td></tr>' +
+        '</tbody></table></div>' +
         '<ul>' +
-          '<li>회수(보유 → 미보유)는 확인 창이 열리고, 진행 중인 공급 주문이 있어도 바로 처리돼요.</li>' +
-          '<li>회수하면 해당 가맹점의 도매공급 메뉴가 막히고, 등록한 도매상품이 모두 품절·미노출로 바뀌어요.</li>' +
+          '<li>회수하면 가맹점이 등록한 도매상품이 모두 품절·미노출로 바뀌어요. 소매정보는 그대로 유지돼요.</li>' +
           '<li>다시 부여해도 도매상품 상태는 자동으로 돌아오지 않아요. 가맹점이 상품별로 직접 바꿔야 해요.</li>' +
         '</ul>',
       cases: [
         {
-          title: '이용대기 가맹점은 이렇게 보여요',
+          title: '이용대기 — 가맹점 화면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-wait-pc.webp', alt: '09SCM 이용대기 가맹점 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
           shotCaption: '이용대기 가맹점 화면 (PC / 모바일)',
           html:
-            '<p>로그인하면 시스템관리만 보여요. 회원정보에서 PayApp 연동을 하고, 이용료관리에서 정기결제 카드를 등록하며 이용 시작을 준비해요. 소매몰은 접근제한 화면이 보여요.</p>' +
-            '<p>본사는 PayApp 연동이 끝나기 전에는 [이용승인]을 누를 수 없어요. [이용불가]와 [삭제]는 연동 여부와 상관없이 쓸 수 있어요.</p>'
+            '<p>로그인하면 시스템관리만 보여요. 회원정보에서 PayApp 연동을 하고, 이용료관리에서 정기결제 카드를 등록하며 이용 시작을 준비해요. 소매몰은 접근제한 화면이 보여요.</p>'
         },
         {
-          title: '이용승인 가맹점은 이렇게 보여요',
+          title: '이용대기 — 본사 화면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-st-b-wait-pc.webp', alt: '09SCM 이용대기 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-b-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+          ],
+          shotCaption: '이용대기 가맹점 상세 화면 (PC / 모바일)',
+          html:
+            '<p>하단 바에 [이용승인], [이용불가], [삭제]가 보여요. PayApp 연동이 끝나기 전에는 [이용승인]을 누를 수 없어요. [이용불가]와 [삭제]는 연동 여부와 상관없이 쓸 수 있어요.</p>'
+        },
+        {
+          title: '이용승인 — 가맹점 화면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-approved-user-pc.webp', alt: '09SCM 이용승인 가맹점 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-approved-user-mobile.webp', alt: '09SCM 이용승인 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
           shotCaption: '이용승인 가맹점 화면 (PC / 모바일)',
           html:
-            '<p>대시보드부터 모든 메뉴를 정상적으로 사용할 수 있고, 소매몰도 정상으로 열려요. 본사는 [이용제한]만 누를 수 있어요.</p>' +
-            '<p>결제 실패가 생겨도 이용상태는 자동으로 바뀌지 않아요. 본사가 이용료관리에서 결제내역을 확인한 뒤 직접 처리해요.</p>'
+            '<p>대시보드부터 모든 메뉴를 정상적으로 사용할 수 있고, 소매몰도 정상으로 열려요.</p>'
+        },
+        {
+          title: '이용승인 — 본사 화면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-st-approved-pc.webp', alt: '09SCM 이용승인 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-approved-mobile.webp', alt: '09SCM 이용승인 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+          ],
+          shotCaption: '이용승인 가맹점 상세 화면 (PC / 모바일)',
+          html:
+            '<p>하단 바에 [이용제한]만 보여요. 결제 실패가 생겨도 이용상태는 자동으로 바뀌지 않아요. 본사가 이용료관리에서 결제내역을 확인한 뒤 직접 처리해요.</p>'
         },
         {
           title: '이용제한으로 바꿔요',
@@ -1971,26 +2008,63 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>[이용제한]을 누르면 확인 창이 열려요. [변경]을 누르면 신규 도매 주문, 도매상품 등록, 소매상품 등록이 막혀요. 이미 진행 중인 주문 처리는 계속할 수 있어요.</p>'
         },
         {
-          title: '이용제한 가맹점은 이렇게 보여요',
+          title: '이용제한 — 가맹점 화면 (도매공급권한 보유)',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점 PC 화면', ratio: 2880 / 1520 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점 모바일 화면', ratio: 880 / 1800 }
+            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-supply-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) PC 화면', ratio: 2880 / 1520 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-supply-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용제한 가맹점 화면 (PC / 모바일)',
+          shotCaption: '이용제한 가맹점 화면 — 도매공급권한 보유 (PC / 모바일)',
           html:
-            '<p>모든 화면 맨 위에 이용제한 안내 배너가 계속 보여요. 메뉴는 모두 보이지만 신규 주문과 상품 등록은 할 수 없고, 진행 중인 주문은 계속 처리할 수 있어요.</p>' +
-            '<p>본사는 [이용승인]으로 언제든 되돌릴 수 있어요. [이용불가]는 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수가 표시돼요.</p>'
+            '<p>모든 화면 맨 위에 이용제한 안내 배너가 계속 보여요. 메뉴는 그대로 보이지만 신규 행위 버튼은 흐리게 비활성으로 보이고, 주소로 직접 들어가도 막혀요. 이미 진행 중인 주문·배송·정산 처리와 시스템관리는 계속 쓸 수 있어요.</p>' +
+            '<div class="table-wrap"><table><thead><tr><th>기능</th><th>도매공급권한 보유</th><th>도매공급권한 미보유</th></tr></thead><tbody>' +
+              '<tr><td>도매상품 주문하기 > 장바구니 [주문하기]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
+              '<tr><td>도매상품 주문하기 > 상품 상세 [바로구매]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
+              '<tr><td>도매관리 > 내 도매상품 [도매상품등록]</td><td>사용 불가</td><td>메뉴 없음</td></tr>' +
+              '<tr><td>소매관리 > [소매상품등록], [소매정보등록]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
+              '<tr><td>소매관리 > 상품목록 [도매상품전환]</td><td>사용 불가</td><td>버튼 없음</td></tr>' +
+              '<tr><td>진행 중인 주문·배송·정산 처리</td><td>사용</td><td>사용</td></tr>' +
+              '<tr><td>시스템관리</td><td>사용</td><td>사용</td></tr>' +
+            '</tbody></table></div>'
         },
         {
-          title: '이용불가 가맹점은 로그인할 수 없어요',
+          title: '이용제한 — 가맹점 화면 (도매공급권한 미보유)',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) PC 화면', ratio: 2880 / 1520 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) 모바일 화면', ratio: 880 / 1800 }
+          ],
+          shotCaption: '이용제한 가맹점 화면 — 도매공급권한 미보유 (PC / 모바일)',
+          html:
+            '<p>도매공급 메뉴(내 도매상품, 주문접수관리, 도매매출조회, 도매설정)가 처음부터 보이지 않아요. 도매 주문과 소매상품 등록은 위 표대로 막혀요.</p>'
+        },
+        {
+          title: '이용제한 — 본사 화면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-st-b-restricted-pc.webp', alt: '09SCM 이용제한 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-b-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+          ],
+          shotCaption: '이용제한 가맹점 상세 화면 (PC / 모바일)',
+          html:
+            '<p>하단 바에 [이용승인]과 [이용불가]가 보여요. [이용승인]으로 언제든 되돌릴 수 있어요. [이용불가]는 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수가 표시돼요.</p>'
+        },
+        {
+          title: '이용불가 — 가맹점 화면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 로그인 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 로그인 모바일 화면', ratio: 880 / 1800 }
           ],
           shotCaption: '이용불가 가맹점 로그인 화면 (PC / 모바일)',
           html:
-            '<p>아이디와 비밀번호를 맞게 입력해도 로그인이 막히고 본사로 문의하라는 안내가 나와요. 본사의 [관리자접속]도 누를 수 없어요.</p>' +
-            '<p>본사는 [이용불가 해제]로 이용대기로 되돌릴 수 있어요. 가입 반려를 철회할 때와 계약이 끝난 가맹점을 다시 받을 때 모두 같은 방법이고, 이후 이용승인은 다시 본사 검토를 거쳐요.</p>'
+            '<p>아이디와 비밀번호를 맞게 입력해도 로그인이 막히고 본사로 문의하라는 안내가 나와요.</p>'
+        },
+        {
+          title: '이용불가 — 본사 화면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-st-b-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+            { device: 'mobile', src: '../assets/img/partner/fr-st-b-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+          ],
+          shotCaption: '이용불가 가맹점 상세 화면 (PC / 모바일)',
+          html:
+            '<p>하단 바에 [이용불가 해제]와 [삭제]가 보여요. [관리자접속]은 누를 수 없어요. [이용불가 해제]를 누르면 이용대기로 돌아가요. 가입 반려를 철회할 때와 계약이 끝난 가맹점을 다시 받을 때 모두 같은 방법이고, 이후 이용승인은 다시 본사 검토를 거쳐요.</p>'
         }
       ],
       trouble:
