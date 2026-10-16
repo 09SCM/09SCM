@@ -449,12 +449,12 @@ window.GUIDE_CONTENT['retail-product-category'] = {
     '<h3>카테고리 목록</h3>' +
     '<p>왼쪽에서 1차 카테고리를 누르면 오른쪽에 그 아래 2차 카테고리가 나와요.</p>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>[+ 추가]</td><td>새 카테고리 추가 (2차 카테고리는 1차 카테고리를 먼저 선택해야 누를 수 있음)</td></tr>' +
+      '<tr><td>⠿ (핸들)</td><td>끌어서 순서를 바꾸는 손잡이</td></tr>' +
       '<tr><td>카테고리명</td><td>1차 또는 2차 카테고리 이름</td></tr>' +
       '<tr><td>연동상품 N</td><td>해당 카테고리를 소매 카테고리로 정한 소매정보의 개수 (1차 카테고리는 아래 2차 카테고리의 합계)</td></tr>' +
-      '<tr><td>⠿ (핸들)</td><td>끌어서 순서를 바꾸는 손잡이</td></tr>' +
       '<tr><td>[수정]</td><td>카테고리명 변경</td></tr>' +
       '<tr><td>[삭제]</td><td>카테고리 삭제 (연동상품이 1건 이상이면 누를 수 없음)</td></tr>' +
-      '<tr><td>[+ 추가]</td><td>새 카테고리 추가 (2차 카테고리는 1차 카테고리를 먼저 선택해야 누를 수 있음)</td></tr>' +
     '</tbody></table></div>' +
 
     '<h3>추가하기</h3>' +
@@ -2015,13 +2015,18 @@ window.GUIDE_CONTENT['system-notification'] = {
         '<p>충전해도 [알림톡 사용하기]는 자동으로 켜지지 않아요. 충전한 뒤 직접 켜 주세요.</p>' +
 
         '<h3>발송내역</h3>' +
+        '<p>조회 조건</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>기간</td><td>전체 / 1개월 / 3개월 / 6개월 중 선택하거나 시작일·종료일 직접 선택</td></tr>' +
           '<tr><td>발송 메시지</td><td>8종 중 하나만 골라 보기</td></tr>' +
           '<tr><td>발송채널</td><td>알림톡 / LMS 구분해서 보기</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>목록 항목</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>발송일시</td><td>발송한 날짜와 시간</td></tr>' +
           '<tr><td>수신자</td><td>받은 사람의 휴대폰번호 (가운데 번호는 가려서 표시)</td></tr>' +
-          '<tr><td>발송 메시지 / 발송채널</td><td>발송한 메시지 종류와 알림톡·LMS 구분</td></tr>' +
+          '<tr><td>발송 메시지</td><td>발송한 메시지 종류</td></tr>' +
+          '<tr><td>발송채널</td><td>알림톡 / LMS 구분</td></tr>' +
           '<tr><td>차감</td><td>이 발송으로 차감된 건수 (알림톡 1건, LMS 4건)</td></tr>' +
         '</tbody></table></div>',
       cases: [
