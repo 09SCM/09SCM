@@ -2126,8 +2126,7 @@ window.GUIDE_CONTENT['system-notification'] = {
             '<div class="table-wrap"><table><thead><tr><th>알림</th><th>받는 계정</th></tr></thead><tbody>' +
               '<tr><td>가맹점 이용료 결제실패</td><td>본사 계정 (소속 가맹점의 결제가 실패했을 때)</td></tr>' +
               '<tr><td>도매상품 알림</td><td>가맹점 계정 (소속 본사가 새 도매상품을 등록했을 때)</td></tr>' +
-            '</tbody></table></div>' +
-            '<p>도매 주문과 소매 주문 알림은 주문을 처리한 쪽이 아니라 상대방에게 발송돼요.</p>'
+            '</tbody></table></div>'
         }
       ],
       trouble:
@@ -2164,8 +2163,7 @@ window.GUIDE_CONTENT['system-notification'] = {
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>알림 확인</td><td>알림을 확인하면 목록에서 삭제됨</td></tr>' +
           '<tr><td>모두 확인</td><td>미확인 알림을 한꺼번에 삭제</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>알림을 지워도 주문 같은 원래 데이터는 그대로 남아 있어요.</p>',
+        '</tbody></table></div>',
       cases: [
         {
           title: '알림이 모두 사라졌어요',
