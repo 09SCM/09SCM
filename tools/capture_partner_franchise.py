@@ -3,6 +3,7 @@
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from capture_partner_system import *   # 공통 캡처 도우미(저장·크롭·팝업)
+from capture_partner_system import _doc_clip
 
 def goto_franchise(page, label):
     page.evaluate("""(label) => {
@@ -42,6 +43,29 @@ STEPS = [
     ('fr-st-restricted-confirm', '가맹점 목록', seq(open_detail('ga03'), click_btn('이용제한')), 'popup', None, DET_PC, None),
 ]
 
+
+def hide_bar(p, l):
+    p.add_style_tag(content='.market-buybar{display:none!important}'); p.wait_for_timeout(100)
+
+def do(fn):
+    return lambda p, l: (fn(p), p.wait_for_timeout(300))
+
+FEE_CUSTOM = "() => [document.querySelector('#fdFeeCustomToggle').closest('.form-grid'), document.querySelector('#fdSaveFeeBtn').parentElement]"
+def SEC(t):
+    return "() => { const h = [...document.querySelectorAll('h3')].find(e => e.textContent.trim() === '%s'); const s = h.closest('.form-section'); return [s, s]; }" % t
+DET_FULL = (1440, 1500); DET_FULL_MO = (440, 1200)
+TAB_STEPS = [
+    ('fr-d-main', open_detail('ga04'), 'view', None, (1440, 900), (440, 900)),
+    ('fr-d-error', seq(open_detail('ga03'), hide_bar, fill('#fdManagerName', ''), fill('#fdBizRegNo', '123-45-67890'), click('#fdSaveMemberBtn')), 'between', ('회원 정보', '비밀번호 변경'), DET_FULL, DET_FULL_MO),
+    ('fr-d-corp', seq(open_detail('ga03'), hide_bar, do(lambda p: p.select_option('#fdBizPersonType', 'corp'))), 'between', ('사업자 정보', 'PayApp 연동 정보'), DET_FULL, DET_FULL_MO),
+    ('fr-d-payapp-unlinked', seq(open_detail('ga01'), hide_bar), 'between', ('PayApp 연동 정보', '이용약관 동의'), DET_FULL, DET_FULL_MO),
+    ('fr-d-payapp-linked', seq(open_detail('ga03'), hide_bar), 'between', ('PayApp 연동 정보', '이용약관 동의'), DET_FULL, DET_FULL_MO),
+    ('fr-d-fee-custom', seq(open_detail('ga03', 'fee'), hide_bar, click('#fdFeeCustomToggle'), click('#fdSaveFeeBtn')), 'custom', FEE_CUSTOM, DET_FULL, DET_FULL_MO),
+    ('fr-d-pay-reg', seq(open_detail('ga04', 'fee'), hide_bar), 'custom', SEC('결제 정보'), DET_FULL, DET_FULL_MO),
+    ('fr-d-pay-none', seq(open_detail('ga01', 'fee'), hide_bar), 'custom', SEC('결제 정보'), DET_FULL, DET_FULL_MO),
+    ('fr-d-memo', seq(open_detail('ga04', 'memo'), hide_bar), 'custom', SEC('내부 메모'), DET_FULL, DET_FULL_MO),
+]
+
 # 가맹점 계정으로 로그인했을 때 보이는 화면(이용상태별): 이름, 계정, 모바일 동작, 모드
 MEMBER_PC = (1440, 760); MEMBER_MO = (440, 900)
 def open_drawer(p, l):
@@ -76,6 +100,18 @@ if __name__ == '__main__':
                 png = popup_clip(page) if mode == 'popup' else page.screenshot()
                 save(png, '%s-%s' % (name, label))
                 ctx.close()
+        for name, prep, mode, clip_text, pc, mo in TAB_STEPS:
+            if only and not any(o in name for o in only): continue
+            for label, (w, h) in (('pc', pc), ('mobile', mo)):
+                ctx, page = new_page(b, w, h, 'bonsa')
+                goto_franchise(page, '가맹점 목록')
+                prep(page, label)
+                page.wait_for_timeout(250)
+                if mode == 'between': png = between_clip(page, clip_text[0], clip_text[1])
+                elif mode == 'clip': png = card_clip(page, w, clip_text)
+                elif mode == 'custom': png = _doc_clip(page, clip_text)
+                else: png = page.screenshot()
+                save(png, '%s-%s' % (name, label)); ctx.close()
         for name, acct, prep in MEMBER_STEPS:
             if only and not any(o in name for o in only): continue
             for label, (w, h) in (('pc', MEMBER_PC), ('mobile', MEMBER_MO)):

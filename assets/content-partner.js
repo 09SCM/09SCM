@@ -1755,6 +1755,149 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '<p>이용불가 가맹점은 로그인 자체가 막혀 있어요. 이용불가를 해제해 이용대기로 되돌린 뒤 접속해주세요.</p>'
     },
     {
+      id: 'detail-tabs',
+      label: '가맹점 정보 관리',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/fr-d-main-pc.webp', alt: '09SCM 가맹점 상세 PC 화면', ratio: 2880 / 1800 },
+        { device: 'mobile', src: '../assets/img/partner/fr-d-main-mobile.webp', alt: '09SCM 가맹점 상세 모바일 화면', ratio: 880 / 1800 }
+      ],
+      shotCaption: '09SCM 가맹점 상세 화면 (PC / 모바일)',
+      overview:
+        '<p>목록에서 [상세보기]를 누르면 가맹점의 정보를 확인하고 수정하는 화면이 열려요. 위쪽에는 상호명과 이용상태, [소매몰 바로가기], [관리자접속]이 있고, 아래는 탭 3개로 나뉘어요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>탭</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>회원정보</td><td>회원정보, 비밀번호, 사업자 정보 수정, PayApp 연동 정보와 이용약관 동의 확인</td></tr>' +
+          '<tr><td>이용료정보</td><td>개별 이용료 적용, 정기결제 등록 정보 확인</td></tr>' +
+          '<tr><td>내부메모</td><td>본사끼리 보는 메모 (가맹점에게는 보이지 않음)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>[소매몰 바로가기]는 가맹점 소매몰을 새 창으로 열고, [관리자접속]은 해당 가맹점 계정의 관리자 화면을 새 창으로 열어요. 이용상태와 도매공급권한은 화면 아래 고정 바에서 바꿔요. 방법은 <a href="#franchise-list/status-change">이용상태 변경하기</a>에서 확인해주세요.</p>',
+      steps:
+        '<h3>회원정보 탭</h3>' +
+        '<p>섹션은 위에서부터 회원 정보, 비밀번호 변경, 사업자 정보, PayApp 연동 정보, 이용약관 동의 순서예요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>회원 정보</td><td>회원 유형, 아이디(수정 불가), 이름, 이메일, 휴대폰번호 (숫자만 입력하면 하이픈이 자동으로 들어감)</td></tr>' +
+          '<tr><td>비밀번호 변경</td><td>새 비밀번호와 새 비밀번호 확인을 입력하고 [비밀번호 변경]으로 따로 저장</td></tr>' +
+          '<tr><td>사업자 정보</td><td>사업자 유형, 상호명, 대표자명, 사업자등록번호([사업자인증]), 법인등록번호(법인사업자만), 업태, 업종, 우편번호([우편번호 검색]), 기본주소, 상세주소</td></tr>' +
+          '<tr><td>PayApp 연동 정보</td><td>연동 상태(연동완료 / 미연동)와 판매자 회원 아이디, 연동 KEY, 연동 VALUE</td></tr>' +
+          '<tr><td>이용약관 동의</td><td>이용약관·개인정보처리방침[필수], 마케팅정보 수신동의[선택]의 동의 여부 (확인만 가능)</td></tr>' +
+        '</tbody></table></div>' +
+        '<ul>' +
+          '<li>필수 항목에는 빨간 *가 붙어 있어요.</li>' +
+          '<li>[저장]은 회원 정보와 사업자 정보를 함께 저장해요. 비밀번호는 [비밀번호 변경]으로 따로 바꿔요.</li>' +
+          '<li>휴대폰번호는 본사가 인증 없이 바꿀 수 있어요. 휴대폰 인증과 마케팅정보 수신동의 변경은 가맹점이 직접 해요.</li>' +
+          '<li>임시 비밀번호는 자동으로 발급되지 않아요. 이용상태와 상관없이 언제든 새 비밀번호로 바꿀 수 있어요.</li>' +
+          '<li>사업자등록번호를 바꾸면 인증이 풀려서 [사업자인증]을 다시 해야 저장할 수 있어요.</li>' +
+          '<li>우편번호와 기본주소는 [우편번호 검색]으로만 입력해요.</li>' +
+        '</ul>' +
+
+        '<h3>이용료정보 탭</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>기본 이용료</td><td>전체 가맹점에 공통으로 적용되는 월 이용료 (이용료관리에서 설정)</td></tr>' +
+          '<tr><td>개별 이용료 적용</td><td>체크하면 이 가맹점에만 적용할 이용료를 입력 (기본 이용료가 바뀌어도 영향을 받지 않음)</td></tr>' +
+          '<tr><td>정기결제여부</td><td>등록 / 미등록</td></tr>' +
+          '<tr><td>결제수단</td><td>정기결제를 등록한 방식 (신용카드 / 휴대전화)</td></tr>' +
+          '<tr><td>정기결제일</td><td>매월 결제되는 날짜 (처음 카드를 등록한 날짜의 일)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>개별 이용료는 [저장]을 눌러야 적용돼요. 정기결제 정보는 확인만 할 수 있어요. 카드 등록은 가맹점이 시스템관리 > 이용료관리에서 직접 하고, 해지와 카드 변경은 PayApp 리셀러 계정에서 직접 관리해요.</p>' +
+
+        '<h3>내부메모 탭</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>메모 입력</td><td>메모를 입력하고 [추가]를 누르면 목록에 등록</td></tr>' +
+          '<tr><td>메모 목록</td><td>최근에 쓴 메모가 위에 보이고, 내용과 등록일시 표시</td></tr>' +
+          '<tr><td>[삭제]</td><td>메모를 삭제 (누르면 바로 삭제됨)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>이용상태를 바꾼 이유처럼 가맹점과 관련해 처리한 내용을 남겨야 하면 이 탭에 입력해주세요.</p>',
+      cases: [
+        {
+          title: '필수 항목이 비어 있어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-error-pc.webp', alt: '09SCM 회원정보 입력 오류 PC 화면', ratio: 2880 / 1088 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-error-mobile.webp', alt: '09SCM 회원정보 입력 오류 모바일 화면', ratio: 880 / 1088 }
+          ],
+          shotCaption: '09SCM 회원정보 입력 오류 (PC / 모바일)',
+          html:
+            '<p>[저장]을 누르면 오류가 있는 항목이 회원 정보 위쪽에 모아서 표시되고, 오류가 있으면 저장되지 않아요. 사업자등록번호를 바꾸고 [사업자인증]을 하지 않았다면 인증을 완료해달라는 안내가 함께 나와요.</p>'
+        },
+        {
+          title: '법인사업자예요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 2880 / 1918 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 880 / 1954 }
+          ],
+          shotCaption: '09SCM 법인사업자 사업자 정보 (PC / 모바일)',
+          html:
+            '<p>사업자 유형을 법인사업자로 고르면 법인등록번호 입력란이 나타나고, 필수로 입력해야 해요. 개인사업자로 바꾸면 입력란이 사라지고 저장할 때 값이 비워져요.</p>'
+        },
+        {
+          title: 'PayApp 연동 전이에요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-unlinked-pc.webp', alt: '09SCM PayApp 연동 전 가맹점 PC 화면', ratio: 2880 / 918 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-unlinked-mobile.webp', alt: '09SCM PayApp 연동 전 가맹점 모바일 화면', ratio: 880 / 954 }
+          ],
+          shotCaption: '09SCM PayApp 연동 전 (PC / 모바일)',
+          html:
+            '<p>연동 상태가 미연동이고 연동 정보 입력란이 보여요. 미연동 가맹점은 [이용승인]을 누를 수 없어요.</p>'
+        },
+        {
+          title: 'PayApp 연동이 끝났어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-linked-pc.webp', alt: '09SCM PayApp 연동 완료 가맹점 PC 화면', ratio: 2880 / 818 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-linked-mobile.webp', alt: '09SCM PayApp 연동 완료 가맹점 모바일 화면', ratio: 880 / 818 }
+          ],
+          shotCaption: '09SCM PayApp 연동 완료 (PC / 모바일)',
+          html:
+            '<p>연동 상태가 연동완료로 보이고 연동한 정보를 확인할 수 있어요. 최초 연동 이후에는 바꾸거나 해제할 수 없어요.</p>'
+        },
+        {
+          title: '개별 이용료를 적용해요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-fee-custom-pc.webp', alt: '09SCM 개별 이용료 적용 PC 화면', ratio: 2880 / 350 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-fee-custom-mobile.webp', alt: '09SCM 개별 이용료 적용 모바일 화면', ratio: 880 / 426 }
+          ],
+          shotCaption: '09SCM 개별 이용료 적용 (PC / 모바일)',
+          html:
+            '<p>[이 가맹점에 개별 이용료 적용]을 체크하면 개별 이용료 입력란이 나타나요. 숫자만 입력할 수 있고, 1원 이상이어야 저장돼요. 입력하지 않고 [저장]을 누르면 오류 안내가 나와요.</p>' +
+            '<p>목록의 적용이용료에는 개별 이용료가 적용된 가맹점에 [개별] 표시가 붙어요.</p>'
+        },
+        {
+          title: '정기결제를 등록한 가맹점이에요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-pay-reg-pc.webp', alt: '09SCM 정기결제 등록 가맹점 PC 화면', ratio: 2880 / 418 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-reg-mobile.webp', alt: '09SCM 정기결제 등록 가맹점 모바일 화면', ratio: 880 / 536 }
+          ],
+          shotCaption: '09SCM 정기결제 등록 가맹점 (PC / 모바일)',
+          html:
+            '<p>정기결제여부가 등록으로 표시되고, 결제수단과 정기결제일을 확인할 수 있어요. 결제 실패가 반복되어도 정기결제여부는 자동으로 미등록으로 바뀌지 않아요.</p>'
+        },
+        {
+          title: '정기결제를 등록하지 않았어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-pay-none-pc.webp', alt: '09SCM 정기결제 미등록 가맹점 PC 화면', ratio: 2880 / 418 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-none-mobile.webp', alt: '09SCM 정기결제 미등록 가맹점 모바일 화면', ratio: 880 / 536 }
+          ],
+          shotCaption: '09SCM 정기결제 미등록 가맹점 (PC / 모바일)',
+          html:
+            '<p>정기결제여부가 미등록이고 결제수단과 정기결제일은 -로 표시돼요. 카드 등록은 가맹점이 직접 해야 해서, 본사가 대신 등록할 수 없어요.</p>'
+        },
+        {
+          title: '메모를 남겨요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/fr-d-memo-pc.webp', alt: '09SCM 내부메모 PC 화면', ratio: 2880 / 680 },
+            { device: 'mobile', src: '../assets/img/partner/fr-d-memo-mobile.webp', alt: '09SCM 내부메모 모바일 화면', ratio: 880 / 722 }
+          ],
+          shotCaption: '09SCM 내부메모 (PC / 모바일)',
+          html:
+            '<p>메모를 입력하고 [추가]를 누르면 목록 맨 위에 등록돼요. 내부메모는 본사 내부 참고용이라 가맹점에게는 보이지 않아요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>[저장]을 눌러도 저장되지 않아요</h3>' +
+        '<p>회원 정보 위쪽에 표시된 오류를 확인해주세요. 필수 항목이 비어 있거나 이메일·휴대폰번호 형식이 맞지 않으면 저장되지 않아요. 사업자등록번호를 바꿨다면 [사업자인증]도 다시 해야 해요.</p>' +
+        '<h3>비밀번호가 변경되지 않아요</h3>' +
+        '<p>새 비밀번호와 새 비밀번호 확인에 같은 값을 입력해야 해요. 값이 다르거나 비어 있으면 오류 안내가 나와요.</p>' +
+        '<h3>PayApp 연동을 바꾸거나 풀고 싶어요</h3>' +
+        '<p>최초 연동 이후에는 가맹점도 본사도 바꾸거나 해제할 수 없어요. 09SCM 고객센터로 문의해주세요.</p>'
+    },
+    {
       id: 'status-change',
       label: '이용상태 변경하기',
       shots: [
@@ -1779,18 +1922,6 @@ window.GUIDE_CONTENT['franchise-list'] = {
           '<tr><td>이용불가</td><td>로그인 불가</td></tr>' +
         '</tbody></table></div>',
       steps:
-        '<h3>상세 화면 구성</h3>' +
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>[← 가맹점 목록으로]</td><td>가맹점 목록으로 돌아가기</td></tr>' +
-          '<tr><td>상호명·이용상태</td><td>가맹점 상호명과 현재 이용상태</td></tr>' +
-          '<tr><td>[소매몰 바로가기]</td><td>가맹점 소매몰을 새 창으로 열기 (이용대기·이용제한·이용불가 가맹점의 소매몰은 접근제한 화면이 보임)</td></tr>' +
-          '<tr><td>[관리자접속]</td><td>해당 가맹점 계정의 관리자 화면을 새 창으로 열기 (이용불가 가맹점은 누를 수 없음)</td></tr>' +
-          '<tr><td>회원정보 탭</td><td>회원정보, 비밀번호 변경, 사업자 정보, PayApp 연동 정보, 이용약관 동의 확인</td></tr>' +
-          '<tr><td>이용료정보 탭</td><td>기본 이용료와 개별 이용료 설정, 정기결제여부·결제수단·정기결제일 확인</td></tr>' +
-          '<tr><td>내부메모 탭</td><td>본사끼리 보는 메모 (가맹점에게는 보이지 않음)</td></tr>' +
-          '<tr><td>하단 고정 바</td><td>도매공급권한 변경, 이용상태 변경 버튼, [삭제] 버튼 (이용대기·이용불가 가맹점에만 표시)</td></tr>' +
-        '</tbody></table></div>' +
-
         '<h3>이용상태 바꾸기</h3>' +
         '<ol>' +
           '<li>하단 고정 바에서 바꾸려는 버튼을 눌러요.</li>' +
