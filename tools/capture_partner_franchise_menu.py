@@ -28,6 +28,8 @@ STEPS = [
     ('frm-sales-franchise', '통합매출조회', click('[data-fs-scope="franchise"]'), 'view', None, True),
     ('frm-sales-trade', '통합매출조회', click('[data-fs-trade="retail"]'), 'view', None, True),
     ('frm-sales-custom', '통합매출조회', click('[data-fs-period="custom"]'), 'view', None, True),
+    ('frm-sales-monthly', '통합매출조회', click('[data-fs-trend-mode="monthly"]'), 'view', None, True),
+    ('frm-sales-today', '통합매출조회', click('[data-fs-period="today"]'), 'view', None, True),
     ('frm-sales-list', '통합매출조회', click('[data-fs-tab="byFranchise"]'), 'view', None, True),
     ('frm-sales-detail', '통합매출조회', seq(click('[data-fs-tab="byFranchise"]'), click('[data-fs-view]')), 'view', None, True),
     # 공지사항
