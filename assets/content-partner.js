@@ -2101,6 +2101,391 @@ window.GUIDE_CONTENT['franchise-list'] = {
   ]
 };
 
+window.GUIDE_CONTENT['franchise-fee'] = {
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/frm-fee-main-pc.webp', alt: '09SCM 가맹점관리 이용료관리 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/frm-fee-main-mobile.webp', alt: '09SCM 가맹점관리 이용료관리 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 이용료관리 화면 (PC / 모바일)',
+  overview:
+    '<p>모든 가맹점에 적용하는 기본 이용료를 정하고, 가맹점들의 이용료 결제내역을 확인하는 화면이에요. 결제가 실패한 건은 여기서 수납처리할 수 있어요.</p>' +
+    '<ul>' +
+      '<li>정기결제 카드는 가맹점 본인만 등록할 수 있어요. 본사가 대신 등록하는 기능은 없어요.</li>' +
+      '<li>가맹점별로 따로 정한 이용료는 가맹점상세의 이용료정보 탭에서 설정해요.</li>' +
+      '<li>삭제된 가맹점의 결제내역도 이력으로 남아 있어요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>요약 카드</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>정기결제 등록 가맹점</td><td>지금 있는 가맹점 중 정기결제 카드를 등록한 가맹점 수 (삭제된 가맹점은 제외)</td></tr>' +
+      '<tr><td>이번달 결제완료</td><td>결제일시가 이번달인 결제완료 건수</td></tr>' +
+      '<tr><td>이번달 결제실패</td><td>결제일시가 이번달인 결제실패 건수 (빨간색으로 표시)</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>수기완납 건은 두 카드에 포함되지 않아요. 삭제된 가맹점의 결제 건은 포함돼요.</p>' +
+
+    '<h3>기본 이용료 설정</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>기본 이용료(월)</td><td>모든 가맹점에 공통으로 적용하는 월 이용료 (1원 이상의 정수만 입력)</td></tr>' +
+      '<tr><td>저장</td><td>기본 이용료를 저장</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>가맹점상세에서 개별 이용료를 정한 가맹점에는 영향을 주지 않아요. 개별 이용료를 해제한 가맹점부터 바뀐 기본 이용료가 적용돼요.</p>' +
+
+    '<h3>결제내역 찾기</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>전체 / 1개월 / 3개월 / 6개월</td><td>결제일시 기준으로 기간을 골라서 보기 (처음에는 전체)</td></tr>' +
+      '<tr><td>기간</td><td>시작일과 종료일을 직접 선택 (선택한 날짜도 포함)</td></tr>' +
+      '<tr><td>납부상태</td><td>전체 / 결제완료 / 결제실패 / 수기완납 중에서 골라 보기</td></tr>' +
+      '<tr><td>검색</td><td>아이디 또는 상호명으로 찾기 ([검색]을 누르거나 Enter)</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>결제내역</h3>' +
+    '<p>결제일시가 최근인 건부터 20건씩 보여줘요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>결제일시</td><td>결제를 시도한 날짜와 시간</td></tr>' +
+      '<tr><td>아이디, 상호명</td><td>결제한 가맹점</td></tr>' +
+      '<tr><td>결제수단</td><td>가맹점이 등록한 결제수단 (신용카드 또는 휴대전화)</td></tr>' +
+      '<tr><td>납부상태</td><td>결제완료 / 결제실패 / 수기완납</td></tr>' +
+      '<tr><td>결제금액</td><td>해당 회차 결제금액</td></tr>' +
+      '<tr><td>처리일시</td><td>결제완료는 결제일시와 같고, 수기완납은 수납처리한 날짜 (결제실패는 수납처리 전까지 비어 있음)</td></tr>' +
+      '<tr><td>관리</td><td>결제실패는 [수납처리], 수기완납은 [처리정보], 결제완료는 버튼 없음</td></tr>' +
+    '</tbody></table></div>' +
+    '<div class="table-wrap"><table><thead><tr><th>납부상태</th><th>의미</th></tr></thead><tbody>' +
+      '<tr><td>결제완료</td><td>정기결제가 정상적으로 처리됨</td></tr>' +
+      '<tr><td>결제실패</td><td>정기결제가 실패해서 아직 처리되지 않음</td></tr>' +
+      '<tr><td>수기완납</td><td>결제실패 건을 본사가 직접 수납하고 완납으로 처리함</td></tr>' +
+    '</tbody></table></div>',
+  cases: [
+    {
+      title: '기본 이용료를 잘못 입력했어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-fee-default-error-pc.webp', alt: '09SCM 기본 이용료 입력 오류 PC 화면', ratio: 2880 / 512 },
+        { device: 'mobile', src: '../assets/img/partner/frm-fee-default-error-mobile.webp', alt: '09SCM 기본 이용료 입력 오류 모바일 화면', ratio: 880 / 512 }
+      ],
+      shotCaption: '09SCM 기본 이용료 입력 오류 화면 (PC / 모바일)',
+      html: '<p>기본 이용료는 1원 이상의 정수만 저장할 수 있어요. 소수, 마이너스, 문자를 입력하면 오류 문구가 나오고 저장되지 않아요. 콤마(,)와 공백은 자동으로 빼고 확인해요.</p>'
+    },
+    {
+      title: '결제실패 건만 모아봐요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-fee-filter-pc.webp', alt: '09SCM 결제실패 필터 PC 화면', ratio: 2880 / 1524 },
+        { device: 'mobile', src: '../assets/img/partner/frm-fee-filter-mobile.webp', alt: '09SCM 결제실패 필터 모바일 화면', ratio: 880 / 5264 }
+      ],
+      shotCaption: '09SCM 결제실패 필터 화면 (PC / 모바일)',
+      html: '<p>납부상태를 [결제실패]로 고르면 수납처리가 필요한 건만 볼 수 있어요. [기간]을 함께 선택하면 원하는 기간 안의 결제실패 건만 좁혀서 볼 수 있어요.</p>'
+    },
+    {
+      title: '결제실패 건을 수납처리해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-fee-collect-pc.webp', alt: '09SCM 수납처리 팝업 PC 화면', ratio: 936 / 1060 }
+      ],
+      shotCaption: '09SCM 수납처리 팝업 (PC)',
+      html:
+        '<p>가맹점에 연락해 이용료를 직접 받았다면, 결제실패 건의 [수납처리]를 눌러 완납으로 정리해요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>상호명, 결제일시</td><td>처리하는 건의 정보 (수정 불가)</td></tr>' +
+          '<tr><td>결제금액</td><td>실제로 받은 금액에 맞게 수정 가능 (1원 이상의 정수)</td></tr>' +
+          '<tr><td>수납일</td><td>이용료를 받은 날짜 (결제일 이후만 선택 가능, 처리일시에 날짜로 기록)</td></tr>' +
+          '<tr><td>수납방법</td><td>현금 / 계좌이체 / 기타 중 선택 (필수)</td></tr>' +
+          '<tr><td>메모</td><td>수납을 확인한 경위 (선택)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>[수납처리 완료]를 누르면 납부상태가 [수기완납]으로 바뀌어요.</p>'
+    },
+    {
+      title: '수납처리 입력이 잘못됐어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-fee-collect-error-pc.webp', alt: '09SCM 수납처리 오류 PC 화면', ratio: 936 / 1144 }
+      ],
+      shotCaption: '09SCM 수납처리 오류 팝업 (PC)',
+      html: '<p>결제금액이 1원 이상의 정수가 아니거나, 수납일이 결제일보다 앞서거나, 수납방법을 고르지 않으면 오류 문구가 나오고 처리되지 않아요. 문구를 확인해 고친 뒤 다시 [수납처리 완료]를 눌러요.</p>'
+    },
+    {
+      title: '수기완납 건의 처리 내용을 확인해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-fee-detail-pc.webp', alt: '09SCM 처리정보 팝업 PC 화면', ratio: 936 / 592 }
+      ],
+      shotCaption: '09SCM 처리정보 팝업 (PC)',
+      html: '<p>수기완납 건의 [처리정보]를 누르면 수납방법과 메모를 볼 수 있어요. 보기만 할 수 있고 고칠 수는 없어요.</p>'
+    }
+  ],
+  trouble:
+    '<h3>수납처리를 했는데 이용상태가 그대로예요</h3>' +
+    '<p>수납처리는 결제 내역만 정리해요. 이용상태는 자동으로 바뀌지 않으니, 필요하면 <a href="#franchise-list">가맹점 목록</a>의 가맹점상세에서 따로 변경해 주세요. 반대로 결제실패가 되어도 이용상태는 자동으로 바뀌지 않아요.</p>' +
+    '<h3>가맹점 대신 카드를 등록하고 싶어요</h3>' +
+    '<p>정기결제 카드는 가맹점이 직접 시스템관리 &gt; 이용료관리에서 등록해야 해요. 카드 정보는 PayApp 결제창에서 입력하고, 09SCM에는 저장되지 않아요. 카드를 바꾸거나 해지하는 일은 본사의 PayApp 계정에서 처리해요.</p>' +
+    '<h3>이번달 결제완료·결제실패 건수에 수기완납이 보이지 않아요</h3>' +
+    '<p>두 카드는 결제완료와 결제실패 건만 세요. 수납처리로 수기완납이 된 건은 결제내역 표에서 확인해요.</p>' +
+    '<h3>삭제한 가맹점의 결제내역이 보여요</h3>' +
+    '<p>삭제한 가맹점의 결제내역은 이력으로 남아 있어요. 삭제 후에도 결제실패 건은 수납처리할 수 있어요.</p>' +
+    '<h3>가맹점이 보는 이용료 화면이 궁금해요</h3>' +
+    '<p>가맹점 계정은 <a href="#system-fee">시스템관리 &gt; 이용료관리</a>에서 본인의 카드 등록과 결제내역을 확인해요.</p>'
+};
+
+window.GUIDE_CONTENT['franchise-sales'] = {
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/frm-sales-main-pc.webp', alt: '09SCM 통합매출조회 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/frm-sales-main-mobile.webp', alt: '09SCM 통합매출조회 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 통합매출조회 화면 (PC / 모바일)',
+  overview:
+    '<p>본사의 통합 매출과 가맹점들의 합산 매출, 가맹점별 매출을 한곳에서 확인하는 화면이에요.</p>' +
+    '<ul>' +
+      '<li>처음 열면 이번달 기준으로 본사 통합 매출을 보여줘요.</li>' +
+      '<li>가맹점 매출은 본사 매출이 아니라서, 본사 통합 매출과 가맹점 합산 매출을 더한 금액은 보여주지 않아요.</li>' +
+      '<li>위쪽 기간과 거래 필터는 아래의 모든 탭과 보기에 함께 적용돼요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>조회 조건</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>오늘 / 이번주 / 이번달</td><td>선택한 기간의 매출 조회 (처음에는 이번달)</td></tr>' +
+      '<tr><td>기간</td><td>시작일과 종료일을 직접 선택 (최대 6개월)</td></tr>' +
+      '<tr><td>전체 / 소매매출 / 도매매출</td><td>거래 유형별로 나눠서 보기</td></tr>' +
+      '<tr><td>엑셀 다운로드</td><td>화면에 보이는 값을 그대로 파일로 받기</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>전체 현황</h3>' +
+    '<p>[본사], [가맹점] 중에서 골라 볼 수 있어요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>보기</th><th>요약 카드</th></tr></thead><tbody>' +
+      '<tr><td>본사 (본사 통합 매출)</td><td>결제총액 / 취소·환불액 / 매출액 / 이용료 수납액</td></tr>' +
+      '<tr><td>가맹점 (가맹점 합산 매출)</td><td>결제총액 / 취소·환불액 / 매출액</td></tr>' +
+    '</tbody></table></div>' +
+    '<div class="table-wrap"><table><thead><tr><th>카드</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>결제총액</td><td>기간 안에 결제가 완료된 주문의 결제금액 합계</td></tr>' +
+      '<tr><td>취소·환불액</td><td>기간 안에 취소·반품이 승인된 주문의 환불금액 합계</td></tr>' +
+      '<tr><td>매출액</td><td>결제총액 - 취소·환불액</td></tr>' +
+      '<tr><td>이용료 수납액</td><td>가맹점 이용료 중 결제완료·수기완납 건의 금액 합계 (처리일시가 기간 안인 건, 매출액에는 포함하지 않음)</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>본사 통합 매출은 본사 계정의 소매 주문과 도매 공급 주문이에요. 본사가 도매 구매자로서 매입한 금액은 포함하지 않아요. 가맹점 합산 매출은 소속 가맹점 매출의 합이고, 삭제된 가맹점의 매출도 포함돼요.</p>' +
+
+    '<h3>매출 추이</h3>' +
+    '<p>[일별], [월별] 탭으로 합산 단위를 바꿀 수 있고, 아래 표는 최신 기간부터 10건씩 보여줘요. 오늘 이후 날짜는 표시하지 않아요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>기간</td><td>일별 또는 월별 구분</td></tr>' +
+      '<tr><td>총주문건수 / 총결제액</td><td>주문접수 건수 (결제·취소 여부와 관계없음) / 결제완료 금액</td></tr>' +
+      '<tr><td>카드결제 주문건수 / 결제액</td><td>카드로 결제한 주문의 건수와 금액</td></tr>' +
+      '<tr><td>현장결제·계좌이체 주문건수 / 결제액</td><td>현장결제 또는 계좌이체로 결제한 주문의 건수와 금액</td></tr>' +
+      '<tr><td>취소환불건수 / 취소환불액</td><td>취소·반품이 승인된 건수와 환불금액</td></tr>' +
+      '<tr><td>매출액</td><td>결제액 - 취소환불액 (마이너스일 수 있음)</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>가맹점별 현황</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>이용상태</td><td>이용대기 / 이용승인 / 이용제한 / 이용불가 중 골라 보기</td></tr>' +
+      '<tr><td>검색</td><td>아이디 또는 상호명으로 찾기 ([검색]을 누르거나 Enter)</td></tr>' +
+      '<tr><td>정렬</td><td>매출액순(처음) / 주문순 / 상호명순</td></tr>' +
+      '<tr><td>아이디, 상호명</td><td>가맹점 정보</td></tr>' +
+      '<tr><td>적용 이용료</td><td>해당 가맹점에 적용 중인 월 이용료</td></tr>' +
+      '<tr><td>주문건수 (접수일 기준)</td><td>기간 안에 접수된 주문 건수</td></tr>' +
+      '<tr><td>매출액 (결제일 기준)</td><td>결제총액에서 취소·환불액을 뺀 금액</td></tr>' +
+      '<tr><td>이용상태</td><td>가맹점의 현재 이용상태</td></tr>' +
+      '<tr><td>보기</td><td>해당 가맹점 한 곳의 매출 보기로 이동</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>목록은 20건씩 보여주고, 삭제된 가맹점은 목록과 검색에 나오지 않아요.</p>' +
+
+    '<h3>가맹점 1곳 조회</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>가맹점 상세보기</td><td>가맹점 목록의 가맹점상세로 이동</td></tr>' +
+      '<tr><td>엑셀 다운로드</td><td>이 가맹점의 매출을 파일로 받기</td></tr>' +
+      '<tr><td>요약 카드, 매출 추이</td><td>결제총액 / 취소·환불액 / 매출액과 일별·월별 추이 (가맹점 보기와 같은 형식, 이용료 수납액은 없음)</td></tr>' +
+      '<tr><td>← 가맹점별 현황으로</td><td>가맹점별 현황 목록으로 돌아가기</td></tr>' +
+    '</tbody></table></div>',
+  cases: [
+    {
+      title: '가맹점 합산 매출을 봐요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-sales-franchise-pc.webp', alt: '09SCM 가맹점 합산 매출 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/frm-sales-franchise-mobile.webp', alt: '09SCM 가맹점 합산 매출 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 가맹점 합산 매출 화면 (PC / 모바일)',
+      html: '<p>전체 현황에서 [가맹점]을 누르면 소속 가맹점 전체의 매출을 합산해서 보여줘요. 요약 카드에는 이용료 수납액이 없어요.</p>'
+    },
+    {
+      title: '소매 또는 도매 매출만 봐요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-sales-trade-pc.webp', alt: '09SCM 소매매출 필터 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/frm-sales-trade-mobile.webp', alt: '09SCM 소매매출 필터 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 소매매출 필터 화면 (PC / 모바일)',
+      html: '<p>[소매매출] 또는 [도매매출]을 누르면 해당 거래만 집계해요. 이용료 수납액은 소매·도매 거래와 관계가 없어서 이 경우 &quot;-&quot;로 표시돼요.</p>'
+    },
+    {
+      title: '기간을 직접 선택해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-sales-custom-pc.webp', alt: '09SCM 기간 선택 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/frm-sales-custom-mobile.webp', alt: '09SCM 기간 선택 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 기간 선택 화면 (PC / 모바일)',
+      html: '<p>[기간]을 누르면 시작일과 종료일을 고를 수 있어요. 최대 6개월까지 선택할 수 있어서, 종료일은 시작일 기준 6개월 안으로만 선택돼요.</p>'
+    },
+    {
+      title: '가맹점별 매출을 비교해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-sales-list-pc.webp', alt: '09SCM 가맹점별 현황 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/frm-sales-list-mobile.webp', alt: '09SCM 가맹점별 현황 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 가맹점별 현황 화면 (PC / 모바일)',
+      html: '<p>[가맹점별 현황] 탭에서는 가맹점마다의 주문건수와 매출액을 표로 볼 수 있어요. 이용상태로 좁히거나 아이디·상호명으로 찾을 수 있고, 정렬 기준도 바꿀 수 있어요.</p>'
+    },
+    {
+      title: '가맹점 한 곳의 매출을 봐요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-sales-detail-pc.webp', alt: '09SCM 가맹점 1곳 매출 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/frm-sales-detail-mobile.webp', alt: '09SCM 가맹점 1곳 매출 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 가맹점 1곳 매출 화면 (PC / 모바일)',
+      html: '<p>가맹점별 현황에서 [보기]를 누르면 해당 가맹점의 요약과 매출 추이가 나와요. 제목에는 가맹점 상호명이 표시되고, [가맹점 상세보기]로 가맹점 정보를 바로 확인할 수 있어요.</p>'
+    }
+  ],
+  trouble:
+    '<h3>매출액이 마이너스예요</h3>' +
+    '<p>결제는 지난 기간에 되고 취소·환불은 이번 기간에 승인된 경우예요. 결제액은 결제완료일, 취소·환불은 승인일 기준으로 집계해서 기간이 다르면 이렇게 나올 수 있어요.</p>' +
+    '<h3>주문건수와 결제액이 서로 맞지 않아요</h3>' +
+    '<p>주문건수는 주문접수일, 결제액은 결제완료일 기준이에요. 결제 전 주문이나 다음 기간에 결제된 주문은 건수와 금액이 서로 다른 기간에 잡혀요.</p>' +
+    '<h3>본사 매출과 가맹점 매출이 합쳐지지 않아요</h3>' +
+    '<p>가맹점 매출은 본사 매출이 아니라서 따로 보여줘요. 본사가 가맹점에서 받는 금액은 이용료이고, 본사 보기의 이용료 수납액에서 확인해요.</p>' +
+    '<h3>이용료 수납액이 &quot;-&quot;로 나와요</h3>' +
+    '<p>소매매출이나 도매매출 필터를 선택했을 때는 이용료 수납액을 보여주지 않아요. [전체]로 바꾸면 확인할 수 있어요.</p>' +
+    '<h3>삭제한 가맹점이 목록에 없어요</h3>' +
+    '<p>가맹점별 현황 목록과 검색에는 삭제된 가맹점이 나오지 않아요. 다만 삭제된 가맹점의 매출은 가맹점 합산 매출에 계속 포함돼요.</p>'
+};
+
+window.GUIDE_CONTENT['franchise-notice'] = {
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/frm-notice-list-pc.webp', alt: '09SCM 가맹점관리 공지사항 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/frm-notice-list-mobile.webp', alt: '09SCM 가맹점관리 공지사항 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 공지사항 관리 화면 (PC / 모바일)',
+  overview:
+    '<p>본사가 가맹점에게 알리는 공지(우리본사 공지)를 올리고 관리하는 화면이에요. 등록, 수정, 삭제를 할 수 있어요.</p>' +
+    '<ul>' +
+      '<li>올린 공지는 소속 가맹점 전체에게 보여요. 가맹점을 골라서 알릴 수는 없어요.</li>' +
+      '<li>노출 중인 공지뿐 아니라 미노출 공지도 이 목록에 모두 보여요.</li>' +
+      '<li>가맹점은 시스템관리 &gt; 공지사항과 대시보드에서 공지를 확인해요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>공지 목록</h3>' +
+    '<p>등록일이 최근인 공지부터 20건씩 보여줘요. 등록일이 같으면 나중에 올린 공지가 먼저 나와요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>체크박스</td><td>일괄삭제할 공지 선택</td></tr>' +
+      '<tr><td>번호</td><td>목록 순번</td></tr>' +
+      '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘으로 표시)</td></tr>' +
+      '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
+      '<tr><td>등록일</td><td>공지 등록일</td></tr>' +
+      '<tr><td>조회수</td><td>가맹점이 공지를 열어본 횟수</td></tr>' +
+      '<tr><td>관리</td><td>[상세보기] [수정] [삭제]</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>목록 위에 전체 건수와 선택한 건수가 표시돼요. 공지가 없으면 &quot;등록된 공지사항이 없습니다.&quot;, 찾는 결과가 없으면 &quot;검색 결과가 없습니다.&quot;가 나와요.</p>' +
+
+    '<h3>공지 찾기</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>노출여부</td><td>전체 / 노출 / 미노출 중에서 골라 보기</td></tr>' +
+      '<tr><td>제목 검색</td><td>입력한 단어가 제목에 들어간 공지만 보기 ([검색]을 누르거나 Enter)</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>공지 등록·수정</h3>' +
+    '<p>[+ 공지사항등록]을 누르면 등록 화면이 열려요. 수정도 같은 항목으로 해요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>필수</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>노출여부</td><td>필수</td><td>노출 / 미노출 중 선택 (처음에는 선택된 값이 없음)</td></tr>' +
+      '<tr><td>등록일</td><td>필수</td><td>날짜 선택 (등록할 때는 오늘이 기본값, 수정 가능). 가맹점 목록의 정렬 기준이며, 미래 날짜로 예약 게시하는 기능은 없음</td></tr>' +
+      '<tr><td>제목</td><td>필수</td><td>100자 이내</td></tr>' +
+      '<tr><td>내용</td><td>필수</td><td>공지 본문 (상품 상세정보와 같은 에디터 사용)</td></tr>' +
+      '<tr><td>첨부파일</td><td>선택</td><td>최대 5개, 파일당 10MB 이내 (문서·이미지·압축 파일만 가능, 실행 파일은 불가). 수정할 때 기존 첨부파일을 하나씩 삭제 가능</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>작성자(우리본사)와 알림 대상(전체 가맹점)은 정해져 있어서 입력하지 않아요. 등록하면 공지사항 목록으로, 수정하면 공지 상세로 이동하고 &quot;저장되었습니다.&quot;가 나와요. 수정해도 조회수는 그대로 유지돼요.</p>' +
+
+    '<h3>공지 상세</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>제목, 노출여부, 등록일, 조회수</td><td>공지의 기본 정보</td></tr>' +
+      '<tr><td>첨부파일</td><td>파일 이름과 용량 (눌러서 내려받기), 없으면 &quot;첨부파일 없음&quot;</td></tr>' +
+      '<tr><td>상세정보</td><td>공지 내용</td></tr>' +
+      '<tr><td>수정 / 삭제</td><td>수정 화면으로 이동 / 삭제 확인 후 목록으로 이동</td></tr>' +
+    '</tbody></table></div>',
+  cases: [
+    {
+      title: '미노출 공지만 모아봐요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-filter-pc.webp', alt: '09SCM 미노출 공지 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/frm-notice-filter-mobile.webp', alt: '09SCM 미노출 공지 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 미노출 공지 화면 (PC / 모바일)',
+      html: '<p>노출여부를 [미노출]로 고르면 가맹점에 보이지 않는 공지만 모아서 볼 수 있어요. 공지를 미리 써 두었다가 나중에 노출로 바꾸고 싶을 때 쓰면 편해요.</p>'
+    },
+    {
+      title: '새 공지를 올려요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-form-pc.webp', alt: '09SCM 공지사항 등록 PC 화면', ratio: 2880 / 2300 },
+        { device: 'mobile', src: '../assets/img/partner/frm-notice-form-mobile.webp', alt: '09SCM 공지사항 등록 모바일 화면', ratio: 880 / 3000 }
+      ],
+      shotCaption: '09SCM 공지사항 등록 화면 (PC / 모바일)',
+      html: '<p>[+ 공지사항등록]을 누르고 노출여부, 등록일, 제목, 내용을 입력한 뒤 [저장]을 눌러요. 첨부파일은 필요할 때만 추가해요. 노출을 선택해 저장하면 바로 가맹점에게 보여요.</p>'
+    },
+    {
+      title: '필수 항목을 빠뜨렸어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-form-error-pc.webp', alt: '09SCM 공지사항 등록 오류 PC 화면', ratio: 2880 / 2300 },
+        { device: 'mobile', src: '../assets/img/partner/frm-notice-form-error-mobile.webp', alt: '09SCM 공지사항 등록 오류 모바일 화면', ratio: 880 / 3000 }
+      ],
+      shotCaption: '09SCM 공지사항 등록 오류 화면 (PC / 모바일)',
+      html:
+        '<p>비어 있는 필수 항목마다 안내 문구가 나오고 저장되지 않아요. 문구에 맞게 채운 뒤 다시 저장해요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>안내 문구</th></tr></thead><tbody>' +
+          '<tr><td>노출여부</td><td>노출여부를 선택해주세요.</td></tr>' +
+          '<tr><td>등록일</td><td>등록일을 선택해주세요.</td></tr>' +
+          '<tr><td>제목</td><td>제목을 입력해주세요.</td></tr>' +
+          '<tr><td>내용</td><td>내용을 입력해주세요.</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>첨부파일이 허용되지 않는 형식이거나 10MB를 넘거나 5개를 넘으면 그 이유가 파일 아래에 따로 나와요.</p>'
+    },
+    {
+      title: '올린 공지를 확인해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-detail-pc.webp', alt: '09SCM 공지사항 상세 PC 화면', ratio: 2880 / 2300 },
+        { device: 'mobile', src: '../assets/img/partner/frm-notice-detail-mobile.webp', alt: '09SCM 공지사항 상세 모바일 화면', ratio: 880 / 3000 }
+      ],
+      shotCaption: '09SCM 공지사항 상세 화면 (PC / 모바일)',
+      html: '<p>[상세보기]를 누르면 공지 내용과 조회수, 첨부파일을 볼 수 있어요. 여기서 바로 [수정]하거나 [삭제]할 수 있어요.</p>'
+    },
+    {
+      title: '공지를 삭제해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-delete-pc.webp', alt: '09SCM 공지 삭제 확인 PC 화면', ratio: 936 / 442 }
+      ],
+      shotCaption: '09SCM 공지 삭제 확인 창 (PC)',
+      html:
+        '<p>[삭제]를 누르면 확인 창이 나와요. [삭제]를 누르면 공지와 첨부파일이 함께 지워지고, 가맹점 화면과 대시보드에서도 바로 사라져요. 삭제한 공지는 복구할 수 없어요.</p>' +
+        '<p>가맹점에게 보이는 것만 멈추고 싶다면 삭제하지 말고 노출여부를 [미노출]로 바꿔 주세요.</p>'
+    },
+    {
+      title: '여러 공지를 한 번에 삭제해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-empty-pc.webp', alt: '09SCM 일괄삭제 선택 없음 PC 화면', ratio: 936 / 352 }
+      ],
+      shotCaption: '09SCM 일괄삭제 선택 없음 안내 (PC)',
+      html:
+        '<p>삭제할 공지의 체크박스를 선택하고 [일괄삭제]를 누르면 선택한 건수를 확인하는 창이 나와요. 현재 보고 있는 페이지에서 선택한 공지만 삭제할 수 있어요.</p>' +
+        '<p>선택한 공지가 없는 상태에서 [일괄삭제]를 누르면 &quot;삭제할 공지사항을 선택해주세요.&quot;가 나와요.</p>'
+    },
+    {
+      title: '작성하다가 나가려고 해요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/frm-notice-leave-pc.webp', alt: '09SCM 작성 중 나가기 확인 PC 화면', ratio: 936 / 396 }
+      ],
+      shotCaption: '09SCM 작성 중 나가기 확인 창 (PC)',
+      html: '<p>내용을 입력한 뒤 [취소]나 뒤로가기를 누르면 &quot;작성 중인 내용을 버리고 돌아가시겠습니까?&quot; 확인 창이 나와요. [나가기]를 누르면 입력한 내용이 저장되지 않고 돌아가요. 입력한 내용이 없으면 확인 없이 바로 돌아가요.</p>'
+    }
+  ],
+  trouble:
+    '<h3>올린 공지가 가맹점에게 보이지 않는다고 해요</h3>' +
+    '<p>노출여부가 [미노출]인지 확인해 주세요. 미노출 공지는 가맹점의 공지 목록과 대시보드에서 보이지 않아요. [수정]에서 노출로 바꾸면 다시 보여요.</p>' +
+    '<h3>조회수가 오르지 않아요</h3>' +
+    '<p>가맹점이 공지 상세를 열 때마다 1씩 올라가요. 본사 계정이 직접 열어본 건 집계하지 않아서, 이 화면의 [상세보기]로 확인해도 조회수는 오르지 않아요. 조회수는 가맹점 계정에는 보이지 않아요.</p>' +
+    '<h3>특정 가맹점에게만 공지하고 싶어요</h3>' +
+    '<p>우리본사 공지는 전체 가맹점에 보여요. 가맹점을 골라서 알리는 기능은 없어요.</p>' +
+    '<h3>삭제한 공지를 되돌리고 싶어요</h3>' +
+    '<p>삭제한 공지는 첨부파일까지 함께 지워져서 복구할 수 없어요. 같은 내용을 다시 등록해야 해요.</p>' +
+    '<h3>09SCM이 올린 공지가 이 목록에 없어요</h3>' +
+    '<p>이 화면에는 본사가 올린 공지만 나와요. 09SCM이 올린 공지는 <a href="#system-notice">시스템관리 &gt; 공지사항</a>에서 확인해요.</p>'
+};
+
 window.GUIDE_CONTENT['system-notice'] = {
   shots: [
     { device: 'pc', src: '../assets/img/partner/sys-notice-list-pc.webp', alt: '09SCM 공지사항 PC 화면', ratio: 2880 / 3000 },
