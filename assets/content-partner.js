@@ -2119,20 +2119,19 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
       '<tr><td>정기결제 등록 가맹점</td><td>정기결제 카드를 등록한 가맹점 수</td></tr>' +
       '<tr><td>이번달 결제완료</td><td>이번달에 결제가 완료된 건수</td></tr>' +
-      '<tr><td>이번달 결제실패</td><td>이번달에 결제가 실패한 건수 (빨간색으로 표시)</td></tr>' +
+      '<tr><td>이번달 결제실패</td><td>이번달에 결제가 실패한 건수</td></tr>' +
     '</tbody></table></div>' +
 
     '<h3>기본 이용료 설정</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
       '<tr><td>기본 이용료(월)</td><td>모든 가맹점에 공통으로 적용하는 월 이용료 (1원 이상의 정수만 입력)</td></tr>' +
-      '<tr><td>저장</td><td>기본 이용료를 저장</td></tr>' +
     '</tbody></table></div>' +
-    '<p>가맹점상세에서 개별 이용료를 정한 가맹점은 기본 이용료를 바꿔도 그대로예요. 개별 이용료를 해제하면 그때부터 기본 이용료가 적용돼요.</p>' +
+    '<p>가맹점상세에서 개별 이용료를 설정한 가맹점은 기본 이용료를 바꿔도 변하지 않아요.</p>' +
 
     '<h3>결제내역 찾기</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>기간</td><td>전체(기본), 1개월, 3개월, 6개월, 시작일~종료일 직접 선택 (결제일시 기준)</td></tr>' +
-      '<tr><td>납부상태</td><td>전체 / 결제완료 / 결제실패 / 수기완납 구분</td></tr>' +
+      '<tr><td>기간</td><td>전체(기본) / 1개월 / 3개월 / 6개월 / 직접 선택 (결제일시 기준)</td></tr>' +
+      '<tr><td>납부상태</td><td>전체 / 결제완료 / 결제실패 / 수기완납</td></tr>' +
       '<tr><td>검색</td><td>아이디, 상호명으로 검색 (영문 대소문자 구분 없음, 하이픈 무시)</td></tr>' +
       '<tr><td>정렬</td><td>결제일시 최신순</td></tr>' +
     '</tbody></table></div>' +
@@ -2146,13 +2145,13 @@ window.GUIDE_CONTENT['franchise-fee'] = {
       '<tr><td>결제수단</td><td>가맹점이 등록한 결제수단 (신용카드 또는 휴대전화)</td></tr>' +
       '<tr><td>납부상태</td><td>결제완료 / 결제실패 / 수기완납</td></tr>' +
       '<tr><td>결제금액</td><td>해당 회차 결제금액</td></tr>' +
-      '<tr><td>처리일시</td><td>결제완료는 결제일시와 같고, 수기완납은 수납처리한 날짜 (결제실패는 수납처리 전까지 비어 있음)</td></tr>' +
-      '<tr><td>관리</td><td>결제실패는 [수납처리], 수기완납은 [처리정보], 결제완료는 버튼 없음</td></tr>' +
+      '<tr><td>처리일시</td><td>결제완료는 결제일시와 동일, 수기완납은 수납처리한 날짜 (결제실패는 빈칸)</td></tr>' +
+      '<tr><td>관리</td><td>결제실패 건은 [수납처리], 수기완납 건은 [처리정보] (결제완료는 버튼 없음)</td></tr>' +
     '</tbody></table></div>' +
-    '<div class="table-wrap"><table><thead><tr><th>납부상태</th><th>의미</th></tr></thead><tbody>' +
-      '<tr><td>결제완료</td><td>정기결제가 정상적으로 처리됨</td></tr>' +
-      '<tr><td>결제실패</td><td>정기결제가 실패해서 아직 처리되지 않음</td></tr>' +
-      '<tr><td>수기완납</td><td>결제실패 건을 본사가 직접 수납하고 완납으로 처리함</td></tr>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>[결제완료]</td><td>정기결제가 정상 처리된 상태</td></tr>' +
+      '<tr><td>[결제실패]</td><td>정기결제가 실패해 아직 처리되지 않은 상태</td></tr>' +
+      '<tr><td>[수기완납]</td><td>결제실패 건을 본사가 직접 수납해 완납으로 처리한 상태</td></tr>' +
     '</tbody></table></div>',
   cases: [
     {
@@ -2162,7 +2161,11 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         { device: 'mobile', src: '../assets/img/partner/frm-fee-default-error-mobile.webp', alt: '09SCM 기본 이용료 입력 오류 모바일 화면', ratio: 880 / 512 }
       ],
       shotCaption: '09SCM 기본 이용료 입력 오류 화면 (PC / 모바일)',
-      html: '<p>기본 이용료는 1원 이상의 정수만 저장할 수 있어요. 소수, 마이너스, 문자를 입력하면 오류 문구가 나오고 저장되지 않아요. 콤마(,)와 공백은 자동으로 빼고 확인해요.</p>'
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>기본 이용료가 1원 이상의 숫자가 아님</td><td>&quot;기본 이용료는 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내가 나오면 저장되지 않아요. 값을 고친 뒤 다시 [저장]을 눌러요.</p>'
     },
     {
       title: '결제실패 건만 모아봐요',
@@ -2171,7 +2174,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         { device: 'mobile', src: '../assets/img/partner/frm-fee-filter-mobile.webp', alt: '09SCM 결제실패 필터 모바일 화면', ratio: 880 / 5264 }
       ],
       shotCaption: '09SCM 결제실패 필터 화면 (PC / 모바일)',
-      html: '<p>납부상태를 [결제실패]로 고르면 수납처리가 필요한 건만 볼 수 있어요. [기간]을 함께 선택하면 원하는 기간 안의 결제실패 건만 좁혀서 볼 수 있어요.</p>'
+      html: '<p>납부상태를 [결제실패]로 선택하면 결제실패 건만 보여줘요. [기간]을 함께 선택하면 해당 기간 안의 건만 보여줘요.</p>'
     },
     {
       title: '결제실패 건을 수납처리해요',
@@ -2182,13 +2185,12 @@ window.GUIDE_CONTENT['franchise-fee'] = {
       html:
         '<p>결제실패 건의 [수납처리]를 누르면 팝업이 열려요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>상호명, 결제일시</td><td>처리하는 건의 정보 (수정 불가)</td></tr>' +
-          '<tr><td>결제금액</td><td>실제로 받은 금액에 맞게 수정 가능 (1원 이상의 정수)</td></tr>' +
-          '<tr><td>수납일</td><td>이용료를 받은 날짜 (결제일 이후만 선택 가능, 처리일시에 날짜로 기록)</td></tr>' +
-          '<tr><td>수납방법</td><td>현금 / 계좌이체 / 기타 중 선택 (필수)</td></tr>' +
-          '<tr><td>메모</td><td>수납을 확인한 경위 (선택)</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>[수납처리 완료]를 누르면 납부상태가 [수기완납]으로 바뀌고, 통합매출조회의 이용료 수납액으로 잡혀요.</p>'
+          '<tr><td>상호명, 결제일시</td><td>처리 대상 건의 정보 (수정 불가)</td></tr>' +
+          '<tr><td>결제금액</td><td>실제로 받은 금액 (1원 이상의 숫자, 처음에는 결제실패 금액)</td></tr>' +
+          '<tr><td>수납일</td><td>이용료를 받은 날짜 (결제일 이후만 선택, 처음에는 오늘 날짜)</td></tr>' +
+          '<tr><td>수납방법</td><td>현금 / 계좌이체 / 기타 중 선택 (처음에는 현금)</td></tr>' +
+          '<tr><td>메모</td><td>수납을 확인한 경위 (선택 입력)</td></tr>' +
+        '</tbody></table></div>'
     },
     {
       title: '수납처리 입력이 잘못됐어요',
@@ -2196,7 +2198,13 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         { device: 'pc', src: '../assets/img/partner/frm-fee-collect-error-pc.webp', alt: '09SCM 수납처리 오류 PC 화면', ratio: 936 / 1144 }
       ],
       shotCaption: '09SCM 수납처리 오류 팝업 (PC)',
-      html: '<p>결제금액이 1원 이상의 정수가 아니거나, 수납일이 결제일보다 앞서거나, 수납방법을 고르지 않으면 오류 문구가 나오고 처리되지 않아요.</p>'
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>결제금액이 1원 이상의 숫자가 아님</td><td>&quot;결제금액은 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
+          '<tr><td>수납일 미선택</td><td>&quot;수납일을 선택해주세요.&quot;</td></tr>' +
+          '<tr><td>수납일이 결제일보다 앞섬</td><td>&quot;수납일은 결제일 이후로 선택해주세요.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내가 나오면 처리되지 않아요. 값을 고친 뒤 다시 [수납처리 완료]를 눌러요.</p>'
     },
     {
       title: '수기완납 건의 처리 내용을 확인해요',
@@ -2208,10 +2216,8 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     }
   ],
   trouble:
-    '<h3>가맹점의 카드를 바꾸거나 정기결제를 해지하고 싶어요</h3>' +
-    '<p>이 화면에서는 바꾸거나 해지할 수 없어요. 정기결제는 본사의 PayApp 계정에서 관리해요.</p>' +
-    '<h3>가맹점이 보는 이용료 화면이 궁금해요</h3>' +
-    '<p>가맹점 계정은 <a href="#system-fee">시스템관리 &gt; 이용료관리</a>에서 본인의 카드 등록과 결제내역을 확인해요.</p>'
+    '<h3>가맹점 카드 변경·해지 버튼이 없어요</h3>' +
+    '<p>이 화면에서는 바꾸거나 해지할 수 없어요. 정기결제는 본사의 PayApp 계정에서 관리해요.</p>'
 };
 
 window.GUIDE_CONTENT['franchise-sales'] = {
@@ -2233,25 +2239,20 @@ window.GUIDE_CONTENT['franchise-sales'] = {
       steps:
         '<h3>조회 조건</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>오늘 / 이번주 / 이번달</td><td>선택한 기간의 매출 조회 (처음에는 이번달)</td></tr>' +
+          '<tr><td>오늘 / 이번주 / 이번달</td><td>선택한 기간의 매출 조회</td></tr>' +
           '<tr><td>기간</td><td>시작일과 종료일을 직접 선택 (최대 6개월)</td></tr>' +
-          '<tr><td>전체 / 소매매출 / 도매매출</td><td>거래 유형별로 나눠서 보기</td></tr>' +
-          '<tr><td>엑셀 다운로드</td><td>화면에 보이는 값을 그대로 파일로 받기</td></tr>' +
+          '<tr><td>전체 / 소매매출 / 도매매출</td><td>거래 유형별 매출 조회 (처음에는 전체)</td></tr>' +
+          '<tr><td>엑셀 다운로드</td><td>조회 중인 매출의 엑셀 파일 저장</td></tr>' +
         '</tbody></table></div>' +
 
         '<h3>매출 요약</h3>' +
-        '<p>[본사], [가맹점] 중에서 골라 볼 수 있어요.</p>' +
-        '<div class="table-wrap"><table><thead><tr><th>보기</th><th>요약 카드</th></tr></thead><tbody>' +
-          '<tr><td>본사 (본사 통합 매출)</td><td>결제총액 / 취소·환불액 / 매출액 / 이용료 수납액</td></tr>' +
-          '<tr><td>가맹점 (가맹점 합산 매출)</td><td>결제총액 / 취소·환불액 / 매출액</td></tr>' +
-        '</tbody></table></div>' +
-        '<div class="table-wrap"><table><thead><tr><th>카드</th><th>설명</th></tr></thead><tbody>' +
+        '<p>[본사], [가맹점] 중에서 골라 볼 수 있어요. [본사]는 본사 계정의 소매 주문과 도매 공급 주문 매출, [가맹점]은 소속 가맹점 매출을 모두 합한 금액이에요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>결제총액</td><td>기간 안에 결제가 완료된 주문의 결제금액 합계</td></tr>' +
           '<tr><td>취소·환불액</td><td>기간 안에 취소·반품이 승인된 주문의 환불금액 합계</td></tr>' +
           '<tr><td>매출액</td><td>결제총액 - 취소·환불액</td></tr>' +
-          '<tr><td>이용료 수납액</td><td>정기결제로 결제된 이용료와, 결제실패 건을 수기완납으로 처리한 이용료의 합계 (처리일시가 기간 안인 건, 매출액에는 포함하지 않음)</td></tr>' +
+          '<tr><td>이용료 수납액</td><td>정기결제로 결제된 이용료와 수기완납 처리한 이용료의 합계 (처리일시 기준, 매출액에 미포함, [본사]에서만 표시)</td></tr>' +
         '</tbody></table></div>' +
-        '<p>본사 통합 매출은 본사 계정의 소매 주문과 도매 공급 주문이에요. 본사가 도매에서 구매한 금액은 포함하지 않아요. 가맹점 합산 매출은 소속 가맹점 매출을 모두 합한 금액이에요.</p>' +
 
         '<h3>매출 추이</h3>' +
         '<p>[일별], [월별] 탭으로 합산 단위를 바꿀 수 있고, 아래 표는 최신 기간부터 10건씩 보여줘요.</p>' +
@@ -2271,7 +2272,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
             { device: 'mobile', src: '../assets/img/partner/frm-sales-franchise-mobile.webp', alt: '09SCM 가맹점 합산 매출 모바일 화면', ratio: 880 / 2400 }
           ],
           shotCaption: '09SCM 가맹점 합산 매출 화면 (PC / 모바일)',
-          html: '<p>[가맹점]을 누르면 소속 가맹점 전체의 매출을 합산해서 보여줘요. 요약 카드에는 이용료 수납액이 없어요.</p>'
+          html: '<p>[가맹점]을 누르면 소속 가맹점 전체의 합산 매출을 보여줘요.</p>'
         },
         {
           title: '소매 또는 도매 매출만 봐요',
@@ -2280,7 +2281,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
             { device: 'mobile', src: '../assets/img/partner/frm-sales-trade-mobile.webp', alt: '09SCM 소매매출 필터 모바일 화면', ratio: 880 / 2400 }
           ],
           shotCaption: '09SCM 소매매출 필터 화면 (PC / 모바일)',
-          html: '<p>[소매매출] 또는 [도매매출]을 누르면 해당 거래만 집계해요. 이용료 수납액은 소매·도매 거래와 관계가 없어서 이 경우 &quot;-&quot;로 표시돼요.</p>'
+          html: '<p>[소매매출] 또는 [도매매출]을 누르면 해당 거래만 집계해요.</p>'
         },
         {
           title: '기간을 직접 선택해요',
@@ -2297,10 +2298,8 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         '<p>결제는 지난 기간에 되고 취소·환불은 이번 기간에 승인된 경우예요. 결제액은 결제완료일, 취소·환불은 승인일 기준으로 집계해서 기간이 다르면 이렇게 나올 수 있어요.</p>' +
         '<h3>주문건수와 결제액이 서로 맞지 않아요</h3>' +
         '<p>주문건수는 주문접수일, 결제액은 결제완료일 기준이에요. 결제 전 주문이나 다음 기간에 결제된 주문은 건수와 금액이 서로 다른 기간에 잡혀요.</p>' +
-        '<h3>가맹점 이용료는 어디서 확인해요</h3>' +
-        '<p>본사 보기의 이용료 수납액에서 확인해요. 정기결제로 결제된 이용료와, <a href="#franchise-fee">이용료관리</a>에서 결제실패 건을 수기완납으로 처리한 이용료가 함께 잡혀요. 처리일시가 선택한 기간 안인 건이 포함돼요.</p>' +
         '<h3>이용료 수납액이 &quot;-&quot;로 나와요</h3>' +
-        '<p>이용료는 소매·도매 거래와 관계가 없어서 [소매매출]이나 [도매매출]을 선택하면 보여주지 않아요. [전체]로 바꾸면 확인할 수 있어요.</p>'
+        '<p>이용료는 소매·도매 거래와 관계가 없어서 [소매매출]이나 [도매매출]을 선택하면 보여주지 않아요. [전체]를 선택하면 확인할 수 있어요.</p>'
     },
     {
       id: 'by-franchise',
@@ -2315,7 +2314,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
       steps:
         '<h3>가맹점 찾기</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>이용상태</td><td>전체 / 이용대기 / 이용승인 / 이용제한 / 이용불가 구분</td></tr>' +
+          '<tr><td>이용상태</td><td>전체 / 이용대기 / 이용승인 / 이용제한 / 이용불가</td></tr>' +
           '<tr><td>검색</td><td>아이디, 상호명으로 검색 (영문 대소문자 구분 없음, 하이픈 무시)</td></tr>' +
           '<tr><td>정렬</td><td>매출액순(기본) / 주문순 / 상호명순</td></tr>' +
         '</tbody></table></div>' +
@@ -2329,7 +2328,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
           '<tr><td>주문건수 (접수일 기준)</td><td>기간 안에 접수된 주문 건수</td></tr>' +
           '<tr><td>매출액 (결제일 기준)</td><td>결제총액에서 취소·환불액을 뺀 금액</td></tr>' +
           '<tr><td>이용상태</td><td>이용대기 / 이용승인 / 이용제한 / 이용불가</td></tr>' +
-          '<tr><td>관리</td><td>[보기] (누르면 해당 가맹점의 매출 화면으로 이동)</td></tr>' +
+          '<tr><td>관리</td><td>[보기] (가맹점 1곳 매출 화면 이동)</td></tr>' +
         '</tbody></table></div>'
     },
     {
@@ -2341,15 +2340,15 @@ window.GUIDE_CONTENT['franchise-sales'] = {
       ],
       shotCaption: '09SCM 가맹점 1곳 매출 화면 (PC / 모바일)',
       overview:
-        '<p>가맹점 한 곳의 매출을 자세히 보는 화면이에요. 가맹점별 현황에서 [보기]를 누르면 열려요. 제목에는 가맹점 상호명이 표시돼요.</p>',
+        '<p>가맹점 한 곳의 매출을 자세히 보는 화면이에요. 가맹점별 현황에서 [보기]를 누르면 열려요.</p>',
       steps:
         '<h3>화면 구성</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>← 가맹점별 현황으로</td><td>가맹점별 현황 목록으로 돌아가기</td></tr>' +
-          '<tr><td>가맹점 상세보기</td><td>가맹점 목록의 가맹점상세로 이동</td></tr>' +
-          '<tr><td>엑셀 다운로드</td><td>이 가맹점의 매출을 파일로 받기</td></tr>' +
+          '<tr><td>← 가맹점별 현황으로</td><td>가맹점별 현황 목록 이동</td></tr>' +
+          '<tr><td>가맹점 상세보기</td><td>해당 가맹점의 가맹점상세 이동</td></tr>' +
+          '<tr><td>엑셀 다운로드</td><td>조회 중인 가맹점 매출의 엑셀 파일 저장</td></tr>' +
           '<tr><td>요약 카드</td><td>결제총액 / 취소·환불액 / 매출액</td></tr>' +
-          '<tr><td>매출 추이</td><td>일별·월별 추이 (전체 현황의 가맹점 보기와 같은 형식)</td></tr>' +
+          '<tr><td>매출 추이</td><td>일별·월별 매출 추이 (전체 현황과 동일한 구성)</td></tr>' +
         '</tbody></table></div>'
     }
   ]
@@ -2453,7 +2452,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
           '<tr><td>노출여부 *</td><td>노출 / 미노출 중 선택 (미노출은 가맹점에 보이지 않음)</td></tr>' +
           '<tr><td>등록일 *</td><td>공지 등록일 (처음에는 오늘 날짜, 수정 가능, 목록의 정렬 기준)</td></tr>' +
           '<tr><td>제목 *</td><td>공지 제목 (100자 이내)</td></tr>' +
-          '<tr><td>내용 *</td><td>공지 본문 (상품 상세정보와 같은 기본 에디터)</td></tr>' +
+          '<tr><td>내용 *</td><td>공지 본문</td></tr>' +
           '<tr><td>첨부파일</td><td>공지에 첨부할 파일 (최대 5개, 파일당 10MB 이내, 문서·이미지·압축 파일만 가능)</td></tr>' +
         '</tbody></table></div>',
       cases: [
