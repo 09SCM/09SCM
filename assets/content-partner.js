@@ -1336,15 +1336,30 @@ window.GUIDE_CONTENT['retail-member'] = {
       ],
       shotCaption: '09SCM 회원정보 상세 화면 (PC / 모바일)',
       overview:
-        '<p>회원 정보를 고치고, 이용상태를 바꾸고, 탈퇴 처리하는 화면이에요. 일반회원 목록의 [상세보기]로 들어와요.</p>' +
+        '<p>회원 정보를 고치고, 이용상태를 바꾸고, 탈퇴 처리하는 화면이에요. 일반회원 목록의 [상세보기]로 들어와요. 아래는 탭 2개로 나뉘어요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>탭</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>회원정보</td><td>기본정보, 휴대폰번호, 배달지 정보 확인과 수정</td></tr>' +
+          '<tr><td>내부메모</td><td>관리자끼리 보는 메모</td></tr>' +
+        '</tbody></table></div>' +
         '<ul>' +
-          '<li>회원정보와 내부메모 두 탭이 있어요. 하단의 이용상태 변경과 탈퇴 처리는 어느 탭에서나 보여요.</li>' +
+          '<li>하단 고정 바에서 이용상태를 바꾸고 탈퇴 처리를 해요. 어느 탭에서나 보여요.</li>' +
           '<li>회색으로 비활성화된 항목(회원가입일시, 최종로그인일시, 노쇼 이력, 휴대폰번호)을 제외하고 모두 수정할 수 있어요. 휴대폰번호는 [번호변경]으로 바꿔요.</li>' +
           '<li>기본정보, 휴대폰번호, 배달지 정보는 영역마다 [저장]이 따로 있어요. 저장하지 않은 영역의 수정 내용은 반영되지 않아요.</li>' +
           '<li>탈퇴회원은 이 화면에 들어올 수 없어요. 탈퇴 처리하면 바로 탈퇴회원 목록으로 돌아가요.</li>' +
         '</ul>',
-      steps:
-        '<h3>기본정보</h3>' +
+      steps: [
+        {
+          title: '회원정보 탭',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-detail-pc.webp', alt: '09SCM 회원정보 상세 PC 화면', ratio: 2880 / 3212 },
+            { device: 'mobile', src: '../assets/img/partner/member-detail-mobile.webp', alt: '09SCM 회원정보 상세 모바일 화면', ratio: 880 / 3164 }
+          ],
+          shotCaption: '09SCM 회원정보 상세 화면 (PC / 모바일)',
+          html: '<p>기본정보, 휴대폰번호, 배달지 정보 3개 영역으로 나뉘어요.</p>'
+        },
+        {
+          title: '회원정보 탭 > 기본정보',
+          html:
         '<p>필수 항목(*)을 모두 입력하고 [저장]을 눌러야 반영돼요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>이름*</td><td>회원 이름</td></tr>' +
@@ -1354,9 +1369,11 @@ window.GUIDE_CONTENT['retail-member'] = {
           '<tr><td>회원가입일시, 최종로그인일시</td><td>조회 전용</td></tr>' +
           '<tr><td>노쇼 이력</td><td>이 회원의 주문 중 노쇼 처리된 건수 (조회 전용)</td></tr>' +
         '</tbody></table></div>' +
-        '<p>진행 중인 주문이 있어도 회원주문 코드는 바꿀 수 있어요. 코드를 바꿔도 기존 주문 연결과 노쇼 이력은 그대로 유지돼요.</p>' +
-
-        '<h3>휴대폰번호</h3>' +
+        '<p>진행 중인 주문이 있어도 회원주문 코드는 바꿀 수 있어요. 코드를 바꿔도 기존 주문 연결과 노쇼 이력은 그대로 유지돼요.</p>'
+        },
+        {
+          title: '회원정보 탭 > 휴대폰번호',
+          html:
         '<p>회원 대신 관리자가 번호를 바꿀 수 있어요. 중복확인과 본인확인을 모두 거쳐야 저장돼요.</p>' +
         '<ol>' +
           '<li><b>번호변경 누르기</b> [번호변경]을 누르면 변경 입력창이 열려요.</li>' +
@@ -1364,17 +1381,40 @@ window.GUIDE_CONTENT['retail-member'] = {
           '<li><b>본인확인하기</b> 중복확인을 통과하면 [인증번호발송]이 활성화돼요. 인증번호(숫자 6자리)를 입력하고 [확인]을 눌러요.</li>' +
           '<li><b>저장하기</b> 인증이 끝나야 [저장]이 활성화돼요.</li>' +
         '</ol>' +
-        '<p>번호를 바꾸면 회원 아이디도 새 번호로 바뀌어요. 기존 주문은 계속 이 회원의 주문으로 집계되고(상품주문건수, 주문금액, 노쇼 이력), 주문 화면에는 주문 당시의 번호가 그대로 표시돼요.</p>' +
-
-        '<h3>배달지 정보</h3>' +
+        '<p>번호를 바꾸면 회원 아이디도 새 번호로 바뀌어요. 기존 주문은 계속 이 회원의 주문으로 집계되고(상품주문건수, 주문금액, 노쇼 이력), 주문 화면에는 주문 당시의 번호가 그대로 표시돼요.</p>'
+        },
+        {
+          title: '회원정보 탭 > 배달지 정보',
+          html:
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>배달지명</td><td>회원이 가입할 때 입력한 배달지 이름</td></tr>' +
           '<tr><td>배달 주소</td><td>배달 받을 주소</td></tr>' +
           '<tr><td>배달 요청사항</td><td>배달 시 전달할 요청사항</td></tr>' +
         '</tbody></table></div>' +
-        '<p>배달지는 회원이 소매몰에서 가입할 때 입력하는 선택 정보예요. 회원당 1개만 관리해요.</p>' +
-
-        '<h3>이용상태 변경·탈퇴 처리</h3>' +
+        '<p>배달지는 회원이 소매몰에서 가입할 때 입력하는 선택 정보예요. 회원당 1개만 관리해요.</p>'
+        },
+        {
+          title: '내부메모 탭',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-memo-pc.webp', alt: '09SCM 내부메모 PC 화면', ratio: 2880 / 1400 },
+            { device: 'mobile', src: '../assets/img/partner/member-memo-mobile.webp', alt: '09SCM 내부메모 모바일 화면', ratio: 880 / 1400 }
+          ],
+          shotCaption: '09SCM 내부메모 화면 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>메모 입력창, [추가]</td><td>관리자끼리 공유할 메모 등록</td></tr>' +
+              '<tr><td>메모 목록</td><td>등록일시와 함께 최신순으로 표시 (메모가 없으면 &quot;등록된 메모가 없습니다.&quot;)</td></tr>' +
+              '<tr><td>[삭제]</td><td>메모 1건 삭제</td></tr>' +
+            '</tbody></table></div>'
+        },
+        {
+          title: '하단 고정 바 (이용상태 변경·탈퇴 처리)',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/member-usage-pc.webp', alt: '09SCM 이용상태 변경 PC 화면', ratio: 2880 / 134 },
+            { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 234 }
+          ],
+          shotCaption: '09SCM 이용상태 변경 화면 (PC / 모바일)',
+          html:
         '<p>화면 하단에 고정되어 있어요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>이용상태</td><td>[정상], [이용제한] 중 선택 (선택만으로는 적용되지 않음)</td></tr>' +
@@ -1388,7 +1428,9 @@ window.GUIDE_CONTENT['retail-member'] = {
           '<tr><td>[정상]</td><td>소매몰 로그인 가능, 채팅주문·링크주문 신규 주문 가능</td></tr>' +
           '<tr><td>[이용제한]</td><td>소매몰 로그인 불가, 채팅주문·링크주문 신규 주문 불가</td></tr>' +
         '</tbody></table></div>' +
-        '<p>회원의 [이용제한]은 가맹점의 이용제한과 달라요. 가맹점 이용제한은 가맹점의 신규 주문·상품 등록을 막고(<a href="#franchise-list/status-change">이용상태 변경하기</a>), 회원 이용제한은 해당 회원의 로그인과 신규 주문만 막아요.</p>',
+        '<p>회원의 [이용제한]은 가맹점의 이용제한과 달라요. 가맹점 이용제한은 가맹점의 신규 주문·상품 등록을 막고(<a href="#franchise-list/status-change">이용상태 변경하기</a>), 회원 이용제한은 해당 회원의 로그인과 신규 주문만 막아요.</p>'
+        }
+      ],
       trouble:
         '<h3>[변경]을 누를 수 없어요</h3>' +
         '<p>선택한 이용상태가 현재 상태와 같으면 [변경]을 누를 수 없어요. 바꾸려는 이용상태를 선택해주세요.</p>' +
@@ -1430,20 +1472,6 @@ window.GUIDE_CONTENT['retail-member'] = {
               '<tr><td>인증 완료</td><td>&quot;휴대폰번호 인증이 완료되었습니다.&quot; ([저장] 활성화)</td></tr>' +
             '</tbody></table></div>' +
             '<p>번호를 다시 고치면 중복확인과 인증을 처음부터 다시 해야 해요. 탈퇴한 회원이 쓰던 번호와 회원주문 코드는 중복으로 보지 않아요.</p>'
-        },
-        {
-          title: '내부메모 탭',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/member-memo-pc.webp', alt: '09SCM 내부메모 PC 화면', ratio: 2880 / 1400 },
-            { device: 'mobile', src: '../assets/img/partner/member-memo-mobile.webp', alt: '09SCM 내부메모 모바일 화면', ratio: 880 / 1400 }
-          ],
-          shotCaption: '09SCM 내부메모 화면 (PC / 모바일)',
-          html:
-            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-              '<tr><td>메모 입력창, [추가]</td><td>관리자끼리 공유할 메모 등록</td></tr>' +
-              '<tr><td>메모 목록</td><td>등록일시와 함께 최신순으로 표시 (메모가 없으면 &quot;등록된 메모가 없습니다.&quot;)</td></tr>' +
-              '<tr><td>[삭제]</td><td>메모 1건 삭제</td></tr>' +
-            '</tbody></table></div>'
         },
         {
           title: '이용상태를 바꿨어요',
