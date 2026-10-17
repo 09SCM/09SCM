@@ -82,7 +82,7 @@ def popup_clip(page, pad=24):
     }""", pad)
     return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']})
 
-PC_ONLY = {'sys-noti-charge'}   # 팝업은 PC만 캡처
+PC_ONLY = {'sys-noti-charge', 'sys-noti-push', 'sys-center', 'sys-center-empty'}   # 팝업은 PC만 캡처
 
 def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
     for label, w, h in (('pc', 1440, 1500), ('mobile', 440, 1200)):
@@ -162,7 +162,7 @@ STEPS = [
     # 알림설정
     ('sys-noti-main', 'bonsa', '알림설정', None, 'view', None),
     ('sys-noti-off', 'bonsa', '알림설정', click('#notiMasterToggle'), 'view', None),
-    ('sys-noti-charge', 'bonsa', '알림설정', seq(click('#notiChargeBtn'), mask('#notiChargeTierRows td:nth-child(2),#notiChargeTierRows td:nth-child(3),#notiChargeTotal{filter:blur(6px)}')), 'popup', None),
+    ('sys-noti-charge', 'bonsa', '알림설정', click('#notiChargeBtn'), 'popup', None),
     ('sys-noti-low', 'ga03', '알림설정', click('#notiMasterToggle'), 'sections', ('#card', '알림톡 사용하기')),
     ('sys-noti-history', 'bonsa', '알림설정', None, 'sections', ('발송내역', '발송내역')),
     ('sys-noti-system', 'bonsa', '알림설정', click('[data-noti-tab="wholesale"]'), 'view', None),

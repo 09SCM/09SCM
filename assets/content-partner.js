@@ -3159,10 +3159,9 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '브라우저 알림을 허용해요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-push-pc.webp', alt: '09SCM 브라우저 알림 허용 방법 PC 화면', ratio: 936 / 736 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-push-mobile.webp', alt: '09SCM 브라우저 알림 허용 방법 모바일 화면', ratio: 880 / 736 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-push-pc.webp', alt: '09SCM 브라우저 알림 허용 방법 PC 화면', ratio: 936 / 736 }
           ],
-          shotCaption: '09SCM 브라우저 알림 허용 방법 화면 (PC / 모바일)',
+          shotCaption: '09SCM 브라우저 알림 허용 방법 팝업 (PC)',
           html:
             '<p>[허용 방법 보기]를 누르면 기기별 허용 방법이 나와요.</p>' +
             '<ul>' +
@@ -3191,10 +3190,9 @@ window.GUIDE_CONTENT['system-notification'] = {
       id: 'noti-center',
       label: '알림센터',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/sys-center-pc.webp', alt: '09SCM 알림센터 PC 화면', ratio: 896 / 1188 },
-        { device: 'mobile', src: '../assets/img/partner/sys-center-mobile.webp', alt: '09SCM 알림센터 모바일 화면', ratio: 880 / 1188 }
+        { device: 'pc', src: '../assets/img/partner/sys-center-pc.webp', alt: '09SCM 알림센터 PC 화면', ratio: 896 / 1188 }
       ],
-      shotCaption: '09SCM 알림센터 화면 (PC / 모바일)',
+      shotCaption: '09SCM 알림센터 팝업 (PC)',
       overview:
         '<p>상단의 벨 아이콘을 누르면 열리는 알림 모음이에요. 시스템 알림 설정에서 켜 둔 알림이 최신순으로 쌓여요.</p>' +
         '<ul>' +
@@ -3218,10 +3216,9 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '알림이 모두 사라졌어요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-center-empty-pc.webp', alt: '09SCM 알림센터 비어 있음 PC 화면', ratio: 896 / 518 },
-            { device: 'mobile', src: '../assets/img/partner/sys-center-empty-mobile.webp', alt: '09SCM 알림센터 비어 있음 모바일 화면', ratio: 880 / 518 }
+            { device: 'pc', src: '../assets/img/partner/sys-center-empty-pc.webp', alt: '09SCM 알림센터 비어 있음 PC 화면', ratio: 896 / 518 }
           ],
-          shotCaption: '09SCM 알림센터 비어 있음 화면 (PC / 모바일)',
+          shotCaption: '09SCM 알림센터 비어 있음 팝업 (PC)',
           html: '<p>모든 알림을 확인하면 알림센터가 비어 있는 상태로 보여요. 새 알림이 생기면 다시 쌓여요.</p>'
         }
       ],
