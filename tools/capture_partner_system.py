@@ -82,8 +82,11 @@ def popup_clip(page, pad=24):
     }""", pad)
     return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']})
 
+PC_ONLY = {'sys-noti-charge'}   # 팝업은 PC만 캡처
+
 def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
     for label, w, h in (('pc', 1440, 1500), ('mobile', 440, 1200)):
+        if label == 'mobile' and name in PC_ONLY: continue
         if name == 'sys-notice-detail': w, h = (1440, 900) if label == 'pc' else (440, 1000)
         ctx, page = new_page(b, w, h, acct)
         goto_menu(page, menu)
@@ -108,6 +111,10 @@ def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
 
 def click(sel, idx=0):
     return lambda p, l: (p.locator(sel).nth(idx).click(), p.wait_for_timeout(300))
+
+def mask(css):
+    """화면에 노출하면 안 되는 값(미확정 단가 등)을 흐리게 처리한다"""
+    return lambda p, l: (p.add_style_tag(content=css), p.wait_for_timeout(100))
 
 def seq(*fns):
     def run(p, l):
@@ -147,12 +154,15 @@ STEPS = [
     ('sys-member-main', 'ga02', '회원정보', None, 'view', None),
     ('sys-member-phone', 'ga02', '회원정보', seq(fill('#memberPhone', '010-9999-0000'), click('#memberPhoneAuthSendBtn')), 'between', ('회원 정보', '비밀번호 변경')),
     ('sys-member-pw', 'ga02', '회원정보', seq(fill('#memberNewPw', 'b1234'), fill('#memberNewPwConfirm', 'b12345'), click('#savePwBtn')), 'between', ('비밀번호 변경', '사업자 정보')),
+    ('sys-member-error', 'ga02', '회원정보', seq(clear('#memberManagerName'), click('#saveMemberAccountBtn')), 'between', ('회원 정보', '비밀번호 변경')),
     ('sys-member-corp', 'bonsa', '회원정보', None, 'between', ('사업자 정보', '계좌정보')),
     ('sys-member-account', 'ga02', '회원정보', seq(clear('#bankAccountNumber'), clear('#bankAccountHolder'), click('#saveBankAccountBtn')), 'between', ('계좌정보', 'PayApp 연동 정보')),
     ('sys-member-payapp', 'ga01', '회원정보', None, 'between', ('PayApp 연동 정보', '이용약관 동의')),
     ('sys-member-terms', 'ga02', '회원정보', click('[data-terms-view]', 2), 'popup', None),
     # 알림설정
     ('sys-noti-main', 'bonsa', '알림설정', None, 'view', None),
+    ('sys-noti-off', 'bonsa', '알림설정', click('#notiMasterToggle'), 'view', None),
+    ('sys-noti-charge', 'bonsa', '알림설정', seq(click('#notiChargeBtn'), mask('#notiChargeTierRows td:nth-child(2),#notiChargeTierRows td:nth-child(3),#notiChargeTotal{filter:blur(6px)}')), 'popup', None),
     ('sys-noti-low', 'ga03', '알림설정', click('#notiMasterToggle'), 'sections', ('#card', '알림톡 사용하기')),
     ('sys-noti-history', 'bonsa', '알림설정', None, 'sections', ('발송내역', '발송내역')),
     ('sys-noti-system', 'bonsa', '알림설정', click('[data-noti-tab="wholesale"]'), 'view', None),

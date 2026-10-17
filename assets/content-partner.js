@@ -1749,7 +1749,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           '<tr><td>검색</td><td>아이디, 이름, 상호명, 대표자명, 사업자번호로 검색 (영문 대소문자 구분 없음, 하이픈 무시)</td></tr>' +
           '<tr><td>정렬</td><td>가입신청일시순(기본, 최신순)·최종로그인일시순·아이디순 중 선택</td></tr>' +
         '</tbody></table></div>' +
-        '<p>목록 위에 조건에 맞는 전체 건수가 표시되고, 한 페이지에 20건씩 보여줘요.</p>' +
+        '<p>목록은 한 페이지에 20건씩 보여줘요.</p>' +
 
         '<h3>목록 항목</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -1833,10 +1833,10 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shotCaption: '09SCM 가맹점 회원정보 탭 (PC / 모바일)',
           html:
             '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-              '<tr><td>회원 정보</td><td>회원 유형, 아이디(수정 불가), 이름*, 이메일*, 휴대폰번호*</td></tr>' +
-              '<tr><td>비밀번호 변경</td><td>새 비밀번호*, 새 비밀번호 확인*, [비밀번호 변경]</td></tr>' +
-              '<tr><td>사업자 정보</td><td>사업자 유형*, 상호명*, 대표자명*, 사업자등록번호*([사업자인증]), 법인등록번호*(법인사업자만), 업태, 업종, 우편번호*([우편번호 검색]), 기본주소*, 상세주소*, [저장]</td></tr>' +
-              '<tr><td>PayApp 연동 정보</td><td>연동 상태(연동완료 / 미연동), 판매자 회원 아이디, 연동 KEY, 연동 VALUE, [연동하기]</td></tr>' +
+              '<tr><td>회원 정보</td><td>회원 유형, 아이디(수정 불가), 이름 *, 이메일 *, 휴대폰번호 *</td></tr>' +
+              '<tr><td>비밀번호 변경</td><td>새 비밀번호 *, 새 비밀번호 확인 *, [비밀번호 변경]</td></tr>' +
+              '<tr><td>사업자 정보</td><td>사업자 유형 *, 상호명 *, 대표자명 *, 사업자등록번호 *([사업자인증]), 법인등록번호 *(법인사업자만), 업태, 업종, 우편번호 *([우편번호 검색]), 기본주소 *, 상세주소 *, [저장]</td></tr>' +
+              '<tr><td>PayApp 연동 정보</td><td>연동 상태(연동완료 / 미연동), 판매자 회원 아이디(userid), 연동 KEY(linkkey), 연동 VALUE(linkval), [연동하기]</td></tr>' +
               '<tr><td>이용약관 동의</td><td>이용약관·개인정보처리방침[필수], 마케팅정보 수신동의[선택]의 동의 여부 (확인만 가능)</td></tr>' +
             '</tbody></table></div>' +
             '<p>가맹점의 회원정보를 조회하고, 필요하면 수정할 수 있어요.</p>' +
@@ -1973,7 +1973,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '<h3>[저장]을 눌러도 저장되지 않아요</h3>' +
         '<p>회원 정보 위쪽에 표시된 오류를 확인해주세요. 필수 항목이 비어 있거나 이메일·휴대폰번호 형식이 맞지 않으면 저장되지 않아요. 사업자등록번호를 바꿨다면 [사업자인증]도 다시 해야 해요.</p>' +
         '<h3>비밀번호가 변경되지 않아요</h3>' +
-        '<p>새 비밀번호와 새 비밀번호 확인에 같은 값을 입력해야 해요. 값이 다르거나 비어 있으면 오류 안내가 나와요.</p>' +
+        '<p>새 비밀번호와 새 비밀번호 확인에 같은 값을 입력해야 해요. 값이 다르면 &quot;비밀번호가 일치하지 않습니다.&quot;, 둘 다 비어 있으면 &quot;새 비밀번호를 입력해주세요.&quot; 안내가 나와요.</p>' +
         '<h3>PayApp 연동을 바꾸거나 풀고 싶어요</h3>' +
         '<p>최초 연동 이후에는 가맹점도 본사도 바꾸거나 해제할 수 없어요. 09SCM 고객센터로 문의해주세요.</p>'
     },
@@ -2124,7 +2124,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           ],
           shotCaption: '이용불가 변경 확인 팝업',
           html:
-            '<p>[이용불가]를 누르면 확인 창이 열려요. [변경]을 누르면 로그인이 막히고, 가맹점이 등록한 도매·소매 상품이 모두 품절·미노출로 바뀌어요.</p>'
+            '<p>[이용불가]를 누르면 확인 창이 열려요. [변경]을 누르면 로그인이 막히고, 가맹점이 등록한 도소매 상품이 모두 품절·미노출로 바뀌어요.</p>'
         },
         {
           title: '이용불가 — 가맹점 화면',
@@ -2196,8 +2196,8 @@ window.GUIDE_CONTENT['franchise-fee'] = {
 
     '<h3>결제내역 찾기</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>기간</td><td>전체(기본) / 1개월 / 3개월 / 6개월 / 직접 선택 (결제일시 기준)</td></tr>' +
-      '<tr><td>납부상태</td><td>전체 / 결제완료 / 결제실패 / 수기완납</td></tr>' +
+      '<tr><td>기간</td><td>전체(기본), 1개월, 3개월, 6개월 중 선택하거나 시작일·종료일 직접 선택 (결제일시 기준)</td></tr>' +
+      '<tr><td>납부상태</td><td>전체, 결제완료, 결제실패, 수기완납 중 선택</td></tr>' +
       '<tr><td>검색</td><td>아이디, 상호명으로 검색 (영문 대소문자 구분 없음, 하이픈 무시)</td></tr>' +
       '<tr><td>정렬</td><td>결제일시 최신순</td></tr>' +
     '</tbody></table></div>' +
@@ -2206,12 +2206,12 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     '<p>목록은 한 페이지에 20건씩 보여줘요.</p>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
       '<tr><td>결제일시</td><td>결제를 시도한 날짜와 시간</td></tr>' +
+      '<tr><td>처리일시</td><td>결제완료는 결제일시와 동일, 수기완납은 수납처리한 날짜 (결제실패는 빈칸)</td></tr>' +
       '<tr><td>아이디</td><td>가맹점이 로그인할 때 쓰는 아이디</td></tr>' +
       '<tr><td>상호명</td><td>사업자 정보의 상호명</td></tr>' +
       '<tr><td>결제수단</td><td>결제에 사용한 수단</td></tr>' +
       '<tr><td>납부상태</td><td>결제완료 / 결제실패 / 수기완납</td></tr>' +
       '<tr><td>결제금액</td><td>해당 회차 결제금액</td></tr>' +
-      '<tr><td>처리일시</td><td>결제완료는 결제일시와 동일, 수기완납은 수납처리한 날짜 (결제실패는 빈칸)</td></tr>' +
       '<tr><td>관리</td><td>결제실패 건은 [수납처리], 수기완납 건은 [처리정보] (결제완료는 버튼 없음)</td></tr>' +
     '</tbody></table></div>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -2229,7 +2229,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
       shotCaption: '09SCM 기본 이용료 입력 오류 화면 (PC / 모바일)',
       html:
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>기본 이용료가 1원 이상의 숫자가 아님</td><td>&quot;기본 이용료는 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
+          '<tr><td>기본 이용료가 1원 이상의 정수가 아님</td><td>&quot;기본 이용료는 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
         '</tbody></table></div>' +
         '<p>안내가 나오면 저장되지 않아요. 값을 고친 뒤 다시 [저장]을 눌러요.</p>'
     },
@@ -2252,9 +2252,9 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         '<p>결제실패 건의 [수납처리]를 누르면 팝업이 열려요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>상호명, 결제일시</td><td>처리 대상 건의 정보 (수정 불가)</td></tr>' +
-          '<tr><td>결제금액</td><td>실제로 받은 금액 (1원 이상의 숫자, 처음에는 결제실패 금액)</td></tr>' +
+          '<tr><td>결제금액</td><td>실제로 받은 금액 (1원 이상의 정수, 처음에는 결제실패 금액)</td></tr>' +
           '<tr><td>수납일</td><td>이용료를 받은 날짜 (결제일 이후만 선택, 처음에는 오늘 날짜)</td></tr>' +
-          '<tr><td>수납방법</td><td>현금 / 계좌이체 / 기타 중 선택 (처음에는 현금)</td></tr>' +
+          '<tr><td>수납방법</td><td>현금, 계좌이체, 기타 중 선택 (처음에는 현금)</td></tr>' +
           '<tr><td>메모</td><td>수납을 확인한 경위 (선택 입력)</td></tr>' +
         '</tbody></table></div>'
     },
@@ -2266,7 +2266,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
       shotCaption: '09SCM 수납처리 오류 팝업 (PC)',
       html:
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>결제금액이 1원 이상의 숫자가 아님</td><td>&quot;결제금액은 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
+          '<tr><td>결제금액이 1원 이상의 정수가 아님</td><td>&quot;결제금액은 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
           '<tr><td>수납일 미선택</td><td>&quot;수납일을 선택해주세요.&quot;</td></tr>' +
           '<tr><td>수납일이 결제일보다 앞섬</td><td>&quot;수납일은 결제일 이후로 선택해주세요.&quot;</td></tr>' +
         '</tbody></table></div>' +
@@ -2411,9 +2411,9 @@ window.GUIDE_CONTENT['franchise-sales'] = {
       steps:
         '<h3>가맹점 찾기</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>이용상태</td><td>전체 / 이용대기 / 이용승인 / 이용제한 / 이용불가</td></tr>' +
+          '<tr><td>이용상태</td><td>전체, 이용대기, 이용승인, 이용제한, 이용불가 중 선택</td></tr>' +
           '<tr><td>검색</td><td>아이디, 상호명으로 검색 (영문 대소문자 구분 없음, 하이픈 무시)</td></tr>' +
-          '<tr><td>정렬</td><td>매출액순(기본) / 주문순 / 상호명순</td></tr>' +
+          '<tr><td>정렬</td><td>매출액순(기본)·주문순·상호명순 중 선택</td></tr>' +
         '</tbody></table></div>' +
         '<p>목록은 한 페이지에 20건씩 보여줘요.</p>' +
 
@@ -2488,7 +2488,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
       steps:
         '<h3>공지 찾기</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>노출여부</td><td>전체 / 노출 / 미노출</td></tr>' +
+          '<tr><td>노출여부</td><td>전체, 노출, 미노출 중 선택</td></tr>' +
           '<tr><td>검색</td><td>제목으로 검색 (영문 대소문자 구분 없음)</td></tr>' +
         '</tbody></table></div>' +
         '<p>목록은 등록일이 최근인 공지부터 한 페이지에 20건씩 보여줘요.</p>' +
@@ -2563,7 +2563,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
       steps:
         '<h3>입력 항목</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>노출여부 *</td><td>노출 / 미노출 중 선택 (미노출은 가맹점에 보이지 않음)</td></tr>' +
+          '<tr><td>노출여부 *</td><td>노출, 미노출 중 선택 (미노출은 가맹점에 보이지 않음)</td></tr>' +
           '<tr><td>등록일 *</td><td>공지 등록일 (처음에는 오늘 날짜, 수정 가능, 목록의 정렬 기준)</td></tr>' +
           '<tr><td>제목 *</td><td>공지 제목 (100자 이내)</td></tr>' +
           '<tr><td>내용 *</td><td>공지 본문</td></tr>' +
@@ -2594,6 +2594,21 @@ window.GUIDE_CONTENT['franchise-notice'] = {
               '<tr><td>내용 미입력</td><td>&quot;내용을 입력해주세요.&quot;</td></tr>' +
             '</tbody></table></div>' +
             '<p>안내가 나오면 저장되지 않아요. 해당 항목을 입력한 뒤 다시 [저장]을 눌러요.</p>'
+        },
+        {
+          title: '첨부파일을 추가하지 못했어요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/frm-notice-attach-error-pc.webp', alt: '09SCM 공지사항 첨부파일 오류 PC 화면', ratio: 2880 / 2300 },
+            { device: 'mobile', src: '../assets/img/partner/frm-notice-attach-error-mobile.webp', alt: '09SCM 공지사항 첨부파일 오류 모바일 화면', ratio: 880 / 3000 }
+          ],
+          shotCaption: '09SCM 첨부파일 오류 화면 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>허용되지 않는 형식의 파일 (실행 파일 등)</td><td>&quot;{파일명}: 허용되지 않는 형식입니다.&quot;</td></tr>' +
+              '<tr><td>파일 용량이 10MB를 넘음</td><td>&quot;{파일명}: 파일당 10MB 이내만 추가할 수 있습니다.&quot;</td></tr>' +
+              '<tr><td>이미 5개를 추가한 상태에서 파일 추가</td><td>&quot;첨부파일은 최대 5개까지 추가할 수 있습니다.&quot;</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>안내가 나오면 해당 파일은 추가되지 않아요. 조건에 맞는 파일로 다시 [파일 추가]를 눌러요.</p>'
         },
         {
           title: '작성하다가 나가려고 해요',
@@ -2650,7 +2665,7 @@ window.GUIDE_CONTENT['system-notice'] = {
       steps:
         '<h3>공지 찾기</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>작성자</td><td>전체 / 09SCM / 우리본사</td></tr>' +
+          '<tr><td>작성자</td><td>전체, 09SCM, 우리본사 중 선택</td></tr>' +
           '<tr><td>검색</td><td>제목으로 검색 (영문 대소문자 구분 없음)</td></tr>' +
         '</tbody></table></div>' +
         '<p>목록은 등록일이 최근인 공지부터 한 페이지에 20건씩 보여줘요.</p>' +
@@ -2685,7 +2700,7 @@ window.GUIDE_CONTENT['system-notice'] = {
       ],
       trouble:
         '<h3>공지가 보이지 않아요</h3>' +
-        '<p>09SCM이 공지를 올릴 때 알림 대상을 본사나 가맹점으로 나눠서 정해요. 대상이 아닌 계정에는 보이지 않아요. 본사가 공지를 숨김 처리한 경우에도 가맹점에는 보이지 않아요.</p>' +
+        '<p>09SCM이 공지를 올릴 때 알림 대상을 본사나 가맹점으로 나눠서 정해요. 대상이 아닌 계정에는 보이지 않아요. 본사가 공지를 미노출로 바꾼 경우에도 가맹점에는 보이지 않아요.</p>' +
         '<h3>조회수가 보이지 않아요</h3>' +
         '<p>이 화면에서는 조회수를 보여주지 않아요. 본사 계정은 <a href="#franchise-notice">가맹점관리 &gt; 공지사항</a>에서 공지별 조회수를 확인할 수 있어요.</p>'
     },
@@ -2737,8 +2752,8 @@ window.GUIDE_CONTENT['system-fee'] = {
 
     '<h3>결제 정보</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>정기결제여부</td><td>카드 등록 여부</td></tr>' +
-      '<tr><td>결제수단</td><td>등록한 결제수단 (신용카드)</td></tr>' +
+      '<tr><td>정기결제여부</td><td>카드 등록 여부 (등록 / 미등록)</td></tr>' +
+      '<tr><td>결제수단</td><td>등록한 결제수단 (신용카드 / 휴대전화)</td></tr>' +
       '<tr><td>정기결제일</td><td>매월 결제되는 일</td></tr>' +
       '<tr><td>다음 결제일</td><td>다음 정기결제 예정일</td></tr>' +
       '<tr><td>카드 등록하기</td><td>등록된 카드가 없을 때만 표시, PayApp 결제창으로 이동</td></tr>' +
@@ -2778,20 +2793,12 @@ window.GUIDE_CONTENT['system-fee'] = {
       shotCaption: '09SCM 결제 내역 화면 (PC / 모바일)',
       html:
         '<p>결제 내역의 납부상태가 [결제실패]로 표시돼요. 결제실패가 되어도 이용상태가 자동으로 바뀌거나 별도 안내가 나오지는 않아요.</p>' +
-        '<p>재결제와 이용료 수납은 본사가 처리하니, 결제실패 내역이 있으면 본사에 문의해 주세요. 본사가 직접 수납하면 납부상태가 [수기완납]으로 바뀌어요.</p>'
-    },
-    {
-      title: '이용상태에 따라 달라져요',
-      html:
-        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>화면</th></tr></thead><tbody>' +
-          '<tr><td>카드 미등록</td><td>결제 정보에 안내 문구와 [카드 등록하기] 표시, 결제 내역은 비어 있음</td></tr>' +
-          '<tr><td>카드 등록</td><td>정기결제여부·결제수단·정기결제일·다음 결제일 표시</td></tr>' +
-        '</tbody></table></div>'
+        '<p>재결제와 이용료 수납은 본사가 처리하니, 결제실패 내역이 있으면 본사에 문의해주세요. 본사가 직접 수납하면 납부상태가 [수기완납]으로 바뀌어요.</p>'
     }
   ],
   trouble:
     '<h3>카드를 바꾸거나 정기결제를 해지하고 싶어요</h3>' +
-    '<p>이 화면에서는 바꾸거나 해지할 수 없어요. 정기결제는 본사의 PayApp 계정에서 관리하니, 본사에 문의해 주세요.</p>' +
+    '<p>이 화면에서는 바꾸거나 해지할 수 없어요. 정기결제는 본사의 PayApp 계정에서 관리하니, 본사에 문의해주세요.</p>' +
     '<h3>결제 내역이 비어 있어요</h3>' +
     '<p>아직 결제가 한 번도 일어나지 않은 경우예요. 카드를 등록하기 전이거나, 등록 후 첫 정기결제일이 오기 전에는 내역이 없어요.</p>' +
     '<h3>이 메뉴가 보이지 않아요</h3>' +
@@ -2805,7 +2812,7 @@ window.GUIDE_CONTENT['system-member'] = {
   ],
   shotCaption: '09SCM 회원정보 화면 (PC / 모바일)',
   overview:
-    '<p>내 계정의 회원 정보, 비밀번호, 계좌정보, PayApp 연동 정보, 약관 동의 상태를 확인하고 바꾸는 화면이에요.</p>' +
+    '<p>내 계정의 회원 정보, 비밀번호, 사업자 정보, 계좌정보, PayApp 연동 정보, 약관 동의 상태를 확인하고 바꾸는 화면이에요.</p>' +
     '<ul>' +
       '<li>영역마다 [저장] 또는 [비밀번호 변경] 버튼이 따로 있어요. 바꾼 영역에서 해당 버튼을 눌러야 반영돼요.</li>' +
       '<li>사업자 정보는 보기만 할 수 있어요.</li>' +
@@ -2833,7 +2840,7 @@ window.GUIDE_CONTENT['system-member'] = {
       '<tr><td>사업자 유형, 사업자등록번호, 상호명, 대표자명, 업태, 업종, 사업장 주소</td><td>가입할 때 입력한 정보 (수정 불가)</td></tr>' +
       '<tr><td>법인등록번호</td><td>사업자 유형이 법인사업자일 때만 표시</td></tr>' +
     '</tbody></table></div>' +
-    '<p>수정이 필요하면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해 주세요. 이 정보는 <a href="#retail-settings">소매설정</a>의 사업자정보에도 그대로 쓰여요.</p>' +
+    '<p>수정이 필요하면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해주세요. 이 정보는 <a href="#retail-settings">소매설정</a>의 사업자정보에도 그대로 쓰여요.</p>' +
 
     '<h3>계좌정보</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -2859,11 +2866,28 @@ window.GUIDE_CONTENT['system-member'] = {
 
     '<h3>이용약관 동의</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>이용약관 [필수]</td><td>동의 상태 확인, [보기]로 내용 확인 (변경 불가)</td></tr>' +
-      '<tr><td>개인정보처리방침 [필수]</td><td>동의 상태 확인, [보기]로 내용 확인 (변경 불가)</td></tr>' +
-      '<tr><td>마케팅정보 수신동의 [선택]</td><td>동의 여부를 직접 변경, [보기]로 내용 확인</td></tr>' +
+      '<tr><td>이용약관[필수]</td><td>동의 상태 확인, [보기]로 내용 확인 (변경 불가)</td></tr>' +
+      '<tr><td>개인정보처리방침[필수]</td><td>동의 상태 확인, [보기]로 내용 확인 (변경 불가)</td></tr>' +
+      '<tr><td>마케팅정보 수신동의[선택]</td><td>동의 여부를 직접 변경, [보기]로 내용 확인</td></tr>' +
     '</tbody></table></div>',
   cases: [
+    {
+      title: '필수 항목을 비웠어요',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/sys-member-error-pc.webp', alt: '09SCM 회원 정보 필수 항목 미입력 PC 화면', ratio: 2880 / 800 },
+        { device: 'mobile', src: '../assets/img/partner/sys-member-error-mobile.webp', alt: '09SCM 회원 정보 필수 항목 미입력 모바일 화면', ratio: 880 / 1258 }
+      ],
+      shotCaption: '09SCM 회원 정보 필수 항목 미입력 화면 (PC / 모바일)',
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>이름 미입력</td><td>&quot;이름을 입력해주세요.&quot;</td></tr>' +
+          '<tr><td>이메일 미입력</td><td>&quot;이메일을 입력해주세요.&quot;</td></tr>' +
+          '<tr><td>휴대폰번호 미입력</td><td>&quot;휴대폰번호를 입력해주세요.&quot;</td></tr>' +
+          '<tr><td>휴대폰번호 형식이 맞지 않음</td><td>&quot;휴대폰번호 형식이 올바르지 않습니다.&quot;</td></tr>' +
+          '<tr><td>번호를 바꾼 뒤 인증을 끝내지 않음</td><td>&quot;휴대폰번호를 변경한 경우 인증을 먼저 완료해주세요.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내는 위 항목부터 하나씩 나와요. 안내가 나오면 저장되지 않아요. 해당 항목을 고친 뒤 다시 [저장]을 눌러요.</p>'
+    },
     {
       title: '휴대폰번호를 바꿔요',
       shots: [
@@ -2871,7 +2895,13 @@ window.GUIDE_CONTENT['system-member'] = {
         { device: 'mobile', src: '../assets/img/partner/sys-member-phone-mobile.webp', alt: '09SCM 휴대폰번호 인증 모바일 화면', ratio: 880 / 1254 }
       ],
       shotCaption: '09SCM 휴대폰번호 인증 화면 (PC / 모바일)',
-      html: '<p>번호를 바꾸고 [인증번호 발송]을 누르면 인증번호 입력란이 나타나요. 받은 6자리를 입력하고 [확인]을 누른 뒤 [저장]을 눌러야 새 번호가 반영돼요.</p>'
+      html:
+        '<p>번호를 바꾸고 [인증번호 발송]을 누르면 인증번호 입력란이 나타나요. 받은 6자리를 입력하고 [확인]을 누른 뒤 [저장]을 눌러야 새 번호가 반영돼요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>[인증번호 발송] 시 번호 형식이 맞지 않음</td><td>&quot;휴대폰번호 형식이 올바르지 않습니다.&quot;</td></tr>' +
+          '<tr><td>[확인] 시 인증번호가 6자리가 아님</td><td>&quot;인증번호 6자리를 입력해주세요.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내가 나오면 인증이 진행되지 않아요. 값을 고친 뒤 다시 [인증번호 발송] 또는 [확인]을 눌러요.</p>'
     },
     {
       title: '비밀번호를 바꿔요',
@@ -2880,7 +2910,12 @@ window.GUIDE_CONTENT['system-member'] = {
         { device: 'mobile', src: '../assets/img/partner/sys-member-pw-mobile.webp', alt: '09SCM 비밀번호 불일치 모바일 화면', ratio: 880 / 606 }
       ],
       shotCaption: '09SCM 비밀번호 불일치 화면 (PC / 모바일)',
-      html: '<p>새 비밀번호와 확인 값이 다르면 안내가 나오고 변경되지 않아요. 두 값을 같게 입력한 뒤 다시 [비밀번호 변경]을 눌러요.</p>'
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>새 비밀번호와 확인을 모두 비움</td><td>&quot;새 비밀번호를 입력해주세요.&quot;</td></tr>' +
+          '<tr><td>새 비밀번호와 확인 값이 다름</td><td>&quot;비밀번호가 일치하지 않습니다.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내가 나오면 변경되지 않아요. 값을 고친 뒤 다시 [비밀번호 변경]을 눌러요.</p>'
     },
     {
       title: '계좌정보를 입력해요',
@@ -2889,7 +2924,11 @@ window.GUIDE_CONTENT['system-member'] = {
         { device: 'mobile', src: '../assets/img/partner/sys-member-account-mobile.webp', alt: '09SCM 계좌정보 미입력 모바일 화면', ratio: 880 / 852 }
       ],
       shotCaption: '09SCM 계좌정보 미입력 화면 (PC / 모바일)',
-      html: '<p>은행, 계좌번호, 예금주 중 하나라도 비어 있으면 안내가 나오고 저장되지 않아요. 세 항목을 모두 입력한 뒤 [저장]을 눌러요.</p>'
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>은행, 계좌번호, 예금주 중 하나라도 비어 있음</td><td>&quot;은행, 계좌번호, 예금주를 모두 입력해주세요.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내가 나오면 저장되지 않아요. 세 항목을 모두 입력한 뒤 다시 [저장]을 눌러요.</p>'
     },
     {
       title: 'PayApp 연동 전이에요',
@@ -2899,7 +2938,11 @@ window.GUIDE_CONTENT['system-member'] = {
       ],
       shotCaption: '09SCM PayApp 미연동 화면 (PC / 모바일)',
       html:
-        '<p>연동 상태가 미연동일 때는 연동 정보 세 칸을 입력할 수 있어요. 값을 입력하고 [연동하기]를 누르면 연동이 진행돼요.</p>'
+        '<p>연동 상태가 미연동일 때는 연동 정보 세 칸을 입력할 수 있어요. 값을 입력하고 [연동하기]를 누르면 연동이 진행돼요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>연동 정보 세 칸 중 하나라도 비어 있음</td><td>&quot;판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력해주세요.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내가 나오면 연동되지 않아요. 세 칸을 모두 입력한 뒤 다시 [연동하기]를 눌러요.</p>'
     },
     {
       title: '마케팅정보 수신동의를 바꿔요',
@@ -2927,11 +2970,11 @@ window.GUIDE_CONTENT['system-member'] = {
   ],
   trouble:
     '<h3>저장이 안 돼요</h3>' +
-    '<p>휴대폰번호를 바꿨다면 인증을 먼저 끝내야 해요. 계좌정보는 세 항목이 모두 입력돼 있어야 하고, 비밀번호는 확인 값이 일치해야 해요. 각 영역마다 버튼이 따로 있어서 바꾼 영역의 버튼을 눌렀는지도 확인해 주세요.</p>' +
+    '<p>휴대폰번호를 바꿨다면 인증을 먼저 끝내야 해요. 계좌정보는 세 항목이 모두 입력돼 있어야 하고, 비밀번호는 확인 값이 일치해야 해요. 각 영역마다 버튼이 따로 있어서 바꾼 영역의 버튼을 눌렀는지도 확인해주세요.</p>' +
     '<h3>사업자정보를 바꾸고 싶어요</h3>' +
-    '<p>이 화면에서는 고칠 수 없어요. 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해 주세요.</p>' +
+    '<p>이 화면에서는 고칠 수 없어요. 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해주세요.</p>' +
     '<h3>PayApp 연동을 바꾸거나 풀고 싶어요</h3>' +
-    '<p>최초 연동 이후에는 직접 바꾸거나 해제할 수 없어요. 09SCM 고객센터에 문의해 주세요.</p>'
+    '<p>최초 연동 이후에는 직접 바꾸거나 해제할 수 없어요. 09SCM 고객센터에 문의해주세요.</p>'
 };
 
 window.GUIDE_CONTENT['system-notification'] = {
@@ -2956,13 +2999,13 @@ window.GUIDE_CONTENT['system-notification'] = {
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>잔여알림톡 건수</td><td>지금 남아 있는 발송 가능 건수</td></tr>' +
           '<tr><td>충전하기</td><td>알림톡 건수 충전 (PayApp 결제)</td></tr>' +
-          '<tr><td>이번달 발송 건수</td><td>이번 달에 보낸 전체 건수와 알림톡·LMS 구분</td></tr>' +
+          '<tr><td>이번달 발송 건수</td><td>이번달에 보낸 전체 건수와 알림톡·LMS 구분</td></tr>' +
           '<tr><td>알림톡 사용하기</td><td>켜면 자동 발송, 끄면 발송하지 않음</td></tr>' +
         '</tbody></table></div>' +
         '<p>건수는 알림톡 1건이 1건, LMS 1건이 4건으로 차감돼요.</p>' +
 
         '<h3>발송 메시지</h3>' +
-        '<p>아래 8종이 정해진 양식으로 발송돼요. 양식은 이 화면에서 미리 확인할 수 있고, 직접 고칠 수는 없어요.</p>' +
+        '<p>아래 8종이 정해진 양식으로 발송돼요. 양식은 이 화면에서 미리 확인할 수 있고, 직접 고칠 수는 없어요. 메시지마다 스위치로 켜고 끌 수 있고, 처음에는 모두 켜져 있어요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>발송 메시지</th><th>발송 시점</th></tr></thead><tbody>' +
           '<tr><td>주문접수완료(카드결제/현장결제)</td><td>주문이 접수됐을 때 (채팅주문은 제외)</td></tr>' +
           '<tr><td>주문접수완료(계좌이체)</td><td>계좌이체 주문이 접수됐을 때</td></tr>' +
@@ -2983,15 +3026,16 @@ window.GUIDE_CONTENT['system-notification'] = {
         '<p>발송 정보를 바꾸고 싶으면 위 화면에서 값을 고치면 이후 발송부터 반영돼요.</p>' +
 
         '<h3>충전</h3>' +
-        '<p>[충전하기]를 누르면 충전 팝업이 열려요. 충전 금액에는 부가세 10%가 더해지고, SMS 이용약관에 동의해야 결제할 수 있어요. 결제는 PayApp 결제창에서 진행돼요.</p>' +
+        '<p>[충전하기]를 누르면 충전 팝업이 열려요. 결제는 PayApp 결제창에서 진행돼요.</p>' +
         '<p>충전해도 [알림톡 사용하기]는 자동으로 켜지지 않아요. 충전한 뒤 직접 켜 주세요.</p>' +
 
         '<h3>발송내역</h3>' +
         '<p>조회 조건</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>기간</td><td>전체 / 1개월 / 3개월 / 6개월 중 선택하거나 시작일·종료일 직접 선택</td></tr>' +
-          '<tr><td>발송 메시지</td><td>8종 중 하나만 골라 보기</td></tr>' +
-          '<tr><td>발송채널</td><td>알림톡 / LMS 구분해서 보기</td></tr>' +
+          '<tr><td>기간</td><td>전체, 1개월, 3개월, 6개월 중 선택하거나 시작일·종료일 직접 선택</td></tr>' +
+          '<tr><td>발송 메시지</td><td>전체, 발송 메시지 8종 중 선택</td></tr>' +
+          '<tr><td>발송채널</td><td>전체, 알림톡, LMS 중 선택</td></tr>' +
+          '<tr><td>검색</td><td>수신자 휴대폰번호로 검색 (하이픈 무시)</td></tr>' +
         '</tbody></table></div>' +
         '<p>목록 항목</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -3002,6 +3046,37 @@ window.GUIDE_CONTENT['system-notification'] = {
           '<tr><td>차감</td><td>이 발송으로 차감된 건수 (알림톡 1건, LMS 4건)</td></tr>' +
         '</tbody></table></div>',
       cases: [
+        {
+          title: '알림톡 사용하기를 꺼요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-noti-off-pc.webp', alt: '09SCM 알림톡 사용하기 끄기 PC 화면', ratio: 2880 / 3000 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-off-mobile.webp', alt: '09SCM 알림톡 사용하기 끄기 모바일 화면', ratio: 880 / 2400 }
+          ],
+          shotCaption: '09SCM 알림톡 사용하기 끄기 화면 (PC / 모바일)',
+          html:
+            '<p>[알림톡 사용하기]를 끄면 알림톡이 발송되지 않고, 발송 메시지 영역이 화면에서 사라져요. 발송내역은 그대로 보여요.</p>' +
+            '<p>다시 켜면 발송 메시지가 나타나고, 메시지별로 설정해 둔 켜기·끄기도 이전 그대로 돌아와요.</p>'
+        },
+        {
+          title: '알림톡을 충전해요',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/sys-noti-charge-pc.webp', alt: '09SCM 알림톡 충전 팝업 PC 화면', ratio: 1056 / 1504 }
+          ],
+          shotCaption: '09SCM 알림톡 충전 팝업 (PC)',
+          html:
+            '<p>[충전하기]를 누르면 충전 팝업이 열려요.</p>' +
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>충전금액(VAT별도), 제공건수</td><td>충전할 구간 선택 (구간마다 제공건수가 다름)</td></tr>' +
+              '<tr><td>실결제금액</td><td>선택한 충전금액에 부가세 10%를 더한 금액 (구간을 바꾸면 바로 바뀜)</td></tr>' +
+              '<tr><td>결제수단</td><td>페이앱 (신용카드/핸드폰)</td></tr>' +
+              '<tr><td>이용약관</td><td>SMS 이용약관 내용 확인, &quot;SMS 이용약관에 동의합니다&quot;에 체크해야 충전 가능</td></tr>' +
+              '<tr><td>[충전하기]</td><td>결제 진행 후 충전한 건수가 잔여알림톡 건수에 바로 더해짐</td></tr>' +
+            '</tbody></table></div>' +
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>이용약관에 동의하지 않고 [충전하기]를 누름</td><td>&quot;SMS 이용약관에 동의해주세요.&quot;</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>안내가 나오면 결제가 진행되지 않아요. 동의에 체크한 뒤 다시 [충전하기]를 눌러요.</p>'
+        },
         {
           title: '잔여 건수가 부족해요',
           shots: [
@@ -3014,7 +3089,10 @@ window.GUIDE_CONTENT['system-notification'] = {
               '<li>잔여 건수가 5건 미만이면 [알림톡 사용하기]를 켤 수 없고, 안내만 나와요.</li>' +
               '<li>사용 중에 5건 미만이 되면 자동으로 꺼지고, 시스템 알림이 한 번 와요.</li>' +
               '<li>충전해서 5건 이상이 된 뒤에 [알림톡 사용하기]를 직접 켜 주세요.</li>' +
-            '</ul>'
+            '</ul>' +
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>잔여 건수 5건 미만에서 [알림톡 사용하기]를 켬</td><td>&quot;잔여 알림톡이 5건 미만이라 사용할 수 없습니다. 충전 후 설정해 주세요.&quot;</td></tr>' +
+            '</tbody></table></div>'
         },
         {
           title: '발송 내역을 찾아요',
@@ -3023,14 +3101,14 @@ window.GUIDE_CONTENT['system-notification'] = {
             { device: 'mobile', src: '../assets/img/partner/sys-noti-history-mobile.webp', alt: '09SCM 발송내역 모바일 화면', ratio: 880 / 7548 }
           ],
           shotCaption: '09SCM 발송내역 화면 (PC / 모바일)',
-          html: '<p>기간, 발송 메시지, 발송채널을 고른 뒤 [검색]을 누르면 조건에 맞는 내역만 볼 수 있어요. 특정 고객에게 알림이 갔는지 확인할 때 쓰면 좋아요.</p>'
+          html: '<p>기간, 발송 메시지, 발송채널을 고르고 수신자 번호를 입력한 뒤 [검색]을 누르면 조건에 맞는 내역만 볼 수 있어요.</p>'
         }
       ],
       trouble:
         '<h3>알림톡 사용하기가 갑자기 꺼졌어요</h3>' +
         '<p>잔여 건수가 5건 미만이 되면 자동으로 꺼져요. 충전한 뒤 [알림톡 사용하기]를 직접 켜 주세요.</p>' +
         '<h3>고객에게 알림톡이 가지 않아요</h3>' +
-        '<p>사용하기가 켜져 있는지, 잔여 건수가 있는지 먼저 확인해 주세요. 채팅주문으로 접수된 주문은 주문접수완료 알림톡이 발송되지 않아요. 발송 여부는 발송내역에서 확인해요.</p>' +
+        '<p>사용하기가 켜져 있는지, 잔여 건수가 있는지 먼저 확인해주세요. 채팅주문으로 접수된 주문은 주문접수완료 알림톡이 발송되지 않아요. 발송 여부는 발송내역에서 확인해요.</p>' +
         '<h3>문자(LMS)로 보내졌어요</h3>' +
         '<p>알림톡 발송에 실패하면 LMS로 대신 보내요. LMS는 1건에 4건이 차감돼서 잔여 건수가 더 빨리 줄어요.</p>'
     },
@@ -3067,7 +3145,7 @@ window.GUIDE_CONTENT['system-notification'] = {
           '<tr><td>시스템 알림</td><td>가맹점 이용료 결제실패, 알림톡 잔여건수 부족</td></tr>' +
           '<tr><td>도매상품 알림</td><td>본사가 새로 등록한 도매상품 안내</td></tr>' +
         '</tbody></table></div>' +
-        '<p>신규주문접수 알림은 주문 1건마다 오기 때문에 처음에는 꺼져 있어요. 필요할 때 직접 켜 주세요.</p>',
+        '<p>신규주문접수 알림은 주문 1건마다 오기 때문에 처음에는 꺼져 있어요. 도매상품 알림도 처음에는 꺼져 있어요. 필요할 때 직접 켜 주세요.</p>',
       cases: [
         {
           title: '알림 종류를 끄고 싶어요',
@@ -3103,11 +3181,11 @@ window.GUIDE_CONTENT['system-notification'] = {
       ],
       trouble:
         '<h3>알림이 오지 않아요</h3>' +
-        '<p>전체 알림, 알림 종류, 개별 알림이 모두 켜져 있는지 확인해 주세요. 꺼 둔 동안 발생한 알림은 나중에 켜도 받을 수 없어요. 브라우저 푸시는 브라우저 알림 상태가 허용됨이어야 해요.</p>' +
+        '<p>전체 알림, 알림 종류, 개별 알림이 모두 켜져 있는지 확인해주세요. 꺼 둔 동안 발생한 알림은 나중에 켜도 받을 수 없어요. 브라우저 푸시는 브라우저 알림 상태가 허용됨이어야 해요.</p>' +
         '<h3>주문 알림을 놓쳤어요</h3>' +
         '<p>푸시를 놓쳤더라도 켜 둔 알림은 알림센터(상단 벨 아이콘)에서 확인할 수 있어요.</p>' +
         '<h3>다른 기기에서는 알림이 안 와요</h3>' +
-        '<p>브라우저 알림 허용은 기기와 브라우저마다 따로예요. 알림을 받으려는 기기에서도 허용해 주세요.</p>'
+        '<p>브라우저 알림 허용은 기기와 브라우저마다 따로예요. 알림을 받으려는 기기에서도 허용해주세요.</p>'
     },
     {
       id: 'noti-center',
@@ -3149,7 +3227,7 @@ window.GUIDE_CONTENT['system-notification'] = {
       ],
       trouble:
         '<h3>지운 알림을 다시 보고 싶어요</h3>' +
-        '<p>확인한 알림은 삭제돼서 다시 볼 수 없어요. 주문 알림이라면 해당 주문 목록에서 내용을 확인해 주세요.</p>' +
+        '<p>확인한 알림은 삭제돼서 다시 볼 수 없어요. 주문 알림이라면 해당 주문 목록에서 내용을 확인해주세요.</p>' +
         '<h3>알림톡 발송 내역을 보고 싶어요</h3>' +
         '<p>알림톡 발송 내역은 알림센터가 아니라 소매몰 알림톡 설정의 발송내역에서 확인해요.</p>'
     }

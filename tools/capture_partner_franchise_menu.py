@@ -37,6 +37,7 @@ STEPS = [
     ('frm-notice-filter', '공지사항', sel('#fnoticeExposeFilter', '미노출'), 'view', None, True),
     ('frm-notice-form', '공지사항', click('#fnoticeNewBtn'), 'view', None, True),
     ('frm-notice-form-error', '공지사항', seq(click('#fnoticeNewBtn'), click('#fnoticeSaveBtn')), 'view', None, True),
+    ('frm-notice-attach-error', '공지사항', seq(click('#fnoticeNewBtn'), lambda p, l: (p.set_input_files('#fnoticeFileInput', {'name': 'sample.exe', 'mimeType': 'application/octet-stream', 'buffer': b'x'}), p.wait_for_timeout(300))), 'view', None, True),
     ('frm-notice-edit', '공지사항', click('[data-fnotice-edit]', 3), 'view', None, True),
     ('frm-notice-detail', '공지사항', click('[data-fnotice-view]'), 'view', None, True),
     ('frm-notice-delete', '공지사항', click('[data-fnotice-delete]'), 'popup', None, False),
@@ -52,7 +53,7 @@ if __name__ == '__main__':
         for name, menu, prep, mode, clip_text, mobile in STEPS:
             if only and not any(o in name for o in only): continue
             for label, (w, h) in (('pc', PC), ('mobile', MO)):
-                if name.startswith(('frm-notice-form', 'frm-notice-detail', 'frm-notice-edit')):
+                if name.startswith(('frm-notice-form', 'frm-notice-attach', 'frm-notice-detail', 'frm-notice-edit')):
                     w, h = (1440, 1150) if label == 'pc' else (440, 1500)
                 if label == 'mobile' and not mobile: continue
                 ctx, page = new_page(b, w, h, 'bonsa')
