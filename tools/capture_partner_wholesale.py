@@ -52,10 +52,34 @@ def bbox(page, selectors):
 
 def clip_shot(page, selectors, name, pad=16, x=None, w=None):
     b = bbox(page, selectors)
+    vw = page.viewport_size['width']
+    if vw < 800:   # 모바일은 화면 폭 전체를 사용한다
+        x, w = 0, vw
     cx = max(0, b['x'] - pad) if x is None else x
     cw = (b['w'] + pad * 2) if w is None else w
-    clip = {'x': cx, 'y': max(0, b['y'] - pad), 'width': min(cw, 1440 - cx), 'height': b['h'] + pad * 2}
+    clip = {'x': cx, 'y': max(0, b['y'] - pad), 'width': min(cw, vw - cx), 'height': b['h'] + pad * 2}
     save(page.screenshot(clip=clip, full_page=True), name)
+
+def tag_section(page, title, sid):
+    """.form-section 중 제목이 title인 영역에 id를 붙인다"""
+    idx = page.evaluate("(t) => [...document.querySelectorAll('.form-section')].findIndex(s => s.querySelector('.form-section-title').innerText === t)", title)
+    page.evaluate("([i, id]) => { document.querySelectorAll('.form-section')[i].id = id; }", [idx, sid])
+
+def keep_cards(page, key_label, keys, hide_labels):
+    """모바일 카드 목록에서 keys에 해당하는 카드만 남기고 hide_labels 항목은 숨긴 뒤, 카드 영역에 id(rows-area)를 붙인다"""
+    page.evaluate("""([kl, keys, hide]) => {
+      const rows = [...document.querySelectorAll('.tpl-table tbody tr')];
+      rows.forEach(tr => {
+        const td = tr.querySelector('td[data-label="' + kl + '"]');
+        const ok = td && keys.some(k => td.innerText.trim() === k);
+        tr.style.display = ok ? '' : 'none';
+        if (!ok) return;
+        hide.forEach(h => { const t = tr.querySelector('td[data-label="' + h + '"]'); if (t) t.style.display = 'none'; });
+        tr.style.marginBottom = '12px';
+        tr.classList.add('rows-keep');
+      });
+    }""", [key_label, keys, hide_labels])
+    page.wait_for_timeout(300)
 
 def modal_shot(page, name):
     page.wait_for_timeout(300)
@@ -108,15 +132,17 @@ def run(device, p, b):
 
     # ---- 상품 목록 ----
     save(page.screenshot(), 'wh-list-' + suffix)
-    if pc:
-        page.hover('.help-tip'); page.wait_for_timeout(300)
-        clip_shot(page, ['.filter-bar', '.help-pop'], 'wh-list-help-pc', pad=20)
-        page.mouse.move(5, 5)
-        page.fill('#marketSearchInput', '햇양파'); page.click('#marketSearchBtn'); page.wait_for_timeout(400)
-        clip_shot(page, ['.table-toolbar', '.market-grid'], 'wh-list-badge-pc', pad=16)
-        page.fill('#marketSearchInput', '없는상품명'); page.click('#marketSearchBtn'); page.wait_for_timeout(400)
-        clip_shot(page, ['.filter-bar', '.market-grid'], 'wh-list-empty-pc', pad=16)
-        page.fill('#marketSearchInput', ''); page.click('#marketSearchBtn'); page.wait_for_timeout(300)
+    if pc: page.hover('.help-tip')      # PC는 마우스를 올리면, 모바일은 누르면 표시
+    else: page.click('.help-tip')
+    page.wait_for_timeout(300)
+    clip_shot(page, ['.filter-bar', '.help-pop'], 'wh-list-help-' + suffix, pad=20)
+    if pc: page.mouse.move(5, 5)
+    else: page.click('.help-tip'); page.wait_for_timeout(200)
+    page.fill('#marketSearchInput', '햇양파'); page.click('#marketSearchBtn'); page.wait_for_timeout(400)
+    clip_shot(page, ['.table-toolbar', '.market-grid'], 'wh-list-badge-' + suffix, pad=16)
+    page.fill('#marketSearchInput', '없는상품명'); page.click('#marketSearchBtn'); page.wait_for_timeout(400)
+    clip_shot(page, ['.filter-bar', '.market-grid'], 'wh-list-empty-' + suffix, pad=16)
+    page.fill('#marketSearchInput', ''); page.click('#marketSearchBtn'); page.wait_for_timeout(300)
 
     # ---- 상품 상세 ----
     goto_item(page, 'wholesale-product-list')
@@ -127,14 +153,18 @@ def run(device, p, b):
     # PC는 바 폭을 840px로 줄여 촬영한다(PC·모바일을 한 쌍으로 놓을 때 글자가 읽히도록)
     bar = ['.market-buybar', '.inline-confirm']
     bw = 840 if pc else 440
-    def bar_shot(name, top=28):
+    def bar_shot(name, top=28, height=None):
         if pc:
             page.evaluate("() => { const b = document.querySelector('.market-buybar'); b.style.right = 'auto'; b.style.width = '840px'; }")
         b = bbox(page, bar)
         y = max(0, b['y'] - top)
+        if height: y = max(0, b['y'] + b['h'] - height)
         save(page.screenshot(clip={'x': 0, 'y': y, 'width': bw, 'height': b['y'] + b['h'] - y}, full_page=True), name)
+    # 장바구니 담기: PC·모바일 캡처의 높이를 같게 맞춘다(모바일은 안내 영역이 위에 뜨므로 PC는 바 위쪽 화면을 함께 담는다)
+    if pc: page.set_viewport_size({'width': 1440, 'height': 700}); page.wait_for_timeout(300)
     page.click('#qtyPlusBtn'); page.click('#addToCartBtn'); page.wait_for_timeout(300)
-    bar_shot('wh-detail-cart-' + suffix)
+    bar_shot('wh-detail-cart-' + suffix, height=212)
+    if pc: page.set_viewport_size(vp); page.wait_for_timeout(300)
     for code, name in (('P0308', 'soldout'), ('P0232', 'own')):
         goto_item(page, 'wholesale-market-detail', code=code)
         if not pc: fit_height(page, 900)
@@ -146,10 +176,9 @@ def run(device, p, b):
     page.evaluate("document.querySelector('.cart-group-card .cart-row-check').click()")
     page.wait_for_timeout(300)
     save(page.screenshot(), 'wh-cart-' + suffix)
-    if pc:
-        b = page.evaluate("""() => { const cs = [...document.querySelectorAll('.cart-group-card')].slice(1, 4); return cs.map(c => { const r = c.getBoundingClientRect(); return [r.top + scrollY, r.bottom + scrollY]; }); }""")
-        top, bottom = b[0][0], b[-1][1]
-        save(page.screenshot(clip={'x': 0, 'y': top - 8, 'width': 1440, 'height': bottom - top + 16}, full_page=True), 'wh-cart-block-pc')
+    b = page.evaluate("""() => { const cs = [...document.querySelectorAll('.cart-group-card')].slice(1, 4); return cs.map(c => { const r = c.getBoundingClientRect(); return [r.top + scrollY, r.bottom + scrollY]; }); }""")
+    top, bottom = b[0][0], b[-1][1]
+    save(page.screenshot(clip={'x': 0, 'y': top - 8, 'width': vp['width'], 'height': bottom - top + 16}, full_page=True), 'wh-cart-block-' + suffix)
 
     # ---- 주문서 ----
     goto_item(page, 'wholesale-cart')
@@ -157,50 +186,49 @@ def run(device, p, b):
     open_order(page, '횡성한우')
     if not pc: fit_height(page, 1200)
     save(page.screenshot(), 'wh-order-' + suffix)
-    if pc:
-        pick(page, 'orderPayMethod', 'transfer')
-        ids = page.evaluate("[...document.querySelectorAll('.form-section')].map(s => s.querySelector('.form-section-title').innerText)")
-        page.evaluate("([a, c]) => { const f = document.querySelectorAll('.form-section'); f[a].id = 'sec-pay'; f[c].id = 'sec-sum'; }", [ids.index('결제수단'), ids.index('결제금액 요약')])
-        clip_shot(page, ['#sec-pay', '#sec-sum'], 'wh-order-transfer-pc', pad=16)
-        pick(page, 'orderPayMethod', 'card')
-        clip_shot(page, ['#sec-pay', '#sec-sum'], 'wh-order-fee-pc', pad=16)
-        pick(page, 'orderAddressMode', 'custom')
-        page.click('#orderZipcodeSearchBtn'); page.wait_for_timeout(300)
-        idx = page.evaluate("[...document.querySelectorAll('.form-section')].findIndex(s => s.querySelector('.form-section-title').innerText === '배송 정보')")
-        page.evaluate("(i) => { document.querySelectorAll('.form-section')[i].id = 'sec-ship'; }", idx)
-        clip_shot(page, ['#sec-ship'], 'wh-order-address-pc', pad=16)
-        pick(page, 'orderAddressMode', 'profile')
-        page.fill('#orderRecipient', ''); page.fill('#orderEmail', '')
-        page.click('#orderSubmitBtn'); page.wait_for_timeout(500)
-        clip_shot(page, ['#orderErrorBanner', '.form-actions'], 'wh-order-error-pc', pad=20)
-        page.fill('#orderRecipient', '박도매'); page.fill('#orderEmail', 'order@woorimarket.kr')
-        # 주문서를 연 뒤 상품이 품절된 경우
-        page.evaluate("findMarketProduct('P0307').saleStatus = 'soldout'")
-        page.click('#orderSubmitBtn'); page.wait_for_timeout(500)
-        clip_shot(page, ['#orderErrorBanner', '.form-actions'], 'wh-order-soldout-pc', pad=20)
-        page.evaluate("findMarketProduct('P0307').saleStatus = 'sale'")
-        page.evaluate("findMarketProduct('P0307').saleStatus = undefined")
+    pick(page, 'orderPayMethod', 'transfer')
+    ids = page.evaluate("[...document.querySelectorAll('.form-section')].map(s => s.querySelector('.form-section-title').innerText)")
+    page.evaluate("([a, c]) => { const f = document.querySelectorAll('.form-section'); f[a].id = 'sec-pay'; f[c].id = 'sec-sum'; }", [ids.index('결제수단'), ids.index('결제금액 요약')])
+    clip_shot(page, ['#sec-pay', '#sec-sum'], 'wh-order-transfer-' + suffix, pad=16)
+    pick(page, 'orderPayMethod', 'card')
+    clip_shot(page, ['#sec-pay', '#sec-sum'], 'wh-order-fee-' + suffix, pad=16)
+    pick(page, 'orderAddressMode', 'custom')
+    page.click('#orderZipcodeSearchBtn'); page.wait_for_timeout(300)
+    idx = page.evaluate("[...document.querySelectorAll('.form-section')].findIndex(s => s.querySelector('.form-section-title').innerText === '배송 정보')")
+    page.evaluate("(i) => { document.querySelectorAll('.form-section')[i].id = 'sec-ship'; }", idx)
+    clip_shot(page, ['#sec-ship'], 'wh-order-address-' + suffix, pad=16)
+    pick(page, 'orderAddressMode', 'profile')
+    page.fill('#orderRecipient', ''); page.fill('#orderEmail', '')
+    page.click('#orderSubmitBtn'); page.wait_for_timeout(500)
+    clip_shot(page, ['#orderErrorBanner', '.form-actions'], 'wh-order-error-' + suffix, pad=20)
+    page.fill('#orderRecipient', '박도매'); page.fill('#orderEmail', 'order@woorimarket.kr')
+    # 주문서를 연 뒤 상품이 품절된 경우
+    page.evaluate("findMarketProduct('P0307').saleStatus = 'soldout'")
+    page.click('#orderSubmitBtn'); page.wait_for_timeout(500)
+    clip_shot(page, ['#orderErrorBanner', '.form-actions'], 'wh-order-soldout-' + suffix, pad=20)
+    page.evaluate("findMarketProduct('P0307').saleStatus = 'sale'")
+    page.evaluate("findMarketProduct('P0307').saleStatus = undefined")
 
     # ---- 주문 완료 (카드결제) ----
     page.click('#orderSubmitBtn'); page.wait_for_timeout(600)
     if not pc: fit_height(page, 1200)
     save(page.screenshot(), 'wh-done-' + suffix)
-    if pc:
-        # 계좌이체 주문 완료
-        goto_item(page, 'wholesale-cart')
-        page.evaluate("""() => { if (!CART.some(c => findMarketProduct(c.code).sellerName === '365청과 수원점')) CART.push({code: 'P0105', qty: 1}); }""")
-        open_order(page, '365청과 수원점')
-        # 공급자부담 설정 공급자: 카드결제를 골라도 수수료 안내·결제수수료 없음
-        ids = page.evaluate("[...document.querySelectorAll('.form-section')].map(s => s.querySelector('.form-section-title').innerText)")
-        page.evaluate("([a, c]) => { const f = document.querySelectorAll('.form-section'); f[a].id = 'sec-pay'; f[c].id = 'sec-sum'; }", [ids.index('결제수단'), ids.index('결제금액 요약')])
-        clip_shot(page, ['#sec-pay', '#sec-sum'], 'wh-order-nofee-pc', pad=16)
-        pick(page, 'orderPayMethod', 'transfer')
-        page.click('#orderSubmitBtn'); page.wait_for_timeout(600)
-        save(page.screenshot(), 'wh-done-transfer-pc')
-        # 빈 장바구니
-        page.evaluate("CART.splice(0)")
-        goto_item(page, 'wholesale-cart')
-        clip_shot(page, ['.grid12 > .card'], 'wh-cart-empty-pc', pad=0, x=0, w=1440)
+    # 계좌이체 주문 완료
+    goto_item(page, 'wholesale-cart')
+    page.evaluate("""() => { if (!CART.some(c => findMarketProduct(c.code).sellerName === '365청과 수원점')) CART.push({code: 'P0105', qty: 1}); }""")
+    open_order(page, '365청과 수원점')
+    # 공급자부담 설정 공급자: 카드결제를 골라도 수수료 안내·결제수수료 없음
+    ids = page.evaluate("[...document.querySelectorAll('.form-section')].map(s => s.querySelector('.form-section-title').innerText)")
+    page.evaluate("([a, c]) => { const f = document.querySelectorAll('.form-section'); f[a].id = 'sec-pay'; f[c].id = 'sec-sum'; }", [ids.index('결제수단'), ids.index('결제금액 요약')])
+    clip_shot(page, ['#sec-pay', '#sec-sum'], 'wh-order-nofee-' + suffix, pad=16)
+    pick(page, 'orderPayMethod', 'transfer')
+    page.click('#orderSubmitBtn'); page.wait_for_timeout(600)
+    if not pc: fit_height(page, 1200)
+    save(page.screenshot(), 'wh-done-transfer-' + suffix)
+    # 빈 장바구니
+    page.evaluate("CART.splice(0)")
+    goto_item(page, 'wholesale-cart')
+    clip_shot(page, ['.grid12 > .card'], 'wh-cart-empty-' + suffix, pad=0, x=0, w=vp['width'])
 
     ctx.close()
 
@@ -216,28 +244,18 @@ def run_orders(device, p, b):
         page.add_style_tag(content=PC_CSS)
     save(page.screenshot(), 'wh-orders-' + device)
 
-    if not pc:
-        # 팝업 대표 화면(모바일)
-        page.evaluate("document.querySelector('[data-cr-open=WO20260919016]').click()")
-        page.wait_for_timeout(300)
-        modal_shot(page, 'wh-pop-cancelreq-mobile')
-        page.evaluate("document.getElementById('crModalCancelBtn').click()")
-        page.evaluate("document.querySelector('[data-delivery-confirm=WO20260916011]').click()")
-        page.wait_for_timeout(300)
-        modal_shot(page, 'wh-pop-confirm-mobile')
-        page.evaluate("document.getElementById('deliveryModalCancelBtn').click()")
-    if pc:
-        # 기간 직접 선택
-        page.evaluate("document.querySelector('[data-order-history-period=custom]').click()")
-        page.wait_for_timeout(300)
-        page.fill('#orderHistoryDateFrom', '2026-09-01'); page.wait_for_timeout(300)
-        page.fill('#orderHistoryDateTo', '2026-09-20'); page.wait_for_timeout(300)
-        clip_shot(page, ['.tab-row-sub', '.tab-row'], 'wh-orders-period-pc', pad=16)
-        page.evaluate("document.querySelector('[data-order-history-period=all]').click()")
-        page.wait_for_timeout(300)
+    # 기간 직접 선택
+    page.evaluate("document.querySelector('[data-order-history-period=custom]').click()")
+    page.wait_for_timeout(300)
+    page.fill('#orderHistoryDateFrom', '2026-09-01'); page.wait_for_timeout(300)
+    page.fill('#orderHistoryDateTo', '2026-09-20'); page.wait_for_timeout(300)
+    clip_shot(page, ['.tab-row-sub', '.tab-row'], 'wh-orders-period-' + device, pad=16)
+    page.evaluate("document.querySelector('[data-order-history-period=all]').click()")
+    page.wait_for_timeout(300)
 
-        # 행 단위 캡처 — 필요한 컬럼만 남기고 선택한 주문만 표시
-        def rows(orders, name):
+    # 행 단위 캡처 — 필요한 컬럼(항목)만 남기고 선택한 주문만 표시
+    def rows(orders, name):
+        if pc:
             page.evaluate("""(nos) => {
               document.querySelectorAll('tbody tr').forEach(tr => {
                 const no = tr.children[0].innerText.trim();
@@ -250,51 +268,71 @@ def run_orders(device, p, b):
               document.querySelector('.table-wrap').style.overflow = 'visible';
             }""", orders)
             page.wait_for_timeout(200)
-            clip_shot(page, ['.tpl-table'], name, pad=6)
-            page.reload(); page.wait_for_timeout(300)
+            clip_shot(page, ['.tpl-table'], name + '-pc', pad=6)
+        else:
+            keep_cards(page, '주문번호', orders, ['주문일시', '공급자', '상품정보', '합계금액'])
+            clip_shot(page, ['.rows-keep'], name + '-mobile', pad=12)
+        page.reload(); page.wait_for_timeout(300)
 
-        def reopen():
-            login(page); go_menu(page, '주문내역'); page.add_style_tag(content=PC_CSS)
-        rows(['WO20260919016', 'WO20260919014', 'WO20260912015', 'WO20260916011', 'WO20260912021', 'WO20260910008'], 'wh-orders-rows-action-pc')
-        reopen()
-        page.evaluate("() => { const o = ORDER_LIST.find(x => x.orderNo === 'WO20260916011'); }")
-        rows(['WO20260911009', 'WO20260906006', 'WO20260918007', 'WO20260909010'], 'wh-orders-rows-claim-pc')
-        reopen()
+    def reopen():
+        login(page); go_menu(page, '주문내역')
+        if pc: page.add_style_tag(content=PC_CSS)
+    rows(['WO20260919014', 'WO20260912015', 'WO20260919016', 'WO20260912021', 'WO20260916011', 'WO20260910008'], 'wh-orders-rows-action')
+    reopen()
+    rows(['WO20260911009', 'WO20260909010', 'WO20260906006', 'WO20260918007'], 'wh-orders-rows-claim')
+    reopen()
 
-    # ---- 주문 상세 (배송중) ----
-    goto_item(page, 'wholesale-order-detail', orderNo='WO20260916011')
-    if not pc: fit_height(page, 1200)
-    save(page.screenshot(), 'wh-od-' + device)
+    # ---- 팝업: 주문취소(즉시) / 취소요청 / 반품요청 / 배송확정(알럿, PC만) ----
+    goto_item(page, 'wholesale-order-status')
     if pc:
-        # 취소·반품 정보가 있는 주문
-        for no, name in (('WO20260911009', 'wh-od-claim-req-pc'), ('WO20260909010', 'wh-od-claim-done-pc')):
-            goto_item(page, 'wholesale-order-detail', orderNo=no)
-            idx = page.evaluate("[...document.querySelectorAll('.form-section')].findIndex(s => s.querySelector('.form-section-title').innerText === '취소·반품 정보')")
-            page.evaluate("(i) => { document.querySelectorAll('.form-section')[i].id = 'sec-cr'; }", idx)
-            clip_shot(page, ['#sec-cr'], name, pad=16)
-
-        # 팝업: 주문취소(즉시) / 취소요청 / 반품요청 / 배송확정
-        goto_item(page, 'wholesale-order-status')
         page.evaluate("document.querySelector('[data-buyer-cancel-open=WO20260919014]').click()")
         modal_shot(page, 'wh-pop-cancel-pc')
         page.evaluate("document.getElementById('buyerCancelCloseBtn').click()")
         page.evaluate("document.querySelector('[data-buyer-cancel-open=WO20260912015]').click()")
         modal_shot(page, 'wh-pop-cancel-wait-pc')
         page.evaluate("document.getElementById('buyerCancelCloseBtn').click()")
-        page.evaluate("document.querySelector('[data-cr-open=WO20260919016]').click()")
-        modal_shot(page, 'wh-pop-cancelreq-pc')
-        page.evaluate("document.getElementById('crModalCancelBtn').click()")
-        page.evaluate("document.querySelector('[data-cr-open=WO20260916011]').click()")
-        modal_shot(page, 'wh-pop-return-pc')
-        page.evaluate("document.getElementById('crModalCancelBtn').click()")
+    page.evaluate("document.querySelector('[data-cr-open=WO20260919016]').click()")
+    modal_shot(page, 'wh-pop-cancelreq-' + device)
+    page.evaluate("document.getElementById('crModalCancelBtn').click()")
+    page.evaluate("document.querySelector('[data-cr-open=WO20260916011]').click()")
+    modal_shot(page, 'wh-pop-return-' + device)
+    page.evaluate("document.getElementById('crModalCancelBtn').click()")
+    if pc:
         page.evaluate("document.querySelector('[data-delivery-confirm=WO20260916011]').click()")
         modal_shot(page, 'wh-pop-confirm-pc')
         page.evaluate("document.getElementById('deliveryModalCancelBtn').click()")
-        # 계좌이체 요청 입력 오류
-        page.evaluate("document.querySelector('[data-cr-open=WO20260919016]').click()")
-        page.evaluate("document.getElementById('crModalSubmitBtn').click()")
-        modal_shot(page, 'wh-pop-cancelreq-error-pc')
-        page.evaluate("document.getElementById('crModalCancelBtn').click()")
+    # 계좌이체 요청 입력 오류
+    page.evaluate("document.querySelector('[data-cr-open=WO20260919016]').click()")
+    page.evaluate("document.getElementById('crModalSubmitBtn').click()")
+    modal_shot(page, 'wh-pop-cancelreq-error-' + device)
+    page.evaluate("document.getElementById('crModalCancelBtn').click()")
+
+    # ---- 주문 상세 (배송중) ----
+    def detail(no):
+        goto_item(page, 'wholesale-order-detail', orderNo=no)
+        if not pc: fit_height(page, 1200)
+    detail('WO20260916011')
+    save(page.screenshot(), 'wh-od-' + device)
+    tag_section(page, '배송 정보', 'sec-ship')
+    clip_shot(page, ['#sec-ship'], 'wh-od-ship-' + device, pad=16)
+    # 취소·반품 정보가 있는 주문
+    for no, name in (('WO20260911009', 'wh-od-claim-req-'), ('WO20260909010', 'wh-od-claim-done-')):
+        detail(no)
+        tag_section(page, '취소·반품 정보', 'sec-cr')
+        clip_shot(page, ['#sec-cr'], name + device, pad=16)
+    # 바로 취소(결제 완료 후): 결제상태에 환불구분·취소 일시·결제완료 일시 표기
+    detail('WO20260918007')
+    tag_section(page, '결제 정보', 'sec-pay')
+    clip_shot(page, ['#sec-pay'], 'wh-od-paid-cancel-' + device, pad=16)
+    # 입금 전 주문을 취소한 주문: 환불 없이 결제취소
+    goto_item(page, 'wholesale-order-status')
+    page.evaluate("document.querySelector('[data-buyer-cancel-open=WO20260912015]').click()")
+    page.wait_for_timeout(300)
+    page.evaluate("document.getElementById('buyerCancelConfirmBtn').click()")
+    page.wait_for_timeout(300)
+    detail('WO20260912015')
+    tag_section(page, '결제 정보', 'sec-pay'); tag_section(page, '취소·반품 정보', 'sec-cr')
+    clip_shot(page, ['#sec-pay', '#sec-cr'], 'wh-od-cancel-unpaid-' + device, pad=16)
     ctx.close()
 
 

@@ -187,13 +187,13 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-list-rows-pc.webp",
               "alt": "09SCM 상품목록 행 버튼 PC 화면",
-              "ratio": 3
+              "ratio": 2.1195
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-list-rows-mobile.webp",
               "alt": "09SCM 상품목록 행 버튼 모바일 화면",
-              "ratio": 2
+              "ratio": 0.3221
             }
           ],
           "shotCaption": "09SCM 상품목록 행 버튼 화면 (PC / 모바일)",
@@ -599,13 +599,13 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-rows-process-pc.webp",
               "alt": "09SCM 주문목록 처리 버튼 PC 화면",
-              "ratio": 3
+              "ratio": 1.2629
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-list-rows-process-mobile.webp",
               "alt": "09SCM 주문목록 처리 버튼 모바일 화면",
-              "ratio": 2
+              "ratio": 0.2381
             }
           ],
           "shotCaption": "09SCM 주문목록 처리 버튼 화면 (PC / 모바일)",
@@ -618,13 +618,13 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-rows-claim-pc.webp",
               "alt": "09SCM 주문목록 취소·반품 PC 화면",
-              "ratio": 3
+              "ratio": 2.8871
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-list-rows-claim-mobile.webp",
               "alt": "09SCM 주문목록 취소·반품 모바일 화면",
-              "ratio": 2
+              "ratio": 0.386
             }
           ],
           "shotCaption": "09SCM 주문목록 취소·반품 화면 (PC / 모바일)",
@@ -637,13 +637,13 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-noshow-pc.webp",
               "alt": "09SCM 주문목록 노쇼후보 PC 화면",
-              "ratio": 3
+              "ratio": 3.1161
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-list-noshow-mobile.webp",
               "alt": "09SCM 주문목록 노쇼후보 모바일 화면",
-              "ratio": 2
+              "ratio": 0.679
             }
           ],
           "shotCaption": "09SCM 주문목록 노쇼후보 화면 (PC / 모바일)",
@@ -3291,9 +3291,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-list-help-pc.webp",
               "alt": "09SCM 도매상품 주문하기 공급범위 안내 PC 화면",
               "ratio": 5.4656
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-list-help-mobile.webp",
+              "alt": "09SCM 도매상품 주문하기 공급범위 안내 모바일 화면",
+              "ratio": 1.1702
             }
           ],
-          "shotCaption": "09SCM 도매상품 주문하기 공급범위 안내 화면",
+          "shotCaption": "09SCM 도매상품 주문하기 공급범위 안내 화면 (PC / 모바일)",
           "html": "<p>[공급범위란?]을 확인하면(PC는 마우스를 올리고, 모바일은 눌러요) 전국, 우리지역, 우리본사의 노출 기준을 안내해줘요.</p>"
         },
         {
@@ -3304,9 +3310,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-list-badge-pc.webp",
               "alt": "09SCM 도매상품 주문하기 뱃지 PC 화면",
               "ratio": 2.0638
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-list-badge-mobile.webp",
+              "alt": "09SCM 도매상품 주문하기 뱃지 모바일 화면",
+              "ratio": 0.4018
             }
           ],
-          "shotCaption": "09SCM 도매상품 주문하기 뱃지 화면",
+          "shotCaption": "09SCM 도매상품 주문하기 뱃지 화면 (PC / 모바일)",
           "html": "<p>내가 등록한 상품에는 [내 상품], 주문가능수량이 0인 상품에는 [품절] 뱃지가 붙어요. 두 상품 모두 상세 화면은 볼 수 있지만 주문할 수는 없어요. 자세한 내용은 <a href=\"#wholesale-shop/detail\">상품 상세 보기</a>에서 확인해주세요.</p>"
         },
         {
@@ -3317,9 +3329,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-list-empty-pc.webp",
               "alt": "09SCM 도매상품 주문하기 검색 결과 없음 PC 화면",
               "ratio": 3.8801
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-list-empty-mobile.webp",
+              "alt": "09SCM 도매상품 주문하기 검색 결과 없음 모바일 화면",
+              "ratio": 0.9148
             }
           ],
-          "shotCaption": "09SCM 도매상품 주문하기 검색 결과 없음 화면",
+          "shotCaption": "09SCM 도매상품 주문하기 검색 결과 없음 화면 (PC / 모바일)",
           "html": "<p>&quot;해당 조건의 상품이 없습니다.&quot;가 나와요. 검색어나 필터를 바꿔 다시 찾아보세요.</p>"
         }
       ],
@@ -3353,13 +3371,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-detail-cart-pc.webp",
               "alt": "09SCM 도매상품 상세 장바구니 담기 PC 화면",
-              "ratio": 3.0
+              "ratio": 3.9623
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-detail-cart-mobile.webp",
               "alt": "09SCM 도매상품 상세 장바구니 담기 모바일 화면",
-              "ratio": 2.0
+              "ratio": 2.0755
             }
           ],
           "shotCaption": "09SCM 도매상품 상세 장바구니 담기 화면 (PC / 모바일)",
@@ -3435,9 +3453,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-cart-block-pc.webp",
               "alt": "09SCM 장바구니 품절·구매불가 PC 화면",
               "ratio": 1.7001
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-cart-block-mobile.webp",
+              "alt": "09SCM 장바구니 품절·구매불가 모바일 화면",
+              "ratio": 0.3138
             }
           ],
-          "shotCaption": "09SCM 장바구니 품절·구매불가 화면",
+          "shotCaption": "09SCM 장바구니 품절·구매불가 화면 (PC / 모바일)",
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>[품절]</td><td>주문가능수량(도매 가용재고)이 0인 상품</td></tr><tr><td>[구매불가]</td><td>공급자가 공급범위를 바꿔 더 이상 내가 구매할 수 없는 상품 (&quot;공급범위가 변경되어 구매할 수 없습니다.&quot; 사유가 함께 표시, [품절]과 함께 붙을 수 있음)</td></tr><tr><td>주문 제한</td><td>뱃지가 붙은 상품이 있는 공급자는 [전체주문]을 누를 수 없고, 선택한 상품에 포함되면 [선택상품주문]도 누를 수 없음</td></tr></tbody></table></div><p>해당 상품을 삭제하거나 선택에서 빼면 나머지 상품만 [선택상품주문]으로 주문할 수 있어요.</p>"
         },
         {
@@ -3448,9 +3472,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-cart-empty-pc.webp",
               "alt": "09SCM 장바구니 비어 있음 PC 화면",
               "ratio": 4.1983
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-cart-empty-mobile.webp",
+              "alt": "09SCM 장바구니 비어 있음 모바일 화면",
+              "ratio": 1.2828
             }
           ],
-          "shotCaption": "09SCM 장바구니 비어 있음 화면",
+          "shotCaption": "09SCM 장바구니 비어 있음 화면 (PC / 모바일)",
           "html": "<p>&quot;장바구니에 담긴 상품이 없습니다.&quot;가 나와요. [← 상품목록으로]를 눌러 상품을 담아주세요.</p>"
         }
       ],
@@ -3485,9 +3515,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-order-fee-pc.webp",
               "alt": "09SCM 주문서 카드결제 수수료 구매자부담 PC 화면",
               "ratio": 3.9777
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-order-fee-mobile.webp",
+              "alt": "09SCM 주문서 카드결제 수수료 구매자부담 모바일 화면",
+              "ratio": 0.8907
             }
           ],
-          "shotCaption": "09SCM 주문서 카드결제 수수료 구매자부담 화면",
+          "shotCaption": "09SCM 주문서 카드결제 수수료 구매자부담 화면 (PC / 모바일)",
           "html": "<p>카드결제를 고르면 &quot;카드결제 수수료 ○%(○원)가 구매자부담으로 결제금액에 포함됩니다.&quot; 안내가 나오고 결제금액 요약에 [결제수수료]가 더해져요. 수수료는 (상품금액 + 배송비) × 수수료율로 계산해요. 부담 주체는 공급자가 <a href=\"#wholesale-settings\">도매설정</a>에서 정해요.</p>"
         },
         {
@@ -3498,9 +3534,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-order-nofee-pc.webp",
               "alt": "09SCM 주문서 카드결제 수수료 공급자부담 PC 화면",
               "ratio": 4.3415
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-order-nofee-mobile.webp",
+              "alt": "09SCM 주문서 카드결제 수수료 공급자부담 모바일 화면",
+              "ratio": 1.137
             }
           ],
-          "shotCaption": "09SCM 주문서 카드결제 수수료 공급자부담 화면",
+          "shotCaption": "09SCM 주문서 카드결제 수수료 공급자부담 화면 (PC / 모바일)",
           "html": "<p>카드결제를 골라도 수수료 안내와 [결제수수료]가 나타나지 않고, 총 결제금액은 상품금액 + 배송비예요. 카드 수수료는 공급자가 부담해요.</p>"
         },
         {
@@ -3511,9 +3553,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-order-transfer-pc.webp",
               "alt": "09SCM 주문서 계좌이체 PC 화면",
               "ratio": 2.8087
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-order-transfer-mobile.webp",
+              "alt": "09SCM 주문서 계좌이체 모바일 화면",
+              "ratio": 0.704
             }
           ],
-          "shotCaption": "09SCM 주문서 계좌이체 화면",
+          "shotCaption": "09SCM 주문서 계좌이체 화면 (PC / 모바일)",
           "html": "<p>공급자의 은행, 계좌번호, 예금주가 나타나고 입금자명을 입력해야 해요. 계좌이체는 공급자의 카드 수수료 부담 설정과 상관없이 결제수수료가 붙지 않아요.</p>"
         },
         {
@@ -3524,9 +3572,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-order-address-pc.webp",
               "alt": "09SCM 주문서 배송주소 직접입력 PC 화면",
               "ratio": 3.1644
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-order-address-mobile.webp",
+              "alt": "09SCM 주문서 배송주소 직접입력 모바일 화면",
+              "ratio": 0.9778
             }
           ],
-          "shotCaption": "09SCM 주문서 배송주소 직접입력 화면",
+          "shotCaption": "09SCM 주문서 배송주소 직접입력 화면 (PC / 모바일)",
           "html": "<p>[직접입력]을 고르면 우편번호 검색과 기본주소·상세주소 입력칸이 나와요. 우편번호를 검색하면 기본주소가 채워지고 상세주소를 입력해야 해요.</p>"
         },
         {
@@ -3537,9 +3591,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-order-error-pc.webp",
               "alt": "09SCM 주문서 입력 오류 PC 화면",
               "ratio": 8.0449
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-order-error-mobile.webp",
+              "alt": "09SCM 주문서 입력 오류 모바일 화면",
+              "ratio": 2.4719
             }
           ],
-          "shotCaption": "09SCM 주문서 입력 오류 화면",
+          "shotCaption": "09SCM 주문서 입력 오류 화면 (PC / 모바일)",
           "html": "<p>[주문하기]를 누르면 빠지거나 맞지 않는 항목이 한꺼번에 안내돼요. 모두 고친 뒤 다시 눌러주세요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>이름</td><td>&quot;이름을 입력해주세요.&quot;</td></tr><tr><td>휴대폰번호</td><td>&quot;휴대폰번호를 입력해주세요.&quot; 또는 &quot;휴대폰번호 형식이 올바르지 않습니다.&quot;</td></tr><tr><td>이메일</td><td>&quot;이메일을 입력해주세요.&quot;</td></tr><tr><td>직접입력 주소</td><td>&quot;우편번호 검색으로 주소를 입력해주세요.&quot; 또는 &quot;상세주소를 입력해주세요.&quot;</td></tr><tr><td>입금자명</td><td>&quot;입금자명을 입력해주세요.&quot; (계좌이체일 때)</td></tr></tbody></table></div>"
         },
         {
@@ -3550,9 +3610,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-order-soldout-pc.webp",
               "alt": "09SCM 주문서 상품 상태 안내 PC 화면",
               "ratio": 9.121
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-order-soldout-mobile.webp",
+              "alt": "09SCM 주문서 상품 상태 안내 모바일 화면",
+              "ratio": 2.8025
             }
           ],
-          "shotCaption": "09SCM 주문서 상품 상태 안내 화면",
+          "shotCaption": "09SCM 주문서 상품 상태 안내 화면 (PC / 모바일)",
           "html": "<p>주문서를 연 뒤 상품 상태가 바뀌면 [주문하기]를 눌렀을 때 아래 안내가 나오고 주문이 접수되지 않아요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>품절상품이 존재합니다.</td><td>주문 상품 중 품절된 상품이 있음</td></tr><tr><td>구매불가 상품이 존재합니다.</td><td>공급범위 변경 등으로 더 이상 구매할 수 없는 상품이 있음</td></tr><tr><td>재고가 부족한 상품이 있습니다.</td><td>주문수량이 주문가능수량보다 많은 상품이 있음</td></tr><tr><td>본인이 등록한 상품은 주문할 수 없습니다.</td><td>내가 등록한 상품이 포함됨</td></tr></tbody></table></div><p>여러 경우에 해당하면 품절, 구매불가, 재고부족 순서로 안내돼요. 장바구니로 돌아가 해당 상품을 확인해주세요.</p>"
         }
       ],
@@ -3587,9 +3653,15 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "src": "../assets/img/partner/wh-done-transfer-pc.webp",
               "alt": "09SCM 주문 완료 계좌이체 PC 화면",
               "ratio": 0.96
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-done-transfer-mobile.webp",
+              "alt": "09SCM 주문 완료 계좌이체 모바일 화면",
+              "ratio": 0.2967
             }
           ],
-          "shotCaption": "09SCM 주문 완료 계좌이체 화면",
+          "shotCaption": "09SCM 주문 완료 계좌이체 화면 (PC / 모바일)",
           "html": "<p>결제상태가 [결제대기]로 접수되고 &quot;공급자가 입금을 확인하면 결제완료로 전환됩니다.&quot;가 안내돼요. 입금 확인은 공급자가 해요. 입금 전에 주문을 취소하려면 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>를 확인해주세요.</p>"
         }
       ],
@@ -3619,7 +3691,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
       ],
       "shotCaption": "09SCM 주문내역 화면 (PC / 모바일)",
       "overview": "<p>내가 도매로 주문한 내역을 확인하고 취소, 반품, 배송확정을 하는 화면이에요. 내가 구매자인 주문만 보여요. 내가 공급자로 받은 주문은 <a href=\"#wholesale-receive\">주문접수관리</a>에서 확인해요.</p><h3>처리 단계</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>도매 주문</td><td>[주문접수] → [배송대기] → [배송중] → [배송확정]</td></tr></tbody></table></div><p>처리 단계는 공급자가 진행해요. [배송중]이 된 지 7일이 지나면 자동으로 [배송확정]돼요. 구매자가 할 수 있는 처리는 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>와 <a href=\"#wholesale-orders/confirm\">배송확정하기</a>에서 확인해주세요.</p>",
-      "steps": "<h3>주문 찾기</h3><p>목록 위쪽에서 기간과 처리 탭으로 주문을 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>기간</td><td>전체, 1개월, 3개월, 6개월, 기간 중 선택 (주문일시 기준)</td></tr><tr><td>처리 탭</td><td>전체, 배송확정, 취소·반품요청, 취소·반품승인 구분</td></tr></tbody></table></div><p>목록은 최근 주문부터 한 페이지에 20건씩 보여줘요.</p><h3>목록에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr><tr><td>주문일시</td><td>주문이 접수된 일시</td></tr><tr><td>공급자</td><td>주문한 상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr><tr><td>상품정보</td><td>주문 상품 이름 (여러 상품이면 &quot;○○ 외 N건&quot;)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체 구분</td></tr><tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소] 구분 ([결제취소] 주문은 전체환불·부분환불을 함께 표시)</td></tr><tr><td>처리상태</td><td>현재 처리 단계 (취소·반품이 요청 중이거나 승인된 주문은 &quot;-&quot;)</td></tr><tr><td>취소·반품</td><td>[취소요청], [반품요청], [취소승인], [반품승인], [취소반려], [반품반려] 중 현재 상태 (없으면 &quot;-&quot;)</td></tr><tr><td>합계금액</td><td>상품금액, 배송비, 결제수수료를 더한 총 결제금액</td></tr><tr><td>관리</td><td>주문 상태에 따라 노출되는 버튼</td></tr></tbody></table></div>",
+      "steps": "<h3>주문 찾기</h3><p>목록 위쪽에서 기간과 처리 탭으로 주문을 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>기간</td><td>전체, 1개월, 3개월, 6개월, 기간 중 선택 (주문일시 기준)</td></tr><tr><td>처리 탭</td><td>전체, 배송확정, 취소·반품요청, 취소·반품승인 구분</td></tr></tbody></table></div><p>목록은 최근 주문부터 한 페이지에 20건씩 보여줘요.</p><h3>목록에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr><tr><td>주문일시</td><td>주문이 접수된 일시</td></tr><tr><td>공급자</td><td>주문한 상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr><tr><td>상품정보</td><td>주문 상품 이름 (여러 상품이면 &quot;○○ 외 N건&quot;)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체 구분</td></tr><tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소] 구분 ([결제취소] 주문은 전체환불·부분환불을 함께 표시)</td></tr><tr><td>처리상태</td><td>현재 처리 단계 (취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>취소·반품</td><td>[취소요청], [반품요청], [취소승인], [반품승인], [취소반려], [반품반려] 중 현재 상태</td></tr><tr><td>합계금액</td><td>상품금액, 배송비, 결제수수료를 더한 총 결제금액</td></tr><tr><td>관리</td><td>주문 상태에 따라 노출되는 버튼</td></tr></tbody></table></div>",
       "cases": [
         {
           "title": "처리상태에 따라 보이는 버튼이 달라져요",
@@ -3629,10 +3701,16 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "src": "../assets/img/partner/wh-orders-rows-action-pc.webp",
               "alt": "09SCM 주문내역 처리 버튼 PC 화면",
               "ratio": 2.232
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-orders-rows-action-mobile.webp",
+              "alt": "09SCM 주문내역 처리 버튼 모바일 화면",
+              "ratio": 0.2933
             }
           ],
-          "shotCaption": "09SCM 주문내역 처리 버튼 화면",
-          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제 또는 결제대기</td><td>[주문취소] [상세보기] (공급자 승인 없이 바로 취소)</td></tr><tr><td>주문접수 · 계좌이체 결제완료</td><td>[취소요청] [상세보기] (공급자가 확인한 뒤 처리)</td></tr><tr><td>배송대기</td><td>[상세보기]</td></tr><tr><td>배송중</td><td>[배송확정] [반품요청] [상세보기]</td></tr><tr><td>배송확정</td><td>[상세보기]</td></tr></tbody></table></div>"
+          "shotCaption": "09SCM 주문내역 처리 버튼 화면 (PC / 모바일)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제</td><td>[주문취소] [상세보기] (공급자 승인 없이 바로 취소되고, PG사(PayApp)를 통해 카드 결제가 자동으로 취소됨)</td></tr><tr><td>주문접수 · 계좌이체 · 결제대기</td><td>[주문취소] [상세보기] (입금 전이라 공급자 승인 없이 환불 없이 바로 취소)</td></tr><tr><td>주문접수 · 계좌이체 · 결제완료</td><td>[취소요청] [상세보기] (공급자가 확인한 뒤 처리)</td></tr><tr><td>배송대기</td><td>[상세보기]</td></tr><tr><td>배송중</td><td>[배송확정] [반품요청] [상세보기]</td></tr><tr><td>배송확정</td><td>[상세보기]</td></tr></tbody></table></div>"
         },
         {
           "title": "취소·반품이 있는 주문은 이렇게 보여요",
@@ -3642,10 +3720,16 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "src": "../assets/img/partner/wh-orders-rows-claim-pc.webp",
               "alt": "09SCM 주문내역 취소·반품 PC 화면",
               "ratio": 3.8476
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-orders-rows-claim-mobile.webp",
+              "alt": "09SCM 주문내역 취소·반품 모바일 화면",
+              "ratio": 0.4382
             }
           ],
-          "shotCaption": "09SCM 주문내역 취소·반품 화면",
-          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>취소요청 · 반품요청</td><td>처리상태는 &quot;-&quot;로 비워지고 [상세보기]만 표시 (공급자 확인을 기다리는 상태)</td></tr><tr><td>취소승인 · 반품승인</td><td>처리상태는 &quot;-&quot;로 비워지고 결제상태는 [결제취소]와 환불 구분이 함께 표시 (바로 취소한 주문도 [취소승인]으로 표시)</td></tr><tr><td>취소반려 · 반품반려</td><td>처리상태는 반려 전 단계가 그대로 유지 ([반품반려]인 [배송중] 주문은 [배송확정]도 표시, [취소반려] 주문은 [상세보기]만 표시)</td></tr></tbody></table></div>"
+          "shotCaption": "09SCM 주문내역 취소·반품 화면 (PC / 모바일)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>취소요청 · 반품요청</td><td>처리상태는 &quot;-&quot;로 비워지고 [상세보기]만 표시 (공급자 확인을 기다리는 상태)</td></tr><tr><td>취소승인 · 반품승인</td><td>처리가 끝난 주문, [상세보기]만 표시 (처리상태는 &quot;-&quot;, 결제상태는 [결제취소]로 바뀌고 환불구분을 함께 표시)</td></tr><tr><td>취소반려 · 반품반려</td><td>처리상태가 요청 이전 단계로 유지 ([반품반려]인 [배송중] 주문은 [배송확정]도 표시, [취소반려] 주문은 [상세보기]만 표시)</td></tr><tr><td>구매자 즉시취소</td><td>[주문접수] 단계의 카드결제·결제대기 주문을 구매자가 직접 취소한 경우, 공급자 승인 없이 [취소승인]으로 처리</td></tr></tbody></table></div>"
         },
         {
           "title": "기간을 직접 정하면",
@@ -3655,9 +3739,15 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "src": "../assets/img/partner/wh-orders-period-pc.webp",
               "alt": "09SCM 주문내역 기간 선택 PC 화면",
               "ratio": 11.392
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-orders-period-mobile.webp",
+              "alt": "09SCM 주문내역 기간 선택 모바일 화면",
+              "ratio": 2.716
             }
           ],
-          "shotCaption": "09SCM 주문내역 기간 선택 화면",
+          "shotCaption": "09SCM 주문내역 기간 선택 화면 (PC / 모바일)",
           "html": "<p>[기간]을 누르면 시작일과 종료일 입력칸이 나와요. 두 날짜 사이에 주문한 내역만 보여주고, 날짜 하나만 입력하면 시작일 이후 또는 종료일 이전의 주문을 보여줘요.</p>"
         }
       ],
@@ -3681,9 +3771,28 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
         }
       ],
       "shotCaption": "09SCM 주문 상세 화면 (PC / 모바일)",
-      "overview": "<p>주문 한 건의 상품, 배송, 결제, 취소·반품 진행 내용을 확인하는 화면이에요. 목록의 [상세보기]를 누르면 열려요. 주문 상태에 따라 화면 아래 고정 바에 처리 버튼이 나타나요.</p>",
-      "steps": "<h3>주문 내용</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문상품</td><td>상품명, 공급가/단위, 수량, 소계</td></tr><tr><td>주문 정보</td><td>주문번호, 주문일시, 공급자</td></tr><tr><td>주문자 정보</td><td>내 계정 기준 사업자 정보의 상호명, 주문서에 입력한 이름·휴대폰번호·이메일</td></tr><tr><td>배송 정보</td><td>처리상태(현재 단계와 처리 일시, [배송중]에는 자동 배송확정 예정일시도 표시), 배송지, 배송 요청사항(입력한 경우)</td></tr><tr><td>결제 정보</td><td>결제상태(결제 일시 포함), 결제수단, 입금자명(계좌이체만), 상품금액, 배송비, 결제수수료(있는 경우), 총 결제금액</td></tr><tr><td>취소·반품 정보</td><td>요청과 처리 내용 (취소·반품 이력이 있는 주문에만 표시)</td></tr></tbody></table></div><h3>하단 고정 바</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>현재 보고 있는 주문의 번호</td></tr><tr><td>처리 버튼</td><td>[주문취소], [취소요청], [반품요청], [배송확정] 중 주문 상태에 맞는 버튼 (목록의 관리 버튼과 같음)</td></tr></tbody></table></div><p>[주문취소]와 [취소요청], [반품요청]은 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>, [배송확정]은 <a href=\"#wholesale-orders/confirm\">배송확정하기</a>에서 확인해주세요.</p>",
+      "overview": "<p>주문 한 건의 상품, 배송, 결제, 취소·반품 진행 내용을 확인하는 화면이에요. 목록의 [상세보기]를 누르면 열려요.</p><p>처리 버튼은 화면 아래에 고정된 영역에 있고, 목록과 같은 조건으로 보여요. [주문취소]와 [취소요청], [반품요청]은 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>, [배송확정]은 <a href=\"#wholesale-orders/confirm\">배송확정하기</a>에서 확인해주세요.</p>",
+      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>공급가/단위</td><td>주문 당시 상품의 공급가와 공급단위</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>공급자</td><td>상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr></tbody></table></div><h3>주문자정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 계정 기준 사업자 정보의 상호명</td></tr><tr><td>이름 · 휴대폰번호 · 이메일</td><td>주문서에 입력한 정보</td></tr></tbody></table></div><h3>배송정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 ([배송중]은 자동 배송확정 예정일시도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>배송지</td><td>주문서에 입력한 배송지</td></tr><tr><td>배송 요청사항</td><td>주문서에 입력한 요청사항 (입력한 경우만 표시)</td></tr></tbody></table></div><h3>결제정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료]와 결제 일시 ([결제취소]는 환불구분, 취소 일시, [결제완료] 일시를 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>배송비</td><td>공급자의 배송방식 기준 배송비 (무료배송, 기본배송비, 착불)</td></tr><tr><td>결제수수료</td><td>구매자부담 카드 수수료가 있는 주문에만 표시</td></tr><tr><td>총 결제금액</td><td>상품금액, 배송비, 결제수수료를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>상품환불금액 · 배송비 환불</td><td>부분환불 주문에만 표시 (배송비 환불은 포함 또는 미포함)</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 즉시취소는 &quot;-&quot;)</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
       "cases": [
+        {
+          "title": "배송중 주문은 자동 배송확정 예정일시가 보여요",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-od-ship-pc.webp",
+              "alt": "09SCM 주문 상세 배송중 PC 화면",
+              "ratio": 6.5321
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-od-ship-mobile.webp",
+              "alt": "09SCM 주문 상세 배송중 모바일 화면",
+              "ratio": 2.0183
+            }
+          ],
+          "shotCaption": "09SCM 주문 상세 배송중 화면 (PC / 모바일)",
+          "html": "<p>배송정보의 처리상태에 [배송중]이 된 일시와 함께 자동 배송확정 예정일시가 표시돼요. [배송중]이 된 지 7일이 지나면 자동으로 [배송확정]되고, 이후에는 반품을 요청할 수 없어요. 그 전에는 [배송확정]이나 [반품요청]을 할 수 있어요.</p>"
+        },
         {
           "title": "취소·반품을 요청한 주문",
           "shots": [
@@ -3692,10 +3801,16 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "src": "../assets/img/partner/wh-od-claim-req-pc.webp",
               "alt": "09SCM 주문 상세 취소·반품 요청 PC 화면",
               "ratio": 4.2507
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-od-claim-req-mobile.webp",
+              "alt": "09SCM 주문 상세 취소·반품 요청 모바일 화면",
+              "ratio": 0.9713
             }
           ],
-          "shotCaption": "09SCM 주문 상세 취소·반품 요청 화면",
-          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>[취소요청], [반품요청] 등 현재 상태와 일시</td></tr><tr><td>처리 주체</td><td>구매자 요청, 구매자 즉시취소, 공급자 직권 중 구분</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>요청할 때 입력한 환불 계좌 (계좌이체 주문만 표시)</td></tr><tr><td>구매자 요청 사유</td><td>요청할 때 입력한 사유</td></tr></tbody></table></div>"
+          "shotCaption": "09SCM 주문 상세 취소·반품 요청 화면 (PC / 모바일)",
+          "html": "<p>취소·반품 정보 영역이 나타나고, 요청한 처리상태와 일시, 계좌이체 주문의 환불계좌, 내가 남긴 요청 사유를 볼 수 있어요. 공급자가 확인하기 전이라 환불구분과 총환불금액은 보이지 않아요.</p>"
         },
         {
           "title": "취소·반품이 승인된 주문",
@@ -3705,10 +3820,54 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "src": "../assets/img/partner/wh-od-claim-done-pc.webp",
               "alt": "09SCM 주문 상세 취소·반품 승인 PC 화면",
               "ratio": 4.2507
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-od-claim-done-mobile.webp",
+              "alt": "09SCM 주문 상세 취소·반품 승인 모바일 화면",
+              "ratio": 0.9713
             }
           ],
-          "shotCaption": "09SCM 주문 상세 취소·반품 승인 화면",
-          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>환불구분</td><td>전체환불, 부분환불 구분</td></tr><tr><td>총환불금액</td><td>환불되는 금액의 합계</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 승인·반려하면서 입력한 사유</td></tr></tbody></table></div><p>환불구분과 환불금액은 공급자가 승인할 때 정해져서 요청 중이거나 반려된 주문에는 보이지 않아요.</p>"
+          "shotCaption": "09SCM 주문 상세 취소·반품 승인 화면 (PC / 모바일)",
+          "html": "<p>환불구분과 총환불금액, 공급자가 처리하며 남긴 사유가 함께 표시돼요. 환불구분과 환불금액은 공급자가 승인할 때 정해져서 요청 중이거나 반려된 주문에는 보이지 않아요.</p>"
+        },
+        {
+          "title": "결제 후 취소된 주문은 결제상태가 이렇게 보여요",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-od-paid-cancel-pc.webp",
+              "alt": "09SCM 주문 상세 결제취소 PC 화면",
+              "ratio": 5.1408
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-od-paid-cancel-mobile.webp",
+              "alt": "09SCM 주문 상세 결제취소 모바일 화면",
+              "ratio": 0.873
+            }
+          ],
+          "shotCaption": "09SCM 주문 상세 결제취소 화면 (PC / 모바일)",
+          "html": "<p>결제완료 후 취소가 승인된 주문은 결제상태가 [결제취소]로 바뀌고, 환불구분과 취소 일시, [결제완료] 일시가 함께 표시돼요. 환불은 총 결제금액 기준으로 진행돼요.</p>"
+        },
+        {
+          "title": "입금 전에 취소한 주문",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-od-cancel-unpaid-pc.webp",
+              "alt": "09SCM 주문 상세 입금 전 취소 PC 화면",
+              "ratio": 3.0823
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-od-cancel-unpaid-mobile.webp",
+              "alt": "09SCM 주문 상세 입금 전 취소 모바일 화면",
+              "ratio": 0.6086
+            }
+          ],
+          "shotCaption": "09SCM 주문 상세 입금 전 취소 화면 (PC / 모바일)",
+          "html": "<p>결제대기 주문을 취소하면 결제된 금액이 없어서 환불 없이 결제상태만 [결제취소]로 바뀌어요. 환불구분과 총환불금액은 표시되지 않고, 처리 주체는 구매자 즉시취소로 남아요.</p>"
         }
       ],
       "trouble": "<h3>하단 고정 바에 버튼이 없어요</h3><p>[배송대기]와 [배송확정] 주문, 취소·반품을 이미 요청했거나 처리가 끝난 주문에는 구매자가 누를 버튼이 없어요. 단, [반품반려]인 [배송중] 주문에는 [배송확정]이 보여요.</p><h3>[취소·반품 정보]가 안 보여요</h3><p>취소·반품 이력이 없는 주문에는 이 영역이 나타나지 않아요.</p>"
@@ -3731,7 +3890,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
         }
       ],
       "shotCaption": "09SCM 취소 요청 팝업 화면 (PC / 모바일)",
-      "overview": "<p>주문 상태에 따라 구매자가 바로 취소하거나, 공급자에게 취소·반품을 요청하는 팝업이에요. 목록의 관리 버튼과 상세 하단 바 어디에서 눌러도 같은 팝업이 열려요.</p><h3>주문 상태별로 할 수 있는 일</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제</td><td>[주문취소]로 공급자 승인 없이 바로 취소 (카드 결제가 전액 취소되고 결제상태가 [결제취소]로 바뀜)</td></tr><tr><td>주문접수 · 결제대기</td><td>[주문취소]로 바로 취소 (입금 전이라 환불 없이 [결제취소] 처리)</td></tr><tr><td>주문접수 · 계좌이체 결제완료</td><td>[취소요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송대기</td><td>취소·반품을 요청할 수 없음 (조회만 가능)</td></tr><tr><td>배송중</td><td>[반품요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송확정</td><td>취소·반품을 요청할 수 없음</td></tr></tbody></table></div><p>이미 요청했거나 처리가 끝난 주문은 다시 요청할 수 없어요. 단, 반품이 반려된 [배송중] 주문은 [배송확정]을 할 수 있어요.</p>",
+      "overview": "<p>주문 상태에 따라 구매자가 바로 취소하거나, 공급자에게 취소·반품을 요청하는 팝업이에요. 목록의 관리 버튼과 상세 하단 바 어디에서 눌러도 같은 팝업이 열려요.</p><h3>주문 상태별로 할 수 있는 일</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제</td><td>[주문취소]로 공급자 승인 없이 바로 취소 (PG사(PayApp)를 통해 카드 결제가 전액 자동으로 취소되고 결제상태가 [결제취소]로 바뀜)</td></tr><tr><td>주문접수 · 결제대기</td><td>[주문취소]로 바로 취소 (입금 전이라 환불 없이 [결제취소] 처리)</td></tr><tr><td>주문접수 · 계좌이체 결제완료</td><td>[취소요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송대기</td><td>취소·반품을 요청할 수 없음 (조회만 가능)</td></tr><tr><td>배송중</td><td>[반품요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송확정</td><td>취소·반품을 요청할 수 없음</td></tr></tbody></table></div><p>이미 요청했거나 처리가 끝난 주문은 다시 요청할 수 없어요. 단, 반품이 반려된 [배송중] 주문은 [배송확정]을 할 수 있어요.</p>",
       "steps": "<ol><li><b>주문 고르기</b> 주문내역 목록이나 상세 하단 바에서 [주문취소], [취소요청], [반품요청]을 눌러요.</li><li><b>내용 입력하기</b> 요청 팝업이 열리면 아래 항목을 입력해요. 이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</li><li><b>요청하기</b> [취소 요청] 또는 [반품 요청]을 누르면 주문의 취소·반품 상태가 [취소요청] 또는 [반품요청]으로 바뀌고 공급자가 확인해요. 승인되면 환불이 진행되고, 반려되면 주문은 요청 전 단계로 이어져요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>환불은행*</td><td>환불받을 은행 (계좌이체 주문만 입력)</td></tr><tr><td>예금주*</td><td>환불받을 계좌의 예금주 (계좌이체 주문만 입력)</td></tr><tr><td>환불계좌번호*</td><td>&quot;-&quot; 없이 숫자만 입력 (계좌이체 주문만 입력)</td></tr><tr><td>취소 사유* · 반품 사유*</td><td>요청하는 이유</td></tr></tbody></table></div><p>카드결제 주문은 환불 계좌 없이 사유만 입력해요. 승인되면 PG사를 통해 카드 결제가 자동으로 취소돼요. 환불구분과 환불금액은 공급자가 승인할 때 정해져요.</p>",
       "cases": [
         {
@@ -3768,9 +3927,15 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "src": "../assets/img/partner/wh-pop-return-pc.webp",
               "alt": "09SCM 반품 요청 PC 화면",
               "ratio": 1.3193
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-pop-return-mobile.webp",
+              "alt": "09SCM 반품 요청 모바일 화면",
+              "ratio": 1.1609
             }
           ],
-          "shotCaption": "09SCM 반품 요청 화면",
+          "shotCaption": "09SCM 반품 요청 화면 (PC / 모바일)",
           "html": "<p>환불 계좌 입력 없이 반품 사유만 입력해요. &quot;카드결제 건은 승인 시 PG사를 통해 자동으로 결제가 취소됩니다.&quot;가 안내돼요.</p>"
         },
         {
@@ -3781,9 +3946,15 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "src": "../assets/img/partner/wh-pop-cancelreq-error-pc.webp",
               "alt": "09SCM 취소 요청 입력 오류 PC 화면",
               "ratio": 0.846
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-pop-cancelreq-error-mobile.webp",
+              "alt": "09SCM 취소 요청 입력 오류 모바일 화면",
+              "ratio": 0.6349
             }
           ],
-          "shotCaption": "09SCM 취소 요청 입력 오류 화면",
+          "shotCaption": "09SCM 취소 요청 입력 오류 화면 (PC / 모바일)",
           "html": "<p>빠진 항목이 한꺼번에 안내되고 요청이 접수되지 않아요. 예) &quot;취소 사유를 입력해주세요.&quot; &quot;환불은행을 입력해주세요.&quot; &quot;환불계좌번호를 입력해주세요.&quot; &quot;예금주를 입력해주세요.&quot; 반품 요청이면 &quot;반품 사유를 입력해주세요.&quot;가 나와요.</p>"
         }
       ],
@@ -3798,15 +3969,9 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
           "src": "../assets/img/partner/wh-pop-confirm-pc.webp",
           "alt": "09SCM 배송확정 PC 화면",
           "ratio": 1.7361
-        },
-        {
-          "device": "mobile",
-          "src": "../assets/img/partner/wh-pop-confirm-mobile.webp",
-          "alt": "09SCM 배송확정 모바일 화면",
-          "ratio": 1.5278
         }
       ],
-      "shotCaption": "09SCM 배송확정 팝업 화면 (PC / 모바일)",
+      "shotCaption": "09SCM 배송확정 팝업 화면",
       "overview": "<p>[배송중]인 주문의 상품을 받은 뒤 구매를 확정하는 팝업이에요. 목록의 [배송확정]이나 상세 하단 바의 [배송확정]을 누르면 열려요.</p>",
       "steps": "<ol><li><b>배송확정 누르기</b> 상품을 정상적으로 받았다면 [배송확정]을 눌러요.</li><li><b>안내 확인하기</b> &quot;주문번호 ○○ 상품을 정상적으로 수령하셨습니까?&quot; 안내와 배송확정 후의 변화를 확인해요.</li><li><b>확정하기</b> 팝업의 [배송확정]을 누르면 처리상태가 [배송확정]으로 바뀌어요. 마음이 바뀌면 [취소]를 눌러 닫아요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>배송확정 후</td><td>취소·반품을 요청할 수 없고 되돌릴 수 없음</td></tr><tr><td>소매 판매</td><td>배송확정된 상품은 소매상품으로 등록 가능 (<a href=\"#retail-product-list/register\">소매정보 등록하기</a>)</td></tr><tr><td>결제대기 주문</td><td>결제도 함께 [결제완료]로 처리</td></tr><tr><td>자동 배송확정</td><td>[배송중]이 된 지 7일이 지나면 자동으로 [배송확정] (상세의 처리상태에 자동 배송확정 예정일시 표시)</td></tr></tbody></table></div>",
       "trouble": "<h3>[배송확정]이 안 보여요</h3><p>[배송중]인 주문에만 보여요. 취소·반품을 요청 중이거나 처리가 끝난 주문에서는 숨겨지고, [반품반려]가 되면 다시 보여요.</p><h3>받은 상품에 문제가 있어요</h3><p>[배송확정]을 하기 전에 [반품요청]을 해주세요. 배송확정 후에는 취소·반품을 요청할 수 없어요. (<a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>)</p>"
