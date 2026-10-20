@@ -1044,7 +1044,9 @@
     border: none; background: transparent; color: var(--text-secondary);
     font-size: 16px; line-height: 1; cursor: pointer; padding: 0 2px;
   }
-  .region-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 8px; }
+  .region-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
+  .region-field-off > * { visibility: hidden; }
+  @media (max-width: 860px) { .region-field-off { display: none; } }
   .field-derived {
     font-size: 12px;
     font-weight: 700;
@@ -3279,21 +3281,25 @@
     const def = sellerDefaultRegion(p.sellerName);
     return [def].concat((p.regions || []).filter(r => r !== def)).filter(Boolean);
   }
-  function regionFieldHTML(prefix, label, hidden) {
+  function regionFieldHTML(prefix, label, off, wide) {
     return `
-              <div class="form-field form-field-wide" id="${prefix}RegionField" ${hidden ? 'hidden' : ''}>
+              <div class="form-field region-field ${wide ? 'form-field-wide' : ''} ${off ? 'region-field-off' : ''}" id="${prefix}RegionField">
                 <label>${label}</label>
-                <div class="region-chips" id="${prefix}RegionChips"></div>
+                <div class="field-hint">${REGION_NOTICE}</div>
                 <div class="region-actions">
                   <button type="button" class="btn-secondary" id="${prefix}RegionAddBtn">지역 추가</button>
                   <span class="field-hint" id="${prefix}RegionCount"></span>
                 </div>
-                <div class="field-hint">${REGION_NOTICE}</div>
+                <div class="region-chips" id="${prefix}RegionChips"></div>
               </div>`;
   }
-  function regionDetailHTML(p) {
-    const def = sellerDefaultRegion(p.sellerName);
-    return `<div class="region-chips">${productRegions(p).map(r => `<span class="region-chip">${escapeHtml(r)}${r === def ? '<span class="tag tag-key">기본</span>' : ''}</span>`).join('')}</div>`;
+  // 상세 공급범위 표기 — 우리지역: "우리지역 (기본 지역 외 N곳)" + 추가 지역 목록
+  function scopeDetailHTML(p) {
+    if (p.scope !== '우리지역') return escapeHtml(p.scope);
+    const regs = productRegions(p);
+    const others = regs.slice(1);
+    return `우리지역 (${escapeHtml(regs[0] || '-')}${others.length ? ` 외 ${others.length}곳` : ''})` +
+      (others.length ? `<br>${others.map(escapeHtml).join(' / ')}` : '');
   }
   function closeRegionAddModal() {
     const root = document.getElementById('regionAddModalRoot');
@@ -3363,7 +3369,7 @@
     const count = root.querySelector(`#${prefix}RegionCount`);
     function draw() {
       const def = sellerDefaultRegion(MY_SELLER_NAME);
-      chips.innerHTML = (def ? `<span class="region-chip">${escapeHtml(def)}<span class="tag tag-key">기본</span></span>` : '') +
+      chips.innerHTML = (def ? `<span class="region-chip">${escapeHtml(def)} (기본)</span>` : '') +
         regions.map((r, i) => `<span class="region-chip">${escapeHtml(r)}<button type="button" class="region-chip-remove" data-region-remove="${i}" aria-label="${escapeHtml(r)} 삭제">×</button></span>`).join('');
       const total = (def ? 1 : 0) + regions.length;
       count.textContent = `등록 ${total}/${REGION_LIMIT}곳`;
@@ -3643,8 +3649,7 @@
           <div class="detail-grid">
             <div class="detail-item"><span class="detail-label">도매카테고리</span><span class="detail-value">${catLabel(p.cat1, p.cat2)}</span></div>
             <div class="detail-item"><span class="detail-label">도매상품명</span><span class="detail-value">${escapeHtml(p.name)}</span></div>
-            <div class="detail-item"><span class="detail-label">공급범위</span><span class="detail-value">${p.scope}</span></div>
-            ${p.scope === '우리지역' ? `<div class="detail-item detail-item-wide"><span class="detail-label">공급지역(우리지역)</span><span class="detail-value">${regionDetailHTML(p)}</span></div>` : ''}
+            <div class="detail-item ${p.scope === '우리지역' ? 'detail-item-wide' : ''}"><span class="detail-label">공급범위</span><span class="detail-value">${scopeDetailHTML(p)}</span></div>
             <div class="detail-item"><span class="detail-label">공급가 / 공급단위</span><span class="detail-value">${p.price.toLocaleString()}원 / ${escapeHtml(p.unit)}</span></div>
             <div class="detail-item"><span class="detail-label">도매판매상태</span><span class="detail-value">${statusTag(displayStatus)}</span></div>
             <div class="detail-item"><span class="detail-label">도매노출여부</span><span class="detail-value">${exposureTag(p.wholesaleVisible)}</span></div>
@@ -3751,6 +3756,7 @@
                   <option value="우리본사" ${p.scope === '우리본사' ? 'selected' : ''}>우리본사</option>
                 </select>
               </div>
+${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지역')}
               <div class="form-field">
                 <label>공급가<span class="req">*</span> / 공급단위</label>
                 <div class="input-pair">
@@ -3758,7 +3764,6 @@
                   <input type="text" class="form-input" id="editUnit" value="${escapeHtml(p.unit)}">
                 </div>
               </div>
-${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지역')}
               <div class="form-field">
                 <label>도매판매상태</label>
                 <select class="form-select" id="editSaleStatus" ${lock.locked ? 'disabled' : ''}>
@@ -3827,7 +3832,7 @@ ${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지�
     const editScopeSelect = wrapper.querySelector('#editScope');
     bindRegionField(wrapper, 'edit', editRegions);
     editScopeSelect.addEventListener('change', () => {
-      wrapper.querySelector('#editRegionField').hidden = editScopeSelect.value !== '우리지역';
+      wrapper.querySelector('#editRegionField').classList.toggle('region-field-off', editScopeSelect.value !== '우리지역');
     });
 
     const cat1 = wrapper.querySelector('#editCat1');
@@ -3959,6 +3964,7 @@ ${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지�
                   <option value="우리본사">우리본사</option>
                 </select>
               </div>
+${regionFieldHTML('reg', '공급지역(우리지역)', true)}
               <div class="form-field">
                 <label>공급가<span class="req">*</span> / 공급단위</label>
                 <div class="input-pair">
@@ -3966,7 +3972,6 @@ ${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지�
                   <input type="text" class="form-input" id="regUnit" placeholder="예: box(10kg)">
                 </div>
               </div>
-${regionFieldHTML('reg', '공급지역(우리지역)', true)}
               <div class="form-field form-field-wide">
                 <label>도매노출여부</label>
                 <select class="form-select" id="regWholesaleVisible">
@@ -4101,7 +4106,7 @@ ${regionFieldHTML('reg', '공급지역(우리지역)', true)}
     const regScopeSelect = wrapper.querySelector('#regScope');
     bindRegionField(wrapper, 'reg', regRegions);
     regScopeSelect.addEventListener('change', () => {
-      wrapper.querySelector('#regRegionField').hidden = regScopeSelect.value !== '우리지역';
+      wrapper.querySelector('#regRegionField').classList.toggle('region-field-off', regScopeSelect.value !== '우리지역');
     });
 
     const cat1 = wrapper.querySelector('#regCat1');
@@ -4347,7 +4352,7 @@ ${regionFieldHTML('reg', '공급지역(우리지역)', true)}
           <section class="form-section">
             <h3 class="form-section-title">공급지역(우리지역) 설정</h3>
             <div class="form-grid">
-${regionFieldHTML('set', '공급지역', false)}
+${regionFieldHTML('set', '우리지역', false, true)}
             </div>
             <div class="form-actions" style="justify-content:flex-start;">
               <button type="button" class="btn-primary" id="saveRegionBtn">저장</button>
@@ -4469,7 +4474,7 @@ ${regionFieldHTML('set', '공급지역', false)}
       images: ['상품 전체컷', '등급 판정서', '진공포장 상태'],
       detailContent: '1++ 등급 판정을 받은 횡성한우 등심입니다. 도축 후 냉장 상태로 진공포장하여 배송하며, 등급판정서 사본을 동봉합니다. 냉장 소비기한 내 소비를 권장하며, 장기보관 시 냉동 보관하세요.',
       orderCount: 44, createdAt: '26.09.13 15:06' },
-    { code: 'P0308', name: '제주흑돼지 삼겹살 10kg', cat1: 'meat', cat2: 'pork', scope: '우리지역', regions: ['제주 서귀포시'], sellerName: '제주축산', price: 145000, unit: 'box(10kg)', stock: 0, origin: '국내산 (제주)', expiry: '냉장 5일 이내',
+    { code: 'P0308', name: '제주흑돼지 삼겹살 10kg', cat1: 'meat', cat2: 'pork', scope: '우리지역', regions: ['제주 서귀포시', '경기 수원시 영통구'], sellerName: '제주축산', price: 145000, unit: 'box(10kg)', stock: 0, origin: '국내산 (제주)', expiry: '냉장 5일 이내',
       images: ['상품 전체컷', '진공포장 상태'],
       detailContent: '제주 흑돼지 삼겹살입니다. 1kg 단위로 진공포장하여 총 10kg 박스로 공급하며, 냉장 직송으로 신선도를 유지합니다.',
       orderCount: 27, createdAt: '26.09.02 16:05' },
@@ -4535,7 +4540,7 @@ ${regionFieldHTML('set', '공급지역', false)}
   let marketSort = 'latest'; // latest | orders | price
   let marketSearch = '';
   let currentMarketCode = null;
-  const CART = [{ code: 'P0603', qty: 2 }, { code: 'P0306', qty: 3 }]; // { code, qty }
+  const CART = [{ code: 'P0603', qty: 2 }, { code: 'P0306', qty: 3 }, { code: 'P0308', qty: 1 }, { code: 'P0302', qty: 1 }, { code: 'P0307', qty: 8 }]; // { code, qty }
   const CART_SELECTED = new Set(); // 장바구니 화면의 선택(체크) 상태 — 상품코드 기준
   let currentOrder = null;     // { seller, items: [{ code, qty }], fromCart } — 주문서 작성 화면 진입 시 설정
   let orderCompleteInfo = null; // 주문 완료 후 표시할 결과 정보
@@ -9095,6 +9100,7 @@ ${regionFieldHTML('set', '공급지역', false)}
                   <option value="우리본사">우리본사</option>
                 </select>
               </div>
+${regionFieldHTML('cv', '공급지역(우리지역)', true)}
               <div class="form-field">
                 <label>공급가<span class="req">*</span> / 공급단위</label>
                 <div class="input-pair">
@@ -9103,7 +9109,6 @@ ${regionFieldHTML('set', '공급지역', false)}
                 </div>
                 <div class="field-hint">기존 소비자가를 참고값으로 채워두었습니다. 실제 공급가에 맞게 수정해주세요.</div>
               </div>
-${regionFieldHTML('cv', '공급지역(우리지역)', true)}
               <div class="form-field form-field-wide">
                 <label>도매노출여부</label>
                 <select class="form-select" id="cvWholesaleVisible">
@@ -9164,7 +9169,7 @@ ${regionFieldHTML('cv', '공급지역(우리지역)', true)}
     const cvScopeSelect = wrapper.querySelector('#cvScope');
     bindRegionField(wrapper, 'cv', cvRegions);
     cvScopeSelect.addEventListener('change', () => {
-      wrapper.querySelector('#cvRegionField').hidden = cvScopeSelect.value !== '우리지역';
+      wrapper.querySelector('#cvRegionField').classList.toggle('region-field-off', cvScopeSelect.value !== '우리지역');
     });
 
     wrapper.querySelectorAll('[data-goto]').forEach(btn => {
