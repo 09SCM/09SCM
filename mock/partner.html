@@ -3233,12 +3233,12 @@
     cardFeeRate: 2.8,          // 카드결제 수수료율(%) — 구매자부담일 때만 결제금액에 가산
     shippingMethod: 'fixed',   // 'fixed'(기본배송비) | 'cod'(착불) | 'free'(무료배송) — 기본 선택값은 기본배송비
     shippingFee: 3000,         // shippingMethod === 'fixed'일 때만 사용(원, 주문 건당)
-    supplyRegions: ['경기 수원시 팔달구'], // 신규 상품 등록 시 공급지역(우리지역) 초기값 — 기본 공급지역(사업장 시·군·구)은 제외한 추가분
+    supplyRegions: ['경기 수원시 팔달구'], // 신규 상품 등록 시 우리지역 초기값 — 기본 지역(사업장 시·군·구)은 제외한 추가분
   };
 
-  // ---- 공급지역(우리지역) — 시·군·구 단위 ----
-  // 기본 공급지역 = 공급자 사업장 주소의 시·군·구(주소에서 파생, 삭제 불가). 상품별로 추가한 지역만 저장하며 기본 포함 최대 50곳이다.
-  // 도매설정의 공급지역은 신규 상품 등록 시 초기값으로 복사만 하고, 이미 등록된 상품의 지역에는 반영하지 않는다.
+  // ---- 우리지역 — 시·군·구 단위 ----
+  // 기본 지역 = 공급자 사업장 주소의 시·군·구(주소에서 파생, 삭제 불가). 상품별로 추가한 지역만 저장하며 기본 포함 최대 50곳이다.
+  // 도매설정의 등록 지역은 신규 상품 등록 시 초기값으로 복사만 하고, 이미 등록된 상품의 지역에는 반영하지 않는다.
   const REGION_LIMIT = 50;
   const REGION_NOTICE = '본사 구분 없이, 등록한 우리지역(시·군·구 단위)에 사업장 주소가 있는 모든 가맹점에 노출됩니다. 최대 50곳까지 등록할 수 있습니다.';
   // 지역 선택 팝업용 목데이터(시·도별 대표 시·군·구). 전체 행정구역 마스터는 개발 단계에서 별도 연동한다.
@@ -3277,7 +3277,7 @@
     const f = FRANCHISE_LIST.find(x => x.companyName === name);
     return f ? regionOfAddress(f.roadAddress) : (MARKET_SELLER_REGION[name] || '');
   }
-  // 상품의 공급지역 전체 = 공급자 기본 공급지역 + 상품에 추가한 지역
+  // 상품의 등록 지역 전체 = 공급자 기본 지역 + 상품에 추가한 지역
   function productRegions(p) {
     const def = sellerDefaultRegion(p.sellerName);
     return [def].concat((p.regions || []).filter(r => r !== def)).filter(Boolean);
@@ -3363,7 +3363,7 @@
       onAdded();
     });
   }
-  // 공급지역 편집 영역 바인딩 — regions 배열(기본 공급지역 제외, 추가분만)을 직접 수정한다.
+  // 등록 지역 편집 영역 바인딩 — regions 배열(기본 지역 제외, 추가분만)을 직접 수정한다.
   function bindRegionField(root, prefix, regions) {
     const chips = root.querySelector(`#${prefix}RegionChips`);
     const addBtn = root.querySelector(`#${prefix}RegionAddBtn`);
@@ -4563,7 +4563,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
   function findMarketProduct(code) {
     return marketCatalog().find(p => p.code === code) || null;
   }
-  // 공급범위별 노출 — 전국: 전체 / 우리지역: 상품 공급지역(시·군·구) 목록에 구매자 사업장 주소 시·군·구가 포함 / 우리본사: 같은 본사 소속(본사·가맹점). 본인 상품은 항상 노출한다.
+  // 공급범위별 노출 — 전국: 전체 / 우리지역: 상품 등록 지역(시·군·구) 목록에 구매자 사업장 주소 시·군·구가 포함 / 우리본사: 같은 본사 소속(본사·가맹점). 본인 상품은 항상 노출한다.
   function marketSameHq(name) {
     return name === MY_SELLER_NAME || name === HQ_STATE.business.companyName || FRANCHISE_LIST.some(f => f.companyName === name);
   }
