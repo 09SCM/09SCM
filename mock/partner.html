@@ -3650,7 +3650,7 @@
           <div class="detail-grid">
             <div class="detail-item"><span class="detail-label">도매카테고리</span><span class="detail-value">${catLabel(p.cat1, p.cat2)}</span></div>
             <div class="detail-item"><span class="detail-label">도매상품명</span><span class="detail-value">${escapeHtml(p.name)}</span></div>
-            <div class="detail-item ${p.scope === '우리지역' ? 'detail-item-wide' : ''}"><span class="detail-label">공급범위</span><span class="detail-value">${scopeDetailHTML(p)}</span></div>
+            <div class="detail-item"><span class="detail-label">공급범위</span><span class="detail-value">${scopeDetailHTML(p)}</span></div>
             <div class="detail-item"><span class="detail-label">공급가 / 공급단위</span><span class="detail-value">${p.price.toLocaleString()}원 / ${escapeHtml(p.unit)}</span></div>
             <div class="detail-item"><span class="detail-label">도매판매상태</span><span class="detail-value">${statusTag(displayStatus)}</span></div>
             <div class="detail-item"><span class="detail-label">도매노출여부</span><span class="detail-value">${exposureTag(p.wholesaleVisible)}</span></div>
