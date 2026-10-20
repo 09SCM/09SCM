@@ -1577,6 +1577,7 @@
     .buybar-unit-hint { display: block; flex: 1 1 100%; margin: 4px 0 0; white-space: normal; }
     .market-buybar .qty-stepper { flex-wrap: wrap; }
     .market-buybar .qty-stepper label { white-space: nowrap; }
+    .market-buybar > .tag { align-self: flex-start; }
     .market-buybar .buybar-actions { width: 100%; }
     .market-buybar .buybar-actions > button { flex: 1 1 0; white-space: nowrap; }
     .market-buybar .inline-confirm { position: absolute; left: 16px; right: 16px; bottom: calc(100% + 8px); margin: 0; padding: 8px 12px; background: var(--surface); border: 1px solid var(--success); border-radius: 4px; text-align: center; }
@@ -5290,7 +5291,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
               <div class="form-grid" style="margin-top:12px;">
                 <div class="form-field form-field-wide">
                   <label>입금자명<span class="req">*</span></label>
-                  <input type="text" class="form-input" id="orderDepositor" value="${escapeHtml(MY_PROFILE.bankHolder)}" placeholder="입금자명을 입력하세요">
+                  <input type="text" class="form-input" id="orderDepositor" value="${escapeHtml(BANK_ACCOUNT.holder)}" placeholder="입금자명을 입력하세요">
                 </div>
               </div>
             </div>

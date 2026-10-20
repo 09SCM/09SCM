@@ -3325,13 +3325,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-detail-cart-pc.webp",
               "alt": "09SCM 도매상품 상세 장바구니 담기 PC 화면",
-              "ratio": 0.96
+              "ratio": 3.0
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-detail-cart-mobile.webp",
               "alt": "09SCM 도매상품 상세 장바구니 담기 모바일 화면",
-              "ratio": 0.3207
+              "ratio": 2.0
             }
           ],
           "shotCaption": "09SCM 도매상품 상세 장바구니 담기 화면 (PC / 모바일)",
@@ -3344,13 +3344,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-detail-soldout-pc.webp",
               "alt": "09SCM 도매상품 상세 품절 PC 화면",
-              "ratio": 0.96
+              "ratio": 15.8491
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-detail-soldout-mobile.webp",
               "alt": "09SCM 도매상품 상세 품절 모바일 화면",
-              "ratio": 0.3207
+              "ratio": 8.9796
             }
           ],
           "shotCaption": "09SCM 도매상품 상세 품절 화면 (PC / 모바일)",
@@ -3363,13 +3363,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-detail-own-pc.webp",
               "alt": "09SCM 도매상품 상세 내 상품 PC 화면",
-              "ratio": 0.96
+              "ratio": 17.8723
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-detail-own-mobile.webp",
               "alt": "09SCM 도매상품 상세 내 상품 모바일 화면",
-              "ratio": 0.3247
+              "ratio": 10.2326
             }
           ],
           "shotCaption": "09SCM 도매상품 상세 내 상품 화면 (PC / 모바일)",
@@ -3447,7 +3447,7 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
       ],
       "shotCaption": "09SCM 주문서 작성 화면 (PC / 모바일)",
       "overview": "<p>한 공급자의 상품을 확인하고 주문자, 배송, 결제 정보를 입력해 주문을 접수하는 화면이에요. 장바구니의 [선택상품주문]·[전체주문]이나 상품 상세의 [바로구매]를 누르면 열려요.</p>",
-      "steps": "<h3>주문상품 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>이미지 · 상품명</td><td>주문할 상품</td></tr><tr><td>공급가/단위</td><td>공급단위 하나당 가격</td></tr><tr><td>수량</td><td>장바구니나 상품 상세에서 정한 수량 (이 화면에서는 바꿀 수 없음)</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 계정 기준 사업자 정보의 상호명 (수정 불가)</td></tr><tr><td>이름*</td><td>내 회원정보의 이름 (미리 입력되며 수정 가능)</td></tr><tr><td>휴대폰번호*</td><td>내 회원정보의 휴대폰번호 (미리 입력되며 수정 가능, 010-0000-0000 형식)</td></tr><tr><td>이메일*</td><td>내 회원정보의 이메일 (미리 입력되며 수정 가능)</td></tr></tbody></table></div><p>사업자 정보와 회원정보는 <a href=\"#system-member\">회원정보</a>에서 확인할 수 있어요.</p><h3>배송 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>등록된 사업장 주소</td><td>내 사업자 정보의 사업장 주소를 배송주소로 사용 (기본 선택)</td></tr><tr><td>직접입력</td><td>이번 주문에만 다른 주소로 받을 때 선택 (우편번호 검색 후 상세주소 입력, 등록된 사업장 주소는 바뀌지 않음)</td></tr><tr><td>배송 요청사항</td><td>공급자에게 전할 요청 (선택 입력)</td></tr></tbody></table></div><h3>결제수단</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>카드결제</td><td>주문하면 바로 결제가 완료되어 [결제완료]로 접수</td></tr><tr><td>계좌이체</td><td>공급자의 계좌(은행, 계좌번호, 예금주)로 입금하는 방식 ([결제대기]로 접수되고 공급자가 입금을 확인하면 [결제완료]로 바뀜)</td></tr><tr><td>입금자명*</td><td>계좌이체를 고르면 나타나는 입력 항목으로, 입금할 때 쓰는 이름 (미리 입력된 값은 수정 가능)</td></tr></tbody></table></div><h3>결제금액 요약</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품금액</td><td>주문상품 소계의 합계</td></tr><tr><td>배송비</td><td>공급자가 정한 배송비 방식과 금액 (착불이면 별도 부과)</td></tr><tr><td>결제수수료</td><td>카드결제를 고르고 공급자가 카드 수수료를 구매자부담으로 정한 경우에만 표시</td></tr><tr><td>총 결제금액</td><td>상품금액 + 배송비 + 결제수수료</td></tr></tbody></table></div><p>[주문하기]를 누르면 주문이 접수되고 공급자의 재고가 주문 수량만큼 바로 줄어요. [취소]를 누르면 장바구니로 돌아가요.</p>",
+      "steps": "<h3>주문상품 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>이미지 · 상품명</td><td>주문할 상품</td></tr><tr><td>공급가/단위</td><td>공급단위 하나당 가격</td></tr><tr><td>수량</td><td>장바구니나 상품 상세에서 정한 수량 (이 화면에서는 바꿀 수 없음)</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 계정 기준 사업자 정보의 상호명 (수정 불가)</td></tr><tr><td>이름*</td><td>내 회원정보의 이름 (미리 입력되며 수정 가능)</td></tr><tr><td>휴대폰번호*</td><td>내 회원정보의 휴대폰번호 (미리 입력되며 수정 가능, 010-0000-0000 형식)</td></tr><tr><td>이메일*</td><td>내 회원정보의 이메일 (미리 입력되며 수정 가능)</td></tr></tbody></table></div><p>사업자 정보와 회원정보는 <a href=\"#system-member\">회원정보</a>에서 확인할 수 있어요.</p><h3>배송 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>등록된 사업장 주소</td><td>내 사업자 정보의 사업장 주소를 배송주소로 사용 (기본 선택)</td></tr><tr><td>직접입력</td><td>이번 주문에만 다른 주소로 받을 때 선택 (우편번호 검색 후 상세주소 입력, 등록된 사업장 주소는 바뀌지 않음)</td></tr><tr><td>배송 요청사항</td><td>공급자에게 전할 요청 (선택 입력)</td></tr></tbody></table></div><h3>결제수단</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>카드결제</td><td>주문하면 바로 결제가 완료되어 [결제완료]로 접수</td></tr><tr><td>계좌이체</td><td>공급자의 계좌(은행, 계좌번호, 예금주)로 입금하는 방식 ([결제대기]로 접수되고 공급자가 입금을 확인하면 [결제완료]로 바뀜)</td></tr><tr><td>입금자명*</td><td>계좌이체를 고르면 나타나는 입력 항목으로, 입금할 때 쓰는 이름 (내 회원정보 계좌정보의 예금주명이 미리 입력되며 수정 가능)</td></tr></tbody></table></div><h3>결제금액 요약</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품금액</td><td>주문상품 소계의 합계</td></tr><tr><td>배송비</td><td>공급자가 정한 배송비 방식과 금액 (착불이면 별도 부과)</td></tr><tr><td>결제수수료</td><td>카드결제를 고르고 공급자가 카드 수수료를 구매자부담으로 정한 경우에만 표시</td></tr><tr><td>총 결제금액</td><td>상품금액 + 배송비 + 결제수수료</td></tr></tbody></table></div><p>[주문하기]를 누르면 주문이 접수되고 공급자의 재고가 주문 수량만큼 바로 줄어요. [취소]를 누르면 장바구니로 돌아가요.</p>",
       "cases": [
         {
           "title": "공급자가 카드 수수료를 구매자부담으로 설정했다면",

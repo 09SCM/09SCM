@@ -123,13 +123,22 @@ def run(device, p, b):
     card_click(page, '1++한우 등심 5kg')
     if not pc: fit_height(page, 900)
     save(page.screenshot(), 'wh-detail-' + suffix)
-    # 상황별 케이스: 장바구니 담기 · 품절 · 내 상품 (PC·모바일 공통, 화면 전체)
+    # 상황별 케이스: 장바구니 담기 · 품절 · 내 상품 — 하단 고정바만 촬영(모바일은 위에 뜨는 안내 영역 포함)
+    # PC는 바 폭을 840px로 줄여 촬영한다(PC·모바일을 한 쌍으로 놓을 때 글자가 읽히도록)
+    bar = ['.market-buybar', '.inline-confirm']
+    bw = 840 if pc else 440
+    def bar_shot(name, top=0):
+        if pc:
+            page.evaluate("() => { const b = document.querySelector('.market-buybar'); b.style.right = 'auto'; b.style.width = '840px'; }")
+        b = bbox(page, bar)
+        y = max(0, b['y'] - top)
+        save(page.screenshot(clip={'x': 0, 'y': y, 'width': bw, 'height': b['y'] + b['h'] - y}, full_page=True), name)
     page.click('#qtyPlusBtn'); page.click('#addToCartBtn'); page.wait_for_timeout(300)
-    save(page.screenshot(), 'wh-detail-cart-' + suffix)
+    bar_shot('wh-detail-cart-' + suffix)
     for code, name in (('P0308', 'soldout'), ('P0232', 'own')):
         goto_item(page, 'wholesale-market-detail', code=code)
         if not pc: fit_height(page, 900)
-        save(page.screenshot(), 'wh-detail-%s-%s' % (name, suffix))
+        bar_shot('wh-detail-%s-%s' % (name, suffix))
 
     # ---- 장바구니 ----
     page.set_viewport_size(vp)
