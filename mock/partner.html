@@ -3327,7 +3327,7 @@
               <select class="form-select" id="regionSigunguSelect"><option value="">선택</option></select>
             </div>
           </div>
-          <div class="field-error" id="regionAddError" hidden></div>
+          <div class="field-error" id="regionAddError" style="margin-top:16px;" hidden></div>
           <div class="modal-actions">
             <button type="button" class="btn-secondary" id="regionAddCancelBtn">취소</button>
             <button type="button" class="btn-primary" id="regionAddConfirmBtn">추가</button>
@@ -3757,7 +3757,7 @@
                   <option value="우리본사" ${p.scope === '우리본사' ? 'selected' : ''}>우리본사</option>
                 </select>
               </div>
-${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지역')}
+${regionFieldHTML('edit', '우리지역', p.scope !== '우리지역')}
               <div class="form-field">
                 <label>공급가<span class="req">*</span> / 공급단위</label>
                 <div class="input-pair">
@@ -3965,7 +3965,7 @@ ${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지�
                   <option value="우리본사">우리본사</option>
                 </select>
               </div>
-${regionFieldHTML('reg', '공급지역(우리지역)', true)}
+${regionFieldHTML('reg', '우리지역', true)}
               <div class="form-field">
                 <label>공급가<span class="req">*</span> / 공급단위</label>
                 <div class="input-pair">
@@ -9108,7 +9108,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
                   <option value="우리본사">우리본사</option>
                 </select>
               </div>
-${regionFieldHTML('cv', '공급지역(우리지역)', true)}
+${regionFieldHTML('cv', '우리지역', true)}
               <div class="form-field">
                 <label>공급가<span class="req">*</span> / 공급단위</label>
                 <div class="input-pair">
