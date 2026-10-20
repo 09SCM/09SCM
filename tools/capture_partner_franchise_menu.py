@@ -20,9 +20,9 @@ STEPS = [
     ('frm-fee-main', '이용료관리', None, 'view', None, True),
     ('frm-fee-default-error', '이용료관리', seq(fill('#feeMgmtDefaultAmount', 'abc'), click('#feeMgmtDefaultSaveBtn')), 'sec', '기본 이용료 설정', True),
     ('frm-fee-filter', '이용료관리', seq(click('[data-fee-mgmt-period="custom"]'), sel('#feeMgmtStatusSelect', '결제실패')), 'sec', '결제내역', True),
-    ('frm-fee-collect', '이용료관리', seq(sel('#feeMgmtStatusSelect', '결제실패'), click('[data-fee-mgmt-collect]')), 'popup', None, False),
-    ('frm-fee-collect-error', '이용료관리', seq(sel('#feeMgmtStatusSelect', '결제실패'), click('[data-fee-mgmt-collect]'), fill('#feeMgmtCollectAmount', '0'), click('#feeMgmtCollectSubmitBtn')), 'popup', None, False),
-    ('frm-fee-detail', '이용료관리', seq(sel('#feeMgmtStatusSelect', '수기완납'), click('[data-fee-mgmt-detail]')), 'popup', None, False),
+    ('frm-fee-collect', '이용료관리', seq(sel('#feeMgmtStatusSelect', '결제실패'), click('[data-fee-mgmt-collect]')), 'popup', None, True),
+    ('frm-fee-collect-error', '이용료관리', seq(sel('#feeMgmtStatusSelect', '결제실패'), click('[data-fee-mgmt-collect]'), fill('#feeMgmtCollectAmount', '0'), click('#feeMgmtCollectSubmitBtn')), 'popup', None, True),
+    ('frm-fee-detail', '이용료관리', seq(sel('#feeMgmtStatusSelect', '수기완납'), click('[data-fee-mgmt-detail]')), 'popup', None, True),
     # 통합매출조회
     ('frm-sales-main', '통합매출조회', None, 'view', None, True),
     ('frm-sales-franchise', '통합매출조회', click('[data-fs-scope="franchise"]'), 'view', None, True),

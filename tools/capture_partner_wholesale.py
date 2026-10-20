@@ -127,7 +127,7 @@ def run(device, p, b):
     # PC는 바 폭을 840px로 줄여 촬영한다(PC·모바일을 한 쌍으로 놓을 때 글자가 읽히도록)
     bar = ['.market-buybar', '.inline-confirm']
     bw = 840 if pc else 440
-    def bar_shot(name, top=0):
+    def bar_shot(name, top=28):
         if pc:
             page.evaluate("() => { const b = document.querySelector('.market-buybar'); b.style.right = 'auto'; b.style.width = '840px'; }")
         b = bbox(page, bar)

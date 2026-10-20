@@ -82,7 +82,7 @@ def popup_clip(page, pad=24):
     }""", pad)
     return page.screenshot(clip={'x': r['x'], 'y': r['y'], 'width': r['w'], 'height': r['h']})
 
-PC_ONLY = {'sys-noti-charge', 'sys-noti-push', 'sys-center', 'sys-center-empty'}   # 팝업은 PC만 캡처
+PC_ONLY = {'sys-noti-push', 'sys-center', 'sys-center-empty'}   # 모바일과 차이가 거의 없는 팝업은 PC만 캡처
 
 def shot(b, name, acct, menu, prep=None, mode='view', clip_text=None):
     for label, w, h in (('pc', 1440, 1500), ('mobile', 440, 1200)):

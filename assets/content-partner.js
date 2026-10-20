@@ -187,10 +187,16 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-list-rows-pc.webp",
               "alt": "09SCM 상품목록 행 버튼 PC 화면",
-              "ratio": 2.1195
+              "ratio": 3
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/product-list-rows-mobile.webp",
+              "alt": "09SCM 상품목록 행 버튼 모바일 화면",
+              "ratio": 2
             }
           ],
-          "shotCaption": "09SCM 상품목록 행 버튼 화면 (PC)",
+          "shotCaption": "09SCM 상품목록 행 버튼 화면 (PC / 모바일)",
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>소매정보가 없는 상품</td><td>[소매정보등록]</td></tr><tr><td>소매정보가 있는 상품</td><td>[상세보기] [수정] [삭제]</td></tr><tr><td>소매정보가 있는 내소매상품</td><td>[도매상품전환] [상세보기] [수정] [삭제]</td></tr><tr><td>보유수량이 0이고 소매정보가 있는 내도매상품·도매주문상품</td><td>[상세보기] [삭제] (수정 불가)</td></tr></tbody></table></div><p>보유수량이 0이고 소매정보가 없는 상품은 소매정보를 등록할 수 없어서 버튼이 보이지 않아요. [도매상품전환]은 도매공급권한이 있는 계정에만 보이고, 보유수량이 있는 내소매상품에만 나타나요.</p>"
         },
         {
@@ -593,10 +599,16 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-rows-process-pc.webp",
               "alt": "09SCM 주문목록 처리 버튼 PC 화면",
-              "ratio": 1.2629
+              "ratio": 3
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/order-list-rows-process-mobile.webp",
+              "alt": "09SCM 주문목록 처리 버튼 모바일 화면",
+              "ratio": 2
             }
           ],
-          "shotCaption": "09SCM 주문목록 처리 버튼 화면 (PC)",
+          "shotCaption": "09SCM 주문목록 처리 버튼 화면 (PC / 모바일)",
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>픽업 · 주문접수</td><td>[픽업대기] [취소처리] [상세보기] ([결제대기]인 계좌이체 주문은 [결제확인]도 표시)</td></tr><tr><td>픽업 · 픽업대기</td><td>[픽업완료] [취소처리] [상세보기] [되돌리기] ([결제대기] 주문은 [결제·픽업완료])</td></tr><tr><td>배달 · 주문접수</td><td>[배달대기] [취소처리] [상세보기]</td></tr><tr><td>배달 · 배달대기</td><td>[배달중] [취소처리] [상세보기] [되돌리기]</td></tr><tr><td>배달 · 배달중</td><td>[배달완료] [취소처리] [상세보기] [되돌리기]</td></tr><tr><td>픽업완료 · 배달완료</td><td>[반품처리] [상세보기]</td></tr></tbody></table></div><p>목록의 [결제확인]은 [주문접수] 단계의 계좌이체 주문에만 보여요. 현장결제 주문과 [픽업대기] 단계의 [결제대기] 주문은 주문 상세에서 처리해요.</p>"
         },
         {
@@ -606,10 +618,16 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-rows-claim-pc.webp",
               "alt": "09SCM 주문목록 취소·반품 PC 화면",
-              "ratio": 2.8871
+              "ratio": 3
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/order-list-rows-claim-mobile.webp",
+              "alt": "09SCM 주문목록 취소·반품 모바일 화면",
+              "ratio": 2
             }
           ],
-          "shotCaption": "09SCM 주문목록 취소·반품 화면 (PC)",
+          "shotCaption": "09SCM 주문목록 취소·반품 화면 (PC / 모바일)",
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>취소요청 · 반품요청</td><td>처리상태는 &quot;-&quot;로 비워지고 [취소처리] 또는 [반품처리]에서 승인·반려를 선택</td></tr><tr><td>취소승인 · 반품승인</td><td>처리가 끝난 주문, [상세보기]만 표시 (결제상태는 [결제취소]로 바뀌고 환불구분을 함께 표시)</td></tr><tr><td>취소반려 · 반품반려</td><td>처리상태가 요청 이전 상태로 돌아가 정상 처리 흐름에 다시 포함</td></tr><tr><td>구매자 즉시취소</td><td>소매몰 주문내역에서 구매자가 [주문접수] 단계의 카드결제·결제대기 주문을 직접 취소한 경우, 판매자 승인 없이 [취소승인]으로 처리</td></tr></tbody></table></div>"
         },
         {
@@ -619,10 +637,16 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-noshow-pc.webp",
               "alt": "09SCM 주문목록 노쇼후보 PC 화면",
-              "ratio": 3.1161
+              "ratio": 3
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/order-list-noshow-mobile.webp",
+              "alt": "09SCM 주문목록 노쇼후보 모바일 화면",
+              "ratio": 2
             }
           ],
-          "shotCaption": "09SCM 주문목록 노쇼후보 화면 (PC)",
+          "shotCaption": "09SCM 주문목록 노쇼후보 화면 (PC / 모바일)",
           "html": "<p>픽업 주문 중 처리상태가 [주문접수] 또는 [픽업대기]인데 공통 픽업가능기간(주문한 상품들의 픽업가능기간이 겹치는 기간)이 지난 주문은 처리상태 아래에 <b>노쇼후보</b>가 표시돼요. 종료일 다음날 00:00에 판단하고, 소매몰 운영 계정으로 시스템 알림이 한 번 가요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>표시 방식</td><td>처리상태 값이 바뀌는 것이 아니라 경고 문구만 추가 (주문이 자동으로 취소되지 않음)</td></tr><tr><td>계속 처리</td><td>다음 단계 버튼으로 정상 처리를 이어갈 수 있음 ([픽업완료]가 되면 표시 해제)</td></tr><tr><td>노쇼 처리</td><td>실제 노쇼인지 확인한 뒤 [취소처리]에서 처리 주체를 노쇼처리로 선택</td></tr><tr><td>배달 주문</td><td>공통 픽업가능기간이 없어 해당 없음</td></tr></tbody></table></div><p>노쇼 처리 방법은 <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a>에서 확인해주세요.</p>"
         },
         {
@@ -635,7 +659,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "ratio": 2.5208
             }
           ],
-          "shotCaption": "09SCM 일괄변경 안내 화면 (PC)",
+          "shotCaption": "09SCM 일괄변경 안내 화면",
           "html": "<p>&quot;일괄 변경할 주문을 선택해주세요.&quot; 안내가 나와요.</p>"
         },
         {
@@ -648,7 +672,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "ratio": 2.5208
             }
           ],
-          "shotCaption": "09SCM 일괄변경 안내 화면 (PC)",
+          "shotCaption": "09SCM 일괄변경 안내 화면",
           "html": "<p>주문은 골랐지만 처리를 고르지 않으면 &quot;변경할 처리 상태를 선택해주세요.&quot; 안내가 나와요.</p>"
         },
         {
@@ -661,7 +685,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "ratio": 2.0167
             }
           ],
-          "shotCaption": "09SCM 일괄변경 안내 화면 (PC)",
+          "shotCaption": "09SCM 일괄변경 안내 화면",
           "html": "<p>선택한 건수와 처리를 보여주고 [진행]을 누르면 모두 변경돼요. 고객 알림톡이 설정된 경우 알림톡이 발송될 수 있어요. 처리가 끝나면 선택이 풀리고 처리 건수를 알려줘요.</p>"
         },
         {
@@ -674,7 +698,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "ratio": 2.0167
             }
           ],
-          "shotCaption": "09SCM 일괄변경 안내 화면 (PC)",
+          "shotCaption": "09SCM 일괄변경 안내 화면",
           "html": "<p>&quot;선택한 2건 중 1건만 처리됩니다&quot;처럼 변경 가능한 건수만 알려줘요. [진행]을 누르면 조건에 맞는 주문만 변경하고 나머지는 그대로 둬요.</p>"
         },
         {
@@ -687,7 +711,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "ratio": 2.5208
             }
           ],
-          "shotCaption": "09SCM 일괄변경 안내 화면 (PC)",
+          "shotCaption": "09SCM 일괄변경 안내 화면",
           "html": "<p>&quot;선택한 주문은 처리할 수 없습니다.&quot; 안내가 나오고 아무것도 변경되지 않아요.</p>"
         }
       ],
@@ -822,7 +846,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
           "ratio": 2.1228
         }
       ],
-      "shotCaption": "09SCM 픽업완료 확인 화면 (PC)",
+      "shotCaption": "09SCM 픽업완료 확인 화면",
       "overview": "<p>주문을 다음 단계로 진행하는 방법이에요. 주문목록과 주문 상세에서 같은 버튼으로 처리해요.</p><p>완료 처리(픽업완료·배달완료)는 직전 단계에서만 할 수 있고, 확인 창에서 한 번 더 확인해요.</p>",
       "steps": "<h3>버튼별 동작</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>다음단계 버튼</td><td>[픽업대기], [배달대기], [배달중]을 누르면 확인 창 없이 바로 다음 단계로 진행</td></tr><tr><td>완료 버튼</td><td>[픽업완료], [배달완료]는 직전 단계([픽업대기], [배달중])일 때만 표시, 확인 창에서 [픽업완료] 또는 [배달완료]를 눌러야 처리</td></tr><tr><td>[결제확인]</td><td>결제상태만 [결제완료]로 바꾸고 처리상태는 그대로</td></tr><tr><td>[되돌리기]</td><td>바로 직전 단계로 돌아감 (확인 창 없이 바로 반영)</td></tr><tr><td>[일괄변경]</td><td>목록에서 여러 주문을 한 번에 다음 단계로 진행</td></tr></tbody></table></div><h3>되돌릴 수 있는 단계</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>픽업대기</td><td>[주문접수]로 돌아감</td></tr><tr><td>배달대기</td><td>[주문접수]로 돌아감</td></tr><tr><td>배달중</td><td>[배달대기]로 돌아감</td></tr><tr><td>되돌릴 수 없는 경우</td><td>[주문접수] 단계, 완료 이후, 취소·반품요청 및 승인 상태</td></tr></tbody></table></div><p>완료한 주문은 [반품처리]만 할 수 있어요. 취소·반품이 진행 중이거나 끝난 주문은 처리상태가 비워져서 다음단계·되돌리기 버튼이 보이지 않아요.</p><h3>완료 후 [반품요청] 기한</h3><p>픽업완료·배달완료로 처리한 일시부터 7일 이내에만 구매자가 반품을 요청할 수 있어요. 취소·반품 이력이 없는 완료 주문은 <a href=\"#retail-order-list/detail\">주문 상세</a>의 처리상태에서 [반품요청] 가능 기한을 확인할 수 있어요.</p>",
       "cases": [
@@ -836,7 +860,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "ratio": 1.9055
             }
           ],
-          "shotCaption": "09SCM 결제·픽업완료 확인 화면 (PC)",
+          "shotCaption": "09SCM 결제·픽업완료 확인 화면",
           "html": "<p>[픽업대기] 단계에서 결제상태가 [결제대기]인 주문은 완료 버튼 이름이 [결제·픽업완료]로 바뀌어요. 확인 창에 &quot;[결제대기] 상태인 경우 결제도 함께 완료 처리됩니다.&quot; 안내가 함께 나오고, 처리하면 결제상태도 [결제완료]로 바뀌어요.</p>"
         }
       ]
@@ -2245,9 +2269,10 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     {
       title: '결제실패 건을 수납처리해요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/frm-fee-collect-pc.webp', alt: '09SCM 수납처리 팝업 PC 화면', ratio: 936 / 1060 }
+        { device: 'pc', src: '../assets/img/partner/frm-fee-collect-pc.webp', alt: '09SCM 수납처리 팝업 PC 화면', ratio: 936 / 1060 },
+        { device: 'mobile', src: '../assets/img/partner/frm-fee-collect-mobile.webp', alt: '09SCM 수납처리 팝업 모바일 화면', ratio: 880 / 1384 }
       ],
-      shotCaption: '09SCM 수납처리 팝업 (PC)',
+      shotCaption: '09SCM 수납처리 팝업 (PC / 모바일)',
       html:
         '<p>결제실패 건의 [수납처리]를 누르면 팝업이 열려요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -2261,9 +2286,10 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     {
       title: '수납처리 입력이 잘못됐어요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/frm-fee-collect-error-pc.webp', alt: '09SCM 수납처리 오류 PC 화면', ratio: 936 / 1144 }
+        { device: 'pc', src: '../assets/img/partner/frm-fee-collect-error-pc.webp', alt: '09SCM 수납처리 오류 PC 화면', ratio: 936 / 1144 },
+        { device: 'mobile', src: '../assets/img/partner/frm-fee-collect-error-mobile.webp', alt: '09SCM 수납처리 오류 모바일 화면', ratio: 880 / 1432 }
       ],
-      shotCaption: '09SCM 수납처리 오류 팝업 (PC)',
+      shotCaption: '09SCM 수납처리 오류 팝업 (PC / 모바일)',
       html:
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>결제금액이 1원 이상의 정수가 아님</td><td>&quot;결제금액은 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
@@ -2275,9 +2301,10 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     {
       title: '수기완납 건의 처리 내용을 확인해요',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/frm-fee-detail-pc.webp', alt: '09SCM 처리정보 팝업 PC 화면', ratio: 936 / 592 }
+        { device: 'pc', src: '../assets/img/partner/frm-fee-detail-pc.webp', alt: '09SCM 처리정보 팝업 PC 화면', ratio: 936 / 592 },
+        { device: 'mobile', src: '../assets/img/partner/frm-fee-detail-mobile.webp', alt: '09SCM 처리정보 팝업 모바일 화면', ratio: 880 / 710 }
       ],
-      shotCaption: '09SCM 처리정보 팝업 (PC)',
+      shotCaption: '09SCM 처리정보 팝업 (PC / 모바일)',
       html: '<p>수기완납 건의 [처리정보]를 누르면 수납방법과 메모를 볼 수 있어요.</p>'
     }
   ],
@@ -3061,9 +3088,10 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '알림톡을 충전해요',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-charge-pc.webp', alt: '09SCM 알림톡 충전 팝업 PC 화면', ratio: 1056 / 1504 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-charge-pc.webp', alt: '09SCM 알림톡 충전 팝업 PC 화면', ratio: 1056 / 1504 },
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-charge-mobile.webp', alt: '09SCM 알림톡 충전 팝업 모바일 화면', ratio: 880 / 1602 }
           ],
-          shotCaption: '09SCM 알림톡 충전 팝업 (PC)',
+          shotCaption: '09SCM 알림톡 충전 팝업 (PC / 모바일)',
           html:
             '<p>[충전하기]를 누르면 충전 팝업이 열려요.</p>' +
             '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -3162,7 +3190,7 @@ window.GUIDE_CONTENT['system-notification'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-push-pc.webp', alt: '09SCM 브라우저 알림 허용 방법 PC 화면', ratio: 936 / 736 }
           ],
-          shotCaption: '09SCM 브라우저 알림 허용 방법 팝업 (PC)',
+          shotCaption: '09SCM 브라우저 알림 허용 방법 팝업',
           html:
             '<p>[허용 방법 보기]를 누르면 기기별 허용 방법이 나와요.</p>' +
             '<ul>' +
@@ -3193,7 +3221,7 @@ window.GUIDE_CONTENT['system-notification'] = {
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-center-pc.webp', alt: '09SCM 알림센터 PC 화면', ratio: 896 / 1188 }
       ],
-      shotCaption: '09SCM 알림센터 팝업 (PC)',
+      shotCaption: '09SCM 알림센터 팝업',
       overview:
         '<p>상단의 벨 아이콘을 누르면 열리는 알림 모음이에요. 시스템 알림 설정에서 켜 둔 알림이 최신순으로 쌓여요.</p>' +
         '<ul>' +
@@ -3219,7 +3247,7 @@ window.GUIDE_CONTENT['system-notification'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-center-empty-pc.webp', alt: '09SCM 알림센터 비어 있음 PC 화면', ratio: 896 / 518 }
           ],
-          shotCaption: '09SCM 알림센터 비어 있음 팝업 (PC)',
+          shotCaption: '09SCM 알림센터 비어 있음 팝업',
           html: '<p>모든 알림을 확인하면 알림센터가 비어 있는 상태로 보여요. 새 알림이 생기면 다시 쌓여요.</p>'
         }
       ],
@@ -3344,13 +3372,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-detail-soldout-pc.webp",
               "alt": "09SCM 도매상품 상세 품절 PC 화면",
-              "ratio": 15.8491
+              "ratio": 10.3704
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-detail-soldout-mobile.webp",
               "alt": "09SCM 도매상품 상세 품절 모바일 화면",
-              "ratio": 8.9796
+              "ratio": 5.7143
             }
           ],
           "shotCaption": "09SCM 도매상품 상세 품절 화면 (PC / 모바일)",
@@ -3363,13 +3391,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-detail-own-pc.webp",
               "alt": "09SCM 도매상품 상세 내 상품 PC 화면",
-              "ratio": 17.8723
+              "ratio": 11.2
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-detail-own-mobile.webp",
               "alt": "09SCM 도매상품 상세 내 상품 모바일 화면",
-              "ratio": 10.2326
+              "ratio": 6.1972
             }
           ],
           "shotCaption": "09SCM 도매상품 상세 내 상품 화면 (PC / 모바일)",
