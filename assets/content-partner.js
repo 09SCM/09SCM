@@ -2838,7 +2838,7 @@ window.GUIDE_CONTENT['system-member'] = {
     '<h3>사업자 정보</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
       '<tr><td>사업자 유형, 사업자등록번호, 상호명, 대표자명, 업태, 업종</td><td>가입할 때 입력한 정보 (수정 불가)</td></tr>' +
-      '<tr><td>사업장 주소</td><td>가입할 때 입력한 정보 (수정 불가). 도매상품의 우리지역 노출 판단 기준이 돼요</td></tr>' +
+      '<tr><td>사업장 주소</td><td>가입할 때 입력한 정보 (수정 불가, 도매상품의 우리지역 노출 판단 기준)</td></tr>' +
       '<tr><td>법인등록번호</td><td>사업자 유형이 법인사업자일 때만 표시</td></tr>' +
     '</tbody></table></div>' +
     '<p>수정이 필요하면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해주세요. 이 정보는 <a href="#retail-settings">소매설정</a>의 사업자정보에도 그대로 쓰여요.</p>' +
