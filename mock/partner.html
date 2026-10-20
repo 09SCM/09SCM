@@ -1045,7 +1045,8 @@
     font-size: 16px; line-height: 1; cursor: pointer; padding: 0 2px;
   }
   .region-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
-  .region-field-off > * { visibility: hidden; }
+  .region-field-off > * { display: none; }
+  .cart-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
   @media (max-width: 860px) { .region-field-off { display: none; } }
   .field-derived {
     font-size: 12px;
@@ -4572,7 +4573,15 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     if (p.scope === '우리본사') return marketSameHq(p.sellerName);
     return false;
   }
+  // 도매노출여부가 미노출이거나 삭제된 상품은 장바구니에서 안내 없이 제외한다.
+  function cartPrune() {
+    for (let i = CART.length - 1; i >= 0; i--) {
+      const p = findMarketProduct(CART[i].code);
+      if (!p || p.hidden) CART.splice(i, 1);
+    }
+  }
   function cartCount() {
+    cartPrune();
     return CART.reduce((sum, item) => sum + item.qty, 0);
   }
   function marketScopeTag(scope) {
@@ -4855,6 +4864,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
 
   // 장바구니 상품을 공급자 단위로 그룹핑 — 결제 · 배송비가 공급자별로 분리되므로 그룹별 소계 · 주문하기를 제공
   function cartGroupsBySupplier() {
+    cartPrune();
     const items = CART.map(item => {
       const p = findMarketProduct(item.code);
       if (!p) return null;
@@ -4897,7 +4907,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       <tr>
         <td><input type="checkbox" class="cart-row-check" data-cart-select="${code}" ${CART_SELECTED.has(code) ? 'checked' : ''}></td>
         <td><div class="thumb" style="width:48px; height:48px;">IMG</div></td>
-        <td>${escapeHtml(product.name)} ${marketAvailableQty(product) === 0 ? statusTag('품절') : ''} ${unavailable ? '<span class="tag tag-error">구매불가</span>' : ''}${unavailable ? '<div class="field-error">공급범위가 변경되어 구매할 수 없습니다.</div>' : ''}</td>
+        <td>${escapeHtml(product.name)}${(marketAvailableQty(product) === 0 || unavailable) ? `<div class="cart-badges">${marketAvailableQty(product) === 0 ? statusTag('품절') : ''}${unavailable ? '<span class="tag tag-error">구매불가</span>' : ''}</div>` : ''}${unavailable ? '<div class="field-error">공급범위가 변경되어 구매할 수 없습니다.</div>' : ''}</td>
         <td class="num">${product.price.toLocaleString()}원 / ${escapeHtml(product.unit)}</td>
         <td class="num">
           <div class="qty-stepper">
@@ -4938,8 +4948,6 @@ ${regionFieldHTML('set', '우리지역', false, true)}
         </div>
         <div class="cart-group-footer">
           ${cartGroupSummaryHTML(group)}
-          ${hasSoldOut ? '<span class="field-error">품절 상품을 삭제한 후 주문해주세요.</span>' : ''}
-          ${hasUnavailable ? '<span class="field-error">구매불가 상품을 삭제한 후 주문해주세요.</span>' : ''}
           <button type="button" class="btn-secondary" data-order-selected="${escapeHtml(group.seller)}" ${selectedItems.length === 0 || selectedHasSoldOut || selectedHasUnavailable ? 'disabled' : ''}>선택상품주문</button>
           <button type="button" class="btn-primary" data-order-group="${escapeHtml(group.seller)}" ${hasSoldOut || hasUnavailable ? 'disabled' : ''}>전체주문</button>
         </div>
