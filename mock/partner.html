@@ -1032,6 +1032,19 @@
     font-weight: 300;
     color: var(--text-secondary);
   }
+  .region-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .region-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    height: 28px; padding: 0 8px 0 10px;
+    border: 1px solid var(--border); border-radius: 4px;
+    font-size: 14px; color: var(--text-body); background: var(--surface);
+  }
+  .region-chip .tag { height: 20px; padding: 0 6px; }
+  .region-chip-remove {
+    border: none; background: transparent; color: var(--text-secondary);
+    font-size: 16px; line-height: 1; cursor: pointer; padding: 0 2px;
+  }
+  .region-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 8px; }
   .field-derived {
     font-size: 12px;
     font-weight: 700;
@@ -3217,14 +3230,158 @@
     cardFeeRate: 2.8,          // 카드결제 수수료율(%) — 구매자부담일 때만 결제금액에 가산
     shippingMethod: 'fixed',   // 'fixed'(기본배송비) | 'cod'(착불) | 'free'(무료배송) — 기본 선택값은 기본배송비
     shippingFee: 3000,         // shippingMethod === 'fixed'일 때만 사용(원, 주문 건당)
+    supplyRegions: ['경기 수원시 팔달구'], // 신규 상품 등록 시 공급지역(우리지역) 초기값 — 기본 공급지역(사업장 시·군·구)은 제외한 추가분
   };
+
+  // ---- 공급지역(우리지역) — 시·군·구 단위 ----
+  // 기본 공급지역 = 공급자 사업장 주소의 시·군·구(주소에서 파생, 삭제 불가). 상품별로 추가한 지역만 저장하며 기본 포함 최대 50곳이다.
+  // 도매설정의 공급지역은 신규 상품 등록 시 초기값으로 복사만 하고, 이미 등록된 상품의 지역에는 반영하지 않는다.
+  const REGION_LIMIT = 50;
+  const REGION_NOTICE = '본사 구분 없이, 등록한 우리지역(시·군·구 단위)에 사업장 주소가 있는 모든 가맹점에 노출됩니다. 최대 50곳까지 등록할 수 있습니다.';
+  // 지역 선택 팝업용 목데이터(시·도별 대표 시·군·구). 전체 행정구역 마스터는 개발 단계에서 별도 연동한다.
+  const REGION_MASTER = {
+    '서울': ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구'],
+    '부산': ['해운대구', '수영구', '부산진구', '동래구', '남구', '북구', '사하구', '연제구'],
+    '대구': ['중구', '수성구', '달서구', '북구', '동구', '서구', '남구', '달성군'],
+    '인천': ['남동구', '부평구', '연수구', '서구', '계양구', '미추홀구', '중구', '강화군'],
+    '광주': ['북구', '서구', '동구', '남구', '광산구'],
+    '대전': ['유성구', '서구', '중구', '동구', '대덕구'],
+    '울산': ['남구', '중구', '북구', '동구', '울주군'],
+    '세종': ['세종시'],
+    '경기': ['수원시 장안구', '수원시 권선구', '수원시 팔달구', '수원시 영통구', '성남시 수정구', '성남시 중원구', '성남시 분당구', '고양시 덕양구', '고양시 일산동구', '고양시 일산서구', '용인시 처인구', '용인시 기흥구', '용인시 수지구', '안양시 만안구', '안양시 동안구', '부천시 원미구', '부천시 소사구', '부천시 오정구', '안산시 상록구', '안산시 단원구', '화성시', '평택시', '파주시', '김포시', '시흥시', '광명시', '의정부시', '남양주시', '하남시', '광주시', '이천시', '양평군', '가평군'],
+    '강원': ['춘천시', '원주시', '강릉시', '속초시', '평창군', '횡성군', '홍천군', '정선군'],
+    '충북': ['청주시 상당구', '청주시 흥덕구', '충주시', '제천시', '음성군', '진천군'],
+    '충남': ['천안시 동남구', '천안시 서북구', '아산시', '서산시', '당진시', '논산시'],
+    '전북': ['전주시 완산구', '전주시 덕진구', '익산시', '군산시', '정읍시', '남원시'],
+    '전남': ['목포시', '여수시', '순천시', '나주시', '광양시', '해남군', '무안군', '담양군'],
+    '경북': ['포항시 남구', '포항시 북구', '경주시', '구미시', '안동시', '영주시', '예천군', '성주군'],
+    '경남': ['창원시 성산구', '창원시 마산합포구', '진주시', '김해시', '양산시', '거제시', '통영시'],
+    '제주': ['제주시', '서귀포시'],
+  };
+  // 사업장 주소에서 시·군·구 추출 — 시 아래에 일반구가 있으면 '시 구'까지 한 단위로 본다(예: 경기 수원시 영통구).
+  function regionOfAddress(addr) {
+    const t = String(addr || '').trim().split(/\s+/);
+    if (!t[0]) return '';
+    const second = t[1] || '';
+    if (!/[시군구]$/.test(second)) return t[0];
+    const third = t[2] || '';
+    if (/시$/.test(second) && /구$/.test(third)) return `${t[0]} ${second} ${third}`;
+    return `${t[0]} ${second}`;
+  }
+  const MARKET_SELLER_REGION = { '해남청과': '전남 해남군', '나주농원': '전남 나주시', '서귀포농협': '제주 서귀포시', '평창농산': '강원 평창군', '안동농협': '경북 안동시', '횡성한우': '강원 횡성군', '제주축산': '제주 제주시', '대박식자재 일산점': '경기 고양시 일산동구', '365청과 수원점': '경기 수원시 영통구' };
+  function sellerDefaultRegion(name) {
+    if (!name || name === MY_SELLER_NAME) return regionOfAddress(MY_PROFILE.address);
+    const f = FRANCHISE_LIST.find(x => x.companyName === name);
+    return f ? regionOfAddress(f.roadAddress) : (MARKET_SELLER_REGION[name] || '');
+  }
+  // 상품의 공급지역 전체 = 공급자 기본 공급지역 + 상품에 추가한 지역
+  function productRegions(p) {
+    const def = sellerDefaultRegion(p.sellerName);
+    return [def].concat((p.regions || []).filter(r => r !== def)).filter(Boolean);
+  }
+  function regionFieldHTML(prefix, label, hidden) {
+    return `
+              <div class="form-field form-field-wide" id="${prefix}RegionField" ${hidden ? 'hidden' : ''}>
+                <label>${label}</label>
+                <div class="region-chips" id="${prefix}RegionChips"></div>
+                <div class="region-actions">
+                  <button type="button" class="btn-secondary" id="${prefix}RegionAddBtn">지역 추가</button>
+                  <span class="field-hint" id="${prefix}RegionCount"></span>
+                </div>
+                <div class="field-hint">${REGION_NOTICE}</div>
+              </div>`;
+  }
+  function regionDetailHTML(p) {
+    const def = sellerDefaultRegion(p.sellerName);
+    return `<div class="region-chips">${productRegions(p).map(r => `<span class="region-chip">${escapeHtml(r)}${r === def ? '<span class="tag tag-key">기본</span>' : ''}</span>`).join('')}</div>`;
+  }
+  function closeRegionAddModal() {
+    const root = document.getElementById('regionAddModalRoot');
+    if (root) root.remove();
+  }
+  function openRegionAddModal(regions, onAdded) {
+    closeRegionAddModal();
+    const root = document.createElement('div');
+    root.id = 'regionAddModalRoot';
+    root.innerHTML = `
+      <div class="modal-scrim" id="regionAddScrim">
+        <div class="modal-box">
+          <h3>지역 추가</h3>
+          <div class="form-grid">
+            <div class="form-field form-field-wide">
+              <label>시·도<span class="req">*</span></label>
+              <select class="form-select" id="regionSidoSelect">
+                <option value="">선택</option>
+                ${Object.keys(REGION_MASTER).map(sd => `<option value="${sd}">${sd}</option>`).join('')}
+              </select>
+            </div>
+            <div class="form-field form-field-wide">
+              <label>시·군·구<span class="req">*</span></label>
+              <select class="form-select" id="regionSigunguSelect"><option value="">선택</option></select>
+            </div>
+          </div>
+          <div class="field-error" id="regionAddError" hidden></div>
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary" id="regionAddCancelBtn">취소</button>
+            <button type="button" class="btn-primary" id="regionAddConfirmBtn">추가</button>
+          </div>
+        </div>
+      </div>`;
+    document.body.appendChild(root);
+    const sidoSel = root.querySelector('#regionSidoSelect');
+    const sigunguSel = root.querySelector('#regionSigunguSelect');
+    const err = root.querySelector('#regionAddError');
+    sidoSel.addEventListener('change', () => {
+      sigunguSel.innerHTML = '<option value="">선택</option>' + (REGION_MASTER[sidoSel.value] || []).map(g => `<option value="${g}">${g}</option>`).join('');
+      err.hidden = true;
+    });
+    sigunguSel.addEventListener('change', () => { err.hidden = true; });
+    root.querySelector('#regionAddCancelBtn').addEventListener('click', closeRegionAddModal);
+    root.querySelector('#regionAddScrim').addEventListener('click', e => {
+      if (e.target.id === 'regionAddScrim') closeRegionAddModal();
+    });
+    root.querySelector('#regionAddConfirmBtn').addEventListener('click', () => {
+      const def = sellerDefaultRegion(MY_SELLER_NAME);
+      let msg = '';
+      if (!sidoSel.value) msg = '시·도를 선택해주세요.';
+      else if (!sigunguSel.value) msg = '시·군·구를 선택해주세요.';
+      else {
+        const label = `${sidoSel.value} ${sigunguSel.value}`;
+        if (label === def || regions.includes(label)) msg = '이미 등록된 지역입니다.';
+        else if ((def ? 1 : 0) + regions.length >= REGION_LIMIT) msg = '최대 50곳까지 등록할 수 있습니다.';
+        else regions.push(label);
+      }
+      if (msg) { err.textContent = msg; err.hidden = false; return; }
+      closeRegionAddModal();
+      onAdded();
+    });
+  }
+  // 공급지역 편집 영역 바인딩 — regions 배열(기본 공급지역 제외, 추가분만)을 직접 수정한다.
+  function bindRegionField(root, prefix, regions) {
+    const chips = root.querySelector(`#${prefix}RegionChips`);
+    const addBtn = root.querySelector(`#${prefix}RegionAddBtn`);
+    const count = root.querySelector(`#${prefix}RegionCount`);
+    function draw() {
+      const def = sellerDefaultRegion(MY_SELLER_NAME);
+      chips.innerHTML = (def ? `<span class="region-chip">${escapeHtml(def)}<span class="tag tag-key">기본</span></span>` : '') +
+        regions.map((r, i) => `<span class="region-chip">${escapeHtml(r)}<button type="button" class="region-chip-remove" data-region-remove="${i}" aria-label="${escapeHtml(r)} 삭제">×</button></span>`).join('');
+      const total = (def ? 1 : 0) + regions.length;
+      count.textContent = `등록 ${total}/${REGION_LIMIT}곳`;
+      addBtn.disabled = total >= REGION_LIMIT;
+      chips.querySelectorAll('[data-region-remove]').forEach(b => {
+        b.addEventListener('click', () => { regions.splice(Number(b.dataset.regionRemove), 1); draw(); });
+      });
+    }
+    addBtn.addEventListener('click', () => openRegionAddModal(regions, draw));
+    draw();
+  }
 
   // ---- 도매 내상품목록 (module-level 상태 — 도매상품등록 페이지에서 신규 등록 시 여기에 추가됨) ----
   // 배송방식은 상품 필드가 아니라 위 WHOLESALE_SETTINGS(도매설정)를 그대로 조회해 표시한다.
   const PRODUCT_LIST = [
     { code: 'P0232', name: '레몬 1kg', cat1: 'fruit', cat2: 'etc-fruit', scope: '전국', price: 6500, unit: 'box(1kg)', stock: 60, origin: '수입산 (미국)', expiry: '수령 후 7일', wholesaleVisible: true, retailExposed: true, retailAllocatedQty: 30, detailContent: '', createdAt: '26.09.10 09:20', updatedAt: '26.09.10 14:04' },
     { code: 'P0231', name: '못난이사과', cat1: 'fruit', cat2: 'apple', scope: '전국', price: 12000, unit: 'box(10kg)', stock: 84, origin: '국내산 (전남 해남)', expiry: '수령 후 7일', wholesaleVisible: true, retailExposed: true, retailAllocatedQty: 20, detailContent: '', createdAt: '26.08.02 17:53', updatedAt: '26.09.10 14:04' },
-    { code: 'P0230', name: '햇양파 10kg', cat1: 'veg', cat2: 'season', scope: '우리지역', price: 18000, unit: 'box(10kg)', stock: 0, origin: '국내산 (경북 안동)', expiry: '수령 후 30일', wholesaleVisible: true, retailExposed: false, retailAllocatedQty: 0, detailContent: '', createdAt: '26.07.28 12:50', updatedAt: '26.09.14 13:25' },
+    { code: 'P0230', name: '햇양파 10kg', cat1: 'veg', cat2: 'season', scope: '우리지역', regions: ['경기 수원시 팔달구', '경기 용인시 기흥구'], price: 18000, unit: 'box(10kg)', stock: 0, origin: '국내산 (경북 안동)', expiry: '수령 후 30일', wholesaleVisible: true, retailExposed: false, retailAllocatedQty: 0, detailContent: '', createdAt: '26.07.28 12:50', updatedAt: '26.09.14 13:25' },
     { code: 'P0229', name: '무농약 상추', cat1: 'veg', cat2: 'leaf', scope: '우리본사', price: 6500, unit: 'box(5kg)', stock: 32, origin: '국내산 (전남 나주)', expiry: '당일 섭취', wholesaleVisible: false, retailExposed: false, retailAllocatedQty: 0, detailContent: '', createdAt: '26.09.01 14:54', updatedAt: '26.09.01 13:52' },
     { code: 'P0228', name: '친환경 감자', cat1: 'veg', cat2: 'root', scope: '전국', price: 15000, unit: 'box(20kg)', stock: 12, origin: '국내산 (강원 평창)', expiry: '수령 후 30일', wholesaleVisible: true, retailExposed: true, retailAllocatedQty: 5, detailContent: '', createdAt: '26.08.20 11:59', updatedAt: '26.08.29 09:12' },
     // 소매정보 등록 이후 보유수량이 모두 소진된 케이스 시연용 — 소매상품등록 목록에서 [상세]만 노출되고 조회 전용으로 전환된다.
@@ -3487,6 +3644,7 @@
             <div class="detail-item"><span class="detail-label">도매카테고리</span><span class="detail-value">${catLabel(p.cat1, p.cat2)}</span></div>
             <div class="detail-item"><span class="detail-label">도매상품명</span><span class="detail-value">${escapeHtml(p.name)}</span></div>
             <div class="detail-item"><span class="detail-label">공급범위</span><span class="detail-value">${p.scope}</span></div>
+            ${p.scope === '우리지역' ? `<div class="detail-item detail-item-wide"><span class="detail-label">공급지역(우리지역)</span><span class="detail-value">${regionDetailHTML(p)}</span></div>` : ''}
             <div class="detail-item"><span class="detail-label">공급가 / 공급단위</span><span class="detail-value">${p.price.toLocaleString()}원 / ${escapeHtml(p.unit)}</span></div>
             <div class="detail-item"><span class="detail-label">도매판매상태</span><span class="detail-value">${statusTag(displayStatus)}</span></div>
             <div class="detail-item"><span class="detail-label">도매노출여부</span><span class="detail-value">${exposureTag(p.wholesaleVisible)}</span></div>
@@ -3600,6 +3758,7 @@
                   <input type="text" class="form-input" id="editUnit" value="${escapeHtml(p.unit)}">
                 </div>
               </div>
+${regionFieldHTML('edit', '공급지역(우리지역)', p.scope !== '우리지역')}
               <div class="form-field">
                 <label>도매판매상태</label>
                 <select class="form-select" id="editSaleStatus" ${lock.locked ? 'disabled' : ''}>
@@ -3663,6 +3822,13 @@
       return;
     }
     wrapper.innerHTML = productEditHTML(p);
+
+    const editRegions = (p.regions || []).slice();
+    const editScopeSelect = wrapper.querySelector('#editScope');
+    bindRegionField(wrapper, 'edit', editRegions);
+    editScopeSelect.addEventListener('change', () => {
+      wrapper.querySelector('#editRegionField').hidden = editScopeSelect.value !== '우리지역';
+    });
 
     const cat1 = wrapper.querySelector('#editCat1');
     const cat2 = wrapper.querySelector('#editCat2');
@@ -3730,6 +3896,7 @@
       Object.assign(p, {
         name, cat1: cat1.value, cat2: cat2.value || null,
         scope: wrapper.querySelector('#editScope').value,
+        regions: wrapper.querySelector('#editScope').value === '우리지역' ? editRegions.slice() : [],
         price, unit: unit || '-', stock, origin, expiry, wholesaleVisible, detailContent,
         saleStatus,
         updatedAt: today,
@@ -3799,6 +3966,7 @@
                   <input type="text" class="form-input" id="regUnit" placeholder="예: box(10kg)">
                 </div>
               </div>
+${regionFieldHTML('reg', '공급지역(우리지역)', true)}
               <div class="form-field form-field-wide">
                 <label>도매노출여부</label>
                 <select class="form-select" id="regWholesaleVisible">
@@ -3928,6 +4096,13 @@
   function renderProductRegisterPage() {
     const wrapper = document.getElementById('contentWrapper');
     wrapper.innerHTML = productRegisterHTML();
+
+    const regRegions = WHOLESALE_SETTINGS.supplyRegions.slice();
+    const regScopeSelect = wrapper.querySelector('#regScope');
+    bindRegionField(wrapper, 'reg', regRegions);
+    regScopeSelect.addEventListener('change', () => {
+      wrapper.querySelector('#regRegionField').hidden = regScopeSelect.value !== '우리지역';
+    });
 
     const cat1 = wrapper.querySelector('#regCat1');
     const cat2 = wrapper.querySelector('#regCat2');
@@ -4100,7 +4275,7 @@
       // 배송방식은 상품 필드가 아니므로 등록 시 별도로 저장하지 않는다 — 항상 WHOLESALE_SETTINGS(도매설정)을 조회해 표시한다.
       PRODUCT_LIST.unshift({
         code, name, cat1: cat1.value, cat2: cat2.value || null,
-        scope, price, unit: unit || '-', stock, wholesaleVisible,
+        scope, regions: scope === '우리지역' ? regRegions.slice() : [], price, unit: unit || '-', stock, wholesaleVisible,
         origin, expiry, retailExposed, retailAllocatedQty, detailContent,
         saleStatus: stock === 0 ? 'soldout' : 'active', createdAt: today, updatedAt: today,
       });
@@ -4170,6 +4345,16 @@
           </section>
 
           <section class="form-section">
+            <h3 class="form-section-title">공급지역(우리지역) 설정</h3>
+            <div class="form-grid">
+${regionFieldHTML('set', '공급지역', false)}
+            </div>
+            <div class="form-actions" style="justify-content:flex-start;">
+              <button type="button" class="btn-primary" id="saveRegionBtn">저장</button>
+            </div>
+          </section>
+
+          <section class="form-section">
             <h3 class="form-section-title">배송방식 설정</h3>
             <div class="form-grid">
               <div class="form-field form-field-wide">
@@ -4199,6 +4384,13 @@
   function renderWholesaleSettingsPage() {
     const wrapper = document.getElementById('contentWrapper');
     wrapper.innerHTML = pageWholesaleSettingsHTML();
+
+    const settingsRegions = (WHOLESALE_SETTINGS.supplyRegions || []).slice();
+    bindRegionField(wrapper, 'set', settingsRegions);
+    wrapper.querySelector('#saveRegionBtn').addEventListener('click', () => {
+      WHOLESALE_SETTINGS.supplyRegions = settingsRegions.slice();
+      renderWholesaleSettingsPage();
+    });
 
     const cardFeeRateField = wrapper.querySelector('#cardFeeRateField');
     wrapper.querySelectorAll('input[name="cardFeeBearer"]').forEach(radio => {
@@ -4257,7 +4449,7 @@
       images: ['상품 전체컷', '박스 포장 상태'],
       detailContent: '해남청과의 부사사과입니다. 꿀사과와 동일 산지에서 선별하며, 당도보다 아삭한 식감을 살린 상품입니다. 박스당 개당 280~320g 내외로 균일 선별됩니다.',
       orderCount: 19, createdAt: '26.09.11 15:55' },
-    { code: 'P0302', name: '신고배 15kg', cat1: 'fruit', cat2: 'pear', scope: '우리지역', sellerName: '나주농원', price: 52000, unit: 'box(15kg)', stock: 0, origin: '국내산 (전남 나주)', expiry: '수령 후 14일',
+    { code: 'P0302', name: '신고배 15kg', cat1: 'fruit', cat2: 'pear', scope: '우리지역', regions: ['광주 북구'], sellerName: '나주농원', price: 52000, unit: 'box(15kg)', stock: 0, origin: '국내산 (전남 나주)', expiry: '수령 후 14일',
       images: ['상품 전체컷', '박스 포장 상태'],
       detailContent: '나주 배 산지에서 직송하는 신고배입니다. 당도 12브릭스 이상 상품만 선별해 공급하며, 개당 완충재로 낱개 포장해 배송 중 손상을 최소화합니다. 저온 보관 시 최대 4주까지 품질이 유지됩니다.',
       orderCount: 12, createdAt: '26.09.05 09:17' },
@@ -4269,7 +4461,7 @@
       images: ['상품 전체컷', '박스 포장 상태', '규격 안내'],
       detailContent: '고랭지 평창에서 재배한 햇감자입니다. 개당 150~250g 크기로 균일 선별되며, 세척 없이 자연 건조 후 출하해 저장성이 높습니다. 직사광선을 피해 통풍이 잘 되는 곳에 보관하세요.',
       orderCount: 21, createdAt: '26.09.08 16:17' },
-    { code: 'P0306', name: '햇양파 10kg', cat1: 'veg', cat2: 'season', scope: '우리지역', sellerName: '안동농협', price: 18000, unit: 'box(10kg)', stock: 25, origin: '국내산 (경북 안동)', expiry: '수령 후 30일',
+    { code: 'P0306', name: '햇양파 10kg', cat1: 'veg', cat2: 'season', scope: '우리지역', regions: ['경북 영주시', '경북 예천군'], sellerName: '안동농협', price: 18000, unit: 'box(10kg)', stock: 25, origin: '국내산 (경북 안동)', expiry: '수령 후 30일',
       images: ['상품 전체컷', '박스 포장 상태'],
       detailContent: '안동 지역 계약재배 양파입니다. 수확 후 예건 과정을 거쳐 저장성을 높였으며, 망 포장이 아닌 박스 포장으로 공급해 눌림 손상을 방지합니다.',
       orderCount: 15, createdAt: '26.08.28 15:47' },
@@ -4277,7 +4469,7 @@
       images: ['상품 전체컷', '등급 판정서', '진공포장 상태'],
       detailContent: '1++ 등급 판정을 받은 횡성한우 등심입니다. 도축 후 냉장 상태로 진공포장하여 배송하며, 등급판정서 사본을 동봉합니다. 냉장 소비기한 내 소비를 권장하며, 장기보관 시 냉동 보관하세요.',
       orderCount: 44, createdAt: '26.09.13 15:06' },
-    { code: 'P0308', name: '제주흑돼지 삼겹살 10kg', cat1: 'meat', cat2: 'pork', scope: '우리지역', sellerName: '제주축산', price: 145000, unit: 'box(10kg)', stock: 0, origin: '국내산 (제주)', expiry: '냉장 5일 이내',
+    { code: 'P0308', name: '제주흑돼지 삼겹살 10kg', cat1: 'meat', cat2: 'pork', scope: '우리지역', regions: ['제주 서귀포시'], sellerName: '제주축산', price: 145000, unit: 'box(10kg)', stock: 0, origin: '국내산 (제주)', expiry: '냉장 5일 이내',
       images: ['상품 전체컷', '진공포장 상태'],
       detailContent: '제주 흑돼지 삼겹살입니다. 1kg 단위로 진공포장하여 총 10kg 박스로 공급하며, 냉장 직송으로 신선도를 유지합니다.',
       orderCount: 27, createdAt: '26.09.02 16:05' },
@@ -4285,7 +4477,7 @@
       images: ['상품 전체컷', '박스 포장 상태'],
       detailContent: '일산 인근 계약농가에서 수확한 대파입니다. 수확 당일 선별·포장하여 출고합니다.',
       orderCount: 8, createdAt: '26.09.14 10:20' },
-    { code: 'P0602', name: '국내산 돼지 앞다리살 10kg', cat1: 'meat', cat2: 'pork', scope: '우리지역', sellerName: '대박식자재 일산점', price: 98000, unit: 'box(10kg)', stock: 15, origin: '국내산', expiry: '냉장 5일 이내',
+    { code: 'P0602', name: '국내산 돼지 앞다리살 10kg', cat1: 'meat', cat2: 'pork', scope: '우리지역', regions: ['경기 고양시 덕양구', '경기 수원시 영통구'], sellerName: '대박식자재 일산점', price: 98000, unit: 'box(10kg)', stock: 15, origin: '국내산', expiry: '냉장 5일 이내',
       images: ['상품 전체컷', '진공포장 상태'],
       detailContent: '냉장 상태로 진공포장하여 공급하는 앞다리살입니다. 수령 즉시 냉장 보관해 주세요.',
       orderCount: 5, createdAt: '26.09.15 11:05' },
@@ -4343,7 +4535,7 @@
   let marketSort = 'latest'; // latest | orders | price
   let marketSearch = '';
   let currentMarketCode = null;
-  const CART = []; // { code, qty }
+  const CART = [{ code: 'P0603', qty: 2 }, { code: 'P0306', qty: 3 }]; // { code, qty }
   const CART_SELECTED = new Set(); // 장바구니 화면의 선택(체크) 상태 — 상품코드 기준
   let currentOrder = null;     // { seller, items: [{ code, qty }], fromCart } — 주문서 작성 화면 진입 시 설정
   let orderCompleteInfo = null; // 주문 완료 후 표시할 결과 정보
@@ -4353,7 +4545,7 @@
   // 구매자 도매상품 주문하기의 상품 전체 = 타 공급자 상품 + 본인 내 도매상품(PRODUCT_LIST 단일 원본 참조)
   function ownMarketProducts() {
     return PRODUCT_LIST.map(p => ({
-      code: p.code, name: p.name, cat1: p.cat1, cat2: p.cat2, scope: p.scope, sellerName: MY_SELLER_NAME,
+      code: p.code, name: p.name, cat1: p.cat1, cat2: p.cat2, scope: p.scope, regions: p.regions || [], sellerName: MY_SELLER_NAME,
       price: p.price, unit: p.unit, stock: p.stock, retailAllocatedQty: p.retailAllocatedQty || 0,
       origin: p.origin, expiry: p.expiry, detailContent: p.detailContent,
       images: p.images || ['상품 전체컷'], createdAt: p.createdAt,
@@ -4365,20 +4557,13 @@
   function findMarketProduct(code) {
     return marketCatalog().find(p => p.code === code) || null;
   }
-  // 공급범위별 노출 — 전국: 전체 / 우리지역: 사업장 주소 시·도 동일 / 우리본사: 같은 본사 소속(본사·가맹점). 본인 상품은 항상 노출한다.
-  const MARKET_SELLER_SIDO = { '해남청과': '전남', '나주농원': '전남', '서귀포농협': '제주', '평창농산': '강원', '안동농협': '경북', '횡성한우': '강원', '제주축산': '제주', '대박식자재 일산점': '경기', '365청과 수원점': '경기' };
-  function sidoOf(addr) { return String(addr || '').trim().slice(0, 2); }
-  function marketSellerSido(name) {
-    if (name === MY_SELLER_NAME) return sidoOf(MY_PROFILE.address);
-    const f = FRANCHISE_LIST.find(x => x.companyName === name);
-    return f ? sidoOf(f.roadAddress) : (MARKET_SELLER_SIDO[name] || '');
-  }
+  // 공급범위별 노출 — 전국: 전체 / 우리지역: 상품 공급지역(시·군·구) 목록에 구매자 사업장 주소 시·군·구가 포함 / 우리본사: 같은 본사 소속(본사·가맹점). 본인 상품은 항상 노출한다.
   function marketSameHq(name) {
     return name === MY_SELLER_NAME || name === HQ_STATE.business.companyName || FRANCHISE_LIST.some(f => f.companyName === name);
   }
   function marketVisibleToMe(p) {
     if (p.sellerName === MY_SELLER_NAME || p.scope === '전국') return true;
-    if (p.scope === '우리지역') { const sd = marketSellerSido(p.sellerName); return !!sd && sd === sidoOf(MY_PROFILE.address); }
+    if (p.scope === '우리지역') { const mine = regionOfAddress(MY_PROFILE.address); return !!mine && productRegions(p).includes(mine); }
     if (p.scope === '우리본사') return marketSameHq(p.sellerName);
     return false;
   }
@@ -4455,7 +4640,7 @@
               <div class="help-pop">
                 <p>공급범위란 공급자가 도매상품을 노출할 구매자의 범위입니다.</p>
                 <p><b>전국</b>: 모든 구매자에게 노출됩니다.</p>
-                <p><b>우리지역</b>: 공급자와 같은 지역(사업장 주소 시·도 기준)의 구매자에게 노출됩니다.</p>
+                <p><b>우리지역</b>: 공급자가 공급 가능한 우리지역으로 등록한 시·군·구의 구매자에게 노출됩니다.</p>
                 <p><b>우리본사</b>: 공급자와 같은 본사 소속 가맹점에게만 노출됩니다.</p>
               </div>
             </span>
@@ -4668,7 +4853,7 @@
     const items = CART.map(item => {
       const p = findMarketProduct(item.code);
       if (!p) return null;
-      return { code: item.code, qty: item.qty, product: p, subtotal: p.price * item.qty };
+      return { code: item.code, qty: item.qty, product: p, subtotal: p.price * item.qty, unavailable: !marketVisibleToMe(p) };
     }).filter(Boolean);
 
     // 카트에서 사라진 상품 코드는 선택 상태에서도 정리
@@ -4702,18 +4887,18 @@
     return `<div class="cart-group-summary"><span>선택상품금액 ${selectedTotal.toLocaleString()}원</span><span>전체상품금액 ${group.itemsTotal.toLocaleString()}원</span><span>${escapeHtml(shippingLabel)}</span><span>총 주문금액 <strong style="color:var(--text-body); font-size:16px;">${orderTotal.toLocaleString()}원</strong></span></div>`;
   }
 
-  function cartRowHTML({ code, qty, product, subtotal }) {
+  function cartRowHTML({ code, qty, product, subtotal, unavailable }) {
     return `
       <tr>
         <td><input type="checkbox" class="cart-row-check" data-cart-select="${code}" ${CART_SELECTED.has(code) ? 'checked' : ''}></td>
         <td><div class="thumb" style="width:48px; height:48px;">IMG</div></td>
-        <td>${escapeHtml(product.name)} ${marketAvailableQty(product) === 0 ? statusTag('품절') : ''}</td>
+        <td>${escapeHtml(product.name)} ${marketAvailableQty(product) === 0 ? statusTag('품절') : ''} ${unavailable ? '<span class="tag tag-error">구매불가</span>' : ''}${unavailable ? '<div class="field-error">공급범위가 변경되어 구매할 수 없습니다.</div>' : ''}</td>
         <td class="num">${product.price.toLocaleString()}원 / ${escapeHtml(product.unit)}</td>
         <td class="num">
           <div class="qty-stepper">
-            <button type="button" class="qty-btn" data-qty-minus="${code}">−</button>
+            <button type="button" class="qty-btn" data-qty-minus="${code}" ${unavailable ? 'disabled' : ''}>−</button>
             <input type="number" value="${qty}" readonly style="width:44px; height:30px; text-align:center; border:1px solid var(--border); border-radius:4px; background:var(--surface); color:var(--text-body);">
-            <button type="button" class="qty-btn" data-qty-plus="${code}">+</button>
+            <button type="button" class="qty-btn" data-qty-plus="${code}" ${unavailable ? 'disabled' : ''}>+</button>
           </div>
         </td>
         <td class="num">${subtotal.toLocaleString()}원</td>
@@ -4727,6 +4912,8 @@
     const selectedItems = group.items.filter(i => CART_SELECTED.has(i.code));
     const hasSoldOut = group.items.some(i => marketAvailableQty(i.product) === 0);
     const selectedHasSoldOut = selectedItems.some(i => marketAvailableQty(i.product) === 0);
+    const hasUnavailable = group.items.some(i => i.unavailable);
+    const selectedHasUnavailable = selectedItems.some(i => i.unavailable);
     return `
       <div class="col-12 card cart-group-card">
         <div class="card-head">
@@ -4747,8 +4934,9 @@
         <div class="cart-group-footer">
           ${cartGroupSummaryHTML(group)}
           ${hasSoldOut ? '<span class="field-error">품절 상품을 삭제한 후 주문해주세요.</span>' : ''}
-          <button type="button" class="btn-secondary" data-order-selected="${escapeHtml(group.seller)}" ${selectedItems.length === 0 || selectedHasSoldOut ? 'disabled' : ''}>선택상품주문</button>
-          <button type="button" class="btn-primary" data-order-group="${escapeHtml(group.seller)}" ${hasSoldOut ? 'disabled' : ''}>전체주문</button>
+          ${hasUnavailable ? '<span class="field-error">구매불가 상품을 삭제한 후 주문해주세요.</span>' : ''}
+          <button type="button" class="btn-secondary" data-order-selected="${escapeHtml(group.seller)}" ${selectedItems.length === 0 || selectedHasSoldOut || selectedHasUnavailable ? 'disabled' : ''}>선택상품주문</button>
+          <button type="button" class="btn-primary" data-order-group="${escapeHtml(group.seller)}" ${hasSoldOut || hasUnavailable ? 'disabled' : ''}>전체주문</button>
         </div>
         ${isLast ? '' : '<div class="cart-group-divider"></div>'}
       </div>`;
@@ -4879,6 +5067,13 @@
           const cartBanner = wrapper.querySelector('#cartErrorBanner');
           cartBanner.hidden = false;
           cartBanner.textContent = '품절상품이 존재합니다.';
+          cartBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        if (targetItems.some(i => i.unavailable)) {
+          const cartBanner = wrapper.querySelector('#cartErrorBanner');
+          cartBanner.hidden = false;
+          cartBanner.textContent = '구매불가 상품이 존재합니다.';
           cartBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
@@ -5204,6 +5399,7 @@
       if (seller === MY_SELLER_NAME) errors.push('본인이 등록한 상품은 주문할 수 없습니다.');
       // 주문 시점 재고 재검증 — 장바구니·주문서 진입 이후 재고가 바뀌었을 수 있으므로 주문 생성 직전에 다시 확인한다.
       if (items.some(i => { const mp = findMarketProduct(i.code); return !mp || marketAvailableQty(mp) === 0; })) errors.push('품절상품이 존재합니다.');
+      else if (items.some(i => { const mp = findMarketProduct(i.code); return mp && !marketVisibleToMe(mp); })) errors.push('구매불가 상품이 존재합니다.');
       else if (items.some(i => i.qty > marketAvailableQty(findMarketProduct(i.code)))) errors.push('재고가 부족한 상품이 있습니다.');
       if (!recipient) errors.push('이름을 입력해주세요.');
       if (!phone) errors.push('휴대폰번호를 입력해주세요.');
@@ -8907,6 +9103,7 @@
                 </div>
                 <div class="field-hint">기존 소비자가를 참고값으로 채워두었습니다. 실제 공급가에 맞게 수정해주세요.</div>
               </div>
+${regionFieldHTML('cv', '공급지역(우리지역)', true)}
               <div class="form-field form-field-wide">
                 <label>도매노출여부</label>
                 <select class="form-select" id="cvWholesaleVisible">
@@ -8962,6 +9159,13 @@
   function renderProductConvertPage() {
     const wrapper = document.getElementById('contentWrapper');
     wrapper.innerHTML = productConvertHTML();
+
+    const cvRegions = WHOLESALE_SETTINGS.supplyRegions.slice();
+    const cvScopeSelect = wrapper.querySelector('#cvScope');
+    bindRegionField(wrapper, 'cv', cvRegions);
+    cvScopeSelect.addEventListener('change', () => {
+      wrapper.querySelector('#cvRegionField').hidden = cvScopeSelect.value !== '우리지역';
+    });
 
     wrapper.querySelectorAll('[data-goto]').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -9026,7 +9230,7 @@
       // 도매정보는 새로 입력하고, 기존 소매정보(카테고리·가격·수령방식 등)는 그대로 유지(상속)한다.
       PRODUCT_LIST.unshift({
         code, name, cat1: cat1.value, cat2: cat2.value || null,
-        scope, price, unit: unit || '-', stock, wholesaleVisible,
+        scope, regions: scope === '우리지역' ? cvRegions.slice() : [], price, unit: unit || '-', stock, wholesaleVisible,
         origin, expiry, retailExposed: listing.exposed, retailAllocatedQty: availableQty,
         detailContent, saleStatus: stock === 0 ? 'soldout' : 'active',
         createdAt: today, updatedAt: today,
