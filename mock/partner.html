@@ -4582,7 +4582,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
   }
   function cartCount() {
     cartPrune();
-    return CART.reduce((sum, item) => sum + item.qty, 0);
+    return CART.length;
   }
   function marketScopeTag(scope) {
     return `<span class="tag tag-key">${escapeHtml(scope)}</span>`;

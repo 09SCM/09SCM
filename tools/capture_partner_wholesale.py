@@ -123,15 +123,13 @@ def run(device, p, b):
     card_click(page, '1++한우 등심 5kg')
     if not pc: fit_height(page, 900)
     save(page.screenshot(), 'wh-detail-' + suffix)
-    if pc:
-        page.set_viewport_size({'width': 1440, 'height': 900}); page.wait_for_timeout(300)
-        page.click('#qtyPlusBtn'); page.click('#addToCartBtn'); page.wait_for_timeout(300)
-        clip_shot(page, ['.market-buybar'], 'wh-detail-cart-pc', pad=0, x=0, w=1440)
-        goto_item(page, 'wholesale-market-detail', code='P0308')
-        clip_shot(page, ['.market-buybar'], 'wh-detail-soldout-pc', pad=0, x=0, w=1440)
-        goto_item(page, 'wholesale-market-detail', code='P0232')
-        clip_shot(page, ['.market-buybar'], 'wh-detail-own-pc', pad=0, x=0, w=1440)
-        page.set_viewport_size({'width': 1440, 'height': 1500})
+    # 상황별 케이스: 장바구니 담기 · 품절 · 내 상품 (PC·모바일 공통, 화면 전체)
+    page.click('#qtyPlusBtn'); page.click('#addToCartBtn'); page.wait_for_timeout(300)
+    save(page.screenshot(), 'wh-detail-cart-' + suffix)
+    for code, name in (('P0308', 'soldout'), ('P0232', 'own')):
+        goto_item(page, 'wholesale-market-detail', code=code)
+        if not pc: fit_height(page, 900)
+        save(page.screenshot(), 'wh-detail-%s-%s' % (name, suffix))
 
     # ---- 장바구니 ----
     page.set_viewport_size(vp)
@@ -183,6 +181,10 @@ def run(device, p, b):
         goto_item(page, 'wholesale-cart')
         page.evaluate("""() => { if (!CART.some(c => findMarketProduct(c.code).sellerName === '365청과 수원점')) CART.push({code: 'P0105', qty: 1}); }""")
         open_order(page, '365청과 수원점')
+        # 공급자부담 설정 공급자: 카드결제를 골라도 수수료 안내·결제수수료 없음
+        ids = page.evaluate("[...document.querySelectorAll('.form-section')].map(s => s.querySelector('.form-section-title').innerText)")
+        page.evaluate("([a, c]) => { const f = document.querySelectorAll('.form-section'); f[a].id = 'sec-pay'; f[c].id = 'sec-sum'; }", [ids.index('결제수단'), ids.index('결제금액 요약')])
+        clip_shot(page, ['#sec-pay', '#sec-sum'], 'wh-order-nofee-pc', pad=16)
         pick(page, 'orderPayMethod', 'transfer')
         page.click('#orderSubmitBtn'); page.wait_for_timeout(600)
         save(page.screenshot(), 'wh-done-transfer-pc')
