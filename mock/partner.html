@@ -5965,6 +5965,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     if (o.paymentStatus !== '결제취소') return badge;
     const sub = o.refundType ? `<span class="tag refund-sub-text">${o.refundType === 'full' ? '전체환불' : '부분환불'}</span>` : '';
     const at = o.cancelReturnResolvedAt || '';
+    if (!sub && !o.paidAt) return stateStampHTML(badge, at); // 환불구분·결제완료 일시가 없는 건(입금 전 취소)은 다른 상태 뱃지처럼 한 줄 표기
     return `<span class="state-stamp state-stamp-split"><span class="state-stamp-badges">${badge}${sub}</span>${at ? `<span>${at}</span>` : ''}${o.paidAt ? `<span class="state-stamp-note">(${o.paidAt} 결제완료)</span>` : ''}</span>`;
   }
 

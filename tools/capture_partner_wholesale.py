@@ -11,7 +11,10 @@ URL = 'file://' + os.path.join(ROOT, 'mock', 'partner.html')
 OUT = os.path.join(ROOT, 'assets', 'img', 'partner')
 PC_CSS = '.lnb{display:none!important}.market-buybar{left:0!important}'
 
+ONLY = set(os.environ.get('ONLY', '').split(',')) - {''}   # 지정하면 해당 이름의 캡처만 저장한다(예: ONLY=wh-orders-rows-claim-mobile)
+
 def save(png, name):
+    if ONLY and name not in ONLY: return
     im = Image.open(io.BytesIO(png)).convert('RGB')
     im.save(os.path.join(OUT, name + '.webp'), 'WEBP', quality=88)
     print(name, im.size)
@@ -19,7 +22,7 @@ def save(png, name):
 def login(page):
     page.goto(URL); page.wait_for_timeout(400)
     page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
-    page.click('#loginSubmitBtn'); page.wait_for_timeout(800)
+    page.click('#loginSubmitBtn'); page.mouse.move(0, 0); page.wait_for_timeout(800)   # 마우스를 치워 hover 상태가 찍히지 않게 한다
 
 def go_menu(page, label):
     page.evaluate("""(m) => {
@@ -149,22 +152,15 @@ def run(device, p, b):
     card_click(page, '1++한우 등심 5kg')
     if not pc: fit_height(page, 900)
     save(page.screenshot(), 'wh-detail-' + suffix)
-    # 상황별 케이스: 장바구니 담기 · 품절 · 내 상품 — 하단 고정바만 촬영(모바일은 위에 뜨는 안내 영역 포함)
-    # PC는 바 폭을 840px로 줄여 촬영한다(PC·모바일을 한 쌍으로 놓을 때 글자가 읽히도록)
+    # 상황별 케이스: 장바구니 담기 · 품절 · 내 상품 — 하단 고정바만 촬영(PC는 표준 규격 1440 전체 폭, 모바일은 위에 뜨는 안내 영역 포함, 가이드에서는 본래 비율로 높이를 맞춘다)
     bar = ['.market-buybar', '.inline-confirm']
-    bw = 840 if pc else 440
-    def bar_shot(name, top=28, height=None):
-        if pc:
-            page.evaluate("() => { const b = document.querySelector('.market-buybar'); b.style.right = 'auto'; b.style.width = '840px'; }")
+    def bar_shot(name, top=28):   # 위쪽 28px 여백: 안내 박스·토스트가 이미지 상단에 붙어 잘려 보이지 않게 한다
+        page.mouse.move(0, 0); page.wait_for_timeout(200)
         b = bbox(page, bar)
         y = max(0, b['y'] - top)
-        if height: y = max(0, b['y'] + b['h'] - height)
-        save(page.screenshot(clip={'x': 0, 'y': y, 'width': bw, 'height': b['y'] + b['h'] - y}, full_page=True), name)
-    # 장바구니 담기: PC·모바일 캡처의 높이를 같게 맞춘다(모바일은 안내 영역이 위에 뜨므로 PC는 바 위쪽 화면을 함께 담는다)
-    if pc: page.set_viewport_size({'width': 1440, 'height': 700}); page.wait_for_timeout(300)
+        save(page.screenshot(clip={'x': 0, 'y': y, 'width': vp['width'], 'height': b['y'] + b['h'] - y}, full_page=True), name)
     page.click('#qtyPlusBtn'); page.click('#addToCartBtn'); page.wait_for_timeout(300)
-    bar_shot('wh-detail-cart-' + suffix, height=212)
-    if pc: page.set_viewport_size(vp); page.wait_for_timeout(300)
+    bar_shot('wh-detail-cart-' + suffix)
     for code, name in (('P0308', 'soldout'), ('P0232', 'own')):
         goto_item(page, 'wholesale-market-detail', code=code)
         if not pc: fit_height(page, 900)
@@ -271,7 +267,7 @@ def run_orders(device, p, b):
             clip_shot(page, ['.tpl-table'], name + '-pc', pad=6)
         else:
             keep_cards(page, '주문번호', orders, ['주문일시', '공급자', '상품정보', '합계금액'])
-            clip_shot(page, ['.rows-keep'], name + '-mobile', pad=12)
+            clip_shot(page, ['.rows-keep'], name + '-mobile', pad=6)
         page.reload(); page.wait_for_timeout(300)
 
     def reopen():
@@ -339,6 +335,8 @@ def run_orders(device, p, b):
 with sync_playwright() as p:
     b = p.chromium.launch()
     for d in ('pc', 'mobile'):
-        run(d, p, b)
-        run_orders(d, p, b)
+        if not ONLY or any('-orders-' in n or '-od-' in n or '-pop-' in n for n in ONLY if n.endswith(d)):
+            run_orders(d, p, b)
+        if not ONLY or any(not ('-orders-' in n or '-od-' in n or '-pop-' in n) for n in ONLY if n.endswith(d)):
+            run(d, p, b)
     b.close()
