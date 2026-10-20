@@ -26,10 +26,10 @@ window.GUIDE_NAV = [
     { id: 'wholesale', label: '도매관리', children: [
       { id: 'wholesale-shop', label: '도매상품 주문하기' },
       { id: 'wholesale-orders', label: '주문내역' },
-      { id: 'wholesale-mine', label: '내 도매상품' },
-      { id: 'wholesale-receive', label: '주문접수관리' },
-      { id: 'wholesale-sales', label: '도매매출조회' },
-      { id: 'wholesale-settings', label: '도매설정' }
+      { id: 'wholesale-mine', label: '내 도매상품', only: '도매공급권한을 보유한 계정 전용 화면입니다. 도매공급권한이 없는 가맹점 계정에는 이 메뉴가 보이지 않아요.' },
+      { id: 'wholesale-receive', label: '주문접수관리', only: '도매공급권한을 보유한 계정 전용 화면입니다. 도매공급권한이 없는 가맹점 계정에는 이 메뉴가 보이지 않아요.' },
+      { id: 'wholesale-sales', label: '도매매출조회', only: '도매공급권한을 보유한 계정 전용 화면입니다. 도매공급권한이 없는 가맹점 계정에는 이 메뉴가 보이지 않아요.' },
+      { id: 'wholesale-settings', label: '도매설정', only: '도매공급권한을 보유한 계정 전용 화면입니다. 도매공급권한이 없는 가맹점 계정에는 이 메뉴가 보이지 않아요.' }
     ]},
     { id: 'franchise', label: '가맹점관리', only: '본사 계정 전용 화면입니다. 가맹점 계정에는 이 메뉴가 보이지 않아요.', children: [
       { id: 'franchise-list', label: '가맹점 목록' },

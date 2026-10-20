@@ -153,7 +153,7 @@
     var main = '';
     var toc = '';
     var c = (window.GUIDE_CONTENT || {})[leaf.id];
-    var onlyText = c && c.only;
+    var onlyText = (c && c.only) || leaf.only;
     if (!onlyText) { leaf.trail.forEach(function (t) { if (!onlyText && t.only) { onlyText = t.only; } }); }
     if (onlyText) { head = head.replace(/<\/div>$/, '<div class="screen-banner"></div></div>'); }
     var shots = c ? shotsHTML(c.shots, c.shotCaption) : '';

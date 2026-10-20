@@ -3231,3 +3231,526 @@ window.GUIDE_CONTENT['system-notification'] = {
     }
   ]
 };
+
+window.GUIDE_CONTENT['wholesale-shop'] = {
+  "screens": [
+    {
+      "id": "list-view",
+      "label": "상품 목록 보기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-list-pc.webp",
+          "alt": "09SCM 도매상품 주문하기 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-list-mobile.webp",
+          "alt": "09SCM 도매상품 주문하기 모바일 화면",
+          "ratio": 0.3667
+        }
+      ],
+      "shotCaption": "09SCM 도매상품 주문하기 화면 (PC / 모바일)",
+      "overview": "<p>소속 본사나 다른 공급자가 올린 도매상품을 찾아 주문하는 화면이에요. 내가 볼 수 있는 상품만 카드 목록으로 보여줘요. 본사와 모든 가맹점이 쓸 수 있고, 도매상품을 공급하는 쪽 화면은 <a href=\"#wholesale-mine\">내 도매상품</a>과 <a href=\"#wholesale-receive\">주문접수관리</a>에서 확인해주세요.</p><h3>공급범위별 노출 기준</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>전국</td><td>모든 구매자에게 노출</td></tr><tr><td>우리지역</td><td>공급자가 등록한 시·군·구에 내 사업장 주소의 시·군·구가 포함된 구매자에게 노출 (같은 본사 소속인지는 따지지 않음)</td></tr><tr><td>우리본사</td><td>공급자와 같은 본사 소속 구매자에게만 노출</td></tr></tbody></table></div><p>도매노출여부가 미노출인 상품과 삭제된 상품은 보이지 않아요. 내가 등록한 도매상품은 공급범위와 상관없이 목록에 보이고 [내 상품] 뱃지가 붙어요. 사업장 주소는 <a href=\"#system-member\">회원정보</a>에서 확인할 수 있어요.</p>",
+      "steps": "<h3>상품 찾기</h3><p>목록 위쪽에서 상품을 검색하고 조건별로 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>공급범위</td><td>전체, 전국, 우리지역, 우리본사 중 선택</td></tr><tr><td>1차 카테고리 · 2차 카테고리</td><td>상품 카테고리 선택 (2차 카테고리는 1차 카테고리를 고른 뒤 선택)</td></tr><tr><td>검색</td><td>상품명, 공급자명으로 검색</td></tr><tr><td>공급범위란?</td><td>공급범위별 노출 기준 안내 (마우스를 올리면 표시)</td></tr><tr><td>정렬</td><td>최신순, 주문순, 가격순 중 선택 (가격순은 공급가가 낮은 순)</td></tr></tbody></table></div><p>조건에 맞는 상품 수는 &quot;전체 N건&quot;으로 보여줘요. 목록은 한 페이지에 20개씩 보여주고, 카드를 누르면 <a href=\"#wholesale-shop/detail\">상품 상세</a>로 이동해요.</p><h3>카드에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>공급범위</td><td>전국, 우리지역, 우리본사 중 해당 공급범위</td></tr><tr><td>내 상품</td><td>내가 등록한 도매상품 표시</td></tr><tr><td>품절</td><td>주문가능수량이 0인 상품 표시</td></tr><tr><td>상품명</td><td>도매상품 이름</td></tr><tr><td>공급자</td><td>상품을 공급하는 계정의 상호명</td></tr><tr><td>카테고리</td><td>1차 카테고리 > 2차 카테고리</td></tr><tr><td>공급가 / 공급단위</td><td>공급단위 하나당 가격 (예: 98,000원 / box(10kg))</td></tr></tbody></table></div><p>화면 오른쪽 위의 [장바구니 (N)]을 누르면 <a href=\"#wholesale-shop/cart\">장바구니</a>로 이동해요. N은 담긴 상품 수량의 합계예요.</p>",
+      "cases": [
+        {
+          "title": "공급범위가 궁금할 땐",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-list-help-pc.webp",
+              "alt": "09SCM 도매상품 주문하기 공급범위 안내 PC 화면",
+              "ratio": 5.4656
+            }
+          ],
+          "shotCaption": "09SCM 도매상품 주문하기 공급범위 안내 화면 (PC)",
+          "html": "<p>[공급범위란?]에 마우스를 올리면 전국, 우리지역, 우리본사의 노출 기준을 안내해줘요.</p>"
+        },
+        {
+          "title": "내 상품과 품절 상품은 이렇게 보여요",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-list-badge-pc.webp",
+              "alt": "09SCM 도매상품 주문하기 뱃지 PC 화면",
+              "ratio": 2.0638
+            }
+          ],
+          "shotCaption": "09SCM 도매상품 주문하기 뱃지 화면 (PC)",
+          "html": "<p>내가 등록한 상품에는 [내 상품], 주문가능수량이 0인 상품에는 [품절] 뱃지가 붙어요. 두 상품 모두 상세 화면은 볼 수 있지만 주문할 수는 없어요. 자세한 내용은 <a href=\"#wholesale-shop/detail\">상품 상세 보기</a>에서 확인해주세요.</p>"
+        },
+        {
+          "title": "조건에 맞는 상품이 없으면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-list-empty-pc.webp",
+              "alt": "09SCM 도매상품 주문하기 검색 결과 없음 PC 화면",
+              "ratio": 3.8801
+            }
+          ],
+          "shotCaption": "09SCM 도매상품 주문하기 검색 결과 없음 화면 (PC)",
+          "html": "<p>&quot;해당 조건의 상품이 없습니다.&quot;가 나와요. 검색어나 필터를 바꿔 다시 찾아보세요.</p>"
+        }
+      ],
+      "trouble": "<h3>공급자의 상품이 목록에 안 보여요</h3><p>공급범위가 우리지역이면 내 사업장 주소의 시·군·구가 공급자가 등록한 지역에 없을 수 있고, 우리본사이면 공급자가 같은 본사 소속이 아닐 수 있어요. 공급자가 상품을 미노출로 바꿨거나 삭제한 경우에도 보이지 않아요.</p><h3>[장바구니] 숫자가 담은 상품 수와 달라요</h3><p>목록 위쪽의 숫자는 담긴 상품의 수량 합계이고, 장바구니 화면의 &quot;전체 N건&quot;은 담긴 상품 종류의 수예요.</p><h3>주문하려는데 진행이 안 돼요</h3><p>이용제한 상태에서는 새 도매 주문을 할 수 없어요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>"
+    },
+    {
+      "id": "detail",
+      "label": "상품 상세 보기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-detail-pc.webp",
+          "alt": "09SCM 도매상품 상세 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-detail-mobile.webp",
+          "alt": "09SCM 도매상품 상세 모바일 화면",
+          "ratio": 0.3207
+        }
+      ],
+      "shotCaption": "09SCM 도매상품 상세 화면 (PC / 모바일)",
+      "overview": "<p>상품의 공급 조건과 상세 설명을 확인하고 수량을 정해 주문하는 화면이에요. 상품 목록에서 카드를 누르면 열려요. 화면 아래 고정된 바에서 [장바구니 담기]나 [바로구매]를 할 수 있어요.</p>",
+      "steps": "<h3>상품 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품코드</td><td>상품을 구분하는 코드 (화면 오른쪽 위에 표시)</td></tr><tr><td>상품이미지</td><td>상품 사진 (좌우 버튼이나 점을 눌러 넘겨 볼 수 있음)</td></tr><tr><td>카테고리</td><td>1차 카테고리 > 2차 카테고리</td></tr><tr><td>공급범위 · 판매상태</td><td>공급범위(전국, 우리지역, 우리본사)와 [판매중] 또는 [품절] (내가 등록한 상품에는 [내 상품]도 함께 표시)</td></tr><tr><td>상품명</td><td>도매상품 이름</td></tr><tr><td>공급자</td><td>상품을 공급하는 계정의 상호명</td></tr><tr><td>공급가 / 공급단위</td><td>공급단위 하나당 가격</td></tr><tr><td>배송방식</td><td>공급자가 정한 배송비 방식 (무료배송, 기본배송비, 착불)</td></tr><tr><td>원산지</td><td>상품의 원산지</td></tr><tr><td>소비기한</td><td>상품의 소비기한 안내</td></tr><tr><td>상세정보</td><td>공급자가 작성한 상품 상세 설명</td></tr></tbody></table></div><h3>주문하기</h3><p>화면 아래 고정 바에서 수량을 정하고 주문해요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문수량</td><td>주문할 수량 ([−] [+]로 조절, 1개부터 주문가능수량까지)</td></tr><tr><td>공급단위 안내</td><td>공급단위 기준과 주문가능수량 (예: box(5kg) 기준, 주문가능수량 6개)</td></tr><tr><td>[장바구니 담기]</td><td>정한 수량을 장바구니에 담기 (이미 담긴 상품이면 수량이 더해지고, 주문가능수량을 넘지 않음)</td></tr><tr><td>[바로구매]</td><td>장바구니를 거치지 않고 이 상품만 주문서로 이동 (장바구니에 담긴 상품은 그대로 유지)</td></tr></tbody></table></div><p>주문가능수량은 공급자의 보유수량에서 소매 판매용으로 정한 판매가능수량을 뺀 수량이에요. 주문서에서는 수량을 바꿀 수 없으니, 바꾸려면 장바구니나 이 화면에서 다시 정해주세요.</p>",
+      "cases": [
+        {
+          "title": "장바구니에 담으면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-detail-cart-pc.webp",
+              "alt": "09SCM 도매상품 상세 장바구니 담기 PC 화면",
+              "ratio": 21.4925
+            }
+          ],
+          "shotCaption": "09SCM 도매상품 상세 장바구니 담기 화면 (PC)",
+          "html": "<p>[장바구니 담기]를 누르면 버튼 옆에 &quot;장바구니에 담았습니다.&quot;가 잠깐 나타나요. 화면은 그대로 유지돼서 이어서 다른 수량을 정하거나 [바로구매]를 할 수 있어요.</p>"
+        },
+        {
+          "title": "품절 상품이면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-detail-soldout-pc.webp",
+              "alt": "09SCM 도매상품 상세 품절 PC 화면",
+              "ratio": 27.1698
+            }
+          ],
+          "shotCaption": "09SCM 도매상품 상세 품절 화면 (PC)",
+          "html": "<p>수량 입력과 버튼 대신 [품절된 상품입니다]가 나와요. 품절 상품은 장바구니에 담거나 바로 구매할 수 없어요.</p>"
+        },
+        {
+          "title": "내가 등록한 상품이면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-detail-own-pc.webp",
+              "alt": "09SCM 도매상품 상세 내 상품 PC 화면",
+              "ratio": 30.6383
+            }
+          ],
+          "shotCaption": "09SCM 도매상품 상세 내 상품 화면 (PC)",
+          "html": "<p>수량 입력과 버튼 대신 &quot;본인이 등록한 상품은 구매할 수 없습니다.&quot;가 나와요.</p>"
+        }
+      ],
+      "trouble": "<h3>수량을 더 늘릴 수 없어요</h3><p>수량은 주문가능수량까지만 정할 수 있어요. 주문가능수량은 공급자의 재고에 따라 바뀔 수 있어요.</p><h3>[장바구니 담기]와 [바로구매]가 안 보여요</h3><p>품절 상품이거나 내가 등록한 상품이면 버튼이 나오지 않아요.</p><h3>버튼을 눌러도 주문서로 넘어가지 않아요</h3><p>이용제한 상태에서는 [바로구매]를 쓸 수 없어요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>"
+    },
+    {
+      "id": "cart",
+      "label": "장바구니",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-cart-pc.webp",
+          "alt": "09SCM 장바구니 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-cart-mobile.webp",
+          "alt": "09SCM 장바구니 모바일 화면",
+          "ratio": 0.3667
+        }
+      ],
+      "shotCaption": "09SCM 장바구니 화면 (PC / 모바일)",
+      "overview": "<p>담아둔 상품을 공급자별로 묶어 보여주고, 공급자 단위로 주문서를 만드는 화면이에요. 공급자마다 배송비와 결제가 따로라서 한 번에 한 공급자의 상품만 주문할 수 있어요. 상품 수량은 이 화면에서만 바꿀 수 있어요.</p>",
+      "steps": "<h3>상단 도구</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>전체 N건 | 선택 N건</td><td>장바구니에 담긴 전체 상품 수와 선택한 상품 수</td></tr><tr><td>전체선택</td><td>장바구니의 모든 상품을 한 번에 선택·해제</td></tr><tr><td>[일괄삭제]</td><td>선택한 상품을 장바구니에서 삭제 (선택한 상품이 없으면 누를 수 없음)</td></tr></tbody></table></div><h3>공급자별 상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>공급자 이름</td><td>해당 공급자의 상품을 모두 선택·해제하는 체크박스와 공급자 상호명</td></tr><tr><td>이미지 · 상품명</td><td>상품 이미지와 이름 ([품절], [구매불가] 뱃지가 있으면 함께 표시)</td></tr><tr><td>공급가/단위</td><td>공급단위 하나당 가격</td></tr><tr><td>수량</td><td>[−] [+]로 조절 (1개부터 주문가능수량까지)</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr><tr><td>관리</td><td>[삭제]로 해당 상품을 장바구니에서 삭제</td></tr></tbody></table></div><h3>금액 요약과 주문</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>선택상품금액</td><td>선택한 상품의 소계 합계</td></tr><tr><td>전체상품금액</td><td>해당 공급자의 장바구니 상품 전체의 소계 합계</td></tr><tr><td>배송비</td><td>공급자가 정한 배송비 방식과 금액 (무료배송, 기본배송비, 착불)</td></tr><tr><td>총 주문금액</td><td>선택상품금액 + 배송비 (선택한 상품이 없으면 0원)</td></tr><tr><td>[선택상품주문]</td><td>선택한 상품만 주문서로 이동</td></tr><tr><td>[전체주문]</td><td>해당 공급자의 장바구니 상품 전체를 주문서로 이동</td></tr></tbody></table></div><p>착불이면 배송비를 주문 금액에 더하지 않고 별도로 부과돼요. 주문이 끝나면 주문한 상품만 장바구니에서 빠져요.</p>",
+      "cases": [
+        {
+          "title": "품절·구매불가 상품이 있으면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-cart-block-pc.webp",
+              "alt": "09SCM 장바구니 품절·구매불가 PC 화면",
+              "ratio": 1.7001
+            }
+          ],
+          "shotCaption": "09SCM 장바구니 품절·구매불가 화면 (PC)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>[품절]</td><td>주문가능수량이 0인 상품</td></tr><tr><td>[구매불가]</td><td>공급자가 공급범위를 바꿔 더 이상 내가 구매할 수 없는 상품 (&quot;공급범위가 변경되어 구매할 수 없습니다.&quot; 사유가 함께 표시, [품절]과 함께 붙을 수 있음)</td></tr><tr><td>주문 제한</td><td>뱃지가 붙은 상품이 있는 공급자는 [전체주문]을 누를 수 없고, 선택한 상품에 포함되면 [선택상품주문]도 누를 수 없음</td></tr></tbody></table></div><p>해당 상품을 삭제하거나 선택에서 빼면 나머지 상품만 [선택상품주문]으로 주문할 수 있어요.</p>"
+        },
+        {
+          "title": "장바구니가 비어 있으면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-cart-empty-pc.webp",
+              "alt": "09SCM 장바구니 비어 있음 PC 화면",
+              "ratio": 4.1983
+            }
+          ],
+          "shotCaption": "09SCM 장바구니 비어 있음 화면 (PC)",
+          "html": "<p>&quot;장바구니에 담긴 상품이 없습니다.&quot;가 나와요. [← 상품목록으로]를 눌러 상품을 담아주세요.</p>"
+        }
+      ],
+      "trouble": "<h3>담아둔 상품이 사라졌어요</h3><p>공급자가 도매노출여부를 미노출로 바꾸거나 상품을 삭제하면 해당 상품은 안내 없이 장바구니에서 빠져요.</p><h3>[전체주문]이나 [선택상품주문]이 눌리지 않아요</h3><p>[품절]이나 [구매불가] 상품이 포함되어 있거나, [선택상품주문]은 선택한 상품이 없을 때 눌리지 않아요. 해당 상품을 삭제하거나 선택에서 빼주세요.</p><h3>수량을 더 늘릴 수 없어요</h3><p>수량은 주문가능수량까지만 늘릴 수 있어요.</p>"
+    },
+    {
+      "id": "order",
+      "label": "주문서 작성하기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-order-pc.webp",
+          "alt": "09SCM 주문서 작성 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-order-mobile.webp",
+          "alt": "09SCM 주문서 작성 모바일 화면",
+          "ratio": 0.2709
+        }
+      ],
+      "shotCaption": "09SCM 주문서 작성 화면 (PC / 모바일)",
+      "overview": "<p>한 공급자의 상품을 확인하고 주문자, 배송, 결제 정보를 입력해 주문을 접수하는 화면이에요. 장바구니의 [선택상품주문]·[전체주문]이나 상품 상세의 [바로구매]를 누르면 열려요.</p>",
+      "steps": "<h3>주문상품 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>이미지 · 상품명</td><td>주문할 상품</td></tr><tr><td>공급가/단위</td><td>공급단위 하나당 가격</td></tr><tr><td>수량</td><td>장바구니나 상품 상세에서 정한 수량 (이 화면에서는 바꿀 수 없음)</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 상호 (수정 불가)</td></tr><tr><td>이름*</td><td>주문자 이름 (가입할 때 등록한 정보가 미리 입력되며 수정 가능)</td></tr><tr><td>휴대폰번호*</td><td>010-0000-0000 형식의 휴대폰번호 (가입할 때 등록한 정보가 미리 입력되며 수정 가능)</td></tr><tr><td>이메일*</td><td>주문자 이메일 (가입할 때 등록한 정보가 미리 입력되며 수정 가능)</td></tr></tbody></table></div><h3>배송 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>등록된 사업장 주소</td><td>가입할 때 등록한 사업장 주소를 배송주소로 사용 (기본 선택)</td></tr><tr><td>직접입력</td><td>이번 주문에만 다른 주소로 받을 때 선택 (우편번호 검색 후 상세주소 입력, 등록된 사업장 주소는 바뀌지 않음)</td></tr><tr><td>배송 요청사항</td><td>공급자에게 전할 요청 (선택 입력)</td></tr></tbody></table></div><h3>결제수단</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>카드결제</td><td>주문하면 바로 결제가 완료되어 [결제완료]로 접수</td></tr><tr><td>계좌이체</td><td>공급자의 계좌(은행, 계좌번호, 예금주)로 입금하는 방식 (입금자명* 입력, [결제대기]로 접수되고 공급자가 입금을 확인하면 [결제완료]로 바뀜)</td></tr></tbody></table></div><h3>결제금액 요약</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품금액</td><td>주문상품 소계의 합계</td></tr><tr><td>배송비</td><td>공급자가 정한 배송비 방식과 금액 (착불이면 별도 부과)</td></tr><tr><td>결제수수료</td><td>카드결제를 고르고 공급자가 카드 수수료를 구매자부담으로 정한 경우에만 표시</td></tr><tr><td>총 결제금액</td><td>상품금액 + 배송비 + 결제수수료</td></tr></tbody></table></div><p>[주문하기]를 누르면 주문이 접수되고 공급자의 재고가 주문 수량만큼 바로 줄어요. [취소]를 누르면 장바구니로 돌아가요.</p>",
+      "cases": [
+        {
+          "title": "카드 수수료를 구매자가 부담하면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-order-fee-pc.webp",
+              "alt": "09SCM 주문서 카드결제 수수료 PC 화면",
+              "ratio": 3.9777
+            }
+          ],
+          "shotCaption": "09SCM 주문서 카드결제 수수료 화면 (PC)",
+          "html": "<p>카드결제를 고르면 &quot;카드결제 수수료 ○%(○원)가 구매자부담으로 결제금액에 포함됩니다.&quot; 안내가 나오고 결제금액 요약에 [결제수수료]가 더해져요. 수수료는 (상품금액 + 배송비) × 수수료율로 계산해요. 계좌이체를 고르면 수수료는 붙지 않아요.</p>"
+        },
+        {
+          "title": "계좌이체를 고르면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-order-transfer-pc.webp",
+              "alt": "09SCM 주문서 계좌이체 PC 화면",
+              "ratio": 2.8087
+            }
+          ],
+          "shotCaption": "09SCM 주문서 계좌이체 화면 (PC)",
+          "html": "<p>공급자의 은행, 계좌번호, 예금주가 나타나고 입금자명을 입력해야 해요. 입금자명에는 가입할 때 등록한 정보가 미리 입력돼요.</p>"
+        },
+        {
+          "title": "다른 주소로 받을 때",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-order-address-pc.webp",
+              "alt": "09SCM 주문서 배송주소 직접입력 PC 화면",
+              "ratio": 3.1644
+            }
+          ],
+          "shotCaption": "09SCM 주문서 배송주소 직접입력 화면 (PC)",
+          "html": "<p>[직접입력]을 고르면 우편번호 검색과 기본주소·상세주소 입력칸이 나와요. 우편번호를 검색하면 기본주소가 채워지고 상세주소를 입력해야 해요.</p>"
+        },
+        {
+          "title": "입력이 빠졌을 때",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-order-error-pc.webp",
+              "alt": "09SCM 주문서 입력 오류 PC 화면",
+              "ratio": 8.0449
+            }
+          ],
+          "shotCaption": "09SCM 주문서 입력 오류 화면 (PC)",
+          "html": "<p>[주문하기]를 누르면 빠지거나 맞지 않는 항목이 한꺼번에 안내돼요. 모두 고친 뒤 다시 눌러주세요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>이름</td><td>&quot;이름을 입력해주세요.&quot;</td></tr><tr><td>휴대폰번호</td><td>&quot;휴대폰번호를 입력해주세요.&quot; 또는 &quot;휴대폰번호 형식이 올바르지 않습니다.&quot;</td></tr><tr><td>이메일</td><td>&quot;이메일을 입력해주세요.&quot;</td></tr><tr><td>직접입력 주소</td><td>&quot;우편번호 검색으로 주소를 입력해주세요.&quot; 또는 &quot;상세주소를 입력해주세요.&quot;</td></tr><tr><td>입금자명</td><td>&quot;입금자명을 입력해주세요.&quot; (계좌이체일 때)</td></tr></tbody></table></div>"
+        },
+        {
+          "title": "주문 직전에 상품 상태가 바뀌면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-order-soldout-pc.webp",
+              "alt": "09SCM 주문서 상품 상태 안내 PC 화면",
+              "ratio": 9.121
+            }
+          ],
+          "shotCaption": "09SCM 주문서 상품 상태 안내 화면 (PC)",
+          "html": "<p>주문서를 연 뒤 상품 상태가 바뀌면 [주문하기]를 눌렀을 때 아래 안내가 나오고 주문이 접수되지 않아요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>품절상품이 존재합니다.</td><td>주문 상품 중 품절된 상품이 있음</td></tr><tr><td>구매불가 상품이 존재합니다.</td><td>공급범위 변경 등으로 더 이상 구매할 수 없는 상품이 있음</td></tr><tr><td>재고가 부족한 상품이 있습니다.</td><td>주문수량이 주문가능수량보다 많은 상품이 있음</td></tr><tr><td>본인이 등록한 상품은 주문할 수 없습니다.</td><td>내가 등록한 상품이 포함됨</td></tr></tbody></table></div><p>여러 경우에 해당하면 품절, 구매불가, 재고부족 순서로 안내돼요. 장바구니로 돌아가 해당 상품을 확인해주세요.</p>"
+        }
+      ],
+      "trouble": "<h3>[주문하기]를 눌러도 주문이 안 돼요</h3><p>화면에 나온 안내 문구를 확인해주세요. 입력 항목이 빠졌거나 상품 상태가 바뀐 경우예요. 이용제한 상태에서는 주문서를 쓸 수 없어요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p><h3>총 결제금액이 상품금액보다 커요</h3><p>총 결제금액에는 배송비와 결제수수료가 포함돼요. 항목별 금액은 결제금액 요약에서 확인할 수 있어요.</p>"
+    },
+    {
+      "id": "done",
+      "label": "주문 완료 확인하기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-done-pc.webp",
+          "alt": "09SCM 주문 완료 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-done-mobile.webp",
+          "alt": "09SCM 주문 완료 모바일 화면",
+          "ratio": 0.3045
+        }
+      ],
+      "shotCaption": "09SCM 주문 완료 화면 (PC / 모바일)",
+      "overview": "<p>주문이 접수되면 열리는 결과 화면이에요. 카드결제는 바로 [결제완료], 계좌이체는 [결제대기]로 접수돼요. 같은 내용을 <a href=\"#wholesale-orders\">주문내역</a>에서 다시 확인할 수 있어요.</p>",
+      "steps": "<h3>주문 결과</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문에 부여된 번호와 접수된 일시</td></tr><tr><td>공급자</td><td>주문한 상품을 공급하는 계정의 상호명</td></tr><tr><td>주문자 정보</td><td>상호명, 이름, 휴대폰번호, 이메일</td></tr><tr><td>배송 정보</td><td>처리상태([주문접수])와 배송지, 입력한 경우 배송 요청사항</td></tr><tr><td>결제 정보</td><td>결제상태, 결제수단, 입금자명(계좌이체만), 상품금액, 배송비, 결제수수료(있는 경우), 총 결제금액</td></tr></tbody></table></div><p>화면 아래 [장바구니로]는 장바구니로, [상품목록으로]는 도매상품 주문하기 목록으로 이동해요. 처리 단계는 공급자가 [주문접수] → [배송대기] → [배송중] → [배송확정] 순서로 진행해요.</p>",
+      "cases": [
+        {
+          "title": "계좌이체로 주문했다면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-done-transfer-pc.webp",
+              "alt": "09SCM 주문 완료 계좌이체 PC 화면",
+              "ratio": 0.96
+            }
+          ],
+          "shotCaption": "09SCM 주문 완료 계좌이체 화면 (PC)",
+          "html": "<p>결제상태가 [결제대기]로 접수되고 &quot;공급자가 입금을 확인하면 결제완료로 전환됩니다.&quot;가 안내돼요. 입금 확인은 공급자가 해요. 입금 전에 주문을 취소하려면 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>를 확인해주세요.</p>"
+        }
+      ],
+      "trouble": "<h3>주문 완료 화면을 닫았어요</h3><p>주문 내용은 <a href=\"#wholesale-orders\">주문내역</a>에서 다시 확인할 수 있어요.</p>"
+    }
+  ]
+};
+
+window.GUIDE_CONTENT['wholesale-orders'] = {
+  "screens": [
+    {
+      "id": "list-view",
+      "label": "주문 목록 보기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-orders-pc.webp",
+          "alt": "09SCM 주문내역 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-orders-mobile.webp",
+          "alt": "09SCM 주문내역 모바일 화면",
+          "ratio": 0.3667
+        }
+      ],
+      "shotCaption": "09SCM 주문내역 화면 (PC / 모바일)",
+      "overview": "<p>내가 도매로 주문한 내역을 확인하고 취소, 반품, 배송확정을 하는 화면이에요. 내가 구매자인 주문만 보여요. 내가 공급자로 받은 주문은 <a href=\"#wholesale-receive\">주문접수관리</a>에서 확인해요.</p><h3>처리 단계</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>도매 주문</td><td>[주문접수] → [배송대기] → [배송중] → [배송확정]</td></tr></tbody></table></div><p>처리 단계는 공급자가 진행해요. [배송중]이 된 지 7일이 지나면 자동으로 [배송확정]돼요. 구매자가 할 수 있는 처리는 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>와 <a href=\"#wholesale-orders/confirm\">배송확정하기</a>에서 확인해주세요.</p>",
+      "steps": "<h3>주문 찾기</h3><p>목록 위쪽에서 기간과 처리 탭으로 주문을 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>기간</td><td>전체, 1개월, 3개월, 6개월, 기간 중 선택 (주문일시 기준)</td></tr><tr><td>처리 탭</td><td>전체, 배송확정, 취소·반품요청, 취소·반품승인 구분</td></tr></tbody></table></div><p>목록은 최근 주문부터 한 페이지에 20건씩 보여줘요.</p><h3>목록에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr><tr><td>주문일시</td><td>주문이 접수된 일시</td></tr><tr><td>공급자</td><td>주문한 상품을 공급하는 계정의 상호명</td></tr><tr><td>상품정보</td><td>주문 상품 이름 (여러 상품이면 &quot;○○ 외 N건&quot;)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체 구분</td></tr><tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소] 구분 ([결제취소] 주문은 전체환불·부분환불을 함께 표시)</td></tr><tr><td>처리상태</td><td>현재 처리 단계 (취소·반품이 요청 중이거나 승인된 주문은 &quot;-&quot;)</td></tr><tr><td>취소·반품</td><td>[취소요청], [반품요청], [취소승인], [반품승인], [취소반려], [반품반려] 중 현재 상태 (없으면 &quot;-&quot;)</td></tr><tr><td>합계금액</td><td>상품금액, 배송비, 결제수수료를 더한 총 결제금액</td></tr><tr><td>관리</td><td>주문 상태에 따라 노출되는 버튼</td></tr></tbody></table></div>",
+      "cases": [
+        {
+          "title": "처리상태에 따라 보이는 버튼이 달라져요",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-orders-rows-action-pc.webp",
+              "alt": "09SCM 주문내역 처리 버튼 PC 화면",
+              "ratio": 2.232
+            }
+          ],
+          "shotCaption": "09SCM 주문내역 처리 버튼 화면 (PC)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제 또는 결제대기</td><td>[주문취소] [상세보기] (공급자 승인 없이 바로 취소)</td></tr><tr><td>주문접수 · 계좌이체 결제완료</td><td>[취소요청] [상세보기] (공급자가 확인한 뒤 처리)</td></tr><tr><td>배송대기</td><td>[상세보기]</td></tr><tr><td>배송중</td><td>[배송확정] [반품요청] [상세보기]</td></tr><tr><td>배송확정</td><td>[상세보기]</td></tr></tbody></table></div>"
+        },
+        {
+          "title": "취소·반품이 있는 주문은 이렇게 보여요",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-orders-rows-claim-pc.webp",
+              "alt": "09SCM 주문내역 취소·반품 PC 화면",
+              "ratio": 3.8476
+            }
+          ],
+          "shotCaption": "09SCM 주문내역 취소·반품 화면 (PC)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>취소요청 · 반품요청</td><td>처리상태는 &quot;-&quot;로 비워지고 [상세보기]만 표시 (공급자 확인을 기다리는 상태)</td></tr><tr><td>취소승인 · 반품승인</td><td>처리상태는 &quot;-&quot;로 비워지고 결제상태는 [결제취소]와 환불 구분이 함께 표시 (바로 취소한 주문도 [취소승인]으로 표시)</td></tr><tr><td>취소반려 · 반품반려</td><td>처리상태는 반려 전 단계가 그대로 유지 ([반품반려]인 [배송중] 주문은 [배송확정]도 표시, [취소반려] 주문은 [상세보기]만 표시)</td></tr></tbody></table></div>"
+        },
+        {
+          "title": "기간을 직접 정하면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-orders-period-pc.webp",
+              "alt": "09SCM 주문내역 기간 선택 PC 화면",
+              "ratio": 11.392
+            }
+          ],
+          "shotCaption": "09SCM 주문내역 기간 선택 화면 (PC)",
+          "html": "<p>[기간]을 누르면 시작일과 종료일 입력칸이 나와요. 두 날짜 사이에 주문한 내역만 보여주고, 날짜 하나만 입력하면 시작일 이후 또는 종료일 이전의 주문을 보여줘요.</p>"
+        }
+      ],
+      "trouble": "<h3>주문한 상품이 목록에 없어요</h3><p>기간과 처리 탭 조건을 확인해주세요. 이 목록에는 내가 구매자인 주문만 보이고, 내가 공급자로 받은 주문은 <a href=\"#wholesale-receive\">주문접수관리</a>에서 확인해요.</p><h3>처리상태가 &quot;-&quot;로 보여요</h3><p>취소·반품이 요청 중이거나 승인된 주문이에요. 진행 상황은 취소·반품 열에서 확인해요.</p><h3>[주문취소] 대신 [취소요청]이 보여요</h3><p>계좌이체로 입금을 마친 주문은 환불을 공급자가 처리해서 요청으로 진행해요. 자세한 내용은 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>에서 확인해주세요.</p>"
+    },
+    {
+      "id": "detail",
+      "label": "주문 상세 보기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-od-pc.webp",
+          "alt": "09SCM 주문 상세 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-od-mobile.webp",
+          "alt": "09SCM 주문 상세 모바일 화면",
+          "ratio": 0.2575
+        }
+      ],
+      "shotCaption": "09SCM 주문 상세 화면 (PC / 모바일)",
+      "overview": "<p>주문 한 건의 상품, 배송, 결제, 취소·반품 진행 내용을 확인하는 화면이에요. 목록의 [상세보기]를 누르면 열려요. 주문 상태에 따라 화면 아래 고정 바에 처리 버튼이 나타나요.</p>",
+      "steps": "<h3>주문 내용</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문상품</td><td>상품명, 공급가/단위, 수량, 소계</td></tr><tr><td>주문 정보</td><td>주문번호, 주문일시, 공급자</td></tr><tr><td>주문자 정보</td><td>상호명, 이름, 휴대폰번호, 이메일</td></tr><tr><td>배송 정보</td><td>처리상태(현재 단계와 처리 일시, [배송중]에는 자동 배송확정 예정일시도 표시), 배송지, 배송 요청사항(입력한 경우)</td></tr><tr><td>결제 정보</td><td>결제상태(결제 일시 포함), 결제수단, 입금자명(계좌이체만), 상품금액, 배송비, 결제수수료(있는 경우), 총 결제금액</td></tr><tr><td>취소·반품 정보</td><td>요청과 처리 내용 (취소·반품 이력이 있는 주문에만 표시)</td></tr></tbody></table></div><h3>하단 고정 바</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>현재 보고 있는 주문의 번호</td></tr><tr><td>처리 버튼</td><td>[주문취소], [취소요청], [반품요청], [배송확정] 중 주문 상태에 맞는 버튼 (목록의 관리 버튼과 같음)</td></tr></tbody></table></div><p>[주문취소]와 [취소요청], [반품요청]은 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>, [배송확정]은 <a href=\"#wholesale-orders/confirm\">배송확정하기</a>에서 확인해주세요.</p>",
+      "cases": [
+        {
+          "title": "취소·반품을 요청한 주문",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-od-claim-req-pc.webp",
+              "alt": "09SCM 주문 상세 취소·반품 요청 PC 화면",
+              "ratio": 4.2507
+            }
+          ],
+          "shotCaption": "09SCM 주문 상세 취소·반품 요청 화면 (PC)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>[취소요청], [반품요청] 등 현재 상태와 일시</td></tr><tr><td>처리 주체</td><td>구매자 요청, 구매자 즉시취소, 공급자 직권 중 구분</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>요청할 때 입력한 환불 계좌 (계좌이체 주문만 표시)</td></tr><tr><td>구매자 요청 사유</td><td>요청할 때 입력한 사유</td></tr></tbody></table></div>"
+        },
+        {
+          "title": "취소·반품이 승인된 주문",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-od-claim-done-pc.webp",
+              "alt": "09SCM 주문 상세 취소·반품 승인 PC 화면",
+              "ratio": 4.2507
+            }
+          ],
+          "shotCaption": "09SCM 주문 상세 취소·반품 승인 화면 (PC)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>환불구분</td><td>전체환불, 부분환불 구분</td></tr><tr><td>총환불금액</td><td>환불되는 금액의 합계</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 승인·반려하면서 입력한 사유</td></tr></tbody></table></div><p>환불구분과 환불금액은 공급자가 승인할 때 정해져서 요청 중이거나 반려된 주문에는 보이지 않아요.</p>"
+        }
+      ],
+      "trouble": "<h3>하단 고정 바에 버튼이 없어요</h3><p>[배송대기]와 [배송확정] 주문, 취소·반품을 이미 요청했거나 처리가 끝난 주문에는 구매자가 누를 버튼이 없어요. 단, [반품반려]인 [배송중] 주문에는 [배송확정]이 보여요.</p><h3>[취소·반품 정보]가 안 보여요</h3><p>취소·반품 이력이 없는 주문에는 이 영역이 나타나지 않아요.</p>"
+    },
+    {
+      "id": "cancel",
+      "label": "취소·반품 요청하기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-pop-cancelreq-pc.webp",
+          "alt": "09SCM 취소 요청 PC 화면",
+          "ratio": 0.9862
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-pop-cancelreq-mobile.webp",
+          "alt": "09SCM 취소 요청 모바일 화면",
+          "ratio": 0.7483
+        }
+      ],
+      "shotCaption": "09SCM 취소 요청 팝업 화면 (PC / 모바일)",
+      "overview": "<p>주문 상태에 따라 구매자가 바로 취소하거나, 공급자에게 취소·반품을 요청하는 팝업이에요. 목록의 관리 버튼과 상세 하단 바 어디에서 눌러도 같은 팝업이 열려요.</p><h3>주문 상태별로 할 수 있는 일</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제</td><td>[주문취소]로 공급자 승인 없이 바로 취소 (카드 결제가 전액 취소되고 결제상태가 [결제취소]로 바뀜)</td></tr><tr><td>주문접수 · 결제대기</td><td>[주문취소]로 바로 취소 (입금 전이라 환불 없이 [결제취소] 처리)</td></tr><tr><td>주문접수 · 계좌이체 결제완료</td><td>[취소요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송대기</td><td>취소·반품을 요청할 수 없음 (조회만 가능)</td></tr><tr><td>배송중</td><td>[반품요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송확정</td><td>취소·반품을 요청할 수 없음</td></tr></tbody></table></div><p>이미 요청했거나 처리가 끝난 주문은 다시 요청할 수 없어요. 단, 반품이 반려된 [배송중] 주문은 [배송확정]을 할 수 있어요.</p>",
+      "steps": "<ol><li><b>주문 고르기</b> 주문내역 목록이나 상세 하단 바에서 [주문취소], [취소요청], [반품요청]을 눌러요.</li><li><b>내용 입력하기</b> 요청 팝업이 열리면 아래 항목을 입력해요. 이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</li><li><b>요청하기</b> [취소 요청] 또는 [반품 요청]을 누르면 주문의 취소·반품 상태가 [취소요청] 또는 [반품요청]으로 바뀌고 공급자가 확인해요. 승인되면 환불이 진행되고, 반려되면 주문은 요청 전 단계로 이어져요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>환불은행*</td><td>환불받을 은행 (계좌이체 주문만 입력)</td></tr><tr><td>예금주*</td><td>환불받을 계좌의 예금주 (계좌이체 주문만 입력)</td></tr><tr><td>환불계좌번호*</td><td>&quot;-&quot; 없이 숫자만 입력 (계좌이체 주문만 입력)</td></tr><tr><td>취소 사유* · 반품 사유*</td><td>요청하는 이유</td></tr></tbody></table></div><p>카드결제 주문은 환불 계좌 없이 사유만 입력해요. 승인되면 PG사를 통해 카드 결제가 자동으로 취소돼요. 환불구분과 환불금액은 공급자가 승인할 때 정해져요.</p>",
+      "cases": [
+        {
+          "title": "바로 취소할 때",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-pop-cancel-pc.webp",
+              "alt": "09SCM 주문취소 확인 PC 화면",
+              "ratio": 1.7361
+            }
+          ],
+          "shotCaption": "09SCM 주문취소 확인 화면 (PC)",
+          "html": "<p>[주문취소]를 누르면 확인 팝업이 열려요. 카드 결제를 마친 주문에는 &quot;카드 결제가 전액 취소되며 결제상태가 결제취소로 변경됩니다.&quot;가 안내돼요. [주문취소]를 누르면 바로 취소되고 되돌릴 수 없어요.</p>"
+        },
+        {
+          "title": "입금 전 주문을 취소할 때",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-pop-cancel-wait-pc.webp",
+              "alt": "09SCM 입금 전 주문취소 확인 PC 화면",
+              "ratio": 1.7361
+            }
+          ],
+          "shotCaption": "09SCM 입금 전 주문취소 확인 화면 (PC)",
+          "html": "<p>계좌이체 주문을 입금 전에 취소하면 &quot;입금 전 주문이므로 환불 없이 결제취소 처리됩니다.&quot;가 안내돼요.</p>"
+        },
+        {
+          "title": "카드결제 주문을 반품 요청할 때",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-pop-return-pc.webp",
+              "alt": "09SCM 반품 요청 PC 화면",
+              "ratio": 1.3193
+            }
+          ],
+          "shotCaption": "09SCM 반품 요청 화면 (PC)",
+          "html": "<p>환불 계좌 입력 없이 반품 사유만 입력해요. &quot;카드결제 건은 승인 시 PG사를 통해 자동으로 결제가 취소됩니다.&quot;가 안내돼요.</p>"
+        },
+        {
+          "title": "입력이 빠졌을 때",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-pop-cancelreq-error-pc.webp",
+              "alt": "09SCM 취소 요청 입력 오류 PC 화면",
+              "ratio": 0.846
+            }
+          ],
+          "shotCaption": "09SCM 취소 요청 입력 오류 화면 (PC)",
+          "html": "<p>빠진 항목이 한꺼번에 안내되고 요청이 접수되지 않아요. 예) &quot;취소 사유를 입력해주세요.&quot; &quot;환불은행을 입력해주세요.&quot; &quot;환불계좌번호를 입력해주세요.&quot; &quot;예금주를 입력해주세요.&quot; 반품 요청이면 &quot;반품 사유를 입력해주세요.&quot;가 나와요.</p>"
+        }
+      ],
+      "trouble": "<h3>요청했는데 바로 취소되지 않아요</h3><p>[취소요청]과 [반품요청]은 공급자가 확인한 뒤 처리돼요. 진행 상황은 주문내역의 취소·반품 열이나 주문 상세의 취소·반품 정보에서 확인해요.</p><h3>배송대기인 주문을 취소할 수 없어요</h3><p>[배송대기] 단계에서는 구매자가 취소·반품을 요청할 수 없어요. [배송중]이 되면 [반품요청]을 할 수 있어요.</p><h3>다시 요청할 수 없어요</h3><p>이미 요청했거나 처리가 끝난 주문은 다시 요청할 수 없어요. 처리 결과는 주문 상세에서 확인해주세요.</p>"
+    },
+    {
+      "id": "confirm",
+      "label": "배송확정하기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-pop-confirm-pc.webp",
+          "alt": "09SCM 배송확정 PC 화면",
+          "ratio": 1.7361
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-pop-confirm-mobile.webp",
+          "alt": "09SCM 배송확정 모바일 화면",
+          "ratio": 1.5278
+        }
+      ],
+      "shotCaption": "09SCM 배송확정 팝업 화면 (PC / 모바일)",
+      "overview": "<p>[배송중]인 주문의 상품을 받은 뒤 구매를 확정하는 팝업이에요. 목록의 [배송확정]이나 상세 하단 바의 [배송확정]을 누르면 열려요.</p>",
+      "steps": "<ol><li><b>배송확정 누르기</b> 상품을 정상적으로 받았다면 [배송확정]을 눌러요.</li><li><b>안내 확인하기</b> &quot;주문번호 ○○ 상품을 정상적으로 수령하셨습니까?&quot; 안내와 배송확정 후의 변화를 확인해요.</li><li><b>확정하기</b> 팝업의 [배송확정]을 누르면 처리상태가 [배송확정]으로 바뀌어요. 마음이 바뀌면 [취소]를 눌러 닫아요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>배송확정 후</td><td>취소·반품을 요청할 수 없고 되돌릴 수 없음</td></tr><tr><td>소매 판매</td><td>배송확정된 상품은 소매상품으로 등록 가능 (<a href=\"#retail-product-list/register\">소매정보 등록하기</a>)</td></tr><tr><td>결제대기 주문</td><td>결제도 함께 [결제완료]로 처리</td></tr><tr><td>자동 배송확정</td><td>[배송중]이 된 지 7일이 지나면 자동으로 [배송확정] (상세의 처리상태에 자동 배송확정 예정일시 표시)</td></tr></tbody></table></div>",
+      "trouble": "<h3>[배송확정]이 안 보여요</h3><p>[배송중]인 주문에만 보여요. 취소·반품을 요청 중이거나 처리가 끝난 주문에서는 숨겨지고, [반품반려]가 되면 다시 보여요.</p><h3>받은 상품에 문제가 있어요</h3><p>[배송확정]을 하기 전에 [반품요청]을 해주세요. 배송확정 후에는 취소·반품을 요청할 수 없고, [배송중]이 된 지 7일이 지나면 자동으로 배송확정돼요. 자세한 내용은 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>에서 확인해주세요.</p>"
+    }
+  ]
+};
