@@ -201,7 +201,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
         },
         {
           "title": "수량이 바뀌면",
-          "html": "<ul><li>소매몰에서 주문이 접수되면 판매가능수량과 보유수량이 주문 수량만큼 함께 줄어요.</li><li>소매 주문을 취소·반품 승인할 때 수량을 되돌릴지는 <a href=\"#retail-order-list\">주문목록</a>에서 선택해요. 구매자가 즉시취소하면 선택 없이 수량이 자동으로 되돌아와요.</li><li>내도매상품은 도매몰에서 주문이 접수되면 보유수량만 줄어요. 보유수량은 이미 소매에 배정한 판매가능수량보다 적게 고칠 수 없어요.</li><li>도매주문상품은 같은 상품을 다시 주문해 배송확정되면 보유수량이 더해져요. 이때 이미 등록한 소매정보의 내용은 바뀌지 않고 수량만 늘어요.</li></ul>"
+          "html": "<ul><li>소매몰에서 주문이 접수되면 판매가능수량과 보유수량이 주문 수량만큼 함께 줄어요.</li><li>구매자가 즉시취소하면 수량이 자동으로 되돌아와요. 취소·반품을 승인할 때 수량을 되돌릴지는 <a href=\"#retail-order-list\">주문목록</a>에서 선택해요.</li></ul>"
         },
         {
           "title": "이용상태가 다르면",
@@ -212,7 +212,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
           "html": "<p>[도매상품전환] 버튼은 도매공급권한이 있는 계정(본사 포함)에만 보여요. 권한이 없는 가맹점에는 보이지 않아요.</p>"
         }
       ],
-      "trouble": "<h3>상품이 모두 [품절]·[미노출]로 바뀌었어요</h3><p>가맹점이 이용불가 상태가 되면 등록한 소매정보가 모두 [품절]·[미노출]로 바뀌어요. 도매공급권한이 회수되면 도매상품만 바뀌고 소매정보는 그대로예요. 수량은 그대로이고, 이용불가 해제나 권한 재부여 후에도 자동으로 돌아오지 않아서 상품마다 직접 바꿔야 해요.</p>"
+      "trouble": "<h3>상품이 모두 [품절]·[미노출]로 바뀌었어요</h3><p>가맹점이 이용불가 상태가 되면 등록한 소매정보가 모두 [품절]·[미노출]로 바뀌어요. 수량은 그대로이고, 이용승인 후에도 자동으로 돌아오지 않아서 상품마다 직접 바꿔야 해요.</p>"
     },
     {
       "id": "register",
@@ -242,7 +242,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
             { "device": "mobile", "src": "../assets/img/partner/product-chatname-mobile.webp", "alt": "09SCM 채팅주문상품명 입력 모바일 화면", "ratio": 1.5225 }
           ],
           "shotCaption": "09SCM 채팅주문상품명 입력 화면 (PC / 모바일)",
-          "html": "<ul><li>채팅주문 허용을 켜면 채팅주문상품명 입력칸이 나타나요. 채팅방에 올라온 주문 메시지의 상품명이 이 이름과 같아야 주문으로 접수돼요. 소매몰에 보이는 소매상품명과는 별개예요.</li><li>수령방식이 배달뿐이면 채팅주문을 허용할 수 없어요. 배달로 바꾸면 채팅주문 허용이 자동으로 해제되고 입력칸이 사라져요. 픽업 또는 픽업+배달일 때만 쓸 수 있어요.</li><li>이름을 입력한 뒤 [중복확인]을 눌러야 저장할 수 있어요. 확인한 뒤 이름을 고치면 다시 확인해야 해요.</li><li>같은 이름은 <b>현재 판매중이면서 소매몰에 노출 중인 상품</b> 사이에서만 겹치지 않으면 돼요. 품절이거나 미노출인 상품이 쓰던 이름은 다른 상품이 다시 쓸 수 있어요.</li><li>판매를 멈춘 상품을 다시 [판매중]·[노출]로 바꿔 저장할 때도 이름 중복을 다시 검사해요. 그사이 다른 상품이 같은 이름을 쓰고 있으면 저장되지 않으니 이름을 바꾸고 다시 확인해주세요.</li></ul><h3>[중복확인]을 눌렀을 때 (입력칸 아래에 표시)</h3><div class=\"table-wrap\"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>이름을 비워 두고 누름</td><td>&quot;채팅주문상품명을 입력해주세요.&quot;</td></tr><tr><td>같은 이름을 쓰는 상품이 있음</td><td>&quot;이미 등록된 채팅주문상품명입니다.&quot;</td></tr><tr><td>중복이 없음</td><td>&quot;사용 가능한 채팅주문상품명입니다.&quot;</td></tr></tbody></table></div><h3>[저장]을 눌렀을 때 (화면 위쪽 오류 영역에 표시)</h3><div class=\"table-wrap\"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>채팅주문상품명이 비어 있음</td><td>&quot;채팅주문상품명을 입력해주세요.&quot;</td></tr><tr><td>중복확인을 하지 않았거나 확인 뒤 이름을 고침</td><td>&quot;채팅주문상품명 중복확인을 먼저 완료해주세요.&quot;</td></tr><tr><td>판매를 멈춘 상품을 다시 판매·노출하는데 이름이 겹침</td><td>&quot;이미 등록된 채팅주문상품명입니다. 채팅주문상품명을 변경한 뒤 중복확인을 완료해주세요.&quot;</td></tr></tbody></table></div><p>채팅주문 접수 방법은 <a href=\"#retail-order-chat\">채팅주문설정</a>에서 확인해주세요.</p>"
+          "html": "<ul><li>채팅주문 허용을 켜면 채팅주문상품명 입력칸이 나타나요. 채팅방에 올라온 주문 메시지의 상품명이 이 이름과 같아야 주문으로 접수돼요. 소매몰에 보이는 소매상품명과는 별개예요.</li><li>수령방식이 배달뿐이면 채팅주문을 허용할 수 없어요. 배달로 바꾸면 채팅주문 허용이 자동으로 해제되고 입력칸이 사라져요. 픽업 또는 픽업+배달일 때만 쓸 수 있어요.</li><li>이름을 입력한 뒤 [중복확인]을 눌러야 저장할 수 있어요. 확인한 뒤 이름을 고치면 다시 확인해야 해요.</li><li>같은 이름은 <b>현재 판매중이면서 소매몰에 노출 중인 상품</b> 사이에서만 겹치지 않으면 돼요. 품절이거나 미노출인 상품이 쓰던 이름은 다른 상품이 다시 쓸 수 있어요.</li><li>판매를 멈춘 상품을 다시 [판매중]·[노출]로 바꿔 저장할 때도 이름 중복을 다시 검사해요. 그사이 다른 상품이 같은 이름을 쓰고 있으면 저장되지 않으니 이름을 바꾸고 다시 확인해주세요.</li></ul><h3>[중복확인]을 눌렀을 때 (입력칸 아래에 표시)</h3><div class=\"table-wrap\"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>이름을 비워 두고 누름</td><td>&quot;채팅주문상품명을 입력해주세요.&quot;</td></tr><tr><td>같은 이름을 쓰는 상품이 있음</td><td>&quot;이미 등록된 채팅주문상품명입니다.&quot;</td></tr><tr><td>중복이 없음</td><td>&quot;사용 가능한 채팅주문상품명입니다.&quot;</td></tr></tbody></table></div><p>채팅주문 접수 방법은 <a href=\"#retail-order-chat\">채팅주문설정</a>에서 확인해주세요.</p>"
         },
         {
           "title": "입력에 맞지 않는 내용이 있으면",
@@ -261,7 +261,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
             }
           ],
           "shotCaption": "09SCM 소매정보 등록 입력 오류 화면 (PC / 모바일)",
-          "html": "<p>입력에 맞지 않는 내용이 있으면 저장되지 않고, 화면 위쪽에 고쳐야 할 항목이 모두 나와요. 나오는 안내 문구는 아래와 같아요.</p><div class=\"table-wrap\"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>상품이미지가 2장 미만</td><td>&quot;상품이미지를 2장 이상 등록해주세요.&quot;</td></tr><tr><td>소매상품명이 비어 있음</td><td>&quot;상품명을 입력해주세요.&quot;</td></tr><tr><td>소매카테고리 1차를 고르지 않음</td><td>&quot;카테고리 1차를 선택해주세요.&quot;</td></tr><tr><td>소비자가를 비워 둠</td><td>&quot;소비자가를 입력해주세요.&quot;</td></tr><tr><td>소비자가가 1원 이상의 정수가 아님</td><td>&quot;소비자가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>할인가가 1원 이상의 정수가 아님</td><td>&quot;할인가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>할인가가 소비자가보다 큼</td><td>&quot;할인가는 소비자가를 초과할 수 없습니다.&quot;</td></tr><tr><td>판매가능수량이 비어 있음</td><td>&quot;판매가능수량을 입력해주세요.&quot;</td></tr><tr><td>판매가능수량이 0 이상의 정수가 아님</td><td>&quot;판매가능수량은 0 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>판매가능수량이 보유수량보다 큼</td><td>&quot;판매가능수량은 보유수량을 초과할 수 없습니다.&quot;</td></tr><tr><td>픽업가능 시작일·종료일이 비어 있음 (수령방식에 픽업 포함)</td><td>&quot;픽업가능 시작일·종료일을 입력해주세요.&quot;</td></tr><tr><td>종료일이 시작일보다 빠름</td><td>&quot;픽업가능 종료일은 시작일보다 빠를 수 없습니다.&quot;</td></tr><tr><td>종료일이 오늘 이전</td><td>&quot;픽업가능 종료일은 오늘 이후로 입력해주세요.&quot;</td></tr><tr><td>채팅주문 허용인데 채팅주문상품명이 비어 있음</td><td>&quot;채팅주문상품명을 입력해주세요.&quot;</td></tr><tr><td>채팅주문상품명 중복확인을 하지 않음</td><td>&quot;채팅주문상품명 중복확인을 먼저 완료해주세요.&quot;</td></tr></tbody></table></div><p>이미지를 올릴 때는 아래 안내가 나와요.</p><div class=\"table-wrap\"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>이미지를 11장째 올림</td><td>&quot;이미지는 최대 10장까지 등록할 수 있습니다.&quot;</td></tr><tr><td>JPG·PNG·WEBP가 아닌 파일을 올림</td><td>&quot;JPG, PNG, WEBP 이미지 파일만 등록할 수 있습니다.&quot;</td></tr><tr><td>5MB를 넘는 파일을 올림</td><td>&quot;이미지는 파일당 5MB 이하만 등록할 수 있습니다.&quot;</td></tr></tbody></table></div><p>채팅주문상품명 안내는 <a href=\"#retail-product-list/register\">채팅주문상품명을 입력할 때</a>에서 더 자세히 확인해주세요. 소매상품 직접 등록에서는 판매가능수량 대신 보유수량이 같은 방식으로 확인돼요(&quot;보유수량을 입력해주세요.&quot;, &quot;보유수량은 0 이상의 정수로 입력해주세요.&quot;).</p>"
+          "html": "<p>입력에 맞지 않는 내용이 있으면 저장되지 않고, 화면 위쪽에 고쳐야 할 항목이 모두 나와요. 나오는 안내 문구는 아래와 같아요.</p><div class=\"table-wrap\"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>상품이미지가 2장 미만</td><td>&quot;상품이미지를 2장 이상 등록해주세요.&quot;</td></tr><tr><td>소매상품명이 비어 있음</td><td>&quot;상품명을 입력해주세요.&quot;</td></tr><tr><td>소매카테고리 1차를 고르지 않음</td><td>&quot;카테고리 1차를 선택해주세요.&quot;</td></tr><tr><td>소비자가를 비워 둠</td><td>&quot;소비자가를 입력해주세요.&quot;</td></tr><tr><td>소비자가가 1원 이상의 정수가 아님</td><td>&quot;소비자가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>할인가가 1원 이상의 정수가 아님</td><td>&quot;할인가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>할인가가 소비자가보다 큼</td><td>&quot;할인가는 소비자가를 초과할 수 없습니다.&quot;</td></tr><tr><td>판매가능수량이 비어 있음</td><td>&quot;판매가능수량을 입력해주세요.&quot;</td></tr><tr><td>판매가능수량이 0 이상의 정수가 아님</td><td>&quot;판매가능수량은 0 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>판매가능수량이 보유수량보다 큼</td><td>&quot;판매가능수량은 보유수량을 초과할 수 없습니다.&quot;</td></tr><tr><td>픽업가능 시작일·종료일이 비어 있음 (수령방식에 픽업 포함)</td><td>&quot;픽업가능 시작일·종료일을 입력해주세요.&quot;</td></tr><tr><td>종료일이 시작일보다 빠름</td><td>&quot;픽업가능 종료일은 시작일보다 빠를 수 없습니다.&quot;</td></tr><tr><td>종료일이 오늘 이전</td><td>&quot;픽업가능 종료일은 오늘 이후로 입력해주세요.&quot;</td></tr><tr><td>채팅주문 허용인데 채팅주문상품명이 비어 있음</td><td>&quot;채팅주문상품명을 입력해주세요.&quot;</td></tr><tr><td>채팅주문상품명 중복확인을 하지 않음</td><td>&quot;채팅주문상품명 중복확인을 먼저 완료해주세요.&quot;</td></tr><tr><td>판매를 멈춘 상품을 다시 판매·노출하는데 이름이 겹침</td><td>&quot;이미 등록된 채팅주문상품명입니다. 채팅주문상품명을 변경한 뒤 중복확인을 완료해주세요.&quot;</td></tr></tbody></table></div><p>이미지를 올릴 때는 아래 안내가 나와요.</p><div class=\"table-wrap\"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>이미지를 11장째 올림</td><td>&quot;이미지는 최대 10장까지 등록할 수 있습니다.&quot;</td></tr><tr><td>JPG·PNG·WEBP가 아닌 파일을 올림</td><td>&quot;JPG, PNG, WEBP 이미지 파일만 등록할 수 있습니다.&quot;</td></tr><tr><td>5MB를 넘는 파일을 올림</td><td>&quot;이미지는 파일당 5MB 이하만 등록할 수 있습니다.&quot;</td></tr></tbody></table></div><p>채팅주문상품명 안내는 <a href=\"#retail-product-list/register\">채팅주문상품명을 입력할 때</a>에서 더 자세히 확인해주세요. 소매상품 직접 등록에서는 판매가능수량 대신 보유수량이 같은 방식으로 확인돼요(&quot;보유수량을 입력해주세요.&quot;, &quot;보유수량은 0 이상의 정수로 입력해주세요.&quot;).</p>"
         }
       ]
     },
@@ -4369,7 +4369,7 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
           '<li>기본 지역은 저장해 둔 값이 아니라 지금 사업장 주소에서 정해져요. 사업장 주소가 바뀌면 기본 지역도 바뀐 주소의 시·군·구로 바뀌어요.</li>' +
           '<li>이미 등록한 우리지역 상품에도 똑같이 적용돼요. 상품 화면에서 따로 고치지 않아도 바뀐 기본 지역 기준으로 구매자에게 보여요. 그래서 상품이 보이는 구매자의 범위가 달라질 수 있어요.</li>' +
           '<li>직접 추가한 지역은 주소가 바뀌어도 그대로 남아요.</li>' +
-          '<li>사업장 주소를 확인하고 바꾸는 방법은 시스템관리 &gt; <a href="#system-member">회원정보</a>에서 확인해주세요.</li>' +
+          '<li>사업장 주소는 시스템관리 &gt; <a href="#system-member">회원정보</a>에서 확인해주세요.</li>' +
         '</ul>'
     },
     {
@@ -4465,7 +4465,6 @@ window.GUIDE_CONTENT['wholesale-mine'] = {
             '<ul>' +
               '<li>도매 주문이 접수되면 보유수량이 주문 수량만큼 줄어요.</li>' +
               '<li>소매몰에서 판매하도록 정한 판매가능수량은 도매 구매자가 주문할 수 없어요. 구매자가 주문할 수 있는 수량(도매 가용재고)은 보유수량에서 판매가능수량을 뺀 수량이에요.</li>' +
-              '<li>소매몰에서 주문이 들어오면 보유수량과 판매가능수량이 함께 줄어요. 그래서 도매 가용재고는 소매 주문으로는 바뀌지 않아요.</li>' +
               '<li>보유수량이 0이거나 도매 가용재고가 모두 없어지면 도매판매상태가 [품절]로 바뀌어요. 자세한 내용은 <a href="#wholesale-mine/edit">도매상품 수정하기</a>에서 확인해주세요.</li>' +
               '<li>구매자가 즉시취소하면 수량이 자동으로 되돌아와요. 취소·반품을 승인할 때 수량을 되돌릴지는 <a href="#wholesale-receive">주문접수관리</a>에서 선택해요.</li>' +
             '</ul>'
@@ -4558,8 +4557,8 @@ window.GUIDE_CONTENT['wholesale-mine'] = {
             },
             {
               shots: [
-                { device: 'pc', src: '../assets/img/partner/wh-mine-reg-avail-pc.webp', alt: '09SCM 도매 가용재고 안내 PC 화면', ratio: 5.3037 },
-                { device: 'mobile', src: '../assets/img/partner/wh-mine-reg-avail-mobile.webp', alt: '09SCM 도매 가용재고 안내 모바일 화면', ratio: 3.2593 }
+                { device: 'pc', src: '../assets/img/partner/wh-mine-reg-avail-pc.webp', alt: '09SCM 도매 가용재고 안내 PC 화면', ratio: 10.5481 },
+                { device: 'mobile', src: '../assets/img/partner/wh-mine-reg-avail-mobile.webp', alt: '09SCM 도매 가용재고 안내 모바일 화면', ratio: 2.037 }
               ],
               shotCaption: '09SCM 도매 가용재고 안내 화면 (PC / 모바일)',
               html:
@@ -4575,7 +4574,7 @@ window.GUIDE_CONTENT['wholesale-mine'] = {
           ],
           shotCaption: '09SCM 도매상품 등록 입력 오류 화면 (PC / 모바일)',
           html:
-            '<p>입력에 맞지 않는 내용이 있으면 저장되지 않고, 화면 위쪽에 고쳐야 할 항목이 모두 나와요. 나오는 안내 문구는 아래와 같아요.</p><div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>상품이미지가 2장 미만</td><td>&quot;상품이미지를 2장 이상 등록해주세요.&quot;</td></tr><tr><td>도매상품명이 비어 있음</td><td>&quot;상품명을 입력해주세요.&quot;</td></tr><tr><td>도매카테고리 1차를 고르지 않음</td><td>&quot;카테고리 1차를 선택해주세요.&quot;</td></tr><tr><td>공급가가 비어 있음</td><td>&quot;공급가를 입력해주세요.&quot;</td></tr><tr><td>공급가가 1원 이상의 정수가 아님</td><td>&quot;공급가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>보유수량이 비어 있음</td><td>&quot;보유수량을 입력해주세요.&quot;</td></tr><tr><td>보유수량이 0 이상의 정수가 아님</td><td>&quot;보유수량은 0 이상의 정수로 입력해주세요.&quot;</td></tr></tbody></table></div><p>[소매정보 함께 등록]을 선택했다면 소매정보 입력 항목도 함께 확인해요.</p><div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>소매카테고리 1차를 고르지 않음</td><td>&quot;소매정보의 카테고리 1차를 선택해주세요.&quot;</td></tr><tr><td>소비자가를 비워 둠</td><td>&quot;소비자가를 입력해주세요.&quot;</td></tr><tr><td>소비자가가 1원 이상의 정수가 아님</td><td>&quot;소비자가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>할인가가 1원 이상의 정수가 아님</td><td>&quot;할인가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>할인가가 소비자가보다 큼</td><td>&quot;할인가는 소비자가를 초과할 수 없습니다.&quot;</td></tr><tr><td>판매가능수량이 비어 있음</td><td>&quot;판매가능수량을 입력해주세요.&quot;</td></tr><tr><td>판매가능수량이 0 이상의 정수가 아님</td><td>&quot;판매가능수량은 0 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>판매가능수량이 보유수량보다 큼</td><td>&quot;판매가능수량은 보유수량을 초과할 수 없습니다.&quot;</td></tr><tr><td>픽업가능 시작일·종료일이 비어 있음 (수령방식에 픽업 포함)</td><td>&quot;픽업가능 시작일·종료일을 입력해주세요.&quot;</td></tr><tr><td>종료일이 시작일보다 빠름</td><td>&quot;픽업가능 종료일은 시작일보다 빠를 수 없습니다.&quot;</td></tr><tr><td>종료일이 오늘 이전</td><td>&quot;픽업가능 종료일은 오늘 이후로 입력해주세요.&quot;</td></tr><tr><td>채팅주문 허용인데 채팅주문상품명이 비어 있음</td><td>&quot;채팅주문상품명을 입력해주세요.&quot;</td></tr><tr><td>채팅주문상품명 중복확인을 하지 않음</td><td>&quot;채팅주문상품명 중복확인을 먼저 완료해주세요.&quot;</td></tr></tbody></table></div><p>이미지를 올릴 때는 아래 안내가 나와요.</p><div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>이미지를 11장째 올림</td><td>&quot;이미지는 최대 10장까지 등록할 수 있습니다.&quot;</td></tr><tr><td>JPG·PNG·WEBP가 아닌 파일을 올림</td><td>&quot;JPG, PNG, WEBP 이미지 파일만 등록할 수 있습니다.&quot;</td></tr><tr><td>5MB를 넘는 파일을 올림</td><td>&quot;이미지는 파일당 5MB 이하만 등록할 수 있습니다.&quot;</td></tr></tbody></table></div><p>우리지역 추가 중 나오는 안내는 <a href="#wholesale-settings">도매설정</a>에서 확인해주세요.</p>'
+            '<p>입력에 맞지 않는 내용이 있으면 저장되지 않고, 화면 위쪽에 고쳐야 할 항목이 모두 나와요. 나오는 안내 문구는 아래와 같아요.</p><div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>상품이미지가 2장 미만</td><td>&quot;상품이미지를 2장 이상 등록해주세요.&quot;</td></tr><tr><td>도매상품명이 비어 있음</td><td>&quot;상품명을 입력해주세요.&quot;</td></tr><tr><td>도매카테고리 1차를 고르지 않음</td><td>&quot;카테고리 1차를 선택해주세요.&quot;</td></tr><tr><td>공급가가 비어 있음</td><td>&quot;공급가를 입력해주세요.&quot;</td></tr><tr><td>공급가가 1원 이상의 정수가 아님</td><td>&quot;공급가는 1원 이상의 정수로 입력해주세요.&quot;</td></tr><tr><td>보유수량이 비어 있음</td><td>&quot;보유수량을 입력해주세요.&quot;</td></tr><tr><td>보유수량이 0 이상의 정수가 아님</td><td>&quot;보유수량은 0 이상의 정수로 입력해주세요.&quot;</td></tr></tbody></table></div><p>[소매정보 함께 등록]을 선택했다면 소매정보 입력 항목도 함께 확인해요. 안내 문구는 <a href="#retail-product-list/register">소매정보 등록하기</a>에서 확인해주세요.</p><p>이미지를 올릴 때는 아래 안내가 나와요.</p><div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>이미지를 11장째 올림</td><td>&quot;이미지는 최대 10장까지 등록할 수 있습니다.&quot;</td></tr><tr><td>JPG·PNG·WEBP가 아닌 파일을 올림</td><td>&quot;JPG, PNG, WEBP 이미지 파일만 등록할 수 있습니다.&quot;</td></tr><tr><td>5MB를 넘는 파일을 올림</td><td>&quot;이미지는 파일당 5MB 이하만 등록할 수 있습니다.&quot;</td></tr></tbody></table></div><p>우리지역 추가 중 나오는 안내는 <a href="#wholesale-settings">도매설정</a>에서 확인해주세요.</p>'
         }
       ]
     },
@@ -4602,7 +4601,7 @@ window.GUIDE_CONTENT['wholesale-mine'] = {
           ],
           shotCaption: '09SCM 소매몰 노출 안내 화면 (PC / 모바일)',
           html:
-            '<p>&quot;이 상품은 현재 소매몰에도 노출 중입니다.&quot; 안내가 나오고, 현재 판매가능수량이 함께 표시돼요. 소매몰에서 주문이 들어오면 판매가능수량과 보유수량이 함께 줄어서 이 수량도 줄어들어요. 이 수량은 도매 구매자가 주문할 수 없어요.</p>'
+            '<p>&quot;이 상품은 현재 소매몰에도 노출 중입니다.&quot; 안내가 나오고, 현재 판매가능수량이 함께 표시돼요. 이 수량은 도매 구매자가 주문할 수 없어요.</p>'
         },
         {
           title: '공급범위가 우리지역이면',
