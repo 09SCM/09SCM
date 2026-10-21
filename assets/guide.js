@@ -368,7 +368,7 @@
       if (!e.row) bySec[key] = true;
       shown.push(r.e);
     });
-    return shown.slice(0, 8);
+    return shown;
   }
 
   function mark(text, words) {
