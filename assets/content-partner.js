@@ -241,13 +241,13 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-register-error-pc.webp",
               "alt": "09SCM 소매정보등록 입력 오류 PC 화면",
-              "ratio": 0.8122
+              "ratio": 8.956
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-register-error-mobile.webp",
               "alt": "09SCM 소매정보등록 입력 오류 모바일 화면",
-              "ratio": 0.1836
+              "ratio": 2.7673
             }
           ],
           "shotCaption": "09SCM 소매정보등록 입력 오류 화면 (PC / 모바일)",
@@ -370,13 +370,13 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-case-avail0-pc.webp",
               "alt": "09SCM 소매정보 수정(판매가능수량 0) PC 화면",
-              "ratio": 0.7826
+              "ratio": 6.3009
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-case-avail0-mobile.webp",
               "alt": "09SCM 소매정보 수정(판매가능수량 0) 모바일 화면",
-              "ratio": 0.173
+              "ratio": 1.134
             }
           ],
           "shotCaption": "09SCM 소매정보 수정(판매가능수량 0) 화면 (PC / 모바일)",
@@ -389,13 +389,13 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-case-retail0-pc.webp",
               "alt": "09SCM 소매정보 수정(내소매상품 보유수량 0) PC 화면",
-              "ratio": 0.8706
+              "ratio": 6.3009
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-case-retail0-mobile.webp",
               "alt": "09SCM 소매정보 수정(내소매상품 보유수량 0) 모바일 화면",
-              "ratio": 0.1912
+              "ratio": 1.068
             }
           ],
           "shotCaption": "09SCM 소매정보 수정(내소매상품 보유수량 0) 화면 (PC / 모바일)",
@@ -767,13 +767,13 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-detail-delivery-pc.webp",
               "alt": "09SCM 주문 상세 배달 PC 화면",
-              "ratio": 0.96
+              "ratio": 1.4269
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-detail-delivery-mobile.webp",
               "alt": "09SCM 주문 상세 배달 모바일 화면",
-              "ratio": 0.2489
+              "ratio": 0.2965
             }
           ],
           "shotCaption": "09SCM 주문 상세 배달 화면 (PC / 모바일)",
@@ -1342,8 +1342,8 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
         {
           title: '조건에 맞는 건이 없으면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/chat-empty-pc.webp', alt: '09SCM 매칭 실패 건 검색 결과 없음 PC 화면', ratio: 3.2952 },
-            { device: 'mobile', src: '../assets/img/partner/chat-empty-mobile.webp', alt: '09SCM 매칭 실패 건 검색 결과 없음 모바일 화면', ratio: 0.8527 }
+            { device: 'pc', src: '../assets/img/partner/chat-empty-pc.webp', alt: '09SCM 매칭 실패 건 검색 결과 없음 PC 화면', ratio: 3.3193},
+            { device: 'mobile', src: '../assets/img/partner/chat-empty-mobile.webp', alt: '09SCM 매칭 실패 건 검색 결과 없음 모바일 화면', ratio: 0.8661}
           ],
           shotCaption: '09SCM 매칭 실패 건 검색 결과 없음 화면 (PC / 모바일)',
           html: '<p>검색 결과가 없으면 &quot;조건에 맞는 회원매칭실패 건이 없습니다.&quot;가 나와요.</p>'
@@ -1406,8 +1406,8 @@ window.GUIDE_CONTENT['retail-member'] = {
         {
           title: '탈퇴회원 탭을 보면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/member-withdrawn-pc.webp', alt: '09SCM 탈퇴회원 PC 화면', ratio: 0.96 },
-            { device: 'mobile', src: '../assets/img/partner/member-withdrawn-mobile.webp', alt: '09SCM 탈퇴회원 모바일 화면', ratio: 0.3667 }
+            { device: 'pc', src: '../assets/img/partner/member-withdrawn-pc.webp', alt: '09SCM 탈퇴회원 PC 화면', ratio: 3.229},
+            { device: 'mobile', src: '../assets/img/partner/member-withdrawn-mobile.webp', alt: '09SCM 탈퇴회원 모바일 화면', ratio: 0.6627}
           ],
           shotCaption: '09SCM 탈퇴회원 화면 (PC / 모바일)',
           html: '<p>삭제는 탈퇴회원만 할 수 있어요. 일반회원에게는 [삭제]가 없어요.</p>'
@@ -1576,8 +1576,8 @@ window.GUIDE_CONTENT['retail-member'] = {
         {
           title: '저장이 막히면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/member-error-pc.webp', alt: '09SCM 회원정보 저장 오류 PC 화면', ratio: 2880 / 3264 },
-            { device: 'mobile', src: '../assets/img/partner/member-error-mobile.webp', alt: '09SCM 회원정보 저장 오류 모바일 화면', ratio: 880 / 3216 }
+            { device: 'pc', src: '../assets/img/partner/member-error-pc.webp', alt: '09SCM 회원정보 저장 오류 PC 화면', ratio: 1.9243},
+            { device: 'mobile', src: '../assets/img/partner/member-error-mobile.webp', alt: '09SCM 회원정보 저장 오류 모바일 화면', ratio: 0.5946}
           ],
           shotCaption: '09SCM 회원정보 저장 오류 화면 (PC / 모바일)',
           html:
@@ -1592,8 +1592,8 @@ window.GUIDE_CONTENT['retail-member'] = {
         {
           title: '휴대폰번호를 바꿀 때',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/member-phone-pc.webp', alt: '09SCM 휴대폰번호 변경 PC 화면', ratio: 2880 / 3570 },
-            { device: 'mobile', src: '../assets/img/partner/member-phone-mobile.webp', alt: '09SCM 휴대폰번호 변경 모바일 화면', ratio: 880 / 3522 }
+            { device: 'pc', src: '../assets/img/partner/member-phone-pc.webp', alt: '09SCM 휴대폰번호 변경 PC 화면', ratio: 3.9888},
+            { device: 'mobile', src: '../assets/img/partner/member-phone-mobile.webp', alt: '09SCM 휴대폰번호 변경 모바일 화면', ratio: 1.2325}
           ],
           shotCaption: '09SCM 휴대폰번호 변경 화면 (PC / 모바일)',
           html:
@@ -1804,8 +1804,8 @@ window.GUIDE_CONTENT['retail-settings'] = {
         {
           title: '필수 항목을 비우면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/settings-error-pc.webp', alt: '09SCM 필수 항목 미입력 PC 화면', ratio: 2880 / 4006 },
-            { device: 'mobile', src: '../assets/img/partner/settings-error-mobile.webp', alt: '09SCM 필수 항목 미입력 모바일 화면', ratio: 880 / 4736 }
+            { device: 'pc', src: '../assets/img/partner/settings-error-pc.webp', alt: '09SCM 필수 항목 미입력 PC 화면', ratio: 1.4864},
+            { device: 'mobile', src: '../assets/img/partner/settings-error-mobile.webp', alt: '09SCM 필수 항목 미입력 모바일 화면', ratio: 0.3761}
           ],
           shotCaption: '09SCM 필수 항목 미입력 화면 (PC / 모바일)',
           html:
@@ -3762,13 +3762,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-done-transfer-pc.webp",
               "alt": "09SCM 주문 완료 계좌이체 PC 화면",
-              "ratio": 0.96
+              "ratio": 5.1594
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-done-transfer-mobile.webp",
               "alt": "09SCM 주문 완료 계좌이체 모바일 화면",
-              "ratio": 0.2967
+              "ratio": 0.9713
             }
           ],
           "shotCaption": "09SCM 주문 완료 계좌이체 화면 (PC / 모바일)",

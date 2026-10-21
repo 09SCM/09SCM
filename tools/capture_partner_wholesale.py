@@ -220,7 +220,10 @@ def run(device, p, b):
     pick(page, 'orderPayMethod', 'transfer')
     page.click('#orderSubmitBtn'); page.wait_for_timeout(600)
     if not pc: fit_height(page, 1200)
-    save(page.screenshot(), 'wh-done-transfer-' + suffix)
+    done_titles = page.evaluate("[...document.querySelectorAll('.form-section')].map(s => { const h = s.querySelector('.form-section-title'); return h ? h.innerText.trim() : ''; })")
+    print('wh-done-transfer sections:', done_titles)
+    tag_section(page, '결제 정보', 'sec-done-pay')
+    clip_shot(page, ['#sec-done-pay'], 'wh-done-transfer-' + suffix, pad=16)
     # 빈 장바구니
     page.evaluate("CART.splice(0)")
     goto_item(page, 'wholesale-cart')
