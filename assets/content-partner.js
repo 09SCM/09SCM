@@ -1913,7 +1913,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-list-remote-pc.webp', alt: '09SCM 관리자접속 안내 팝업 PC 화면', ratio: 936 / 396 }
           ],
-          shotCaption: '09SCM 관리자접속 안내 팝업',
+          shotCaption: '09SCM 관리자접속 안내 화면',
           html:
             '<p>안내 팝업에서 [접속]을 누르면 새 창에서 해당 가맹점의 관리자 화면이 열려요. [취소]를 누르면 접속하지 않아요.</p>'
         },
@@ -1922,7 +1922,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-list-delete-pc.webp', alt: '09SCM 가맹점 삭제 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
-          shotCaption: '09SCM 가맹점 삭제 확인 팝업',
+          shotCaption: '09SCM 가맹점 삭제 확인 화면',
           html:
             '<p>이용대기·이용불가 가맹점만 삭제할 수 있어요. 삭제하면 복구할 수 없어요.</p>' +
             '<ul>' +
@@ -1964,7 +1964,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-tab-member-pc.webp', alt: '09SCM 가맹점 회원정보 탭 PC 화면', ratio: 2880 / 4604 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-tab-member-mobile.webp', alt: '09SCM 가맹점 회원정보 탭 모바일 화면', ratio: 880 / 4640 }
           ],
-          shotCaption: '09SCM 가맹점 회원정보 탭 (PC / 모바일)',
+          shotCaption: '09SCM 가맹점 회원정보 탭 화면 (PC / 모바일)',
           html:
             '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
               '<tr><td>회원 정보</td><td>회원 유형, 아이디(수정 불가), 이름 *, 이메일 *, 휴대폰번호 *</td></tr>' +
@@ -1987,7 +1987,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-tab-fee-pc.webp', alt: '09SCM 가맹점 이용료정보 탭 PC 화면', ratio: 2880 / 980 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-tab-fee-mobile.webp', alt: '09SCM 가맹점 이용료정보 탭 모바일 화면', ratio: 880 / 1098 }
           ],
-          shotCaption: '09SCM 가맹점 이용료정보 탭 (PC / 모바일)',
+          shotCaption: '09SCM 가맹점 이용료정보 탭 화면 (PC / 모바일)',
           html:
             '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
               '<tr><td>기본 이용료</td><td>전체 가맹점에 공통으로 적용되는 월 이용료 (이용료관리에서 설정)</td></tr>' +
@@ -2004,7 +2004,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-tab-memo-pc.webp', alt: '09SCM 가맹점 내부메모 탭 PC 화면', ratio: 2880 / 794 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-tab-memo-mobile.webp', alt: '09SCM 가맹점 내부메모 탭 모바일 화면', ratio: 880 / 836 }
           ],
-          shotCaption: '09SCM 가맹점 내부메모 탭 (PC / 모바일)',
+          shotCaption: '09SCM 가맹점 내부메모 탭 화면 (PC / 모바일)',
           html:
             '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
               '<tr><td>메모 입력창, [추가]</td><td>본사 관리자끼리 공유할 메모 등록</td></tr>' +
@@ -2020,7 +2020,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-error-pc.webp', alt: '09SCM 회원정보 입력 오류 PC 화면', ratio: 2.507},
             { device: 'mobile', src: '../assets/img/partner/fr-d-error-mobile.webp', alt: '09SCM 회원정보 입력 오류 모바일 화면', ratio: 0.7746}
           ],
-          shotCaption: '09SCM 회원정보 입력 오류 (PC / 모바일)',
+          shotCaption: '09SCM 회원정보 입력 오류 화면 (PC / 모바일)',
           html:
             '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
               '<tr><td>이름 미입력</td><td>&quot;이름을 입력해주세요.&quot;</td></tr>' +
@@ -2046,7 +2046,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 1.4369},
             { device: 'mobile', src: '../assets/img/partner/fr-d-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 0.4361}
           ],
-          shotCaption: '09SCM 법인사업자 사업자 정보 (PC / 모바일)',
+          shotCaption: '09SCM 법인사업자 사업자 정보 화면 (PC / 모바일)',
           html:
             '<p>사업자 유형을 법인사업자로 고르면 법인등록번호 입력란이 나타나고, 필수로 입력해야 해요. 개인사업자로 바꾸면 입력란이 사라지고 저장할 때 값이 비워져요.</p>'
         },
@@ -2056,7 +2056,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-payapp-unlinked-pc.webp', alt: '09SCM PayApp 연동 전 가맹점 PC 화면', ratio: 2.9002},
             { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-unlinked-mobile.webp', alt: '09SCM PayApp 연동 전 가맹점 모바일 화면', ratio: 0.8644}
           ],
-          shotCaption: '09SCM PayApp 연동 전 (PC / 모바일)',
+          shotCaption: '09SCM PayApp 연동 전 화면 (PC / 모바일)',
           html:
             '<p>연동 상태가 미연동이고 연동 정보 입력란이 보여요. 판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력하고 [연동하기]를 누르면 연동이 끝나요. 하나라도 비어 있으면 &quot;판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력해주세요.&quot; 안내가 나와요.</p>' +
             '<p>가맹점은 본인 관리자 화면의 시스템관리 > 회원정보에서 연동하고, 본사는 이 화면에서 대신 연동할 수 있어요. 미연동 가맹점은 [이용승인]을 누를 수 없어요.</p>'
@@ -2067,7 +2067,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-payapp-linked-pc.webp', alt: '09SCM PayApp 연동 완료 가맹점 PC 화면', ratio: 3.229},
             { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-linked-mobile.webp', alt: '09SCM PayApp 연동 완료 가맹점 모바일 화면', ratio: 0.9977}
           ],
-          shotCaption: '09SCM PayApp 연동 완료 (PC / 모바일)',
+          shotCaption: '09SCM PayApp 연동 완료 화면 (PC / 모바일)',
           html:
             '<p>연동 상태가 연동완료로 보이고 연동한 정보를 확인할 수 있어요. 연동 KEY와 VALUE는 일부만 보여요. 최초 연동 이후에는 바꾸거나 해제할 수 없어요.</p>'
         },
@@ -2077,7 +2077,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-fee-custom-pc.webp', alt: '09SCM 개별 이용료 적용 PC 화면', ratio: 8.1371},
             { device: 'mobile', src: '../assets/img/partner/fr-d-fee-custom-mobile.webp', alt: '09SCM 개별 이용료 적용 모바일 화면', ratio: 2.0657}
           ],
-          shotCaption: '09SCM 개별 이용료 적용 (PC / 모바일)',
+          shotCaption: '09SCM 개별 이용료 적용 화면 (PC / 모바일)',
           html:
             '<p>[이 가맹점에 개별 이용료 적용]을 체크하면 개별 이용료 입력란이 나타나요. 숫자만 입력할 수 있고, 1원 이상이어야 저장돼요. 입력하지 않거나 1원 미만이면 [저장]을 눌렀을 때 &quot;개별 이용료는 1원 이상의 숫자로 입력해주세요.&quot; 안내가 나와요.</p>' +
             '<p>체크를 해제하고 [저장]하면 다시 기본 이용료가 적용돼요. 가맹점 목록의 적용이용료에는 개별 이용료가 적용된 가맹점에 [개별] 표시가 붙어요.</p>'
@@ -2088,7 +2088,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-pay-reg-pc.webp', alt: '09SCM 정기결제 등록 가맹점 PC 화면', ratio: 6.5622},
             { device: 'mobile', src: '../assets/img/partner/fr-d-pay-reg-mobile.webp', alt: '09SCM 정기결제 등록 가맹점 모바일 화면', ratio: 1.5942}
           ],
-          shotCaption: '09SCM 정기결제 등록 가맹점 (PC / 모바일)',
+          shotCaption: '09SCM 정기결제 등록 가맹점 화면 (PC / 모바일)',
           html:
             '<p>정기결제여부가 등록으로 표시되고, 결제수단과 정기결제일을 확인할 수 있어요. 이용료 정기결제가 실패해도 정기결제여부는 자동으로 미등록으로 바뀌지 않아요.</p>'
         },
@@ -2098,7 +2098,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-d-pay-none-pc.webp', alt: '09SCM 정기결제 미등록 가맹점 PC 화면', ratio: 6.5622},
             { device: 'mobile', src: '../assets/img/partner/fr-d-pay-none-mobile.webp', alt: '09SCM 정기결제 미등록 가맹점 모바일 화면', ratio: 1.5942}
           ],
-          shotCaption: '09SCM 정기결제 미등록 가맹점 (PC / 모바일)',
+          shotCaption: '09SCM 정기결제 미등록 가맹점 화면 (PC / 모바일)',
           html:
             '<p>정기결제여부가 미등록이고 결제수단과 정기결제일은 -로 표시돼요.</p>'
         }
@@ -2164,7 +2164,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-wait-pc.webp', alt: '09SCM 이용대기 가맹점 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용대기 가맹점 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용대기 가맹점 화면 (PC / 모바일)',
           html:
             '<p>로그인하면 시스템관리만 보여요. 회원정보에서 PayApp 연동을 하고, 이용료관리에서 정기결제 카드를 등록하며 이용 시작을 준비해요. 소매몰은 접근제한 화면이 보여요.</p>'
         },
@@ -2174,7 +2174,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-b-wait-pc.webp', alt: '09SCM 이용대기 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-b-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '이용대기 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용대기 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용승인], [이용불가], [삭제]가 보여요. PayApp 연동이 끝나기 전에는 [이용승인]을 누를 수 없어요. [이용불가]와 [삭제]는 연동 여부와 상관없이 쓸 수 있어요.</p>'
         },
@@ -2184,7 +2184,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-approved-user-pc.webp', alt: '09SCM 이용승인 가맹점 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-approved-user-mobile.webp', alt: '09SCM 이용승인 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용승인 가맹점 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용승인 가맹점 화면 (PC / 모바일)',
           html:
             '<p>대시보드부터 모든 메뉴를 정상적으로 사용할 수 있고, 소매몰도 정상으로 열려요.</p>'
         },
@@ -2194,7 +2194,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-approved-pc.webp', alt: '09SCM 이용승인 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-approved-mobile.webp', alt: '09SCM 이용승인 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '이용승인 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용승인 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용제한]만 보여요.</p>'
         },
@@ -2203,7 +2203,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-confirm-pc.webp', alt: '09SCM 이용제한 변경 확인 팝업 PC 화면', ratio: 936 / 396 }
           ],
-          shotCaption: '이용제한 변경 확인 팝업',
+          shotCaption: '09SCM 이용제한 변경 확인 화면',
           html:
             '<p>[이용제한]을 누르면 확인 창이 열려요. [변경]을 누르면 신규 도매 주문, 도매상품 등록, 소매상품 등록이 막혀요. 이미 진행 중인 주문 처리는 계속할 수 있어요.</p>'
         },
@@ -2213,7 +2213,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-supply-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-supply-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용제한 가맹점 화면 — 도매공급권한 보유 (PC / 모바일)',
+          shotCaption: '09SCM 이용제한 가맹점 도매공급권한 보유 화면 (PC / 모바일)',
           html:
             '<p>모든 화면 맨 위에 이용제한 안내 배너가 계속 보여요. 메뉴는 그대로 보이지만 신규 행위 버튼은 흐리게 비활성으로 보이고, 주소로 직접 들어가도 막혀요. 이미 진행 중인 주문·배송·정산 처리와 시스템관리는 계속 쓸 수 있어요. 소매몰은 접근제한 화면으로 바뀌어 신규 주문을 받지 않아요.</p>'
         },
@@ -2223,7 +2223,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용제한 가맹점 화면 — 도매공급권한 미보유 (PC / 모바일)',
+          shotCaption: '09SCM 이용제한 가맹점 도매공급권한 미보유 화면 (PC / 모바일)',
           html:
             '<p>도매공급 메뉴(내 도매상품, 주문접수관리, 도매매출조회, 도매설정)가 처음부터 보이지 않아요.</p>'
         },
@@ -2247,7 +2247,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-b-restricted-pc.webp', alt: '09SCM 이용제한 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-b-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '이용제한 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용제한 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용승인]과 [이용불가]가 보여요. [이용승인]으로 언제든 되돌릴 수 있어요. [이용불가]는 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수가 표시돼요.</p>'
         },
@@ -2256,7 +2256,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-unavailable-confirm-pc.webp', alt: '09SCM 이용불가 변경 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
-          shotCaption: '이용불가 변경 확인 팝업',
+          shotCaption: '09SCM 이용불가 변경 확인 화면',
           html:
             '<p>[이용불가]를 누르면 확인 창이 열려요. [변경]을 누르면 로그인이 막히고, 가맹점이 등록한 도소매 상품이 모두 품절·미노출로 바뀌어요.</p>'
         },
@@ -2266,7 +2266,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 로그인 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 로그인 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '이용불가 가맹점 로그인 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용불가 가맹점 로그인 화면 (PC / 모바일)',
           html:
             '<p>아이디와 비밀번호를 맞게 입력해도 로그인이 막히고 본사로 문의하라는 안내가 나와요. 소매몰도 접근제한 화면으로 바뀌어 신규 주문을 받지 않아요.</p>'
         },
@@ -2276,7 +2276,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-b-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-b-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '이용불가 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용불가 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용불가 해제]와 [삭제]가 보여요. [관리자접속]은 누를 수 없어요. [이용불가 해제]를 누르면 이용대기로 돌아가지만, 품절·미노출로 바뀐 상품은 자동으로 되돌아오지 않아요. 가맹점이 상품별로 직접 바꿔야 해요.</p>'
         },
@@ -2285,7 +2285,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-supply-revoke-confirm-pc.webp', alt: '09SCM 도매공급권한 회수 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
-          shotCaption: '도매공급권한 회수 확인 팝업',
+          shotCaption: '09SCM 도매공급권한 회수 확인 화면',
           html:
             '<p>미보유를 고르고 [변경]을 누르면 확인 창이 열려요. [변경]을 누르면 도매공급 메뉴가 막히고, 가맹점이 등록한 도매상품이 모두 품절·미노출로 바뀌어요. 소매정보는 그대로 유지돼요.</p>'
         }
@@ -2382,7 +2382,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         { device: 'pc', src: '../assets/img/partner/frm-fee-collect-pc.webp', alt: '09SCM 수납처리 팝업 PC 화면', ratio: 936 / 1060 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-collect-mobile.webp', alt: '09SCM 수납처리 팝업 모바일 화면', ratio: 880 / 1384 }
       ],
-      shotCaption: '09SCM 수납처리 팝업 (PC / 모바일)',
+      shotCaption: '09SCM 수납처리 화면 (PC / 모바일)',
       html:
         '<p>결제실패 건의 [수납처리]를 누르면 팝업이 열려요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -2399,7 +2399,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         { device: 'pc', src: '../assets/img/partner/frm-fee-collect-error-pc.webp', alt: '09SCM 수납처리 오류 PC 화면', ratio: 936 / 1144 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-collect-error-mobile.webp', alt: '09SCM 수납처리 오류 모바일 화면', ratio: 880 / 1432 }
       ],
-      shotCaption: '09SCM 수납처리 오류 팝업 (PC / 모바일)',
+      shotCaption: '09SCM 수납처리 오류 화면 (PC / 모바일)',
       html:
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>결제금액이 1원 이상의 정수가 아님</td><td>&quot;결제금액은 1원 이상의 숫자로 입력해주세요.&quot;</td></tr>' +
@@ -2414,7 +2414,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         { device: 'pc', src: '../assets/img/partner/frm-fee-detail-pc.webp', alt: '09SCM 처리정보 팝업 PC 화면', ratio: 936 / 592 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-detail-mobile.webp', alt: '09SCM 처리정보 팝업 모바일 화면', ratio: 880 / 710 }
       ],
-      shotCaption: '09SCM 처리정보 팝업 (PC / 모바일)',
+      shotCaption: '09SCM 처리정보 화면 (PC / 모바일)',
       html: '<p>수기완납 건의 [처리정보]를 누르면 수납방법과 메모를 볼 수 있어요.</p>'
     }
   ],
@@ -3088,7 +3088,7 @@ window.GUIDE_CONTENT['system-member'] = {
         { device: 'pc', src: '../assets/img/partner/sys-member-terms-pc.webp', alt: '09SCM 마케팅정보 수신동의 보기 PC 팝업', ratio: 936 / 1146 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-terms-mobile.webp', alt: '09SCM 마케팅정보 수신동의 보기 모바일 팝업', ratio: 880 / 1264 }
       ],
-      shotCaption: '09SCM 마케팅정보 수신동의 보기 팝업 (PC / 모바일)',
+      shotCaption: '09SCM 마케팅정보 수신동의 보기 화면 (PC / 모바일)',
       html: '<p>[보기]를 누르면 약관 내용을 팝업으로 볼 수 있어요. 바꿀 수 있는 항목은 마케팅정보 수신동의[선택]뿐이에요. 동의 여부를 바꾸면 [저장]이 활성화돼요.</p>'
     },
     {
@@ -3201,7 +3201,7 @@ window.GUIDE_CONTENT['system-notification'] = {
             { device: 'pc', src: '../assets/img/partner/sys-noti-charge-pc.webp', alt: '09SCM 알림톡 충전 팝업 PC 화면', ratio: 1056 / 1504 },
             { device: 'mobile', src: '../assets/img/partner/sys-noti-charge-mobile.webp', alt: '09SCM 알림톡 충전 팝업 모바일 화면', ratio: 880 / 1602 }
           ],
-          shotCaption: '09SCM 알림톡 충전 팝업 (PC / 모바일)',
+          shotCaption: '09SCM 알림톡 충전 화면 (PC / 모바일)',
           html:
             '<p>[충전하기]를 누르면 충전 팝업이 열려요.</p>' +
             '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -3268,7 +3268,7 @@ window.GUIDE_CONTENT['system-notification'] = {
         '</ul>',
       steps:
         '<h3>브라우저 알림 상태</h3>' +
-        '<div class="table-wrap"><table><thead><tr><th>상태</th><th>설명</th></tr></thead><tbody>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>허용됨</td><td>이 기기·브라우저에서 푸시 알림을 받을 수 있음</td></tr>' +
           '<tr><td>차단됨</td><td>브라우저에서 알림을 막아 둔 상태, [허용 방법 보기]로 방법 확인</td></tr>' +
           '<tr><td>설정 안 함</td><td>아직 허용 여부를 정하지 않은 상태</td></tr>' +
@@ -3300,7 +3300,7 @@ window.GUIDE_CONTENT['system-notification'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-push-pc.webp', alt: '09SCM 브라우저 알림 허용 방법 PC 화면', ratio: 936 / 736 }
           ],
-          shotCaption: '09SCM 브라우저 알림 허용 방법 팝업',
+          shotCaption: '09SCM 브라우저 알림 허용 방법 화면',
           html:
             '<p>[허용 방법 보기]를 누르면 기기별 허용 방법이 나와요.</p>' +
             '<ul>' +
@@ -3331,7 +3331,7 @@ window.GUIDE_CONTENT['system-notification'] = {
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-center-pc.webp', alt: '09SCM 알림센터 PC 화면', ratio: 896 / 1188 }
       ],
-      shotCaption: '09SCM 알림센터 팝업',
+      shotCaption: '09SCM 알림센터 화면',
       overview:
         '<p>상단의 벨 아이콘을 누르면 열리는 알림 모음이에요. 시스템 알림 설정에서 켜 둔 알림이 최신순으로 쌓여요.</p>' +
         '<ul>' +
@@ -3357,7 +3357,7 @@ window.GUIDE_CONTENT['system-notification'] = {
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-center-empty-pc.webp', alt: '09SCM 알림센터 비어 있음 PC 화면', ratio: 896 / 518 }
           ],
-          shotCaption: '09SCM 알림센터 비어 있음 팝업',
+          shotCaption: '09SCM 알림센터 비어 있음 화면',
           html: '<p>모든 알림을 확인하면 알림센터가 비어 있는 상태로 보여요. 새 알림이 생기면 다시 쌓여요.</p>'
         }
       ],
