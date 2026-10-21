@@ -947,7 +947,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
     },
     {
       "id": "status",
-      "label": "처리상태 바꾸기",
+      "label": "처리상태 변경하기",
       "shots": [
         {
           "device": "pc",
@@ -1138,7 +1138,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
   screens: [
     {
       id: 'chat-link',
-      label: '오픈채팅방 연동',
+      label: '오픈채팅방 연동하기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/chat-link-pc.webp', alt: '09SCM 오픈채팅방 연동 PC 화면', ratio: 0.96 },
         { device: 'mobile', src: '../assets/img/partner/chat-link-mobile.webp', alt: '09SCM 오픈채팅방 연동 모바일 화면', ratio: 0.3667 }
@@ -1232,7 +1232,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
     },
     {
       id: 'chat-fail',
-      label: '매칭 실패 건 처리',
+      label: '매칭 실패 건 처리하기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/chat-list-pc.webp', alt: '09SCM 매칭 실패 건 PC 화면', ratio: 0.96 },
         { device: 'mobile', src: '../assets/img/partner/chat-list-mobile.webp', alt: '09SCM 매칭 실패 건 모바일 화면', ratio: 0.3667 }
@@ -1733,7 +1733,7 @@ window.GUIDE_CONTENT['retail-settings'] = {
   screens: [
     {
       id: 'settings-basic',
-      label: '기본정보',
+      label: '기본정보 설정하기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/settings-basic-pc.webp', alt: '09SCM 소매설정 기본정보 PC 화면', ratio: 2880 / 3910 },
         { device: 'mobile', src: '../assets/img/partner/settings-basic-mobile.webp', alt: '09SCM 소매설정 기본정보 모바일 화면', ratio: 880 / 4640 }
@@ -1828,7 +1828,7 @@ window.GUIDE_CONTENT['retail-settings'] = {
     },
     {
       id: 'settings-terms',
-      label: '이용약관·개인정보처리방침',
+      label: '이용약관·개인정보처리방침 설정하기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/settings-terms-pc.webp', alt: '09SCM 이용약관·개인정보처리방침 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/settings-terms-mobile.webp', alt: '09SCM 이용약관·개인정보처리방침 모바일 화면', ratio: 880 / 2400 }
@@ -3119,7 +3119,7 @@ window.GUIDE_CONTENT['system-notification'] = {
   screens: [
     {
       id: 'noti-alimtalk',
-      label: '소매몰 알림톡 설정',
+      label: '소매몰 알림톡 설정하기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-noti-main-pc.webp', alt: '09SCM 소매몰 알림톡 설정 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/sys-noti-main-mobile.webp', alt: '09SCM 소매몰 알림톡 설정 모바일 화면', ratio: 880 / 2400 }
@@ -3253,7 +3253,7 @@ window.GUIDE_CONTENT['system-notification'] = {
     },
     {
       id: 'noti-system',
-      label: '시스템 알림 설정',
+      label: '시스템 알림 설정하기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-noti-system-pc.webp', alt: '09SCM 시스템 알림 설정 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/sys-noti-system-mobile.webp', alt: '09SCM 시스템 알림 설정 모바일 화면', ratio: 880 / 2400 }
@@ -3327,7 +3327,7 @@ window.GUIDE_CONTENT['system-notification'] = {
     },
     {
       id: 'noti-center',
-      label: '알림센터',
+      label: '알림센터 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-center-pc.webp', alt: '09SCM 알림센터 PC 화면', ratio: 896 / 1188 }
       ],
