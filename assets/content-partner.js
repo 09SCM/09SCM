@@ -4313,10 +4313,9 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
     {
       title: '지역을 추가할 때',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-region-pop-pc.webp', alt: '09SCM 지역 추가 팝업 PC 화면', ratio: 1.3441 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-region-pop-mobile.webp', alt: '09SCM 지역 추가 팝업 모바일 화면', ratio: 1.1828 }
+        { device: 'pc', src: '../assets/img/partner/wh-set-region-pop-pc.webp', alt: '09SCM 지역 추가 팝업 PC 화면', ratio: 1.3441 }
       ],
-      shotCaption: '09SCM 지역 추가 팝업 화면 (PC / 모바일)',
+      shotCaption: '09SCM 지역 추가 팝업 화면',
       html:
         '<ol>' +
           '<li><b>[지역 추가] 누르기</b> 지역 추가 팝업이 열려요.</li>' +
@@ -4329,10 +4328,9 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
     {
       title: '지역을 추가하지 못할 때',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-region-error-pc.webp', alt: '09SCM 지역 추가 오류 PC 화면', ratio: 1.2315 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-region-error-mobile.webp', alt: '09SCM 지역 추가 오류 모바일 화면', ratio: 1.0837 }
+        { device: 'pc', src: '../assets/img/partner/wh-set-region-error-pc.webp', alt: '09SCM 지역 추가 오류 PC 화면', ratio: 1.2315 }
       ],
-      shotCaption: '09SCM 지역 추가 오류 화면 (PC / 모바일)',
+      shotCaption: '09SCM 지역 추가 오류 화면',
       html:
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>시·도를 고르지 않음</td><td>&quot;시·도를 선택해주세요.&quot;</td></tr>' +
