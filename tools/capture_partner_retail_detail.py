@@ -1,4 +1,4 @@
-# 소매관리 > 주문목록 > 주문 상세 이용가이드 캡처 (mock/partner.html -> assets/img/partner/order-detail*.webp)
+# 소매관리 > 주문목록 > 주문 상세 이용가이드 캡처(대표·배달 케이스. 결제대기·노쇼후보·취소요청·처리완료 케이스는 capture_partner_case_blocks.py의 섹션·하단 바 크롭) (mock/partner.html -> assets/img/partner/order-detail*.webp)
 # 사용: python3 tools/capture_partner_retail_detail.py
 # 규격: PC 1440 폭(LNB 제외, 하단 고정바 전체 폭, 화면 전체 높이), 모바일 440 폭(화면 전체 높이), 2배 해상도
 # 계정: bonsa(본사)
@@ -16,10 +16,6 @@ ONLY = set(os.environ.get('ONLY', '').split(',')) - {''}
 SHOTS = {
     'order-detail': 'RO20260919101',
     'order-detail-delivery': 'RO20260917003',
-    'order-detail-unpaid': 'RO20260919102',
-    'order-detail-noshow': 'RO20260918003',
-    'order-detail-claim': 'RO20260919001',
-    'order-detail-done': 'RO20260919002',
 }
 
 def save(png, name):

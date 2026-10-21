@@ -89,9 +89,19 @@
   /* 화면(screens) 단위 콘텐츠: 화면마다 캡처 + 한눈에/이렇게/상황별로(/안 될 때/더 자세히)를 가진다 */
   function demote(html) { return String(html).replace(/<h3/g, '<h4').replace(/<\/h3>/g, '</h4>'); }
 
+  // 상황별 항목 한 건: { title, shots, shotCaption, html } 또는 { title, blocks: [{ shots, shotCaption, html }, ...] }
+  // blocks는 한 케이스 안에서 이미지와 설명을 여러 쌍으로 나눠 보여줄 때 쓴다(예: 섹션 캡처 + 하단 바 캡처)
+  function caseHTML(it) {
+    var head = it.title ? '<h3>' + it.title + '</h3>' : '';
+    if (Array.isArray(it.blocks)) {
+      return head + it.blocks.map(function (b) { return shotsHTML(b.shots, b.shotCaption) + (b.html || ''); }).join('');
+    }
+    return head + shotsHTML(it.shots, it.shotCaption) + (it.html || '');
+  }
+
   function flatCases(v) {
     if (!Array.isArray(v)) return v;
-    return v.map(function (it) { return (it.title ? '<h3>' + it.title + '</h3>' : '') + shotsHTML(it.shots, it.shotCaption) + (it.html || ''); }).join('');
+    return v.map(caseHTML).join('');
   }
 
   function screenParts(scr) {
@@ -99,7 +109,7 @@
     SCREEN_SECTIONS.forEach(function (s) {
       var v = scr[s.id];
       if (Array.isArray(v)) { // 상황별 항목: [{ title, shots, shotCaption, html }]
-        v = v.map(function (it) { return (it.title ? '<h3>' + it.title + '</h3>' : '') + shotsHTML(it.shots, it.shotCaption) + (it.html || ''); }).join('');
+        v = v.map(caseHTML).join('');
       }
       if (v) parts.push({ id: scr.id + '-' + s.id, label: s.label, html: v });
     });
