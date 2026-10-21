@@ -57,15 +57,5 @@ with sync_playwright() as p:
         ctx, page = fresh()
         page.click('[data-member-detail-tab="memo"]'); page.wait_for_timeout(300)
         fit_shot(page, w, 'member-memo-' + label, 700); ctx.close()
-        # 휴대폰번호 변경
-        ctx, page = fresh(); phone_flow(page); fit_shot(page, w, 'member-phone-' + label); ctx.close()
-        # 저장 오류(이름 비움)
-        ctx, page = fresh()
-        page.fill('#memberNameInput', ''); page.click('#memberBasicSaveBtn'); page.wait_for_timeout(300)
-        fit_shot(page, w, 'member-error-' + label); ctx.close()
-        # 이용상태 변경(하단 바 클로즈업)
-        ctx, page = fresh()
-        page.check('input[name="memberUsageStatus"][value="이용제한"]'); page.wait_for_timeout(200)
-        r = page.evaluate("(() => { const r = document.querySelector('.market-buybar').getBoundingClientRect(); return {y: r.top, h: r.height}; })()")
-        save(page.screenshot(clip={'x': 0, 'y': r['y'], 'width': w, 'height': r['h']}), 'member-usage-' + label); ctx.close()
+        # 휴대폰번호 변경·저장 오류·하단 바(이용상태 변경)는 섹션 크롭으로 tools/capture_partner_case_sections.py 에서 촬영한다
     b.close()

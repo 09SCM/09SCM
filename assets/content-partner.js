@@ -241,13 +241,13 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-register-error-pc.webp",
               "alt": "09SCM 소매정보등록 입력 오류 PC 화면",
-              "ratio": 8.956
+              "ratio": 5.5843
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-register-error-mobile.webp",
               "alt": "09SCM 소매정보등록 입력 오류 모바일 화면",
-              "ratio": 2.7673
+              "ratio": 1.7255
             }
           ],
           "shotCaption": "09SCM 소매정보등록 입력 오류 화면 (PC / 모바일)",
@@ -503,8 +503,8 @@ window.GUIDE_CONTENT['retail-product-category'] = {
     {
       title: '연동상품이 있으면',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/cat-locked-pc.webp', alt: '09SCM 삭제할 수 없는 카테고리 PC 화면', ratio: 1276 / 1034 },
-        { device: 'mobile', src: '../assets/img/partner/cat-locked-mobile.webp', alt: '09SCM 삭제할 수 없는 카테고리 모바일 화면', ratio: 716 / 1034 }
+        { device: 'pc', src: '../assets/img/partner/cat-locked-pc.webp', alt: '09SCM 삭제할 수 없는 카테고리 PC 화면', ratio: 1.1094},
+        { device: 'mobile', src: '../assets/img/partner/cat-locked-mobile.webp', alt: '09SCM 삭제할 수 없는 카테고리 모바일 화면', ratio: 0.678}
       ],
       shotCaption: '09SCM 삭제할 수 없는 카테고리 화면 (PC / 모바일)',
       html: '<p>연동상품이 1건 이상인 카테고리는 [삭제]가 흐리게 표시되고 누를 수 없어요. 해당 상품들의 소매 카테고리를 먼저 다른 카테고리로 바꿔주세요.</p>'
@@ -520,8 +520,8 @@ window.GUIDE_CONTENT['retail-product-category'] = {
     {
       title: '2차 카테고리가 없으면',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/cat-nosub-pc.webp', alt: '09SCM 2차 카테고리 없음 PC 화면', ratio: 1440 / 1500 },
-        { device: 'mobile', src: '../assets/img/partner/cat-nosub-mobile.webp', alt: '09SCM 2차 카테고리 없음 모바일 화면', ratio: 440 / 1200 }
+        { device: 'pc', src: '../assets/img/partner/cat-nosub-pc.webp', alt: '09SCM 2차 카테고리 없음 PC 화면', ratio: 1.8094},
+        { device: 'mobile', src: '../assets/img/partner/cat-nosub-mobile.webp', alt: '09SCM 2차 카테고리 없음 모바일 화면', ratio: 0.4301}
       ],
       shotCaption: '09SCM 2차 카테고리 없음 화면 (PC / 모바일)',
       html: '<p>선택한 1차 카테고리 아래에 2차 카테고리가 없으면 &quot;등록된 2차 카테고리가 없습니다.&quot;가 나와요. 2차 영역의 [+ 추가]로 바로 만들 수 있어요.</p>'
@@ -529,8 +529,8 @@ window.GUIDE_CONTENT['retail-product-category'] = {
     {
       title: '카테고리가 아직 없으면',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/cat-empty-pc.webp', alt: '09SCM 카테고리 없음 PC 화면', ratio: 1440 / 1500 },
-        { device: 'mobile', src: '../assets/img/partner/cat-empty-mobile.webp', alt: '09SCM 카테고리 없음 모바일 화면', ratio: 440 / 1200 }
+        { device: 'pc', src: '../assets/img/partner/cat-empty-pc.webp', alt: '09SCM 카테고리 없음 PC 화면', ratio: 4.5206},
+        { device: 'mobile', src: '../assets/img/partner/cat-empty-mobile.webp', alt: '09SCM 카테고리 없음 모바일 화면', ratio: 1.0209}
       ],
       shotCaption: '09SCM 카테고리 없음 화면 (PC / 모바일)',
       html: '<p>1차 카테고리가 하나도 없으면 &quot;1차 카테고리를 먼저 등록해주세요.&quot;가 나와요. 2차 영역의 [+ 추가]는 1차 카테고리를 만든 뒤에 누를 수 있어요.</p>'
@@ -573,8 +573,8 @@ window.GUIDE_CONTENT['retail-product-display'] = {
     {
       title: '진열한 상품이 없으면',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/display-none-pc.webp', alt: '09SCM 진열 상품 없음 PC 화면', ratio: 1440 / 1500 },
-        { device: 'mobile', src: '../assets/img/partner/display-none-mobile.webp', alt: '09SCM 진열 상품 없음 모바일 화면', ratio: 440 / 1200 }
+        { device: 'pc', src: '../assets/img/partner/display-none-pc.webp', alt: '09SCM 진열 상품 없음 PC 화면', ratio: 3.7375},
+        { device: 'mobile', src: '../assets/img/partner/display-none-mobile.webp', alt: '09SCM 진열 상품 없음 모바일 화면', ratio: 0.8194}
       ],
       shotCaption: '09SCM 진열 상품 없음 화면 (PC / 모바일)',
       html: '<p>메인상품 영역에 &quot;메인에 진열된 상품이 없습니다.&quot;가 나와요. 왼쪽에서 [추가 →]로 상품을 옮겨주세요.</p>'
@@ -582,8 +582,8 @@ window.GUIDE_CONTENT['retail-product-display'] = {
     {
       title: '추가할 수 있는 상품이 없으면',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/display-all-pc.webp', alt: '09SCM 추가할 상품 없음 PC 화면', ratio: 1440 / 1500 },
-        { device: 'mobile', src: '../assets/img/partner/display-all-mobile.webp', alt: '09SCM 추가할 상품 없음 모바일 화면', ratio: 440 / 1200 }
+        { device: 'pc', src: '../assets/img/partner/display-all-pc.webp', alt: '09SCM 추가할 상품 없음 PC 화면', ratio: 3.7375},
+        { device: 'mobile', src: '../assets/img/partner/display-all-mobile.webp', alt: '09SCM 추가할 상품 없음 모바일 화면', ratio: 0.8194}
       ],
       shotCaption: '09SCM 추가할 상품 없음 화면 (PC / 모바일)',
       html: '<p>전체 소매상품 영역에 &quot;추가할 수 있는 상품이 없습니다.&quot;가 나와요. 노출 중인 소매상품을 모두 진열했거나, 노출 중인 상품이 없는 상태예요.</p>'
@@ -1544,8 +1544,8 @@ window.GUIDE_CONTENT['retail-member'] = {
         {
           title: '하단 고정 바 (이용상태 변경·탈퇴 처리)',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/member-usage-pc.webp', alt: '09SCM 이용상태 변경 PC 화면', ratio: 2880 / 134 },
-            { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 880 / 234 }
+            { device: 'pc', src: '../assets/img/partner/member-usage-pc.webp', alt: '09SCM 이용상태 변경 PC 화면', ratio: 15.1579},
+            { device: 'mobile', src: '../assets/img/partner/member-usage-mobile.webp', alt: '09SCM 이용상태 변경 모바일 화면', ratio: 3.0345}
           ],
           shotCaption: '09SCM 이용상태 변경 화면 (PC / 모바일)',
           html:
@@ -2484,8 +2484,8 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         {
           title: '가맹점 합산 매출을 보려면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-sales-franchise-pc.webp', alt: '09SCM 가맹점 합산 매출 PC 화면', ratio: 2880 / 3000 },
-            { device: 'mobile', src: '../assets/img/partner/frm-sales-franchise-mobile.webp', alt: '09SCM 가맹점 합산 매출 모바일 화면', ratio: 880 / 2400 }
+            { device: 'pc', src: '../assets/img/partner/frm-sales-franchise-pc.webp', alt: '09SCM 가맹점 합산 매출 PC 화면', ratio: 5.2741},
+            { device: 'mobile', src: '../assets/img/partner/frm-sales-franchise-mobile.webp', alt: '09SCM 가맹점 합산 매출 모바일 화면', ratio: 1.2644}
           ],
           shotCaption: '09SCM 가맹점 합산 매출 화면 (PC / 모바일)',
           html: '<p>[가맹점]을 누르면 소속 가맹점 전체의 합산 매출을 보여줘요.</p>'
@@ -2493,8 +2493,8 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         {
           title: '소매 또는 도매 매출만 보려면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-sales-trade-pc.webp', alt: '09SCM 소매매출 필터 PC 화면', ratio: 2880 / 3000 },
-            { device: 'mobile', src: '../assets/img/partner/frm-sales-trade-mobile.webp', alt: '09SCM 소매매출 필터 모바일 화면', ratio: 880 / 2400 }
+            { device: 'pc', src: '../assets/img/partner/frm-sales-trade-pc.webp', alt: '09SCM 소매매출 필터 PC 화면', ratio: 3.6419},
+            { device: 'mobile', src: '../assets/img/partner/frm-sales-trade-mobile.webp', alt: '09SCM 소매매출 필터 모바일 화면', ratio: 0.9382}
           ],
           shotCaption: '09SCM 소매매출 필터 화면 (PC / 모바일)',
           html: '<p>[소매매출] 또는 [도매매출]을 누르면 해당 거래만 집계해요.</p>'
@@ -2502,8 +2502,8 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         {
           title: '기간을 직접 선택하면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-sales-custom-pc.webp', alt: '09SCM 기간 선택 PC 화면', ratio: 2880 / 3000 },
-            { device: 'mobile', src: '../assets/img/partner/frm-sales-custom-mobile.webp', alt: '09SCM 기간 선택 모바일 화면', ratio: 880 / 2400 }
+            { device: 'pc', src: '../assets/img/partner/frm-sales-custom-pc.webp', alt: '09SCM 기간 선택 PC 화면', ratio: 3.2144},
+            { device: 'mobile', src: '../assets/img/partner/frm-sales-custom-mobile.webp', alt: '09SCM 기간 선택 모바일 화면', ratio: 0.756}
           ],
           shotCaption: '09SCM 기간 선택 화면 (PC / 모바일)',
           html: '<p>[기간]을 누르면 시작일과 종료일을 고를 수 있어요. 최대 6개월까지 선택할 수 있어서, 종료일은 시작일 기준 6개월 안으로만 선택돼요.</p>'
@@ -2511,8 +2511,8 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         {
           title: '월별로 보려면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-sales-monthly-pc.webp', alt: '09SCM 월별 매출 추이 PC 화면', ratio: 2880 / 3000 },
-            { device: 'mobile', src: '../assets/img/partner/frm-sales-monthly-mobile.webp', alt: '09SCM 월별 매출 추이 모바일 화면', ratio: 880 / 2400 }
+            { device: 'pc', src: '../assets/img/partner/frm-sales-monthly-pc.webp', alt: '09SCM 월별 매출 추이 PC 화면', ratio: 2.7332},
+            { device: 'mobile', src: '../assets/img/partner/frm-sales-monthly-mobile.webp', alt: '09SCM 월별 매출 추이 모바일 화면', ratio: 0.8163}
           ],
           shotCaption: '09SCM 월별 매출 추이 화면 (PC / 모바일)',
           html: '<p>[월별] 탭을 누르면 그래프와 표가 월 단위로 바뀌어요. 요약 금액은 선택한 기간 전체 기준으로 그대로 유지돼요.</p>'
@@ -2520,8 +2520,8 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         {
           title: '선택한 기간에 매출이 없으면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-sales-today-pc.webp', alt: '09SCM 매출 없음 PC 화면', ratio: 2880 / 3000 },
-            { device: 'mobile', src: '../assets/img/partner/frm-sales-today-mobile.webp', alt: '09SCM 매출 없음 모바일 화면', ratio: 880 / 2400 }
+            { device: 'pc', src: '../assets/img/partner/frm-sales-today-pc.webp', alt: '09SCM 매출 없음 PC 화면', ratio: 2.0},
+            { device: 'mobile', src: '../assets/img/partner/frm-sales-today-mobile.webp', alt: '09SCM 매출 없음 모바일 화면', ratio: 0.5446}
           ],
           shotCaption: '09SCM 매출 없음 화면 (PC / 모바일)',
           html: '<p>해당 기간에 주문이 없으면 금액은 0원으로 나와요.</p>'
@@ -2645,8 +2645,8 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         {
           title: '미노출 공지만 모아보려면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-notice-filter-pc.webp', alt: '09SCM 미노출 공지 PC 화면', ratio: 2880 / 3000 },
-            { device: 'mobile', src: '../assets/img/partner/frm-notice-filter-mobile.webp', alt: '09SCM 미노출 공지 모바일 화면', ratio: 880 / 2400 }
+            { device: 'pc', src: '../assets/img/partner/frm-notice-filter-pc.webp', alt: '09SCM 미노출 공지 PC 화면', ratio: 3.9777},
+            { device: 'mobile', src: '../assets/img/partner/frm-notice-filter-mobile.webp', alt: '09SCM 미노출 공지 모바일 화면', ratio: 0.9865}
           ],
           shotCaption: '09SCM 미노출 공지 화면 (PC / 모바일)',
           html: '<p>노출여부를 [미노출]로 고르면 가맹점에 보이지 않는 공지만 볼 수 있어요.</p>'
@@ -2710,8 +2710,8 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         {
           title: '올린 공지를 수정하면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-notice-edit-pc.webp', alt: '09SCM 공지사항 수정 PC 화면', ratio: 2880 / 2300 },
-            { device: 'mobile', src: '../assets/img/partner/frm-notice-edit-mobile.webp', alt: '09SCM 공지사항 수정 모바일 화면', ratio: 880 / 3000 }
+            { device: 'pc', src: '../assets/img/partner/frm-notice-edit-pc.webp', alt: '09SCM 공지사항 수정 PC 화면', ratio: 1.7345},
+            { device: 'mobile', src: '../assets/img/partner/frm-notice-edit-mobile.webp', alt: '09SCM 공지사항 수정 모바일 화면', ratio: 0.5128}
           ],
           shotCaption: '09SCM 공지사항 수정 화면 (PC / 모바일)',
           html: '<p>수정 화면에는 올린 내용이 채워져 있고, 첨부된 파일은 파일마다 [삭제]할 수 있어요.</p>'
@@ -2719,8 +2719,8 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         {
           title: '필수 항목을 비우면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-notice-form-error-pc.webp', alt: '09SCM 공지사항 등록 오류 PC 화면', ratio: 2880 / 2300 },
-            { device: 'mobile', src: '../assets/img/partner/frm-notice-form-error-mobile.webp', alt: '09SCM 공지사항 등록 오류 모바일 화면', ratio: 880 / 3000 }
+            { device: 'pc', src: '../assets/img/partner/frm-notice-form-error-pc.webp', alt: '09SCM 공지사항 등록 오류 PC 화면', ratio: 1.8374},
+            { device: 'mobile', src: '../assets/img/partner/frm-notice-form-error-mobile.webp', alt: '09SCM 공지사항 등록 오류 모바일 화면', ratio: 0.5419}
           ],
           shotCaption: '09SCM 필수 항목 미입력 화면 (PC / 모바일)',
           html:
@@ -2735,8 +2735,8 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         {
           title: '첨부파일을 추가하지 못하면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/frm-notice-attach-error-pc.webp', alt: '09SCM 공지사항 첨부파일 오류 PC 화면', ratio: 2880 / 2300 },
-            { device: 'mobile', src: '../assets/img/partner/frm-notice-attach-error-mobile.webp', alt: '09SCM 공지사항 첨부파일 오류 모바일 화면', ratio: 880 / 3000 }
+            { device: 'pc', src: '../assets/img/partner/frm-notice-attach-error-pc.webp', alt: '09SCM 공지사항 첨부파일 오류 PC 화면', ratio: 11.7686},
+            { device: 'mobile', src: '../assets/img/partner/frm-notice-attach-error-mobile.webp', alt: '09SCM 공지사항 첨부파일 오류 모바일 화면', ratio: 3.0986}
           ],
           shotCaption: '09SCM 첨부파일 오류 화면 (PC / 모바일)',
           html:
@@ -2819,8 +2819,8 @@ window.GUIDE_CONTENT['system-notice'] = {
         {
           title: '작성자별로 고르려면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 2880 / 1010 },
-            { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 880 / 1474 }
+            { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 3.9666},
+            { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 0.7395}
           ],
           shotCaption: '09SCM 우리본사 공지 화면 (PC / 모바일)',
           html: '<p>[09SCM], [우리본사] 탭을 누르면 해당 작성자의 공지만 모아서 볼 수 있어요. 건수도 선택한 탭 기준으로 바뀌어요.</p>'
@@ -3187,8 +3187,8 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '알림톡 사용하기를 끄면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-off-pc.webp', alt: '09SCM 알림톡 사용하기 끄기 PC 화면', ratio: 2880 / 3000 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-off-mobile.webp', alt: '09SCM 알림톡 사용하기 끄기 모바일 화면', ratio: 880 / 2400 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-off-pc.webp', alt: '09SCM 알림톡 사용하기 끄기 PC 화면', ratio: 5.5409},
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-off-mobile.webp', alt: '09SCM 알림톡 사용하기 끄기 모바일 화면', ratio: 1.4618}
           ],
           shotCaption: '09SCM 알림톡 사용하기 끄기 화면 (PC / 모바일)',
           html:
@@ -3219,8 +3219,8 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '잔여 건수가 부족하면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-low-pc.webp', alt: '09SCM 잔여 건수 부족 PC 화면', ratio: 2880 / 892 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-low-mobile.webp', alt: '09SCM 잔여 건수 부족 모바일 화면', ratio: 880 / 1280 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-low-pc.webp', alt: '09SCM 잔여 건수 부족 PC 화면', ratio: 3.1366},
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-low-mobile.webp', alt: '09SCM 잔여 건수 부족 모바일 화면', ratio: 0.679}
           ],
           shotCaption: '09SCM 잔여 건수 부족 화면 (PC / 모바일)',
           html:
@@ -3236,8 +3236,8 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '발송 내역을 찾으려면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-history-pc.webp', alt: '09SCM 발송내역 PC 화면', ratio: 2880 / 2626 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-history-mobile.webp', alt: '09SCM 발송내역 모바일 화면', ratio: 880 / 7548 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-history-pc.webp', alt: '09SCM 발송내역 PC 화면', ratio: 2.831},
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-history-mobile.webp', alt: '09SCM 발송내역 모바일 화면', ratio: 0.3971}
           ],
           shotCaption: '09SCM 발송내역 화면 (PC / 모바일)',
           html: '<p>기간, 발송 메시지, 발송채널을 고르고 수신자 번호를 입력한 뒤 [검색]을 누르면 조건에 맞는 내역만 볼 수 있어요.</p>'
@@ -3289,8 +3289,8 @@ window.GUIDE_CONTENT['system-notification'] = {
         {
           title: '알림 종류를 끄려면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/sys-noti-category-pc.webp', alt: '09SCM 알림 종류 끄기 PC 화면', ratio: 2880 / 950 },
-            { device: 'mobile', src: '../assets/img/partner/sys-noti-category-mobile.webp', alt: '09SCM 알림 종류 끄기 모바일 화면', ratio: 880 / 1466 }
+            { device: 'pc', src: '../assets/img/partner/sys-noti-category-pc.webp', alt: '09SCM 알림 종류 끄기 PC 화면', ratio: 2.8087},
+            { device: 'mobile', src: '../assets/img/partner/sys-noti-category-mobile.webp', alt: '09SCM 알림 종류 끄기 모바일 화면', ratio: 0.5752}
           ],
           shotCaption: '09SCM 알림 종류 끄기 화면 (PC / 모바일)',
           html: '<p>알림 종류의 스위치를 끄면 그 종류에 속한 개별 알림이 화면에서 사라져요. 개별 알림의 설정값은 그대로 보관돼서, 다시 켜면 이전 상태로 돌아와요.</p>'

@@ -76,7 +76,7 @@ def run(device, b):
     reset(); go_menu(page, '소매관리', '상품관리')
     page.evaluate("[...document.querySelectorAll('[data-retail-register]')].find(b => b.dataset.code === 'P0305').click()"); page.wait_for_timeout(600)
     page.click('#rtlSaveBtn'); page.wait_for_timeout(400); fit_height(page, 1500 if pc else 700)
-    shot(page, 'product-register-error' + sfx, ["document.getElementById('retailFormErrorBanner')"])
+    shot(page, 'product-register-error' + sfx, ["document.querySelector('.back-link')", "document.querySelector('.card-head')", "document.getElementById('retailFormErrorBanner')"])
 
     # ---- 소매 > 상품목록 > 수정하기 > 판매가능수량을 0으로 입력하면 / 내소매상품의 보유수량을 0으로 입력하면 ----
     for src, code, field, val, name in (('own', 'P0232', 'rtlAvailableQty', '0', 'product-case-avail0'), ('retail', 'P0001', 'rtlHoldingQty', '0', 'product-case-retail0')):
@@ -117,6 +117,11 @@ def run(device, b):
     reset(); go_menu(page, '소매관리', '소매설정')
     page.fill('#rbMallName', ''); page.fill('#rbMallDisplayName', ''); page.click('#rbSaveBtn'); page.wait_for_timeout(400); fit_height(page, 1500 if pc else 700)
     shot(page, 'settings-error' + sfx, [SEC('상호정보'), SEC('픽업주소'), SEC('소매몰정보')])
+    # ---- 소매 > 회원관리 > 회원정보 상세 > 하단 고정 바(이용상태 변경·탈퇴 처리), 위쪽 28px 여백 ----
+    member_detail(); page.set_viewport_size({'width': 1440 if pc else 440, 'height': 1000}); page.wait_for_timeout(300)
+    page.check('input[name="memberUsageStatus"][value="이용제한"]'); page.mouse.move(0, 0); page.wait_for_timeout(300)
+    r = page.evaluate("(() => { const r = document.querySelector('.market-buybar').getBoundingClientRect(); return {y: r.top, h: r.height}; })()")
+    save(page.screenshot(clip={'x': 0, 'y': r['y'] - 28, 'width': page.viewport_size['width'], 'height': r['h'] + 28}), 'member-usage' + sfx)
     ctx.close()
 
 if __name__ == '__main__':
