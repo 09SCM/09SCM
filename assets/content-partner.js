@@ -1860,7 +1860,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
       id: 'list-view',
       label: '가맹점 목록 보기',
       shots: [
-        { device: 'pc', src: '../assets/img/partner/fr-list-main-pc.webp', alt: '09SCM 가맹점 목록 PC 화면', ratio: 3360 / 3000 },
+        { device: 'pc', src: '../assets/img/partner/fr-list-main-pc.webp', alt: '09SCM 가맹점 목록 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/fr-list-main-mobile.webp', alt: '09SCM 가맹점 목록 모바일 화면', ratio: 880 / 2400 }
       ],
       shotCaption: '09SCM 가맹점 목록 화면 (PC / 모바일)',
@@ -2164,7 +2164,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-wait-pc.webp', alt: '09SCM 이용대기 가맹점 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '09SCM 이용대기 가맹점 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용대기 가맹점 계정 화면 (PC / 모바일)',
           html:
             '<p>로그인하면 시스템관리만 보여요. 회원정보에서 PayApp 연동을 하고, 이용료관리에서 정기결제 카드를 등록하며 이용 시작을 준비해요. 소매몰은 접근제한 화면이 보여요.</p>'
         },
@@ -2174,7 +2174,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-b-wait-pc.webp', alt: '09SCM 이용대기 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-b-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '09SCM 이용대기 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용대기 본사 계정 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용승인], [이용불가], [삭제]가 보여요. PayApp 연동이 끝나기 전에는 [이용승인]을 누를 수 없어요. [이용불가]와 [삭제]는 연동 여부와 상관없이 쓸 수 있어요.</p>'
         },
@@ -2184,7 +2184,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-approved-user-pc.webp', alt: '09SCM 이용승인 가맹점 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-approved-user-mobile.webp', alt: '09SCM 이용승인 가맹점 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '09SCM 이용승인 가맹점 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용승인 가맹점 계정 화면 (PC / 모바일)',
           html:
             '<p>대시보드부터 모든 메뉴를 정상적으로 사용할 수 있고, 소매몰도 정상으로 열려요.</p>'
         },
@@ -2194,7 +2194,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-approved-pc.webp', alt: '09SCM 이용승인 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-approved-mobile.webp', alt: '09SCM 이용승인 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '09SCM 이용승인 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용승인 본사 계정 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용제한]만 보여요.</p>'
         },
@@ -2213,7 +2213,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-supply-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-supply-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '09SCM 이용제한 가맹점 도매공급권한 보유 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용제한 가맹점 계정 도매공급권한 보유 화면 (PC / 모바일)',
           html:
             '<p>모든 화면 맨 위에 이용제한 안내 배너가 계속 보여요. 메뉴는 그대로 보이지만 신규 행위 버튼은 흐리게 비활성으로 보이고, 주소로 직접 들어가도 막혀요. 이미 진행 중인 주문·배송·정산 처리와 시스템관리는 계속 쓸 수 있어요. 소매몰은 접근제한 화면으로 바뀌어 신규 주문을 받지 않아요.</p>'
         },
@@ -2223,7 +2223,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '09SCM 이용제한 가맹점 도매공급권한 미보유 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용제한 가맹점 계정 도매공급권한 미보유 화면 (PC / 모바일)',
           html:
             '<p>도매공급 메뉴(내 도매상품, 주문접수관리, 도매매출조회, 도매설정)가 처음부터 보이지 않아요.</p>'
         },
@@ -2247,7 +2247,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-b-restricted-pc.webp', alt: '09SCM 이용제한 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-b-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '09SCM 이용제한 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용제한 본사 계정 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용승인]과 [이용불가]가 보여요. [이용승인]으로 언제든 되돌릴 수 있어요. [이용불가]는 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수가 표시돼요.</p>'
         },
@@ -2266,7 +2266,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 로그인 PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 로그인 모바일 화면', ratio: 880 / 1800 }
           ],
-          shotCaption: '09SCM 이용불가 가맹점 로그인 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용불가 가맹점 계정 로그인 화면 (PC / 모바일)',
           html:
             '<p>아이디와 비밀번호를 맞게 입력해도 로그인이 막히고 본사로 문의하라는 안내가 나와요. 소매몰도 접근제한 화면으로 바뀌어 신규 주문을 받지 않아요.</p>'
         },
@@ -2276,7 +2276,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             { device: 'pc', src: '../assets/img/partner/fr-st-b-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-b-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
           ],
-          shotCaption: '09SCM 이용불가 가맹점 상세 화면 (PC / 모바일)',
+          shotCaption: '09SCM 이용불가 본사 계정 가맹점 상세 화면 (PC / 모바일)',
           html:
             '<p>하단 바에 [이용불가 해제]와 [삭제]가 보여요. [관리자접속]은 누를 수 없어요. [이용불가 해제]를 누르면 이용대기로 돌아가지만, 품절·미노출로 바뀐 상품은 자동으로 되돌아오지 않아요. 가맹점이 상품별로 직접 바꿔야 해요.</p>'
         },

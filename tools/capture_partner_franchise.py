@@ -36,7 +36,7 @@ def click_btn(text):
 # 본사 계정(bonsa) 화면: 이름, 메뉴, 준비 동작, 모드, 클립 인자, PC 뷰포트, 모바일 뷰포트(None이면 PC만 캡처 — 팝업(알럿)은 PC만)
 LIST_PC = (1680, 1500); DET_PC = (1440, 640); DET_MO = (440, 1000)
 STEPS = [
-    ('fr-list-main', '가맹점 목록', None, 'view', None, LIST_PC, (440, 1200)),
+    ('fr-list-main', '가맹점 목록', None, 'view', None, (1440, 1500), (440, 1200)),
     ('fr-list-remote', '가맹점 목록', seq(tab_status('이용승인'), click('[data-franchise-remote]', 0)), 'popup', None, LIST_PC, None),
     ('fr-list-delete', '가맹점 목록', seq(tab_status('이용불가'), click('[data-franchise-delete]', 0)), 'popup', None, LIST_PC, None),
     ('fr-st-approved', '가맹점 목록', open_detail('ga03'), 'view', None, DET_PC, DET_MO),
