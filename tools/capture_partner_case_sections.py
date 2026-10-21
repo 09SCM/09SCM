@@ -37,7 +37,7 @@ def fit_height(page, minh=700, maxh=4200):
     page.set_viewport_size({'width': page.viewport_size['width'], 'height': max(minh, min(maxh, h))})
     page.wait_for_timeout(300)
 
-def shot(page, name, exprs):
+def shot(page, name, exprs, keep_hover=False):
     """exprs: 각 항목이 요소(또는 요소 배열)를 돌려주는 JS 식. 모두 포함하는 영역을 한 번의 호출로 계산해 여백을 두고 자른다."""
     page.wait_for_timeout(400)
     b = page.evaluate("""(exprs) => {
@@ -49,7 +49,8 @@ def shot(page, name, exprs):
       return {x: x1, y: y1, w: x2 - x1, h: y2 - y1, n: n}; }""", exprs)
     if b['n'] == 0: raise SystemExit('영역을 찾지 못했습니다: ' + name)
     vw = page.viewport_size['width']
-    page.mouse.move(0, 0); page.wait_for_timeout(200)
+    if not keep_hover: page.mouse.move(0, 0)
+    page.wait_for_timeout(200)
     if vw < 800: x, w = 0, vw
     else: x = max(0, b['x'] - PAD); w = min(b['w'] + PAD * 2, vw - x)
     y = max(0, b['y'] - PAD)

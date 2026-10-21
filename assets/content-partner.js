@@ -187,13 +187,13 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-list-rows-pc.webp",
               "alt": "09SCM 상품목록 행 버튼 PC 화면",
-              "ratio": 2.1195
+              "ratio": 2.7923
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-list-rows-mobile.webp",
               "alt": "09SCM 상품목록 행 버튼 모바일 화면",
-              "ratio": 0.3221
+              "ratio": 0.3202
             }
           ],
           "shotCaption": "09SCM 상품목록 행 버튼 화면 (PC / 모바일)",
@@ -621,13 +621,13 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-rows-process-pc.webp",
               "alt": "09SCM 주문목록 처리 버튼 PC 화면",
-              "ratio": 1.2629
+              "ratio": 1.7219
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-list-rows-process-mobile.webp",
               "alt": "09SCM 주문목록 처리 버튼 모바일 화면",
-              "ratio": 0.2381
+              "ratio": 0.2371
             }
           ],
           "shotCaption": "09SCM 주문목록 처리 버튼 화면 (PC / 모바일)",
@@ -640,13 +640,13 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-rows-claim-pc.webp",
               "alt": "09SCM 주문목록 취소·반품 PC 화면",
-              "ratio": 2.8871
+              "ratio": 3.75
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-list-rows-claim-mobile.webp",
               "alt": "09SCM 주문목록 취소·반품 모바일 화면",
-              "ratio": 0.386
+              "ratio": 0.3833
             }
           ],
           "shotCaption": "09SCM 주문목록 취소·반품 화면 (PC / 모바일)",
@@ -659,13 +659,13 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/order-list-noshow-pc.webp",
               "alt": "09SCM 주문목록 노쇼후보 PC 화면",
-              "ratio": 3.1161
+              "ratio": 4.0206
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-list-noshow-mobile.webp",
               "alt": "09SCM 주문목록 노쇼후보 모바일 화면",
-              "ratio": 0.679
+              "ratio": 0.6707
             }
           ],
           "shotCaption": "09SCM 주문목록 노쇼후보 화면 (PC / 모바일)",
@@ -1179,8 +1179,8 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
         {
           title: '메시지가 들어오면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/chat-guide-pc.webp', alt: '09SCM 채팅주문 안내 PC 화면', ratio: 1.6552 },
-            { device: 'mobile', src: '../assets/img/partner/chat-guide-mobile.webp', alt: '09SCM 채팅주문 안내 모바일 화면', ratio: 0.2684 }
+            { device: 'pc', src: '../assets/img/partner/chat-guide-pc.webp', alt: '09SCM 채팅주문 안내 PC 화면', ratio: 1.633},
+            { device: 'mobile', src: '../assets/img/partner/chat-guide-mobile.webp', alt: '09SCM 채팅주문 안내 모바일 화면', ratio: 0.2837}
           ],
           shotCaption: '09SCM 채팅주문 안내 화면 (PC / 모바일)',
           html:
@@ -1448,8 +1448,8 @@ window.GUIDE_CONTENT['retail-member'] = {
         {
           title: '조건에 맞는 회원이 없으면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/member-empty-pc.webp', alt: '09SCM 회원 검색 결과 없음 PC 화면', ratio: 2784 / 258 },
-            { device: 'mobile', src: '../assets/img/partner/member-empty-mobile.webp', alt: '09SCM 회원 검색 결과 없음 모바일 화면', ratio: 816 / 200 }
+            { device: 'pc', src: '../assets/img/partner/member-empty-pc.webp', alt: '09SCM 회원 검색 결과 없음 PC 화면', ratio: 8.8447},
+            { device: 'mobile', src: '../assets/img/partner/member-empty-mobile.webp', alt: '09SCM 회원 검색 결과 없음 모바일 화면', ratio: 3.3333}
           ],
           shotCaption: '09SCM 회원 검색 결과 없음 화면 (PC / 모바일)',
           html: '<p>기간, 검색어, 이용상태 탭에 맞는 회원이 없으면 &quot;조건에 맞는 회원이 없습니다.&quot;가 나와요.</p>'
@@ -1791,8 +1791,8 @@ window.GUIDE_CONTENT['retail-settings'] = {
         {
           title: '수령방식을 정할 때',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/settings-pickup-pc.webp', alt: '09SCM 수령방식 PC 화면', ratio: 2880 / 290 },
-            { device: 'mobile', src: '../assets/img/partner/settings-pickup-mobile.webp', alt: '09SCM 수령방식 모바일 화면', ratio: 880 / 290 }
+            { device: 'pc', src: '../assets/img/partner/settings-pickup-pc.webp', alt: '09SCM 수령방식 PC 화면', ratio: 8.8447},
+            { device: 'mobile', src: '../assets/img/partner/settings-pickup-mobile.webp', alt: '09SCM 수령방식 모바일 화면', ratio: 2.7329}
           ],
           shotCaption: '09SCM 수령방식 화면 (PC / 모바일)',
           html:
@@ -2017,8 +2017,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: '저장이 막히면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-error-pc.webp', alt: '09SCM 회원정보 입력 오류 PC 화면', ratio: 2880 / 1088 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-error-mobile.webp', alt: '09SCM 회원정보 입력 오류 모바일 화면', ratio: 880 / 1088 }
+            { device: 'pc', src: '../assets/img/partner/fr-d-error-pc.webp', alt: '09SCM 회원정보 입력 오류 PC 화면', ratio: 2.507},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-error-mobile.webp', alt: '09SCM 회원정보 입력 오류 모바일 화면', ratio: 0.7746}
           ],
           shotCaption: '09SCM 회원정보 입력 오류 (PC / 모바일)',
           html:
@@ -2043,8 +2043,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: '법인사업자이면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 2880 / 1918 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 880 / 1954 }
+            { device: 'pc', src: '../assets/img/partner/fr-d-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 1.4369},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 0.4361}
           ],
           shotCaption: '09SCM 법인사업자 사업자 정보 (PC / 모바일)',
           html:
@@ -2053,8 +2053,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: 'PayApp 연동 전이면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-unlinked-pc.webp', alt: '09SCM PayApp 연동 전 가맹점 PC 화면', ratio: 2880 / 918 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-unlinked-mobile.webp', alt: '09SCM PayApp 연동 전 가맹점 모바일 화면', ratio: 880 / 954 }
+            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-unlinked-pc.webp', alt: '09SCM PayApp 연동 전 가맹점 PC 화면', ratio: 2.9002},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-unlinked-mobile.webp', alt: '09SCM PayApp 연동 전 가맹점 모바일 화면', ratio: 0.8644}
           ],
           shotCaption: '09SCM PayApp 연동 전 (PC / 모바일)',
           html:
@@ -2064,8 +2064,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: 'PayApp 연동이 끝났다면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-linked-pc.webp', alt: '09SCM PayApp 연동 완료 가맹점 PC 화면', ratio: 2880 / 818 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-linked-mobile.webp', alt: '09SCM PayApp 연동 완료 가맹점 모바일 화면', ratio: 880 / 818 }
+            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-linked-pc.webp', alt: '09SCM PayApp 연동 완료 가맹점 PC 화면', ratio: 3.229},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-linked-mobile.webp', alt: '09SCM PayApp 연동 완료 가맹점 모바일 화면', ratio: 0.9977}
           ],
           shotCaption: '09SCM PayApp 연동 완료 (PC / 모바일)',
           html:
@@ -2074,8 +2074,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: '개별 이용료를 적용하면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-fee-custom-pc.webp', alt: '09SCM 개별 이용료 적용 PC 화면', ratio: 2880 / 350 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-fee-custom-mobile.webp', alt: '09SCM 개별 이용료 적용 모바일 화면', ratio: 880 / 426 }
+            { device: 'pc', src: '../assets/img/partner/fr-d-fee-custom-pc.webp', alt: '09SCM 개별 이용료 적용 PC 화면', ratio: 8.1371},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-fee-custom-mobile.webp', alt: '09SCM 개별 이용료 적용 모바일 화면', ratio: 2.0657}
           ],
           shotCaption: '09SCM 개별 이용료 적용 (PC / 모바일)',
           html:
@@ -2085,8 +2085,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: '정기결제를 등록한 가맹점이면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-pay-reg-pc.webp', alt: '09SCM 정기결제 등록 가맹점 PC 화면', ratio: 2880 / 418 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-reg-mobile.webp', alt: '09SCM 정기결제 등록 가맹점 모바일 화면', ratio: 880 / 536 }
+            { device: 'pc', src: '../assets/img/partner/fr-d-pay-reg-pc.webp', alt: '09SCM 정기결제 등록 가맹점 PC 화면', ratio: 6.5622},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-reg-mobile.webp', alt: '09SCM 정기결제 등록 가맹점 모바일 화면', ratio: 1.5942}
           ],
           shotCaption: '09SCM 정기결제 등록 가맹점 (PC / 모바일)',
           html:
@@ -2095,8 +2095,8 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           title: '정기결제를 등록하지 않았다면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-pay-none-pc.webp', alt: '09SCM 정기결제 미등록 가맹점 PC 화면', ratio: 2880 / 418 },
-            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-none-mobile.webp', alt: '09SCM 정기결제 미등록 가맹점 모바일 화면', ratio: 880 / 536 }
+            { device: 'pc', src: '../assets/img/partner/fr-d-pay-none-pc.webp', alt: '09SCM 정기결제 미등록 가맹점 PC 화면', ratio: 6.5622},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-none-mobile.webp', alt: '09SCM 정기결제 미등록 가맹점 모바일 화면', ratio: 1.5942}
           ],
           shotCaption: '09SCM 정기결제 미등록 가맹점 (PC / 모바일)',
           html:
@@ -3400,13 +3400,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-list-help-pc.webp",
               "alt": "09SCM 도매상품 주문하기 공급범위 안내 PC 화면",
-              "ratio": 5.4656
+              "ratio": 5.6063
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-list-help-mobile.webp",
               "alt": "09SCM 도매상품 주문하기 공급범위 안내 모바일 화면",
-              "ratio": 1.1702
+              "ratio": 1.1957
             }
           ],
           "shotCaption": "09SCM 도매상품 주문하기 공급범위 안내 화면 (PC / 모바일)",
@@ -3581,13 +3581,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-cart-empty-pc.webp",
               "alt": "09SCM 장바구니 비어 있음 PC 화면",
-              "ratio": 4.1983
+              "ratio": 10.8702
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-cart-empty-mobile.webp",
               "alt": "09SCM 장바구니 비어 있음 모바일 화면",
-              "ratio": 1.2828
+              "ratio": 3.3588
             }
           ],
           "shotCaption": "09SCM 장바구니 비어 있음 화면 (PC / 모바일)",
@@ -3810,13 +3810,13 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-orders-rows-action-pc.webp",
               "alt": "09SCM 주문내역 처리 버튼 PC 화면",
-              "ratio": 2.232
+              "ratio": 2.1883
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-orders-rows-action-mobile.webp",
               "alt": "09SCM 주문내역 처리 버튼 모바일 화면",
-              "ratio": 0.2957
+              "ratio": 0.2918
             }
           ],
           "shotCaption": "09SCM 주문내역 처리 버튼 화면 (PC / 모바일)",
@@ -3829,13 +3829,13 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-orders-rows-claim-pc.webp",
               "alt": "09SCM 주문내역 취소·반품 PC 화면",
-              "ratio": 3.8476
+              "ratio": 3.6776
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-orders-rows-claim-mobile.webp",
               "alt": "09SCM 주문내역 취소·반품 모바일 화면",
-              "ratio": 0.4435
+              "ratio": 0.4348
             }
           ],
           "shotCaption": "09SCM 주문내역 취소·반품 화면 (PC / 모바일)",
