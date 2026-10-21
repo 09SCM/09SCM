@@ -15,7 +15,7 @@ def run(device, b):
     page.fill('#rtlChatOrderName', '못난이사과'); page.click('#rtlChatOrderDupCheckBtn'); page.wait_for_timeout(300)
     print(device, page.inner_text('#rtlChatOrderDupResult'))
     cs.fit_height(page, 1500 if pc else 700)
-    cs.shot(page, 'product-chatname-' + device, ["document.getElementById('rtlChatOrderBlock')", "document.getElementById('rtlChatOrderNameField')"])
+    cs.shot(page, 'product-chatname-' + device, ["document.querySelector('input[name=\"rtlSalesMethod\"]').closest('.form-field')", "document.getElementById('rtlChatOrderBlock')", "document.getElementById('rtlChatOrderNameField')"])
     ctx.close()
 
 if __name__ == '__main__':

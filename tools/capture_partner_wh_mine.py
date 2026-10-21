@@ -50,6 +50,8 @@ def run(device, b):
     page.fill('#regRetailQty', '30'); page.wait_for_timeout(200)
     cb.fit_height(page, 1500 if pc else 700, 6000)   # 영역이 펼쳐진 뒤 하단 고정바가 크롭 영역을 가리지 않도록 화면 높이 재조정
     cb.sec_shot(page, ['#retailSection'], 'wh-mine-reg-retail-' + device)
+    page.evaluate("document.querySelector('#regStock').closest('.form-field').id = 'c-stock'")
+    cb.sec_shot(page, ['#c-stock', '#wholesaleAvailableNote'], 'wh-mine-reg-avail-' + device)
     go('wholesale-product-register')
     page.click('#regSaveBtn'); page.wait_for_timeout(300)
     page.evaluate("window.scrollTo(0, 0)")
