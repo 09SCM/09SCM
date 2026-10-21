@@ -10111,7 +10111,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     return `
       <div class="modal-scrim" id="crModalScrim">
         <div class="modal-box">
-          <h3>${crType}요청</h3>
+          <h3>${crType} 요청</h3>
           <div class="form-grid">
             ${isTransfer ? `
             <div class="form-field">
@@ -10135,10 +10135,10 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
             </div>
           </div>
           <div class="form-error-banner" id="crModalError" style="margin-top:12px;" hidden></div>
-          <div class="field-hint" style="margin-top:8px;">${crType}요청 후에는 공급자 확인을 거쳐 처리됩니다.</div>
+          <div class="field-hint" style="margin-top:8px;">${crType} 요청 후에는 공급자 확인을 거쳐 처리됩니다.</div>
           <div class="modal-actions">
             <button type="button" class="btn-secondary" id="crModalCancelBtn">닫기</button>
-            <button type="button" class="btn-primary" id="crModalSubmitBtn">${crType}요청</button>
+            <button type="button" class="btn-primary" id="crModalSubmitBtn">${crType} 요청</button>
           </div>
         </div>
       </div>`;
@@ -10232,7 +10232,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     root.innerHTML = `
       <div class="modal-scrim" id="buyerCancelScrim">
         <div class="modal-box">
-          <h3>주문취소</h3>
+          <h3>주문 취소</h3>
           <div class="field-hint">주문번호 ${o.orderNo} 건을 취소하시겠습니까?</div>
           <div class="field-hint" style="margin-top:8px;">${hint} 취소 후에는 되돌릴 수 없습니다.</div>
           <div class="modal-actions">
@@ -11247,7 +11247,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     // 픽업/배달정보 — 배달지·요청사항은 주문 시점에 소비자가 입력한 값의 스냅샷(o.deliveryAddress/o.requestNote)이다.
     // 기본값은 회원정보의 대표배달지를 불러오지만, 소비자가 그 주문에서만 다른 배달지를 입력할 수도 있어 회원정보와
     // 다를 수 있다. 픽업 주문은 배달지가 필요 없으므로 표시하지 않는다.
-    const fulfillmentSectionTitle = o.salesMethod === 'pickup' ? '픽업 정보' : '배달 정보';
+    const fulfillmentSectionTitle = o.salesMethod === 'pickup' ? '픽업정보' : '배달정보';
     const deliveryAddress = o.deliveryAddress || null;
     const requestNote = o.requestNote || null;
     const deliveryAddressRowHTML = o.salesMethod === 'pickup' ? '' :
@@ -11283,7 +11283,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </section>
 
           <section class="form-section">
-            <h3 class="form-section-title">주문 정보</h3>
+            <h3 class="form-section-title">주문정보</h3>
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">주문번호</span><span class="detail-value">${o.orderNo}</span></div>
               <div class="detail-item"><span class="detail-label">주문일시</span><span class="detail-value">${o.createdAt}</span></div>
@@ -11293,7 +11293,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </section>
 
           <section class="form-section">
-            <h3 class="form-section-title">주문자 정보</h3>
+            <h3 class="form-section-title">주문자정보</h3>
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">주문자명</span><span class="detail-value">${escapeHtml(o.buyerName)}</span></div>
               <div class="detail-item"><span class="detail-label">휴대폰번호</span><span class="detail-value">${escapeHtml(o.buyerPhone || '-')}</span></div>
@@ -11314,7 +11314,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </section>
 
           <section class="form-section">
-            <h3 class="form-section-title">결제 정보</h3>
+            <h3 class="form-section-title">결제정보</h3>
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">결제상태</span><span class="detail-value">${paymentStatusDetailHTML(o)}</span></div>
               <div class="detail-item"><span class="detail-label">결제수단</span><span class="detail-value">${RETAIL_ORDER_PAYMETHOD_LABELS[o.paymentMethod]}</span></div>
