@@ -754,8 +754,7 @@
   /* 상태 뱃지 + 해당 상태로 전환된 일시를 한 줄로 표기 — 처리상태·결제취소·취소·반품 상태 공통 */
   .state-stamp { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; }
   .state-stamp-note { color: var(--text-secondary); }
-  .state-stamp-badges { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; }
-  @media (max-width: 860px) { .state-stamp-split { flex-direction: column; align-items: flex-start; gap: 4px; } }
+  .state-stamp > * { white-space: nowrap; }
   .noshow-warn-text { background: transparent; color: var(--error); }
   th.fs-key-col, td.fs-key-col { background: var(--key-tint); }
   td.fs-key-col { font-weight: 700; }
@@ -5965,8 +5964,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     if (o.paymentStatus !== '결제취소') return badge;
     const sub = o.refundType ? `<span class="tag refund-sub-text">${o.refundType === 'full' ? '전체환불' : '부분환불'}</span>` : '';
     const at = o.cancelReturnResolvedAt || '';
-    if (!sub && !o.paidAt) return stateStampHTML(badge, at); // 환불구분·결제완료 일시가 없는 건(입금 전 취소)은 다른 상태 뱃지처럼 한 줄 표기
-    return `<span class="state-stamp state-stamp-split"><span class="state-stamp-badges">${badge}${sub}</span>${at ? `<span>${at}</span>` : ''}${o.paidAt ? `<span class="state-stamp-note">(${o.paidAt} 결제완료)</span>` : ''}</span>`;
+    return `<span class="state-stamp">${badge}${sub}${at ? `<span>${at}</span>` : ''}${o.paidAt ? `<span class="state-stamp-note">(${o.paidAt} 결제완료)</span>` : ''}</span>`;
   }
 
   // 도매 자동 배송확정 기준일 — 배송중 전환일시. 반품반려로 배송중에 복귀한 건은 반려 일시와 비교해 더 늦은 일시를 기준으로 다시 센다.
@@ -10113,7 +10111,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     return `
       <div class="modal-scrim" id="crModalScrim">
         <div class="modal-box">
-          <h3>${crType} 요청</h3>
+          <h3>${crType}요청</h3>
           <div class="form-grid">
             ${isTransfer ? `
             <div class="form-field">
@@ -10137,10 +10135,10 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
             </div>
           </div>
           <div class="form-error-banner" id="crModalError" style="margin-top:12px;" hidden></div>
-          <div class="field-hint" style="margin-top:8px;">${crType} 요청 후에는 공급자 확인을 거쳐 처리됩니다.</div>
+          <div class="field-hint" style="margin-top:8px;">${crType}요청 후에는 공급자 확인을 거쳐 처리됩니다.</div>
           <div class="modal-actions">
             <button type="button" class="btn-secondary" id="crModalCancelBtn">닫기</button>
-            <button type="button" class="btn-primary" id="crModalSubmitBtn">${crType} 요청</button>
+            <button type="button" class="btn-primary" id="crModalSubmitBtn">${crType}요청</button>
           </div>
         </div>
       </div>`;
@@ -10234,7 +10232,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     root.innerHTML = `
       <div class="modal-scrim" id="buyerCancelScrim">
         <div class="modal-box">
-          <h3>주문 취소</h3>
+          <h3>주문취소</h3>
           <div class="field-hint">주문번호 ${o.orderNo} 건을 취소하시겠습니까?</div>
           <div class="field-hint" style="margin-top:8px;">${hint} 취소 후에는 되돌릴 수 없습니다.</div>
           <div class="modal-actions">
@@ -11249,7 +11247,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     // 픽업/배달정보 — 배달지·요청사항은 주문 시점에 소비자가 입력한 값의 스냅샷(o.deliveryAddress/o.requestNote)이다.
     // 기본값은 회원정보의 대표배달지를 불러오지만, 소비자가 그 주문에서만 다른 배달지를 입력할 수도 있어 회원정보와
     // 다를 수 있다. 픽업 주문은 배달지가 필요 없으므로 표시하지 않는다.
-    const fulfillmentSectionTitle = o.salesMethod === 'pickup' ? '픽업정보' : '배달정보';
+    const fulfillmentSectionTitle = o.salesMethod === 'pickup' ? '픽업 정보' : '배달 정보';
     const deliveryAddress = o.deliveryAddress || null;
     const requestNote = o.requestNote || null;
     const deliveryAddressRowHTML = o.salesMethod === 'pickup' ? '' :
@@ -11285,7 +11283,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </section>
 
           <section class="form-section">
-            <h3 class="form-section-title">주문정보</h3>
+            <h3 class="form-section-title">주문 정보</h3>
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">주문번호</span><span class="detail-value">${o.orderNo}</span></div>
               <div class="detail-item"><span class="detail-label">주문일시</span><span class="detail-value">${o.createdAt}</span></div>
@@ -11295,7 +11293,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </section>
 
           <section class="form-section">
-            <h3 class="form-section-title">주문자정보</h3>
+            <h3 class="form-section-title">주문자 정보</h3>
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">주문자명</span><span class="detail-value">${escapeHtml(o.buyerName)}</span></div>
               <div class="detail-item"><span class="detail-label">휴대폰번호</span><span class="detail-value">${escapeHtml(o.buyerPhone || '-')}</span></div>
@@ -11316,7 +11314,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </section>
 
           <section class="form-section">
-            <h3 class="form-section-title">결제정보</h3>
+            <h3 class="form-section-title">결제 정보</h3>
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">결제상태</span><span class="detail-value">${paymentStatusDetailHTML(o)}</span></div>
               <div class="detail-item"><span class="detail-label">결제수단</span><span class="detail-value">${RETAIL_ORDER_PAYMETHOD_LABELS[o.paymentMethod]}</span></div>

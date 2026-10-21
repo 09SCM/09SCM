@@ -181,7 +181,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
       "steps": "<h3>상품 찾기</h3><p>목록 위쪽에서 상품을 검색하고 조건별로 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>검색</td><td>상품코드 또는 상품명으로 검색 (영문 대소문자 구분 없음)</td></tr><tr><td>필터</td><td>상품출처, 소매판매상태, 소매노출여부, 채팅주문여부, 1차·2차 카테고리 선택</td></tr><tr><td>보유수량 있는 상품만 보기</td><td>보유수량이 0인 상품을 제외하고 표시</td></tr><tr><td>탭</td><td>전체, 소매등록(소매정보를 등록한 상품), 소매미등록(소매정보를 등록하지 않은 상품) 구분</td></tr><tr><td>정렬</td><td>최근등록순, 최근수정순, 보유수량 적은순 중 선택</td></tr></tbody></table></div><p>목록은 한 페이지에 20건씩 보여줘요.</p><h3>목록에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>이미지</td><td>소매정보에 등록한 대표이미지</td></tr><tr><td>상품코드</td><td>도매와 소매가 함께 쓰는 상품 고유 코드</td></tr><tr><td>상품명</td><td>소매몰에 보이는 상품 이름</td></tr><tr><td>카테고리</td><td>소매 카테고리 (소매정보 등록 전에는 &quot;-&quot;)</td></tr><tr><td>상품출처</td><td>내도매상품, 도매주문상품, 내소매상품 구분</td></tr><tr><td>소비자가/할인가</td><td>소매몰에서 구매자에게 보여주는 가격</td></tr><tr><td>보유수량</td><td>내가 보유한 전체 수량</td></tr><tr><td>판매가능수량</td><td>보유수량 중 소매몰에서 판매하도록 정한 수량 (소매몰 주문이 들어올 때마다 주문 수량만큼 감소)</td></tr><tr><td>소매판매상태</td><td>[판매중], [품절] 구분 ([품절] 상품은 소매몰에서 주문 불가)</td></tr><tr><td>소매노출여부</td><td>[노출], [미노출] 구분 ([미노출] 상품은 소매몰 상품 목록에 표시되지 않음)</td></tr><tr><td>채팅주문여부</td><td>채팅주문을 허용한 상품에 &quot;채팅주문&quot; 표시</td></tr><tr><td>등록일시</td><td>소매정보를 등록한 일시</td></tr><tr><td>수정일시</td><td>소매정보를 마지막으로 수정한 일시</td></tr><tr><td>관리</td><td>행마다 상태에 따라 노출되는 버튼</td></tr></tbody></table></div>",
       "cases": [
         {
-          "title": "행마다 보이는 버튼이 달라져요",
+          "title": "행마다 보이는 버튼이 다르면",
           "shots": [
             {
               "device": "pc",
@@ -200,15 +200,15 @@ window.GUIDE_CONTENT['retail-product-list'] = {
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>소매정보가 없는 상품</td><td>[소매정보등록]</td></tr><tr><td>소매정보가 있는 상품</td><td>[상세보기] [수정] [삭제]</td></tr><tr><td>소매정보가 있는 내소매상품</td><td>[도매상품전환] [상세보기] [수정] [삭제]</td></tr><tr><td>보유수량이 0이고 소매정보가 있는 내도매상품·도매주문상품</td><td>[상세보기] [삭제] (수정 불가)</td></tr></tbody></table></div><p>보유수량이 0이고 소매정보가 없는 상품은 소매정보를 등록할 수 없어서 버튼이 보이지 않아요. [도매상품전환]은 도매공급권한이 있는 계정에만 보이고, 보유수량이 있는 내소매상품에만 나타나요.</p>"
         },
         {
-          "title": "수량은 이렇게 움직여요",
+          "title": "수량이 바뀌면",
           "html": "<ul><li>소매몰에서 주문이 접수되면 판매가능수량과 보유수량이 주문 수량만큼 함께 줄어요.</li><li>소매 주문을 취소·반품 승인할 때 수량을 되돌릴지는 <a href=\"#retail-order-list\">주문목록</a>에서 선택해요.</li><li>내도매상품은 도매몰에서 주문이 접수되면 보유수량만 줄어요. 보유수량은 이미 소매에 배정한 판매가능수량보다 적게 고칠 수 없어요.</li><li>도매주문상품은 같은 상품을 다시 주문해 배송확정되면 보유수량이 더해져요. 이때 이미 등록한 소매정보의 내용은 바뀌지 않고 수량만 늘어요.</li></ul>"
         },
         {
-          "title": "이용상태에 따라 달라져요",
+          "title": "이용상태가 다르면",
           "html": "<p>이용제한 상태에서는 소매상품·소매정보 등록과 [도매상품전환]을 할 수 없어요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>"
         },
         {
-          "title": "도매공급권한에 따라 달라져요",
+          "title": "도매공급권한이 다르면",
           "html": "<p>[도매상품전환] 버튼은 도매공급권한이 있는 계정(본사 포함)에만 보여요. 권한이 없는 가맹점에는 보이지 않아요.</p>"
         }
       ]
@@ -235,7 +235,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
       "steps": "<ol><li><b>등록할 상품 고르기</b> 소매미등록 상품 행에서 [소매정보등록]을 눌러요.</li><li><b>정보 입력하기</b> 아래 표의 항목을 입력해요. 이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</li><li><b>저장하기</b> [저장]을 누르면 소매정보가 만들어져요. 입력한 판매가능수량이 0이면 [품절], 0보다 크면 [판매중]으로 등록돼요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품이미지*</td><td>소매몰에 보일 상품 사진 (2장 이상 10장 이하, JPG·PNG·WEBP, 한 장당 5MB 이하, 첫 번째 이미지가 대표이미지)</td></tr><tr><td>소매카테고리 1차*</td><td>내가 만든 소매 카테고리 중 선택 (카테고리가 없으면 <a href=\"#retail-product-category\">상품카테고리</a>에서 먼저 등록)</td></tr><tr><td>소매카테고리 2차</td><td>선택한 1차 카테고리 아래의 2차 카테고리 선택 (선택 입력)</td></tr><tr><td>소매상품명*</td><td>소매몰에 보일 상품 이름</td></tr><tr><td>소비자가*</td><td>구매자에게 보여줄 판매가 (1원 이상의 정수)</td></tr><tr><td>할인가</td><td>소비자가에서 할인한 판매가 (선택 입력, 1원 이상의 정수, 소비자가 이하, 할인율은 자동 계산)</td></tr><tr><td>소매노출여부</td><td>소매몰에 상품을 보일지 선택</td></tr><tr><td>판매가능수량*</td><td>소매몰에서 판매할 수량 (보유수량 이하)</td></tr><tr><td>수령방식</td><td>픽업, 배달, 픽업+배달 중 선택 (기본값은 소매설정의 기본 수령방식, 상품마다 변경 가능)</td></tr><tr><td>픽업가능 시작일*</td><td>픽업을 받을 수 있는 첫 날짜 (수령방식에 픽업이 포함될 때 입력)</td></tr><tr><td>픽업가능 종료일*</td><td>픽업을 받을 수 있는 마지막 날짜 (수령방식에 픽업이 포함될 때 입력, 시작일보다 빠를 수 없고 오늘 이후만 입력 가능, 수정 시에는 종료일을 바꾸는 경우에 한해 오늘 이후 검증)</td></tr><tr><td>채팅주문 허용</td><td>채팅주문 가능 여부 (켜면 채팅주문상품명 입력 필요)</td></tr><tr><td>채팅주문상품명*</td><td>채팅주문에서 쓰는 짧은 상품 이름 (소매상품명과 별도, 입력 후 [중복확인] 필요)</td></tr><tr><td>상품구성</td><td>상품에 포함된 구성 안내 (선택 입력)</td></tr><tr><td>1회 최대구매수량</td><td>한 번에 주문할 수 있는 최대 수량 (선택 입력)</td></tr><tr><td>원산지</td><td>상품의 원산지 (선택 입력)</td></tr><tr><td>소비기한</td><td>상품의 소비기한 안내 (선택 입력, 날짜 대신 &quot;수령 후 7일&quot;처럼 자유롭게 입력)</td></tr><tr><td>상세정보</td><td>상품 상세 설명 (선택 입력)</td></tr></tbody></table></div>",
       "cases": [
         {
-          "title": "입력에 맞지 않는 내용이 있어요",
+          "title": "입력에 맞지 않는 내용이 있으면",
           "shots": [
             {
               "device": "pc",
@@ -297,7 +297,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
       "overview": "<p>목록에서 [상세보기]를 누르면 등록한 소매정보를 조회 전용 화면으로 확인해요. 고치려면 [수정]으로 이동해요.</p>",
       "cases": [
         {
-          "title": "보유수량이 0이면 조회만 가능해요",
+          "title": "보유수량이 0이면",
           "shots": [
             {
               "device": "pc",
@@ -338,7 +338,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
       "overview": "<p>[수정]에서 등록한 소매정보를 고쳐요. 입력 항목은 <a href=\"#retail-product-list/register\">소매정보 등록하기</a>와 같고, 수정 화면에서는 소매판매상태도 고를 수 있어요.</p>",
       "cases": [
         {
-          "title": "판매상태와 노출여부가 잠기는 경우",
+          "title": "판매상태와 노출여부가 잠기면",
           "html": "<p>수량이나 기간 조건에 따라 소매판매상태와 소매노출여부가 자동으로 정해지고 잠겨요. 잠기지 않은 나머지 항목은 계속 고칠 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>보유수량이 0 (내도매상품·도매주문상품)</td><td>[품절]·[미노출]로 고정, 화면 전체 조회만 가능, 삭제만 가능 (도매 재고가 다시 생기거나 같은 상품을 다시 주문해 배송확정되면 잠금 해제)</td></tr><tr><td>보유수량이 0 (내소매상품)</td><td>소매판매상태·소매노출여부만 [품절]·[미노출]로 잠김 (수정 화면에서 보유수량을 다시 입력하면 잠금 해제)</td></tr><tr><td>판매가능수량이 0 (보유수량은 있음)</td><td>소매판매상태가 [품절]로 바뀌고 잠김 (수정 화면에서 판매가능수량을 다시 올리면 잠금 해제)</td></tr><tr><td>픽업가능종료일 경과 (수령방식에 픽업 포함)</td><td>소매노출여부가 [미노출]로 잠김, 판매상태와 나머지 항목은 수정 가능 (픽업가능 종료일을 오늘 이후로 고치면 잠금 해제, 수령방식이 배달뿐이면 해당 없음)</td></tr></tbody></table></div><p>잠금이 풀려도 소매판매상태와 소매노출여부는 자동으로 [판매중], [노출]로 바뀌지 않아요. 직접 바꿔주세요. 소매 주문이 취소·반품되어 판매가능수량이 되돌아와도 판매상태는 그대로예요.</p>"
         },
         {
@@ -418,7 +418,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
       "steps": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>내도매상품, 도매주문상품</td><td>소매정보만 삭제 (소매몰에서 사라지고 원래 도매상품과 주문 이력은 유지, 목록에 [소매정보등록] 다시 노출)</td></tr><tr><td>내소매상품</td><td>상품 자체가 삭제되어 목록에서 사라짐</td></tr></tbody></table></div><p>진행 중인 주문이 있어도 삭제할 수 있어요. 삭제하기 전 확인 창에서 &quot;삭제 시 도매·소매 주문 처리 중 혼선이 생길 수 있습니다.&quot;와 &quot;삭제한 데이터는 복구할 수 없습니다.&quot; 안내를 보여줘요. 이미 들어온 주문은 주문 당시 정보 그대로 남아서 계속 처리할 수 있어요. 소매몰에서 보이던 상품 페이지만 사라져요.</p>",
       "cases": [
         {
-          "title": "일괄삭제 확인 창",
+          "title": "일괄삭제를 확인할 때",
           "shots": [
             { "device": "pc", "src": "../assets/img/partner/product-bulk-confirm-pc.webp", "alt": "09SCM 일괄삭제 확인 PC 화면", "ratio": 1.7224 }
           ],
@@ -426,7 +426,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
           "html": "<p>체크한 건수가 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 나와요. 연동된 상품이 포함되어 있으면 그 안내도 함께 보여요.</p>"
         },
         {
-          "title": "선택 없이 일괄삭제를 눌렀어요",
+          "title": "선택 없이 일괄삭제를 누르면",
           "shots": [
             { "device": "pc", "src": "../assets/img/partner/product-bulk-none-pc.webp", "alt": "09SCM 일괄삭제 선택 안내 PC 화면", "ratio": 2.5208 }
           ],
@@ -479,7 +479,7 @@ window.GUIDE_CONTENT['retail-product-category'] = {
     '<p>핸들을 잡고 끌어서 순서를 바꿔요. 1차끼리, 같은 1차 안의 2차끼리 바꿀 수 있어요. 바꾼 순서는 바로 반영되고, 소매정보 등록·수정 화면과 상품목록 필터의 카테고리 순서에도 그대로 쓰여요.</p>',
   cases: [
     {
-      title: '연동상품이 있으면 삭제할 수 없어요',
+      title: '연동상품이 있으면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/cat-locked-pc.webp', alt: '09SCM 삭제할 수 없는 카테고리 PC 화면', ratio: 1276 / 1034 },
         { device: 'mobile', src: '../assets/img/partner/cat-locked-mobile.webp', alt: '09SCM 삭제할 수 없는 카테고리 모바일 화면', ratio: 716 / 1034 }
@@ -488,7 +488,7 @@ window.GUIDE_CONTENT['retail-product-category'] = {
       html: '<p>연동상품이 1건 이상인 카테고리는 [삭제]가 흐리게 표시되고 누를 수 없어요. 해당 상품들의 소매 카테고리를 먼저 다른 카테고리로 바꿔주세요.</p>'
     },
     {
-      title: '삭제 확인 창',
+      title: '삭제를 확인할 때',
       shots: [
         { device: 'pc', src: '../assets/img/partner/cat-delete-pc.webp', alt: '09SCM 카테고리 삭제 확인 PC 화면', ratio: 968 / 518 }
       ],
@@ -496,7 +496,7 @@ window.GUIDE_CONTENT['retail-product-category'] = {
       html: '<p>하위 2차 카테고리가 있는 1차 카테고리를 삭제하면 2차 카테고리도 함께 삭제된다는 안내가 보여요.</p>'
     },
     {
-      title: '2차 카테고리가 없어요',
+      title: '2차 카테고리가 없으면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/cat-nosub-pc.webp', alt: '09SCM 2차 카테고리 없음 PC 화면', ratio: 1440 / 1500 },
         { device: 'mobile', src: '../assets/img/partner/cat-nosub-mobile.webp', alt: '09SCM 2차 카테고리 없음 모바일 화면', ratio: 440 / 1200 }
@@ -505,7 +505,7 @@ window.GUIDE_CONTENT['retail-product-category'] = {
       html: '<p>선택한 1차 카테고리 아래에 2차 카테고리가 없으면 &quot;등록된 2차 카테고리가 없습니다.&quot;가 나와요. 2차 영역의 [+ 추가]로 바로 만들 수 있어요.</p>'
     },
     {
-      title: '아직 카테고리가 없어요',
+      title: '카테고리가 아직 없으면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/cat-empty-pc.webp', alt: '09SCM 카테고리 없음 PC 화면', ratio: 1440 / 1500 },
         { device: 'mobile', src: '../assets/img/partner/cat-empty-mobile.webp', alt: '09SCM 카테고리 없음 모바일 화면', ratio: 440 / 1200 }
@@ -549,7 +549,7 @@ window.GUIDE_CONTENT['retail-product-display'] = {
     '<p>[저장]을 눌러야 소매몰에 반영돼요. 저장하지 않고 화면을 벗어나면 추가·제외·순서 변경이 모두 반영되지 않아요.</p>',
   cases: [
     {
-      title: '진열한 상품이 없어요',
+      title: '진열한 상품이 없으면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/display-none-pc.webp', alt: '09SCM 진열 상품 없음 PC 화면', ratio: 1440 / 1500 },
         { device: 'mobile', src: '../assets/img/partner/display-none-mobile.webp', alt: '09SCM 진열 상품 없음 모바일 화면', ratio: 440 / 1200 }
@@ -558,7 +558,7 @@ window.GUIDE_CONTENT['retail-product-display'] = {
       html: '<p>메인상품 영역에 &quot;메인에 진열된 상품이 없습니다.&quot;가 나와요. 왼쪽에서 [추가 →]로 상품을 옮겨주세요.</p>'
     },
     {
-      title: '추가할 수 있는 상품이 없어요',
+      title: '추가할 수 있는 상품이 없으면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/display-all-pc.webp', alt: '09SCM 추가할 상품 없음 PC 화면', ratio: 1440 / 1500 },
         { device: 'mobile', src: '../assets/img/partner/display-all-mobile.webp', alt: '09SCM 추가할 상품 없음 모바일 화면', ratio: 440 / 1200 }
@@ -573,7 +573,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
   "screens": [
     {
       "id": "list-view",
-      "label": "주문 목록 보기",
+      "label": "주문목록 보기",
       "shots": [
         {
           "device": "pc",
@@ -593,7 +593,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
       "steps": "<h3>주문 찾기</h3><p>목록 위쪽에서 주문을 검색하고 조건별로 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>필터</td><td>주문경로(링크주문, 채팅주문), 수령방식(픽업, 배달), 결제수단(카드결제, 계좌이체, 현장결제), 기간(주문일시 기준) 선택</td></tr><tr><td>검색</td><td>주문번호, 주문자명, 회원주문 코드, 상품명으로 검색 (영문 대소문자 구분 없음, 주문 상품 중 하나라도 일치하면 조회)</td></tr><tr><td>처리 탭</td><td>전체, 주문접수, 픽업·배달대기, 배달중, 픽업·배달완료, 취소·반품요청, 취소·반품승인 구분 (탭마다 건수 표시)</td></tr><tr><td>결제 탭</td><td>전체, 결제대기, 결제완료, 결제취소, 반려(취소반려·반품반려) 구분 (처리 탭을 고른 상태에서 함께 적용)</td></tr></tbody></table></div><p>목록은 한 페이지에 20건씩 보여줘요.</p><h3>목록에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr><tr><td>주문일시</td><td>주문이 접수된 일시</td></tr><tr><td>주문자</td><td>주문한 회원의 이름</td></tr><tr><td>회원주문 코드</td><td>회원을 구분하는 숫자 4자리 코드</td></tr><tr><td>상품정보</td><td>주문 상품 이름 (여러 상품이면 &quot;○○ 외 N건&quot;)</td></tr><tr><td>주문경로</td><td>링크주문, 채팅주문 구분</td></tr><tr><td>수령방식</td><td>픽업, 배달 구분</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체, 현장결제 구분</td></tr><tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소] 구분 (결제완료 후 취소된 [결제취소] 주문은 전체환불·부분환불을 함께 표시)</td></tr><tr><td>처리상태</td><td>현재 처리 단계 (취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>취소·반품</td><td>[취소요청], [반품요청], [취소승인], [반품승인], [취소반려], [반품반려] 중 현재 상태</td></tr><tr><td>합계금액</td><td>상품금액과 배달비를 더한 총 결제금액 (배달비는 배달 주문에만 해당)</td></tr><tr><td>관리</td><td>주문 상태에 따라 노출되는 버튼</td></tr></tbody></table></div><h3>여러 주문 한 번에 처리하기</h3><p>목록에서 주문을 체크하고 처리를 고른 뒤 [일괄변경]을 누르면 선택한 주문을 한꺼번에 다음 단계로 진행해요. 현재 페이지에서 선택한 주문만 대상이고, 페이지를 옮기면 선택이 풀려요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>픽업대기</td><td>픽업 주문 중 처리상태가 [주문접수]인 주문</td></tr><tr><td>배달대기</td><td>배달 주문 중 처리상태가 [주문접수]인 주문</td></tr><tr><td>배달중</td><td>배달 주문 중 처리상태가 [배달대기]인 주문</td></tr></tbody></table></div><p>조건에 맞지 않는 주문은 변경 없이 제외돼요. 완료 처리, 취소·반품 처리, 결제확인은 일괄변경으로 할 수 없고 주문마다 처리해요.</p>",
       "cases": [
         {
-          "title": "처리상태에 따라 보이는 버튼이 달라져요",
+          "title": "처리상태가 다르면",
           "shots": [
             {
               "device": "pc",
@@ -612,7 +612,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>픽업 · 주문접수</td><td>[픽업대기] [취소처리] [상세보기] ([결제대기]인 계좌이체 주문은 [결제확인]도 표시)</td></tr><tr><td>픽업 · 픽업대기</td><td>[픽업완료] [취소처리] [상세보기] [되돌리기] ([결제대기] 주문은 [결제·픽업완료])</td></tr><tr><td>배달 · 주문접수</td><td>[배달대기] [취소처리] [상세보기]</td></tr><tr><td>배달 · 배달대기</td><td>[배달중] [취소처리] [상세보기] [되돌리기]</td></tr><tr><td>배달 · 배달중</td><td>[배달완료] [취소처리] [상세보기] [되돌리기]</td></tr><tr><td>픽업완료 · 배달완료</td><td>[반품처리] [상세보기]</td></tr></tbody></table></div><p>목록의 [결제확인]은 [주문접수] 단계의 계좌이체 주문에만 보여요. 현장결제 주문과 [픽업대기] 단계의 [결제대기] 주문은 주문 상세에서 처리해요.</p>"
         },
         {
-          "title": "취소·반품이 있는 주문은 이렇게 보여요",
+          "title": "취소·반품이 있는 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -631,7 +631,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>취소요청 · 반품요청</td><td>처리상태는 &quot;-&quot;로 비워지고 [취소처리] 또는 [반품처리]에서 승인·반려를 선택</td></tr><tr><td>취소승인 · 반품승인</td><td>처리가 끝난 주문, [상세보기]만 표시 (결제상태는 [결제취소]로 바뀌고 결제완료 후 취소된 주문은 환불구분을 함께 표시)</td></tr><tr><td>취소반려 · 반품반려</td><td>처리상태가 요청 이전 상태로 돌아가 정상 처리 흐름에 다시 포함</td></tr><tr><td>구매자 즉시취소</td><td>소매몰 주문내역에서 구매자가 [주문접수] 단계의 카드결제·결제대기 주문을 직접 취소한 경우, 판매자 승인 없이 [취소승인]으로 처리</td></tr></tbody></table></div>"
         },
         {
-          "title": "노쇼후보로 표시되는 주문",
+          "title": "노쇼후보로 표시되는 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -724,113 +724,113 @@ window.GUIDE_CONTENT['retail-order-list'] = {
         {
           "device": "pc",
           "src": "../assets/img/partner/order-detail-pc.webp",
-          "alt": "09SCM 주문상세 PC 화면",
+          "alt": "09SCM 주문 상세 PC 화면",
           "ratio": 0.96
         },
         {
           "device": "mobile",
           "src": "../assets/img/partner/order-detail-mobile.webp",
-          "alt": "09SCM 주문상세 모바일 화면",
+          "alt": "09SCM 주문 상세 모바일 화면",
           "ratio": 0.2269
         }
       ],
-      "shotCaption": "09SCM 주문상세 화면 (PC / 모바일)",
+      "shotCaption": "09SCM 주문 상세 화면 (PC / 모바일)",
       "overview": "<p>주문 한 건의 상품, 주문자, 수령 정보, 결제 정보를 모두 확인하고 처리하는 화면이에요. 목록에서 [상세보기]를 누르면 열려요.</p><p>처리 버튼은 화면 아래에 고정된 영역에 있고, 목록과 같은 조건으로 보여요. 상세에서는 [결제확인]도 처리할 수 있어요.</p>",
-      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>픽업가능기간</td><td>상품별 픽업 가능 기간 (픽업 주문만 표시)</td></tr><tr><td>구매가</td><td>주문 당시 상품 가격</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>구매가 × 수량</td></tr></tbody></table></div><h3>주문정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>주문경로</td><td>링크주문, 채팅주문 구분</td></tr><tr><td>수령방식</td><td>픽업, 배달 구분</td></tr></tbody></table></div><h3>주문자정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문자명 · 휴대폰번호 · 채팅주문 닉네임</td><td>주문한 시점의 정보</td></tr><tr><td>회원주문 코드</td><td>회원을 구분하는 숫자 4자리 코드</td></tr></tbody></table></div><p>이후에 회원정보를 고쳐도 이미 접수된 주문의 주문자명, 휴대폰번호, 닉네임은 바뀌지 않아요. 회원주문 코드와 닉네임은 링크주문 주문자에게도 똑같이 표시돼요.</p><h3>픽업정보 · 배달정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 (노쇼후보 주문은 단계 옆에 함께 표시, 완료 주문은 [반품요청] 가능 기한도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 표시하지 않음)</td></tr><tr><td>공통 픽업가능기간</td><td>주문한 상품들의 픽업가능기간이 겹치는 기간 (픽업 주문만)</td></tr><tr><td>배달지</td><td>주문할 때 구매자가 입력한 배달지 (배달 주문만)</td></tr><tr><td>요청사항</td><td>주문할 때 구매자가 남긴 요청</td></tr></tbody></table></div><p>수령방식에 따라 제목과 항목이 달라져요. 배달지와 요청사항은 주문할 때 입력한 값이라서, 이후 회원이 배송지를 바꾸거나 지워도 이미 접수된 주문에는 영향이 없어요.</p><h3>결제정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료]와 결제 일시 ([결제취소]는 취소 일시를 표시하고, 결제완료 후 취소된 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체, 현장결제</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>배달비</td><td>배달 주문에만 표시 (0원이어도 표시)</td></tr><tr><td>총 결제금액</td><td>상품금액과 배달비를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 노쇼 처리, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 요청 건만 표시)</td></tr><tr><td>공급자 처리 사유</td><td>판매자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
+      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>픽업가능기간</td><td>상품별 픽업 가능 기간 (픽업 주문만 표시)</td></tr><tr><td>구매가</td><td>주문 당시 상품 가격</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>구매가 × 수량</td></tr></tbody></table></div><h3>주문 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>주문경로</td><td>링크주문, 채팅주문 구분</td></tr><tr><td>수령방식</td><td>픽업, 배달 구분</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문자명 · 휴대폰번호 · 채팅주문 닉네임</td><td>주문한 시점의 정보</td></tr><tr><td>회원주문 코드</td><td>회원을 구분하는 숫자 4자리 코드</td></tr></tbody></table></div><p>이후에 회원정보를 고쳐도 이미 접수된 주문의 주문자명, 휴대폰번호, 닉네임은 바뀌지 않아요. 회원주문 코드와 닉네임은 링크주문 주문자에게도 똑같이 표시돼요.</p><h3>픽업 정보 · 배달 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 (노쇼후보 주문은 단계 옆에 함께 표시, 완료 주문은 [반품요청] 가능 기한도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 표시하지 않음)</td></tr><tr><td>공통 픽업가능기간</td><td>주문한 상품들의 픽업가능기간이 겹치는 기간 (픽업 주문만)</td></tr><tr><td>배달지</td><td>주문할 때 구매자가 입력한 배달지 (배달 주문만)</td></tr><tr><td>요청사항</td><td>주문할 때 구매자가 남긴 요청</td></tr></tbody></table></div><p>수령방식에 따라 제목과 항목이 달라져요. 배달지와 요청사항은 주문할 때 입력한 값이라서, 이후 회원이 배송지를 바꾸거나 지워도 이미 접수된 주문에는 영향이 없어요.</p><h3>결제 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료]와 결제 일시 ([결제취소]는 취소 일시를 표시하고, 결제완료 후 취소된 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체, 현장결제</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>배달비</td><td>배달 주문에만 표시 (0원이어도 표시)</td></tr><tr><td>총 결제금액</td><td>상품금액과 배달비를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 노쇼 처리, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 요청 건만 표시)</td></tr><tr><td>공급자 처리 사유</td><td>판매자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
       "cases": [
         {
-          "title": "배달 주문은 배달정보와 배달비가 보여요",
+          "title": "배달 주문이면",
           "shots": [
             {
               "device": "pc",
               "src": "../assets/img/partner/order-detail-delivery-pc.webp",
-              "alt": "09SCM 배달 주문상세 PC 화면",
+              "alt": "09SCM 주문 상세 배달 PC 화면",
               "ratio": 0.96
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-detail-delivery-mobile.webp",
-              "alt": "09SCM 배달 주문상세 모바일 화면",
+              "alt": "09SCM 주문 상세 배달 모바일 화면",
               "ratio": 0.2489
             }
           ],
-          "shotCaption": "09SCM 배달 주문상세 화면 (PC / 모바일)",
-          "html": "<p>상품 표에 픽업가능기간이 없고, 픽업정보 대신 배달정보와 배달지가 보여요. 결제정보에는 배달비가 따로 표시돼요. 배달 주문은 항상 카드결제이고 [결제완료] 상태로 접수돼요.</p>"
+          "shotCaption": "09SCM 주문 상세 배달 화면 (PC / 모바일)",
+          "html": "<p>상품 표에 픽업가능기간이 없고, 픽업 정보 대신 배달 정보와 배달지가 보여요. 결제 정보에는 배달비가 따로 표시돼요. 배달 주문은 항상 카드결제이고 [결제완료] 상태로 접수돼요.</p>"
         },
         {
-          "title": "결제대기 주문은 [결제확인]이 보여요",
+          "title": "결제대기 주문이면",
           "shots": [
             {
               "device": "pc",
               "src": "../assets/img/partner/order-detail-unpaid-pc.webp",
-              "alt": "09SCM 결제대기 주문상세 PC 화면",
+              "alt": "09SCM 주문 상세 결제대기 PC 화면",
               "ratio": 0.96
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-detail-unpaid-mobile.webp",
-              "alt": "09SCM 결제대기 주문상세 모바일 화면",
+              "alt": "09SCM 주문 상세 결제대기 모바일 화면",
               "ratio": 0.2202
             }
           ],
-          "shotCaption": "09SCM 결제대기 주문상세 화면 (PC / 모바일)",
+          "shotCaption": "09SCM 주문 상세 결제대기 화면 (PC / 모바일)",
           "html": "<p>계좌이체 주문이 입금 전이거나 현장결제 주문이면 결제상태가 [결제대기]이고, 아래에 [결제확인]이 보여요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>[결제확인]</td><td>결제상태만 [결제완료]로 바뀌고 처리상태는 그대로</td></tr><tr><td>완료 처리</td><td>[결제대기]인 채로 완료하면 결제도 함께 [결제완료]로 바뀜 (버튼 이름은 [결제·픽업완료])</td></tr><tr><td>현장결제</td><td>픽업할 때 결제하는 방식이라 항상 [결제대기]로 접수</td></tr><tr><td>카드결제</td><td>주문과 동시에 [결제완료]로 접수</td></tr></tbody></table></div>"
         },
         {
-          "title": "노쇼후보 주문은 안내 문구가 함께 보여요",
+          "title": "노쇼후보 주문이면",
           "shots": [
             {
               "device": "pc",
               "src": "../assets/img/partner/order-detail-noshow-pc.webp",
-              "alt": "09SCM 노쇼후보 주문상세 PC 화면",
+              "alt": "09SCM 주문 상세 노쇼후보 PC 화면",
               "ratio": 0.96
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-detail-noshow-mobile.webp",
-              "alt": "09SCM 노쇼후보 주문상세 모바일 화면",
+              "alt": "09SCM 주문 상세 노쇼후보 모바일 화면",
               "ratio": 0.2389
             }
           ],
-          "shotCaption": "09SCM 노쇼후보 주문상세 화면 (PC / 모바일)",
-          "html": "<p>픽업정보 위에 공통 픽업가능기간이 지났다는 안내가 보이고, 처리상태 옆에 <b>노쇼후보</b>가 표시돼요. 노쇼인지 확인한 뒤 [취소처리]에서 처리 주체를 노쇼처리로 선택해요. 아직 처리할 수 있는 주문이라 다음 단계 버튼도 그대로 보여요.</p>"
+          "shotCaption": "09SCM 주문 상세 노쇼후보 화면 (PC / 모바일)",
+          "html": "<p>픽업 정보 위에 공통 픽업가능기간이 지났다는 안내가 보이고, 처리상태 옆에 <b>노쇼후보</b>가 표시돼요. 노쇼인지 확인한 뒤 [취소처리]에서 처리 주체를 노쇼처리로 선택해요. 아직 처리할 수 있는 주문이라 다음 단계 버튼도 그대로 보여요.</p>"
         },
         {
-          "title": "취소·반품 요청이 들어온 주문",
+          "title": "취소·반품 요청이 들어온 주문이면",
           "shots": [
             {
               "device": "pc",
               "src": "../assets/img/partner/order-detail-claim-pc.webp",
-              "alt": "09SCM 취소요청 주문상세 PC 화면",
+              "alt": "09SCM 주문 상세 취소요청 PC 화면",
               "ratio": 0.8961
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-detail-claim-mobile.webp",
-              "alt": "09SCM 취소요청 주문상세 모바일 화면",
+              "alt": "09SCM 주문 상세 취소요청 모바일 화면",
               "ratio": 0.1981
             }
           ],
-          "shotCaption": "09SCM 취소요청 주문상세 화면 (PC / 모바일)",
+          "shotCaption": "09SCM 주문 상세 취소요청 화면 (PC / 모바일)",
           "html": "<p>취소·반품 정보 영역이 나타나고, 구매자가 남긴 요청 사유와 환불계좌를 볼 수 있어요. 처리상태는 &quot;-&quot;로 비워지고 다음단계·되돌리기 버튼 대신 [취소처리] 또는 [반품처리]만 보여요. 요청이 들어온 주문에는 [결제확인]이 보이지 않아요.</p>"
         },
         {
-          "title": "처리가 끝난 주문",
+          "title": "처리가 끝난 주문이면",
           "shots": [
             {
               "device": "pc",
               "src": "../assets/img/partner/order-detail-done-pc.webp",
-              "alt": "09SCM 처리 완료 주문상세 PC 화면",
+              "alt": "09SCM 주문 상세 처리 완료 PC 화면",
               "ratio": 0.96
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/order-detail-done-mobile.webp",
-              "alt": "09SCM 처리 완료 주문상세 모바일 화면",
-              "ratio": 0.2101
+              "alt": "09SCM 주문 상세 처리 완료 모바일 화면",
+              "ratio": 0.2127
             }
           ],
-          "shotCaption": "09SCM 처리 완료 주문상세 화면 (PC / 모바일)",
+          "shotCaption": "09SCM 주문 상세 처리 완료 화면 (PC / 모바일)",
           "html": "<p>취소·반품이 승인된 주문은 결제상태가 [결제취소]로 바뀌고, 결제완료 후 취소된 주문은 환불구분과 처리 일시, [결제완료] 일시가 함께 표시돼요. 아래에는 &quot;처리 완료된 주문입니다.&quot; 안내만 있고 처리 버튼은 없어요.</p>"
         }
       ]
@@ -1067,7 +1067,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '메시지는 이렇게 분류돼요',
+          title: '메시지가 들어오면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-guide-pc.webp', alt: '09SCM 채팅주문 안내 PC 화면', ratio: 1.6552 },
             { device: 'mobile', src: '../assets/img/partner/chat-guide-mobile.webp', alt: '09SCM 채팅주문 안내 모바일 화면', ratio: 0.2684 }
@@ -1169,7 +1169,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
         '<p>오입력·스팸은 [삭제]로 지워요. 삭제해도 주문은 만들어지지 않아요. 여러 건은 체크박스로 고른 뒤 [일괄삭제]를 눌러요.</p>',
       cases: [
         {
-          title: '매칭이 막히는 경우',
+          title: '매칭이 막히면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-match-blocked-pc.webp', alt: '09SCM 채팅주문 매칭 차단 PC 화면', ratio: 0.8027 },
             { device: 'mobile', src: '../assets/img/partner/chat-match-blocked-mobile.webp', alt: '09SCM 채팅주문 매칭 차단 모바일 화면', ratio: 0.6647 }
@@ -1190,7 +1190,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
             '</ul>'
         },
         {
-          title: '회원 확인 결과가 이렇게 나와요',
+          title: '회원을 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-match-nomember-pc.webp', alt: '09SCM 채팅주문 매칭 회원 확인 PC 화면', ratio: 0.938 },
             { device: 'mobile', src: '../assets/img/partner/chat-match-nomember-mobile.webp', alt: '09SCM 채팅주문 매칭 회원 확인 모바일 화면', ratio: 0.7652 }
@@ -1206,7 +1206,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
             '<p>조회된 회원이 [이용제한]이면 &quot;이용제한 회원 — 매칭 적용 시 주문접수가 제한됩니다&quot; 경고가 함께 나와요.</p>'
         },
         {
-          title: '삭제 확인 창',
+          title: '삭제를 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-delete-pc.webp', alt: '09SCM 매칭 실패 건 삭제 확인 PC 화면', ratio: 2.0422 }
           ],
@@ -1214,7 +1214,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
           html: '<p>[삭제]를 누르면 &quot;매칭 실패 건을 삭제하시겠습니까?&quot; 확인 창이 나와요. 삭제한 건은 복구할 수 없고 이력도 남지 않아요.</p>'
         },
         {
-          title: '일괄삭제 확인 창',
+          title: '일괄삭제를 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-bulkconfirm-pc.webp', alt: '09SCM 일괄삭제 확인 PC 화면', ratio: 2.0422 }
           ],
@@ -1222,7 +1222,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
           html: '<p>체크한 건수가 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 나와요. 현재 페이지에서 고른 건만 대상이고, 페이지를 넘기면 선택이 풀려요.</p>'
         },
         {
-          title: '선택 없이 일괄삭제를 눌렀어요',
+          title: '선택 없이 일괄삭제를 누르면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-bulkalert-pc.webp', alt: '09SCM 일괄삭제 선택 안내 PC 화면', ratio: 2.5208 }
           ],
@@ -1230,7 +1230,7 @@ window.GUIDE_CONTENT['retail-order-chat'] = {
           html: '<p>&quot;삭제할 매칭 실패 건을 선택해주세요.&quot; 안내가 나와요. 삭제할 건을 체크한 뒤 다시 눌러주세요.</p>'
         },
         {
-          title: '조건에 맞는 건이 없어요',
+          title: '조건에 맞는 건이 없으면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/chat-empty-pc.webp', alt: '09SCM 매칭 실패 건 검색 결과 없음 PC 화면', ratio: 3.2952 },
             { device: 'mobile', src: '../assets/img/partner/chat-empty-mobile.webp', alt: '09SCM 매칭 실패 건 검색 결과 없음 모바일 화면', ratio: 0.8527 }
@@ -1275,7 +1275,7 @@ window.GUIDE_CONTENT['retail-member'] = {
           '<tr><td>회원명</td><td>회원 이름</td></tr>' +
           '<tr><td>휴대폰번호</td><td>회원 아이디</td></tr>' +
           '<tr><td>이메일</td><td>회원 이메일</td></tr>' +
-          '<tr><td>회원주문 코드</td><td>회원을 식별하는 숫자 4자리 코드 (채팅주문 매칭과 링크주문 주문자정보에 사용)</td></tr>' +
+          '<tr><td>회원주문 코드</td><td>회원을 식별하는 숫자 4자리 코드 (채팅주문 매칭과 링크주문 주문자 정보에 사용)</td></tr>' +
           '<tr><td>채팅주문 닉네임</td><td>오픈채팅방에서 사용하는 닉네임 (등록하지 않은 회원은 &quot;-&quot;)</td></tr>' +
           '<tr><td>상품주문건수</td><td>결제가 완료된 주문 건수 (취소·반품이 승인된 주문은 제외)</td></tr>' +
           '<tr><td>주문금액</td><td>위 주문의 총 결제금액(상품금액 + 배달비) 합계</td></tr>' +
@@ -1294,7 +1294,7 @@ window.GUIDE_CONTENT['retail-member'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '탈퇴회원 탭',
+          title: '탈퇴회원 탭을 보면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-withdrawn-pc.webp', alt: '09SCM 탈퇴회원 PC 화면', ratio: 0.96 },
             { device: 'mobile', src: '../assets/img/partner/member-withdrawn-mobile.webp', alt: '09SCM 탈퇴회원 모바일 화면', ratio: 0.3667 }
@@ -1303,7 +1303,7 @@ window.GUIDE_CONTENT['retail-member'] = {
           html: '<p>삭제는 탈퇴회원만 할 수 있어요. 일반회원에게는 [삭제]가 없어요.</p>'
         },
         {
-          title: '탈퇴 사유 확인 창',
+          title: '탈퇴 사유를 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-reason-pc.webp', alt: '09SCM 탈퇴 사유 PC 화면', ratio: 968 / 742 },
             { device: 'mobile', src: '../assets/img/partner/member-reason-mobile.webp', alt: '09SCM 탈퇴 사유 모바일 화면', ratio: 880 / 860 }
@@ -1312,7 +1312,7 @@ window.GUIDE_CONTENT['retail-member'] = {
           html: '<p>[상세보기]를 누르면 회원명, 휴대폰번호, 탈퇴일시, 탈퇴 사유를 확인하는 창이 열려요. 읽기만 할 수 있어요.</p>'
         },
         {
-          title: '삭제 확인 창',
+          title: '삭제를 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-delete-pc.webp', alt: '09SCM 회원 삭제 확인 PC 화면', ratio: 968 / 474 }
           ],
@@ -1320,7 +1320,7 @@ window.GUIDE_CONTENT['retail-member'] = {
           html: '<p>[삭제]를 누르면 확인 창이 나와요. 삭제한 회원은 복구할 수 없어요. 삭제해도 기존 주문내역은 주문 당시 정보로 남아서 주문 진행에는 영향이 없어요.</p>'
         },
         {
-          title: '일괄삭제 확인 창',
+          title: '일괄삭제를 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-bulk-confirm-pc.webp', alt: '09SCM 회원 일괄삭제 확인 PC 화면', ratio: 968 / 474 }
           ],
@@ -1328,7 +1328,7 @@ window.GUIDE_CONTENT['retail-member'] = {
           html: '<p>체크한 건수가 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 나와요. 현재 페이지에서 고른 회원만 대상이에요.</p>'
         },
         {
-          title: '선택 없이 일괄삭제를 눌렀어요',
+          title: '선택 없이 일괄삭제를 누르면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-bulk-none-pc.webp', alt: '09SCM 회원 일괄삭제 선택 안내 PC 화면', ratio: 968 / 384 }
           ],
@@ -1336,7 +1336,7 @@ window.GUIDE_CONTENT['retail-member'] = {
           html: '<p>&quot;삭제할 회원을 선택해주세요.&quot; 안내가 나와요. 삭제할 회원을 체크한 뒤 다시 눌러주세요.</p>'
         },
         {
-          title: '조건에 맞는 회원이 없어요',
+          title: '조건에 맞는 회원이 없으면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-empty-pc.webp', alt: '09SCM 회원 검색 결과 없음 PC 화면', ratio: 2784 / 258 },
             { device: 'mobile', src: '../assets/img/partner/member-empty-mobile.webp', alt: '09SCM 회원 검색 결과 없음 모바일 화면', ratio: 816 / 200 }
@@ -1464,7 +1464,7 @@ window.GUIDE_CONTENT['retail-member'] = {
         '<p>새 번호의 중복확인과 인증번호 확인을 모두 마쳐야 [저장]이 활성화돼요.</p>',
       cases: [
         {
-          title: '저장이 막히는 경우',
+          title: '저장이 막히면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-error-pc.webp', alt: '09SCM 회원정보 저장 오류 PC 화면', ratio: 2880 / 3264 },
             { device: 'mobile', src: '../assets/img/partner/member-error-mobile.webp', alt: '09SCM 회원정보 저장 오류 모바일 화면', ratio: 880 / 3216 }
@@ -1480,7 +1480,7 @@ window.GUIDE_CONTENT['retail-member'] = {
             '<p>안내가 나오면 저장되지 않아요. 해당 항목을 고친 뒤 다시 [저장]을 눌러요.</p>'
         },
         {
-          title: '휴대폰번호를 바꾸는 중',
+          title: '휴대폰번호를 바꿀 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-phone-pc.webp', alt: '09SCM 휴대폰번호 변경 PC 화면', ratio: 2880 / 3570 },
             { device: 'mobile', src: '../assets/img/partner/member-phone-mobile.webp', alt: '09SCM 휴대폰번호 변경 모바일 화면', ratio: 880 / 3522 }
@@ -1498,7 +1498,7 @@ window.GUIDE_CONTENT['retail-member'] = {
             '<p>번호를 다시 고치면 중복확인과 인증을 처음부터 다시 해야 해요. 탈퇴한 회원이 쓰던 번호와 회원주문 코드는 중복으로 보지 않아요.</p>'
         },
         {
-          title: '탈퇴 처리 창',
+          title: '탈퇴 처리를 할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-withdraw-pc.webp', alt: '09SCM 탈퇴 처리 PC 화면', ratio: 968 / 702 },
             { device: 'mobile', src: '../assets/img/partner/member-withdraw-mobile.webp', alt: '09SCM 탈퇴 처리 모바일 화면', ratio: 880 / 702 }
@@ -1509,7 +1509,7 @@ window.GUIDE_CONTENT['retail-member'] = {
             '<p>같은 번호로 다시 가입할 수 있지만 새 회원으로 가입되고, 이전 주문과는 연결되지 않아요.</p>'
         },
         {
-          title: '사유를 입력하지 않았어요',
+          title: '사유를 입력하지 않으면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/member-withdraw-error-pc.webp', alt: '09SCM 탈퇴 사유 미입력 PC 화면', ratio: 968 / 754 },
             { device: 'mobile', src: '../assets/img/partner/member-withdraw-error-mobile.webp', alt: '09SCM 탈퇴 사유 미입력 모바일 화면', ratio: 880 / 754 }
@@ -1583,7 +1583,7 @@ window.GUIDE_CONTENT['retail-sales'] = {
     '</tbody></table></div>',
   cases: [
     {
-      title: '기간을 직접 선택해요',
+      title: '기간을 직접 선택하면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sales-custom-pc.webp', alt: '09SCM 기간 선택 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/sales-custom-mobile.webp', alt: '09SCM 기간 선택 모바일 화면', ratio: 880 / 2400 }
@@ -1592,7 +1592,7 @@ window.GUIDE_CONTENT['retail-sales'] = {
       html: '<p>[기간]을 누르면 시작일과 종료일을 고를 수 있어요. 매출 조회 기간은 최대 6개월까지 선택할 수 있어서, 종료일은 시작일 기준 6개월 안으로만 선택돼요.</p>'
     },
     {
-      title: '월별로 보고 싶어요',
+      title: '월별로 보려면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sales-monthly-pc.webp', alt: '09SCM 월별 매출 추이 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/sales-monthly-mobile.webp', alt: '09SCM 월별 매출 추이 모바일 화면', ratio: 880 / 2400 }
@@ -1601,7 +1601,7 @@ window.GUIDE_CONTENT['retail-sales'] = {
       html: '<p>[월별] 탭을 누르면 그래프와 표가 월 단위로 바뀌어요. 요약 금액은 선택한 기간 전체 기준으로 그대로 유지돼요.</p>'
     },
     {
-      title: '선택한 기간에 매출이 없어요',
+      title: '선택한 기간에 매출이 없으면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sales-today-pc.webp', alt: '09SCM 매출 없음 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/sales-today-mobile.webp', alt: '09SCM 매출 없음 모바일 화면', ratio: 880 / 2400 }
@@ -1679,7 +1679,7 @@ window.GUIDE_CONTENT['retail-settings'] = {
         '<p>계좌정보는 <a href="#system-member">시스템관리 &gt; 회원정보</a>에 있는 값을 가져와요. 수정하고 싶으면 그곳에서 직접 바꿀 수 있어요.</p>',
       cases: [
         {
-          title: '수령방식을 정해요',
+          title: '수령방식을 정할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/settings-pickup-pc.webp', alt: '09SCM 수령방식 PC 화면', ratio: 2880 / 290 },
             { device: 'mobile', src: '../assets/img/partner/settings-pickup-mobile.webp', alt: '09SCM 수령방식 모바일 화면', ratio: 880 / 290 }
@@ -1692,7 +1692,7 @@ window.GUIDE_CONTENT['retail-settings'] = {
             '</ul>'
         },
         {
-          title: '필수 항목을 비웠어요',
+          title: '필수 항목을 비우면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/settings-error-pc.webp', alt: '09SCM 필수 항목 미입력 PC 화면', ratio: 2880 / 4006 },
             { device: 'mobile', src: '../assets/img/partner/settings-error-mobile.webp', alt: '09SCM 필수 항목 미입력 모바일 화면', ratio: 880 / 4736 }
@@ -1799,7 +1799,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '관리자접속을 눌러요',
+          title: '관리자접속을 누르면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-list-remote-pc.webp', alt: '09SCM 관리자접속 안내 팝업 PC 화면', ratio: 936 / 396 }
           ],
@@ -1808,7 +1808,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>안내 팝업에서 [접속]을 누르면 새 창에서 해당 가맹점의 관리자 화면이 열려요. [취소]를 누르면 접속하지 않아요.</p>'
         },
         {
-          title: '가맹점을 삭제해요',
+          title: '가맹점을 삭제하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-list-delete-pc.webp', alt: '09SCM 가맹점 삭제 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
@@ -1905,7 +1905,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
       ],
       cases: [
         {
-          title: '저장이 막히는 경우',
+          title: '저장이 막히면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-error-pc.webp', alt: '09SCM 회원정보 입력 오류 PC 화면', ratio: 2880 / 1088 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-error-mobile.webp', alt: '09SCM 회원정보 입력 오류 모바일 화면', ratio: 880 / 1088 }
@@ -1931,7 +1931,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>안내가 나오면 저장되지 않아요. 오류는 회원 정보 위쪽에 한꺼번에 표시돼요. 해당 항목을 고친 뒤 다시 [저장]을 눌러요.</p>'
         },
         {
-          title: '법인사업자예요',
+          title: '법인사업자이면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 2880 / 1918 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 880 / 1954 }
@@ -1941,7 +1941,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>사업자 유형을 법인사업자로 고르면 법인등록번호 입력란이 나타나고, 필수로 입력해야 해요. 개인사업자로 바꾸면 입력란이 사라지고 저장할 때 값이 비워져요.</p>'
         },
         {
-          title: 'PayApp 연동 전이에요',
+          title: 'PayApp 연동 전이면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-payapp-unlinked-pc.webp', alt: '09SCM PayApp 연동 전 가맹점 PC 화면', ratio: 2880 / 918 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-unlinked-mobile.webp', alt: '09SCM PayApp 연동 전 가맹점 모바일 화면', ratio: 880 / 954 }
@@ -1952,7 +1952,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>가맹점은 본인 관리자 화면의 시스템관리 > 회원정보에서 연동하고, 본사는 이 화면에서 대신 연동할 수 있어요. 미연동 가맹점은 [이용승인]을 누를 수 없어요.</p>'
         },
         {
-          title: 'PayApp 연동이 끝났어요',
+          title: 'PayApp 연동이 끝났다면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-payapp-linked-pc.webp', alt: '09SCM PayApp 연동 완료 가맹점 PC 화면', ratio: 2880 / 818 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-linked-mobile.webp', alt: '09SCM PayApp 연동 완료 가맹점 모바일 화면', ratio: 880 / 818 }
@@ -1962,7 +1962,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>연동 상태가 연동완료로 보이고 연동한 정보를 확인할 수 있어요. 연동 KEY와 VALUE는 일부만 보여요. 최초 연동 이후에는 바꾸거나 해제할 수 없어요.</p>'
         },
         {
-          title: '개별 이용료를 적용해요',
+          title: '개별 이용료를 적용하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-fee-custom-pc.webp', alt: '09SCM 개별 이용료 적용 PC 화면', ratio: 2880 / 350 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-fee-custom-mobile.webp', alt: '09SCM 개별 이용료 적용 모바일 화면', ratio: 880 / 426 }
@@ -1973,7 +1973,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>체크를 해제하고 [저장]하면 다시 기본 이용료가 적용돼요. 가맹점 목록의 적용이용료에는 개별 이용료가 적용된 가맹점에 [개별] 표시가 붙어요.</p>'
         },
         {
-          title: '정기결제를 등록한 가맹점이에요',
+          title: '정기결제를 등록한 가맹점이면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-pay-reg-pc.webp', alt: '09SCM 정기결제 등록 가맹점 PC 화면', ratio: 2880 / 418 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-pay-reg-mobile.webp', alt: '09SCM 정기결제 등록 가맹점 모바일 화면', ratio: 880 / 536 }
@@ -1983,7 +1983,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>정기결제여부가 등록으로 표시되고, 결제수단과 정기결제일을 확인할 수 있어요. 이용료 정기결제가 실패해도 정기결제여부는 자동으로 미등록으로 바뀌지 않아요.</p>'
         },
         {
-          title: '정기결제를 등록하지 않았어요',
+          title: '정기결제를 등록하지 않았다면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-pay-none-pc.webp', alt: '09SCM 정기결제 미등록 가맹점 PC 화면', ratio: 2880 / 418 },
             { device: 'mobile', src: '../assets/img/partner/fr-d-pay-none-mobile.webp', alt: '09SCM 정기결제 미등록 가맹점 모바일 화면', ratio: 880 / 536 }
@@ -2089,7 +2089,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>하단 바에 [이용제한]만 보여요.</p>'
         },
         {
-          title: '이용제한으로 바꿔요',
+          title: '이용제한으로 바꾸면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-confirm-pc.webp', alt: '09SCM 이용제한 변경 확인 팝업 PC 화면', ratio: 936 / 396 }
           ],
@@ -2098,7 +2098,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>[이용제한]을 누르면 확인 창이 열려요. [변경]을 누르면 신규 도매 주문, 도매상품 등록, 소매상품 등록이 막혀요. 이미 진행 중인 주문 처리는 계속할 수 있어요.</p>'
         },
         {
-          title: '이용제한 — 가맹점 화면 (도매공급권한 보유)',
+          title: '이용제한이고 도매공급권한이 있으면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-supply-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-supply-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) 모바일 화면', ratio: 880 / 1800 }
@@ -2108,7 +2108,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>모든 화면 맨 위에 이용제한 안내 배너가 계속 보여요. 메뉴는 그대로 보이지만 신규 행위 버튼은 흐리게 비활성으로 보이고, 주소로 직접 들어가도 막혀요. 이미 진행 중인 주문·배송·정산 처리와 시스템관리는 계속 쓸 수 있어요. 소매몰은 접근제한 화면으로 바뀌어 신규 주문을 받지 않아요.</p>'
         },
         {
-          title: '이용제한 — 가맹점 화면 (도매공급권한 미보유)',
+          title: '이용제한이고 도매공급권한이 없으면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) PC 화면', ratio: 2880 / 1520 },
             { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) 모바일 화면', ratio: 880 / 1800 }
@@ -2118,7 +2118,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>도매공급 메뉴(내 도매상품, 주문접수관리, 도매매출조회, 도매설정)가 처음부터 보이지 않아요.</p>'
         },
         {
-          title: '이용제한이면 이런 기능이 막혀요',
+          title: '이용제한이면',
           html:
             '<div class="table-wrap"><table><thead><tr><th>기능</th><th>도매공급권한 보유</th><th>도매공급권한 미보유</th></tr></thead><tbody>' +
               '<tr><td>도매상품 주문하기 > 장바구니 [주문하기]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
@@ -2142,7 +2142,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>하단 바에 [이용승인]과 [이용불가]가 보여요. [이용승인]으로 언제든 되돌릴 수 있어요. [이용불가]는 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수가 표시돼요.</p>'
         },
         {
-          title: '이용불가로 바꿔요',
+          title: '이용불가로 바꾸면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-unavailable-confirm-pc.webp', alt: '09SCM 이용불가 변경 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
@@ -2171,7 +2171,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>하단 바에 [이용불가 해제]와 [삭제]가 보여요. [관리자접속]은 누를 수 없어요. [이용불가 해제]를 누르면 이용대기로 돌아가지만, 품절·미노출로 바뀐 상품은 자동으로 되돌아오지 않아요. 가맹점이 상품별로 직접 바꿔야 해요.</p>'
         },
         {
-          title: '도매공급권한을 회수해요',
+          title: '도매공급권한을 회수하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-supply-revoke-confirm-pc.webp', alt: '09SCM 도매공급권한 회수 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
@@ -2245,7 +2245,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
     '</tbody></table></div>',
   cases: [
     {
-      title: '기본 이용료를 잘못 입력했어요',
+      title: '기본 이용료를 잘못 입력하면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-fee-default-error-pc.webp', alt: '09SCM 기본 이용료 입력 오류 PC 화면', ratio: 2880 / 512 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-default-error-mobile.webp', alt: '09SCM 기본 이용료 입력 오류 모바일 화면', ratio: 880 / 512 }
@@ -2258,7 +2258,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         '<p>안내가 나오면 저장되지 않아요. 값을 고친 뒤 다시 [저장]을 눌러요.</p>'
     },
     {
-      title: '결제실패 건만 모아봐요',
+      title: '결제실패 건만 모아보려면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-fee-filter-pc.webp', alt: '09SCM 결제실패 필터 PC 화면', ratio: 2880 / 1524 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-filter-mobile.webp', alt: '09SCM 결제실패 필터 모바일 화면', ratio: 880 / 5264 }
@@ -2267,7 +2267,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
       html: '<p>납부상태를 [결제실패]로 선택하면 결제실패 건만 보여줘요. [기간]을 함께 선택하면 해당 기간 안의 건만 보여줘요.</p>'
     },
     {
-      title: '결제실패 건을 수납처리해요',
+      title: '결제실패 건을 수납처리하면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-fee-collect-pc.webp', alt: '09SCM 수납처리 팝업 PC 화면', ratio: 936 / 1060 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-collect-mobile.webp', alt: '09SCM 수납처리 팝업 모바일 화면', ratio: 880 / 1384 }
@@ -2284,7 +2284,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         '</tbody></table></div>'
     },
     {
-      title: '수납처리 입력이 잘못됐어요',
+      title: '수납처리 입력이 잘못되면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-fee-collect-error-pc.webp', alt: '09SCM 수납처리 오류 PC 화면', ratio: 936 / 1144 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-collect-error-mobile.webp', alt: '09SCM 수납처리 오류 모바일 화면', ratio: 880 / 1432 }
@@ -2299,7 +2299,7 @@ window.GUIDE_CONTENT['franchise-fee'] = {
         '<p>안내가 나오면 처리되지 않아요. 값을 고친 뒤 다시 [수납처리 완료]를 눌러요.</p>'
     },
     {
-      title: '수기완납 건의 처리 내용을 확인해요',
+      title: '수기완납 건의 처리 내용을 확인하려면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-fee-detail-pc.webp', alt: '09SCM 처리정보 팝업 PC 화면', ratio: 936 / 592 },
         { device: 'mobile', src: '../assets/img/partner/frm-fee-detail-mobile.webp', alt: '09SCM 처리정보 팝업 모바일 화면', ratio: 880 / 710 }
@@ -2372,7 +2372,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '가맹점 합산 매출을 봐요',
+          title: '가맹점 합산 매출을 보려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-sales-franchise-pc.webp', alt: '09SCM 가맹점 합산 매출 PC 화면', ratio: 2880 / 3000 },
             { device: 'mobile', src: '../assets/img/partner/frm-sales-franchise-mobile.webp', alt: '09SCM 가맹점 합산 매출 모바일 화면', ratio: 880 / 2400 }
@@ -2381,7 +2381,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
           html: '<p>[가맹점]을 누르면 소속 가맹점 전체의 합산 매출을 보여줘요.</p>'
         },
         {
-          title: '소매 또는 도매 매출만 봐요',
+          title: '소매 또는 도매 매출만 보려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-sales-trade-pc.webp', alt: '09SCM 소매매출 필터 PC 화면', ratio: 2880 / 3000 },
             { device: 'mobile', src: '../assets/img/partner/frm-sales-trade-mobile.webp', alt: '09SCM 소매매출 필터 모바일 화면', ratio: 880 / 2400 }
@@ -2390,7 +2390,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
           html: '<p>[소매매출] 또는 [도매매출]을 누르면 해당 거래만 집계해요.</p>'
         },
         {
-          title: '기간을 직접 선택해요',
+          title: '기간을 직접 선택하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-sales-custom-pc.webp', alt: '09SCM 기간 선택 PC 화면', ratio: 2880 / 3000 },
             { device: 'mobile', src: '../assets/img/partner/frm-sales-custom-mobile.webp', alt: '09SCM 기간 선택 모바일 화면', ratio: 880 / 2400 }
@@ -2399,7 +2399,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
           html: '<p>[기간]을 누르면 시작일과 종료일을 고를 수 있어요. 최대 6개월까지 선택할 수 있어서, 종료일은 시작일 기준 6개월 안으로만 선택돼요.</p>'
         },
         {
-          title: '월별로 보고 싶어요',
+          title: '월별로 보려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-sales-monthly-pc.webp', alt: '09SCM 월별 매출 추이 PC 화면', ratio: 2880 / 3000 },
             { device: 'mobile', src: '../assets/img/partner/frm-sales-monthly-mobile.webp', alt: '09SCM 월별 매출 추이 모바일 화면', ratio: 880 / 2400 }
@@ -2408,7 +2408,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
           html: '<p>[월별] 탭을 누르면 그래프와 표가 월 단위로 바뀌어요. 요약 금액은 선택한 기간 전체 기준으로 그대로 유지돼요.</p>'
         },
         {
-          title: '선택한 기간에 매출이 없어요',
+          title: '선택한 기간에 매출이 없으면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-sales-today-pc.webp', alt: '09SCM 매출 없음 PC 화면', ratio: 2880 / 3000 },
             { device: 'mobile', src: '../assets/img/partner/frm-sales-today-mobile.webp', alt: '09SCM 매출 없음 모바일 화면', ratio: 880 / 2400 }
@@ -2533,7 +2533,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         '<p>[+ 공지사항등록]을 누르면 공지 등록 화면으로 이동해요.</p>',
       cases: [
         {
-          title: '미노출 공지만 모아봐요',
+          title: '미노출 공지만 모아보려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-filter-pc.webp', alt: '09SCM 미노출 공지 PC 화면', ratio: 2880 / 3000 },
             { device: 'mobile', src: '../assets/img/partner/frm-notice-filter-mobile.webp', alt: '09SCM 미노출 공지 모바일 화면', ratio: 880 / 2400 }
@@ -2542,7 +2542,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
           html: '<p>노출여부를 [미노출]로 고르면 가맹점에 보이지 않는 공지만 볼 수 있어요.</p>'
         },
         {
-          title: '삭제 확인 창',
+          title: '삭제를 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-delete-pc.webp', alt: '09SCM 공지 삭제 확인 PC 화면', ratio: 936 / 442 }
           ],
@@ -2550,7 +2550,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
           html: '<p>[삭제]를 누르면 &quot;공지사항을 삭제하시겠습니까?&quot; 확인 창이 나와요. 삭제하면 첨부파일도 함께 지워지고, 가맹점 화면과 대시보드에서도 바로 사라져요. 삭제한 공지는 복구할 수 없어요.</p>'
         },
         {
-          title: '일괄삭제 확인 창',
+          title: '일괄삭제를 확인할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-confirm-pc.webp', alt: '09SCM 공지 일괄삭제 확인 PC 화면', ratio: 936 / 442 }
           ],
@@ -2558,7 +2558,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
           html: '<p>체크박스로 고른 공지가 있는 상태에서 [일괄삭제]를 누르면 &quot;선택한 N건을 삭제하시겠습니까?&quot; 확인 창이 나와요. 체크박스 선택은 현재 페이지에서만 유지돼요.</p>'
         },
         {
-          title: '선택 없이 일괄삭제를 눌렀어요',
+          title: '선택 없이 일괄삭제를 누르면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-bulk-empty-pc.webp', alt: '09SCM 일괄삭제 선택 안내 PC 화면', ratio: 936 / 352 }
           ],
@@ -2598,7 +2598,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '올린 공지를 수정해요',
+          title: '올린 공지를 수정하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-edit-pc.webp', alt: '09SCM 공지사항 수정 PC 화면', ratio: 2880 / 2300 },
             { device: 'mobile', src: '../assets/img/partner/frm-notice-edit-mobile.webp', alt: '09SCM 공지사항 수정 모바일 화면', ratio: 880 / 3000 }
@@ -2607,7 +2607,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
           html: '<p>수정 화면에는 올린 내용이 채워져 있고, 첨부된 파일은 파일마다 [삭제]할 수 있어요.</p>'
         },
         {
-          title: '필수 항목을 비웠어요',
+          title: '필수 항목을 비우면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-form-error-pc.webp', alt: '09SCM 공지사항 등록 오류 PC 화면', ratio: 2880 / 2300 },
             { device: 'mobile', src: '../assets/img/partner/frm-notice-form-error-mobile.webp', alt: '09SCM 공지사항 등록 오류 모바일 화면', ratio: 880 / 3000 }
@@ -2623,7 +2623,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
             '<p>안내가 나오면 저장되지 않아요. 해당 항목을 입력한 뒤 다시 [저장]을 눌러요.</p>'
         },
         {
-          title: '첨부파일을 추가하지 못했어요',
+          title: '첨부파일을 추가하지 못하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-attach-error-pc.webp', alt: '09SCM 공지사항 첨부파일 오류 PC 화면', ratio: 2880 / 2300 },
             { device: 'mobile', src: '../assets/img/partner/frm-notice-attach-error-mobile.webp', alt: '09SCM 공지사항 첨부파일 오류 모바일 화면', ratio: 880 / 3000 }
@@ -2638,7 +2638,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
             '<p>안내가 나오면 해당 파일은 추가되지 않아요. 조건에 맞는 파일로 다시 [파일 추가]를 눌러요.</p>'
         },
         {
-          title: '작성하다가 나가려고 해요',
+          title: '작성하다가 나가려고 하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/frm-notice-leave-pc.webp', alt: '09SCM 작성 중 나가기 확인 PC 화면', ratio: 936 / 396 }
           ],
@@ -2707,7 +2707,7 @@ window.GUIDE_CONTENT['system-notice'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '작성자별로 골라 봐요',
+          title: '작성자별로 고르려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-notice-tab-pc.webp', alt: '09SCM 우리본사 공지 PC 화면', ratio: 2880 / 1010 },
             { device: 'mobile', src: '../assets/img/partner/sys-notice-tab-mobile.webp', alt: '09SCM 우리본사 공지 모바일 화면', ratio: 880 / 1474 }
@@ -2716,7 +2716,7 @@ window.GUIDE_CONTENT['system-notice'] = {
           html: '<p>[09SCM], [우리본사] 탭을 누르면 해당 작성자의 공지만 모아서 볼 수 있어요. 건수도 선택한 탭 기준으로 바뀌어요.</p>'
         },
         {
-          title: '계정에 따라 달라져요',
+          title: '계정 유형이 다르면',
           html:
             '<div class="table-wrap"><table><thead><tr><th>구분</th><th>보이는 공지</th></tr></thead><tbody>' +
               '<tr><td>가맹점 계정</td><td>09SCM이 가맹점에게 알리는 공지, 소속 본사(우리본사)의 공지</td></tr>' +
@@ -2802,7 +2802,7 @@ window.GUIDE_CONTENT['system-fee'] = {
     '</tbody></table></div>',
   cases: [
     {
-      title: '카드를 등록해요',
+      title: '카드를 등록하면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-fee-card-pc.webp', alt: '09SCM 카드 미등록 PC 화면', ratio: 2880 / 324 },
         { device: 'mobile', src: '../assets/img/partner/sys-fee-card-mobile.webp', alt: '09SCM 카드 미등록 모바일 화면', ratio: 880 / 366 }
@@ -2812,7 +2812,7 @@ window.GUIDE_CONTENT['system-fee'] = {
         '<p>카드를 등록하기 전에는 결제 정보에 안내 문구와 [카드 등록하기]만 보여요. [카드 등록하기]를 누르면 PayApp 결제창이 열리고, 카드 정보를 입력하면 등록이 끝나요.</p>'
     },
     {
-      title: '결제가 실패했어요',
+      title: '결제가 실패하면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-fee-history-pc.webp', alt: '09SCM 결제 내역 PC 화면', ratio: 2880 / 1782 },
         { device: 'mobile', src: '../assets/img/partner/sys-fee-history-mobile.webp', alt: '09SCM 결제 내역 모바일 화면', ratio: 880 / 2944 }
@@ -2900,7 +2900,7 @@ window.GUIDE_CONTENT['system-member'] = {
     '</tbody></table></div>',
   cases: [
     {
-      title: '필수 항목을 비웠어요',
+      title: '필수 항목을 비우면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-member-error-pc.webp', alt: '09SCM 회원 정보 필수 항목 미입력 PC 화면', ratio: 2880 / 800 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-error-mobile.webp', alt: '09SCM 회원 정보 필수 항목 미입력 모바일 화면', ratio: 880 / 1258 }
@@ -2917,7 +2917,7 @@ window.GUIDE_CONTENT['system-member'] = {
         '<p>안내는 위 항목부터 하나씩 나와요. 안내가 나오면 저장되지 않아요. 해당 항목을 고친 뒤 다시 [저장]을 눌러요.</p>'
     },
     {
-      title: '휴대폰번호를 바꿔요',
+      title: '휴대폰번호를 바꾸면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-member-phone-pc.webp', alt: '09SCM 휴대폰번호 인증 PC 화면', ratio: 2880 / 796 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-phone-mobile.webp', alt: '09SCM 휴대폰번호 인증 모바일 화면', ratio: 880 / 1254 }
@@ -2932,7 +2932,7 @@ window.GUIDE_CONTENT['system-member'] = {
         '<p>안내가 나오면 인증이 진행되지 않아요. 값을 고친 뒤 다시 [인증번호 발송] 또는 [확인]을 눌러요.</p>'
     },
     {
-      title: '비밀번호를 바꿔요',
+      title: '비밀번호를 바꾸면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-member-pw-pc.webp', alt: '09SCM 비밀번호 불일치 PC 화면', ratio: 2880 / 444 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-pw-mobile.webp', alt: '09SCM 비밀번호 불일치 모바일 화면', ratio: 880 / 606 }
@@ -2946,7 +2946,7 @@ window.GUIDE_CONTENT['system-member'] = {
         '<p>안내가 나오면 변경되지 않아요. 값을 고친 뒤 다시 [비밀번호 변경]을 눌러요.</p>'
     },
     {
-      title: '계좌정보를 입력해요',
+      title: '계좌정보를 입력하면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-member-account-pc.webp', alt: '09SCM 계좌정보 미입력 PC 화면', ratio: 2880 / 690 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-account-mobile.webp', alt: '09SCM 계좌정보 미입력 모바일 화면', ratio: 880 / 852 }
@@ -2959,7 +2959,7 @@ window.GUIDE_CONTENT['system-member'] = {
         '<p>안내가 나오면 저장되지 않아요. 세 항목을 모두 입력한 뒤 다시 [저장]을 눌러요.</p>'
     },
     {
-      title: 'PayApp 연동 전이에요',
+      title: 'PayApp 연동 전이면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-member-payapp-pc.webp', alt: '09SCM PayApp 미연동 PC 화면', ratio: 2880 / 918 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-payapp-mobile.webp', alt: '09SCM PayApp 미연동 모바일 화면', ratio: 880 / 954 }
@@ -2973,7 +2973,7 @@ window.GUIDE_CONTENT['system-member'] = {
         '<p>안내가 나오면 연동되지 않아요. 세 칸을 모두 입력한 뒤 다시 [연동하기]를 눌러요.</p>'
     },
     {
-      title: '마케팅정보 수신동의를 바꿔요',
+      title: '마케팅정보 수신동의를 바꾸면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-member-terms-pc.webp', alt: '09SCM 마케팅정보 수신동의 보기 PC 팝업', ratio: 936 / 1146 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-terms-mobile.webp', alt: '09SCM 마케팅정보 수신동의 보기 모바일 팝업', ratio: 880 / 1264 }
@@ -2982,7 +2982,7 @@ window.GUIDE_CONTENT['system-member'] = {
       html: '<p>[보기]를 누르면 약관 내용을 팝업으로 볼 수 있어요. 바꿀 수 있는 항목은 마케팅정보 수신동의[선택]뿐이에요. 동의 여부를 바꾸면 [저장]이 활성화돼요.</p>'
     },
     {
-      title: '사업자 유형에 따라 달라져요',
+      title: '사업자 유형이 다르면',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-member-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 2880 / 788 },
         { device: 'mobile', src: '../assets/img/partner/sys-member-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 880 / 1178 }
@@ -3075,7 +3075,7 @@ window.GUIDE_CONTENT['system-notification'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '알림톡 사용하기를 꺼요',
+          title: '알림톡 사용하기를 끄면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-off-pc.webp', alt: '09SCM 알림톡 사용하기 끄기 PC 화면', ratio: 2880 / 3000 },
             { device: 'mobile', src: '../assets/img/partner/sys-noti-off-mobile.webp', alt: '09SCM 알림톡 사용하기 끄기 모바일 화면', ratio: 880 / 2400 }
@@ -3086,7 +3086,7 @@ window.GUIDE_CONTENT['system-notification'] = {
             '<p>다시 켜면 발송 메시지가 나타나고, 메시지별로 설정해 둔 켜기·끄기도 이전 그대로 돌아와요.</p>'
         },
         {
-          title: '알림톡을 충전해요',
+          title: '알림톡을 충전하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-charge-pc.webp', alt: '09SCM 알림톡 충전 팝업 PC 화면', ratio: 1056 / 1504 },
             { device: 'mobile', src: '../assets/img/partner/sys-noti-charge-mobile.webp', alt: '09SCM 알림톡 충전 팝업 모바일 화면', ratio: 880 / 1602 }
@@ -3107,7 +3107,7 @@ window.GUIDE_CONTENT['system-notification'] = {
             '<p>안내가 나오면 결제가 진행되지 않아요. 동의에 체크한 뒤 다시 [충전하기]를 눌러요.</p>'
         },
         {
-          title: '잔여 건수가 부족해요',
+          title: '잔여 건수가 부족하면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-low-pc.webp', alt: '09SCM 잔여 건수 부족 PC 화면', ratio: 2880 / 892 },
             { device: 'mobile', src: '../assets/img/partner/sys-noti-low-mobile.webp', alt: '09SCM 잔여 건수 부족 모바일 화면', ratio: 880 / 1280 }
@@ -3124,7 +3124,7 @@ window.GUIDE_CONTENT['system-notification'] = {
             '</tbody></table></div>'
         },
         {
-          title: '발송 내역을 찾아요',
+          title: '발송 내역을 찾으려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-history-pc.webp', alt: '09SCM 발송내역 PC 화면', ratio: 2880 / 2626 },
             { device: 'mobile', src: '../assets/img/partner/sys-noti-history-mobile.webp', alt: '09SCM 발송내역 모바일 화면', ratio: 880 / 7548 }
@@ -3177,7 +3177,7 @@ window.GUIDE_CONTENT['system-notification'] = {
         '<p>신규주문접수 알림은 주문 1건마다 오기 때문에 처음에는 꺼져 있어요. 도매상품 알림도 처음에는 꺼져 있어요. 필요할 때 직접 켜 주세요.</p>',
       cases: [
         {
-          title: '알림 종류를 끄고 싶어요',
+          title: '알림 종류를 끄려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-category-pc.webp', alt: '09SCM 알림 종류 끄기 PC 화면', ratio: 2880 / 950 },
             { device: 'mobile', src: '../assets/img/partner/sys-noti-category-mobile.webp', alt: '09SCM 알림 종류 끄기 모바일 화면', ratio: 880 / 1466 }
@@ -3186,7 +3186,7 @@ window.GUIDE_CONTENT['system-notification'] = {
           html: '<p>알림 종류의 스위치를 끄면 그 종류에 속한 개별 알림이 화면에서 사라져요. 개별 알림의 설정값은 그대로 보관돼서, 다시 켜면 이전 상태로 돌아와요.</p>'
         },
         {
-          title: '브라우저 알림을 허용해요',
+          title: '브라우저 알림을 허용하려면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-noti-push-pc.webp', alt: '09SCM 브라우저 알림 허용 방법 PC 화면', ratio: 936 / 736 }
           ],
@@ -3199,7 +3199,7 @@ window.GUIDE_CONTENT['system-notification'] = {
             '</ul>'
         },
         {
-          title: '계정에 따라 달라져요',
+          title: '계정 유형이 다르면',
           html:
             '<div class="table-wrap"><table><thead><tr><th>알림</th><th>받는 계정</th></tr></thead><tbody>' +
               '<tr><td>가맹점 이용료 결제실패</td><td>본사 계정 (소속 가맹점의 결제가 실패했을 때)</td></tr>' +
@@ -3243,7 +3243,7 @@ window.GUIDE_CONTENT['system-notification'] = {
         '</tbody></table></div>',
       cases: [
         {
-          title: '알림이 모두 사라졌어요',
+          title: '알림이 모두 사라지면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/sys-center-empty-pc.webp', alt: '09SCM 알림센터 비어 있음 PC 화면', ratio: 896 / 518 }
           ],
@@ -3303,7 +3303,7 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
           "html": "<p>[공급범위란?]을 확인하면(PC는 마우스를 올리고, 모바일은 눌러요) 전국, 우리지역, 우리본사의 노출 기준을 안내해줘요.</p>"
         },
         {
-          "title": "내 상품과 품절 상품은 이렇게 보여요",
+          "title": "내 상품이나 품절 상품이면",
           "shots": [
             {
               "device": "pc",
@@ -3345,7 +3345,7 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
     },
     {
       "id": "detail",
-      "label": "상품 상세 보기",
+      "label": "도매상품 상세 보기",
       "shots": [
         {
           "device": "pc",
@@ -3426,7 +3426,7 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
     },
     {
       "id": "cart",
-      "label": "장바구니",
+      "label": "장바구니 보기",
       "shots": [
         {
           "device": "pc",
@@ -3674,7 +3674,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
   "screens": [
     {
       "id": "list-view",
-      "label": "주문 목록 보기",
+      "label": "주문내역 보기",
       "shots": [
         {
           "device": "pc",
@@ -3694,7 +3694,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
       "steps": "<h3>주문 찾기</h3><p>목록 위쪽에서 기간과 처리 탭으로 주문을 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>기간</td><td>전체, 1개월, 3개월, 6개월, 기간 중 선택 (주문일시 기준)</td></tr><tr><td>처리 탭</td><td>전체, 배송확정, 취소·반품요청, 취소·반품승인 구분</td></tr></tbody></table></div><p>목록은 최근 주문부터 한 페이지에 20건씩 보여줘요.</p><h3>목록에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr><tr><td>주문일시</td><td>주문이 접수된 일시</td></tr><tr><td>공급자</td><td>주문한 상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr><tr><td>상품정보</td><td>주문 상품 이름 (여러 상품이면 &quot;○○ 외 N건&quot;)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체 구분</td></tr><tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소] 구분 (결제완료 후 취소된 [결제취소] 주문은 전체환불·부분환불을 함께 표시)</td></tr><tr><td>처리상태</td><td>현재 처리 단계 (취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>취소·반품</td><td>[취소요청], [반품요청], [취소승인], [반품승인], [취소반려], [반품반려] 중 현재 상태</td></tr><tr><td>합계금액</td><td>상품금액, 배송비, 결제수수료를 더한 총 결제금액</td></tr><tr><td>관리</td><td>주문 상태에 따라 노출되는 버튼</td></tr></tbody></table></div>",
       "cases": [
         {
-          "title": "처리상태에 따라 보이는 버튼이 달라져요",
+          "title": "처리상태가 다르면",
           "shots": [
             {
               "device": "pc",
@@ -3706,14 +3706,14 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "mobile",
               "src": "../assets/img/partner/wh-orders-rows-action-mobile.webp",
               "alt": "09SCM 주문내역 처리 버튼 모바일 화면",
-              "ratio": 0.2933
+              "ratio": 0.2957
             }
           ],
           "shotCaption": "09SCM 주문내역 처리 버튼 화면 (PC / 모바일)",
           "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제</td><td>[주문취소] [상세보기] (공급자 승인 없이 바로 취소되고, PG사(PayApp)를 통해 카드 결제가 자동으로 취소됨)</td></tr><tr><td>주문접수 · 계좌이체 · 결제대기</td><td>[주문취소] [상세보기] (입금 전이라 공급자 승인 없이 환불 없이 바로 취소)</td></tr><tr><td>주문접수 · 계좌이체 · 결제완료</td><td>[취소요청] [상세보기] (공급자가 확인한 뒤 처리)</td></tr><tr><td>배송대기</td><td>[상세보기]</td></tr><tr><td>배송중</td><td>[배송확정] [반품요청] [상세보기]</td></tr><tr><td>배송확정</td><td>[상세보기]</td></tr></tbody></table></div>"
         },
         {
-          "title": "취소·반품이 있는 주문은 이렇게 보여요",
+          "title": "취소·반품이 있는 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -3725,7 +3725,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "mobile",
               "src": "../assets/img/partner/wh-orders-rows-claim-mobile.webp",
               "alt": "09SCM 주문내역 취소·반품 모바일 화면",
-              "ratio": 0.4382
+              "ratio": 0.4435
             }
           ],
           "shotCaption": "09SCM 주문내역 취소·반품 화면 (PC / 모바일)",
@@ -3772,10 +3772,10 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
       ],
       "shotCaption": "09SCM 주문 상세 화면 (PC / 모바일)",
       "overview": "<p>주문 한 건의 상품, 배송, 결제, 취소·반품 진행 내용을 확인하는 화면이에요. 목록의 [상세보기]를 누르면 열려요.</p><p>처리 버튼은 화면 아래에 고정된 영역에 있고, 목록과 같은 조건으로 보여요. [주문취소]와 [취소요청], [반품요청]은 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>, [배송확정]은 <a href=\"#wholesale-orders/confirm\">배송확정하기</a>에서 확인해주세요.</p>",
-      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>공급가/단위</td><td>주문 당시 상품의 공급가와 공급단위</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>공급자</td><td>상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr></tbody></table></div><h3>주문자정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 계정 기준 사업자 정보의 상호명</td></tr><tr><td>이름 · 휴대폰번호 · 이메일</td><td>주문서에 입력한 정보</td></tr></tbody></table></div><h3>배송정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 ([배송중]은 자동 배송확정 예정일시도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>배송지</td><td>주문서에 입력한 배송지</td></tr><tr><td>배송 요청사항</td><td>주문서에 입력한 요청사항 (입력한 경우만 표시)</td></tr></tbody></table></div><h3>결제정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료]와 결제 일시 ([결제취소]는 취소 일시를 표시하고, 결제완료 후 취소된 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>배송비</td><td>공급자의 배송방식 기준 배송비 (무료배송, 기본배송비, 착불)</td></tr><tr><td>결제수수료</td><td>구매자부담 카드 수수료가 있는 주문에만 표시</td></tr><tr><td>총 결제금액</td><td>상품금액, 배송비, 결제수수료를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>상품환불금액 · 배송비 환불</td><td>부분환불 주문에만 표시 (배송비 환불은 포함 또는 미포함)</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 즉시취소는 &quot;-&quot;)</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
+      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>공급가/단위</td><td>주문 당시 상품의 공급가와 공급단위</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>공급자</td><td>상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 계정 기준 사업자 정보의 상호명</td></tr><tr><td>이름 · 휴대폰번호 · 이메일</td><td>주문서에 입력한 정보</td></tr></tbody></table></div><h3>배송 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 ([배송중]은 자동 배송확정 예정일시도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>배송지</td><td>주문서에 입력한 배송지</td></tr><tr><td>배송 요청사항</td><td>주문서에 입력한 요청사항 (입력한 경우만 표시)</td></tr></tbody></table></div><h3>결제 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료]와 결제 일시 ([결제취소]는 취소 일시를 표시하고, 결제완료 후 취소된 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>배송비</td><td>공급자의 배송방식 기준 배송비 (무료배송, 기본배송비, 착불)</td></tr><tr><td>결제수수료</td><td>구매자부담 카드 수수료가 있는 주문에만 표시</td></tr><tr><td>총 결제금액</td><td>상품금액, 배송비, 결제수수료를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>상품환불금액 · 배송비 환불</td><td>부분환불 주문에만 표시 (배송비 환불은 포함 또는 미포함)</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 즉시취소는 &quot;-&quot;)</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
       "cases": [
         {
-          "title": "배송중 주문은 자동 배송확정 예정일시가 보여요",
+          "title": "배송중 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -3791,10 +3791,10 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
             }
           ],
           "shotCaption": "09SCM 주문 상세 배송중 화면 (PC / 모바일)",
-          "html": "<p>배송정보의 처리상태에 [배송중]이 된 일시와 함께 자동 배송확정 예정일시가 표시돼요. [배송중]이 된 지 7일이 지나면 자동으로 [배송확정]되고, 이후에는 반품을 요청할 수 없어요. 그 전에는 [배송확정]이나 [반품요청]을 할 수 있어요.</p>"
+          "html": "<p>배송 정보의 처리상태에 [배송중]이 된 일시와 함께 자동 배송확정 예정일시가 표시돼요. [배송중]이 된 지 7일이 지나면 자동으로 [배송확정]되고, 이후에는 반품을 요청할 수 없어요. 그 전에는 [배송확정]이나 [반품요청]을 할 수 있어요.</p>"
         },
         {
-          "title": "취소·반품을 요청한 주문",
+          "title": "취소·반품을 요청한 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -3813,7 +3813,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
           "html": "<p>취소·반품 정보 영역이 나타나고, 요청한 처리상태와 일시, 계좌이체 주문의 환불계좌, 내가 남긴 요청 사유를 볼 수 있어요. 공급자가 확인하기 전이라 환불구분과 총환불금액은 보이지 않아요.</p>"
         },
         {
-          "title": "취소·반품이 승인된 주문",
+          "title": "취소·반품이 승인된 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -3832,7 +3832,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
           "html": "<p>환불구분과 총환불금액, 공급자가 처리하며 남긴 사유가 함께 표시돼요. 환불구분과 환불금액은 공급자가 승인할 때 정해져서 요청 중이거나 반려된 주문에는 보이지 않아요.</p>"
         },
         {
-          "title": "결제 후 취소된 주문은 결제상태가 이렇게 보여요",
+          "title": "결제 후 취소된 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -3844,14 +3844,14 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "mobile",
               "src": "../assets/img/partner/wh-od-paid-cancel-mobile.webp",
               "alt": "09SCM 주문 상세 결제취소 모바일 화면",
-              "ratio": 0.873
+              "ratio": 0.9186
             }
           ],
           "shotCaption": "09SCM 주문 상세 결제취소 화면 (PC / 모바일)",
           "html": "<p>결제완료 후 취소가 승인된 주문은 결제상태가 [결제취소]로 바뀌고, 환불구분과 취소 일시, [결제완료] 일시가 함께 표시돼요. 환불은 총 결제금액 기준으로 진행돼요.</p>"
         },
         {
-          "title": "입금 전에 취소한 주문",
+          "title": "입금 전에 취소한 주문이면",
           "shots": [
             {
               "device": "pc",
@@ -3863,7 +3863,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "mobile",
               "src": "../assets/img/partner/wh-od-cancel-unpaid-mobile.webp",
               "alt": "09SCM 주문 상세 입금 전 취소 모바일 화면",
-              "ratio": 0.6086
+              "ratio": 0.6304
             }
           ],
           "shotCaption": "09SCM 주문 상세 입금 전 취소 화면 (PC / 모바일)",
@@ -3889,7 +3889,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
           "ratio": 0.7483
         }
       ],
-      "shotCaption": "09SCM 취소 요청 팝업 화면 (PC / 모바일)",
+      "shotCaption": "09SCM 취소요청 팝업 화면 (PC / 모바일)",
       "overview": "<p>주문 상태에 따라 구매자가 바로 취소하거나, 공급자에게 취소·반품을 요청하는 팝업이에요. 목록의 관리 버튼과 상세 하단 바 어디에서 눌러도 같은 팝업이 열려요.</p><h3>주문 상태별로 할 수 있는 일</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수 · 카드결제</td><td>[주문취소]로 공급자 승인 없이 바로 취소 (PG사(PayApp)를 통해 카드 결제가 전액 자동으로 취소되고 결제상태가 [결제취소]로 바뀜)</td></tr><tr><td>주문접수 · 결제대기</td><td>[주문취소]로 바로 취소 (입금 전이라 환불 없이 [결제취소] 처리)</td></tr><tr><td>주문접수 · 계좌이체 결제완료</td><td>[취소요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송대기</td><td>취소·반품을 요청할 수 없음 (조회만 가능)</td></tr><tr><td>배송중</td><td>[반품요청]으로 요청 (공급자가 확인한 뒤 승인·반려)</td></tr><tr><td>배송확정</td><td>취소·반품을 요청할 수 없음</td></tr></tbody></table></div><p>이미 요청했거나 처리가 끝난 주문은 다시 요청할 수 없어요. 단, 반품이 반려된 [배송중] 주문은 [배송확정]을 할 수 있어요.</p>",
       "steps": "<ol><li><b>주문 고르기</b> 주문내역 목록이나 상세 하단 바에서 [주문취소], [취소요청], [반품요청]을 눌러요.</li><li><b>내용 입력하기</b> 요청 팝업이 열리면 아래 항목을 입력해요. 이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</li><li><b>요청하기</b> [취소 요청] 또는 [반품 요청]을 누르면 주문의 취소·반품 상태가 [취소요청] 또는 [반품요청]으로 바뀌고 공급자가 확인해요. 승인되면 환불이 진행되고, 반려되면 주문은 요청 전 단계로 이어져요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>환불은행*</td><td>환불받을 은행 (계좌이체 주문만 입력)</td></tr><tr><td>예금주*</td><td>환불받을 계좌의 예금주 (계좌이체 주문만 입력)</td></tr><tr><td>환불계좌번호*</td><td>&quot;-&quot; 없이 숫자만 입력 (계좌이체 주문만 입력)</td></tr><tr><td>취소 사유* · 반품 사유*</td><td>요청하는 이유</td></tr></tbody></table></div><p>카드결제 주문은 환불 계좌 없이 사유만 입력해요. 승인되면 PG사를 통해 카드 결제가 자동으로 취소돼요. 환불구분과 환불금액은 공급자가 승인할 때 정해져요.</p>",
       "cases": [
@@ -3925,17 +3925,17 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
             {
               "device": "pc",
               "src": "../assets/img/partner/wh-pop-return-pc.webp",
-              "alt": "09SCM 반품 요청 PC 화면",
+              "alt": "09SCM 반품요청 PC 화면",
               "ratio": 1.3193
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-pop-return-mobile.webp",
-              "alt": "09SCM 반품 요청 모바일 화면",
+              "alt": "09SCM 반품요청 모바일 화면",
               "ratio": 1.1609
             }
           ],
-          "shotCaption": "09SCM 반품 요청 화면 (PC / 모바일)",
+          "shotCaption": "09SCM 반품요청 화면 (PC / 모바일)",
           "html": "<p>환불 계좌 입력 없이 반품 사유만 입력해요. &quot;카드결제 건은 승인 시 PG사를 통해 자동으로 결제가 취소됩니다.&quot;가 안내돼요.</p>"
         },
         {
@@ -3944,17 +3944,17 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
             {
               "device": "pc",
               "src": "../assets/img/partner/wh-pop-cancelreq-error-pc.webp",
-              "alt": "09SCM 취소 요청 입력 오류 PC 화면",
+              "alt": "09SCM 취소요청 입력 오류 PC 화면",
               "ratio": 0.846
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-pop-cancelreq-error-mobile.webp",
-              "alt": "09SCM 취소 요청 입력 오류 모바일 화면",
+              "alt": "09SCM 취소요청 입력 오류 모바일 화면",
               "ratio": 0.6349
             }
           ],
-          "shotCaption": "09SCM 취소 요청 입력 오류 화면 (PC / 모바일)",
+          "shotCaption": "09SCM 취소요청 입력 오류 화면 (PC / 모바일)",
           "html": "<p>빠진 항목이 한꺼번에 안내되고 요청이 접수되지 않아요. 예) &quot;취소 사유를 입력해주세요.&quot; &quot;환불은행을 입력해주세요.&quot; &quot;환불계좌번호를 입력해주세요.&quot; &quot;예금주를 입력해주세요.&quot; 반품 요청이면 &quot;반품 사유를 입력해주세요.&quot;가 나와요.</p>"
         }
       ],
