@@ -103,7 +103,7 @@ def run(device, b):
     if want('wh-cart-empty'):
         ctx, page = page_for(b, device); W.go_menu(page, '도매상품 주문하기')
         page.evaluate("CART.splice(0)"); W.goto_item(page, 'wholesale-cart'); page.wait_for_timeout(400)
-        C.shot(page, 'wh-cart-empty' + sfx, [Q('.grid12 > .card')]); ctx.close()
+        C.shot(page, 'wh-cart-empty' + sfx, [Q('.grid12 > .card', 0), Q('.grid12 > .card', 1)]); ctx.close()
     if want('wh-list-help'):
         ctx, page = page_for(b, device); W.go_menu(page, '도매상품 주문하기')
         if pc: page.hover('.help-tip')

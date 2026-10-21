@@ -3562,13 +3562,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-cart-block-pc.webp",
               "alt": "09SCM 장바구니 품절·구매불가 PC 화면",
-              "ratio": 1.7001
+              "ratio": 1.6501
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-cart-block-mobile.webp",
               "alt": "09SCM 장바구니 품절·구매불가 모바일 화면",
-              "ratio": 0.3138
+              "ratio": 0.3103
             }
           ],
           "shotCaption": "09SCM 장바구니 품절·구매불가 화면 (PC / 모바일)",
@@ -3581,13 +3581,13 @@ window.GUIDE_CONTENT['wholesale-shop'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-cart-empty-pc.webp",
               "alt": "09SCM 장바구니 비어 있음 PC 화면",
-              "ratio": 10.8702
+              "ratio": 3.7973
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-cart-empty-mobile.webp",
               "alt": "09SCM 장바구니 비어 있음 모바일 화면",
-              "ratio": 3.3588
+              "ratio": 1.1733
             }
           ],
           "shotCaption": "09SCM 장바구니 비어 있음 화면 (PC / 모바일)",

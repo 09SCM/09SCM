@@ -301,13 +301,15 @@ details.guide-more[open] > summary { margin-bottom: 8px; }
 /* 대표 화면 캡처 */
 .shot { margin-bottom: 32px; }
 .shot-item { margin: 0; }
-.shot-item img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; background: var(--surface, #fff); }
+.shot-item img { display: block; width: 100%; height: auto; border: 0; outline: 1px solid var(--border); outline-offset: -1px; border-radius: 6px; background: var(--surface, #fff); }
 .shot-caption { margin: 8px 0 0; font-size: 12px; font-weight: 300; color: var(--text-secondary); }
 .shot-pair { display: flex; gap: 16px; align-items: flex-start; }
 .guide-section .shot-caption { margin: 8px 0 0; }
 .shot-pair .shot-item { min-width: 0; }
+.shot-one .shot-item { width: calc(50% - 8px); }
 @media (max-width: 860px) {
   .shot-pair { gap: 10px; }
+  .shot-one .shot-item { width: 100%; }
 }
 
 /* 본문 서식 */
