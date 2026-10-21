@@ -4192,19 +4192,19 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
           "shots": [
             {
               "device": "pc",
-              "src": "../assets/img/partner/wh-pop-cancelreq-error-pc.webp",
-              "alt": "09SCM 취소요청 입력 오류 PC 화면",
+              "src": "../assets/img/partner/wh-pop-returnreq-error-pc.webp",
+              "alt": "09SCM 반품요청 입력 오류 PC 화면",
               "ratio": 0.846
             },
             {
               "device": "mobile",
-              "src": "../assets/img/partner/wh-pop-cancelreq-error-mobile.webp",
-              "alt": "09SCM 취소요청 입력 오류 모바일 화면",
+              "src": "../assets/img/partner/wh-pop-returnreq-error-mobile.webp",
+              "alt": "09SCM 반품요청 입력 오류 모바일 화면",
               "ratio": 0.6349
             }
           ],
-          "shotCaption": "09SCM 취소요청 입력 오류 화면 (PC / 모바일)",
-          "html": "<p>빠진 항목이 한꺼번에 안내되고 요청이 접수되지 않아요. 예) &quot;취소 사유를 입력해주세요.&quot; &quot;환불은행을 입력해주세요.&quot; &quot;환불계좌번호를 입력해주세요.&quot; &quot;예금주를 입력해주세요.&quot; 반품 요청이면 &quot;반품 사유를 입력해주세요.&quot;가 나와요.</p>"
+          "shotCaption": "09SCM 반품요청 입력 오류 화면 (PC / 모바일)",
+          "html": "<p>빠진 항목이 한꺼번에 안내되고 요청이 접수되지 않아요. 예) &quot;반품 사유를 입력해주세요.&quot; &quot;환불은행을 입력해주세요.&quot; &quot;환불계좌번호를 입력해주세요.&quot; &quot;예금주를 입력해주세요.&quot; 환불계좌 항목은 계좌이체 주문에만 나와요. 취소요청도 같은 방식으로 안내되고, 사유 문구만 &quot;취소 사유를 입력해주세요.&quot;로 바뀌어요.</p>"
         }
       ],
       "trouble": "<h3>요청했는데 바로 취소되지 않아요</h3><p>[취소요청]과 [반품요청]은 공급자가 확인한 뒤 처리돼요. 진행 상황은 주문내역의 취소·반품 열이나 주문 상세의 취소·반품 정보에서 확인해요.</p><h3>배송대기인 주문을 취소할 수 없어요</h3><p>[배송대기] 단계에서는 구매자가 취소·반품을 요청할 수 없어요. [배송중]이 되면 [반품요청]을 할 수 있어요.</p><h3>다시 요청할 수 없어요</h3><p>이미 요청했거나 처리가 끝난 주문은 다시 요청할 수 없어요. 처리 결과는 주문 상세에서 확인해주세요.</p>"
