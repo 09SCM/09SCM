@@ -4387,3 +4387,274 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
     '<h3>저장했는데 다른 영역의 변경이 반영되지 않아요</h3>' +
     '<p>결제수수료, 공급범위, 배송방식은 영역마다 [저장]이 따로 있어요. 저장하지 않은 영역의 변경은 반영되지 않아요.</p>'
 };
+
+window.GUIDE_CONTENT['wholesale-mine'] = {
+  screens: [
+    {
+      id: 'list-view',
+      label: '내 도매상품 보기',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-mine-list-pc.webp', alt: '09SCM 내 도매상품 PC 화면', ratio: 0.96 },
+        { device: 'mobile', src: '../assets/img/partner/wh-mine-list-mobile.webp', alt: '09SCM 내 도매상품 모바일 화면', ratio: 0.3667 }
+      ],
+      shotCaption: '09SCM 내 도매상품 화면 (PC / 모바일)',
+      overview:
+        '<p>내가 공급하는 도매상품을 한곳에서 보고 관리하는 화면이에요. 여기에 등록한 상품은 공급범위에 맞는 구매자의 <a href="#wholesale-shop">도매상품 주문하기</a>에 보여요.</p>' +
+        '<p>소매몰에서도 판매하려면 상품마다 소매정보를 등록해야 해요. 상품코드는 도매와 소매가 같은 번호 체계를 함께 써요. 용어는 <a href="#start-terms">용어집</a>에서 확인해주세요.</p>',
+      steps:
+        '<h3>상품 찾기</h3>' +
+        '<p>목록 위쪽에서 상품을 검색하고 조건별로 걸러낼 수 있어요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>검색</td><td>상품코드 또는 상품명으로 검색 (영문 대소문자 구분 없음)</td></tr>' +
+          '<tr><td>필터</td><td>공급범위, 도매판매상태, 도매노출여부, 1차·2차 카테고리 선택</td></tr>' +
+          '<tr><td>정렬</td><td>최근등록순, 최근수정순, 재고 적은순 중 선택</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>목록은 한 페이지에 20건씩 보여줘요.</p>' +
+
+        '<h3>목록에서 보이는 정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>이미지</td><td>상품 대표이미지</td></tr>' +
+          '<tr><td>상품코드</td><td>도매와 소매가 함께 쓰는 상품 고유 코드</td></tr>' +
+          '<tr><td>상품명</td><td>도매상품 이름</td></tr>' +
+          '<tr><td>카테고리</td><td>도매 카테고리 (1차 &gt; 2차)</td></tr>' +
+          '<tr><td>공급범위</td><td>전국, 우리지역, 우리본사 중 해당 공급범위</td></tr>' +
+          '<tr><td>공급가/단위</td><td>공급단위 하나당 가격 (예: 12,000원 / box(10kg))</td></tr>' +
+          '<tr><td>보유수량</td><td>내가 보유한 전체 수량</td></tr>' +
+          '<tr><td>도매판매상태</td><td>[판매중], [품절] 구분 ([품절] 상품은 구매자가 주문 불가)</td></tr>' +
+          '<tr><td>도매노출여부</td><td>[노출], [미노출] 구분 ([미노출] 상품은 구매자의 도매상품 주문하기에 표시되지 않음)</td></tr>' +
+          '<tr><td>소매정보여부</td><td>소매정보 등록 여부와 소매몰 노출 여부</td></tr>' +
+          '<tr><td>등록일시</td><td>도매상품을 등록한 일시</td></tr>' +
+          '<tr><td>수정일시</td><td>도매상품을 마지막으로 수정한 일시</td></tr>' +
+          '<tr><td>관리</td><td>[상세보기], [수정], [삭제] (모든 행에 항상 표시)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>새 상품은 오른쪽 위의 [+ 도매상품등록]으로 등록해요. 자세한 내용은 <a href="#wholesale-mine/register">도매상품 등록하기</a>에서 확인해주세요.</p>',
+      cases: [
+        {
+          title: '소매정보여부가 다르면',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>[등록] [노출]</td><td>소매정보 등록, 소매몰에 노출 중</td></tr>' +
+              '<tr><td>[등록] [미노출]</td><td>소매정보 등록, 소매몰에는 보이지 않음</td></tr>' +
+              '<tr><td>[미등록]</td><td>소매정보 없음 (소매몰에 보이지 않음)</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>소매정보는 소매관리 &gt; <a href="#retail-product-list">상품목록</a>에서 등록하고 고쳐요. 도매상품을 등록할 때 함께 등록할 수도 있어요.</p>'
+        },
+        {
+          title: '수량이 바뀌면',
+          html:
+            '<ul>' +
+              '<li>도매 주문이 접수되면 보유수량이 주문 수량만큼 줄어요.</li>' +
+              '<li>소매몰에서 판매하도록 정한 판매가능수량은 도매 구매자가 주문할 수 없어요. 구매자가 주문할 수 있는 수량(도매 가용재고)은 보유수량에서 판매가능수량을 뺀 수량이에요.</li>' +
+              '<li>보유수량이 0이거나 도매 가용재고가 모두 없어지면 도매판매상태가 [품절]로 바뀌어요. 자세한 내용은 <a href="#wholesale-mine/edit">도매상품 수정하기</a>에서 확인해주세요.</li>' +
+              '<li>구매자가 즉시취소하면 수량이 자동으로 되돌아와요. 취소·반품을 승인할 때 수량을 되돌릴지는 <a href="#wholesale-receive">주문접수관리</a>에서 선택해요.</li>' +
+            '</ul>'
+        },
+        {
+          title: '이용상태가 다르면',
+          html:
+            '<p>이용제한 상태에서는 도매상품을 새로 등록할 수 없어요. 자세한 내용은 <a href="#start-login">가입신청·로그인</a>에서 확인해주세요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>상품이 구매자에게 보이지 않아요</h3>' +
+        '<p>도매노출여부가 [미노출]이면 보이지 않아요. 공급범위가 우리지역이면 구매자의 사업장 주소가 등록한 시·군·구에 없을 수 있고, 우리본사이면 구매자가 같은 본사 소속이 아닐 수 있어요. [품절] 상품은 보이지만 주문할 수 없어요.</p>' +
+        '<h3>상품이 모두 [품절]·[미노출]로 바뀌었어요</h3>' +
+        '<p>가맹점이 이용불가 상태가 되거나 도매공급권한이 회수되면 등록한 도매상품이 모두 [품절]·[미노출]로 바뀌어요. 수량은 그대로이고, 이용승인이나 권한 재부여 후에도 자동으로 돌아오지 않아서 상품마다 직접 바꿔야 해요.</p>'
+    },
+    {
+      id: 'register',
+      label: '도매상품 등록하기',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-mine-reg-pc.webp', alt: '09SCM 도매상품 등록 PC 화면', ratio: 0.9505 },
+        { device: 'mobile', src: '../assets/img/partner/wh-mine-reg-mobile.webp', alt: '09SCM 도매상품 등록 모바일 화면', ratio: 0.2537 }
+      ],
+      shotCaption: '09SCM 도매상품 등록 화면 (PC / 모바일)',
+      overview:
+        '<p>구매자에게 공급할 도매상품을 새로 등록하는 화면이에요. 목록 오른쪽 위의 [+ 도매상품등록]을 누르면 열려요.</p>' +
+        '<p>도매노출여부를 [노출]로 등록하면 공급범위에 맞는 구매자의 <a href="#wholesale-shop">도매상품 주문하기</a>에 보여요.</p>',
+      steps:
+        '<ol>' +
+          '<li><b>정보 입력하기</b> 아래 표의 항목을 입력해요. 이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</li>' +
+          '<li><b>소매정보 함께 등록하기</b> 소매몰에서도 판매할 상품이면 [소매정보 함께 등록]을 선택해요. 선택하지 않아도 등록 후에 소매정보를 따로 등록할 수 있어요.</li>' +
+          '<li><b>저장하기</b> [저장]을 누르면 도매상품이 만들어져요. 입력한 보유수량이 0이면 [품절], 0보다 크면 [판매중]으로 등록돼요.</li>' +
+        '</ol>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>상품이미지*</td><td>구매자에게 보일 상품 사진 (2장 이상 10장 이하, JPG·PNG·WEBP, 한 장당 5MB 이하, 첫 번째 이미지가 대표이미지)</td></tr>' +
+          '<tr><td>도매카테고리 1차*</td><td>모든 계정이 함께 쓰는 도매 카테고리 중 선택</td></tr>' +
+          '<tr><td>도매카테고리 2차</td><td>선택한 1차 카테고리 아래의 2차 카테고리 선택 (선택 입력)</td></tr>' +
+          '<tr><td>도매상품명*</td><td>구매자에게 보일 상품 이름</td></tr>' +
+          '<tr><td>공급범위</td><td>전국, 우리지역, 우리본사 중 선택 (처음에는 전국, 구매자에게 노출되는 기준은 <a href="#wholesale-shop">도매상품 주문하기</a> 참고)</td></tr>' +
+          '<tr><td>우리지역</td><td>공급범위를 우리지역으로 고르면 나타나는 칸 (노출할 시·군·구 등록)</td></tr>' +
+          '<tr><td>공급가* / 공급단위</td><td>공급단위 하나당 가격 (1원 이상의 정수)과 공급단위 (예: box(10kg))</td></tr>' +
+          '<tr><td>도매노출여부</td><td>구매자에게 상품을 보일지 선택 (처음에는 노출)</td></tr>' +
+          '<tr><td>보유수량*</td><td>내가 가진 전체 수량 (0 이상의 정수, 0으로 등록하면 품절)</td></tr>' +
+          '<tr><td>배송방식</td><td><a href="#wholesale-settings">도매설정</a>에서 정한 배송방식 (이 화면에서는 고칠 수 없음)</td></tr>' +
+          '<tr><td>원산지</td><td>상품의 원산지 (선택 입력)</td></tr>' +
+          '<tr><td>소비기한</td><td>상품의 소비기한 안내 (선택 입력, 날짜 대신 &quot;수령 후 7일&quot;처럼 자유롭게 입력)</td></tr>' +
+          '<tr><td>상세정보</td><td>상품 상세 설명 (선택 입력, 도매 상품 상세와 소매몰 상품 상세에 함께 표시)</td></tr>' +
+        '</tbody></table></div>',
+      cases: [
+        {
+          title: '공급범위를 우리지역으로 정하면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-reg-region-pc.webp', alt: '09SCM 우리지역 PC 화면', ratio: 8.2312 },
+            { device: 'mobile', src: '../assets/img/partner/wh-mine-reg-region-mobile.webp', alt: '09SCM 우리지역 모바일 화면', ratio: 1.7323 }
+          ],
+          shotCaption: '09SCM 우리지역 화면 (PC / 모바일)',
+          html:
+            '<ul>' +
+              '<li>우리지역 칸이 나타나요. 공급범위를 전국이나 우리본사로 고르면 이 칸은 보이지 않아요.</li>' +
+              '<li>내 사업장 주소의 시·군·구가 [기본]으로 들어 있고 삭제할 수 없어요. 도매설정에 등록해 둔 지역도 처음부터 채워져 있어요.</li>' +
+              '<li>[지역 추가]로 지역을 더하고 [×]로 뺄 수 있어요. 기본 지역을 포함해 최대 50곳까지 등록해요. 지역을 추가하는 방법은 <a href="#wholesale-settings">도매설정</a>에서 확인해주세요.</li>' +
+              '<li>이후 도매설정의 지역을 바꿔도 이미 등록한 상품의 지역은 바뀌지 않아요.</li>' +
+            '</ul>'
+        },
+        {
+          title: '소매정보를 함께 등록하면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-reg-retail-pc.webp', alt: '09SCM 소매정보 함께 등록 PC 화면', ratio: 1.9641 },
+            { device: 'mobile', src: '../assets/img/partner/wh-mine-reg-retail-mobile.webp', alt: '09SCM 소매정보 함께 등록 모바일 화면', ratio: 0.3783 }
+          ],
+          shotCaption: '09SCM 소매정보 함께 등록 화면 (PC / 모바일)',
+          html:
+            '<ul>' +
+              '<li>[소매정보 함께 등록]을 선택하면 소매정보 입력 영역이 열려요. 입력 항목은 <a href="#retail-product-list/register">소매정보 등록하기</a>와 같아요.</li>' +
+              '<li>판매가능수량은 소매몰에서 판매할 수량이에요. 보유수량보다 클 수 없어요.</li>' +
+              '<li>판매가능수량만큼은 도매 구매자가 주문할 수 없어요. 보유수량 아래에 &quot;도매 가용재고: N개 (소매 판매가능수량 N개 제외)&quot;가 표시돼요.</li>' +
+            '</ul>'
+        },
+        {
+          title: '입력에 맞지 않는 내용이 있으면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-reg-error-pc.webp', alt: '09SCM 도매상품 등록 입력 오류 PC 화면', ratio: 5.5843 },
+            { device: 'mobile', src: '../assets/img/partner/wh-mine-reg-error-mobile.webp', alt: '09SCM 도매상품 등록 입력 오류 모바일 화면', ratio: 1.7255 }
+          ],
+          shotCaption: '09SCM 도매상품 등록 입력 오류 화면 (PC / 모바일)',
+          html:
+            '<p>입력에 맞지 않는 내용이 있으면 저장되지 않고, 화면 위쪽에 고쳐야 할 항목이 모두 나와요.</p>'
+        }
+      ]
+    },
+    {
+      id: 'detail',
+      label: '도매상품 상세 보기',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-mine-detail-pc.webp', alt: '09SCM 도매상품 상세 PC 화면', ratio: 0.96 },
+        { device: 'mobile', src: '../assets/img/partner/wh-mine-detail-mobile.webp', alt: '09SCM 도매상품 상세 모바일 화면', ratio: 0.3161 }
+      ],
+      shotCaption: '09SCM 도매상품 상세 화면 (PC / 모바일)',
+      overview:
+        '<p>목록에서 [상세보기]를 누르면 등록한 도매상품을 조회 전용 화면으로 확인해요. 고치려면 [수정], 지우려면 [삭제]를 눌러요.</p>' +
+        '<ul>' +
+          '<li>상품코드, 도매등록일시, 도매수정일시가 위쪽에 표시돼요.</li>' +
+          '<li>배송방식은 <a href="#wholesale-settings">도매설정</a>에서 정한 값이 표시돼요.</li>' +
+        '</ul>',
+      cases: [
+        {
+          title: '소매몰에도 노출 중인 상품이면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-detail-banner-pc.webp', alt: '09SCM 소매몰 노출 안내 PC 화면', ratio: 7.0148 },
+            { device: 'mobile', src: '../assets/img/partner/wh-mine-detail-banner-mobile.webp', alt: '09SCM 소매몰 노출 안내 모바일 화면', ratio: 1.6418 }
+          ],
+          shotCaption: '09SCM 소매몰 노출 안내 화면 (PC / 모바일)',
+          html:
+            '<p>&quot;이 상품은 현재 소매몰에도 노출 중입니다.&quot; 안내가 나오고, 소매몰 판매용으로 배정한 판매가능수량이 함께 표시돼요. 이 수량은 도매 구매자가 주문할 수 없어요.</p>'
+        },
+        {
+          title: '공급범위가 우리지역이면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-detail-scope-pc.webp', alt: '09SCM 우리지역 공급범위 PC 화면', ratio: 7.4583 },
+            { device: 'mobile', src: '../assets/img/partner/wh-mine-detail-scope-mobile.webp', alt: '09SCM 우리지역 공급범위 모바일 화면', ratio: 4.5833 }
+          ],
+          shotCaption: '09SCM 우리지역 공급범위 화면 (PC / 모바일)',
+          html:
+            '<p>공급범위에 &quot;우리지역 (기본 지역 외 N곳)&quot;이 표시되고, 괄호 안에는 기본 지역이 나와요. 추가한 지역이 있으면 다음 줄에 &quot; / &quot;로 구분해서 보여줘요.</p>'
+        }
+      ]
+    },
+    {
+      id: 'edit',
+      label: '도매상품 수정하기',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-mine-edit-pc.webp', alt: '09SCM 도매상품 수정 PC 화면', ratio: 0.9339 },
+        { device: 'mobile', src: '../assets/img/partner/wh-mine-edit-mobile.webp', alt: '09SCM 도매상품 수정 모바일 화면', ratio: 0.2263 }
+      ],
+      shotCaption: '09SCM 도매상품 수정 화면 (PC / 모바일)',
+      overview:
+        '<p>[수정]에서 등록한 도매상품을 고쳐요. 입력 항목은 <a href="#wholesale-mine/register">도매상품 등록하기</a>와 같고, 수정 화면에서는 도매판매상태도 고를 수 있어요.</p>' +
+        '<ul>' +
+          '<li>상품코드와 도매등록일시는 고칠 수 없어요.</li>' +
+          '<li>소매정보는 이 화면에서 고칠 수 없어요. 소매관리 &gt; <a href="#retail-product-list">상품목록</a>에서 고쳐요.</li>' +
+        '</ul>',
+      cases: [
+        {
+          title: '판매상태가 잠기면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-edit-lock-pc.webp', alt: '09SCM 도매판매상태 잠김 PC 화면', ratio: 3.5446 },
+            { device: 'mobile', src: '../assets/img/partner/wh-mine-edit-lock-mobile.webp', alt: '09SCM 도매판매상태 잠김 모바일 화면', ratio: 1.5548 }
+          ],
+          shotCaption: '09SCM 도매판매상태 잠김 화면 (PC / 모바일)',
+          html:
+            '<p>수량 조건에 따라 도매판매상태가 [품절]로 고정되고 잠겨요. 잠기지 않은 나머지 항목은 계속 고칠 수 있어요.</p>' +
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>보유수량이 0</td><td>[품절]로 고정 (보유수량을 다시 입력하면 잠금 해제)</td></tr>' +
+              '<tr><td>도매 가용재고가 0 (보유수량이 소매 판매가능수량 이하)</td><td>[품절]로 고정 (보유수량을 늘리거나 소매 판매가능수량을 줄이면 잠금 해제)</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>잠금이 풀려도 상태는 [품절] 그대로예요. 다시 판매하려면 직접 [판매중]으로 바꿔주세요. 도매노출여부는 보유수량이 0이어도 바꿀 수 있어요.</p>'
+        },
+        {
+          title: '보유수량을 소매 판매가능수량보다 낮게 수정하면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-edit-stockerr-pc.webp', alt: '09SCM 보유수량 수정 오류 PC 화면', ratio: 8.3275 },
+            { device: 'mobile', src: '../assets/img/partner/wh-mine-edit-stockerr-mobile.webp', alt: '09SCM 보유수량 수정 오류 모바일 화면', ratio: 2.0657 }
+          ],
+          shotCaption: '09SCM 보유수량 수정 오류 화면 (PC / 모바일)',
+          html:
+            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+              '<tr><td>보유수량이 소매 판매가능수량보다 낮음</td><td>&quot;보유수량은 이미 소매로 배정된 판매가능수량(N개)보다 낮게 수정할 수 없습니다. 소매정보를 먼저 수정한 뒤 다시 시도해주세요.&quot;</td></tr>' +
+            '</tbody></table></div>' +
+            '<p>안내가 나오면 저장되지 않아요. 소매관리 &gt; <a href="#retail-product-list">상품목록</a>에서 판매가능수량을 먼저 줄인 뒤 다시 수정해주세요.</p>'
+        }
+      ]
+    },
+    {
+      id: 'delete',
+      label: '삭제하기',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-mine-del-one-pc.webp', alt: '09SCM 삭제 확인 PC 화면', ratio: 1.6835 }
+      ],
+      shotCaption: '09SCM 삭제 확인 화면',
+      overview:
+        '<p>목록의 [삭제]나 상세 화면의 [삭제]를 눌러요. 여러 건은 체크한 뒤 [일괄삭제]를 눌러요. 체크박스 선택은 현재 페이지에서만 유지되고, 다른 페이지로 넘어가면 해제돼요.</p>',
+      steps:
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>소매정보가 없는 도매상품</td><td>도매상품만 삭제</td></tr>' +
+          '<tr><td>소매정보가 연동된 도매상품</td><td>소매정보도 함께 삭제 (소매몰과 메인상품진열에서도 사라지고, 확인 창에 &quot;소매정보가 연동된 상품입니다.&quot; 안내 표시)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>진행 중인 주문이 있어도 삭제할 수 있어요. 삭제하기 전 확인 창에서 &quot;삭제 시 도매·소매 주문 처리 중 혼선이 생길 수 있습니다.&quot;와 &quot;삭제한 데이터는 복구할 수 없습니다.&quot; 안내를 보여줘요. 이미 들어온 주문은 주문 당시 정보 그대로 남아서 계속 처리할 수 있어요.</p>',
+      cases: [
+        {
+          title: '일괄삭제를 확인할 때',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-del-bulk-pc.webp', alt: '09SCM 일괄삭제 확인 PC 화면', ratio: 1.6835 }
+          ],
+          shotCaption: '09SCM 일괄삭제 확인 화면',
+          html:
+            '<p>체크한 건수가 &quot;선택한 N건을 삭제하시겠습니까?&quot;로 나와요. 소매정보가 연동된 상품이 포함되어 있으면 그 안내도 함께 보여요.</p>'
+        },
+        {
+          title: '선택 없이 일괄삭제를 누르면',
+          shots: [
+            { device: 'pc', src: '../assets/img/partner/wh-mine-del-none-pc.webp', alt: '09SCM 삭제 상품 미선택 PC 화면', ratio: 2.4038 }
+          ],
+          shotCaption: '09SCM 삭제 상품 미선택 화면',
+          html:
+            '<p>&quot;삭제할 상품을 선택해주세요.&quot; 안내가 나와요. 삭제할 상품을 체크한 뒤 다시 눌러주세요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>삭제했는데 소매몰에서도 사라졌어요</h3>' +
+        '<p>소매정보가 연동된 도매상품을 삭제하면 소매정보도 함께 삭제돼요. 소매몰에서만 내리고 싶다면 소매관리 &gt; <a href="#retail-product-list">상품목록</a>에서 소매정보만 삭제하거나 소매노출여부를 [미노출]로 바꿔주세요.</p>'
+    }
+  ]
+};
