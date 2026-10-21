@@ -161,7 +161,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
   "screens": [
     {
       "id": "list-view",
-      "label": "상품 목록 보기",
+      "label": "상품목록 보기",
       "shots": [
         {
           "device": "pc",
@@ -220,17 +220,17 @@ window.GUIDE_CONTENT['retail-product-list'] = {
         {
           "device": "pc",
           "src": "../assets/img/partner/product-register-pc.webp",
-          "alt": "09SCM 소매정보등록 PC 화면",
+          "alt": "09SCM 소매정보 등록 PC 화면",
           "ratio": 0.8834
         },
         {
           "device": "mobile",
           "src": "../assets/img/partner/product-register-mobile.webp",
-          "alt": "09SCM 소매정보등록 모바일 화면",
+          "alt": "09SCM 소매정보 등록 모바일 화면",
           "ratio": 0.1953
         }
       ],
-      "shotCaption": "09SCM 소매정보등록 화면 (PC / 모바일)",
+      "shotCaption": "09SCM 소매정보 등록 화면 (PC / 모바일)",
       "overview": "<p>소매정보가 없는 상품을 소매몰에서 판매할 수 있도록, 소매몰에서 보일 정보를 등록하는 화면이에요. 목록에서 소매미등록 상품 행의 [소매정보등록]을 누르면 열려요. 도매주문상품은 가장 최근에 배송확정된 구매분의 상품정보가 미리 채워져 있어요.</p>",
       "steps": "<ol><li><b>등록할 상품 고르기</b> 소매미등록 상품 행에서 [소매정보등록]을 눌러요.</li><li><b>정보 입력하기</b> 아래 표의 항목을 입력해요. 이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</li><li><b>저장하기</b> [저장]을 누르면 소매정보가 만들어져요. 입력한 판매가능수량이 0이면 [품절], 0보다 크면 [판매중]으로 등록돼요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품이미지*</td><td>소매몰에 보일 상품 사진 (2장 이상 10장 이하, JPG·PNG·WEBP, 한 장당 5MB 이하, 첫 번째 이미지가 대표이미지)</td></tr><tr><td>소매카테고리 1차*</td><td>내가 만든 소매 카테고리 중 선택 (카테고리가 없으면 <a href=\"#retail-product-category\">상품카테고리</a>에서 먼저 등록)</td></tr><tr><td>소매카테고리 2차</td><td>선택한 1차 카테고리 아래의 2차 카테고리 선택 (선택 입력)</td></tr><tr><td>소매상품명*</td><td>소매몰에 보일 상품 이름</td></tr><tr><td>소비자가*</td><td>구매자에게 보여줄 판매가 (1원 이상의 정수)</td></tr><tr><td>할인가</td><td>소비자가에서 할인한 판매가 (선택 입력, 1원 이상의 정수, 소비자가 이하, 할인율은 자동 계산)</td></tr><tr><td>소매노출여부</td><td>소매몰에 상품을 보일지 선택</td></tr><tr><td>판매가능수량*</td><td>소매몰에서 판매할 수량 (보유수량 이하)</td></tr><tr><td>수령방식</td><td>픽업, 배달, 픽업+배달 중 선택 (기본값은 소매설정의 기본 수령방식, 상품마다 변경 가능)</td></tr><tr><td>픽업가능 시작일*</td><td>픽업을 받을 수 있는 첫 날짜 (수령방식에 픽업이 포함될 때 입력)</td></tr><tr><td>픽업가능 종료일*</td><td>픽업을 받을 수 있는 마지막 날짜 (수령방식에 픽업이 포함될 때 입력, 시작일보다 빠를 수 없고 오늘 이후만 입력 가능, 수정 시에는 종료일을 바꾸는 경우에 한해 오늘 이후 검증)</td></tr><tr><td>채팅주문 허용</td><td>채팅주문 가능 여부 (켜면 채팅주문상품명 입력 필요)</td></tr><tr><td>채팅주문상품명*</td><td>채팅주문에서 쓰는 짧은 상품 이름 (소매상품명과 별도, 입력 후 [중복확인] 필요)</td></tr><tr><td>상품구성</td><td>상품에 포함된 구성 안내 (선택 입력)</td></tr><tr><td>1회 최대구매수량</td><td>한 번에 주문할 수 있는 최대 수량 (선택 입력)</td></tr><tr><td>원산지</td><td>상품의 원산지 (선택 입력)</td></tr><tr><td>소비기한</td><td>상품의 소비기한 안내 (선택 입력, 날짜 대신 &quot;수령 후 7일&quot;처럼 자유롭게 입력)</td></tr><tr><td>상세정보</td><td>상품 상세 설명 (선택 입력)</td></tr></tbody></table></div>",
       "cases": [
@@ -240,17 +240,17 @@ window.GUIDE_CONTENT['retail-product-list'] = {
             {
               "device": "pc",
               "src": "../assets/img/partner/product-register-error-pc.webp",
-              "alt": "09SCM 소매정보등록 입력 오류 PC 화면",
+              "alt": "09SCM 소매정보 등록 입력 오류 PC 화면",
               "ratio": 5.5843
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-register-error-mobile.webp",
-              "alt": "09SCM 소매정보등록 입력 오류 모바일 화면",
+              "alt": "09SCM 소매정보 등록 입력 오류 모바일 화면",
               "ratio": 1.7255
             }
           ],
-          "shotCaption": "09SCM 소매정보등록 입력 오류 화면 (PC / 모바일)",
+          "shotCaption": "09SCM 소매정보 등록 입력 오류 화면 (PC / 모바일)",
           "html": "<p>입력에 맞지 않는 내용이 있으면 저장되지 않고, 화면 위쪽에 고쳐야 할 항목이 모두 나와요.</p>"
         }
       ]
@@ -278,7 +278,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
     },
     {
       "id": "detail",
-      "label": "상세보기",
+      "label": "소매정보 상세 보기",
       "shots": [
         {
           "device": "pc",
@@ -341,7 +341,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
     },
     {
       "id": "edit",
-      "label": "수정하기",
+      "label": "소매정보 수정하기",
       "shots": [
         {
           "device": "pc",
@@ -1357,7 +1357,7 @@ window.GUIDE_CONTENT['retail-member'] = {
   screens: [
     {
       id: 'member-list',
-      label: '회원 목록',
+      label: '회원관리 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/member-list-pc.webp', alt: '09SCM 회원관리 PC 화면', ratio: 0.96 },
         { device: 'mobile', src: '../assets/img/partner/member-list-mobile.webp', alt: '09SCM 회원관리 모바일 화면', ratio: 0.3667 }
@@ -1463,7 +1463,7 @@ window.GUIDE_CONTENT['retail-member'] = {
     },
     {
       id: 'member-detail',
-      label: '회원정보 상세',
+      label: '회원정보 상세 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/member-detail-pc.webp', alt: '09SCM 회원정보 상세 PC 화면', ratio: 2880 / 3212 },
         { device: 'mobile', src: '../assets/img/partner/member-detail-mobile.webp', alt: '09SCM 회원정보 상세 모바일 화면', ratio: 880 / 3164 }
@@ -1940,7 +1940,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
     },
     {
       id: 'detail-tabs',
-      label: '가맹점 상세',
+      label: '가맹점 상세 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/fr-d-main-pc.webp', alt: '09SCM 가맹점 상세 PC 화면', ratio: 2880 / 1800 },
         { device: 'mobile', src: '../assets/img/partner/fr-d-main-mobile.webp', alt: '09SCM 가맹점 상세 모바일 화면', ratio: 880 / 1800 }
@@ -2427,7 +2427,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
   screens: [
     {
       id: 'overall',
-      label: '전체 현황',
+      label: '전체 현황 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-sales-main-pc.webp', alt: '09SCM 통합매출조회 전체 현황 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/frm-sales-main-mobile.webp', alt: '09SCM 통합매출조회 전체 현황 모바일 화면', ratio: 880 / 2400 }
@@ -2537,7 +2537,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
     },
     {
       id: 'by-franchise',
-      label: '가맹점별 현황',
+      label: '가맹점별 현황 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-sales-list-pc.webp', alt: '09SCM 가맹점별 현황 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/frm-sales-list-mobile.webp', alt: '09SCM 가맹점별 현황 모바일 화면', ratio: 880 / 2400 }
@@ -2575,7 +2575,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
     },
     {
       id: 'franchise-detail',
-      label: '가맹점 매출 상세',
+      label: '가맹점 매출 상세 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-sales-detail-pc.webp', alt: '09SCM 가맹점 매출 상세 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/frm-sales-detail-mobile.webp', alt: '09SCM 가맹점 매출 상세 모바일 화면', ratio: 880 / 2400 }
@@ -2587,7 +2587,7 @@ window.GUIDE_CONTENT['franchise-sales'] = {
         '<h3>화면 구성</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>← 가맹점별 현황으로</td><td>가맹점별 현황 목록 이동</td></tr>' +
-          '<tr><td>가맹점 상세보기</td><td>해당 가맹점의 가맹점상세 이동</td></tr>' +
+          '<tr><td>가맹점 상세보기</td><td>해당 가맹점의 가맹점 상세 이동</td></tr>' +
           '<tr><td>엑셀 다운로드</td><td>조회 중인 가맹점 매출의 CSV 파일 저장</td></tr>' +
           '<tr><td>요약 카드</td><td>결제총액 / 취소·환불액 / 매출액</td></tr>' +
           '<tr><td>매출 추이</td><td>일별·월별 매출 추이 (전체 현황과 동일한 구성)</td></tr>' +
@@ -2609,7 +2609,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
   screens: [
     {
       id: 'list',
-      label: '공지 목록',
+      label: '공지사항 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-notice-list-pc.webp', alt: '09SCM 가맹점관리 공지사항 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/frm-notice-list-mobile.webp', alt: '09SCM 가맹점관리 공지사항 모바일 화면', ratio: 880 / 2400 }
@@ -2686,7 +2686,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
     },
     {
       id: 'form',
-      label: '공지 등록·수정',
+      label: '공지사항 등록·수정하기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-notice-form-pc.webp', alt: '09SCM 공지사항 등록 PC 화면', ratio: 2880 / 2300 },
         { device: 'mobile', src: '../assets/img/partner/frm-notice-form-mobile.webp', alt: '09SCM 공지사항 등록 모바일 화면', ratio: 880 / 3000 }
@@ -2759,7 +2759,7 @@ window.GUIDE_CONTENT['franchise-notice'] = {
     },
     {
       id: 'detail',
-      label: '공지 상세',
+      label: '공지사항 상세 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/frm-notice-detail-pc.webp', alt: '09SCM 공지사항 상세 PC 화면', ratio: 2880 / 2300 },
         { device: 'mobile', src: '../assets/img/partner/frm-notice-detail-mobile.webp', alt: '09SCM 공지사항 상세 모바일 화면', ratio: 880 / 3000 }
@@ -2787,7 +2787,7 @@ window.GUIDE_CONTENT['system-notice'] = {
   screens: [
     {
       id: 'list',
-      label: '공지 목록',
+      label: '공지사항 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-notice-list-pc.webp', alt: '09SCM 공지사항 PC 화면', ratio: 2880 / 3000 },
         { device: 'mobile', src: '../assets/img/partner/sys-notice-list-mobile.webp', alt: '09SCM 공지사항 모바일 화면', ratio: 880 / 2400 }
@@ -2843,7 +2843,7 @@ window.GUIDE_CONTENT['system-notice'] = {
     },
     {
       id: 'detail',
-      label: '공지 상세',
+      label: '공지사항 상세 보기',
       shots: [
         { device: 'pc', src: '../assets/img/partner/sys-notice-detail-pc.webp', alt: '09SCM 공지 상세 PC 화면', ratio: 2880 / 1800 },
         { device: 'mobile', src: '../assets/img/partner/sys-notice-detail-mobile.webp', alt: '09SCM 공지 상세 모바일 화면', ratio: 880 / 2000 }
