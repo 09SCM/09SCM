@@ -435,6 +435,11 @@
     var right = document.createElement('div');
     right.className = 'topbar-right';
     right.innerHTML =
+      '<div class="toc-wrap" id="tocWrap" hidden>' +
+        '<button type="button" class="toc-btn" id="tocBtn" aria-label="바로가기" aria-expanded="false">' +
+          '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/><path d="M10 6h10M10 12h10M10 18h10"/></svg></button>' +
+        '<div class="toc-panel" id="tocPanel" hidden></div>' +
+      '</div>' +
       '<div class="search" id="search">' +
         '<button type="button" class="search-btn" id="searchBtn" aria-label="검색">' +
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>' +
@@ -465,6 +470,40 @@
       inputEl.focus();
     });
     document.addEventListener('mousedown', function (e) { if (!searchEl.contains(e.target)) closeSearch(); });
+
+    /* 바로가기 버튼 — 오른쪽 고정 목록이 숨겨지는 폭(1200px 이하)에서 사용 */
+    var tocWrap = right.querySelector('#tocWrap'), tocBtn = right.querySelector('#tocBtn'), tocPanel = right.querySelector('#tocPanel');
+    function closeToc() { tocPanel.hidden = true; tocBtn.setAttribute('aria-expanded', 'false'); }
+    function syncToc() { tocWrap.hidden = !contentEl.querySelector('.mini-toc [data-anchor]'); closeToc(); }
+    new MutationObserver(syncToc).observe(contentEl, { childList: true });
+    syncToc();
+    tocBtn.addEventListener('click', function () {
+      if (!tocPanel.hidden) { closeToc(); return; }
+      closeSearch();
+      tocPanel.innerHTML = '<h3>바로가기</h3>';
+      contentEl.querySelectorAll('.mini-toc [data-anchor]').forEach(function (src) {
+        var a = document.createElement('a');
+        a.href = '#' + src.dataset.anchor;
+        a.className = src.className;
+        a.textContent = src.textContent;
+        a.dataset.anchor = src.dataset.anchor;
+        tocPanel.appendChild(a);
+      });
+      tocPanel.hidden = false;
+      tocBtn.setAttribute('aria-expanded', 'true');
+      var cur = tocPanel.querySelector('.current');
+      if (cur) cur.scrollIntoView({ block: 'nearest' });
+    });
+    tocPanel.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-anchor]');
+      if (!a) return;
+      e.preventDefault();
+      var target = document.getElementById(a.dataset.anchor);
+      closeToc();
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.addEventListener('mousedown', function (e) { if (!tocWrap.contains(e.target)) closeToc(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeToc(); });
     document.addEventListener('keydown', function (e) {
       if (e.key === '/' && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) {
         e.preventDefault();
