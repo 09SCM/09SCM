@@ -60,6 +60,29 @@ def run(device, b):
         bx = cb.bbox(page, ['.modal-box'])
         clip = {'x': max(0, bx['x'] - 40), 'y': max(0, bx['y'] - 40), 'width': bx['w'] + 80, 'height': bx['h'] + 80}
         cb.save(page.screenshot(clip=clip), 'wh-pop-confirm-unpaid-pc')
+
+    page.evaluate("document.querySelectorAll('.modal-box').forEach(m => { let r = m; while (r.parentElement && r.parentElement !== document.body) r = r.parentElement; r.remove(); })")
+    # 소매 완료된 주문(취소·반품 이력 없음): 처리상태 옆 반품요청 가능 기한
+    retail_detail('RO20260918001')
+    cb.sec_shot(page, None, 'order-detail-complete-sec-' + device, ['픽업정보'])
+    # 소매 결제완료 현장결제 주문 취소처리 팝업 — 시드에 없어 메모리에서만 결제완료로 바꾼다
+    page.evaluate("""() => {
+      const o = RETAIL_ORDER_LIST.find(x => x.orderNo === 'RO20260918004');
+      Object.assign(o, {paymentStatus: '결제완료', paidAt: '26.09.18 15:00'});
+      currentCat = 'retail'; currentItem = 'retail-order-list'; renderAll(); window.scrollTo(0, 0); }""")
+    page.wait_for_timeout(500)
+    page.evaluate("openRetailSupplierCrModal('RO20260918004', '취소')")
+    page.wait_for_timeout(400)
+    bx = cb.bbox(page, ['.modal-box'])
+    clip = {'x': max(0, bx['x'] - 40), 'y': max(0, bx['y'] - 40), 'width': bx['w'] + 80, 'height': bx['h'] + 80}
+    cb.save(page.screenshot(clip=clip), 'order-cancel-paid-' + device)
+    page.evaluate("document.querySelectorAll('.modal-box').forEach(m => { let r = m; while (r.parentElement && r.parentElement !== document.body) r = r.parentElement; r.remove(); })")
+    # 도매 결제완료 주문 취소 — 결제 정보 + 취소·반품 정보
+    page.evaluate("() => { currentOrderDetailNo = 'WO20260918007'; currentOrderDetailFrom = 'wholesale-order-status'; currentItem = 'wholesale-order-detail'; renderAll(); window.scrollTo(0,0); }")
+    page.wait_for_timeout(500); page.mouse.move(0, 0)
+    if not pc: cb.fit_height(page, 1200)
+    tag_section(page, '결제 정보', 'sec-pay'); tag_section(page, '취소·반품 정보', 'sec-cr')
+    cb.sec_shot(page, ['#sec-pay', '#sec-cr'], 'wh-od-paid-cancel-' + device)
     ctx.close()
 
 if __name__ == '__main__':
