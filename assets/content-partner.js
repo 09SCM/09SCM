@@ -4253,7 +4253,7 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
     '<p>도매상품을 공급할 때 적용할 카드결제 수수료, 공급범위(우리지역), 배송방식을 정하는 화면이에요. 여기서 정한 값은 구매자의 주문 결제금액과 배송비에 쓰여요.</p>' +
     '<ul>' +
       '<li>세 영역은 각자의 [저장]으로 따로 저장해요.</li>' +
-      '<li>필수 항목은 없어요. 처음에는 카드결제 수수료는 공급자부담, 배송방식은 기본배송비가 선택돼 있어요.</li>' +
+      '<li>처음에는 카드결제 수수료는 공급자부담, 배송방식은 기본배송비가 선택돼 있어요.</li>' +
       '<li>결제수수료와 배송방식은 내 모든 도매상품에 똑같이 적용돼요. 상품마다 따로 정할 수 없어요.</li>' +
     '</ul>',
   steps:
@@ -4311,32 +4311,6 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
         '<p>안내가 나오면 저장되지 않아요. 수수료율을 고친 뒤 다시 [저장]을 눌러요. 이 안내는 [구매자부담]을 선택했을 때만 나와요.</p>'
     },
     {
-      title: '배송방식을 정할 때',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-ship-cod-pc.webp', alt: '09SCM 착불 선택 PC 화면', ratio: 6.5321 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-ship-cod-mobile.webp', alt: '09SCM 착불 선택 모바일 화면', ratio: 2.0183 }
-      ],
-      shotCaption: '09SCM 착불 선택 화면 (PC / 모바일)',
-      html:
-        '<ul>' +
-          '<li>[기본배송비]를 고르면 금액 입력칸이 나타나요. 입력한 금액은 주문 한 건당 한 번 결제금액에 더해져요.</li>' +
-          '<li>[착불], [무료배송]을 고르면 금액 입력칸이 숨겨져요. 두 경우 모두 결제금액에는 배송비가 0원으로 반영돼요. 착불은 구매자가 배송받을 때 택배사에 따로 지불해요.</li>' +
-        '</ul>'
-    },
-    {
-      title: '기본배송비를 잘못 입력하면',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-ship-error-pc.webp', alt: '09SCM 기본배송비 입력 오류 PC 화면', ratio: 4.4087 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-ship-error-mobile.webp', alt: '09SCM 기본배송비 입력 오류 모바일 화면', ratio: 1.3622 }
-      ],
-      shotCaption: '09SCM 기본배송비 입력 오류 화면 (PC / 모바일)',
-      html:
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>기본배송비가 0원 이상의 정수가 아님</td><td>&quot;기본배송비는 0원 이상의 정수로 입력해주세요.&quot;</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>안내가 나오면 저장되지 않아요. 금액을 고친 뒤 다시 [저장]을 눌러요. 이 안내는 [기본배송비]를 선택했을 때만 나와요.</p>'
-    },
-    {
       title: '지역을 추가할 때',
       shots: [
         { device: 'pc', src: '../assets/img/partner/wh-set-region-pop-pc.webp', alt: '09SCM 지역 추가 팝업 PC 화면', ratio: 1.3441 },
@@ -4365,7 +4339,46 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
           '<tr><td>시·군·구를 고르지 않음</td><td>&quot;시·군·구를 선택해주세요.&quot;</td></tr>' +
           '<tr><td>이미 등록한 지역 (기본 지역 포함)</td><td>&quot;이미 등록된 지역입니다.&quot;</td></tr>' +
         '</tbody></table></div>' +
-        '<p>안내가 나오면 팝업이 닫히지 않아요. 지역을 다시 고르고 [추가]를 눌러요. 등록이 50곳이 되면 [지역 추가]가 눌리지 않아요. 지역을 삭제하면 다시 추가할 수 있어요.</p>'
+        '<p>안내가 나오면 팝업이 닫히지 않아요. 지역을 다시 고르고 [추가]를 눌러요.</p>'
+    },
+    {
+      title: '등록이 50곳이 되면',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-set-region-full-pc.webp', alt: '09SCM 지역 50곳 등록 PC 화면', ratio: 3.2511 },
+        { device: 'mobile', src: '../assets/img/partner/wh-set-region-full-mobile.webp', alt: '09SCM 지역 50곳 등록 모바일 화면', ratio: 0.4955 }
+      ],
+      shotCaption: '09SCM 지역 50곳 등록 화면 (PC / 모바일)',
+      html:
+        '<ul>' +
+          '<li>기본 지역을 포함해 최대 50곳까지 등록할 수 있어요. 등록 현황에 &quot;등록 50/50곳&quot;이 표시되면 [지역 추가]를 누를 수 없어요.</li>' +
+          '<li>지역을 삭제하면 다시 추가할 수 있어요. 삭제한 내용은 [저장]을 눌러야 반영돼요.</li>' +
+        '</ul>'
+    },
+    {
+      title: '배송방식을 정할 때',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-set-ship-cod-pc.webp', alt: '09SCM 착불 선택 PC 화면', ratio: 6.5321 },
+        { device: 'mobile', src: '../assets/img/partner/wh-set-ship-cod-mobile.webp', alt: '09SCM 착불 선택 모바일 화면', ratio: 2.0183 }
+      ],
+      shotCaption: '09SCM 착불 선택 화면 (PC / 모바일)',
+      html:
+        '<ul>' +
+          '<li>[기본배송비]를 고르면 금액 입력칸이 나타나요. 입력한 금액은 주문 한 건당 한 번 결제금액에 더해져요.</li>' +
+          '<li>[착불], [무료배송]을 고르면 금액 입력칸이 숨겨져요. 두 경우 모두 결제금액에는 배송비가 0원으로 반영돼요. 착불은 구매자가 배송받을 때 택배사에 따로 지불해요.</li>' +
+        '</ul>'
+    },
+    {
+      title: '기본배송비를 잘못 입력하면',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-set-ship-error-pc.webp', alt: '09SCM 기본배송비 입력 오류 PC 화면', ratio: 4.4087 },
+        { device: 'mobile', src: '../assets/img/partner/wh-set-ship-error-mobile.webp', alt: '09SCM 기본배송비 입력 오류 모바일 화면', ratio: 1.3622 }
+      ],
+      shotCaption: '09SCM 기본배송비 입력 오류 화면 (PC / 모바일)',
+      html:
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>기본배송비가 0원 이상의 정수가 아님</td><td>&quot;기본배송비는 0원 이상의 정수로 입력해주세요.&quot;</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>안내가 나오면 저장되지 않아요. 금액을 고친 뒤 다시 [저장]을 눌러요. 이 안내는 [기본배송비]를 선택했을 때만 나와요.</p>'
     }
   ],
   trouble:

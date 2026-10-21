@@ -13,6 +13,7 @@ def run(device, b):
     if pc: page.add_style_tag(content=cb.PC_CSS)
 
     def open_settings():
+        page.evaluate("() => { const m = document.getElementById('regionAddModalRoot'); if (m) m.remove(); }")
         page.evaluate("() => { currentCat = 'wholesale'; currentItem = 'wholesale-settings'; renderAll(); window.scrollTo(0, 0); }")
         page.wait_for_timeout(500); page.mouse.move(0, 0)
         page.set_viewport_size({'width': W, 'height': H}); page.wait_for_timeout(200)
@@ -57,6 +58,16 @@ def run(device, b):
     page.select_option('#regionSigunguSelect', '수원시 팔달구') if '수원시 팔달구' in opts else None
     page.click('#regionAddConfirmBtn'); page.wait_for_timeout(300)
     modal('wh-set-region-error')
+
+    # 등록 50곳 -> [지역 추가] 비활성 (메모리에서만 지역 49곳 채움)
+    open_settings()
+    page.evaluate("""() => {
+      const def = sellerDefaultRegion(MY_SELLER_NAME), all = [];
+      Object.keys(REGION_MASTER).forEach(sd => REGION_MASTER[sd].forEach(g => { const l = sd + ' ' + g; if (l !== def) all.push(l); }));
+      WHOLESALE_SETTINGS.supplyRegions = all.slice(0, 49); renderWholesaleSettingsPage(); window.scrollTo(0, 0); }""")
+    page.wait_for_timeout(400)
+    print(device, page.inner_text('#setRegionCount'), page.is_disabled('#setRegionAddBtn'))
+    sec('공급범위(우리지역) 설정', 'wh-set-region-full')
     ctx.close()
 
 with sync_playwright() as p:
