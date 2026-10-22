@@ -76,7 +76,8 @@ def run(device, b):
     top_shot('wh-mine-edit-stockerr', '#formErrorBanner')
     go('wholesale-product-edit', 'P0230')   # 보유수량 0
     tag('#editSaleStatus', 'c-sale'); tag('#editStock', 'c-stock')
-    cb.sec_shot(page, ['#c-sale', '#c-stock'], 'wh-mine-edit-lock-' + device)
+    page.evaluate("['c-sale', 'c-stock'].forEach(i => { document.getElementById(i).nextElementSibling.id = i + '-next'; })")
+    cb.sec_shot(page, ['#c-sale', '#c-sale-next', '#c-stock', '#c-stock-next'], 'wh-mine-edit-lock-' + device)   # 판매상태·노출여부 행 + 보유수량·배송방식 행(가로 전체 폭)
 
     # ---- 삭제 (팝업은 PC·모바일 차이가 없어 PC만) ----
     if pc:

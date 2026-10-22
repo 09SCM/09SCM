@@ -3765,6 +3765,7 @@ ${regionFieldHTML('edit', '우리지역', p.scope !== '우리지역')}
                   <input type="text" class="form-input" id="editUnit" value="${escapeHtml(p.unit)}">
                 </div>
               </div>
+              <div class="form-field region-field-off" aria-hidden="true"></div>
               <div class="form-field">
                 <label>도매판매상태</label>
                 <select class="form-select" id="editSaleStatus" ${lock.locked ? 'disabled' : ''}>
