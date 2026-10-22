@@ -4726,3 +4726,96 @@ window.GUIDE_CONTENT['wholesale-mine'] = {
     }
   ]
 };
+
+window.GUIDE_CONTENT['wholesale-sales'] = {
+  shots: [
+    { device: 'pc', src: '../assets/img/partner/wh-sales-main-pc.webp', alt: '09SCM 도매매출조회 PC 화면', ratio: 2880 / 3000 },
+    { device: 'mobile', src: '../assets/img/partner/wh-sales-main-mobile.webp', alt: '09SCM 도매매출조회 모바일 화면', ratio: 880 / 2400 }
+  ],
+  shotCaption: '09SCM 도매매출조회 화면 (PC / 모바일)',
+  overview:
+    '<p>내가 공급하는 도매상품의 결제·취소·환불 금액과 매출액을 기간별로 확인하는 화면이에요.</p>' +
+    '<ul>' +
+      '<li>처음 열면 이번달 기준으로 보여줘요.</li>' +
+      '<li>매출액은 결제총액에서 취소·환불액을 뺀 금액이에요.</li>' +
+      '<li>주문 한 건씩의 목록은 없고, 일별·월별로 합산한 금액만 보여줘요.</li>' +
+    '</ul>',
+  steps:
+    '<h3>기간 선택</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>오늘 / 이번주 / 이번달</td><td>선택한 기간의 매출 조회</td></tr>' +
+      '<tr><td>기간</td><td>시작일과 종료일을 직접 선택 (최대 6개월)</td></tr>' +
+    '</tbody></table></div>' +
+
+    '<h3>매출 요약</h3>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>결제총액</td><td>기간 안에 결제가 완료된 주문의 총 결제금액 합계</td></tr>' +
+      '<tr><td>취소·환불액</td><td>기간 안에 취소·반품이 승인된 주문의 총 환불금액 합계 (결제대기 상태에서 취소된 주문은 환불이 없어 제외)</td></tr>' +
+      '<tr><td>매출액</td><td>결제총액 - 취소·환불액</td></tr>' +
+    '</tbody></table></div>' +
+    '<p>결제액은 결제완료일, 취소·환불은 승인일, 주문건수는 주문접수일 기준으로 집계해요. 결제금액에는 배송비와 구매자가 부담한 카드결제 수수료가 포함돼 있고, 따로 나누어 보여주지는 않아요.</p>' +
+
+    '<h3>매출 추이</h3>' +
+    '<p>[일별], [월별] 탭으로 합산 단위를 바꿀 수 있고, 아래 표는 최신 기간부터 10건씩 보여줘요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>기간</td><td>일별 또는 월별 구분</td></tr>' +
+      '<tr><td>총주문건수 / 총결제액</td><td>주문접수 건수 (결제·취소 여부와 관계없음) / 결제완료 금액</td></tr>' +
+      '<tr><td>카드결제 주문건수 / 결제액</td><td>카드로 결제한 주문의 건수와 금액</td></tr>' +
+      '<tr><td>현장결제·계좌이체 주문건수 / 결제액</td><td>현장결제 또는 계좌이체로 결제한 주문의 건수와 금액</td></tr>' +
+      '<tr><td>취소환불건수 / 취소환불액</td><td>취소·반품이 승인된 건수와 환불금액</td></tr>' +
+      '<tr><td>매출액</td><td>결제액 - 취소환불액 (마이너스일 수 있음)</td></tr>' +
+    '</tbody></table></div>' +
+    '<ul>' +
+      '<li>총주문건수 = 카드결제 주문건수 + 현장결제·계좌이체 주문건수</li>' +
+      '<li>총결제액 = 카드결제 결제액 + 현장결제·계좌이체 결제액</li>' +
+    '</ul>' +
+
+    '<h3>엑셀 다운로드</h3>' +
+    '<p>[엑셀 다운로드]를 누르면 조회 중인 내용을 엑셀에서 열 수 있는 CSV 파일로 저장해요.</p>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>파일명</td><td>도매매출조회_시작일-종료일.csv (예: 도매매출조회_261001-261017.csv)</td></tr>' +
+      '<tr><td>조회 조건</td><td>조회기간</td></tr>' +
+      '<tr><td>매출 요약</td><td>결제총액, 취소·환불액, 매출액</td></tr>' +
+      '<tr><td>매출 추이</td><td>기간, 총주문건수, 총결제액, 카드결제 주문건수, 카드결제액, 현장결제·계좌이체 주문건수, 현장결제·계좌이체 결제액, 취소환불건수, 취소환불액, 매출액 (선택한 일별 또는 월별 전체 기간)</td></tr>' +
+    '</tbody></table></div>',
+  cases: [
+    {
+      title: '기간을 직접 선택하면',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-sales-custom-pc.webp', alt: '09SCM 기간 선택 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/wh-sales-custom-mobile.webp', alt: '09SCM 기간 선택 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 기간 선택 화면 (PC / 모바일)',
+      html: '<p>[기간]을 누르면 시작일과 종료일을 고를 수 있어요. 매출 조회 기간은 최대 6개월까지 선택할 수 있어서, 종료일은 시작일 기준 6개월 안으로만 선택돼요.</p>'
+    },
+    {
+      title: '월별로 보려면',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-sales-monthly-pc.webp', alt: '09SCM 월별 매출 추이 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/wh-sales-monthly-mobile.webp', alt: '09SCM 월별 매출 추이 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 월별 매출 추이 화면 (PC / 모바일)',
+      html: '<p>[월별] 탭을 누르면 그래프와 표가 월 단위로 바뀌어요. 요약 금액은 선택한 기간 전체 기준으로 그대로 유지돼요.</p>'
+    },
+    {
+      title: '선택한 기간에 매출이 없으면',
+      shots: [
+        { device: 'pc', src: '../assets/img/partner/wh-sales-today-pc.webp', alt: '09SCM 매출 없음 PC 화면', ratio: 2880 / 3000 },
+        { device: 'mobile', src: '../assets/img/partner/wh-sales-today-mobile.webp', alt: '09SCM 매출 없음 모바일 화면', ratio: 880 / 2400 }
+      ],
+      shotCaption: '09SCM 매출 없음 화면 (PC / 모바일)',
+      html: '<p>해당 기간에 주문이 없으면 금액은 0원으로, 표에는 &quot;데이터가 없습니다.&quot;가 나와요.</p>'
+    }
+  ],
+  trouble:
+    '<h3>도매매출조회 메뉴가 안 보여요</h3>' +
+    '<p>도매공급권한이 있는 계정에서만 보이는 메뉴예요. 도매공급권한이 없으면 메뉴가 나타나지 않아요.</p>' +
+    '<h3>매출액이 마이너스예요</h3>' +
+    '<p>기간 안에 결제된 금액보다 취소·환불된 금액이 많으면 마이너스로 나올 수 있어요. 결제는 지난 기간에 되고 취소·환불은 이번 기간에 승인된 경우가 해당돼요.</p>' +
+    '<h3>주문건수와 결제액이 서로 맞지 않아요</h3>' +
+    '<p>주문건수는 주문접수일, 결제액은 결제완료일 기준이에요. 결제 전 주문이나 다음 기간에 결제된 주문은 건수와 금액이 서로 다른 기간에 잡혀요.</p>' +
+    '<h3>주문별로 확인하고 싶어요</h3>' +
+    '<p>이 화면에는 주문 목록이 없어요. 도매관리 &gt; <a href="#wholesale-receive">주문접수관리</a>에서 주문별로 확인해요.</p>' +
+    '<h3>도매에서 구매한 금액이 궁금해요</h3>' +
+    '<p>이 화면은 내가 공급한 주문만 집계해요. 도매에서 구매한 금액은 <a href="#retail-sales">소매매출조회</a>의 도매 매입 지출에서 확인해요.</p>'
+};
