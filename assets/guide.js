@@ -94,9 +94,9 @@
   function caseHTML(it) {
     var head = it.title ? '<h3>' + it.title + '</h3>' : '';
     if (Array.isArray(it.blocks)) {
-      return head + it.blocks.map(function (b) { return shotsHTML(b.shots, b.shotCaption) + (b.html || ''); }).join('');
+      return '<div class="case">' + head + it.blocks.map(function (b) { return shotsHTML(b.shots, b.shotCaption) + (b.html || ''); }).join('') + '</div>';
     }
-    return head + shotsHTML(it.shots, it.shotCaption) + (it.html || '');
+    return '<div class="case">' + head + shotsHTML(it.shots, it.shotCaption) + (it.html || '') + '</div>';
   }
 
   function flatCases(v) {
