@@ -5152,8 +5152,8 @@ ${regionFieldHTML('set', '우리지역', false, true)}
               <div class="detail-item"><span class="detail-label">결제수단</span><span class="detail-value">${o.paymentMethod === 'card' ? '카드결제' : '계좌이체'}</span></div>
               ${o.paymentMethod === 'transfer' ? `<div class="detail-item"><span class="detail-label">입금자명</span><span class="detail-value">${escapeHtml(o.depositorName || '-')}</span></div>` : ''}
               <div class="detail-item"><span class="detail-label">상품금액</span><span class="detail-value">${o.itemsTotal.toLocaleString()}원</span></div>
-              <div class="detail-item"><span class="detail-label">배송비</span><span class="detail-value">${escapeHtml(orderShippingLabel(o))}</span></div>
               ${o.cardFeeAmount ? `<div class="detail-item"><span class="detail-label">결제수수료</span><span class="detail-value">${o.cardFeeAmount.toLocaleString()}원</span></div>` : ''}
+              <div class="detail-item"><span class="detail-label">배송비</span><span class="detail-value">${escapeHtml(orderShippingLabel(o))}</span></div>
               <div class="detail-item"><span class="detail-label">총 결제금액</span><span class="detail-value" style="font-weight:700;">${o.grandTotal.toLocaleString()}원</span></div>
             </div>
           </section>
@@ -5301,8 +5301,8 @@ ${regionFieldHTML('set', '우리지역', false, true)}
             <h3 class="form-section-title">결제금액 요약</h3>
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">상품금액</span><span class="detail-value">${itemsTotal.toLocaleString()}원</span></div>
-              <div class="detail-item"><span class="detail-label">배송비</span><span class="detail-value">${escapeHtml(shippingFeeLabel(settings.shippingMethod, shippingFee))}</span></div>
               <div class="detail-item" id="summaryFeeRow" ${showCardFeeToBuyer ? '' : 'hidden'}><span class="detail-label">결제수수료</span><span class="detail-value" id="summaryFeeValue">${cardFeeAmount.toLocaleString()}원</span></div>
+              <div class="detail-item"><span class="detail-label">배송비</span><span class="detail-value">${escapeHtml(shippingFeeLabel(settings.shippingMethod, shippingFee))}</span></div>
               <div class="detail-item"><span class="detail-label">총 결제금액</span><span class="detail-value" id="summaryGrandTotal" style="font-weight:700;">${(itemsTotal + shippingFee + cardFeeAmount).toLocaleString()}원</span></div>
             </div>
           </section>
@@ -9662,9 +9662,9 @@ ${regionFieldHTML('cv', '우리지역', true)}
 
   function crAmountSummaryHTML(o, kind) {
     const rows = [crAmountRowHTML('상품금액', `${crItemsTotal(o).toLocaleString()}원`)];
+    if (o.cardFeeAmount) rows.push(crAmountRowHTML('결제수수료', `${o.cardFeeAmount.toLocaleString()}원`));
     if (kind === 'wholesale') rows.push(crAmountRowHTML('배송비', escapeHtml(orderShippingLabel(o))));
     else if (o.salesMethod === 'delivery') rows.push(crAmountRowHTML('배달비', `${(o.shippingFee || 0).toLocaleString()}원`));
-    if (o.cardFeeAmount) rows.push(crAmountRowHTML('결제수수료', `${o.cardFeeAmount.toLocaleString()}원`));
     rows.push(crAmountRowHTML('총 결제금액', `${o.grandTotal.toLocaleString()}원`, true));
     return `<div class="cr-amount-list">${rows.join('')}
       </div>`;
@@ -9687,8 +9687,8 @@ ${regionFieldHTML('cv', '우리지역', true)}
   function crShipWord(kind) { return kind === 'wholesale' ? '배송비' : '배달비'; }
 
   function crFullHint(o, kind) {
-    if (kind === 'wholesale') return `총 결제금액(${o.cardFeeAmount ? '배송비+상품금액+결제수수료' : '배송비+상품금액'})`;
-    return '총 결제금액(배달비+상품금액)';
+    if (kind === 'wholesale') return `총 결제금액(${o.cardFeeAmount ? '상품금액+결제수수료+배송비' : '상품금액+배송비'})`;
+    return '총 결제금액(상품금액+배달비)';
   }
   function crPartialHint(o, kind) {
     return crFeeBorne(o)
@@ -9714,11 +9714,13 @@ ${regionFieldHTML('cv', '우리지역', true)}
         <label>상품환불금액</label>
         <input class="form-input" type="number" id="${p}ProductRefundAmount" min="0" max="${itemsTotal}" value="${itemsTotal}">
         <div class="field-hint">상품금액(${itemsTotal.toLocaleString()}원) 이내로 입력해주세요.</div>
-        ${crShipRefundable(o) ? `<label style="margin-top:4px;"><input type="checkbox" id="${p}ShipIncluded" checked> ${crShipWord(kind)} 포함 (${o.shippingFee.toLocaleString()}원)</label>` : ''}
       </div>${crFeeBorne(o) ? `
       <div class="form-field form-field-wide" data-partial-of="${p}" hidden>
         <label>수수료환불금액</label>
         <input class="form-input" type="number" id="${p}FeeRefundAmount" value="0" disabled>
+      </div>` : ''}${crShipRefundable(o) ? `
+      <div class="form-field form-field-wide" data-partial-of="${p}" hidden>
+        <label><input type="checkbox" id="${p}ShipIncluded" checked> ${crShipWord(kind)} 포함 (${o.shippingFee.toLocaleString()}원)</label>
       </div>` : ''}`;
       return `${radiosHTML}${partialHTML}
       <div class="form-field form-field-wide">
@@ -9739,12 +9741,9 @@ ${regionFieldHTML('cv', '우리지역', true)}
   }
 
   // 환불 방법 — 계좌이체만 환불계좌를 입력받고, 현장결제는 안내 문구만 노출한다.
-  // 카드결제는 안내 문구와 함께 반환 예금주(필수, 정산 후 건의 정산금 반환에 사용)를 입력받는다.
+  // 카드결제는 반환 예금주(필수, 정산 후 건의 정산금 반환에 사용)만 입력받는다.
   function crRefundMethodHTML(o, p) {
     if (o.paymentMethod === 'card') return `
-      <div class="form-field form-field-wide">
-        <div class="field-hint">카드결제 건은 승인 시 PG사를 통해 자동으로 결제가 취소됩니다.</div>
-      </div>
       <div class="form-field form-field-wide">
         <label>반환 예금주<span class="req">*</span></label>
         <input class="form-input" type="text" id="${p}ReturnHolder" placeholder="예금주명을 입력해주세요." value="${escapeHtml(MY_PROFILE.bankHolder || '')}">
@@ -10118,8 +10117,8 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
               <div class="detail-item"><span class="detail-label">결제수단</span><span class="detail-value">${o.paymentMethod === 'card' ? '카드결제' : '계좌이체'}</span></div>
               ${o.paymentMethod === 'transfer' ? `<div class="detail-item"><span class="detail-label">입금자명</span><span class="detail-value">${escapeHtml(o.depositorName || '-')}</span></div>` : ''}
               <div class="detail-item"><span class="detail-label">상품금액</span><span class="detail-value">${o.itemsTotal.toLocaleString()}원</span></div>
-              <div class="detail-item"><span class="detail-label">배송비</span><span class="detail-value">${escapeHtml(orderShippingLabel(o))}</span></div>
               ${o.cardFeeAmount ? `<div class="detail-item"><span class="detail-label">결제수수료</span><span class="detail-value">${o.cardFeeAmount.toLocaleString()}원</span></div>` : ''}
+              <div class="detail-item"><span class="detail-label">배송비</span><span class="detail-value">${escapeHtml(orderShippingLabel(o))}</span></div>
               <div class="detail-item"><span class="detail-label">총 결제금액</span><span class="detail-value" style="font-weight:700;">${o.grandTotal.toLocaleString()}원</span></div>
             </div>
           </section>
@@ -10212,10 +10211,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
             <div class="form-field form-field-wide">
               <label>환불계좌번호<span class="req">*</span></label>
               <input class="form-input" type="text" id="crModalRefundAccount" data-fmt="account" inputmode="numeric" maxlength="20" placeholder="'-' 없이 숫자만 입력">
-            </div>` : `
-            <div class="form-field form-field-wide">
-              <div class="field-hint">카드결제 건은 승인 시 PG사를 통해 자동으로 결제가 취소됩니다.</div>
-            </div>`}
+            </div>` : ''}
             <div class="form-field form-field-wide">
               <label>${crType} 사유<span class="req">*</span></label>
               <textarea class="form-input" id="crModalReason" rows="3" placeholder="${crType} 사유를 입력해주세요."></textarea>
