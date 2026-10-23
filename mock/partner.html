@@ -9718,6 +9718,7 @@ ${regionFieldHTML('cv', '우리지역', true)}
       <div class="form-field form-field-wide" data-partial-of="${p}" hidden>
         <label>수수료환불금액</label>
         <input class="form-input" type="number" id="${p}FeeRefundAmount" value="0" disabled>
+        <div class="field-hint">입력한 상품환불금액을 기준으로 수수료를 다시 계산합니다.</div>
       </div>` : ''}${crShipRefundable(o) ? `
       <div class="form-field form-field-wide" data-partial-of="${p}" hidden>
         <label><input type="checkbox" id="${p}ShipIncluded" checked> ${crShipWord(kind)} 포함 (${o.shippingFee.toLocaleString()}원)</label>
@@ -9933,6 +9934,13 @@ ${regionFieldHTML('cv', '우리지역', true)}
   // 환불계좌는 계좌이체 결제 건에 한해 구매자가 취소·반품 요청 시점에 함께 입력하는 정보이므로, 여기서는 조회만 하고 공급자가 수정하지 않는다.
   // 취소·반품 정보 섹션 — 주문접수관리(공급자 모드) 전용. 조회만 하며, 실제 승인·반려·직권처리는
   // 하단 처리 버튼(orderDetailSupplierActionsHTML)에서 팝업(openSupplierCrModal)으로 처리한다.
+  // 환불대기 안내 배너 — 공급자 화면의 결제 정보 타이틀 바로 아래에 노출한다(구매자 화면은 노출하지 않음).
+  function refundWaitBannerHTML(o) {
+    return o.paymentStatus === '환불대기'
+      ? `<div class="notice-banner">PG사에 환불을 요청했습니다. 정산금을 반환해야 환불이 완료되니 PG사(PayApp)에서 확인해주세요.</div>`
+      : '';
+  }
+
   function cancelReturnSectionHTML(o, mode) {
     if (mode === 'buyer') return cancelReturnSectionBuyerHTML(o);
     if (!o.cancelReturnStatus) return '';
@@ -9962,7 +9970,6 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           ${o.cancelReturnReason ? `<div class="detail-item detail-item-wide"><span class="detail-label">구매자 요청 사유</span><span class="detail-value">${escapeHtml(o.cancelReturnReason)}</span></div>` : ''}
           ${o.cancelReturnSellerNote ? `<div class="detail-item detail-item-wide"><span class="detail-label">공급자 처리 사유</span><span class="detail-value">${escapeHtml(o.cancelReturnSellerNote)}</span></div>` : ''}
         </div>
-        ${o.paymentStatus === '환불대기' ? `<div class="notice-banner" style="margin-top:12px;">PG사에 환불을 요청했습니다. 정산금을 반환해야 환불이 완료되니 PG사(PayApp)에서 확인해주세요.</div>` : ''}
       </section>`;
   }
 
@@ -10112,6 +10119,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
 
           <section class="form-section">
             <h3 class="form-section-title">결제 정보</h3>
+            ${mode === 'supplier' ? refundWaitBannerHTML(o) : ''}
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">결제상태</span><span class="detail-value">${paymentStatusDetailHTML(o)}</span></div>
               <div class="detail-item"><span class="detail-label">결제수단</span><span class="detail-value">${o.paymentMethod === 'card' ? '카드결제' : '계좌이체'}</span></div>
@@ -11410,6 +11418,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
 
           <section class="form-section">
             <h3 class="form-section-title">결제정보</h3>
+            ${refundWaitBannerHTML(o)}
             <div class="detail-grid">
               <div class="detail-item"><span class="detail-label">결제상태</span><span class="detail-value">${paymentStatusDetailHTML(o)}</span></div>
               <div class="detail-item"><span class="detail-label">결제수단</span><span class="detail-value">${RETAIL_ORDER_PAYMETHOD_LABELS[o.paymentMethod]}</span></div>
@@ -15587,6 +15596,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       const d = pad(1 + (i % 27));
       Object.assign(b, { orderNo: 'WO202608' + d + pad(i, 3), createdAt: '26.08.' + d + ' 1' + (i % 10) + ':00', demo: true });
       if (b.paidAt) b.paidAt = '26.08.' + d + ' 1' + (i % 10) + ':00';
+      delete b.settled;
       ORDER_LIST.push(b);
     }
     const rBase = RETAIL_ORDER_LIST.filter(o => !o.cancelReturnStatus);
@@ -15596,6 +15606,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       Object.assign(b, { orderNo: 'RO202608' + d + pad(i, 3), createdAt: '26.08.' + d + ' 1' + (i % 10) + ':00', demo: true });
       if (b.paidAt) b.paidAt = '26.08.' + d + ' 1' + (i % 10) + ':00';
       if (b.completedAt) b.completedAt = '26.08.' + d + ' 1' + (i % 10) + ':30';
+      delete b.settled;
       RETAIL_ORDER_LIST.push(b);
     }
     // 소매 회원(일반·탈퇴)
