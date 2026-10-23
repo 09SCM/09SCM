@@ -10211,7 +10211,10 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
             <div class="form-field form-field-wide">
               <label>환불계좌번호<span class="req">*</span></label>
               <input class="form-input" type="text" id="crModalRefundAccount" data-fmt="account" inputmode="numeric" maxlength="20" placeholder="'-' 없이 숫자만 입력">
-            </div>` : ''}
+            </div>` : `
+            <div class="form-field form-field-wide">
+              <div class="field-hint">카드결제 건은 승인 시 PG사를 통해 자동으로 결제가 취소됩니다.</div>
+            </div>`}
             <div class="form-field form-field-wide">
               <label>${crType} 사유<span class="req">*</span></label>
               <textarea class="form-input" id="crModalReason" rows="3" placeholder="${crType} 사유를 입력해주세요."></textarea>
