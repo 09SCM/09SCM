@@ -6235,7 +6235,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       chatOrderEnabled: false, chatOrderName: '',
       registeredAt: '26.08.22 15:23', updatedAt: '26.08.29 09:12',
     },
-    // 등록 이후 보유수량이 모두 소진된 케이스 — 목록에서 [상세]만 노출되고, 상세 진입 시에도 조회만 가능하다.
+    // 등록 이후 보유수량이 모두 소진된 케이스 — 판매상태·노출여부가 잠긴 상태이며 상세보기·수정·삭제는 그대로 노출된다.
     {
       id: 'RTL0003', source: 'own', sourceCode: 'P0227',
       name: '친환경 애호박', image: null, detailContent: '',
@@ -6556,45 +6556,49 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       : `<span class="tag tag-success">정상</span>`;
   }
 
-  // 도매주문상품 보유수량 — 계정 + 상품코드 단위 저장값(목업은 단일 계정이라 상품코드가 키).
-  // 배송확정 시 구매 수량만큼 1회 증가하고, 소매 주문 접수·취소·반품 재고 반영에 따라 증감한다.
+  // 도매주문상품 저장 레코드 — 구매 계정 + 상품코드(목업은 단일 계정이라 상품코드가 키) 단위로 보유수량·상품명·마지막 배송확정 일시를 가진다.
+  // 배송확정 시 주문당 1회 반영(upsert)하며, 이후 반품·취소 승인과 무관하게 유지된다. 소매 상품목록의 도매주문상품 행은 이 레코드로 만든다.
   const PURCHASE_HOLDINGS = {};
+  const PURCHASE_RECORDS = {};
   const PURCHASE_HOLDING_COUNTED = new Set();
   function syncPurchaseHoldings() {
-    myPurchases().filter(o => o.processStatus === '배송확정' && !PURCHASE_HOLDING_COUNTED.has(o.orderNo)).forEach(o => {
-      PURCHASE_HOLDING_COUNTED.add(o.orderNo);
-      o.items.forEach(item => {
-        const key = item.code || item.name;
-        PURCHASE_HOLDINGS[key] = (PURCHASE_HOLDINGS[key] || 0) + item.qty;
-      });
-    });
-  }
-
-  // 도매주문상품 원본 — 배송확정(수령완료)된 건만 대상이며, 주문 단위가 아니라 상품코드 단위로 집계한다.
-  // 같은 상품을 여러 번 구매(배송확정)하면 보유수량이 누적되고, 상품정보 초기값은 가장 최근 배송확정 구매분을 사용한다.
-  function retailPurchaseSourceRows() {
-    syncPurchaseHoldings();
-    const byCode = new Map();
-    myPurchases().filter(o => o.processStatus === '배송확정')
+    myPurchases().filter(o => o.processStatus === '배송확정' && !PURCHASE_HOLDING_COUNTED.has(o.orderNo))
       .sort((a, b) => (a.createdAt < b.createdAt ? -1 : a.createdAt > b.createdAt ? 1 : 0))
       .forEach(o => {
+        PURCHASE_HOLDING_COUNTED.add(o.orderNo);
         o.items.forEach(item => {
           const key = item.code || item.name;
-          const mp = item.code ? findMarketProduct(item.code) : null;
-          byCode.set(key, {
-            source: 'purchase',
-            sourceCode: key,
+          PURCHASE_HOLDINGS[key] = (PURCHASE_HOLDINGS[key] || 0) + item.qty;
+          PURCHASE_RECORDS[key] = {
+            code: item.code || null,
             name: item.name,
             supplierName: o.seller,
-            origin: mp ? mp.origin : '',
-            expiry: mp ? mp.expiry : '',
-            detailContent: mp ? mp.detailContent : '',
             purchasedAt: orderDatePart(o),
-            holdingQty: PURCHASE_HOLDINGS[key] || 0,
-          });
+            lastConfirmedAt: o.deliveryConfirmedAt || o.createdAt,
+          };
         });
       });
-    return Array.from(byCode.values());
+  }
+
+  // 도매주문상품 원본 — 저장 레코드(상품코드 단위)로 만든다. 같은 상품을 다시 구매(배송확정)하면 보유수량이 누적되고,
+  // 상품명은 마지막 배송확정 구매분을 사용한다. 배송확정 이후 반품·취소가 승인되어도 행은 유지된다.
+  function retailPurchaseSourceRows() {
+    syncPurchaseHoldings();
+    return Object.keys(PURCHASE_RECORDS).map(key => {
+      const rec = PURCHASE_RECORDS[key];
+      const mp = rec.code ? findMarketProduct(rec.code) : null;
+      return {
+        source: 'purchase',
+        sourceCode: key,
+        name: rec.name,
+        supplierName: rec.supplierName,
+        origin: mp ? mp.origin : '',
+        expiry: mp ? mp.expiry : '',
+        detailContent: mp ? mp.detailContent : '',
+        purchasedAt: rec.purchasedAt,
+        holdingQty: PURCHASE_HOLDINGS[key] || 0,
+      };
+    });
   }
 
   // 내도매상품 원본 — PRODUCT_LIST 전체(본인이 등록한 도매상품)
@@ -6664,7 +6668,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
         listPrice: listing ? listing.listPrice : null,
         salePrice: listing ? listing.salePrice : null,
         holdingQty, availableQty, exposed, saleStatus,
-        canRegister: !listing && holdingQty > 0,
+        canRegister: !listing,
         registeredAt: listing ? listing.registeredAt : null,
         updatedAt: listing ? listing.updatedAt : null,
         chatOrderEnabled: listing ? !!listing.chatOrderEnabled : false,
@@ -6830,14 +6834,10 @@ ${regionFieldHTML('set', '우리지역', false, true)}
 
   const RETAIL_SOURCE_LABELS = { purchase: '도매주문상품', own: '내도매상품', retail: '내소매상품' };
 
-  // 관리 컬럼 — 내 도매상품 목록과 동일한 [상세]/[수정] 조합을 기본으로 하되, 소매정보 미등록·재고소진 케이스를 분기한다.
-  // 1) 보유수량 있음 + 미등록 → 판매상태 없음 · 노출여부 미노출 · [소매정보등록] 노출
-  // 2) 보유수량 있음 + 판매가능수량 0 → 목록에는 품절로 자동 표시, 노출여부는 유지 · [상세]/[수정] 그대로 노출 (수정에서 판매가능수량을 다시 올리면 판매상태 잠금도 함께 풀린다)
-  // 3) 보유수량 0 + 등록됨(재고소진) → 강제 품절·미노출로 저장된 상태 · [상세]만 노출, 상세 진입 시 전체 조회 전용
-  //    단, 내소매상품(source: 'retail')은 예외다 — 도매 연동 없이 자체 보유수량을 직접 관리하는 상품이므로 재고소진 시에도 [상세]/[수정]을 그대로 노출하고 수정 화면 진입을 막지 않는다.
-  //    진입 후에도 판매상태·노출여부 필드는 보유수량 0 기준으로 자동 잠기며(retailLockState), [도매전환]만 전환할 재고가 없으므로 숨긴다.
-  // 4) 보유수량 0 + 미등록 → 판매상태 없음 · 노출여부 미노출 · 관리 영역에 버튼 자체를 노출하지 않는다(등록이 불가능하므로)
-  // 내소매상품(source: 'retail')은 항상 등록된 상태로만 존재하므로 [상세]/[수정]에 더해, 도매로 전환하는 [도매전환] 진입점을 별도로 노출한다.
+  // 관리 컬럼 — 보유수량과 무관하게 소매정보 등록 여부와 상품출처로 정한다.
+  // 1) 미등록 → [소매정보등록] (삭제할 소매정보가 없으므로 삭제 없음)
+  // 2) 등록됨 → [상세보기] / [수정] / [삭제]. 보유수량 0·판매가능수량 0·픽업가능종료일 경과 모두 동일하게 노출하고 수정 화면에서 해당 필드만 잠근다.
+  // 3) 내소매상품은 도매공급권한이 있으면 [도매상품전환]을 추가로 노출한다.
   function retailListRowActionsHTML(r) {
     const attrs = `data-source="${r.src.source}" data-code="${r.src.sourceCode || ''}"`;
     if (!r.listing) {
@@ -6849,14 +6849,8 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     const viewBtn = `<button type="button" data-retail-view ${attrs}>상세보기</button>`;
     const editBtn = `<button type="button" data-retail-edit ${attrs}>수정</button>`;
     const deleteBtn = `<button type="button" data-retail-delete="${r.listing.id}">삭제</button>`;
-    // 내소매상품(source: 'retail')은 도매 연동 없이 소매관리에서 직접 보유수량을 관리하는 상품이므로,
-    // 보유수량이 소진되어도 조회 전용으로 전환하지 않는다 — [수정]에서 보유수량을 다시 입력해 재고를 복구할 수 있어야 한다.
-    if (r.holdingQty <= 0 && r.src.source !== 'retail') {
-      return `<div class="row-actions row-actions-stack">${viewBtn}${deleteBtn}</div>`;
-    }
-    // 내소매상품만 [도매상품전환] 진입점을 별도로 노출한다. 전환은 되돌릴 수 없는 처리이므로 btn-accent를 적용하고,
-    // 전환할 재고가 있어야 의미가 있으므로 보유수량이 0이면 노출하지 않는다.
-    const convertBtn = (r.src.source === 'retail' && r.holdingQty > 0 && canSupply())
+    // 내소매상품만 [도매상품전환] 진입점을 별도로 노출한다. 전환은 되돌릴 수 없는 처리이므로 btn-accent를 적용하며, 노출 조건은 도매공급권한이다.
+    const convertBtn = (r.src.source === 'retail' && canSupply())
       ? `<button type="button" class="btn-accent" data-retail-convert ${attrs}>도매상품전환</button>` : '';
     return `<div class="row-actions row-actions-stack">${convertBtn}${viewBtn}${editBtn}${deleteBtn}</div>`;
   }
@@ -8304,9 +8298,6 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     if (!src || !listing) return pagePlaceholder('소매정보 상세', '상품 정보를 찾을 수 없습니다.');
 
     const holdingQty = src.holdingQty;
-    // 내소매상품(source: 'retail')은 도매 연동 없이 소매관리에서 직접 보유수량을 관리하므로,
-    // 보유수량이 소진되어도 조회 전용으로 전환하지 않는다 — [수정]에서 재고를 복구할 수 있어야 한다.
-    const soldOut = holdingQty <= 0 && ref.source !== 'retail';
     const saleStatus = retailEffectiveSaleStatus(listing);
     const effectiveExposed = retailEffectiveExposed(listing);
     const discountRate = (listing.listPrice > 0 && listing.salePrice > 0 && listing.salePrice <= listing.listPrice)
@@ -8322,8 +8313,6 @@ ${regionFieldHTML('set', '우리지역', false, true)}
           <div class="card-head">
             <h2>소매정보 상세</h2>
           </div>
-
-          ${soldOut ? `<div class="notice-banner">보유수량이 모두 소진되어 조회만 가능하며 항목을 수정할 수 없습니다.</div>` : ''}
 
           <div class="detail-meta">
             <span>상품출처 <strong>${sourceLabel}</strong></span>
@@ -8368,7 +8357,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
         <span style="font-size: 12px; color:var(--text-secondary);">${sourceLabel}</span>
         <div class="buybar-actions">
           <button type="button" class="btn-secondary" id="rtlViewDeleteBtn">삭제</button>
-          ${soldOut ? '' : `<button type="button" class="btn-secondary" id="rtlViewEditBtn">수정</button>`}
+          <button type="button" class="btn-secondary" id="rtlViewEditBtn">수정</button>
         </div>
       </div>`;
   }
@@ -8443,6 +8432,12 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     const saleStatus = listing ? retailEffectiveSaleStatus(listing) : 'active';
     const chatOrderEnabled = listing ? !!listing.chatOrderEnabled : false;
     const chatOrderName = listing ? (listing.chatOrderName || '') : '';
+    // 보유수량 안내 배너 — 내도매상품: 도매상품과 같은 값, 도매주문상품: 수량 불일치 경고, 내소매상품: 없음
+    const holdingNoticeHTML = ref.source === 'own'
+      ? `<div class="notice-banner">도매상품 보유수량과 같은 값이며 수정하면 도매상품에도 반영됩니다. 도매 판매상태는 자동으로 변경되지 않습니다.</div>`
+      : ref.source === 'purchase'
+        ? `<div class="notice-banner">보유수량을 수정하면 도매주문 내역의 구매 수량과 일치하지 않을 수 있습니다.</div>`
+        : '';
     // 소매판매상태·노출여부 잠금 사유 힌트 — 판매상태는 보유수량 소진 / 판매가능수량 소진, 노출여부는 보유수량 소진 / 픽업가능종료일 경과 기준이다.
     const statusLockReason = holdingQty <= 0 ? '보유수량이 모두 소진되어 수정할 수 없습니다.'
       : '판매가능수량이 0이 되어 품절로 고정됩니다.';
@@ -8457,6 +8452,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
             <h2>${isNew ? '소매정보등록' : '소매정보 수정'}</h2>
           </div>
 
+          ${holdingNoticeHTML}
           <div class="form-error-banner" id="retailFormErrorBanner" hidden></div>
 
           <section class="form-section">
@@ -8527,24 +8523,20 @@ ${regionFieldHTML('set', '우리지역', false, true)}
                 </select>
                 <div class="field-hint" id="rtlExposedHint" ${lock.exposeLocked ? '' : 'hidden'}>${exposeLockReason}</div>
               </div>
-              ${isRetailOnly ? `
               <div class="form-field">
                 <label>보유수량<span class="req">*</span></label>
                 <input type="number" class="form-input" id="rtlHoldingQty" value="${holdingQty}" min="0">
               </div>
+              ${isRetailOnly ? `
               <div class="form-field">
                 <label>판매가능수량</label>
                 <input type="text" class="form-input" id="rtlAvailableQtyDisplay" value="${holdingQty}개" disabled>
                 <div class="field-hint">내소매상품은 보유수량과 판매가능수량이 항상 동일하게 유지됩니다.</div>
               </div>` : `
               <div class="form-field">
-                <label>보유수량</label>
-                <input type="text" class="form-input" value="${holdingQty}개" disabled>
-              </div>
-              <div class="form-field">
                 <label>판매가능수량<span class="req">*</span></label>
                 <input type="number" class="form-input" id="rtlAvailableQty" value="${listing ? availableQty : ''}" placeholder="0" min="0">
-                <div class="field-hint">보유수량(${holdingQty}개)을 초과할 수 없습니다.</div>
+                <div class="field-hint" id="rtlAvailableQtyLimitHint">보유수량(${holdingQty}개)을 초과할 수 없습니다.</div>
                 <div class="field-error" id="rtlAvailableQtyError" hidden></div>
               </div>`}
               <div class="form-field">
@@ -8712,7 +8704,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     const exposedHintEl = wrapper.querySelector('#rtlExposedHint');
     // 보유수량 0이면 판매상태·노출여부를 잠그고(내소매상품은 보유수량 재입력 시 즉시 해제), 판매가능수량이 0이면 판매상태만 품절로 고정한다.
     function updateSaleStatusLock() {
-      const curHolding = isRetailOnly ? (parseInt(holdingQtyInput.value, 10) || 0) : src.holdingQty;
+      const curHolding = parseInt(holdingQtyInput.value, 10) || 0;
       const allocated = isRetailOnly ? curHolding : (parseInt(availableQtyInput.value, 10) || 0);
       const holdingEmpty = curHolding <= 0;
       if (exposedSelectEl) {
@@ -8732,20 +8724,24 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       if (locked) saleStatusSelect.value = 'soldout';
     }
     if (isRetailOnly) {
-      // 내소매상품 — 보유수량을 직접 입력하고, 판매가능수량 조회란은 그 값을 그대로 실시간 미러링한다.
+      // 내소매상품 — 판매가능수량 조회란은 보유수량 입력값을 그대로 실시간 미러링한다.
       holdingQtyInput.addEventListener('input', () => {
         const qty = parseInt(holdingQtyInput.value, 10) || 0;
         availableQtyDisplay.value = `${qty}개`;
         updateSaleStatusLock();
       });
     } else {
-      availableQtyInput.addEventListener('input', () => {
-        const holdingQty = src.holdingQty;
+      const availableLimitHint = wrapper.querySelector('#rtlAvailableQtyLimitHint');
+      const checkAvailableLimit = () => {
+        const holdingQty = parseInt(holdingQtyInput.value, 10) || 0;
         const allocated = parseInt(availableQtyInput.value, 10) || 0;
+        availableLimitHint.textContent = `보유수량(${holdingQty}개)을 초과할 수 없습니다.`;
         availableQtyError.hidden = allocated <= holdingQty;
         if (!availableQtyError.hidden) availableQtyError.textContent = `보유수량(${holdingQty}개)을 초과할 수 없습니다.`;
         updateSaleStatusLock();
-      });
+      };
+      availableQtyInput.addEventListener('input', checkAvailableLimit);
+      holdingQtyInput.addEventListener('input', checkAvailableLimit);
     }
     updateSaleStatusLock();
 
@@ -8755,7 +8751,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       const cat2 = cat2Select.value || null;
       const listPrice = parseInt(listPriceInput.value, 10) || 0;
       const salePrice = parseInt(salePriceInput.value, 10) || null;
-      const holdingQty = isRetailOnly ? (parseInt(holdingQtyInput.value, 10) || 0) : src.holdingQty;
+      const holdingQty = parseInt(holdingQtyInput.value, 10) || 0;
       const availableQty = isRetailOnly ? holdingQty : (parseInt(availableQtyInput.value, 10) || 0);
       const salesMethod = wrapper.querySelector('input[name="rtlSalesMethod"]:checked').value;
       const composition = wrapper.querySelector('#rtlComposition').value.trim();
@@ -8776,9 +8772,8 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       if (!cat1) errors.push('카테고리 1차를 선택해주세요.');
       errors.push(...priceErrors(listPriceInput.value, '소비자가'));
       errors.push(...discountErrors(salePriceInput.value, parseInt(listPriceInput.value, 10) || 0));
-      if (isRetailOnly) {
-        errors.push(...qtyErrors(holdingQtyInput.value, '보유수량'));
-      } else {
+      errors.push(...qtyErrors(holdingQtyInput.value, '보유수량'));
+      if (!isRetailOnly) {
         errors.push(...qtyErrors(availableQtyInput.value, '판매가능수량'));
         if (availableQty > holdingQty) errors.push('판매가능수량은 보유수량을 초과할 수 없습니다.');
       }
@@ -8826,7 +8821,16 @@ ${regionFieldHTML('set', '우리지역', false, true)}
         pickupEndDate: salesMethod !== 'delivery' ? pickupEnd : null,
         chatOrderEnabled, chatOrderName: chatOrderEnabled ? chatOrderName : '',
       });
-      if (isRetailOnly) listing.stock = holdingQty; // 내소매상품의 보유수량은 원본이 아닌 listing 레코드 자신이 직접 보유한다.
+      // 보유수량은 출처별 저장 위치에 직접 저장한다 — 내소매상품: 소매정보, 내도매상품: 도매상품, 도매주문상품: 도매주문상품 저장 레코드.
+      if (isRetailOnly) {
+        listing.stock = holdingQty;
+      } else if (ref.source === 'own') {
+        const ownProduct = PRODUCT_LIST.find(x => x.code === ref.sourceCode);
+        if (ownProduct) ownProduct.stock = holdingQty;
+      } else {
+        syncPurchaseHoldings();
+        PURCHASE_HOLDINGS[ref.sourceCode] = holdingQty;
+      }
 
       // 내도매상품인 경우 PRODUCT_LIST의 기존 소매 요약 필드(노출여부·판매가능수량)를 함께 갱신해 정합성을 유지한다.
       if (ref.source === 'own') {
@@ -9377,15 +9381,15 @@ ${regionFieldHTML('cv', '우리지역', true)}
     if (inList && o.processStatus !== '주문접수' && o.processStatus !== '배송대기') return '';
     return paymentConfirmButtonHTML(o, inList);
   }
-  // 취소·반품처리 — 요청 건은 조정 모드, 배송중은 반품처리, 주문접수·배송대기는 취소처리. 배송확정 후에는 없다.
+  // 취소·반품처리 — 요청 건은 조정 모드, 배송중·배송확정은 반품처리(직권), 주문접수·배송대기는 취소처리.
   function wsCancelButtonHTML(o) {
     const g = orderTabGroup(o);
     if (g === 'cr-req') {
       const crType = orderCrType(o);
       return `<button type="button" class="btn-primary" data-supplier-cr-open="${o.orderNo}" data-cr-type="${crType}">${crType}처리</button>`;
     }
-    if (g === 'cr-approved' || g === '배송확정') return '';
-    return o.processStatus === '배송중'
+    if (g === 'cr-approved') return '';
+    return (o.processStatus === '배송중' || g === '배송확정')
       ? `<button type="button" class="btn-danger" data-supplier-cr-open="${o.orderNo}" data-cr-type="반품">반품처리</button>`
       : `<button type="button" class="btn-danger" data-supplier-cr-open="${o.orderNo}" data-cr-type="취소">취소처리</button>`;
   }
@@ -10028,7 +10032,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
 
   // 취소·반품 처리 · 처리상태 변경 — 주문접수관리(공급자 모드) 상세 하단 처리 영역(.market-buybar) 버튼.
   // 결제확인(paymentBtn)은 결제상태가 결제대기일 때 처리상태와 무관하게 항상 함께 노출된다.
-  // - 배송확정 완료 건: 되돌릴 수 없으므로 안내만 노출한다.
+  // - 배송확정 완료 건: 처리상태는 되돌릴 수 없고 반품처리(직권)만 가능하다.
   // - 취소·반품 요청 진행중: 처리상태 변경은 숨기고, 취소처리·반품처리 버튼(조정 모드 팝업)만 노출한다. 버튼명은 직권 처리와 동일하게 통일한다.
   // - 취소·반품 승인 완료(종결): 추가 처리 없이 안내만 노출한다.
   // - 그 외(요청 이력 없음 또는 반려로 종료됨, "자율처리"):
@@ -10036,11 +10040,11 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   //   · 주문접수·배송대기 단계에서는 취소처리만, 배송중 단계에서는 반품처리만 노출한다 — 배송 진행 여부에 맞춘 제한이다.
   //   · 배송확정은 셀렉 선택지에서 분리해 배송중 단계 전용 버튼으로 노출한다 — 셀렉으로는 실수로 배송확정까지 선택될 위험이 있어
   //     주문내역(구매자 모드)의 배송확정 버튼과 동일하게 확인 팝업을 거치도록 한다. 배송확정 후에는
-  //     처리상태 변경·취소처리·반품처리가 모두 불가능하다.
+  //     처리상태 변경·취소처리가 불가능하고 반품처리(직권)만 가능하다.
   function orderDetailSupplierActionsHTML(o) {
     const g = orderTabGroup(o);
     if (o.processStatus === '배송확정') {
-      return `${paymentConfirmButtonHTML(o)}<span class="field-hint">배송확정 완료 — 되돌릴 수 없습니다.</span>`;
+      return `${paymentConfirmButtonHTML(o)}${wsCancelButtonHTML(o)}<span class="field-hint">배송확정 완료 — 되돌릴 수 없습니다.</span>`;
     }
     if (g === 'cr-approved') {
       return `<span class="field-hint">처리 완료된 주문입니다.</span>`;
@@ -10230,6 +10234,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </div>
           <div class="form-error-banner" id="crModalError" style="margin-top:12px;" hidden></div>
           <div class="field-hint" style="margin-top:8px;">${crType} 요청 후에는 공급자 확인을 거쳐 처리됩니다.</div>
+          ${crType === '반품' ? `<div class="field-hint" style="margin-top:8px;">반품은 주문 전체 단위로 처리되며 보유수량에 반영되지 않습니다. 일부만 반품하려면 공급자와 먼저 협의해주세요.</div>` : ''}
           <div class="modal-actions">
             <button type="button" class="btn-secondary" id="crModalCancelBtn">닫기</button>
             <button type="button" class="btn-primary" id="crModalSubmitBtn">${crType} 요청</button>
@@ -10461,6 +10466,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           <span>재고 반영 — 체크 시 이 주문의 품목 수량만큼 보유수량을 복원합니다.</span>
         </label>
         <div class="field-hint">현재는 주문 전체 단위로만 처리됩니다. 품목이 여러 건이어도 전체 품목의 수량이 함께 복원됩니다.</div>
+        ${crType === '반품' ? `<div class="field-hint">일부 수량만 반품받은 경우 체크를 해제하고 보유수량을 직접 조정해주세요.</div>` : ''}
       </div>` : '';
 
     return crModalShellHTML({
@@ -10530,6 +10536,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     }
 
     root.querySelector('#supplierCrModalSubmitBtn').addEventListener('click', () => {
+      syncPurchaseHoldings();
       const approvedNow = isApproved(); // 이번 제출로 "취소승인/반품승인" 상태가 확정되는지 — 재고·환불 반영 판단 기준
       if (approvedNow && !refundCtl.validate()) return;
       const decision = approvedNow && !isPending ? readCrRefund(root, o, 'supplierCr', 'wholesale') : null;
@@ -10600,7 +10607,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
         <div class="modal-box">
           <h3>배송확정 처리</h3>
           <div class="field-hint">주문번호 ${o.orderNo} 배송을 확정 처리하시겠습니까?</div>
-          <div class="field-hint" style="margin-top:8px;">배송확정 처리 후에는 처리상태 변경, 취소처리·반품처리가 모두 불가능합니다.</div>
+          <div class="field-hint" style="margin-top:8px;">배송확정 처리 후에는 처리상태 변경이 불가능합니다.</div>
           ${paymentNoteHTML}
           <div class="modal-actions">
             <button type="button" class="btn-secondary" id="supplierDeliveryModalCancelBtn">취소</button>
@@ -14704,7 +14711,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     { id: 'wb-standby', category: 'wholesale-buy', label: '배송대기 전환', body: '#판매자상호명 님이 주문(#주문번호)을 배송대기로 전환했습니다', enabled: true },
     { id: 'wb-shipping', category: 'wholesale-buy', label: '배송중 전환', body: '#판매자상호명 님이 주문(#주문번호)을 배송중으로 전환했습니다', enabled: true },
     { id: 'wb-confirmed', category: 'wholesale-buy', label: '배송확정 처리', body: '#판매자상호명 님이 주문(#주문번호)을 배송확정 처리했습니다', bodyAuto: '주문(#주문번호)이 배송확정 처리되었습니다.', enabled: true },
-    { id: 'wb-cancel-return', category: 'wholesale-buy', label: '취소/반품 결과안내', body: '#판매자상호명 님이 주문(#주문번호)을 #처리상태 처리했습니다', enabled: true },
+    { id: 'wb-cancel-return', category: 'wholesale-buy', label: '취소/반품 결과안내', body: '#판매자상호명 님이 주문(#주문번호)을 #처리상태 처리했습니다', bodyReturnApproved: '#판매자상호명 님이 주문(#주문번호)을 반품승인 처리했습니다. 소매관리에서 보유수량을 직접 조정해주세요.', enabled: true },
 
     { id: 'ws-new-paid', category: 'wholesale-sell', label: '신규주문접수(결제완료)', body: '#구매자상호명 님이 주문(#주문번호)을 접수했습니다(결제완료). #상품명 외 N건 · #주문금액', enabled: false, warn: '주문 1건마다 알림이 발송되어 알림이 많이 발송될 수 있습니다. 알림을 끄는 것을 권장합니다.' },
     { id: 'ws-new-pending', category: 'wholesale-sell', label: '신규주문접수(결제대기)', body: '#구매자상호명 님이 주문(#주문번호)을 접수했습니다(결제대기). #상품명 외 N건 · #주문금액', enabled: false, warn: '주문 1건마다 알림이 발송되어 알림이 많이 발송될 수 있습니다. 알림을 끄는 것을 권장합니다.' },
@@ -15402,6 +15409,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     { id: 10, caseId: 'rt-new-paid', at: mockStampAgo(310), body: '이영희 님이 주문(#RO20260920001)을 접수했습니다(결제완료). 레몬 외 2건 · 21,500원' },
     { id: 11, caseId: 'wb-payment-confirm', at: mockStampAgo(1420), body: '횡성한우 님이 주문(#WO20260919002)을 결제확인 처리했습니다' },
     { id: 12, caseId: 'rt-cancel-return', at: mockStampAgo(1560), body: '박지훈 님이 주문(#RO20260919001)을 취소했습니다. 재고가 자동 복원되었습니다.' },
+    { id: 14, caseId: 'wb-cancel-return', at: mockStampAgo(90), body: '안동농협 님이 주문(#WO20260918004)을 반품승인 처리했습니다. 소매관리에서 보유수량을 직접 조정해주세요.' },
     { id: 13, caseId: 'sys-franchise-fail', at: mockStampAgo(4400), body: '행복마트 화정점 가맹점의 이용료 결제가 실패했습니다' },
   ];
 
