@@ -5179,7 +5179,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     const itemsTotal = items.reduce((sum, i) => sum + i.subtotal, 0);
     const shippingFee = orderGroupShippingFee(seller);
     const showCardFeeToBuyer = settings.cardFeeBearer === 'buyer';
-    const cardFeeAmount = showCardFeeToBuyer ? Math.round((itemsTotal + shippingFee) * settings.cardFeeRate / 100) : 0;
+    const cardFeeAmount = showCardFeeToBuyer ? Math.round(itemsTotal * settings.cardFeeRate / 100) : 0;
 
     const rows = items.map(({ product, qty, subtotal }) => `
       <tr>
@@ -5351,7 +5351,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
 
     function currentCardFeeAmount(method) {
       const applyCardFee = method === 'card' && settings.cardFeeBearer === 'buyer';
-      return applyCardFee ? Math.round((itemsTotal + shippingFee) * settings.cardFeeRate / 100) : 0;
+      return applyCardFee ? Math.round(itemsTotal * settings.cardFeeRate / 100) : 0;
     }
 
     function updateSummary() {
@@ -5455,7 +5455,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
         items: items.map(i => ({ code: i.code, name: i.product.name, qty: i.qty, price: i.product.price, unit: i.product.unit })),
         paymentMethod: method, paymentStatus, processStatus: '주문접수', cancelReturnStatus: null,
         shippingMethod: settings.shippingMethod, // 주문 시점 배송방식 스냅샷 — 이후 공급자 설정이 바뀌어도 이 주문의 표기는 유지된다.
-        itemsTotal, shippingFee, cardFeeAmount, grandTotal,
+        itemsTotal, shippingFee, cardFeeAmount, cardFeeRate: cardFeeAmount ? settings.cardFeeRate : null, grandTotal,
         createdAt: nowStamp,
         paidAt: method === 'card' ? nowStamp : null, // 카드결제는 주문 생성 즉시 결제완료
       };
@@ -5640,7 +5640,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       ],
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '주문접수', cancelReturnStatus: null,
       shippingMethod: 'fixed', paidAt: '26.09.15 11:05', 
-      itemsTotal: 111000, shippingFee: 3000, cardFeeAmount: 3192, grandTotal: 117192, createdAt: '26.09.15 11:05' },
+      itemsTotal: 111000, shippingFee: 3000, cardFeeAmount: 3108, cardFeeRate: 2.8, grandTotal: 117108, createdAt: '26.09.15 11:05' },
     { orderNo: 'WO20260914005', seller: MY_SELLER_NAME, buyerName: '싱싱유통',
  buyerPhone: '010-5567-8890', buyerEmail: 'biz@ssyutong.kr', deliveryAddress: '인천 남동구 논현로 45', requestNote: null, depositorName: '싱싱유통',
       items: [{ code: 'P0229', name: '무농약 상추 5kg', qty: 8, price: 6500, unit: 'box(5kg)' }],
@@ -5652,13 +5652,13 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       items: [{ code: 'P0231', name: '못난이사과 10kg', qty: 20, price: 12000, unit: 'box(10kg)' }],
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '배송중', cancelReturnStatus: null,
       shippingMethod: 'fixed', paidAt: '26.09.13 14:12', 
-      shippedAt: '26.09.15 10:00', itemsTotal: 240000, shippingFee: 3000, cardFeeAmount: 6804, grandTotal: 249804, createdAt: '26.09.13 14:12' },
+      shippedAt: '26.09.15 10:00', itemsTotal: 240000, shippingFee: 3000, cardFeeAmount: 6720, cardFeeRate: 2.8, grandTotal: 249720, createdAt: '26.09.13 14:12' },
     { orderNo: 'WO20260910003', seller: MY_SELLER_NAME, buyerName: '한마음마트',
  buyerPhone: '010-7789-4561', buyerEmail: 'hanmaeum@mart.kr', deliveryAddress: '대전 유성구 대학로 99', requestNote: null, depositorName: null,
       items: [{ code: 'P0228', name: '친환경 감자 20kg', qty: 3, price: 15000, unit: 'box(20kg)' }],
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '배송확정', cancelReturnStatus: null,
       shippingMethod: 'fixed', paidAt: '26.09.10 16:30', 
-      shippedAt: '26.09.10 18:00', deliveryConfirmedAt: '26.09.11 09:00', deliveryConfirmedBy: 'manual', itemsTotal: 45000, shippingFee: 3000, cardFeeAmount: 1344, grandTotal: 49344, createdAt: '26.09.10 16:30' },
+      shippedAt: '26.09.10 18:00', deliveryConfirmedAt: '26.09.11 09:00', deliveryConfirmedBy: 'manual', itemsTotal: 45000, shippingFee: 3000, cardFeeAmount: 1260, cardFeeRate: 2.8, grandTotal: 49260, createdAt: '26.09.10 16:30' },
     { orderNo: 'WO20260915003', seller: MY_SELLER_NAME, buyerName: '푸드마켓제일',
  buyerPhone: '010-8890-2345', buyerEmail: 'first@foodmarket.kr', deliveryAddress: '경기 수원시 팔달구 매산로 12', requestNote: null, depositorName: '푸드마켓제일',
       items: [{ code: 'P0230', name: '햇양파 10kg', qty: 6, price: 18000, unit: 'box(10kg)' }],
@@ -5676,7 +5676,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: null, cancelReturnStatus: '반품요청',
       cancelReturnReason: '배송된 상품 일부가 손상되어 반품을 요청합니다.', cancelReturnRequestedAt: '26.09.13 09:15', cancelReturnResolvedAt: null, cancelReturnSellerNote: null,
       shippingMethod: 'fixed', paidAt: '26.09.12 13:20', 
-      shippedAt: '26.09.12 16:00', itemsTotal: 216000, shippingFee: 4000, cardFeeAmount: 6160, grandTotal: 226160, createdAt: '26.09.12 13:20' },
+      shippedAt: '26.09.12 16:00', itemsTotal: 216000, shippingFee: 4000, cardFeeAmount: 6048, cardFeeRate: 2.8, grandTotal: 226048, createdAt: '26.09.12 13:20' },
     { orderNo: 'WO20260911002', seller: MY_SELLER_NAME, buyerName: '청년상회',
  buyerPhone: '010-1123-6789', buyerEmail: 'youth@store.kr', deliveryAddress: '부산 해운대구 센텀로 33', requestNote: null, depositorName: '청년상회',
       items: [{ code: 'P0230', name: '햇양파 10kg', qty: 4, price: 18000, unit: 'box(10kg)' }],
@@ -5690,8 +5690,8 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       items: [{ code: 'P0229', name: '무농약 상추 5kg', qty: 10, price: 6500, unit: 'box(5kg)' }],
       paymentMethod: 'card', paymentStatus: '결제취소', processStatus: null, cancelReturnStatus: '반품승인',
       cancelReturnReason: '상품 품질에 문제가 있어 반품을 요청합니다.', cancelReturnRequestedAt: '26.09.09 16:10', cancelReturnResolvedAt: '26.09.10 09:00', cancelReturnSellerNote: '상품 품질 이슈 확인되어 반품 승인합니다.',
-      shippingMethod: 'fixed', paidAt: '26.09.09 15:44', refundType: 'full', productRefundAmount: 65000, shippingFeeRefunded: true, totalRefundAmount: 69904, 
-      shippedAt: '26.09.09 16:00', itemsTotal: 65000, shippingFee: 3000, cardFeeAmount: 1904, grandTotal: 69904, createdAt: '26.09.09 15:44' },
+      shippingMethod: 'fixed', paidAt: '26.09.09 15:44', refundType: 'full', productRefundAmount: 65000, shippingFeeRefunded: true, totalRefundAmount: 69820, 
+      shippedAt: '26.09.09 16:00', itemsTotal: 65000, shippingFee: 3000, cardFeeAmount: 1820, cardFeeRate: 2.8, grandTotal: 69820, createdAt: '26.09.09 15:44' },
     { orderNo: 'WO20260915004', seller: MY_SELLER_NAME, buyerName: '드림유통',
  buyerPhone: '010-3345-8901', buyerEmail: 'dream@yutong.kr', deliveryAddress: '대구 수성구 동대구로 77', requestNote: null, depositorName: '드림유통',
       items: [{ code: 'P0228', name: '친환경 감자 20kg', qty: 4, price: 15000, unit: 'box(20kg)' }],
@@ -5706,7 +5706,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '배송중', cancelReturnStatus: '반품반려',
       cancelReturnReason: '수령한 상품이 주문한 상품과 다릅니다.', cancelReturnRequestedAt: '26.09.14 10:00', cancelReturnResolvedAt: '26.09.14 15:30', cancelReturnSellerNote: '확인 결과 정상 배송된 상품으로 반품 사유에 해당하지 않습니다.',
       shippingMethod: 'fixed', paidAt: '26.09.12 17:50', 
-      shippedAt: '26.09.12 18:00', itemsTotal: 144000, shippingFee: 3000, cardFeeAmount: 4116, grandTotal: 151116, createdAt: '26.09.12 17:50' },
+      shippedAt: '26.09.12 18:00', itemsTotal: 144000, shippingFee: 3000, cardFeeAmount: 4032, cardFeeRate: 2.8, grandTotal: 151032, createdAt: '26.09.12 17:50' },
 
     // 아래 4건은 본 계정(우리마켓 본사)이 다른 공급사에서 매입한 주문 — 주문내역 화면에 노출되는 데이터
     { orderNo: 'WO20260912015', seller: '해남청과', buyerName: MY_SELLER_NAME,
@@ -5720,7 +5720,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       items: [{ code: 'P0305', name: '햇감자 20kg', qty: 10, price: 31000, unit: 'box(20kg)' }],
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '배송중', cancelReturnStatus: null,
       shippingMethod: 'fixed', paidAt: '26.09.10 09:30', 
-      shippedAt: '26.09.12 09:00', itemsTotal: 310000, shippingFee: 4500, cardFeeAmount: 8806, grandTotal: 323306, createdAt: '26.09.10 09:30' },
+      shippedAt: '26.09.12 09:00', itemsTotal: 310000, shippingFee: 4500, cardFeeAmount: 8680, cardFeeRate: 2.8, grandTotal: 323180, createdAt: '26.09.10 09:30' },
     { orderNo: 'WO20260908002', seller: '안동농협', buyerName: MY_SELLER_NAME,
       buyerPhone: MY_PROFILE.phone, buyerEmail: MY_PROFILE.email, deliveryAddress: MY_PROFILE.address, requestNote: null, depositorName: null,
       items: [{ code: 'P0306', name: '햇양파 10kg', qty: 20, price: 18000, unit: 'box(10kg)' }],
@@ -5750,7 +5750,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       paymentMethod: 'card', paymentStatus: '결제취소', processStatus: null, cancelReturnStatus: '반품승인',
       cancelReturnReason: '수령한 감귤 일부가 부패되어 반품을 요청합니다.', cancelReturnRequestedAt: '26.09.09 10:00', cancelReturnResolvedAt: '26.09.10 09:30', cancelReturnSellerNote: '품질 이슈 확인되어 반품 승인합니다.',
       shippingMethod: 'free', paidAt: '26.09.09 09:10', refundType: 'full', productRefundAmount: 304000, shippingFeeRefunded: false, totalRefundAmount: 312512, 
-      shippedAt: '26.09.09 11:00', itemsTotal: 304000, shippingFee: 0, cardFeeAmount: 8512, grandTotal: 312512, createdAt: '26.09.09 09:10' },
+      shippedAt: '26.09.09 11:00', itemsTotal: 304000, shippingFee: 0, cardFeeAmount: 8512, cardFeeRate: 2.8, grandTotal: 312512, createdAt: '26.09.09 09:10' },
     { orderNo: 'WO20260906006', seller: '제주축산', buyerName: MY_SELLER_NAME,
       buyerPhone: MY_PROFILE.phone, buyerEmail: MY_PROFILE.email, deliveryAddress: MY_PROFILE.address, requestNote: null, depositorName: MY_PROFILE.bankHolder,
       items: [{ code: 'P0308', name: '제주흑돼지 삼겹살 10kg', qty: 2, price: 145000, unit: 'box(10kg)' }],
@@ -5766,16 +5766,16 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       paymentMethod: 'card', paymentStatus: '결제취소', processStatus: null, cancelReturnStatus: '취소승인', cancelReturnPrevStatus: '주문접수', cancelReturnInitiator: 'buyer',
       cancelReturnReason: null, cancelReturnRequestedAt: '26.09.19 15:30', cancelReturnResolvedAt: '26.09.19 15:30', cancelReturnSellerNote: null,
       cancelReturnStockRestored: true,
-      refundType: 'full', productRefundAmount: 30000, shippingFeeRefunded: true, totalRefundAmount: 33924,
+      refundType: 'full', productRefundAmount: 30000, shippingFeeRefunded: true, totalRefundAmount: 33840,
       shippingMethod: 'fixed', paidAt: '26.09.19 15:10',
-      itemsTotal: 30000, shippingFee: 3000, cardFeeAmount: 924, grandTotal: 33924, createdAt: '26.09.19 15:10' },
+      itemsTotal: 30000, shippingFee: 3000, cardFeeAmount: 840, cardFeeRate: 2.8, grandTotal: 33840, createdAt: '26.09.19 15:10' },
     // 구매자(주문내역) — 주문접수 · 카드결제완료: [주문취소](즉시취소) 노출
     { orderNo: 'WO20260919014', seller: '영광농원', buyerName: MY_SELLER_NAME,
       buyerPhone: MY_PROFILE.phone, buyerEmail: MY_PROFILE.email, deliveryAddress: MY_PROFILE.address, requestNote: null, depositorName: null,
       items: [{ code: null, name: '영광 찰보리 10kg', qty: 2, price: 24000, unit: 'box(10kg)' }],
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '주문접수', cancelReturnStatus: null,
       shippingMethod: 'fixed', paidAt: '26.09.19 09:40',
-      itemsTotal: 48000, shippingFee: 3000, cardFeeAmount: 1428, grandTotal: 52428, createdAt: '26.09.19 09:40' },
+      itemsTotal: 48000, shippingFee: 3000, cardFeeAmount: 1344, cardFeeRate: 2.8, grandTotal: 52344, createdAt: '26.09.19 09:40' },
     // 구매자(주문내역) — 주문접수 · 계좌이체 결제완료: [취소요청](승인 요청) 노출
     { orderNo: 'WO20260919016', seller: '경북사과조합', buyerName: MY_SELLER_NAME,
       buyerPhone: MY_PROFILE.phone, buyerEmail: MY_PROFILE.email, deliveryAddress: MY_PROFILE.address, requestNote: null, depositorName: MY_PROFILE.bankHolder,
@@ -5789,16 +5789,40 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       items: [{ code: null, name: '진도 대파 10kg', qty: 6, price: 21000, unit: 'box(10kg)' }],
       paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '배송중', cancelReturnStatus: null,
       shippingMethod: 'fixed', paidAt: '26.09.16 13:00',
-      shippedAt: '26.09.18 10:00', itemsTotal: 126000, shippingFee: 3500, cardFeeAmount: 3626, grandTotal: 133126, createdAt: '26.09.16 13:00' },
+      shippedAt: '26.09.18 10:00', itemsTotal: 126000, shippingFee: 3500, cardFeeAmount: 3528, cardFeeRate: 2.8, grandTotal: 133028, createdAt: '26.09.16 13:00' },
     // 구매자(주문내역) — 즉시취소 완료(취소승인 · 처리 주체 구매자)
     { orderNo: 'WO20260918007', seller: '보성농원', buyerName: MY_SELLER_NAME,
       buyerPhone: MY_PROFILE.phone, buyerEmail: MY_PROFILE.email, deliveryAddress: MY_PROFILE.address, requestNote: null, depositorName: null,
       items: [{ code: null, name: '보성 유기농 고구마 10kg', qty: 4, price: 28000, unit: 'box(10kg)' }],
       paymentMethod: 'card', paymentStatus: '결제취소', processStatus: null, cancelReturnStatus: '취소승인', cancelReturnPrevStatus: '주문접수', cancelReturnInitiator: 'buyer',
       cancelReturnReason: null, cancelReturnRequestedAt: '26.09.18 10:35', cancelReturnResolvedAt: '26.09.18 10:35', cancelReturnSellerNote: null,
-      refundType: 'full', productRefundAmount: 112000, shippingFeeRefunded: true, totalRefundAmount: 118220,
+      refundType: 'full', productRefundAmount: 112000, shippingFeeRefunded: true, totalRefundAmount: 118136,
       shippingMethod: 'fixed', paidAt: '26.09.18 10:20',
-      itemsTotal: 112000, shippingFee: 3000, cardFeeAmount: 3220, grandTotal: 118220, createdAt: '26.09.18 10:20' },
+      itemsTotal: 112000, shippingFee: 3000, cardFeeAmount: 3136, cardFeeRate: 2.8, grandTotal: 118136, createdAt: '26.09.18 10:20' },
+    // 정산 후 카드결제 · 주문접수 — 공급자가 취소처리하면 PG사에 환불을 요청하고 결제상태가 환불대기로 전환된다(정산 완료 여부는 목업 플래그).
+    { orderNo: 'WO20260914021', seller: MY_SELLER_NAME, buyerName: '보람마트',
+      buyerPhone: '010-5512-3388', buyerEmail: 'order@boram.kr', deliveryAddress: '경기 용인시 수지구 포은대로 55', requestNote: null, depositorName: null,
+      items: [{ code: 'P0228', name: '친환경 감자 20kg', qty: 10, price: 15000, unit: 'box(20kg)' }],
+      paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '주문접수', cancelReturnStatus: null,
+      shippingMethod: 'fixed', paidAt: '26.09.14 09:10', settled: true,
+      itemsTotal: 150000, shippingFee: 3000, cardFeeAmount: 4200, cardFeeRate: 2.8, grandTotal: 157200, createdAt: '26.09.14 09:10' },
+    // 환불대기 — 정산 후 카드결제 건의 부분환불 취소가 승인되어 PG사에 환불을 요청했고, 정산금 반환이 끝나지 않은 건(공급자 관점).
+    { orderNo: 'WO20260913022', seller: MY_SELLER_NAME, buyerName: '보람마트',
+      buyerPhone: '010-5512-3388', buyerEmail: 'order@boram.kr', deliveryAddress: '경기 용인시 수지구 포은대로 55', requestNote: null, depositorName: null,
+      items: [{ code: 'P0228', name: '친환경 감자 20kg', qty: 10, price: 15000, unit: 'box(20kg)' }],
+      paymentMethod: 'card', paymentStatus: '환불대기', processStatus: null, cancelReturnStatus: '취소승인', cancelReturnPrevStatus: '주문접수', cancelReturnInitiator: 'supplier',
+      cancelReturnReason: null, cancelReturnRequestedAt: '26.09.19 11:40', cancelReturnResolvedAt: '26.09.19 11:40', cancelReturnSellerNote: '재고 부족으로 공급자 직권 취소 처리합니다.',
+      cancelReturnStockRestored: true,
+      refundType: 'partial', productRefundAmount: 45000, shippingFeeRefunded: false, cardFeeRefundAmount: 1260, totalRefundAmount: 46260, returnHolder: MY_PROFILE.bankHolder,
+      shippingMethod: 'fixed', paidAt: '26.09.13 10:00', settled: true,
+      itemsTotal: 150000, shippingFee: 3000, cardFeeAmount: 4200, cardFeeRate: 2.8, grandTotal: 157200, createdAt: '26.09.13 10:00' },
+    // 구매자(주문내역) — 정산 후 카드결제 · 주문접수: [주문취소] 시 즉시취소 처리 불가(실패 안내만 노출)
+    { orderNo: 'WO20260914023', seller: '영광농원', buyerName: MY_SELLER_NAME,
+      buyerPhone: MY_PROFILE.phone, buyerEmail: MY_PROFILE.email, deliveryAddress: MY_PROFILE.address, requestNote: null, depositorName: null,
+      items: [{ code: null, name: '영광 찰보리 10kg', qty: 1, price: 24000, unit: 'box(10kg)' }],
+      paymentMethod: 'card', paymentStatus: '결제완료', processStatus: '주문접수', cancelReturnStatus: null,
+      shippingMethod: 'fixed', paidAt: '26.09.14 10:30', settled: true,
+      itemsTotal: 24000, shippingFee: 3000, cardFeeAmount: 672, cardFeeRate: 2.8, grandTotal: 27672, createdAt: '26.09.14 10:30' },
   ];
   // 도매 구매자는 구매 계정 아이디(buyerId)로 식별한다. 시드의 매입 주문은 기본 계정(bonsa)의 구매 건이다.
   ORDER_LIST.forEach(o => { if (!o.buyerId && o.seller !== MY_SELLER_NAME) o.buyerId = 'bonsa'; });
@@ -5850,7 +5874,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
   }
 
   let orderReceiveTab1 = 'all';   // all | 주문접수 | 배송대기 | 배송중 | 배송확정 | cr-req | cr-approved
-  let orderReceiveTab2 = 'all';   // all|결제대기|결제완료|결제취소|반려
+  let orderReceiveTab2 = 'all';   // all|결제대기|결제완료|결제취소|환불대기|반려
   let orderReceiveSearch = '';
   let orderReceiveDateFrom = '';  // <input type="date"> 값, 'YYYY-MM-DD'
   let orderReceiveDateTo = '';
@@ -5962,7 +5986,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
   function paymentStatusDetailHTML(o) {
     const badge = statusTag(o.paymentStatus);
     if (o.paymentStatus === '결제완료') return stateStampHTML(badge, o.paidAt || '');
-    if (o.paymentStatus !== '결제취소') return badge;
+    if (o.paymentStatus !== '결제취소' && o.paymentStatus !== '환불대기') return badge;
     const sub = o.refundType ? `<span class="tag refund-sub-text">${o.refundType === 'full' ? '전체환불' : '부분환불'}</span>` : '';
     const at = o.cancelReturnResolvedAt || '';
     return `<span class="state-stamp">${badge}${sub}${at ? `<span>${at}</span>` : ''}${o.paidAt ? `<span class="state-stamp-note">(${o.paidAt} 결제완료)</span>` : ''}</span>`;
@@ -6494,6 +6518,23 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       paymentStatus: '결제완료', processStatus: '주문접수', cancelReturnStatus: null,
       deliveryAddress: '경기도 수원시 영통구 광교로 145 101동 1204호', requestNote: null,
       paidAt: '26.09.19 17:05', createdAt: '26.09.19 17:05' },
+    // 정산 후 카드결제 · 배달 · 주문접수 — 취소처리하면 PG사에 환불을 요청하고 결제상태가 환불대기로 전환된다(정산 완료 여부는 목업 플래그).
+    { orderNo: 'RO20260916104', buyerNickCode: '2651', buyerName: '박민수',
+      items: [{ name: '못난이사과', qty: 2, price: 15000 }, { name: '친환경 감자', qty: 1, price: 22000 }], shippingFee: 3000, grandTotal: 55000,
+      salesMethod: 'delivery', orderChannel: 'link', paymentMethod: 'card',
+      paymentStatus: '결제완료', processStatus: '주문접수', cancelReturnStatus: null, settled: true,
+      deliveryAddress: '경기도 수원시 팔달구 매교로 26', requestNote: null,
+      paidAt: '26.09.16 09:30', createdAt: '26.09.16 09:30' },
+    // 환불대기 — 정산 후 카드결제 건의 취소가 승인되어 PG사에 환불을 요청했고, 정산금 반환이 끝나지 않은 건.
+    { orderNo: 'RO20260916105', buyerNickCode: '1830', buyerName: '김영희',
+      items: [{ name: '못난이사과', qty: 2, price: 15000 }], shippingFee: 3000, grandTotal: 33000,
+      salesMethod: 'delivery', orderChannel: 'link', paymentMethod: 'card',
+      paymentStatus: '환불대기', processStatus: null, cancelReturnStatus: '취소승인', cancelReturnPrevStatus: '주문접수', cancelReturnInitiator: 'supplier',
+      cancelReturnReason: null, cancelReturnRequestedAt: '26.09.17 10:00', cancelReturnResolvedAt: '26.09.17 10:00', cancelReturnSellerNote: '재고 부족으로 취소 처리합니다.',
+      cancelReturnStockRestored: true, settled: true,
+      refundType: 'partial', productRefundAmount: 15000, shippingFeeRefunded: false, totalRefundAmount: 15000, returnHolder: MY_PROFILE.bankHolder,
+      deliveryAddress: '경기도 수원시 영통구 매탄로 88 202동 501호', requestNote: null,
+      paidAt: '26.09.16 11:00', createdAt: '26.09.16 11:00' },
   ];
   // 주문은 회원 내부 키(memberId)로 회원과 연결하고, 주문자 휴대폰번호·채팅주문 닉네임은 주문 시점 값으로 보존한다.
   RETAIL_ORDER_LIST.forEach(o => {
@@ -9412,7 +9453,7 @@ ${regionFieldHTML('cv', '우리지역', true)}
         ${t.label}<span class="tab-count">${t.id === 'all' ? counts.all : counts[t.id]}</span>
       </button>`).join('');
 
-    const tab2Defs = [{ id: 'all', label: '전체' }, { id: '결제대기', label: '결제대기' }, { id: '결제완료', label: '결제완료' }, { id: '결제취소', label: '결제취소' }, { id: '반려', label: '반려' }];
+    const tab2Defs = [{ id: 'all', label: '전체' }, { id: '결제대기', label: '결제대기' }, { id: '결제완료', label: '결제완료' }, { id: '결제취소', label: '결제취소' }, { id: '환불대기', label: '환불대기' }, { id: '반려', label: '반려' }];
     const tab2HTML = tab2Defs.map(t => `
       <button type="button" class="tab-btn-sub ${orderReceiveTab2 === t.id ? 'active' : ''}" data-order-tab2="${t.id}">${t.label}</button>`).join('');
 
@@ -9591,11 +9632,10 @@ ${regionFieldHTML('cv', '우리지역', true)}
 
   // ---- 취소·반품 처리 팝업 공통(도매·소매) — 금액 조회·환불 입력·환불 방법 ----
   // 환불액은 "총환불금액" 하나로 저장하며, 매출조회의 취소·환불액은 이 값을 그대로 합산한다.
-  // - 카드결제: 전체환불 고정, 총환불금액 = 총 결제금액(수정불가). PG사를 통해 환불한다.
-  // - 도매 계좌이체: 전체환불이면 총환불금액 = 총 결제금액(수정불가). 부분환불이면 상품환불금액(상품금액 이내) +
-  //   배송비 포함 여부를 합산한 값이 총환불금액이 된다(수정불가).
-  // - 소매 계좌이체·현장결제: 전체환불이면 총환불금액 = 총 결제금액(수정불가). 부분환불이면 총환불금액을
-  //   총 결제금액 이내로 직접 입력한다.
+  // - 전체환불: 총환불금액 = 총 결제금액(수정불가). 카드결제 건은 PG사를 통해 환불하고 반환 예금주를 입력받는다.
+  // - 도매 전체, 소매 배달: 부분환불이면 상품환불금액(상품금액 이내) + 배송비(배달비) 포함 여부를 합산한 값이 총환불금액이 된다(수정불가).
+  //   구매자부담 수수료가 있는 카드결제 건은 수수료환불금액(상품환불금액 × 수수료율, 읽기 전용)도 합산한다.
+  // - 소매 픽업: 부분환불이면 총환불금액을 총 결제금액 이내로 직접 입력한다.
   // - 결제대기 건: 결제된 금액이 없으므로 금액 조회·환불 입력·환불 방법 영역을 모두 노출하지 않고 안내만 남긴다.
   // - 총환불금액이 0원이면 처리 버튼을 비활성화하고 오류 문구를 노출한다.
   function crItemsTotal(o) {
@@ -9630,36 +9670,61 @@ ${regionFieldHTML('cv', '우리지역', true)}
       </div>`;
   }
 
-  function crWholesaleFullHint(o) {
-    return `총 결제금액(${o.cardFeeAmount ? '배송비+상품금액+결제수수료' : '배송비+상품금액'})`;
+  // 구매자부담 카드수수료가 결제금액에 포함된 카드결제 건 — 부분환불 시 수수료환불금액을 함께 계산한다.
+  function crFeeBorne(o) { return o.paymentMethod === 'card' && !!o.cardFeeAmount; }
+
+  // 수수료환불금액 = 상품환불금액 × 수수료율(원 단위 반올림). 배송비·배달비 포함 여부와 무관하고, 상품 전량 환불이면 저장된 수수료 전액을 환불한다.
+  function crFeeRefundFor(o, productRefundAmount) {
+    if (!crFeeBorne(o)) return 0;
+    const itemsTotal = crItemsTotal(o);
+    if (productRefundAmount >= itemsTotal) return o.cardFeeAmount;
+    const rate = o.cardFeeRate != null ? o.cardFeeRate : (o.cardFeeAmount / itemsTotal) * 100;
+    return Math.round(productRefundAmount * rate / 100);
+  }
+
+  // 상품환불금액과 배송비·배달비 포함 여부로 나누어 입력하는 건 — 도매 전체, 소매는 배달 주문.
+  function crSplitRefund(o, kind) { return kind === 'wholesale' || o.salesMethod === 'delivery'; }
+  function crShipWord(kind) { return kind === 'wholesale' ? '배송비' : '배달비'; }
+
+  function crFullHint(o, kind) {
+    if (kind === 'wholesale') return `총 결제금액(${o.cardFeeAmount ? '배송비+상품금액+결제수수료' : '배송비+상품금액'})`;
+    return '총 결제금액(배달비+상품금액)';
+  }
+  function crPartialHint(o, kind) {
+    return crFeeBorne(o)
+      ? `상품환불금액과 수수료환불금액, ${crShipWord(kind)}를 합산한 금액입니다.`
+      : `상품환불금액과 ${crShipWord(kind)}를 합산한 금액입니다.`;
   }
 
   function crRefundInputsHTML(o, p, kind) {
-    const isCard = o.paymentMethod === 'card';
     const radiosHTML = `
       <div class="form-field form-field-wide">
         <label>환불구분</label>
         <div class="radio-row">
-          <label><input type="radio" name="${p}RefundType" value="full" checked ${isCard ? 'disabled' : ''}> 전체환불</label>
-          <label><input type="radio" name="${p}RefundType" value="partial" ${isCard ? 'disabled' : ''}> 부분환불</label>
+          <label><input type="radio" name="${p}RefundType" value="full" checked> 전체환불</label>
+          <label><input type="radio" name="${p}RefundType" value="partial"> 부분환불</label>
         </div>
       </div>`;
     const errorHTML = `<div class="field-error" id="${p}RefundError" hidden>환불금액을 입력해주세요.</div>`;
 
-    if (kind === 'wholesale') {
+    if (crSplitRefund(o, kind)) {
       const itemsTotal = crItemsTotal(o);
-      const partialHTML = isCard ? '' : `
-      <div class="form-field form-field-wide" id="${p}PartialBlock" hidden>
+      const partialHTML = `
+      <div class="form-field form-field-wide" id="${p}PartialBlock" data-partial-of="${p}" hidden>
         <label>상품환불금액</label>
         <input class="form-input" type="number" id="${p}ProductRefundAmount" min="0" max="${itemsTotal}" value="${itemsTotal}">
         <div class="field-hint">상품금액(${itemsTotal.toLocaleString()}원) 이내로 입력해주세요.</div>
-        ${crShipRefundable(o) ? `<label style="margin-top:4px;"><input type="checkbox" id="${p}ShipIncluded" checked> 배송비 포함 (${o.shippingFee.toLocaleString()}원)</label>` : ''}
-      </div>`;
+        ${crShipRefundable(o) ? `<label style="margin-top:4px;"><input type="checkbox" id="${p}ShipIncluded" checked> ${crShipWord(kind)} 포함 (${o.shippingFee.toLocaleString()}원)</label>` : ''}
+      </div>${crFeeBorne(o) ? `
+      <div class="form-field form-field-wide" data-partial-of="${p}" hidden>
+        <label>수수료환불금액</label>
+        <input class="form-input" type="number" id="${p}FeeRefundAmount" value="0" disabled>
+      </div>` : ''}`;
       return `${radiosHTML}${partialHTML}
       <div class="form-field form-field-wide">
         <label>총환불금액</label>
         <input class="form-input" type="number" id="${p}TotalRefundAmount" value="${o.grandTotal}" disabled>
-        <div class="field-hint" id="${p}TotalHint">${crWholesaleFullHint(o)}</div>
+        <div class="field-hint" id="${p}TotalHint">${crFullHint(o, kind)}</div>
         ${errorHTML}
       </div>`;
     }
@@ -9668,16 +9733,22 @@ ${regionFieldHTML('cv', '우리지역', true)}
       <div class="form-field form-field-wide">
         <label>총환불금액</label>
         <input class="form-input" type="number" id="${p}TotalRefundAmount" min="0" max="${o.grandTotal}" value="${o.grandTotal}" disabled>
-        ${isCard ? '' : `<div class="field-hint">총 결제금액(${o.grandTotal.toLocaleString()}원) 이내로 입력해주세요.</div>`}
+        <div class="field-hint">총 결제금액(${o.grandTotal.toLocaleString()}원) 이내로 입력해주세요.</div>
         ${errorHTML}
       </div>`;
   }
 
-  // 환불 방법 — 계좌이체만 환불계좌를 입력받고, 카드결제·현장결제는 안내 문구만 노출한다.
+  // 환불 방법 — 계좌이체만 환불계좌를 입력받고, 현장결제는 안내 문구만 노출한다.
+  // 카드결제는 안내 문구와 함께 반환 예금주(필수, 정산 후 건의 정산금 반환에 사용)를 입력받는다.
   function crRefundMethodHTML(o, p) {
     if (o.paymentMethod === 'card') return `
       <div class="form-field form-field-wide">
         <div class="field-hint">카드결제 건은 승인 시 PG사를 통해 자동으로 결제가 취소됩니다.</div>
+      </div>
+      <div class="form-field form-field-wide">
+        <label>반환 예금주<span class="req">*</span></label>
+        <input class="form-input" type="text" id="${p}ReturnHolder" placeholder="예금주명을 입력해주세요." value="${escapeHtml(MY_PROFILE.bankHolder || '')}">
+        <div class="field-hint">정산이 끝난 결제는 정산금을 반환할 때 이 이름으로 입금합니다.</div>
       </div>`;
     if (o.paymentMethod === 'onsite') return `
       <div class="form-field form-field-wide">
@@ -9758,45 +9829,53 @@ ${regionFieldHTML('cv', '우리지역', true)}
   // 제출 시점의 환불 결정값 — 총환불금액은 항상 이 함수로 계산해 화면 표시값과 저장값이 어긋나지 않게 한다.
   function readCrRefund(root, o, p, kind) {
     const itemsTotal = crItemsTotal(o);
-    const shipRefundable = kind === 'wholesale' && crShipRefundable(o);
+    const split = crSplitRefund(o, kind);
+    const shipRefundable = split && crShipRefundable(o);
     const checked = root.querySelector(`input[name="${p}RefundType"]:checked`);
-    const refundType = o.paymentMethod === 'card' ? 'full' : (checked ? checked.value : 'full');
+    const refundType = checked ? checked.value : 'full';
+    const holderInput = root.querySelector(`#${p}ReturnHolder`);
+    const returnHolder = o.paymentMethod === 'card' ? (holderInput ? holderInput.value.trim() : '') : null;
     if (refundType === 'full') {
-      return kind === 'wholesale'
-        ? { refundType, totalRefundAmount: o.grandTotal, productRefundAmount: itemsTotal, shippingFeeRefunded: shipRefundable }
-        : { refundType, totalRefundAmount: o.grandTotal };
+      return split
+        ? { refundType, totalRefundAmount: o.grandTotal, productRefundAmount: itemsTotal, shippingFeeRefunded: shipRefundable, feeRefundAmount: crFeeBorne(o) ? o.cardFeeAmount : 0, returnHolder }
+        : { refundType, totalRefundAmount: o.grandTotal, returnHolder };
     }
-    if (kind === 'wholesale') {
+    if (split) {
       const productRefundAmount = crClampInt(root.querySelector(`#${p}ProductRefundAmount`).value, 0, itemsTotal);
       const shipCheckbox = root.querySelector(`#${p}ShipIncluded`);
       const shippingFeeRefunded = !!(shipCheckbox && shipCheckbox.checked);
-      return { refundType, productRefundAmount, shippingFeeRefunded,
-        totalRefundAmount: productRefundAmount + (shippingFeeRefunded ? o.shippingFee : 0) };
+      const feeRefundAmount = crFeeRefundFor(o, productRefundAmount);
+      return { refundType, productRefundAmount, shippingFeeRefunded, feeRefundAmount, returnHolder,
+        totalRefundAmount: productRefundAmount + feeRefundAmount + (shippingFeeRefunded ? o.shippingFee : 0) };
     }
-    return { refundType, totalRefundAmount: crClampInt(root.querySelector(`#${p}TotalRefundAmount`).value, 0, o.grandTotal) };
+    return { refundType, returnHolder, totalRefundAmount: crClampInt(root.querySelector(`#${p}TotalRefundAmount`).value, 0, o.grandTotal) };
   }
 
-  // 환불 입력 조작 바인딩 — 반환하는 validate()는 총환불금액이 0원 초과인지 확인해 오류 문구를 토글한다.
+  // 환불 입력 조작 바인딩 — 반환하는 validate()는 총환불금액이 0원 초과인지, 카드결제 건은 반환 예금주가 입력되었는지 확인한다.
   function bindCrRefundInputs(root, o, p, kind) {
     const totalInput = root.querySelector(`#${p}TotalRefundAmount`);
     if (o.paymentStatus === '결제대기' || !totalInput) return { validate: () => true };
+    const split = crSplitRefund(o, kind);
     const errorEl = root.querySelector(`#${p}RefundError`);
-    const partialBlock = root.querySelector(`#${p}PartialBlock`);
     const totalHint = root.querySelector(`#${p}TotalHint`);
+    const feeInput = root.querySelector(`#${p}FeeRefundAmount`);
 
     const validate = () => {
       const r = readCrRefund(root, o, p, kind);
-      if (kind === 'wholesale') totalInput.value = r.totalRefundAmount;
-      const ok = r.totalRefundAmount > 0;
-      if (errorEl) errorEl.hidden = ok;
-      return ok;
+      if (split) {
+        totalInput.value = r.totalRefundAmount;
+        if (feeInput) feeInput.value = r.refundType === 'partial' ? r.feeRefundAmount : 0;
+      }
+      const amountOk = r.totalRefundAmount > 0;
+      if (errorEl) errorEl.hidden = amountOk;
+      return amountOk && (o.paymentMethod !== 'card' || !!r.returnHolder);
     };
     root.querySelectorAll(`input[name="${p}RefundType"]`).forEach(radio => {
       radio.addEventListener('change', () => {
         const isPartial = root.querySelector(`input[name="${p}RefundType"]:checked`).value === 'partial';
-        if (kind === 'wholesale') {
-          if (partialBlock) partialBlock.hidden = !isPartial;
-          if (totalHint) totalHint.textContent = isPartial ? '상품환불금액과 배송비를 합산한 금액입니다.' : crWholesaleFullHint(o);
+        if (split) {
+          root.querySelectorAll(`[data-partial-of="${p}"]`).forEach(el => { el.hidden = !isPartial; });
+          if (totalHint) totalHint.textContent = isPartial ? crPartialHint(o, kind) : crFullHint(o, kind);
         } else {
           totalInput.disabled = !isPartial;
           if (!isPartial) totalInput.value = o.grandTotal;
@@ -9804,12 +9883,12 @@ ${regionFieldHTML('cv', '우리지역', true)}
         root.dispatchEvent(new Event('cr-refund-change'));
       });
     });
-    [`#${p}ProductRefundAmount`, `#${p}ShipIncluded`].forEach(sel => {
+    [`#${p}ProductRefundAmount`, `#${p}ShipIncluded`, `#${p}ReturnHolder`].forEach(sel => {
       const el = root.querySelector(sel);
       if (el) el.addEventListener('input', () => root.dispatchEvent(new Event('cr-refund-change')));
       if (el) el.addEventListener('change', () => root.dispatchEvent(new Event('cr-refund-change')));
     });
-    if (kind !== 'wholesale') totalInput.addEventListener('input', () => root.dispatchEvent(new Event('cr-refund-change')));
+    if (!split) totalInput.addEventListener('input', () => root.dispatchEvent(new Event('cr-refund-change')));
     return { validate };
   }
 
@@ -9826,22 +9905,28 @@ ${regionFieldHTML('cv', '우리지역', true)}
   function applyCrRefund(o, decision, kind) {
     o.refundType = decision.refundType;
     o.totalRefundAmount = decision.totalRefundAmount;
-    if (kind === 'wholesale') {
+    if (decision.productRefundAmount != null) {
       o.productRefundAmount = decision.productRefundAmount;
       o.shippingFeeRefunded = decision.shippingFeeRefunded;
     }
+    if (crFeeBorne(o)) o.cardFeeRefundAmount = decision.feeRefundAmount;
+    if (decision.returnHolder != null) o.returnHolder = decision.returnHolder;
   }
 
   // 주문상세 환불정보 — 승인으로 확정된 환불값(환불구분·총환불금액)을 조회 전용으로 표시한다.
-  // 도매 부분환불은 총환불금액의 구성(상품환불금액·배송비 포함 여부)을 함께 표시한다.
+  // 상품환불금액·배송비(배달비) 포함 방식의 부분환불은 총환불금액의 구성(상품환불금액·수수료환불금액·배송비 포함 여부)을 함께 표시하고,
+  // 카드결제 건은 반환 예금주를 함께 표시한다.
   function crRefundDetailHTML(o, kind) {
     if (!o.refundType) return '';
-    const partialRows = kind === 'wholesale' && o.refundType === 'partial' ? `
-      <div class="detail-item"><span class="detail-label">상품환불금액</span><span class="detail-value">${(o.productRefundAmount || 0).toLocaleString()}원</span></div>
-      <div class="detail-item"><span class="detail-label">배송비 환불</span><span class="detail-value">${o.shippingFeeRefunded ? `포함(${(o.shippingFee || 0).toLocaleString()}원)` : '미포함'}</span></div>` : '';
+    const partialRows = o.refundType === 'partial' && o.productRefundAmount != null ? `
+      <div class="detail-item"><span class="detail-label">상품환불금액</span><span class="detail-value">${(o.productRefundAmount || 0).toLocaleString()}원</span></div>${crFeeBorne(o) && o.cardFeeRefundAmount != null ? `
+      <div class="detail-item"><span class="detail-label">수수료환불금액</span><span class="detail-value">${o.cardFeeRefundAmount.toLocaleString()}원</span></div>` : ''}
+      <div class="detail-item"><span class="detail-label">${crShipWord(kind)} 환불</span><span class="detail-value">${o.shippingFeeRefunded ? `포함(${(o.shippingFee || 0).toLocaleString()}원)` : '미포함'}</span></div>` : '';
+    const holderRow = o.returnHolder ? `
+      <div class="detail-item"><span class="detail-label">반환 예금주</span><span class="detail-value">${escapeHtml(o.returnHolder)}</span></div>` : '';
     return `
       <div class="detail-item"><span class="detail-label">환불구분</span><span class="detail-value">${o.refundType === 'partial' ? '부분환불' : '전체환불'}</span></div>
-      <div class="detail-item"><span class="detail-label">총환불금액</span><span class="detail-value">${(o.totalRefundAmount || 0).toLocaleString()}원</span></div>${partialRows}`;
+      <div class="detail-item"><span class="detail-label">총환불금액</span><span class="detail-value">${(o.totalRefundAmount || 0).toLocaleString()}원</span></div>${partialRows}${holderRow}`;
   }
 
   // 취소·반품 정보 섹션 — 주문접수관리(공급자 모드) 전용. 요청이 없으면 안내 문구만 짧게 표시하고,
@@ -9878,6 +9963,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           ${o.cancelReturnReason ? `<div class="detail-item detail-item-wide"><span class="detail-label">구매자 요청 사유</span><span class="detail-value">${escapeHtml(o.cancelReturnReason)}</span></div>` : ''}
           ${o.cancelReturnSellerNote ? `<div class="detail-item detail-item-wide"><span class="detail-label">공급자 처리 사유</span><span class="detail-value">${escapeHtml(o.cancelReturnSellerNote)}</span></div>` : ''}
         </div>
+        ${o.paymentStatus === '환불대기' ? `<div class="notice-banner" style="margin-top:12px;">PG사에 환불을 요청했습니다. 정산금을 반환해야 환불이 완료되니 PG사(PayApp)에서 확인해주세요.</div>` : ''}
       </section>`;
   }
 
@@ -10248,6 +10334,11 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       if (e.target.id === 'buyerCancelScrim') closeBuyerCancelModal();
     });
     root.querySelector('#buyerCancelConfirmBtn').addEventListener('click', () => {
+      if (paidByCard && o.settled) {
+        closeBuyerCancelModal();
+        openBulkAlert({ message: '주문을 취소하지 못했습니다. 판매자에게 문의해주세요.' });
+        return;
+      }
       const stamp = mockNowStamp();
       o.cancelReturnStatus = '취소승인';
       o.cancelReturnPrevStatus = '주문접수';
@@ -10460,8 +10551,10 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       o.cancelReturnResolvedAt = mockNowStamp(); // 승인 건은 이 일시가 매출조회 취소·환불액의 기준일이 된다.
       if (o.processStatus) o.processedAt = o.cancelReturnResolvedAt; // 반려로 이전 단계에 복귀한 건은 처리시점도 반려 일시로 갱신
       if (!o.cancelReturnRequestedAt) o.cancelReturnRequestedAt = o.cancelReturnResolvedAt;
-      // 승인 확정과 함께 결제상태를 결제취소로 전환한다. 카드결제 건은 페이앱 결제취소 성공 응답을 확인한 뒤에만 이 단계에 도달한다(목업은 성공으로 가정).
-      if (approvedNow) o.paymentStatus = '결제취소';
+      // 승인 확정과 함께 결제상태를 전환한다. 카드결제 건은 페이앱 요청 성공 응답을 확인한 뒤에만 이 단계에 도달한다(목업은 성공으로 가정).
+      // 정산이 끝난 카드결제 건은 PG사에 환불을 요청한 상태이므로 정산금 반환이 완료될 때까지 환불대기로 둔다.
+      const settledCardRefund = approvedNow && o.paymentMethod === 'card' && o.paymentStatus === '결제완료' && !!o.settled;
+      if (approvedNow) o.paymentStatus = settledCardRefund ? '환불대기' : '결제취소';
 
       // 결제대기 건은 승인해도 결제취소만 일어날 뿐 환불이 발생하지 않으므로 환불값을 남기지 않는다.
       if (decision) applyCrRefund(o, decision, 'wholesale');
@@ -10477,6 +10570,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       }
 
       closeSupplierCrModal();
+      if (settledCardRefund) showBulkToast('환불을 요청했습니다. 정산금을 반환해야 환불이 완료됩니다.');
       if (currentItem === 'wholesale-order-receive') {
         renderOrderReceivePage();
       } else if (currentItem === 'wholesale-order-detail') {
@@ -10777,6 +10871,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     { id: '결제대기', label: '결제대기' },
     { id: '결제완료', label: '결제완료' },
     { id: '결제취소', label: '결제취소' },
+    { id: '환불대기', label: '환불대기' },
     { id: '반려', label: '반려' },
   ];
   const RETAIL_ORDER_PAYMETHOD_LABELS = { card: '카드결제', transfer: '계좌이체', onsite: '현장결제' };
@@ -11515,8 +11610,10 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       o.cancelReturnResolvedAt = mockNowStamp(); // 승인 건은 이 일시가 매출조회 취소·환불액의 기준일이 된다.
       if (o.processStatus) o.processedAt = o.cancelReturnResolvedAt; // 반려로 이전 단계에 복귀한 건은 처리시점도 반려 일시로 갱신
       if (!o.cancelReturnRequestedAt) o.cancelReturnRequestedAt = o.cancelReturnResolvedAt;
-      // 승인 확정과 함께 결제상태를 결제취소로 전환한다. 카드결제 건은 페이앱 결제취소 성공 응답을 확인한 뒤에만 이 단계에 도달한다(목업은 성공으로 가정).
-      if (approvedNow) o.paymentStatus = '결제취소';
+      // 승인 확정과 함께 결제상태를 전환한다. 카드결제 건은 페이앱 요청 성공 응답을 확인한 뒤에만 이 단계에 도달한다(목업은 성공으로 가정).
+      // 정산이 끝난 카드결제 건은 PG사에 환불을 요청한 상태이므로 정산금 반환이 완료될 때까지 환불대기로 둔다.
+      const settledCardRefund = approvedNow && o.paymentMethod === 'card' && o.paymentStatus === '결제완료' && !!o.settled;
+      if (approvedNow) o.paymentStatus = settledCardRefund ? '환불대기' : '결제취소';
 
       // 결제대기 건은 승인해도 결제취소만 일어날 뿐 환불이 발생하지 않으므로 환불값을 남기지 않는다.
       if (decision) applyCrRefund(o, decision, 'retail');
@@ -11532,6 +11629,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       }
 
       closeRetailSupplierCrModal();
+      if (settledCardRefund) showBulkToast('환불을 요청했습니다. 정산금을 반환해야 환불이 완료됩니다.');
       if (currentItem === 'retail-order-list') renderRetailOrderListPage();
       else if (currentItem === 'retail-order-detail') renderRetailOrderDetailPage();
     });
@@ -12780,7 +12878,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   // 결제상태 셀 — 결제취소 건은 상태 태그 아래에 환불 구분(전체환불/부분환불)을 보조 텍스트로 표시한다.
   // 결제대기 상태에서 취소된 건은 환불이 없어(refundType 없음) 보조 텍스트를 표시하지 않는다.
   function paymentStatusHTML(o) {
-    const sub = o.paymentStatus === '결제취소' && o.refundType
+    const sub = (o.paymentStatus === '결제취소' || o.paymentStatus === '환불대기') && o.refundType
       ? `<span class="tag refund-sub-text">${o.refundType === 'full' ? '전체환불' : '부분환불'}</span>` : '';
     return sub ? `<div class="status-stack">${statusTag(o.paymentStatus)}${sub}</div>` : statusTag(o.paymentStatus);
   }
@@ -12789,7 +12887,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       '픽업대기': 'tag-key', '배달중': 'tag-key', '결제대기': 'tag-warning',
       '픽업완료': 'tag-success', '배달완료': 'tag-success', '정상': 'tag-success', '경고': 'tag-error',
       '판매중': 'tag-success', '품절': 'tag-error',
-      '결제대기': 'tag-warning', '결제완료': 'tag-success', '결제취소': 'tag-error',
+      '결제대기': 'tag-warning', '결제완료': 'tag-success', '결제취소': 'tag-error', '환불대기': 'tag-warning',
       '주문접수': 'tag-key', '배송대기': 'tag-warning', '배송중': 'tag-key', '배송확정': 'tag-success',
       '자동결제 실패': 'tag-error', '결제 대기': 'tag-warning', '결제실패': 'tag-error',
       '이용대기': 'tag-key', '이용승인': 'tag-success', '이용제한': 'tag-warning', '이용불가': 'tag-error',
