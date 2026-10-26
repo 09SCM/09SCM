@@ -107,10 +107,13 @@ def run_detail(b, device):
     detail(page, device, 'WO20260910003'); sec('wh-recv-od-confirmed-sec', ['배송 정보']); bar(page, 'wh-recv-od-confirmed-bar', device)
     # 취소·반품 흐름: 요청 → 반려 → 승인
     detail(page, device, 'WO20260915003'); sec('wh-recv-od-claim-sec', SECS); bar(page, 'wh-recv-od-claim-bar', device)
-    detail(page, device, 'WO20260913020'); sec('wh-recv-od-reject-sec', SECS); bar(page, 'wh-recv-od-reject-bar', device)
-    detail(page, device, 'WO20260909004'); sec('wh-recv-od-approved-sec', SECS); bar(page, 'wh-recv-od-approved-bar', device)
+    # 같은 흐름(요청 → 반려 → 승인)은 계좌이체 주문으로 맞춰 구매자 요청 사유·공급자 처리 사유·환불계좌가 모두 보이게 캡처
+    detail(page, device, 'WO20260913020', paymentMethod='transfer', cardFeeAmount=0, cardFeeRate=0, grandTotal=147000, depositorName='온누리식자재',
+           refundBank='신한은행', refundAccount='110333444555', refundHolder='온누리식자재'); sec('wh-recv-od-reject-sec', SECS); bar(page, 'wh-recv-od-reject-bar', device)
+    detail(page, device, 'WO20260909004', paymentMethod='transfer', cardFeeAmount=0, cardFeeRate=0, grandTotal=68000, totalRefundAmount=68000, depositorName='건강밥상',
+           refundBank='국민은행', refundAccount='123456789012', refundHolder='건강밥상'); sec('wh-recv-od-approved-sec', SECS); bar(page, 'wh-recv-od-approved-bar', device)
     # 결과: 결제취소(정산 전 카드) / 환불대기(정산 후 카드) / 결제대기 취소 / 배송확정 후 반품
-    detail(page, device, 'WO20260909004', returnHolder='우리마켓 본사'); sec('wh-recv-od-done-sec', ['결제 정보', '취소·반품 정보'])
+    detail(page, device, 'WO20260909004', paymentMethod='card', cardFeeAmount=1820, cardFeeRate=2.8, grandTotal=69820, totalRefundAmount=69820, depositorName=None, refundBank=None, refundAccount=None, refundHolder=None, returnHolder='우리마켓 본사'); sec('wh-recv-od-done-sec', ['결제 정보', '취소·반품 정보'])
     detail(page, device, 'WO20260913022'); sec('wh-recv-od-refundwait-sec', ['결제 정보', '취소·반품 정보'])
     detail(page, device, 'WO20260915004', paymentStatus='결제취소', processStatus=None, cancelReturnStatus='취소승인', cancelReturnPrevStatus='주문접수', cancelReturnInitiator='supplier',
            cancelReturnRequestedAt='26.09.15 11:00', cancelReturnResolvedAt='26.09.15 11:00', cancelReturnSellerNote='입금 기한이 지나 취소 처리합니다.',
