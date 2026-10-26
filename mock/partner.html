@@ -10021,7 +10021,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   }
 
   function orderDetailHeaderActionsHTML(o) {
-    if (o.cancelReturnStatus === '반품반려' && o.processStatus === '배송중') {
+    if ((o.cancelReturnStatus === '반품반려' || o.cancelReturnStatus === '취소반려') && o.processStatus === '배송중') {
       return `<button type="button" class="btn-primary" data-delivery-confirm="${o.orderNo}">배송확정</button>`;
     }
     if (o.cancelReturnStatus) return '';
@@ -10720,7 +10720,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
           </div>`;
       }
     }
-    if (o.cancelReturnStatus === '반품반려' && o.processStatus === '배송중') {
+    if ((o.cancelReturnStatus === '반품반려' || o.cancelReturnStatus === '취소반려') && o.processStatus === '배송중') {
       return `
         <div class="row-actions row-actions-stack">
           <button type="button" class="btn-primary" data-delivery-confirm="${o.orderNo}">배송확정</button>
