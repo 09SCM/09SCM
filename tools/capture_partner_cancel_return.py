@@ -56,6 +56,12 @@ def run(device, b):
       const r = document.querySelector('#retailSupplierCrModalRoot');
       r.querySelector('input[type=radio][value=partial]').click();
       const e = r.querySelector('input[id$=ProductRefundAmount]'); e.value = '20000'; e.dispatchEvent(new Event('input', {bubbles: true})); }""")
+    # 입력 오류: 카드결제 픽업 주문, 부분환불 0원 + 반환 예금주 비움
+    state('RO20260919101')
+    popup('RO20260919101', '취소', 'order-cancel-error', """() => {
+      const r = document.querySelector('#retailSupplierCrModalRoot');
+      r.querySelector('input[type=radio][value=partial]').click();
+      for (const [sel, v] of [['input[id$=TotalRefundAmount]', '0'], ['input[id$=ReturnHolder]', '']]) { const e = r.querySelector(sel); e.disabled = false; e.value = v; e.dispatchEvent(new Event('input', {bubbles: true})); } }""")
     # 구매자 요청: 승인 / 반려 (계좌이체 취소요청 주문)
     state('RO20260919001'); popup('RO20260919001', '취소', 'order-cancel-request')
     popup('RO20260919001', '취소', 'order-cancel-reject', "() => document.querySelector('#retailSupplierCrModalRoot input[name=retailSupplierCrDecision][value=취소반려]').click()")

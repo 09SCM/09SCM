@@ -1331,7 +1331,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                 }
               ],
               "shotCaption": "09SCM 픽업 주문 부분환불 입력 화면 (PC / 모바일)",
-              "html": "<ul><li>총환불금액: 직접 입력 (0원 초과 총 결제금액 이하)</li><li>0원 입력: 처리 버튼 비활성, &quot;환불금액을 입력해주세요.&quot; 안내 표시</li><li>결제수단: 계좌이체·현장결제·카드결제 모두 가능</li></ul>"
+              "html": "<ul><li>총환불금액: 직접 입력 (0원 초과 총 결제금액 이하)</li><li>결제수단: 계좌이체·현장결제·카드결제 모두 가능</li></ul>"
             },
             {
               "title": "배달 주문에서 부분환불을 입력하면",
@@ -1351,6 +1351,25 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               ],
               "shotCaption": "09SCM 카드결제 배달 주문 부분환불 입력 화면 (PC / 모바일)",
               "html": "<ul><li>상품환불금액: 직접 입력 (상품금액 이내)</li><li>배달비 포함: 체크하면 배달비도 환불 (기본 체크, 배달비가 0원이면 미표시)</li><li>총환불금액: 상품환불금액과 배달비를 합산해 자동 계산</li></ul>"
+            },
+            {
+              "title": "입력 오류를 확인할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-cancel-error-pc.webp",
+                  "alt": "09SCM 취소처리 입력 오류 PC 화면",
+                  "ratio": 0.497
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/order-cancel-error-mobile.webp",
+                  "alt": "09SCM 취소처리 입력 오류 모바일 화면",
+                  "ratio": 0.388
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 입력 오류 화면 (PC / 모바일)",
+              "html": "<ul><li>환불금액 0원: &quot;환불금액을 입력해주세요.&quot; 안내 표시</li><li>반환 예금주 비움 (카드결제): 별도 안내 없이 처리 버튼 비활성</li><li>처리 버튼: 오류가 해소될 때까지 비활성</li></ul>"
             }
           ]
         },
