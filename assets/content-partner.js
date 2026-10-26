@@ -4319,44 +4319,22 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
             },
             {
               "title": "취소요청이 반려되면",
-              "blocks": [
+              "shots": [
                 {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/wh-od-cancel-reject-sec-pc.webp",
-                      "alt": "09SCM 주문 상세 취소요청 반려 영역 PC 화면",
-                      "ratio": 1.7261
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/wh-od-cancel-reject-sec-mobile.webp",
-                      "alt": "09SCM 주문 상세 취소요청 반려 영역 모바일 화면",
-                      "ratio": 0.3929
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 취소요청 반려 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>처리상태: [취소반려]와 처리 일시 표시, 배송 정보의 처리상태는 요청 이전 단계인 [주문접수]로 복귀</li><li>공급자 처리 사유: 공급자가 입력한 사유 표시</li><li>하단 바: [주문접수]에서는 구매자가 누를 버튼 없음</li></ul>"
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-od-cancel-reject-sec-pc.webp",
+                  "alt": "09SCM 주문 상세 취소요청 반려 영역 PC 화면",
+                  "ratio": 1.7261
                 },
                 {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/wh-od-cancel-reject-ship-bar-pc.webp",
-                      "alt": "09SCM 주문 상세 취소요청 반려 후 배송중 하단 바 PC 화면",
-                      "ratio": 15.1579
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/wh-od-cancel-reject-ship-bar-mobile.webp",
-                      "alt": "09SCM 주문 상세 취소요청 반려 후 배송중 하단 바 모바일 화면",
-                      "ratio": 3.52
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 취소요청 반려 후 배송중 하단 바 화면 (PC / 모바일)",
-                  "html": "<ul><li>하단 바: 공급자가 [배송중]으로 진행하면 [배송확정]만 표시</li><li>[반품요청]: 반려된 주문은 다시 요청할 수 없어 미표시</li></ul>"
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-od-cancel-reject-sec-mobile.webp",
+                  "alt": "09SCM 주문 상세 취소요청 반려 영역 모바일 화면",
+                  "ratio": 0.3929
                 }
-              ]
+              ],
+              "shotCaption": "09SCM 주문 상세 취소요청 반려 영역 화면 (PC / 모바일)",
+              "html": "<ul><li>처리상태: [취소반려]와 처리 일시 표시, 배송 정보의 처리상태는 요청 이전 단계인 [주문접수]로 복귀</li><li>공급자 처리 사유: 공급자가 입력한 사유 표시</li><li>하단 바: 복귀한 단계의 처리만 표시, 다시 요청하는 버튼은 미표시</li></ul>"
             },
             {
               "title": "반품요청이 반려되면",
@@ -4377,7 +4355,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 반품요청 반려 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>처리상태: [반품반려]와 처리 일시 표시, 배송 정보의 처리상태는 [배송중]으로 복귀</li><li>자동 배송확정: 반려된 시점부터 7일이 지나면 [배송확정]</li><li>공급자 처리 사유: 공급자가 입력한 사유 표시</li></ul>"
+                  "html": "<ul><li>처리상태: [반품반려]와 처리 일시 표시, 배송 정보의 처리상태는 요청 이전 단계인 [배송중]으로 복귀</li><li>자동 배송확정: 반려된 시점부터 7일이 지나면 [배송확정]</li><li>공급자 처리 사유: 공급자가 입력한 사유 표시</li></ul>"
                 },
                 {
                   "shots": [
@@ -4395,7 +4373,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 반품요청 반려 하단 바 화면 (PC / 모바일)",
-                  "html": "<ul><li>하단 바: [배송확정]만 표시 (반려된 주문은 다시 요청할 수 없음)</li></ul>"
+                  "html": "<ul><li>하단 바: 복귀한 [배송중] 단계의 [배송확정] 표시, 다시 요청하는 버튼은 미표시</li></ul>"
                 }
               ]
             },

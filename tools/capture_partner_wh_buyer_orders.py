@@ -46,8 +46,6 @@ def run(device, b):
     cb.sec_shot(page, None, 'wh-od-claim-done-sec-' + device, SECS); bar('wh-od-claim-done-bar')
     # 취소요청 반려(주문접수 복귀)
     detail('WO20260906006'); cb.sec_shot(page, None, 'wh-od-cancel-reject-sec-' + device, SECS); bar('wh-od-cancel-reject-bar')
-    # 취소요청 반려 후 공급자가 배송중으로 진행한 주문: 하단 바에 [배송확정]만 표시
-    detail('WO20260906006', processStatus='배송중', processedAt='26.09.13 18:00'); bar('wh-od-cancel-reject-ship-bar')
     # 배송확정된 주문
     detail('WO20260910008'); cb.sec_shot(page, None, 'wh-od-confirmed-sec-' + device, ['배송 정보']); bar('wh-od-confirmed-bar')
     # 결과: 결제완료 주문이 취소·반품되면(카드·정산 전, 반환 예금주 표시) / 정산 후 카드결제 → 환불대기
