@@ -5201,3 +5201,828 @@ window.GUIDE_CONTENT['wholesale-sales'] = {
     '<h3>도매에서 구매한 금액이 궁금해요</h3>' +
     '<p>이 화면은 내가 공급한 주문만 집계해요. 도매에서 구매한 금액은 <a href="#retail-sales">소매매출조회</a>의 도매 매입 지출에서 확인해요.</p>'
 };
+
+window.GUIDE_CONTENT['wholesale-receive'] = {
+  "screens": [
+    {
+      "id": "list-view",
+      "label": "주문 목록 보기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-recv-list-pc.webp",
+          "alt": "09SCM 주문접수관리 PC 화면",
+          "ratio": 1.1733
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-recv-list-mobile.webp",
+          "alt": "09SCM 주문접수관리 모바일 화면",
+          "ratio": 0.3667
+        }
+      ],
+      "shotCaption": "09SCM 주문접수관리 화면 (PC / 모바일)",
+      "overview": "<p>구매자가 도매로 주문한 내역을 확인하고 처리하는 화면이에요. 내가 공급자인 주문만 보여요. 내가 구매자로 주문한 내역은 <a href=\"#wholesale-orders\">주문내역</a>에서 확인해요.</p><h3>처리 단계</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>도매 주문</td><td>[주문접수] → [배송대기] → [배송중] → [배송확정]</td></tr><tr><td>처리 방법</td><td>처리상태는 다음단계 버튼으로 한 단계씩만 진행해요. 단계를 건너뛸 수 없어요. 처리 방법은 처리상태 변경하기에서 확인해주세요.</td></tr><tr><td>자동 배송확정</td><td>[배송중]이 된 지 7일이 지나면 자동으로 [배송확정]돼요.</td></tr><tr><td>결제확인</td><td>계좌이체 주문은 입금을 확인한 뒤 [결제확인]을 눌러요. 결제상태만 바뀌고 처리상태는 그대로예요.</td></tr></tbody></table></div><p>주문이 접수되면 내 도매상품의 보유수량이 주문 수량만큼 줄어요. 취소·반품을 승인할 때 수량을 되돌릴지는 취소·반품 처리하기에서 선택해요.</p>",
+      "steps": "<h3>주문 찾기</h3><p>목록 위쪽에서 주문을 검색하고 조건별로 걸러낼 수 있어요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>필터</td><td>결제수단(카드결제, 계좌이체), 기간(주문일시 기준) 선택</td></tr><tr><td>검색</td><td>주문번호, 주문자명, 상품명으로 검색 (주문 상품 중 하나라도 일치하면 조회)</td></tr><tr><td>처리 탭</td><td>전체, 주문접수, 배송대기, 배송중, 배송확정, 취소·반품요청, 취소·반품승인 구분 (탭마다 건수 표시)</td></tr><tr><td>결제 탭</td><td>전체, 결제대기, 결제완료, 결제취소, 환불대기, 반려(취소반려·반품반려) 구분 (처리 탭을 고른 상태에서 함께 적용, 처리 탭을 바꾸면 [전체]로 돌아감)</td></tr></tbody></table></div><p>목록은 한 페이지에 20건씩 보여줘요.</p><h3>목록에서 보이는 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr><tr><td>주문일시</td><td>주문이 접수된 일시</td></tr><tr><td>주문자</td><td>주문한 구매 계정 기준 사업자 정보의 상호명</td></tr><tr><td>상품정보</td><td>주문 상품 이름 (여러 상품이면 &quot;○○ 외 N건&quot;)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체 구분</td></tr><tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소], [환불대기] 구분 (결제완료 후 취소·반품된 [결제취소]·[환불대기] 주문은 전체환불·부분환불을 함께 표시)</td></tr><tr><td>처리상태</td><td>현재 처리 단계 (취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>취소·반품</td><td>[취소요청], [반품요청], [취소승인], [반품승인], [취소반려], [반품반려] 중 현재 상태</td></tr><tr><td>합계금액</td><td>상품금액, 결제수수료, 배송비를 더한 총 결제금액</td></tr><tr><td>관리</td><td>주문 상태에 따라 노출되는 버튼</td></tr></tbody></table></div><h3>여러 건을 한 번에 처리하려면</h3><p>주문 앞의 체크박스로 주문을 고르고 처리를 선택한 뒤 [일괄변경]을 눌러요. 현재 페이지에서 고른 주문만 대상이고, 페이지를 옮기면 선택이 풀려요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>[배송대기]</td><td>처리상태가 [주문접수]인 주문만 변경</td></tr><tr><td>[배송중]</td><td>처리상태가 [배송대기]인 주문만 변경 (이 시점부터 7일이 지나면 자동 배송확정)</td></tr><tr><td>일괄변경이 안 되는 처리</td><td>[배송확정], 취소·반품 처리, [결제확인]은 확인과 입력이 필요해서 주문마다 처리</td></tr></tbody></table></div>",
+      "cases": [
+        {
+          "title": "처리상태가 다르면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-recv-rows-process-pc.webp",
+              "alt": "09SCM 주문접수관리 처리 버튼 PC 화면",
+              "ratio": 1.404
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-recv-rows-process-mobile.webp",
+              "alt": "09SCM 주문접수관리 처리 버튼 모바일 화면",
+              "ratio": 0.2663
+            }
+          ],
+          "shotCaption": "09SCM 주문접수관리 처리 버튼 화면 (PC / 모바일)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문접수</td><td>[배송대기] [취소처리] [상세보기] ([결제대기]인 주문은 [결제확인]도 표시)</td></tr><tr><td>배송대기</td><td>[배송중] [취소처리] [상세보기] [되돌리기] ([결제대기]인 주문은 [결제확인]도 표시)</td></tr><tr><td>배송중</td><td>[배송확정] [반품처리] [상세보기] [되돌리기] ([결제대기]인 주문은 [배송확정] 대신 [결제·배송확정]으로 표시)</td></tr><tr><td>배송확정</td><td>[반품처리] [상세보기] (처리상태를 바꾸거나 [취소처리]를 할 수 없음)</td></tr></tbody></table></div><p>목록의 [결제확인]은 [주문접수]·[배송대기] 단계의 [결제대기] 주문에만 보여요. [배송중] 단계의 [결제대기] 주문은 주문 상세에서 처리해요.</p>"
+        },
+        {
+          "title": "취소·반품이 있는 주문이면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-recv-rows-claim-pc.webp",
+              "alt": "09SCM 주문접수관리 취소·반품 PC 화면",
+              "ratio": 1.7765
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-recv-rows-claim-mobile.webp",
+              "alt": "09SCM 주문접수관리 취소·반품 모바일 화면",
+              "ratio": 0.2785
+            }
+          ],
+          "shotCaption": "09SCM 주문접수관리 취소·반품 화면 (PC / 모바일)",
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>취소요청·반품요청</td><td>처리상태는 &quot;-&quot;로 비워지고 [취소처리] 또는 [반품처리]에서 승인·반려를 선택</td></tr><tr><td>취소승인·반품승인</td><td>처리가 끝난 주문, [상세보기]만 표시 (처리상태는 &quot;-&quot;, 결제상태는 [결제취소]로 바뀌고 결제완료 후 취소·반품된 주문은 환불구분을 함께 표시)</td></tr><tr><td>정산 후 카드결제 취소·반품</td><td>결제상태가 [환불대기]로 표시되고, 정산금을 반환해 환불이 끝나면 [결제취소]로 변경 (알림 없음)</td></tr><tr><td>취소반려·반품반려</td><td>처리상태가 요청 이전 단계로 돌아가 정상 처리 흐름에 다시 포함 (구매자는 다시 요청할 수 없고 공급자는 직권으로 처리 가능)</td></tr><tr><td>구매자 즉시취소</td><td>[주문접수] 단계의 카드결제·결제대기 주문을 구매자가 직접 취소한 경우, 공급자 승인 없이 [취소승인]으로 처리하고 [상세보기]만 표시 (정산이 끝난 카드결제 주문은 즉시취소 불가)</td></tr></tbody></table></div>"
+        },
+        {
+          "title": "환불대기 주문만 보려면",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-recv-tab-refundwait-pc.webp",
+              "alt": "09SCM 주문접수관리 환불대기 탭 PC 화면",
+              "ratio": 7.0323
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-recv-tab-refundwait-mobile.webp",
+              "alt": "09SCM 주문접수관리 환불대기 탭 모바일 화면",
+              "ratio": 1.0256
+            }
+          ],
+          "shotCaption": "09SCM 주문접수관리 환불대기 탭 화면 (PC / 모바일)",
+          "html": "<p>결제 탭에서 [환불대기]를 누르면 정산금 반환을 기다리는 주문만 모아 볼 수 있어요. 처리 탭을 바꾸면 결제 탭은 [전체]로 돌아가요.</p>"
+        },
+        {
+          "group": "[일괄변경]을 누르면",
+          "rows": [
+            {
+              "title": "주문을 고르지 않고 [일괄변경]을 누르면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-bulk-none-pc.webp",
+                  "alt": "09SCM 주문접수관리 일괄변경 주문 미선택 PC 화면",
+                  "ratio": 2.4038
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 일괄변경 주문 미선택 화면 (PC)",
+              "html": "<ul><li>안내: &quot;일괄 변경할 주문을 선택해주세요.&quot;</li></ul>"
+            },
+            {
+              "title": "처리를 고르지 않고 [일괄변경]을 누르면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-bulk-noopt-pc.webp",
+                  "alt": "09SCM 주문접수관리 일괄변경 처리 미선택 PC 화면",
+                  "ratio": 2.4038
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 일괄변경 처리 미선택 화면 (PC)",
+              "html": "<ul><li>안내: &quot;변경할 처리 상태를 선택해주세요.&quot;</li></ul>"
+            },
+            {
+              "title": "선택한 주문이 모두 변경 가능하면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-bulk-all-pc.webp",
+                  "alt": "09SCM 주문접수관리 일괄변경 전체 가능 PC 화면",
+                  "ratio": 1.9531
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 일괄변경 전체 가능 화면 (PC)",
+              "html": "<ul><li>안내: 선택한 건수와 처리를 표시하고 진행 여부 확인</li><li>[진행]: 선택한 주문 모두 변경</li><li>완료 후: 선택 해제, 처리 건수 안내</li><li>알림: 도매구매 알림이 설정된 경우 구매자에게 시스템 알림이 발송될 수 있음</li></ul>"
+            },
+            {
+              "title": "선택한 주문 중 일부만 변경 가능하면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-bulk-part-pc.webp",
+                  "alt": "09SCM 주문접수관리 일괄변경 일부 가능 PC 화면",
+                  "ratio": 1.9531
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 일괄변경 일부 가능 화면 (PC)",
+              "html": "<ul><li>안내: &quot;선택한 2건 중 1건만 [배송대기] 처리됩니다.&quot;처럼 변경 가능한 건수 표시</li><li>[진행]: 조건에 맞는 주문만 변경, 나머지는 그대로 유지</li></ul>"
+            },
+            {
+              "title": "선택한 주문을 하나도 변경할 수 없으면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-bulk-fail-pc.webp",
+                  "alt": "09SCM 주문접수관리 일괄변경 불가 PC 화면",
+                  "ratio": 2.4038
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 일괄변경 불가 화면 (PC)",
+              "html": "<ul><li>안내: &quot;선택한 주문은 [배송대기] 처리할 수 없습니다.&quot;</li><li>결과: 변경되는 주문 없음</li></ul>"
+            }
+          ]
+        }
+      ],
+      "trouble": "<h3>[결제확인]이 목록에 안 보여요</h3><p>목록에서는 [주문접수]·[배송대기] 단계의 [결제대기] 주문에만 보여요. [배송중] 단계의 [결제대기] 주문은 주문 상세에서 [결제확인] 또는 [결제·배송확정]으로 처리해요.</p><h3>일괄변경으로 배송확정이나 취소 처리가 안 돼요</h3><p>배송확정과 취소·반품 처리는 확인과 입력이 필요해서 주문마다 처리해야 해요.</p><h3>배송대기 주문에 구매자가 취소·반품을 요청하지 못해요</h3><p>[배송대기] 단계에서는 구매자가 취소·반품을 요청할 수 없어요. 필요하면 공급자가 [취소처리]로 직접 처리해요.</p><h3>처리상태가 &quot;-&quot;로 보여요</h3><p>취소·반품이 요청 중이거나 끝난 주문이에요. 진행 상황은 취소·반품 열에서 확인해요.</p>"
+    },
+    {
+      "id": "detail",
+      "label": "주문 상세 보기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-recv-detail-pc.webp",
+          "alt": "09SCM 주문접수관리 주문 상세 PC 화면",
+          "ratio": 0.96
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-recv-detail-mobile.webp",
+          "alt": "09SCM 주문접수관리 주문 상세 모바일 화면",
+          "ratio": 0.2667
+        }
+      ],
+      "shotCaption": "09SCM 주문접수관리 주문 상세 화면 (PC / 모바일)",
+      "overview": "<p>주문 한 건의 상품, 주문자, 배송, 결제, 취소·반품 진행 내용을 확인하고 처리하는 화면이에요. 목록의 [상세보기]를 누르면 열려요.</p><p>처리 버튼은 화면 아래에 고정된 영역에 있고, 목록과 같은 조건으로 보여요. 상세에서는 [결제확인]도 처리할 수 있어요. 처리 방법은 처리상태 변경하기와 취소·반품 처리하기에서 확인해주세요.</p>",
+      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>공급가/단위</td><td>주문 당시 상품의 공급가와 공급단위</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>구매 계정 기준 사업자 정보의 상호명</td></tr><tr><td>이름 · 휴대폰번호 · 이메일</td><td>구매자가 주문서에 입력한 담당자 정보</td></tr></tbody></table></div><h3>배송 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 ([배송중]은 자동 배송확정 예정일시도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>배송지</td><td>구매자가 주문서에 입력한 배송지</td></tr><tr><td>배송 요청사항</td><td>구매자가 주문서에 입력한 요청사항 (입력한 경우만 표시)</td></tr></tbody></table></div><h3>결제 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료], [환불대기], [결제취소]와 일시 (결제완료 후 취소·반품된 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체</td></tr><tr><td>상품금액 · 결제수수료</td><td>주문한 상품 금액, 카드결제 수수료 (구매자부담 카드결제 주문만 표시)</td></tr><tr><td>입금자명</td><td>구매자가 입력한 입금자명 (계좌이체 주문만 표시)</td></tr><tr><td>배송비</td><td>주문 당시 배송방식 (기본배송비(0,000원), 무료배송(0원), 착불(별도부과))</td></tr><tr><td>총 결제금액</td><td>상품금액, 결제수수료, 배송비를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 표시돼요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>[취소요청], [반품요청], [취소승인], [반품승인], [취소반려], [반품반려]와 일시</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 구매자 즉시취소 중 하나</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인된 주문만 표시 (부분환불은 상품환불금액, 배송비 환불 포함 여부, 구매자부담 카드수수료가 있으면 수수료환불금액도 표시)</td></tr><tr><td>환불계좌</td><td>환불은행, 예금주, 환불계좌번호 (계좌이체 주문만 표시)</td></tr><tr><td>반환 예금주</td><td>정산금을 반환할 때 쓰는 예금주 (승인된 카드결제 주문만 표시)</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 요청하며 입력한 사유 (구매자 요청 건만 표시)</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 승인·반려하며 남긴 사유</td></tr></tbody></table></div>",
+      "cases": [
+        {
+          "group": "처리상태·결제상태에 따라",
+          "rows": [
+            {
+              "title": "결제대기 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-unpaid-sec-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 결제대기 영역 PC 화면",
+                      "ratio": 3.0823
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-unpaid-sec-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 결제대기 영역 모바일 화면",
+                      "ratio": 0.6886
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 결제대기 영역 화면 (PC / 모바일)",
+                  "html": "<ul><li>결제상태: [결제대기]로 표시</li><li>계좌이체: 입금 전이면 [결제대기], 구매자가 입력한 입금자명 표시</li><li>카드결제: 주문과 동시에 [결제완료]로 접수</li></ul>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-unpaid-bar-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 결제대기 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-unpaid-bar-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 결제대기 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 결제대기 하단 바 화면 (PC / 모바일)",
+                  "html": "<ul><li>하단 바: [결제확인] 표시 ([주문접수] 단계는 [배송대기], [취소처리]도 함께 표시)</li><li>[결제확인]: 결제상태만 [결제완료]로 변경, 처리상태는 유지</li></ul>"
+                }
+              ]
+            },
+            {
+              "title": "배송중이면서 결제대기이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-shipunpaid-bar-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송중 결제대기 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-shipunpaid-bar-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송중 결제대기 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 배송중 결제대기 하단 바 화면 (PC / 모바일)",
+                  "html": "<ul><li>하단 바: [결제·배송확정], [결제확인], [반품처리], [되돌리기] 표시</li><li>[결제·배송확정]: 확인 창에서 처리하면 배송확정과 함께 결제상태도 [결제완료]로 변경</li><li>[결제확인]: 결제상태만 변경하고 처리상태는 [배송중] 유지</li></ul>"
+                }
+              ]
+            },
+            {
+              "title": "배송중 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-ship-sec-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송중 배송 정보 영역 PC 화면",
+                      "ratio": 6.5321
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-ship-sec-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송중 배송 정보 영역 모바일 화면",
+                      "ratio": 2.0183
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 배송중 배송 정보 영역 화면 (PC / 모바일)",
+                  "html": "<ul><li>처리상태: [배송중]이 된 일시와 자동 배송확정 예정일시 표시</li><li>자동 배송확정: [배송중]이 된 지 7일이 지나면 [배송확정]되고, 구매자와 공급자 모두에게 알림 발송</li></ul>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-ship-bar-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송중 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-ship-bar-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송중 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 배송중 하단 바 화면 (PC / 모바일)",
+                  "html": "<ul><li>하단 바: [배송확정], [반품처리], [되돌리기] 표시</li><li>[되돌리기]: 직전 단계인 [배송대기]로 돌아감</li></ul>"
+                }
+              ]
+            },
+            {
+              "title": "배송확정된 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-confirmed-sec-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송확정 배송 정보 영역 PC 화면",
+                      "ratio": 6.5321
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-confirmed-sec-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송확정 배송 정보 영역 모바일 화면",
+                      "ratio": 2.0183
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 배송확정 배송 정보 영역 화면 (PC / 모바일)",
+                  "html": "<ul><li>처리상태: [배송확정]과 일시 표시 (자동 배송확정 예정일시 미표시)</li><li>구매자: 취소·반품을 요청할 수 없음</li></ul>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-confirmed-bar-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송확정 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-confirmed-bar-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 배송확정 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 배송확정 하단 바 화면 (PC / 모바일)",
+                  "html": "<ul><li>하단 바: [반품처리]와 &quot;배송확정 완료 — 되돌릴 수 없습니다.&quot; 안내 표시</li><li>처리상태 변경, [취소처리]: 제공하지 않음</li><li>반품: 공급자만 직권으로 처리 (기한 제한 없음)</li></ul>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "취소·반품 처리 흐름에 따라",
+          "rows": [
+            {
+              "title": "취소·반품 요청이 들어온 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-claim-sec-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 취소·반품 요청 영역 PC 화면",
+                      "ratio": 1.8663
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-claim-sec-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 취소·반품 요청 영역 모바일 화면",
+                      "ratio": 0.4159
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 취소·반품 요청 영역 화면 (PC / 모바일)",
+                  "html": "<ul><li>영역: 취소·반품 정보 표시, 처리상태는 [취소요청] 또는 [반품요청]</li><li>배송 정보의 처리상태: &quot;-&quot;로 표시</li><li>환불계좌: 계좌이체 주문은 구매자가 입력한 환불은행·예금주·환불계좌번호 표시</li><li>구매자 요청 사유: 표시</li></ul>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-claim-bar-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 취소·반품 요청 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-claim-bar-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 취소·반품 요청 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 취소·반품 요청 하단 바 화면 (PC / 모바일)",
+                  "html": "<ul><li>버튼: [취소처리] 또는 [반품처리]만 표시</li><li>다음단계·되돌리기·[결제확인]: 표시하지 않음</li></ul>"
+                }
+              ]
+            },
+            {
+              "title": "취소·반품을 반려한 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-reject-sec-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 반려 영역 PC 화면",
+                      "ratio": 2.0141
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-reject-sec-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 반려 영역 모바일 화면",
+                      "ratio": 0.4666
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 반려 영역 화면 (PC / 모바일)",
+                  "html": "<ul><li>처리상태: 요청 이전 단계로 복귀 (취소반려는 [주문접수], 반품반려는 [배송중])</li><li>취소·반품 정보: [취소반려] 또는 [반품반려], 처리 일시, 구매자 요청 사유, 공급자 처리 사유 표시</li><li>자동 배송확정: 반품반려는 반려한 시점부터 7일을 다시 계산</li></ul>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-reject-bar-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 반려 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-reject-bar-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 반려 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 반려 하단 바 화면 (PC / 모바일)",
+                  "html": "<ul><li>버튼: 복귀한 단계의 버튼 다시 표시</li><li>구매자: 다시 요청할 수 없음, 공급자는 직권으로 처리 가능</li></ul>"
+                }
+              ]
+            },
+            {
+              "title": "취소·반품을 승인한 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-approved-sec-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 승인 영역 PC 화면",
+                      "ratio": 1.8663
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-approved-sec-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 승인 영역 모바일 화면",
+                      "ratio": 0.4063
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 승인 영역 화면 (PC / 모바일)",
+                  "html": "<ul><li>처리상태: 비워짐</li><li>취소·반품 정보: [취소승인] 또는 [반품승인], 처리 일시, 처리 주체, 환불구분·총환불금액, 환불계좌(계좌이체 주문), 구매자 요청 사유, 공급자 처리 사유 표시</li></ul>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/wh-recv-od-approved-bar-pc.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 승인 하단 바 PC 화면",
+                      "ratio": 19.2
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/wh-recv-od-approved-bar-mobile.webp",
+                      "alt": "09SCM 주문접수관리 주문 상세 승인 하단 바 모바일 화면",
+                      "ratio": 4.1905
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문접수관리 주문 상세 승인 하단 바 화면 (PC / 모바일)",
+                  "html": "<ul><li>하단 바: &quot;처리 완료된 주문입니다.&quot; 안내만 표시</li><li>처리 버튼: 없음</li></ul>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "취소·반품된 주문의 결제상태",
+          "rows": [
+            {
+              "title": "결제완료 주문이 취소·반품되면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-od-done-sec-pc.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 결제취소 영역 PC 화면",
+                  "ratio": 2.2285
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-od-done-sec-mobile.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 결제취소 영역 모바일 화면",
+                  "ratio": 0.4588
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 주문 상세 결제취소 영역 화면 (PC / 모바일)",
+              "html": "<ul><li>결제상태: [결제취소]로 변경</li><li>표시: 환불구분, 취소·반품 일시, [결제완료] 일시</li><li>카드결제 정산 전: PG사(PayApp)를 통해 카드 결제가 자동으로 취소됨</li><li>카드결제: 반환 예금주 표시</li><li>계좌이체: 공급자가 직접 환불</li><li>부분환불: 구매자부담 카드수수료가 있으면 수수료환불금액도 함께 표시</li></ul>"
+            },
+            {
+              "title": "정산 후 카드결제 주문이 취소·반품되면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-od-refundwait-sec-pc.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 환불대기 영역 PC 화면",
+                  "ratio": 2.046
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-od-refundwait-sec-mobile.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 환불대기 영역 모바일 화면",
+                  "ratio": 0.381
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 주문 상세 환불대기 영역 화면 (PC / 모바일)",
+              "html": "<ul><li>결제상태: [환불대기]로 변경</li><li>안내: 결제 정보 제목 아래에 PG사 환불 요청 안내 표시 (공급자 화면에만 노출, 구매자 화면에는 라벨만 표시)</li><li>표시: 환불구분, 취소·반품 일시, [결제완료] 일시</li><li>반환 예금주: 정산금 반환 입금자명 표시</li><li>전환: 정산금을 반환해 환불이 끝나면 [결제취소]로 변경 (알림 없음)</li></ul>"
+            },
+            {
+              "title": "결제대기 주문이 취소되면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-od-unpaid-cancel-sec-pc.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 결제대기 취소 영역 PC 화면",
+                  "ratio": 3.0823
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-od-unpaid-cancel-sec-mobile.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 결제대기 취소 영역 모바일 화면",
+                  "ratio": 0.6304
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 주문 상세 결제대기 취소 영역 화면 (PC / 모바일)",
+              "html": "<ul><li>결제상태: 환불 없이 [결제취소]로 변경</li><li>표시: 취소 일시만 (환불구분·총환불금액 없음)</li><li>처리 주체: 구매자 즉시취소 또는 공급자 직권 중 취소한 쪽 표시</li><li>도매매출조회: 집계 제외 (결제완료 일시 없음)</li></ul>"
+            },
+            {
+              "title": "배송확정 후 반품된 주문이면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-od-confirmed-return-sec-pc.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 배송확정 후 반품 영역 PC 화면",
+                  "ratio": 1.8663
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-od-confirmed-return-sec-mobile.webp",
+                  "alt": "09SCM 주문접수관리 주문 상세 배송확정 후 반품 영역 모바일 화면",
+                  "ratio": 0.4063
+                }
+              ],
+              "shotCaption": "09SCM 주문접수관리 주문 상세 배송확정 후 반품 영역 화면 (PC / 모바일)",
+              "html": "<ul><li>처리 주체: 공급자 직권 (구매자 요청 이력 없음)</li><li>결제상태: [결제취소], 환불구분과 총환불금액 표시</li><li>도매매출조회: 반품 승인 일시 기준으로 취소·환불액에 반영</li></ul>"
+            }
+          ]
+        }
+      ],
+      "trouble": "<h3>하단 고정 바에 버튼이 없어요</h3><p>취소·반품이 승인되어 처리가 끝난 주문에는 &quot;처리 완료된 주문입니다.&quot; 안내만 나와요. [배송확정] 주문은 [반품처리]만 나오고, 처리상태 변경과 [취소처리]는 나오지 않아요.</p><h3>[취소·반품 정보]가 안 보여요</h3><p>취소·반품 이력이 없는 주문에는 이 영역이 나타나지 않아요.</p><h3>구매자 요청 사유가 안 보여요</h3><p>공급자가 직권으로 처리한 주문은 구매자가 요청한 이력이 없어서 구매자 요청 사유가 표시되지 않아요.</p>"
+    },
+    {
+      "id": "status",
+      "label": "처리상태 변경하기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-recv-confirm-ship-pc.webp",
+          "alt": "09SCM 배송확정 확인 PC 화면",
+          "ratio": 1.8519
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-recv-confirm-ship-mobile.webp",
+          "alt": "09SCM 배송확정 확인 모바일 화면",
+          "ratio": 1.6296
+        }
+      ],
+      "shotCaption": "09SCM 배송확정 확인 화면 (PC / 모바일)",
+      "overview": "<p>주문을 다음 단계로 진행하는 방법이에요. 주문 목록과 주문 상세에서 같은 버튼으로 처리해요. [배송확정]은 직전 단계인 [배송중]에서만 할 수 있고, 확인 창에서 한 번 더 확인해요.</p>",
+      "steps": "<h3>버튼별 동작</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>다음단계 버튼</td><td>[배송대기], [배송중]을 누르면 확인 창 없이 바로 다음 단계로 진행</td></tr><tr><td>[배송확정]</td><td>[배송중] 단계일 때만 표시, 확인 창에서 [배송확정]을 눌러야 처리 (&quot;배송확정 처리 후에는 처리상태 변경이 불가능합니다.&quot; 안내 표시)</td></tr><tr><td>[결제확인]</td><td>결제상태만 [결제완료]로 바꾸고 처리상태는 그대로</td></tr><tr><td>[되돌리기]</td><td>바로 직전 단계로 돌아감 (확인 창 없이 바로 반영)</td></tr><tr><td>[일괄변경]</td><td>목록에서 여러 주문을 한 번에 [배송대기] 또는 [배송중]으로 진행</td></tr></tbody></table></div><h3>되돌릴 수 있는 단계</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>배송대기</td><td>[주문접수]로 돌아감</td></tr><tr><td>배송중</td><td>[배송대기]로 돌아감</td></tr><tr><td>되돌릴 수 없는 경우</td><td>[주문접수] 단계, [배송확정] 이후, 취소·반품요청 및 승인 상태</td></tr></tbody></table></div><p>처리상태가 바뀔 때마다 처리 일시가 갱신돼요. [배송중]이 된 시점부터 7일이 지나면 자동으로 [배송확정]되고, [배송대기]로 되돌렸다가 다시 [배송중]으로 바꾸면 그 시점부터 7일을 다시 세요.</p><h3>배송확정 이후</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>배송확정 처리</td><td>구매자와 공급자 모두 처리할 수 있어요. 구매자가 먼저 확정하면 처리상태가 [배송확정]으로 바뀌어요.</td></tr><tr><td>배송확정 후 가능한 처리</td><td>[반품처리]만 가능 (공급자 직권, 기한 제한 없음). 처리상태 변경과 [취소처리]는 불가</td></tr></tbody></table></div>",
+      "cases": [
+        {
+          "title": "결제대기 주문을 배송확정할 때",
+          "shots": [
+            {
+              "device": "pc",
+              "src": "../assets/img/partner/wh-recv-confirm-shipunpaid-pc.webp",
+              "alt": "09SCM 배송확정 확인 결제대기 PC 화면",
+              "ratio": 1.6892
+            },
+            {
+              "device": "mobile",
+              "src": "../assets/img/partner/wh-recv-confirm-shipunpaid-mobile.webp",
+              "alt": "09SCM 배송확정 확인 결제대기 모바일 화면",
+              "ratio": 1.4865
+            }
+          ],
+          "shotCaption": "09SCM 배송확정 확인 결제대기 화면 (PC / 모바일)",
+          "html": "<p>[배송중] 단계에서 결제상태가 [결제대기]인 주문은 버튼 이름이 [결제·배송확정]으로 바뀌어요. 확인 창에 &quot;결제대기 상태인 경우 결제도 함께 완료 처리됩니다.&quot; 안내가 함께 나오고, 처리하면 결제상태도 [결제완료]로 바뀌어요.</p>"
+        }
+      ],
+      "trouble": "<h3>[배송확정]이 안 보여요</h3><p>[배송중] 단계의 주문에서만 보여요. [주문접수]·[배송대기] 주문은 다음단계 버튼으로 [배송중]까지 먼저 진행해주세요.</p><h3>배송확정을 잘못 눌렀어요</h3><p>배송확정은 되돌릴 수 없어요. 반품이 필요하면 [반품처리]로 처리해요.</p>"
+    },
+    {
+      "id": "cancel-return",
+      "label": "취소·반품 처리하기",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-recv-cancel-pc.webp",
+          "alt": "09SCM 취소·반품 처리 PC 화면",
+          "ratio": 0.4808
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-recv-cancel-mobile.webp",
+          "alt": "09SCM 취소·반품 처리 모바일 화면",
+          "ratio": 0.3929
+        }
+      ],
+      "shotCaption": "09SCM 취소·반품 처리 화면 (PC / 모바일)",
+      "overview": "<p>주문을 취소하거나 반품을 처리하는 팝업이에요. 주문 목록과 주문 상세의 [취소처리], [반품처리]로 열어요.</p><h3>취소·반품이 가능한 때</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>취소처리</td><td>[주문접수]·[배송대기] 단계에서 공급자가 바로 처리 가능</td></tr><tr><td>반품처리</td><td>[배송중]·[배송확정] 단계에서 공급자가 바로 처리 가능 (배송확정 후 반품은 기한 제한 없음)</td></tr><tr><td>구매자 요청</td><td>구매자는 주문내역에서만 요청 ([취소요청]은 [주문접수] 단계의 계좌이체 결제완료 주문, [반품요청]은 [배송중]이 된 지 7일 이내, [배송대기] 단계는 요청 불가)</td></tr><tr><td>처리 단위</td><td>주문 전체 단위로만 처리 (일부 품목만 취소·반품할 수 없음)</td></tr></tbody></table></div><p>카드결제 주문과 [결제대기] 주문은 구매자가 [주문접수] 단계에서 직접 취소하면 공급자 승인 없이 바로 취소돼요. 이 경우 공급자가 처리할 내용은 없어요. 단, 정산이 끝난 카드결제 주문은 구매자가 바로 취소할 수 없고 공급자가 직접 처리해요.</p><h3>처리 주체</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>구매자 요청</td><td>이미 취소요청·반품요청이 들어온 주문 (승인 또는 반려 선택)</td></tr><tr><td>공급자 직권</td><td>요청 이력이 없거나 반려로 끝난 주문을 공급자가 바로 처리 (제출하면 바로 취소승인·반품승인으로 확정)</td></tr><tr><td>구매자 즉시취소</td><td>구매자가 주문내역에서 직접 취소 (공급자 처리 없음)</td></tr></tbody></table></div><h3>카드결제 정산 전·후</h3><p>카드결제 주문은 결제금이 공급자에게 정산되기 전인지 후인지에 따라 환불 방식이 달라져요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>정산 전 · 정산 후</th></tr></thead><tbody><tr><td>승인 처리</td><td>정산 전: PG사 결제가 자동으로 취소돼요 / 정산 후: PG사에 환불을 요청해요</td></tr><tr><td>결제상태</td><td>정산 전: [결제취소] / 정산 후: [환불대기]</td></tr><tr><td>공급자 입력</td><td>반환 예금주 입력 (필수, 정산 후에만 사용)</td></tr><tr><td>처리 직후 안내</td><td>정산 전: 없음 / 정산 후: 토스트와 주문 상세 안내 배너로 정산금 반환 안내</td></tr><tr><td>환불 완료</td><td>정산 전: 승인과 동시에 완료 / 정산 후: 공급자가 PG사(PayApp)에서 정산금을 반환하면 완료되어 [결제취소]로 변경 (알림 없음)</td></tr><tr><td>구매자 즉시취소</td><td>정산 전: 가능 ([주문접수] 단계) / 정산 후: 불가 (공급자가 직접 처리)</td></tr></tbody></table></div><p>주문 목록과 주문 상세에는 처리 결과인 결제상태만 표시돼요. 정산 전·후 처리 방식은 이 화면에서 확인하세요.</p><h3>재고 반영</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>내 보유수량</td><td>승인할 때 [재고 반영]을 체크하면 이 주문 전체 품목 수량만큼 내 도매상품의 보유수량이 복원돼요 (기본 선택). 복원할 내 도매상품이 하나도 없으면 체크박스가 나오지 않아요.</td></tr><tr><td>구매자 보유수량</td><td>구매자의 보유수량은 자동으로 바뀌지 않아요. 구매자가 소매관리에서 직접 조정해요.</td></tr></tbody></table></div>",
+      "steps": "<h3>입력 항목</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리 주체 · 결제수단 · 결제상태</td><td>주문 정보 조회 (처리 주체는 &quot;공급자 직권&quot; 또는 &quot;구매자 요청&quot;)</td></tr><tr><td>처리 방식</td><td>승인, 반려 선택 (구매자 요청 주문만 표시, 기본값은 승인)</td></tr><tr><td>상품금액 · 결제수수료 · 배송비 · 총 결제금액</td><td>결제 금액 조회 (결제수수료는 구매자부담 카드결제 주문만 표시, 배송비는 주문 당시 배송방식으로 표시)</td></tr><tr><td>환불구분</td><td>전체환불, 부분환불 선택</td></tr><tr><td>상품환불금액</td><td>환불할 상품금액 입력 (부분환불만 표시, 상품금액 이내)</td></tr><tr><td>수수료환불금액</td><td>상품환불금액에 맞춰 자동 계산되는 카드수수료 환불액 (구매자부담 카드결제 주문의 부분환불만 표시, 수정 불가)</td></tr><tr><td>배송비 포함</td><td>체크하면 배송비도 환불 (부분환불만 표시, 기본 체크, 무료배송·착불이면 미표시)</td></tr><tr><td>총환불금액</td><td>전체환불은 총 결제금액으로 고정, 부분환불은 상품환불금액, 수수료환불금액, 배송비를 합산해 자동 계산 (수정 불가)</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>환불받을 계좌 (계좌이체 결제완료 주문만, 입력 필수 아님, 구매자 요청 건은 구매자가 입력한 계좌가 채워지며 수정 가능)</td></tr><tr><td>반환 예금주</td><td>정산금을 반환할 때 쓰는 예금주 (카드결제 주문만 표시, 필수, 내 회원정보의 예금주가 기본값이며 수정 가능)</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 요청하며 입력한 사유 조회 (구매자 요청 건만 표시)</td></tr><tr><td>공급자 처리 사유</td><td>처리하며 남기는 사유 (직접 입력)</td></tr><tr><td>재고 반영</td><td>승인할 때 내 보유수량을 되돌릴지 선택 (기본 선택)</td></tr></tbody></table></div><p>[취소처리] 또는 [반품처리]를 누르면 처리가 확정돼요. 승인하면 주문은 처리 단계에서 빠지고 되돌릴 수 없어요.</p>",
+      "cases": [
+        {
+          "group": "결제수단·결제상태에 따라",
+          "rows": [
+            {
+              "title": "카드결제 주문을 취소할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-pc.webp",
+                  "alt": "09SCM 취소처리 카드결제 PC 화면",
+                  "ratio": 0.4808
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-mobile.webp",
+                  "alt": "09SCM 취소처리 카드결제 모바일 화면",
+                  "ratio": 0.3929
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 카드결제 화면 (PC / 모바일)",
+              "html": "<ul><li>처리 주체: 공급자 직권</li><li>총환불금액: 전체환불이면 총 결제금액(상품금액+결제수수료+배송비)으로 고정</li><li>반환 예금주: 입력 (필수)</li><li>승인하면 정산 전 주문은 PG사(PayApp)를 통해 카드 결제가 자동으로 취소되고 결제상태가 [결제취소]로 변경</li></ul>"
+            },
+            {
+              "title": "카드결제이면서 수수료를 공급자가 부담하는 주문이면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-feeseller-pc.webp",
+                  "alt": "09SCM 취소처리 카드결제 수수료 공급자 부담 PC 화면",
+                  "ratio": 0.4946
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-feeseller-mobile.webp",
+                  "alt": "09SCM 취소처리 카드결제 수수료 공급자 부담 모바일 화면",
+                  "ratio": 0.4033
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 카드결제 수수료 공급자 부담 화면 (PC / 모바일)",
+              "html": "<ul><li>결제수수료·수수료환불금액: 항목 없음</li><li>총환불금액: 상품금액과 배송비를 더한 금액</li></ul>"
+            },
+            {
+              "title": "카드결제 주문을 일부만 환불할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-partial-pc.webp",
+                  "alt": "09SCM 취소처리 카드결제 부분환불 PC 화면",
+                  "ratio": 0.3882
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-partial-mobile.webp",
+                  "alt": "09SCM 취소처리 카드결제 부분환불 모바일 화면",
+                  "ratio": 0.3216
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 카드결제 부분환불 화면 (PC / 모바일)",
+              "html": "<ul><li>상품환불금액: 입력 (상품금액 이내)</li><li>수수료환불금액: 입력한 금액에 맞춰 자동 계산 (수정 불가)</li><li>배송비 포함: 체크하면 배송비도 환불</li><li>총환불금액: 세 항목을 합산해 자동 계산</li></ul>"
+            },
+            {
+              "title": "계좌이체 결제완료 주문을 취소할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-transfer-pc.webp",
+                  "alt": "09SCM 취소처리 계좌이체 PC 화면",
+                  "ratio": 0.4682
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-transfer-mobile.webp",
+                  "alt": "09SCM 취소처리 계좌이체 모바일 화면",
+                  "ratio": 0.358
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 계좌이체 화면 (PC / 모바일)",
+              "html": "<ul><li>환불은행·예금주·환불계좌번호: 입력 (직권 처리는 공급자가 직접 입력)</li><li>환불: 공급자가 직접 진행 (시스템이 환불을 실행하지 않음)</li><li>결제상태: [결제취소]로 변경 (취소 처리 확정을 뜻하며 환불 완료를 뜻하지 않음)</li></ul>"
+            },
+            {
+              "title": "결제대기 주문을 취소할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-unpaid-pc.webp",
+                  "alt": "09SCM 취소처리 결제대기 PC 화면",
+                  "ratio": 0.7587
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-unpaid-mobile.webp",
+                  "alt": "09SCM 취소처리 결제대기 모바일 화면",
+                  "ratio": 0.5954
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 결제대기 화면 (PC / 모바일)",
+              "html": "<ul><li>안내: &quot;결제 대기 중인 주문으로 환불은 진행되지 않습니다.&quot;만 표시</li><li>금액·환불 입력: 표시하지 않음</li><li>결제상태: 환불 없이 [결제취소]로 변경</li></ul>"
+            },
+            {
+              "title": "정산이 끝난 카드결제 주문을 취소·반품할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-settled-toast-pc.webp",
+                  "alt": "09SCM 정산 후 카드결제 처리 토스트 PC 화면",
+                  "ratio": 6.0959
+                }
+              ],
+              "shotCaption": "09SCM 정산 후 카드결제 처리 토스트 화면 (PC)",
+              "html": "<ul><li>처리 팝업: 정산 전 주문과 같은 구성 (반환 예금주 입력 필수)</li><li>처리 직후: PG사에 환불을 요청하고 &quot;환불을 요청했습니다. 정산금을 반환해야 환불이 완료됩니다.&quot; 토스트 표시</li><li>결제상태: [환불대기]로 변경, 주문 상세 결제 정보 아래에 안내 배너 표시</li><li>정산금 반환: 공급자가 PG사(PayApp)에서 직접 처리, 반환이 끝나면 [결제취소]로 변경 (알림 없음)</li><li>취소·반품 승인 처리, 재고 반영, 알림, 매출 집계: 정산 전 주문과 같음</li></ul>"
+            },
+            {
+              "title": "입력이 맞지 않으면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-error-pc.webp",
+                  "alt": "09SCM 취소처리 입력 오류 PC 화면",
+                  "ratio": 0.3811
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-error-mobile.webp",
+                  "alt": "09SCM 취소처리 입력 오류 모바일 화면",
+                  "ratio": 0.3161
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 입력 오류 화면 (PC / 모바일)",
+              "html": "<ul><li>총환불금액이 0원이면 처리 버튼이 비활성화되고 &quot;환불금액을 입력해주세요.&quot; 오류 표시</li><li>카드결제 주문은 반환 예금주를 비우면 처리할 수 없음</li></ul>"
+            }
+          ]
+        },
+        {
+          "group": "구매자 요청이 있으면",
+          "rows": [
+            {
+              "title": "구매자 요청을 승인할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-request-pc.webp",
+                  "alt": "09SCM 취소처리 구매자 요청 승인 PC 화면",
+                  "ratio": 0.4132
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-request-mobile.webp",
+                  "alt": "09SCM 취소처리 구매자 요청 승인 모바일 화면",
+                  "ratio": 0.3209
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 구매자 요청 승인 화면 (PC / 모바일)",
+              "html": "<ul><li>처리 방식: 승인 선택 (기본값)</li><li>구매자 요청 사유: 조회</li><li>환불계좌: 구매자가 요청할 때 입력한 계좌가 채워지며 수정 가능 (계좌이체 주문)</li><li>환불구분·재고 반영: 직권 처리와 같음</li></ul>"
+            },
+            {
+              "title": "구매자 요청을 반려할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-cancel-reject-pc.webp",
+                  "alt": "09SCM 취소처리 구매자 요청 반려 PC 화면",
+                  "ratio": 0.7862
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-cancel-reject-mobile.webp",
+                  "alt": "09SCM 취소처리 구매자 요청 반려 모바일 화면",
+                  "ratio": 0.6145
+                }
+              ],
+              "shotCaption": "09SCM 취소처리 구매자 요청 반려 화면 (PC / 모바일)",
+              "html": "<ul><li>처리 방식: 반려 선택</li><li>결제 금액·환불 입력·재고 반영: 사라짐</li><li>공급자 처리 사유: 입력</li><li>결과: 처리상태가 요청 이전 단계로 복귀 (취소반려는 [주문접수], 반품반려는 [배송중]), 구매자는 다시 요청할 수 없음</li></ul>"
+            }
+          ]
+        },
+        {
+          "group": "반품을 처리할 때",
+          "rows": [
+            {
+              "title": "배송중이거나 배송확정된 주문을 반품 처리할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-return-pc.webp",
+                  "alt": "09SCM 반품처리 직권 PC 화면",
+                  "ratio": 0.463
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-return-mobile.webp",
+                  "alt": "09SCM 반품처리 직권 모바일 화면",
+                  "ratio": 0.3793
+                }
+              ],
+              "shotCaption": "09SCM 반품처리 직권 화면 (PC / 모바일)",
+              "html": "<ul><li>제목: 반품처리, 처리 주체는 공급자 직권</li><li>구성: 취소처리와 같고 재고 반영이 기본 선택</li><li>재고 반영 안내: &quot;일부 수량만 반품받은 경우 체크를 해제하고 보유수량을 직접 조정해주세요.&quot;</li><li>배송확정 후 반품: 구매자 요청 없이 공급자 직권으로만 처리 (기한 제한 없음)</li></ul>"
+            },
+            {
+              "title": "구매자의 반품요청을 승인할 때",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/wh-recv-return-request-pc.webp",
+                  "alt": "09SCM 반품처리 구매자 요청 승인 PC 화면",
+                  "ratio": 0.4092
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/wh-recv-return-request-mobile.webp",
+                  "alt": "09SCM 반품처리 구매자 요청 승인 모바일 화면",
+                  "ratio": 0.3379
+                }
+              ],
+              "shotCaption": "09SCM 반품처리 구매자 요청 승인 화면 (PC / 모바일)",
+              "html": "<ul><li>처리 방식: 승인 또는 반려 선택</li><li>구매자 요청 사유: 조회</li><li>재고 반영: 승인할 때만 표시</li></ul>"
+            }
+          ]
+        }
+      ],
+      "trouble": "<h3>[취소처리]·[반품처리] 버튼이 눌리지 않아요</h3><p>총환불금액이 0원이거나 카드결제 주문의 반환 예금주가 비어 있으면 비활성화돼요. 부분환불이라면 상품환불금액이나 [배송비 포함]을 확인해주세요.</p><h3>계좌이체 주문인데 환불이 자동으로 안 돼요</h3><p>계좌이체 주문은 시스템이 환불을 실행하지 않아요. [결제취소]는 취소 처리를 확정한다는 뜻이라서, 환불은 공급자가 직접 진행해야 해요.</p><h3>카드결제 승인이 안 돼요</h3><p>카드 결제취소가 실패하면 승인이 확정되지 않고 주문이 기존 상태로 유지돼요. 실패 안내를 확인한 뒤 다시 시도해주세요.</p><h3>[환불대기]가 계속 보여요</h3><p>정산이 끝난 카드결제 주문은 공급자가 PG사(PayApp)에서 정산금을 반환해야 환불이 끝나요. 반환이 끝나면 [결제취소]로 바뀌어요.</p><h3>구매자 보유수량이 그대로예요</h3><p>구매자의 보유수량은 취소·반품을 승인해도 자동으로 바뀌지 않아요. 구매자가 소매관리에서 직접 조정해요.</p>"
+    }
+  ]
+};
