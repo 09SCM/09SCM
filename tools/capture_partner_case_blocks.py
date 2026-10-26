@@ -107,7 +107,7 @@ def run(device, b):
     sec_shot(page, None, 'order-detail-done-sec-' + device, ['결제정보', '취소·반품 정보'])
     bar_shot(page, 'order-detail-done-bar-' + device)
 
-    # ---- 소매 > 상품목록 > 상세보기 (보유수량 0) ----
+    # ---- 소매 > 상품목록 > 상세보기 (보유수량 0: 소매판매상태~판매가능수량, 하단 바) ----
     page.set_viewport_size({'width': 1440 if pc else 440, 'height': 1500 if pc else 1200})
     go_menu(page, '소매관리', '상품관리')
     page.evaluate("""() => {
@@ -116,9 +116,9 @@ def run(device, b):
     page.wait_for_timeout(600); page.mouse.move(0, 0)
     fit_height(page, 1500 if pc else 700)
     page.evaluate("""() => {
-      document.querySelector('.notice-banner').id = 'p-top';
-      const l = [...document.querySelectorAll('.detail-label')].find(e => e.textContent.trim() === '판매가능수량');
-      l.closest('.detail-item').id = 'p-end'; }""")
+      const item = t => [...document.querySelectorAll('.detail-label')].find(e => e.textContent.trim() === t).closest('.detail-item');
+      item('소매판매상태').id = 'p-top';
+      item('판매가능수량').id = 'p-end'; }""")
     sec_shot(page, ['#p-top', '#p-end'], 'product-detail-soldout-sec-' + device)
     bar_shot(page, 'product-detail-soldout-bar-' + device)
     # ---- 도매 > 주문내역 > 주문 상세 보기 (배송중: 배송 정보 + [배송확정]·[반품요청]) ----
