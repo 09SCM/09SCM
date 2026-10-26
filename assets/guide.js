@@ -235,7 +235,7 @@
   }
 
   /* ---------- 표 템플릿: 컬럼 유형별 폭·정렬 ---------- */
-  // 항목(1열) 300px 고정·왼쪽 / 기호(○ × 등) 200px 고정·가운데 / 짧은 값(6자 이하) 120px 고정·왼쪽 / 그 외 가변·왼쪽
+  // 항목(1열) 300px 고정·왼쪽(3열 이상 표에서 1열 값이 모두 6자 이하이면 짧은 값 120px) / 기호(○ × 등) 200px 고정·가운데 / 짧은 값(6자 이하) 120px 고정·왼쪽 / 그 외 가변·왼쪽
   // 가변 컬럼이 없으면 1열이 가변(최소 200px). 표 최소 폭은 컬럼 폭 합계이며 좁으면 .table-wrap 안에서 가로 스크롤.
   function applyTableTemplate(root) {
     var MARK = /^[○×△◎●\-–]$/;
@@ -243,17 +243,36 @@
       var rows = tb.querySelectorAll('tbody tr');
       var n = tb.querySelectorAll('thead th').length;
       if (!rows.length || !n) return;
+      // 셀 병합(rowspan)이 있는 표도 컬럼 번호가 어긋나지 않도록 행×열 격자로 펼친다
+      var grid = [], carry = [];
+      rows.forEach(function (r) {
+        var line = [], ci = 0;
+        Array.prototype.forEach.call(r.children, function (cell) {
+          while (carry[ci] && carry[ci].left > 0) { carry[ci].left--; line[ci] = null; ci++; }
+          line[ci] = cell;
+          var rs = parseInt(cell.getAttribute('rowspan') || '1', 10);
+          if (rs > 1) carry[ci] = { left: rs - 1 };
+          ci++;
+        });
+        while (carry[ci] && carry[ci].left > 0) { carry[ci].left--; line[ci] = null; ci++; }
+        grid.push(line);
+      });
       var kinds = [];
       for (var c = 0; c < n; c++) {
         var cells = [];
-        rows.forEach(function (r) { if (r.children[c]) cells.push(txt(r.children[c])); });
+        grid.forEach(function (line) { if (line[c]) cells.push(txt(line[c])); });
         var kind = 'text';
         if (cells.every(function (v) { return MARK.test(v); })) kind = 'mark';
         else if (c > 0 && cells.every(function (v) { return v.length <= 6; })) kind = 'short';
-        if (c === 0) kind = kind === 'mark' ? 'mark' : 'item';
+        if (c === 0) {
+          kind = kind === 'mark' ? 'mark' : 'item';
+          // 3열 이상 표에서 첫 컬럼 값이 모두 6자 이하이면 짧은 값(120px)으로 처리한다
+          if (kind === 'item' && n >= 3 && cells.every(function (v) { return v.length <= 6; })) kind = 'short';
+        }
         kinds.push(kind);
       }
       var hasFlex = kinds.indexOf('text') > -1;
+      if (!hasFlex && kinds[0] === 'short') kinds[0] = 'item'; // 가변 컬럼이 없으면 첫 컬럼이 가변
       var fixed = 0, flexMin = 240;
       var cg = document.createElement('colgroup');
       kinds.forEach(function (k, i) {
@@ -264,8 +283,8 @@
           if (hasFlex) { col.style.width = '300px'; fixed += 300; } else { flexMin = 200; }
         }
         cg.appendChild(col);
-        tb.querySelectorAll('tr').forEach(function (r) {
-          if (r.children[i] && k === 'mark') r.children[i].classList.add('c');
+        grid.forEach(function (line) {
+          if (line[i] && k === 'mark') line[i].classList.add('c');
         });
       });
       tb.insertBefore(cg, tb.firstChild);
