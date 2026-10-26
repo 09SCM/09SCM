@@ -187,17 +187,17 @@ window.GUIDE_CONTENT['retail-product-list'] = {
               "device": "pc",
               "src": "../assets/img/partner/product-list-rows-pc.webp",
               "alt": "09SCM 상품목록 행 버튼 PC 화면",
-              "ratio": 2.7923
+              "ratio": 2.6359
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/product-list-rows-mobile.webp",
               "alt": "09SCM 상품목록 행 버튼 모바일 화면",
-              "ratio": 0.3202
+              "ratio": 0.3107
             }
           ],
           "shotCaption": "09SCM 상품목록 행 버튼 화면 (PC / 모바일)",
-          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>소매정보가 없는 상품</td><td>[소매정보등록]</td></tr><tr><td>소매정보가 있는 상품</td><td>[상세보기] [수정] [삭제]</td></tr><tr><td>소매정보가 있는 내소매상품</td><td>[도매상품전환] [상세보기] [수정] [삭제]</td></tr></tbody></table></div><p>버튼은 보유수량과 상관없이 소매정보 등록 여부와 상품출처로 정해져요. 보유수량이 0이어도 [소매정보등록]과 [수정]을 쓸 수 있어요. [도매상품전환]은 도매공급권한이 있는 계정의 내소매상품에만 보여요.</p>"
+          "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>소매정보가 없는 상품</td><td>[소매정보등록]</td></tr><tr><td>소매정보가 있는 상품</td><td>[상세보기] [수정] [삭제]</td></tr><tr><td>소매정보가 있는 내소매상품</td><td>[도매상품전환] [상세보기] [수정] [삭제]</td></tr></tbody></table></div><p>버튼은 소매정보 등록 여부와 상품출처로 정해져요. [도매상품전환]은 도매공급권한이 있는 계정의 내소매상품에만 보여요.</p>"
         },
         {
           "title": "수량이 바뀌면",
@@ -236,23 +236,23 @@ window.GUIDE_CONTENT['retail-product-list'] = {
       "steps": "<ol><li><b>등록할 상품 고르기</b> 소매미등록 상품 행에서 [소매정보등록]을 눌러요.</li><li><b>정보 입력하기</b> 아래 표의 항목을 입력해요. 이름 옆에 *가 붙은 항목은 꼭 입력해야 해요.</li><li><b>저장하기</b> [저장]을 누르면 소매정보가 만들어져요. 입력한 판매가능수량이 0이면 [품절], 0보다 크면 [판매중]으로 등록돼요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품이미지*</td><td>소매몰에 보일 상품 사진 (2장 이상 10장 이하, JPG·PNG·WEBP, 한 장당 5MB 이하, 첫 번째 이미지가 대표이미지)</td></tr><tr><td>소매카테고리 1차*</td><td>내가 만든 소매 카테고리 중 선택 (카테고리가 없으면 <a href=\"#retail-product-category\">상품카테고리</a>에서 먼저 등록)</td></tr><tr><td>소매카테고리 2차</td><td>선택한 1차 카테고리 아래의 2차 카테고리 선택</td></tr><tr><td>소매상품명*</td><td>소매몰에 보일 상품 이름</td></tr><tr><td>소비자가*</td><td>구매자에게 보여줄 판매가 (1원 이상의 정수)</td></tr><tr><td>할인가</td><td>소비자가에서 할인한 판매가 (1원 이상의 정수, 소비자가 이하, 할인율은 자동 계산)</td></tr><tr><td>소매노출여부</td><td>소매몰에 상품을 보일지 선택</td></tr><tr><td>보유수량*</td><td>내가 보유한 전체 수량 (0 이상의 정수, 0도 입력 가능, 판매가능수량보다 작을 수 없음)</td></tr><tr><td>판매가능수량*</td><td>소매몰에서 판매할 수량 (보유수량 이하)</td></tr><tr><td>수령방식</td><td>픽업, 배달, 픽업+배달 중 선택 (기본값은 소매설정의 기본 수령방식, 상품마다 변경 가능)</td></tr><tr><td>픽업가능 시작일*</td><td>픽업을 받을 수 있는 첫 날짜 (수령방식에 픽업이 포함될 때 입력)</td></tr><tr><td>픽업가능 종료일*</td><td>픽업을 받을 수 있는 마지막 날짜 (수령방식에 픽업이 포함될 때 입력, 시작일보다 빠를 수 없고 오늘 이후만 입력 가능, 수정 시에는 종료일을 바꾸는 경우에 한해 오늘 이후 검증)</td></tr><tr><td>채팅주문 허용</td><td>채팅주문 가능 여부 (켜면 채팅주문상품명 입력 필요, 수령방식이 배달뿐이면 허용할 수 없음)</td></tr><tr><td>채팅주문상품명*</td><td>채팅 메시지에서 상품을 알아보는 짧은 이름 (예: 소매상품명이 &quot;레몬 1kg&quot;이면 &quot;레몬&quot;, 소매상품명과 별도, 입력 후 [중복확인] 필요)</td></tr><tr><td>상품구성</td><td>상품에 포함된 구성 안내</td></tr><tr><td>1회 최대구매수량</td><td>한 번에 주문할 수 있는 최대 수량</td></tr><tr><td>원산지</td><td>상품의 원산지</td></tr><tr><td>소비기한</td><td>상품의 소비기한 안내 (날짜 대신 &quot;수령 후 7일&quot;처럼 자유롭게 입력)</td></tr><tr><td>상세정보</td><td>상품 상세 설명</td></tr></tbody></table></div>",
       "cases": [
         {
-          "title": "상품출처에 따라 보유수량 안내가 달라지면",
+          "title": "상품출처에 따라 안내 배너가 달라지면",
           "blocks": [
             {
               "shots": [
                 { "device": "pc", "src": "../assets/img/partner/product-register-source-own-pc.webp", "alt": "09SCM 내도매상품 보유수량 안내 PC 화면", "ratio": 6.6542 },
-                { "device": "mobile", "src": "../assets/img/partner/product-register-source-own-mobile.webp", "alt": "09SCM 내도매상품 보유수량 안내 모바일 화면", "ratio": 1.3924 }
+                { "device": "mobile", "src": "../assets/img/partner/product-register-source-own-mobile.webp", "alt": "09SCM 내도매상품 보유수량 안내 모바일 화면", "ratio": 1.068 }
               ],
               "shotCaption": "09SCM 내도매상품 보유수량 안내 화면 (PC / 모바일)",
-              "html": "<p>보유수량은 모든 상품출처에서 직접 고칠 수 있어요. 내도매상품은 도매상품의 보유수량이 함께 바뀌어서 안내가 나와요.</p><ul><li>내도매상품: &quot;보유수량을 수정하면 도매상품의 보유수량과 도매 판매상태에 영향을 줄 수 있습니다.&quot;</li></ul>"
+              "html": "<p>소매정보를 등록할 때 내도매상품인지 도매주문상품인지에 따라 화면 위쪽에 나오는 배너가 달라요.</p><ul><li>내도매상품: &quot;보유수량을 수정하면 도매상품의 보유수량과 도매 판매상태에 영향을 줄 수 있습니다.&quot;</li></ul>"
             },
             {
               "shots": [
                 { "device": "pc", "src": "../assets/img/partner/product-register-source-purchase-pc.webp", "alt": "09SCM 도매주문상품 보유수량 안내 PC 화면", "ratio": 6.6542 },
-                { "device": "mobile", "src": "../assets/img/partner/product-register-source-purchase-mobile.webp", "alt": "09SCM 도매주문상품 보유수량 안내 모바일 화면", "ratio": 1.3924 }
+                { "device": "mobile", "src": "../assets/img/partner/product-register-source-purchase-mobile.webp", "alt": "09SCM 도매주문상품 보유수량 안내 모바일 화면", "ratio": 1.068 }
               ],
               "shotCaption": "09SCM 도매주문상품 보유수량 안내 화면 (PC / 모바일)",
-              "html": "<ul><li>도매주문상품: &quot;보유수량을 수정하면 도매주문 내역의 구매 수량과 일치하지 않을 수 있습니다.&quot;</li></ul><p>내소매상품에는 안내가 나오지 않아요. 보유수량은 소매정보에 그대로 저장돼요.</p>"
+              "html": "<ul><li>도매주문상품: &quot;보유수량을 수정하면 도매주문 내역의 구매 수량과 일치하지 않을 수 있습니다.&quot;</li></ul><p>내소매상품에는 배너가 나오지 않아요.</p>"
             }
           ]
         },
@@ -400,7 +400,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
         }
       ],
       "shotCaption": "09SCM 소매정보 수정 화면 (PC / 모바일)",
-      "overview": "<p>[수정]에서 등록한 소매정보를 고쳐요. 입력 항목은 <a href=\"#retail-product-list/register\">소매정보 등록하기</a>와 같고, 수정 화면에서는 소매판매상태도 고를 수 있어요.</p><ul><li>상품출처, 상품코드, 소매등록일시는 고칠 수 없어요.</li><li>보유수량은 모든 상품출처에서 직접 고칠 수 있어요. 내도매상품은 도매상품의 보유수량, 도매주문상품은 도매주문상품의 보유수량, 내소매상품은 소매정보의 보유수량이 바뀌어요. 판매가능수량보다 작게 입력할 수는 없어요.</li></ul>",
+      "overview": "<p>[수정]에서 등록한 소매정보를 고쳐요. 입력 항목은 <a href=\"#retail-product-list/register\">소매정보 등록하기</a>와 같고, 수정 화면에서는 소매판매상태도 고를 수 있어요.</p><ul><li>상품출처, 상품코드, 소매등록일시는 고칠 수 없어요.</li><li>보유수량은 모든 상품출처에서 직접 고칠 수 있어요. 판매가능수량보다 작게 입력할 수는 없어요.</li></ul>",
       "cases": [
         {
           "title": "판매상태와 노출여부가 잠기면",
@@ -465,7 +465,7 @@ window.GUIDE_CONTENT['retail-product-list'] = {
       ],
       "shotCaption": "09SCM 도매상품전환 화면 (PC / 모바일)",
       "overview": "<p>내소매상품을 다른 가맹점에도 공급하고 싶다면 [도매상품전환]을 눌러요.</p>",
-      "steps": "<p>도매공급권한이 있는 계정이면 보유수량과 상관없이 전환할 수 있어요. 도매 정보(도매카테고리, 도매상품명, 공급범위, 공급가, 공급단위, 도매노출여부, 보유수량, 판매가능수량 등)를 입력하고 [전환하기]를 누르면 돼요.</p><ul><li>전환하면 내소매상품으로 되돌릴 수 없어요.</li><li>소비자가, 수령방식 같은 기존 소매정보와 상품코드는 그대로 유지돼요.</li><li>공급가에는 기존 소비자가가 참고값으로 채워져요. 실제 공급가에 맞게 고쳐주세요.</li><li>공급범위를 우리지역으로 고르면 우리지역 칸이 나타나요. 자세한 내용은 도매관리 &gt; <a href=\"#wholesale-mine\">내 도매상품</a>에서 확인해주세요.</li><li>전환이 끝나면 상품출처가 내도매상품으로 바뀌고 도매관리 &gt; <a href=\"#wholesale-mine\">내 도매상품</a>으로 이동해요.</li></ul>"
+      "steps": "<p>도매공급권한이 있는 계정이면 전환할 수 있어요. 도매 정보(도매카테고리, 도매상품명, 공급범위, 공급가, 공급단위, 도매노출여부, 보유수량, 판매가능수량 등)를 입력하고 [전환하기]를 누르면 돼요.</p><ul><li>전환하면 내소매상품으로 되돌릴 수 없어요.</li><li>소비자가, 수령방식 같은 기존 소매정보와 상품코드는 그대로 유지돼요.</li><li>공급가에는 기존 소비자가가 참고값으로 채워져요. 실제 공급가에 맞게 고쳐주세요.</li><li>공급범위를 우리지역으로 고르면 우리지역 칸이 나타나요. 자세한 내용은 도매관리 &gt; <a href=\"#wholesale-mine\">내 도매상품</a>에서 확인해주세요.</li><li>전환이 끝나면 상품출처가 내도매상품으로 바뀌고 도매관리 &gt; <a href=\"#wholesale-mine\">내 도매상품</a>으로 이동해요.</li></ul>"
     },
     {
       "id": "delete",

@@ -73,10 +73,10 @@ def run(device, b):
     # 소매정보 등록(대표 화면: 도매주문상품, 화면 전체 높이)
     page.set_viewport_size(vp); open_register(page, 'P0305'); fit_height(page, 1500 if pc else 700); page.mouse.move(0, 0)
     save(page.screenshot(), 'product-register' + sfx)
-    # 소매정보 등록 > 상품출처에 따라 안내가 달라지면 (안내 배너~상품코드)
+    # 소매정보 등록 > 상품출처에 따라 안내가 달라지면 (소매정보 등록 제목~안내 배너~상품코드)
     for code, name in (('P0422', 'product-register-source-own'), ('P0305', 'product-register-source-purchase')):
         page.set_viewport_size(vp); open_register(page, code); fit_height(page, 1500 if pc else 700)
-        clip(page, name + sfx, ["document.querySelector('.notice-banner')", FIELD('상품코드')])
+        clip(page, name + sfx, ["document.querySelector('.back-link')", "document.querySelector('.card-head')", "document.querySelector('.notice-banner')", FIELD('상품코드')])
     # 소매정보 수정(대표 화면: 내도매상품, 화면 전체 높이)
     page.set_viewport_size(vp); go_product_list(page)
     page.evaluate("() => { currentRetailRef = { source: 'own', sourceCode: 'P0232' }; currentItem = 'wholesale-retail-listing-edit'; renderAll(); }")
