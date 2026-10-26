@@ -4156,13 +4156,13 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-orders-rows-action-pc.webp",
               "alt": "09SCM 주문내역 처리 버튼 PC 화면",
-              "ratio": 2.1883
+              "ratio": 2.232
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-orders-rows-action-mobile.webp",
               "alt": "09SCM 주문내역 처리 버튼 모바일 화면",
-              "ratio": 0.2918
+              "ratio": 0.2957
             }
           ],
           "shotCaption": "09SCM 주문내역 처리 버튼 화면 (PC / 모바일)",
@@ -4175,13 +4175,13 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
               "device": "pc",
               "src": "../assets/img/partner/wh-orders-rows-claim-pc.webp",
               "alt": "09SCM 주문내역 취소·반품 PC 화면",
-              "ratio": 2.9903
+              "ratio": 2.4689
             },
             {
               "device": "mobile",
               "src": "../assets/img/partner/wh-orders-rows-claim-mobile.webp",
               "alt": "09SCM 주문내역 취소·반품 모바일 화면",
-              "ratio": 0.3492
+              "ratio": 0.2918
             }
           ],
           "shotCaption": "09SCM 주문내역 취소·반품 화면 (PC / 모바일)",
@@ -4228,7 +4228,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
       ],
       "shotCaption": "09SCM 주문 상세 화면 (PC / 모바일)",
       "overview": "<p>주문 한 건의 상품, 배송, 결제, 취소·반품 진행 내용을 확인하는 화면이에요. 목록의 [상세보기]를 누르면 열려요.</p><p>처리 버튼은 화면 아래에 고정된 영역에 있고, 목록과 같은 조건으로 보여요. [주문취소]와 [취소요청], [반품요청]은 <a href=\"#wholesale-orders/cancel\">취소·반품 요청하기</a>, [배송확정]은 <a href=\"#wholesale-orders/confirm\">배송확정하기</a>에서 확인해주세요.</p>",
-      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>공급가/단위</td><td>주문 당시 상품의 공급가와 공급단위</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>공급자</td><td>상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 계정 기준 사업자 정보의 상호명</td></tr><tr><td>이름 · 휴대폰번호 · 이메일</td><td>주문서에 입력한 정보</td></tr></tbody></table></div><h3>배송 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 ([배송중]은 자동 배송확정 예정일시도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>배송지</td><td>주문서에 입력한 배송지</td></tr><tr><td>배송 요청사항</td><td>주문서에 입력한 요청사항 (입력한 경우만 표시)</td></tr></tbody></table></div><h3>결제 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료], [환불대기], [결제취소]와 해당 일시 (결제완료 후 환불되는 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>결제수수료</td><td>구매자부담 카드 수수료가 있는 주문에만 표시</td></tr><tr><td>배송비</td><td>공급자의 배송방식 기준 배송비 (무료배송, 기본배송비, 착불)</td></tr><tr><td>총 결제금액</td><td>상품금액, 결제수수료, 배송비를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>상품환불금액 · 배송비 환불</td><td>부분환불 주문에만 표시 (배송비 환불은 포함 또는 미포함)</td></tr><tr><td>수수료환불금액</td><td>구매자부담 카드 수수료가 있는 주문의 부분환불에만 표시</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>반환 예금주</td><td>승인으로 확정된 카드결제 주문에만 표시 (정산금을 반환할 때 쓰는 예금주)</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 즉시취소는 &quot;-&quot;)</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
+      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>공급가/단위</td><td>주문 당시 상품의 공급가와 공급단위</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>공급가 × 수량</td></tr></tbody></table></div><h3>주문 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>공급자</td><td>상품을 공급하는 계정 기준 사업자 정보의 상호명</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상호명</td><td>내 계정 기준 사업자 정보의 상호명</td></tr><tr><td>이름 · 휴대폰번호 · 이메일</td><td>주문서에 입력한 정보</td></tr></tbody></table></div><h3>배송 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 ([배송중]은 자동 배송확정 예정일시도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 &quot;-&quot;)</td></tr><tr><td>배송지</td><td>주문서에 입력한 배송지</td></tr><tr><td>배송 요청사항</td><td>주문서에 입력한 요청사항 (입력한 경우만 표시)</td></tr></tbody></table></div><h3>결제 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료], [환불대기], [결제취소]와 해당 일시 (결제완료 후 환불되는 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>결제수수료</td><td>구매자부담 카드 수수료가 있는 주문에만 표시</td></tr><tr><td>배송비</td><td>공급자의 배송방식 기준 배송비 (무료배송, 기본배송비, 착불)</td></tr><tr><td>총 결제금액</td><td>상품금액, 결제수수료, 배송비를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>상품환불금액 · 배송비 환불</td><td>부분환불 주문에만 표시 (배송비 환불은 포함 또는 미포함)</td></tr><tr><td>수수료환불금액</td><td>구매자부담 카드 수수료가 있는 주문의 부분환불에만 표시</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>반환 예금주</td><td>공급자가 승인한 카드결제 주문에만 표시 (정산금을 반환할 때 쓰는 예금주)</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 요청이 없던 건은 &quot;-&quot;)</td></tr><tr><td>공급자 처리 사유</td><td>공급자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
       "cases": [
         {
           "group": "배송 상태에 따라",
@@ -4418,7 +4418,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
                 }
               ],
               "shotCaption": "09SCM 주문 상세 카드결제 주문 취소·반품 승인 영역 화면 (PC / 모바일)",
-              "html": "<ul><li>결제상태: [결제취소]와 취소 일시, 환불구분, [결제완료] 일시 표시</li><li>카드결제(정산 전): PG사를 통해 카드 결제가 자동으로 취소됨</li><li>반환 예금주: 카드결제 주문은 취소·반품 정보에 함께 표시</li><li>계좌이체: 공급자가 승인할 때 정한 환불구분과 금액으로 환불</li><li>부분환불: 구매자부담 카드 수수료가 있으면 수수료환불금액도 함께 표시</li></ul>"
+              "html": "<ul><li>결제상태: [결제취소]와 취소 일시, 환불구분, [결제완료] 일시 표시</li><li>카드결제(정산 전): PG사를 통해 카드 결제가 자동으로 취소됨</li><li>반환 예금주: 공급자가 승인한 카드결제 주문은 취소·반품 정보에 함께 표시</li><li>계좌이체: 공급자가 승인할 때 정한 환불구분과 금액으로 환불</li><li>부분환불: 구매자부담 카드 수수료가 있으면 수수료환불금액도 함께 표시</li></ul>"
             },
             {
               "title": "정산 후 카드결제 주문이 취소·반품되면",
@@ -4625,7 +4625,7 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
       ],
       "shotCaption": "09SCM 배송확정 팝업 화면",
       "overview": "<p>[배송중]인 주문의 상품을 받은 뒤 구매를 확정하는 팝업이에요. 목록의 [배송확정]이나 상세 하단 바의 [배송확정]을 누르면 열려요.</p>",
-      "steps": "<ol><li><b>배송확정 누르기</b> 상품을 정상적으로 받았다면 [배송확정]을 눌러요.</li><li><b>안내 확인하기</b> &quot;주문번호 ○○ 상품을 정상적으로 수령하셨습니까?&quot; 안내와 배송확정 후의 변화를 확인해요.</li><li><b>확정하기</b> 팝업의 [배송확정]을 누르면 처리상태가 [배송확정]으로 바뀌어요. 마음이 바뀌면 [취소]를 눌러 닫아요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>배송확정 후</td><td>구매자는 취소·반품을 요청할 수 없고 되돌릴 수 없음 (이후 반품은 공급자만 처리 가능)</td></tr><tr><td>소매 판매</td><td>배송확정된 상품은 소매상품으로 등록 가능 (<a href=\"#retail-product-list/register\">소매정보 등록하기</a>)</td></tr><tr><td>수량 반영</td><td>배송확정한 수량이 도매주문상품의 보유수량으로 더해짐. 같은 상품을 다시 구매해 배송확정하면 수량이 계속 쌓이고, 이미 만든 소매정보는 그대로 두고 수량만 늘어남 (공급자가 배송확정 후 반품을 승인해도 보유수량은 자동으로 차감되지 않음)</td></tr><tr><td>결제대기 주문</td><td>결제도 함께 [결제완료]로 처리</td></tr><tr><td>자동 배송확정</td><td>[배송중]이 된 지 7일이 지나면 자동으로 [배송확정] (상세의 처리상태에 자동 배송확정 예정일시 표시)</td></tr></tbody></table></div>",
+      "steps": "<ol><li><b>배송확정 누르기</b> 상품을 정상적으로 받았다면 [배송확정]을 눌러요.</li><li><b>안내 확인하기</b> &quot;주문번호 ○○ 상품을 정상적으로 수령하셨습니까?&quot; 안내와 배송확정 후의 변화를 확인해요.</li><li><b>확정하기</b> 팝업의 [배송확정]을 누르면 처리상태가 [배송확정]으로 바뀌어요. 마음이 바뀌면 [취소]를 눌러 닫아요.</li></ol><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>배송확정 후</td><td>구매자는 취소·반품을 요청할 수 없고 되돌릴 수 없음 (이후 반품은 공급자만 처리 가능)</td></tr><tr><td>소매 판매</td><td>배송확정된 상품은 소매상품으로 등록 가능 (<a href=\"#retail-product-list/register\">소매정보 등록하기</a>)</td></tr><tr><td>수량 반영</td><td>배송확정한 수량이 도매주문상품의 보유수량으로 더해짐. 같은 상품을 다시 구매해 배송확정하면 수량이 계속 쌓이고, 이미 만든 소매정보는 그대로 두고 수량만 늘어남 (공급자가 배송확정 후 반품을 승인해도 보유수량은 자동으로 차감되지 않음)</td></tr><tr><td>결제대기 주문</td><td>결제도 함께 [결제완료]로 처리</td></tr><tr><td>자동 배송확정</td><td>[배송중]이 된 지 7일이 지나면 자동으로 [배송확정] (상세의 처리상태에 자동 배송확정 예정일시 표시, 자동으로 확정되면 알림이 발송됨)</td></tr></tbody></table></div>",
       "cases": [
         {
           "title": "결제대기 주문을 배송확정할 때",
