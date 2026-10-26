@@ -106,7 +106,7 @@
     if (!shots || !shots.length) { return ''; }
     var pc = null, mo = null;
     shots.forEach(function (s) { if (s.device === 'pc') pc = s; else mo = s; });
-    var stack = shots.length > 1 && pc && mo && pc.ratio / (pc.ratio + mo.ratio) > 0.75;
+    var stack = shots.length > 1 && pc && mo && pc.ratio / (pc.ratio + mo.ratio) > 0.85;
     var items = shots.map(function (s) {
       var style = '';
       if (!stack && shots.length > 1 && s.ratio) style = ' style="flex:' + Math.round(s.ratio * 100000) + ' 1 0%"';
