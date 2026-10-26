@@ -730,7 +730,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.5208
                 }
               ],
-              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "shotCaption": "09SCM 주문목록 일괄변경 주문 미선택 화면",
               "html": "<ul><li>안내: &quot;일괄 변경할 주문을 선택해주세요.&quot;</li></ul>"
             },
             {
@@ -743,7 +743,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.5208
                 }
               ],
-              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "shotCaption": "09SCM 주문목록 일괄변경 처리 미선택 화면",
               "html": "<ul><li>안내: &quot;변경할 처리 상태를 선택해주세요.&quot;</li></ul>"
             },
             {
@@ -756,7 +756,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.0167
                 }
               ],
-              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "shotCaption": "09SCM 주문목록 일괄변경 전체 가능 화면",
               "html": "<ul><li>안내: 선택한 건수와 처리를 표시하고 진행 여부 확인</li><li>[진행]: 선택한 주문 모두 변경</li><li>완료 후: 선택 해제, 처리 건수 안내</li><li>알림톡: 고객 알림톡이 설정된 경우 발송될 수 있음</li></ul>"
             },
             {
@@ -769,7 +769,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.0167
                 }
               ],
-              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "shotCaption": "09SCM 주문목록 일괄변경 일부 가능 화면",
               "html": "<ul><li>안내: &quot;선택한 2건 중 1건만 [픽업대기] 처리됩니다.&quot;처럼 변경 가능한 건수 표시</li><li>[진행]: 조건에 맞는 주문만 변경, 나머지는 그대로 유지</li></ul>"
             },
             {
@@ -782,7 +782,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.5208
                 }
               ],
-              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "shotCaption": "09SCM 주문목록 일괄변경 불가 화면",
               "html": "<ul><li>안내: &quot;선택한 주문은 [픽업대기] 처리할 수 없습니다.&quot;</li><li>결과: 변경되는 주문 없음</li></ul>"
             }
           ]
@@ -5209,7 +5209,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
   "screens": [
     {
       "id": "list-view",
-      "label": "주문목록 보기",
+      "label": "주문접수관리 보기",
       "shots": [
         {
           "device": "pc",
