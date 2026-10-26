@@ -10050,7 +10050,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   function orderDetailSupplierActionsHTML(o) {
     const g = orderTabGroup(o);
     if (o.processStatus === '배송확정') {
-      return `${paymentConfirmButtonHTML(o)}${wsCancelButtonHTML(o)}<span class="field-hint">배송확정 완료 — 되돌릴 수 없습니다.</span>`;
+      return `${paymentConfirmButtonHTML(o)}${wsCancelButtonHTML(o)}`;
     }
     if (g === 'cr-approved') {
       return `<span class="field-hint">처리 완료된 주문입니다.</span>`;

@@ -101,10 +101,10 @@ def run_detail(b, device):
     # 대표: 배송중 · 카드결제
     detail(page, device, 'WO20260913012'); cb.save(page.screenshot(full_page=True), 'wh-recv-detail-' + device)
     # 처리상태·결제상태
-    detail(page, device, 'WO20260915001'); sec('wh-recv-od-unpaid-sec', ['배송 정보', '결제 정보']); bar(page, 'wh-recv-od-unpaid-bar', device)
+    detail(page, device, 'WO20260915001'); sec('wh-recv-od-unpaid-sec', ['결제 정보']); bar(page, 'wh-recv-od-unpaid-bar', device)
     detail(page, device, 'WO20260914021', paymentMethod='transfer', paymentStatus='결제대기', processStatus='배송중', settled=False); bar(page, 'wh-recv-od-shipunpaid-bar', device)
     detail(page, device, 'WO20260913012'); sec('wh-recv-od-ship-sec', ['배송 정보']); bar(page, 'wh-recv-od-ship-bar', device)
-    detail(page, device, 'WO20260910003'); sec('wh-recv-od-confirmed-sec', ['배송 정보']); bar(page, 'wh-recv-od-confirmed-bar', device)
+    detail(page, device, 'WO20260910003', requestNote='배송 전 연락 부탁드립니다.'); sec('wh-recv-od-confirmed-sec', ['배송 정보']); bar(page, 'wh-recv-od-confirmed-bar', device)
     # 취소·반품 흐름: 요청 → 반려 → 승인
     detail(page, device, 'WO20260915003'); sec('wh-recv-od-claim-sec', SECS); bar(page, 'wh-recv-od-claim-bar', device)
     # 같은 흐름(요청 → 반려 → 승인)은 계좌이체 주문으로 맞춰 구매자 요청 사유·공급자 처리 사유·환불계좌가 모두 보이게 캡처
@@ -159,15 +159,21 @@ def run_cancel(b, device):
     for s, v in [('#supplierCrRefundBank', '국민은행'), ('#supplierCrRefundHolder', '김영희'), ('#supplierCrRefundAccount', '12345678901')]: setv(s, v)
     modal(page, 'wh-recv-cancel-transfer', device); page.evaluate(CLOSE)
     popup('WO20260915001', '취소', 'wh-recv-cancel-unpaid')
-    # 카드 · 공급자부담 수수료(수수료 항목 없음)
+    # 카드 부분환불(구매자부담): 상품환불금액 + 수수료환불금액 + 배송비 포함
+    partial = """() => {
+      const r = document.querySelector('#supplierCrModalRoot'); r.querySelector('input[type=radio][value=partial]').click();
+      const e = r.querySelector('#supplierCrProductRefundAmount'); e.value = '20000'; e.dispatchEvent(new Event('input', {bubbles: true})); }"""
+    popup('WO20260915002', '취소', 'wh-recv-cancel-partial', partial)
+    # 카드 부분환불(공급자부담): 수수료환불금액 항목 없음
     mutate(page, 'WO20260915002', cardFeeAmount=0)
     page.evaluate("() => { const o = ORDER_LIST.find(x => x.orderNo === 'WO20260915002'); o.grandTotal = o.itemsTotal + o.shippingFee; }")
-    popup('WO20260915002', '취소', 'wh-recv-cancel-feeseller')
+    popup('WO20260915002', '취소', 'wh-recv-cancel-partial-feeseller', partial)
     page.evaluate("() => { const o = ORDER_LIST.find(x => x.orderNo === 'WO20260915002'); o.cardFeeAmount = Math.round(o.itemsTotal * 0.028); o.grandTotal = o.itemsTotal + o.shippingFee + o.cardFeeAmount; }")
-    # 카드 부분환불: 상품환불금액 + 수수료환불금액 + 배송비 포함
-    popup('WO20260915002', '취소', 'wh-recv-cancel-partial', """() => {
-      const r = document.querySelector('#supplierCrModalRoot'); r.querySelector('input[type=radio][value=partial]').click();
-      const e = r.querySelector('#supplierCrProductRefundAmount'); e.value = '20000'; e.dispatchEvent(new Event('input', {bubbles: true})); }""")
+    # 계좌이체 부분환불: 환불계좌 입력
+    page.evaluate("openSupplierCrModal('WO20260914005','취소')"); page.wait_for_timeout(400)
+    for s_, v in [('#supplierCrRefundBank', '국민은행'), ('#supplierCrRefundHolder', '김영희'), ('#supplierCrRefundAccount', '12345678901')]: setv(s_, v)
+    page.evaluate(partial); page.wait_for_timeout(300)
+    modal(page, 'wh-recv-cancel-partial-transfer', device); page.evaluate(CLOSE)
     # 입력 오류: 부분환불 0원 + 반환 예금주 비움
     popup('WO20260915002', '취소', 'wh-recv-cancel-error', """() => {
       const r = document.querySelector('#supplierCrModalRoot'); r.querySelector('input[type=radio][value=partial]').click();
