@@ -240,6 +240,7 @@
   function applyTableTemplate(root) {
     var MARK = /^[○×△◎●\-–]$/;
     root.querySelectorAll('.guide-section table').forEach(function (tb) {
+      if (tb.hasAttribute('data-custom')) return; // 컬럼 폭을 직접 지정한 표는 자동 템플릿 제외
       var rows = tb.querySelectorAll('tbody tr');
       var n = tb.querySelectorAll('thead th').length;
       if (!rows.length || !n) return;

@@ -10354,7 +10354,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     root.querySelector('#buyerCancelConfirmBtn').addEventListener('click', () => {
       if (paidByCard && o.settled) {
         closeBuyerCancelModal();
-        openBulkAlert({ message: '주문을 취소하지 못했습니다. 판매자에게 문의해주세요.' });
+        openBulkAlert({ message: '주문을 취소하지 못했습니다. 공급자에게 문의해주세요.' });
         return;
       }
       const stamp = mockNowStamp();
