@@ -36,6 +36,11 @@ def run(device, b):
     page.evaluate("""(no) => { currentCat = 'retail'; currentRetailOrderDetailNo = no; currentItem = 'retail-order-detail'; renderAll(); window.scrollTo(0, 0); }""", 'RO20260916105')
     page.wait_for_timeout(500); page.mouse.move(0, 0); cb.fit_height(page, 1500 if pc else 700)
     cb.sec_shot(page, None, 'order-detail-refundwait-sec-' + device, ['결제정보', '취소·반품 정보'])
+    # 카드결제 정산 전 취소 승인 → 결제취소 (반환 예금주 포함, 공급자 직권 취소·전체환불) — 결제완료 주문이 취소·반품되면
+    page.evaluate("""(no) => { const o = RETAIL_ORDER_LIST.find(x => x.orderNo === no); o.returnHolder = MY_PROFILE.bankHolder;
+      currentCat = 'retail'; currentRetailOrderDetailNo = no; currentItem = 'retail-order-detail'; renderAll(); window.scrollTo(0, 0); }""", 'RO20260914001')
+    page.wait_for_timeout(500); page.mouse.move(0, 0); cb.fit_height(page, 1500 if pc else 700)
+    cb.sec_shot(page, None, 'order-detail-done-sec-' + device, ['결제정보', '취소·반품 정보'])
     ctx.close()
 
 if __name__ == '__main__':

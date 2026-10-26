@@ -1079,17 +1079,17 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "device": "pc",
                   "src": "../assets/img/partner/order-detail-done-sec-pc.webp",
                   "alt": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 PC 화면",
-                  "ratio": 3.5335
+                  "ratio": 2.4552
                 },
                 {
                   "device": "mobile",
                   "src": "../assets/img/partner/order-detail-done-sec-mobile.webp",
                   "alt": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 모바일 화면",
-                  "ratio": 0.6627
+                  "ratio": 0.5232
                 }
               ],
               "shotCaption": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 화면 (PC / 모바일)",
-              "html": "<ul><li>결제상태: [결제취소]로 변경</li><li>표시: 환불구분, 취소·반품 일시, [결제완료] 일시</li><li>카드결제 정산 전: PG사를 통해 자동으로 [결제취소]</li><li>카드결제 정산 후: [환불대기]</li><li>계좌이체·현장결제: 판매자가 직접 환불</li><li>환불 방법: <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a> 참고</li></ul>"
+              "html": "<ul><li>결제상태: [결제취소]로 변경</li><li>표시: 환불구분, 취소·반품 일시, [결제완료] 일시</li><li>카드결제 정산 전: PG사를 통해 자동으로 [결제취소]</li><li>카드결제 정산 후: [환불대기]</li><li>카드결제: 반환 예금주 표시</li><li>계좌이체·현장결제: 판매자가 직접 환불</li><li>환불 방법: <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a> 참고</li></ul>"
             },
             {
               "title": "정산 후 카드결제 주문이 취소·반품되면",

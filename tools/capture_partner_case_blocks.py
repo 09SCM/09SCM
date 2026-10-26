@@ -104,7 +104,7 @@ def run(device, b):
     retail_detail('RO20260919001')   # 취소·반품 요청
     sec_shot(page, None, 'order-detail-claim-sec-' + device, ['픽업정보', '결제정보', '취소·반품 정보']); bar_shot(page, 'order-detail-claim-bar-' + device)
     retail_detail('RO20260919002')   # 처리 완료
-    sec_shot(page, None, 'order-detail-done-sec-' + device, ['결제정보', '취소·반품 정보'])
+    # order-detail-done-sec(결제완료 주문이 취소·반품되면)은 tools/capture_partner_claim_flow.py 에서 촬영
     bar_shot(page, 'order-detail-done-bar-' + device)
 
     # ---- 소매 > 상품목록 > 상세보기 (보유수량 0: 소매판매상태~판매가능수량, 하단 바) ----
