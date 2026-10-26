@@ -804,288 +804,308 @@ window.GUIDE_CONTENT['retail-order-list'] = {
       ],
       "shotCaption": "09SCM 주문 상세 화면 (PC / 모바일)",
       "overview": "<p>주문 한 건의 상품, 주문자, 수령 정보, 결제 정보를 모두 확인하고 처리하는 화면이에요. 목록에서 [상세보기]를 누르면 열려요.</p><p>처리 버튼은 화면 아래에 고정된 영역에 있고, 목록과 같은 조건으로 보여요. 상세에서는 [결제확인]도 처리할 수 있어요.</p>",
-      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>픽업가능기간</td><td>상품별 픽업 가능 기간 (픽업 주문만 표시)</td></tr><tr><td>구매가</td><td>주문 당시 상품 가격</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>구매가 × 수량</td></tr></tbody></table></div><h3>주문 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>주문경로</td><td>링크주문, 채팅주문 구분</td></tr><tr><td>수령방식</td><td>픽업, 배달 구분</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문자명 · 휴대폰번호 · 채팅주문 닉네임</td><td>주문한 시점의 정보</td></tr><tr><td>회원주문 코드</td><td>회원을 구분하는 숫자 4자리 코드</td></tr></tbody></table></div><p>이후에 회원정보를 고쳐도 이미 접수된 주문의 주문자명, 휴대폰번호, 닉네임은 바뀌지 않아요. 회원주문 코드와 닉네임은 링크주문 주문자에게도 똑같이 표시돼요.</p><h3>픽업 정보 · 배달 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 (노쇼후보 주문은 단계 옆에 함께 표시, 완료 주문은 [반품요청] 가능 기한도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 표시하지 않음)</td></tr><tr><td>공통 픽업가능기간</td><td>주문한 상품들의 픽업가능기간이 겹치는 기간 (픽업 주문만)</td></tr><tr><td>배달지</td><td>주문할 때 구매자가 입력한 배달지 (배달 주문만)</td></tr><tr><td>요청사항</td><td>주문할 때 구매자가 남긴 요청</td></tr></tbody></table></div><p>수령방식에 따라 제목과 항목이 달라져요. 배달지와 요청사항은 주문할 때 입력한 값이라서, 이후 회원이 배송지를 바꾸거나 지워도 이미 접수된 주문에는 영향이 없어요.</p><h3>결제 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료]와 결제 일시 ([결제취소]는 취소 일시를 표시하고, 결제완료 후 취소된 주문은 환불구분과 [결제완료] 일시도 함께 표시)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체, 현장결제</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>배달비</td><td>배달 주문에만 표시 (0원이어도 표시)</td></tr><tr><td>총 결제금액</td><td>상품금액과 배달비를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 노쇼 처리, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 요청 건만 표시)</td></tr><tr><td>공급자 처리 사유</td><td>판매자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
+      "steps": "<h3>주문상품</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>상품명</td><td>주문한 상품 이름</td></tr><tr><td>픽업가능기간</td><td>상품별 픽업 가능 기간 (픽업 주문만 표시)</td></tr><tr><td>구매가</td><td>주문 당시 상품 가격</td></tr><tr><td>수량</td><td>주문한 수량</td></tr><tr><td>소계</td><td>구매가 × 수량</td></tr></tbody></table></div><h3>주문 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문번호 · 주문일시</td><td>주문 번호와 접수 일시</td></tr><tr><td>주문경로</td><td>링크주문, 채팅주문 구분</td></tr><tr><td>수령방식</td><td>픽업, 배달 구분</td></tr></tbody></table></div><h3>주문자 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>주문자명 · 휴대폰번호 · 채팅주문 닉네임</td><td>주문한 시점의 정보</td></tr><tr><td>회원주문 코드</td><td>회원을 구분하는 숫자 4자리 코드</td></tr></tbody></table></div><p>이후에 회원정보를 고쳐도 이미 접수된 주문의 주문자명, 휴대폰번호, 닉네임은 바뀌지 않아요. 회원주문 코드와 닉네임은 링크주문 주문자에게도 똑같이 표시돼요.</p><h3>픽업 정보 · 배달 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 처리 단계와 처리 일시 (노쇼후보 주문은 단계 옆에 함께 표시, 완료 주문은 [반품요청] 가능 기한도 함께 표시, 취소·반품이 진행 중이거나 끝난 주문은 표시하지 않음)</td></tr><tr><td>공통 픽업가능기간</td><td>주문한 상품들의 픽업가능기간이 겹치는 기간 (픽업 주문만)</td></tr><tr><td>배달지</td><td>주문할 때 구매자가 입력한 배달지 (배달 주문만)</td></tr><tr><td>요청사항</td><td>주문할 때 구매자가 남긴 요청</td></tr></tbody></table></div><p>수령방식에 따라 제목과 항목이 달라져요. 배달지와 요청사항은 주문할 때 입력한 값이라서, 이후 회원이 배송지를 바꾸거나 지워도 이미 접수된 주문에는 영향이 없어요.</p><h3>결제 정보</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>결제상태</td><td>[결제대기], [결제완료], [환불대기]와 결제 일시 ([결제취소]는 취소 일시를 표시하고, 결제완료 후 취소된 주문은 환불구분과 [결제완료] 일시도 함께 표시, [환불대기]는 정산이 끝난 카드결제 주문을 취소·반품 승인해 PG사에 환불을 요청한 상태)</td></tr><tr><td>결제수단</td><td>카드결제, 계좌이체, 현장결제</td></tr><tr><td>입금자명</td><td>계좌이체 주문에만 표시</td></tr><tr><td>상품금액</td><td>주문 상품 소계의 합계</td></tr><tr><td>배달비</td><td>배달 주문에만 표시 (0원이어도 표시)</td></tr><tr><td>총 결제금액</td><td>상품금액과 배달비를 더한 금액</td></tr></tbody></table></div><h3>취소·반품 정보</h3><p>취소·반품 이력이 있는 주문에만 보이는 조회 전용 영역이에요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>처리상태</td><td>현재 상태와 해당 일시 (최근 1건)</td></tr><tr><td>처리 주체</td><td>구매자 요청, 공급자 직권, 노쇼 처리, 구매자 즉시취소 구분</td></tr><tr><td>환불구분 · 총환불금액</td><td>승인으로 확정된 주문에만 표시</td></tr><tr><td>환불은행 · 예금주 · 환불계좌번호</td><td>계좌이체로 결제한 이력이 있는 주문에만 표시</td></tr><tr><td>반환 예금주</td><td>카드결제 주문의 취소·반품에 표시 (정산금을 반환하는 계좌의 예금주)</td></tr><tr><td>구매자 요청 사유</td><td>구매자가 취소·반품을 요청하며 입력한 사유 (구매자 요청 건만 표시)</td></tr><tr><td>공급자 처리 사유</td><td>판매자가 처리하며 입력한 사유 (입력한 건만 표시)</td></tr></tbody></table></div>",
       "cases": [
         {
-          "title": "배달 주문이면",
-          "shots": [
+          "group": "수령방식·처리상태에 따라",
+          "rows": [
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-detail-delivery-pc.webp",
-              "alt": "09SCM 주문 상세 배달 PC 화면",
-              "ratio": 1.4269
-            },
-            {
-              "device": "mobile",
-              "src": "../assets/img/partner/order-detail-delivery-mobile.webp",
-              "alt": "09SCM 주문 상세 배달 모바일 화면",
-              "ratio": 0.2965
-            }
-          ],
-          "shotCaption": "09SCM 주문 상세 배달 화면 (PC / 모바일)",
-          "html": "<p>상품 표에 픽업가능기간이 없고, 픽업 정보 대신 배달 정보와 배달지가 보여요. 결제 정보에는 배달비가 따로 표시돼요. 배달 주문은 항상 카드결제이고 [결제완료] 상태로 접수돼요.</p>"
-        },
-        {
-          "title": "결제대기 주문이면",
-          "blocks": [
-              {
-                "shots": [
-                  {
-                    "device": "pc",
-                    "src": "../assets/img/partner/order-detail-unpaid-sec-pc.webp",
-                    "alt": "09SCM 주문 상세 결제대기 결제 정보 영역 PC 화면",
-                    "ratio": 5.1594
-                  },
-                  {
-                    "device": "mobile",
-                    "src": "../assets/img/partner/order-detail-unpaid-sec-mobile.webp",
-                    "alt": "09SCM 주문 상세 결제대기 결제 정보 영역 모바일 화면",
-                    "ratio": 1.1168
-                  }
-                ],
-                "shotCaption": "09SCM 주문 상세 결제대기 결제 정보 영역 화면 (PC / 모바일)",
-                "html": "<p>계좌이체 주문이 입금 전이거나 현장결제 주문이면 결제 정보의 결제상태가 [결제대기]로 보여요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>현장결제</td><td>픽업할 때 결제하는 방식이라 항상 [결제대기]로 접수</td></tr><tr><td>카드결제</td><td>주문과 동시에 [결제완료]로 접수</td></tr></tbody></table></div>"
-              },
-              {
-                "shots": [
-                  {
-                    "device": "pc",
-                    "src": "../assets/img/partner/order-detail-unpaid-bar-pc.webp",
-                    "alt": "09SCM 주문 상세 결제대기 하단 바 PC 화면",
-                    "ratio": 15.1579
-                  },
-                  {
-                    "device": "mobile",
-                    "src": "../assets/img/partner/order-detail-unpaid-bar-mobile.webp",
-                    "alt": "09SCM 주문 상세 결제대기 하단 바 모바일 화면",
-                    "ratio": 3.52
-                  }
-                ],
-                "shotCaption": "09SCM 주문 상세 결제대기 하단 바 화면 (PC / 모바일)",
-                "html": "<p>결제상태가 [결제대기]인 주문은 하단 바에 [결제확인]이 보여요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>[결제확인]</td><td>결제상태만 [결제완료]로 바뀌고 처리상태는 그대로</td></tr><tr><td>완료 처리</td><td>[결제대기]인 채로 완료하면 결제도 함께 [결제완료]로 바뀜 (버튼 이름은 [결제·픽업완료])</td></tr></tbody></table></div>"
-              }
-            ]
-        },
-        {
-          "title": "노쇼후보 주문이면",
-          "blocks": [
-              {
-                "shots": [
-                  {
-                    "device": "pc",
-                    "src": "../assets/img/partner/order-detail-noshow-sec-pc.webp",
-                    "alt": "09SCM 주문 상세 노쇼후보 픽업 정보 영역 PC 화면",
-                    "ratio": 5.1782
-                  },
-                  {
-                    "device": "mobile",
-                    "src": "../assets/img/partner/order-detail-noshow-sec-mobile.webp",
-                    "alt": "09SCM 주문 상세 노쇼후보 픽업 정보 영역 모바일 화면",
-                    "ratio": 1.1702
-                  }
-                ],
-                "shotCaption": "09SCM 주문 상세 노쇼후보 픽업 정보 영역 화면 (PC / 모바일)",
-                "html": "<p>픽업 정보 위에 공통 픽업가능기간이 지났다는 안내가 보이고, 처리상태 옆에 <b>노쇼후보</b>가 표시돼요.</p>"
-              },
-              {
-                "shots": [
-                  {
-                    "device": "pc",
-                    "src": "../assets/img/partner/order-detail-noshow-bar-pc.webp",
-                    "alt": "09SCM 주문 상세 노쇼후보 하단 바 PC 화면",
-                    "ratio": 15.1579
-                  },
-                  {
-                    "device": "mobile",
-                    "src": "../assets/img/partner/order-detail-noshow-bar-mobile.webp",
-                    "alt": "09SCM 주문 상세 노쇼후보 하단 바 모바일 화면",
-                    "ratio": 3.52
-                  }
-                ],
-                "shotCaption": "09SCM 주문 상세 노쇼후보 하단 바 화면 (PC / 모바일)",
-                "html": "<p>아직 처리할 수 있는 주문이라 다음 단계 버튼이 그대로 보여요. 노쇼인지 확인한 뒤 [취소처리]에서 처리 주체를 노쇼처리로 선택해요.</p>"
-              }
-            ]
-        },
-{
-          "title": "픽업·배달 완료된 주문이면",
-          "shots": [
-            {
-              "device": "pc",
-              "src": "../assets/img/partner/order-detail-complete-sec-pc.webp",
-              "alt": "09SCM 주문 상세 완료 주문 픽업 정보 영역 PC 화면",
-              "ratio": 6.5321
-            },
-            {
-              "device": "mobile",
-              "src": "../assets/img/partner/order-detail-complete-sec-mobile.webp",
-              "alt": "09SCM 주문 상세 완료 주문 픽업 정보 영역 모바일 화면",
-              "ratio": 1.457
-            }
-          ],
-          "shotCaption": "09SCM 주문 상세 완료 주문 픽업 정보 영역 화면 (PC / 모바일)",
-          "html": "<p>[픽업완료]·[배달완료] 주문은 처리상태 옆에 처리 일시와 함께 구매자가 [반품요청]을 할 수 있는 기한이 표시돼요. 취소·반품 이력이 있는 주문은 구매자가 다시 요청할 수 없어서 기한이 표시되지 않아요.</p>"
-        },
-        {
-          "title": "취소·반품 요청이 들어온 주문이면",
-          "blocks": [
-              {
-                "shots": [
-                  {
-                    "device": "pc",
-                    "src": "../assets/img/partner/order-detail-claim-sec-pc.webp",
-                    "alt": "09SCM 주문 상세 취소요청 처리상태·취소·반품 정보 영역 PC 화면",
-                    "ratio": 1.8663
-                  },
-                  {
-                    "device": "mobile",
-                    "src": "../assets/img/partner/order-detail-claim-sec-mobile.webp",
-                    "alt": "09SCM 주문 상세 취소요청 처리상태·취소·반품 정보 영역 모바일 화면",
-                    "ratio": 0.4159
-                  }
-                ],
-                "shotCaption": "09SCM 주문 상세 취소요청 처리상태·취소·반품 정보 영역 화면 (PC / 모바일)",
-                "html": "<p>취소·반품 정보 영역이 나타나고, 구매자가 남긴 요청 사유를 볼 수 있고, 계좌이체 주문은 환불계좌도 볼 수 있어요. 처리상태는 &quot;-&quot;로 비워져요.</p>"
-              },
-              {
-                "shots": [
-                  {
-                    "device": "pc",
-                    "src": "../assets/img/partner/order-detail-claim-bar-pc.webp",
-                    "alt": "09SCM 주문 상세 취소요청 하단 바 PC 화면",
-                    "ratio": 15.1579
-                  },
-                  {
-                    "device": "mobile",
-                    "src": "../assets/img/partner/order-detail-claim-bar-mobile.webp",
-                    "alt": "09SCM 주문 상세 취소요청 하단 바 모바일 화면",
-                    "ratio": 3.52
-                  }
-                ],
-                "shotCaption": "09SCM 주문 상세 취소요청 하단 바 화면 (PC / 모바일)",
-                "html": "<p>다음단계·되돌리기 버튼 대신 [취소처리] 또는 [반품처리]만 보여요. 요청이 들어온 주문에는 [결제확인]이 보이지 않아요.</p>"
-              }
-            ]
-        },
-        {
-          "title": "취소·반품이 반려된 주문이면",
-          "blocks": [
-            {
+              "title": "배달 주문이면",
               "shots": [
                 {
                   "device": "pc",
-                  "src": "../assets/img/partner/order-detail-reject-sec-pc.webp",
-                  "alt": "09SCM 주문 상세 취소·반품 반려 정보 영역 PC 화면",
-                  "ratio": 2.0142
+                  "src": "../assets/img/partner/order-detail-delivery-pc.webp",
+                  "alt": "09SCM 주문 상세 배달 PC 화면",
+                  "ratio": 1.4269
                 },
                 {
                   "device": "mobile",
-                  "src": "../assets/img/partner/order-detail-reject-sec-mobile.webp",
-                  "alt": "09SCM 주문 상세 취소·반품 반려 정보 영역 모바일 화면",
-                  "ratio": 0.4666
+                  "src": "../assets/img/partner/order-detail-delivery-mobile.webp",
+                  "alt": "09SCM 주문 상세 배달 모바일 화면",
+                  "ratio": 0.2965
                 }
               ],
-              "shotCaption": "09SCM 주문 상세 취소·반품 반려 정보 영역 화면 (PC / 모바일)",
-              "html": "<p>구매자의 취소요청·반품요청을 반려하면 처리상태가 요청 이전 상태로 돌아가고, 취소·반품 정보 영역에 [취소반려] 또는 [반품반려]와 처리 일시, 구매자 요청 사유, 공급자 처리 사유가 표시돼요.</p>"
+              "shotCaption": "09SCM 주문 상세 배달 화면 (PC / 모바일)",
+              "html": "<p>상품 표에 픽업가능기간이 없고, 픽업 정보 대신 배달 정보와 배달지가 보여요. 결제 정보에는 배달비가 따로 표시돼요. 배달 주문은 항상 카드결제이고 [결제완료] 상태로 접수돼요.</p>"
             },
             {
+              "title": "노쇼후보 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-noshow-sec-pc.webp",
+                      "alt": "09SCM 주문 상세 노쇼후보 픽업 정보 영역 PC 화면",
+                      "ratio": 5.1782
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-noshow-sec-mobile.webp",
+                      "alt": "09SCM 주문 상세 노쇼후보 픽업 정보 영역 모바일 화면",
+                      "ratio": 1.1702
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 노쇼후보 픽업 정보 영역 화면 (PC / 모바일)",
+                  "html": "<p>픽업 정보 위에 공통 픽업가능기간이 지났다는 안내가 보이고, 처리상태 옆에 <b>노쇼후보</b>가 표시돼요.</p>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-noshow-bar-pc.webp",
+                      "alt": "09SCM 주문 상세 노쇼후보 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-noshow-bar-mobile.webp",
+                      "alt": "09SCM 주문 상세 노쇼후보 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 노쇼후보 하단 바 화면 (PC / 모바일)",
+                  "html": "<p>아직 처리할 수 있는 주문이라 다음 단계 버튼이 그대로 보여요. 노쇼인지 확인한 뒤 [취소처리]에서 처리 주체를 노쇼처리로 선택해요.</p>"
+                }
+              ]
+            },
+            {
+              "title": "픽업·배달 완료된 주문이면",
               "shots": [
                 {
                   "device": "pc",
-                  "src": "../assets/img/partner/order-detail-reject-bar-pc.webp",
-                  "alt": "09SCM 주문 상세 취소·반품 반려 하단 바 PC 화면",
-                  "ratio": 15.1579
+                  "src": "../assets/img/partner/order-detail-complete-sec-pc.webp",
+                  "alt": "09SCM 주문 상세 완료 주문 픽업 정보 영역 PC 화면",
+                  "ratio": 6.5321
                 },
                 {
                   "device": "mobile",
-                  "src": "../assets/img/partner/order-detail-reject-bar-mobile.webp",
-                  "alt": "09SCM 주문 상세 취소·반품 반려 하단 바 모바일 화면",
-                  "ratio": 3.52
+                  "src": "../assets/img/partner/order-detail-complete-sec-mobile.webp",
+                  "alt": "09SCM 주문 상세 완료 주문 픽업 정보 영역 모바일 화면",
+                  "ratio": 1.457
                 }
               ],
-              "shotCaption": "09SCM 주문 상세 취소·반품 반려 하단 바 화면 (PC / 모바일)",
-              "html": "<p>정상 처리 흐름에 다시 포함돼서 처리상태에 맞는 버튼이 다시 보여요. 예를 들어 [배달완료] 상태로 돌아온 주문은 [반품처리]를 할 수 있어요.</p>"
+              "shotCaption": "09SCM 주문 상세 완료 주문 픽업 정보 영역 화면 (PC / 모바일)",
+              "html": "<p>[픽업완료]·[배달완료] 주문은 처리상태 옆에 처리 일시와 함께 구매자가 [반품요청]을 할 수 있는 기한이 표시돼요. 취소·반품 이력이 있는 주문은 구매자가 다시 요청할 수 없어서 기한이 표시되지 않아요.</p>"
             }
           ]
         },
         {
-          "title": "취소·반품이 승인된 주문이면",
-          "blocks": [
+          "group": "결제상태에 따라",
+          "rows": [
             {
-              "shots": [
+              "title": "결제대기 주문이면",
+              "blocks": [
                 {
-                  "device": "pc",
-                  "src": "../assets/img/partner/order-detail-approved-sec-pc.webp",
-                  "alt": "09SCM 주문 상세 취소·반품 승인 정보 영역 PC 화면",
-                  "ratio": 5.1594
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-unpaid-sec-pc.webp",
+                      "alt": "09SCM 주문 상세 결제대기 결제 정보 영역 PC 화면",
+                      "ratio": 5.1594
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-unpaid-sec-mobile.webp",
+                      "alt": "09SCM 주문 상세 결제대기 결제 정보 영역 모바일 화면",
+                      "ratio": 1.1168
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 결제대기 결제 정보 영역 화면 (PC / 모바일)",
+                  "html": "<p>결제상태가 [결제대기]로 보이는 주문이에요.</p><ul><li>계좌이체 주문이 입금 전이면 [결제대기]</li><li>현장결제 주문은 픽업할 때 결제하므로 항상 [결제대기]로 접수</li><li>카드결제 주문은 주문과 동시에 [결제완료]로 접수</li></ul>"
                 },
                 {
-                  "device": "mobile",
-                  "src": "../assets/img/partner/order-detail-approved-sec-mobile.webp",
-                  "alt": "09SCM 주문 상세 취소·반품 승인 정보 영역 모바일 화면",
-                  "ratio": 1.1168
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-unpaid-bar-pc.webp",
+                      "alt": "09SCM 주문 상세 결제대기 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-unpaid-bar-mobile.webp",
+                      "alt": "09SCM 주문 상세 결제대기 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 결제대기 하단 바 화면 (PC / 모바일)",
+                  "html": "<p>하단 바에 [결제확인]이 보여요.</p><ul><li>[결제확인]: 결제상태만 [결제완료]로 바뀌고 처리상태는 그대로</li><li>[결제대기]인 채로 완료하면 결제도 함께 [결제완료]로 바뀜 (버튼 이름은 [결제·픽업완료])</li></ul>"
                 }
-              ],
-              "shotCaption": "09SCM 주문 상세 취소·반품 승인 정보 영역 화면 (PC / 모바일)",
-              "html": "<p>승인으로 확정되면 처리상태가 비워지고, 취소·반품 정보 영역에 [취소승인] 또는 [반품승인]과 처리 일시, 처리 주체, 환불구분·총환불금액, 공급자 처리 사유가 표시돼요.</p>"
-            },
-            {
-              "shots": [
-                {
-                  "device": "pc",
-                  "src": "../assets/img/partner/order-detail-done-bar-pc.webp",
-                  "alt": "09SCM 주문 상세 처리 완료 하단 바 PC 화면",
-                  "ratio": 19.2
-                },
-                {
-                  "device": "mobile",
-                  "src": "../assets/img/partner/order-detail-done-bar-mobile.webp",
-                  "alt": "09SCM 주문 상세 처리 완료 하단 바 모바일 화면",
-                  "ratio": 4.1905
-                }
-              ],
-              "shotCaption": "09SCM 주문 상세 처리 완료 하단 바 화면 (PC / 모바일)",
-              "html": "<p>하단 바에는 &quot;처리 완료된 주문입니다.&quot; 안내만 있고 처리 버튼은 없어요.</p>"
+              ]
             }
           ]
         },
         {
-          "title": "결제완료 주문이 취소되면",
-          "shots": [
+          "group": "취소·반품 처리 흐름에 따라",
+          "rows": [
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-detail-done-sec-pc.webp",
-              "alt": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 PC 화면",
-              "ratio": 3.5335
+              "title": "취소·반품 요청이 들어온 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-claim-sec-pc.webp",
+                      "alt": "09SCM 주문 상세 취소요청 처리상태·취소·반품 정보 영역 PC 화면",
+                      "ratio": 1.8663
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-claim-sec-mobile.webp",
+                      "alt": "09SCM 주문 상세 취소요청 처리상태·취소·반품 정보 영역 모바일 화면",
+                      "ratio": 0.4159
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 취소요청 처리상태·취소·반품 정보 영역 화면 (PC / 모바일)",
+                  "html": "<p>취소·반품 정보 영역이 나타나고, 구매자가 남긴 요청 사유를 볼 수 있고, 계좌이체 주문은 환불계좌도 볼 수 있어요. 처리상태는 &quot;-&quot;로 비워져요.</p>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-claim-bar-pc.webp",
+                      "alt": "09SCM 주문 상세 취소요청 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-claim-bar-mobile.webp",
+                      "alt": "09SCM 주문 상세 취소요청 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 취소요청 하단 바 화면 (PC / 모바일)",
+                  "html": "<p>다음단계·되돌리기 버튼 대신 [취소처리] 또는 [반품처리]만 보여요. 요청이 들어온 주문에는 [결제확인]이 보이지 않아요.</p>"
+                }
+              ]
             },
             {
-              "device": "mobile",
-              "src": "../assets/img/partner/order-detail-done-sec-mobile.webp",
-              "alt": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 모바일 화면",
-              "ratio": 0.6627
+              "title": "취소·반품이 반려된 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-reject-sec-pc.webp",
+                      "alt": "09SCM 주문 상세 취소·반품 반려 정보 영역 PC 화면",
+                      "ratio": 2.0142
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-reject-sec-mobile.webp",
+                      "alt": "09SCM 주문 상세 취소·반품 반려 정보 영역 모바일 화면",
+                      "ratio": 0.4666
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 취소·반품 반려 정보 영역 화면 (PC / 모바일)",
+                  "html": "<p>구매자의 취소요청·반품요청을 반려하면 처리상태가 요청 이전 상태로 돌아가고, 취소·반품 정보 영역에 [취소반려] 또는 [반품반려]와 처리 일시, 구매자 요청 사유, 공급자 처리 사유가 표시돼요.</p>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-reject-bar-pc.webp",
+                      "alt": "09SCM 주문 상세 취소·반품 반려 하단 바 PC 화면",
+                      "ratio": 15.1579
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-reject-bar-mobile.webp",
+                      "alt": "09SCM 주문 상세 취소·반품 반려 하단 바 모바일 화면",
+                      "ratio": 3.52
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 취소·반품 반려 하단 바 화면 (PC / 모바일)",
+                  "html": "<p>정상 처리 흐름에 다시 포함돼서 처리상태에 맞는 버튼이 다시 보여요. 예를 들어 [배달완료] 상태로 돌아온 주문은 [반품처리]를 할 수 있어요.</p>"
+                }
+              ]
+            },
+            {
+              "title": "취소·반품이 승인된 주문이면",
+              "blocks": [
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-approved-sec-pc.webp",
+                      "alt": "09SCM 주문 상세 취소·반품 승인 정보 영역 PC 화면",
+                      "ratio": 5.1594
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-approved-sec-mobile.webp",
+                      "alt": "09SCM 주문 상세 취소·반품 승인 정보 영역 모바일 화면",
+                      "ratio": 1.1168
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 취소·반품 승인 정보 영역 화면 (PC / 모바일)",
+                  "html": "<p>승인으로 확정되면 처리상태가 비워지고, 취소·반품 정보 영역에 [취소승인] 또는 [반품승인]과 처리 일시, 처리 주체, 환불구분·총환불금액, 공급자 처리 사유가 표시돼요.</p>"
+                },
+                {
+                  "shots": [
+                    {
+                      "device": "pc",
+                      "src": "../assets/img/partner/order-detail-done-bar-pc.webp",
+                      "alt": "09SCM 주문 상세 처리 완료 하단 바 PC 화면",
+                      "ratio": 19.2
+                    },
+                    {
+                      "device": "mobile",
+                      "src": "../assets/img/partner/order-detail-done-bar-mobile.webp",
+                      "alt": "09SCM 주문 상세 처리 완료 하단 바 모바일 화면",
+                      "ratio": 4.1905
+                    }
+                  ],
+                  "shotCaption": "09SCM 주문 상세 처리 완료 하단 바 화면 (PC / 모바일)",
+                  "html": "<p>하단 바에는 &quot;처리 완료된 주문입니다.&quot; 안내만 있고 처리 버튼은 없어요.</p>"
+                }
+              ]
             }
-          ],
-          "shotCaption": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 화면 (PC / 모바일)",
-          "html": "<p>결제완료 주문의 취소·반품이 승인되면 결제상태가 [결제취소]로 바뀌고, 환불구분과 취소 일시, [결제완료] 일시가 함께 표시돼요. 카드결제는 PG사를 통해 자동으로 취소되고, 계좌이체와 현장결제는 환불을 판매자가 직접 진행해요. 자세한 내용은 <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a>에서 확인해주세요.</p>"
+          ]
         },
         {
-          "title": "결제대기 주문이 취소되면",
-          "shots": [
+          "group": "취소된 주문의 결제상태",
+          "rows": [
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-detail-unpaid-cancel-sec-pc.webp",
-              "alt": "09SCM 주문 상세 결제대기 주문 취소 결제·취소·반품 정보 영역 PC 화면",
-              "ratio": 3.5335
+              "title": "결제완료 주문이 취소되면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-detail-done-sec-pc.webp",
+                  "alt": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 PC 화면",
+                  "ratio": 3.5335
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/order-detail-done-sec-mobile.webp",
+                  "alt": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 모바일 화면",
+                  "ratio": 0.6627
+                }
+              ],
+              "shotCaption": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 화면 (PC / 모바일)",
+              "html": "<p>결제완료 주문의 취소·반품이 승인되면 결제상태가 [결제취소]로 바뀌고, 환불구분과 취소 일시, [결제완료] 일시가 함께 표시돼요. 카드결제는 정산 전이면 PG사를 통해 자동으로 [결제취소]되고, 정산이 끝났으면 [환불대기]로 바뀌어요. 계좌이체와 현장결제는 환불을 판매자가 직접 진행해요. 자세한 내용은 <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a>에서 확인해주세요.</p>"
             },
             {
-              "device": "mobile",
-              "src": "../assets/img/partner/order-detail-unpaid-cancel-sec-mobile.webp",
-              "alt": "09SCM 주문 상세 결제대기 주문 취소 결제·취소·반품 정보 영역 모바일 화면",
-              "ratio": 0.7586
+              "title": "결제대기 주문이 취소되면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-detail-unpaid-cancel-sec-pc.webp",
+                  "alt": "09SCM 주문 상세 결제대기 주문 취소 결제·취소·반품 정보 영역 PC 화면",
+                  "ratio": 3.5335
+                },
+                {
+                  "device": "mobile",
+                  "src": "../assets/img/partner/order-detail-unpaid-cancel-sec-mobile.webp",
+                  "alt": "09SCM 주문 상세 결제대기 주문 취소 결제·취소·반품 정보 영역 모바일 화면",
+                  "ratio": 0.7586
+                }
+              ],
+              "shotCaption": "09SCM 주문 상세 결제대기 주문 취소 결제·취소·반품 정보 영역 화면 (PC / 모바일)",
+              "html": "<p>결제대기 주문을 취소하면 결제된 금액이 없어서 환불 없이 결제상태만 [결제취소]로 바뀌어요. 결제상태에는 취소 일시만 표시되고 환불구분과 총환불금액은 나타나지 않아요. 누가 취소했는지는 처리 주체에서 확인해요(구매자 즉시취소, 공급자 직권, 노쇼 처리). 결제완료 일시가 없어서 소매매출조회에는 집계되지 않아요.</p>"
             }
-          ],
-          "shotCaption": "09SCM 주문 상세 결제대기 주문 취소 결제·취소·반품 정보 영역 화면 (PC / 모바일)",
-          "html": "<p>결제대기 주문을 취소하면 결제된 금액이 없어서 환불 없이 결제상태만 [결제취소]로 바뀌어요. 결제상태에는 취소 일시만 표시되고 환불구분과 총환불금액은 나타나지 않아요. 누가 취소했는지는 처리 주체에서 확인해요(구매자 즉시취소, 공급자 직권, 노쇼 처리). 결제완료 일시가 없어서 소매매출조회에는 집계되지 않아요.</p>"
+          ]
         }
       ]
     },

@@ -438,3 +438,37 @@ body.lb-open { overflow: hidden; }
 .case + .case > h3, .case + .case > h4 { margin-top: 0; }
 .shot { margin-bottom: var(--sp-4); }
 .guide-screen > .shot { margin-bottom: var(--sp-6); }
+
+/* ---------- 케이스 표(케이스 / 화면 / 상세내용) ---------- */
+.ctable { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin: var(--sp-2) 0 var(--sp-2); }
+.ctable-head { display: grid; grid-template-columns: 120px minmax(0, 1.4fr) minmax(0, 1fr); }
+.ctable-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); }
+.ctable-block { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+.ctable-block + .ctable-block { border-top: 1px dashed var(--border); }
+.ctable-head { background: var(--bg); font-weight: 700; font-size: 14px; }
+.ctable-head > div { padding: var(--sp-2) var(--sp-3); }
+.ctable-row { border-top: 1px solid var(--border); }
+.ctable-name, .ctable-shot, .ctable-desc { padding: var(--sp-3); min-width: 0; }
+.ctable-blocks { border-left: 1px solid var(--border); min-width: 0; }
+.ctable-shot { border-right: 1px solid var(--border); }
+.ctable-head > div + div { border-left: 1px solid var(--border); }
+.ctable-name { font-weight: 700; line-height: 1.5; }
+.ctable-desc > :last-child, .ctable-shot > :last-child { margin-bottom: 0; }
+.ctable-desc p, .ctable-desc ul { font-size: 14px; }
+.cshot { margin-bottom: var(--sp-3); }
+.cshot-row { display: flex; gap: var(--sp-2); align-items: flex-start; }
+.cshot-stack { flex-direction: column; }
+.cshot-stack .shot-pair, .cshot-stack .shot-item { width: 100%; }
+.cshot-pair .shot-item { min-width: 0; }
+.cshot-one .shot-item { width: 100%; }
+.ctable-shot .shot-caption { margin: var(--sp-1) 0 0; }
+@media (max-width: 860px) {
+  .ctable { border: 0; border-radius: 0; overflow: visible; }
+  .ctable-head { display: none; }
+  .ctable-row { display: block; border: 1px solid var(--border); border-radius: 6px; margin-bottom: var(--sp-3); }
+  .ctable-blocks { border-left: 0; }
+  .ctable-block { display: block; }
+  .ctable-shot { border-right: 0; padding-top: 0; }
+  .ctable-desc { padding-top: 0; }
+  .ctable-name { font-size: 15px; padding-bottom: var(--sp-2); }
+}

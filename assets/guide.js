@@ -92,11 +92,41 @@
   // 상황별 항목 한 건: { title, shots, shotCaption, html } 또는 { title, blocks: [{ shots, shotCaption, html }, ...] }
   // blocks는 한 케이스 안에서 이미지와 설명을 여러 쌍으로 나눠 보여줄 때 쓴다(예: 섹션 캡처 + 하단 바 캡처)
   function caseHTML(it) {
+    if (Array.isArray(it.rows)) return caseTableHTML(it);
     var head = it.title ? '<h3>' + it.title + '</h3>' : '';
     if (Array.isArray(it.blocks)) {
       return '<div class="case">' + head + it.blocks.map(function (b) { return shotsHTML(b.shots, b.shotCaption) + (b.html || ''); }).join('') + '</div>';
     }
     return '<div class="case">' + head + shotsHTML(it.shots, it.shotCaption) + (it.html || '') + '</div>';
+  }
+
+  // 케이스 표: { group, rows: [{ title, shots, shotCaption, html } 또는 { title, blocks: [...] }] }
+  // 케이스 / 화면 / 상세내용 3열. 860px 이하에서는 케이스명 → 화면 → 상세내용 순서로 쌓는다.
+  function caseCellShots(shots, caption) {
+    if (!shots || !shots.length) { return ''; }
+    var pc = null;
+    shots.forEach(function (s) { if (s.device === 'pc') pc = s; });
+    var stack = shots.length > 1 && pc && pc.ratio > 1.5;
+    var items = shots.map(function (s) {
+      var style = '';
+      if (stack) style = s.device === 'mobile' ? ' style="width:' + Math.max(35, Math.min(100, Math.round((s.ratio || 1) * 60))) + '%"' : '';
+      else if (shots.length > 1 && s.ratio) style = ' style="flex:' + Math.round(s.ratio * 100000) + ' 1 0%"';
+      return '<figure class="shot-item shot-' + s.device + '"' + style + '><img src="' + s.src + '" alt="' + s.alt + '" loading="lazy"></figure>';
+    }).join('');
+    return '<div class="cshot"><div class="cshot-row ' + (stack ? 'cshot-stack' : (shots.length > 1 ? 'cshot-pair' : 'cshot-one')) + '">' + items + '</div>' +
+      (caption ? '<p class="shot-caption">' + caption + '</p>' : '') + '</div>';
+  }
+
+  function caseTableHTML(it) {
+    var head = it.group ? '<h3>' + it.group + '</h3>' : '';
+    var rows = it.rows.map(function (r) {
+      var blocks = Array.isArray(r.blocks) ? r.blocks : [{ shots: r.shots, shotCaption: r.shotCaption, html: r.html }];
+      return '<div class="ctable-row"><div class="ctable-name">' + r.title + '</div><div class="ctable-blocks">' +
+        blocks.map(function (b) {
+          return '<div class="ctable-block"><div class="ctable-shot">' + caseCellShots(b.shots, b.shotCaption) + '</div><div class="ctable-desc">' + (b.html || '') + '</div></div>';
+        }).join('') + '</div></div>';
+    }).join('');
+    return '<div class="case case-table">' + head + '<div class="ctable"><div class="ctable-head"><div>케이스</div><div>화면</div><div>상세내용</div></div>' + rows + '</div></div>';
   }
 
   function flatCases(v) {
