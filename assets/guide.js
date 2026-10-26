@@ -106,11 +106,10 @@
     if (!shots || !shots.length) { return ''; }
     var pc = null;
     shots.forEach(function (s) { if (s.device === 'pc') pc = s; });
-    var stack = shots.length > 1 && pc && pc.ratio > 1.5;
+    var stack = shots.length > 1 && pc && pc.ratio > 1.75;
     var items = shots.map(function (s) {
       var style = '';
-      if (stack) style = s.device === 'mobile' ? ' style="width:' + Math.max(35, Math.min(100, Math.round((s.ratio || 1) * 60))) + '%"' : '';
-      else if (shots.length > 1 && s.ratio) style = ' style="flex:' + Math.round(s.ratio * 100000) + ' 1 0%"';
+      if (!stack && shots.length > 1 && s.ratio) style = ' style="flex:' + Math.round(s.ratio * 100000) + ' 1 0%"';
       return '<figure class="shot-item shot-' + s.device + '"' + style + '><img src="' + s.src + '" alt="' + s.alt + '" loading="lazy"></figure>';
     }).join('');
     return '<div class="cshot"><div class="cshot-row ' + (stack ? 'cshot-stack' : (shots.length > 1 ? 'cshot-pair' : 'cshot-one')) + '">' + items + '</div>' +
