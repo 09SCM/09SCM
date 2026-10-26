@@ -104,9 +104,9 @@
   // 케이스 / 화면 / 상세내용 3열. 860px 이하에서는 케이스명 → 화면 → 상세내용 순서로 쌓는다.
   function caseCellShots(shots, caption) {
     if (!shots || !shots.length) { return ''; }
-    var pc = null;
-    shots.forEach(function (s) { if (s.device === 'pc') pc = s; });
-    var stack = shots.length > 1 && pc && pc.ratio > 1.75;
+    var pc = null, mo = null;
+    shots.forEach(function (s) { if (s.device === 'pc') pc = s; else mo = s; });
+    var stack = shots.length > 1 && pc && mo && pc.ratio / (pc.ratio + mo.ratio) > 0.75;
     var items = shots.map(function (s) {
       var style = '';
       if (!stack && shots.length > 1 && s.ratio) style = ' style="flex:' + Math.round(s.ratio * 100000) + ' 1 0%"';
