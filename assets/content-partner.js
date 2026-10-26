@@ -4708,15 +4708,9 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
           "src": "../assets/img/partner/wh-set-region-pop-pc.webp",
           "alt": "09SCM 지역 추가 팝업 PC 화면",
           "ratio": 1.3441
-        },
-        {
-          "device": "mobile",
-          "src": "../assets/img/partner/wh-set-region-pop-mobile.webp",
-          "alt": "09SCM 지역 추가 팝업 모바일 화면",
-          "ratio": 1.1828
         }
       ],
-      "shotCaption": "09SCM 지역 추가 팝업 화면 (PC / 모바일)",
+      "shotCaption": "09SCM 지역 추가 팝업 화면",
       "html": "<ol><li><b>[지역 추가] 누르기</b> 지역 추가 팝업이 열려요.</li><li><b>지역 고르기</b> 시·도를 고른 뒤 시·군·구를 골라요. 시·군·구 목록은 고른 시·도에 맞게 바뀌어요.</li><li><b>[추가] 누르기</b> 팝업이 닫히고 지역 목록에 추가돼요.</li><li><b>[저장] 누르기</b> 영역 아래의 [저장]을 눌러야 반영돼요.</li></ol><p>지역을 빼려면 지역 옆의 [×]를 누르고 [저장]을 눌러요. 기본 지역은 빼지 못해요.</p>"
     },
     {
@@ -4727,15 +4721,9 @@ window.GUIDE_CONTENT['wholesale-settings'] = {
           "src": "../assets/img/partner/wh-set-region-error-pc.webp",
           "alt": "09SCM 지역 추가 오류 PC 화면",
           "ratio": 1.2315
-        },
-        {
-          "device": "mobile",
-          "src": "../assets/img/partner/wh-set-region-error-mobile.webp",
-          "alt": "09SCM 지역 추가 오류 모바일 화면",
-          "ratio": 1.0837
         }
       ],
-      "shotCaption": "09SCM 지역 추가 오류 화면 (PC / 모바일)",
+      "shotCaption": "09SCM 지역 추가 오류 화면",
       "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>시·도를 고르지 않음</td><td>&quot;시·도를 선택해주세요.&quot;</td></tr><tr><td>시·군·구를 고르지 않음</td><td>&quot;시·군·구를 선택해주세요.&quot;</td></tr><tr><td>이미 등록한 지역 (기본 지역 포함)</td><td>&quot;이미 등록된 지역입니다.&quot;</td></tr></tbody></table></div><p>안내가 나오면 팝업이 닫히지 않아요. 지역을 다시 고르고 [추가]를 눌러요.</p>"
     },
     {
