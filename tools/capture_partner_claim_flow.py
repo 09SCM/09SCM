@@ -1,4 +1,4 @@
-# 이용가이드 소매 > 주문목록 > 주문 상세 보기 > "취소·반품 처리 흐름에 따라" 3케이스 캡처(요청 → 반려 → 승인)
+# 이용가이드 소매 > 주문목록 > 주문 상세 보기 > "취소·반품 처리 흐름에 따라" 3케이스 캡처(요청 → 반려 → 승인, 취소 주문으로 촬영하고 설명은 취소·반품 공통)
 # (mock/partner.html -> assets/img/partner/order-detail-{claim,reject,approved}-{sec,bar}-*.webp, order-detail-done-bar-*.webp)
 # 사용: python3 tools/capture_partner_claim_flow.py   (ONLY=이름,이름 으로 일부만 저장)
 # 기준: 3케이스 모두 같은 주문(픽업·계좌이체·환불계좌 있음)으로 촬영해 입력값이 모두 보이게 한다. 영역은 픽업정보·결제정보·취소·반품 정보.
@@ -31,18 +31,6 @@ def run(device, b):
     state(cancelReturnStatus='취소승인', processStatus=None, paymentStatus='결제취소', cancelReturnResolvedAt='26.09.19 19:30',
           cancelReturnSellerNote='고객 요청에 따라 취소를 승인합니다.', refundType='full', totalRefundAmount=8000, cancelReturnStockRestored=True)
     cb.sec_shot(page, None, 'order-detail-approved-sec-' + device, SECS); cb.bar_shot(page, 'order-detail-done-bar-' + device)
-
-    # 반품 처리 흐름 — 같은 주문이 픽업완료된 뒤 반품 요청 → 반려 → 승인
-    state(paymentStatus='결제완료', processStatus=None, completedAt='26.09.19 18:40', cancelReturnStatus='반품요청', cancelReturnPrevStatus='픽업완료',
-          cancelReturnReason='상품 상태가 좋지 않아 반품합니다.', cancelReturnRequestedAt='26.09.19 20:00', cancelReturnResolvedAt=None, cancelReturnSellerNote=None,
-          refundType=None, totalRefundAmount=None)
-    cb.sec_shot(page, None, 'order-detail-return-claim-sec-' + device, SECS); cb.bar_shot(page, 'order-detail-return-claim-bar-' + device)
-    state(cancelReturnStatus='반품반려', processStatus='픽업완료', cancelReturnResolvedAt='26.09.19 21:00',
-          cancelReturnSellerNote='상품 상태에는 이상이 없어 반품을 반려합니다.')
-    cb.sec_shot(page, None, 'order-detail-return-reject-sec-' + device, SECS); cb.bar_shot(page, 'order-detail-return-reject-bar-' + device)
-    state(cancelReturnStatus='반품승인', processStatus=None, paymentStatus='결제취소', cancelReturnResolvedAt='26.09.19 21:30',
-          cancelReturnSellerNote='상품 확인 후 반품을 승인합니다.', refundType='full', totalRefundAmount=8000, cancelReturnStockRestored=True)
-    cb.sec_shot(page, None, 'order-detail-return-approved-sec-' + device, SECS)
 
     # 정산 후 카드결제 취소 → 환불대기 (결제정보 + 취소·반품 정보, 안내 배너·반환 예금주 포함)
     page.evaluate("""(no) => { currentCat = 'retail'; currentRetailOrderDetailNo = no; currentItem = 'retail-order-detail'; renderAll(); window.scrollTo(0, 0); }""", 'RO20260916105')

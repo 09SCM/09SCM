@@ -829,7 +829,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
               "html": "<ul><li>영역: 픽업 정보 대신 배달 정보 표시</li><li>주문상품: 픽업가능기간 없음</li><li>결제 정보: 배달비 별도 표시</li><li>결제: 항상 카드결제, [결제완료]로 접수</li></ul>"
             },
             {
-              "title": "픽업, 노쇼후보 주문이면",
+              "title": "픽업·노쇼후보 주문이면",
               "blocks": [
                 {
                   "shots": [
@@ -937,10 +937,10 @@ window.GUIDE_CONTENT['retail-order-list'] = {
           ]
         },
         {
-          "group": "취소 처리 흐름에 따라",
+          "group": "취소·반품 처리 흐름에 따라",
           "rows": [
             {
-              "title": "취소 요청이 들어온 주문이면",
+              "title": "취소·반품 요청이 들어온 주문이면",
               "blocks": [
                 {
                   "shots": [
@@ -976,12 +976,12 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 취소요청 하단 바 화면 (PC / 모바일)",
-                  "html": "<ul><li>버튼: [취소처리]만 표시</li><li>다음단계·되돌리기·[결제확인]: 표시하지 않음</li></ul>"
+                  "html": "<ul><li>버튼: [취소처리] 또는 [반품처리]만 표시</li><li>다음단계·되돌리기·[결제확인]: 표시하지 않음</li></ul>"
                 }
               ]
             },
             {
-              "title": "취소가 반려된 주문이면",
+              "title": "취소·반품이 반려된 주문이면",
               "blocks": [
                 {
                   "shots": [
@@ -999,7 +999,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 취소반려 정보 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>처리상태: 요청 이전 상태로 복귀</li><li>취소·반품 정보: [취소반려], 처리 일시, 환불계좌(계좌이체 주문), 구매자 요청 사유, 공급자 처리 사유 표시</li></ul>"
+                  "html": "<ul><li>처리상태: 요청 이전 상태로 복귀</li><li>취소·반품 정보: [취소반려] 또는 [반품반려], 처리 일시, 환불계좌(계좌이체 주문), 구매자 요청 사유, 공급자 처리 사유 표시</li></ul>"
                 },
                 {
                   "shots": [
@@ -1017,12 +1017,12 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 취소반려 하단 바 화면 (PC / 모바일)",
-                  "html": "<ul><li>버튼: 처리상태에 맞는 버튼 다시 표시 (예: [주문접수]로 돌아온 주문은 [픽업대기]·[취소처리] 가능)</li></ul>"
+                  "html": "<ul><li>버튼: 처리상태에 맞는 버튼 다시 표시 (예: [주문접수]로 돌아온 주문은 [취소처리], [픽업완료]로 돌아온 주문은 [반품처리] 가능)</li></ul>"
                 }
               ]
             },
             {
-              "title": "취소가 승인된 주문이면",
+              "title": "취소·반품이 승인된 주문이면",
               "blocks": [
                 {
                   "shots": [
@@ -1040,7 +1040,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 취소승인 정보 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>처리상태: 비워짐</li><li>취소·반품 정보: [취소승인], 처리 일시, 처리 주체, 환불구분·총환불금액, 환불계좌(계좌이체 주문), 구매자 요청 사유, 공급자 처리 사유 표시</li></ul>"
+                  "html": "<ul><li>처리상태: 비워짐</li><li>취소·반품 정보: [취소승인] 또는 [반품승인], 처리 일시, 처리 주체, 환불구분·총환불금액, 환불계좌(계좌이체 주문), 구매자 요청 사유, 공급자 처리 사유 표시</li></ul>"
                 },
                 {
                   "shots": [
@@ -1065,138 +1065,10 @@ window.GUIDE_CONTENT['retail-order-list'] = {
           ]
         },
         {
-          "group": "반품 처리 흐름에 따라",
+          "group": "취소·반품된 주문의 결제상태",
           "rows": [
             {
-              "title": "반품 요청이 들어온 주문이면",
-              "blocks": [
-                {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/order-detail-return-claim-sec-pc.webp",
-                      "alt": "09SCM 주문 상세 반품요청 정보 영역 PC 화면",
-                      "ratio": 1.8663
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/order-detail-return-claim-sec-mobile.webp",
-                      "alt": "09SCM 주문 상세 반품요청 정보 영역 모바일 화면",
-                      "ratio": 0.4159
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 반품요청 정보 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>영역: 취소·반품 정보 표시</li><li>구매자 요청 사유: 표시</li><li>환불계좌: 계좌이체 주문에만 표시</li><li>처리상태: &quot;-&quot;로 표시</li></ul>"
-                },
-                {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/order-detail-return-claim-bar-pc.webp",
-                      "alt": "09SCM 주문 상세 반품요청 하단 바 PC 화면",
-                      "ratio": 15.1579
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/order-detail-return-claim-bar-mobile.webp",
-                      "alt": "09SCM 주문 상세 반품요청 하단 바 모바일 화면",
-                      "ratio": 3.52
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 반품요청 하단 바 화면 (PC / 모바일)",
-                  "html": "<ul><li>버튼: [반품처리]만 표시</li><li>다음단계·되돌리기·[결제확인]: 표시하지 않음</li></ul>"
-                }
-              ]
-            },
-            {
-              "title": "반품이 반려된 주문이면",
-              "blocks": [
-                {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/order-detail-return-reject-sec-pc.webp",
-                      "alt": "09SCM 주문 상세 반품반려 정보 영역 PC 화면",
-                      "ratio": 1.7261
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/order-detail-return-reject-sec-mobile.webp",
-                      "alt": "09SCM 주문 상세 반품반려 정보 영역 모바일 화면",
-                      "ratio": 0.3929
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 반품반려 정보 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>처리상태: 요청 이전 상태로 복귀</li><li>취소·반품 정보: [반품반려], 처리 일시, 환불계좌(계좌이체 주문), 구매자 요청 사유, 공급자 처리 사유 표시</li></ul>"
-                },
-                {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/order-detail-return-reject-bar-pc.webp",
-                      "alt": "09SCM 주문 상세 반품반려 하단 바 PC 화면",
-                      "ratio": 15.1579
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/order-detail-return-reject-bar-mobile.webp",
-                      "alt": "09SCM 주문 상세 반품반려 하단 바 모바일 화면",
-                      "ratio": 3.52
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 반품반려 하단 바 화면 (PC / 모바일)",
-                  "html": "<ul><li>버튼: 처리상태에 맞는 버튼 다시 표시 (예: [픽업완료]로 돌아온 주문은 [반품처리] 가능)</li></ul>"
-                }
-              ]
-            },
-            {
-              "title": "반품이 승인된 주문이면",
-              "blocks": [
-                {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/order-detail-return-approved-sec-pc.webp",
-                      "alt": "09SCM 주문 상세 반품승인 정보 영역 PC 화면",
-                      "ratio": 1.6163
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/order-detail-return-approved-sec-mobile.webp",
-                      "alt": "09SCM 주문 상세 반품승인 정보 영역 모바일 화면",
-                      "ratio": 0.3492
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 반품승인 정보 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>처리상태: 비워짐</li><li>취소·반품 정보: [반품승인], 처리 일시, 처리 주체, 환불구분·총환불금액, 환불계좌(계좌이체 주문), 구매자 요청 사유, 공급자 처리 사유 표시</li></ul>"
-                },
-                {
-                  "shots": [
-                    {
-                      "device": "pc",
-                      "src": "../assets/img/partner/order-detail-done-bar-pc.webp",
-                      "alt": "09SCM 주문 상세 처리 완료 하단 바 PC 화면",
-                      "ratio": 19.2
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/order-detail-done-bar-mobile.webp",
-                      "alt": "09SCM 주문 상세 처리 완료 하단 바 모바일 화면",
-                      "ratio": 4.1905
-                    }
-                  ],
-                  "shotCaption": "09SCM 주문 상세 처리 완료 하단 바 화면 (PC / 모바일)",
-                  "html": "<ul><li>하단 바: &quot;처리 완료된 주문입니다.&quot; 안내만 표시</li><li>처리 버튼: 없음</li></ul>"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "group": "취소된 주문의 결제상태",
-          "rows": [
-            {
-              "title": "결제완료 주문이 취소되면",
+              "title": "결제완료 주문이 취소·반품되면",
               "shots": [
                 {
                   "device": "pc",
@@ -1212,10 +1084,10 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                 }
               ],
               "shotCaption": "09SCM 주문 상세 결제완료 주문 취소 결제·취소·반품 정보 영역 화면 (PC / 모바일)",
-              "html": "<ul><li>결제상태: [결제취소]로 변경</li><li>표시: 환불구분, 취소 일시, [결제완료] 일시</li><li>카드결제 정산 전: PG사를 통해 자동으로 [결제취소]</li><li>카드결제 정산 후: [환불대기]</li><li>계좌이체·현장결제: 판매자가 직접 환불</li><li>환불 방법: <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a> 참고</li></ul>"
+              "html": "<ul><li>결제상태: [결제취소]로 변경</li><li>표시: 환불구분, 취소·반품 일시, [결제완료] 일시</li><li>카드결제 정산 전: PG사를 통해 자동으로 [결제취소]</li><li>카드결제 정산 후: [환불대기]</li><li>계좌이체·현장결제: 판매자가 직접 환불</li><li>환불 방법: <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a> 참고</li></ul>"
             },
             {
-              "title": "정산 후 카드결제 주문이 취소되면",
+              "title": "정산 후 카드결제 주문이 취소·반품되면",
               "shots": [
                 {
                   "device": "pc",
@@ -1231,7 +1103,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                 }
               ],
               "shotCaption": "09SCM 주문 상세 정산 후 카드결제 주문 취소 결제·취소·반품 정보 영역 화면 (PC / 모바일)",
-              "html": "<ul><li>결제상태: [환불대기]로 변경</li><li>안내: 결제 정보 제목 아래에 PG사 환불 요청 안내 표시 (공급자 화면에만 노출)</li><li>표시: 환불구분, 취소 일시, [결제완료] 일시</li><li>반환 예금주: 정산금 반환 입금자명 표시</li><li>전환: 정산금 반환 후 환불이 완료되면 [결제취소]로 변경</li></ul>"
+              "html": "<ul><li>결제상태: [환불대기]로 변경</li><li>안내: 결제 정보 제목 아래에 PG사 환불 요청 안내 표시 (공급자 화면에만 노출)</li><li>표시: 환불구분, 취소·반품 일시, [결제완료] 일시</li><li>반환 예금주: 정산금 반환 입금자명 표시</li><li>전환: 정산금 반환 후 환불이 완료되면 [결제취소]로 변경</li></ul>"
             },
             {
               "title": "결제대기 주문이 취소되면",
