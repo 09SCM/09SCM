@@ -718,69 +718,74 @@ window.GUIDE_CONTENT['retail-order-list'] = {
           "html": "<p>픽업 주문 중 처리상태가 [주문접수] 또는 [픽업대기]인데 공통 픽업가능기간(주문한 상품들의 픽업가능기간이 겹치는 기간)이 지난 주문은 처리상태 아래에 <b>노쇼후보</b>가 표시돼요. 종료일 다음날 00:00에 판단하고, 소매몰 운영 계정으로 시스템 알림이 한 번 가요.</p><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>표시 방식</td><td>처리상태 값이 바뀌는 것이 아니라 경고 문구만 추가 (주문이 자동으로 취소되지 않음)</td></tr><tr><td>표시 대상</td><td>취소·반품이 진행 중이거나 승인된 주문은 제외, 반려로 처리상태가 돌아온 주문은 다시 대상에 포함</td></tr><tr><td>계속 처리</td><td>다음 단계 버튼으로 정상 처리를 이어갈 수 있음 ([픽업완료]가 되면 표시 해제)</td></tr><tr><td>노쇼 처리</td><td>실제 노쇼인지 확인한 뒤 [취소처리]에서 처리 주체를 노쇼처리로 선택</td></tr><tr><td>배달 주문</td><td>공통 픽업가능기간이 없어 해당 없음</td></tr></tbody></table></div><p>노쇼 처리 방법은 <a href=\"#retail-order-list/cancel-return\">취소·반품 처리하기</a>에서 확인해주세요.</p>"
         },
         {
-          "title": "주문을 고르지 않고 [일괄변경]을 누르면",
-          "shots": [
+          "group": "[일괄변경]을 누르면",
+          "rows": [
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-bulk-none-pc.webp",
-              "alt": "09SCM 일괄변경 주문 미선택 안내 PC 화면",
-              "ratio": 2.5208
-            }
-          ],
-          "shotCaption": "09SCM 일괄변경 안내 화면",
-          "html": "<p>&quot;일괄 변경할 주문을 선택해주세요.&quot; 안내가 나와요.</p>"
-        },
-        {
-          "title": "처리를 고르지 않고 [일괄변경]을 누르면",
-          "shots": [
+              "title": "주문을 고르지 않고 [일괄변경]을 누르면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-bulk-none-pc.webp",
+                  "alt": "09SCM 일괄변경 주문 미선택 안내 PC 화면",
+                  "ratio": 2.5208
+                }
+              ],
+              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "html": "<ul><li>안내: &quot;일괄 변경할 주문을 선택해주세요.&quot;</li></ul>"
+            },
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-bulk-noopt-pc.webp",
-              "alt": "09SCM 일괄변경 처리 미선택 안내 PC 화면",
-              "ratio": 2.5208
-            }
-          ],
-          "shotCaption": "09SCM 일괄변경 안내 화면",
-          "html": "<p>주문은 골랐지만 처리를 고르지 않으면 &quot;변경할 처리 상태를 선택해주세요.&quot; 안내가 나와요.</p>"
-        },
-        {
-          "title": "선택한 주문이 모두 변경 가능하면",
-          "shots": [
+              "title": "처리를 고르지 않고 [일괄변경]을 누르면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-bulk-noopt-pc.webp",
+                  "alt": "09SCM 일괄변경 처리 미선택 안내 PC 화면",
+                  "ratio": 2.5208
+                }
+              ],
+              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "html": "<ul><li>안내: &quot;변경할 처리 상태를 선택해주세요.&quot;</li></ul>"
+            },
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-bulk-all-pc.webp",
-              "alt": "09SCM 일괄변경 전체 변경 안내 PC 화면",
-              "ratio": 2.0167
-            }
-          ],
-          "shotCaption": "09SCM 일괄변경 안내 화면",
-          "html": "<p>선택한 건수와 처리를 보여주고 [진행]을 누르면 모두 변경돼요. 고객 알림톡이 설정된 경우 알림톡이 발송될 수 있어요. 처리가 끝나면 선택이 풀리고 처리 건수를 알려줘요.</p>"
-        },
-        {
-          "title": "선택한 주문 중 일부만 변경 가능하면",
-          "shots": [
+              "title": "선택한 주문이 모두 변경 가능하면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-bulk-all-pc.webp",
+                  "alt": "09SCM 일괄변경 전체 변경 안내 PC 화면",
+                  "ratio": 2.0167
+                }
+              ],
+              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "html": "<ul><li>안내: 선택한 건수와 처리를 표시하고 진행 여부 확인</li><li>[진행]: 선택한 주문 모두 변경</li><li>완료 후: 선택 해제, 처리 건수 안내</li><li>알림톡: 고객 알림톡이 설정된 경우 발송될 수 있음</li></ul>"
+            },
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-bulk-part-pc.webp",
-              "alt": "09SCM 일괄변경 일부 변경 안내 PC 화면",
-              "ratio": 2.0167
-            }
-          ],
-          "shotCaption": "09SCM 일괄변경 안내 화면",
-          "html": "<p>&quot;선택한 2건 중 1건만 처리됩니다&quot;처럼 변경 가능한 건수만 알려줘요. [진행]을 누르면 조건에 맞는 주문만 변경하고 나머지는 그대로 둬요.</p>"
-        },
-        {
-          "title": "선택한 주문을 하나도 변경할 수 없으면",
-          "shots": [
+              "title": "선택한 주문 중 일부만 변경 가능하면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-bulk-part-pc.webp",
+                  "alt": "09SCM 일괄변경 일부 변경 안내 PC 화면",
+                  "ratio": 2.0167
+                }
+              ],
+              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "html": "<ul><li>안내: &quot;선택한 2건 중 1건만 [픽업대기] 처리됩니다.&quot;처럼 변경 가능한 건수 표시</li><li>[진행]: 조건에 맞는 주문만 변경, 나머지는 그대로 유지</li></ul>"
+            },
             {
-              "device": "pc",
-              "src": "../assets/img/partner/order-bulk-fail-pc.webp",
-              "alt": "09SCM 일괄변경 변경 불가 안내 PC 화면",
-              "ratio": 2.5208
+              "title": "선택한 주문을 하나도 변경할 수 없으면",
+              "shots": [
+                {
+                  "device": "pc",
+                  "src": "../assets/img/partner/order-bulk-fail-pc.webp",
+                  "alt": "09SCM 일괄변경 변경 불가 안내 PC 화면",
+                  "ratio": 2.5208
+                }
+              ],
+              "shotCaption": "09SCM 일괄변경 안내 화면",
+              "html": "<ul><li>안내: &quot;선택한 주문은 [픽업대기] 처리할 수 없습니다.&quot;</li><li>결과: 변경되는 주문 없음</li></ul>"
             }
-          ],
-          "shotCaption": "09SCM 일괄변경 안내 화면",
-          "html": "<p>&quot;선택한 주문은 처리할 수 없습니다.&quot; 안내가 나오고 아무것도 변경되지 않아요.</p>"
+          ]
         }
       ],
       "trouble": "<h3>[결제확인]이 목록에 안 보여요</h3><p>목록에서는 [주문접수] 단계의 계좌이체 주문에만 보여요. 현장결제 주문과 [픽업대기] 단계의 [결제대기] 주문은 주문 상세에서 결제확인 또는 [결제·픽업완료]로 처리해요.</p><h3>일괄변경으로 완료 처리나 취소 처리가 안 돼요</h3><p>완료 처리와 취소·반품 처리는 확인과 입력이 필요해서 주문마다 처리해야 해요.</p><h3>처리상태가 &quot;-&quot;로 보여요</h3><p>취소·반품이 진행 중이거나 끝난 주문이에요. 취소·반품 상태는 취소·반품 열에서 확인해요.</p>"
