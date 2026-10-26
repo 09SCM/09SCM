@@ -5738,9 +5738,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     { orderNo: 'WO20260917003', seller: '안동농협', buyerName: MY_SELLER_NAME,
       buyerPhone: MY_PROFILE.phone, buyerEmail: MY_PROFILE.email, deliveryAddress: MY_PROFILE.address, requestNote: null, depositorName: MY_PROFILE.bankHolder,
       items: [{ code: 'P0306', name: '햇양파 10kg', qty: 5, price: 18000, unit: 'box(10kg)' }],
-      paymentMethod: 'transfer', paymentStatus: '결제완료', processStatus: null, cancelReturnStatus: '반품요청',
-      cancelReturnReason: '수령한 상품 일부에서 무름 현상이 확인되어 반품을 요청합니다.', cancelReturnRequestedAt: '26.09.18 11:15', cancelReturnResolvedAt: null, cancelReturnSellerNote: null,
-      refundBank: '국민은행', refundHolder: MY_SELLER_NAME, refundAccount: '123456789012',
+      paymentMethod: 'transfer', paymentStatus: '결제완료', processStatus: '배송중', cancelReturnStatus: null,
       shippingMethod: 'fixed', paidAt: '26.09.16 13:00',
       shippedAt: '26.09.17 09:30', itemsTotal: 90000, shippingFee: 4500, cardFeeAmount: 0, grandTotal: 94500, createdAt: '26.09.16 10:20' },
     { orderNo: 'WO20260912021', seller: '나주농원', buyerName: MY_SELLER_NAME,
@@ -8442,7 +8440,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
     const chatOrderName = listing ? (listing.chatOrderName || '') : '';
     // 보유수량 안내 배너 — 내도매상품: 도매상품과 같은 값, 도매주문상품: 수량 불일치 경고, 내소매상품: 없음
     const holdingNoticeHTML = ref.source === 'own'
-      ? `<div class="notice-banner">도매상품 보유수량과 같은 값이며 수정하면 도매상품에도 반영됩니다. 도매 판매상태는 자동으로 변경되지 않습니다.</div>`
+      ? `<div class="notice-banner">보유수량을 수정하면 도매상품의 보유수량과 도매 판매상태에 영향을 줄 수 있습니다.</div>`
       : ref.source === 'purchase'
         ? `<div class="notice-banner">보유수량을 수정하면 도매주문 내역의 구매 수량과 일치하지 않을 수 있습니다.</div>`
         : '';
