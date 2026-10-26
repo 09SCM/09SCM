@@ -55,7 +55,7 @@ def shot_rows(page, name, r):
 ORDER_HIDE = ['주문일시', '주문자', '회원주문 코드', '주문경로', '합계금액']
 CASES_ORDER = [
     ('order-list-rows-process-mobile', ['RO20260919103', 'RO20260919102', 'RO20260919101', 'RO20260917003', 'RO20260916001', 'RO20260918003']),
-    ('order-list-rows-claim-mobile',   ['RO20260919002', 'RO20260919001', 'RO20260915001', 'RO20260913001']),
+    ('order-list-rows-claim-mobile',   ['RO20260919002', 'RO20260916105', 'RO20260919001', 'RO20260915001', 'RO20260913001']),
     ('order-list-noshow-mobile',       ['RO20260918003', 'RO20260916101']),
 ]
 

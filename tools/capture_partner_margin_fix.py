@@ -60,7 +60,7 @@ def run(device, b):
     if want('product-list-rows'):
         rows_crop(page, device, 'product-list-rows', '상품코드', ['P0232', 'P0305', 'P0001', 'P0230', 'P0227'], ['소비자가/할인가', '소매판매상태', '소매노출여부', '채팅주문여부', '등록일시', '수정일시'])
     for name, keys in (('order-list-rows-process', ['RO20260919103', 'RO20260919102', 'RO20260919101', 'RO20260917003', 'RO20260916001', 'RO20260918003']),
-                       ('order-list-rows-claim', ['RO20260919002', 'RO20260919001', 'RO20260915001', 'RO20260913001']),
+                       ('order-list-rows-claim', ['RO20260919002', 'RO20260916105', 'RO20260919001', 'RO20260915001', 'RO20260913001']),
                        ('order-list-noshow', ['RO20260918003', 'RO20260916101'])):
         if not want(name): continue
         page.evaluate("currentItem = 'retail-order-list'; renderAll()"); page.wait_for_timeout(600)
