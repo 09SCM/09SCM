@@ -112,9 +112,14 @@ def run(device, b):
         page.add_style_tag(content='.market-grid{visibility:hidden!important}')
         C.shot(page, 'wh-list-help' + sfx, [Q('.filter-bar'), Q('.help-pop')], keep_hover=True); ctx.close()
     for name, orders in (('wh-orders-rows-action', ['WO20260919014', 'WO20260912015', 'WO20260919016', 'WO20260912021', 'WO20260916011', 'WO20260910008']),
-                         ('wh-orders-rows-claim', ['WO20260911009', 'WO20260909010', 'WO20260906006', 'WO20260918007'])):
+                         ('wh-orders-rows-claim', ['WO20260911009', 'WO20260909010', 'WO20260906006', 'WO20260918007', 'WO20260914023'])):
         if not want(name): continue
-        ctx, page = page_for(b, device); W.go_menu(page, '주문내역'); page.wait_for_timeout(300)
+        ctx, page = page_for(b, device)
+        if name == 'wh-orders-rows-claim':   # 정산 후 카드결제 취소 → 환불대기 샘플(메모리에서만 변경)
+            page.evaluate("""() => { const o = ORDER_LIST.find(x => x.orderNo === 'WO20260914023'); Object.assign(o, {paymentStatus: '환불대기', processStatus: null,
+              cancelReturnStatus: '취소승인', cancelReturnPrevStatus: '주문접수', cancelReturnInitiator: 'supplier', cancelReturnRequestedAt: '26.09.15 10:00',
+              cancelReturnResolvedAt: '26.09.15 10:00', refundType: 'full', totalRefundAmount: 27672, returnHolder: '우리마켓 본사'}); }""")
+        W.go_menu(page, '주문내역'); page.wait_for_timeout(300)
         if pc:
             page.evaluate("""(nos) => {
               document.querySelectorAll('tbody tr').forEach(tr => { tr.style.display = nos.includes(tr.children[0].innerText.trim()) ? '' : 'none'; });
