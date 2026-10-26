@@ -44,7 +44,6 @@ def run(device, b):
 
     # 지역 추가 팝업
     def modal(name):
-        if not pc: return  # 팝업은 PC·모바일 차이가 없어 PC만 사용
         b0 = cb.bbox(page, ['.modal-box'])
         clip = {'x': max(0, b0['x'] - 40), 'y': max(0, b0['y'] - 40), 'width': b0['w'] + 80, 'height': b0['h'] + 80}
         cb.save(page.screenshot(clip=clip), name + '-' + device)

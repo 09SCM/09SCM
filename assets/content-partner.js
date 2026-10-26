@@ -730,7 +730,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.5208
                 }
               ],
-              "shotCaption": "09SCM 주문목록 일괄변경 주문 미선택 화면",
+              "shotCaption": "09SCM 일괄변경 선택 안내 화면",
               "html": "<ul><li>안내: &quot;일괄 변경할 주문을 선택해주세요.&quot;</li></ul>"
             },
             {
@@ -743,7 +743,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.5208
                 }
               ],
-              "shotCaption": "09SCM 주문목록 일괄변경 처리 미선택 화면",
+              "shotCaption": "09SCM 일괄변경 선택 안내 화면",
               "html": "<ul><li>안내: &quot;변경할 처리 상태를 선택해주세요.&quot;</li></ul>"
             },
             {
@@ -756,7 +756,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.0167
                 }
               ],
-              "shotCaption": "09SCM 주문목록 일괄변경 전체 가능 화면",
+              "shotCaption": "09SCM 일괄변경 확인 화면",
               "html": "<ul><li>안내: 선택한 건수와 처리를 표시하고 진행 여부 확인</li><li>[진행]: 선택한 주문 모두 변경</li><li>완료 후: 선택 해제, 처리 건수 안내</li><li>알림톡: 고객 알림톡이 설정된 경우 발송될 수 있음</li></ul>"
             },
             {
@@ -769,7 +769,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.0167
                 }
               ],
-              "shotCaption": "09SCM 주문목록 일괄변경 일부 가능 화면",
+              "shotCaption": "09SCM 일괄변경 확인 화면",
               "html": "<ul><li>안내: &quot;선택한 2건 중 1건만 [픽업대기] 처리됩니다.&quot;처럼 변경 가능한 건수 표시</li><li>[진행]: 조건에 맞는 주문만 변경, 나머지는 그대로 유지</li></ul>"
             },
             {
@@ -782,7 +782,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                   "ratio": 2.5208
                 }
               ],
-              "shotCaption": "09SCM 주문목록 일괄변경 불가 화면",
+              "shotCaption": "09SCM 일괄변경 불가 안내 화면",
               "html": "<ul><li>안내: &quot;선택한 주문은 [픽업대기] 처리할 수 없습니다.&quot;</li><li>결과: 변경되는 주문 없음</li></ul>"
             }
           ]
@@ -1280,15 +1280,9 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                       "src": "../assets/img/partner/order-cancel-settled-toast-pc.webp",
                       "alt": "09SCM 정산 후 카드결제 환불 요청 토스트 PC 화면",
                       "ratio": 4.007
-                    },
-                    {
-                      "device": "mobile",
-                      "src": "../assets/img/partner/order-cancel-settled-toast-mobile.webp",
-                      "alt": "09SCM 정산 후 카드결제 환불 요청 토스트 모바일 화면",
-                      "ratio": 2.3784
                     }
                   ],
-                  "shotCaption": "09SCM 정산 후 카드결제 환불 요청 안내 화면 (PC / 모바일)",
+                  "shotCaption": "09SCM 정산 후 카드결제 환불 요청 안내 화면",
                   "html": "<ul><li>처리 직후: &quot;환불을 요청했습니다. 정산금을 반환해야 환불이 완료됩니다.&quot; 토스트 표시</li><li>환불: PG사에 환불을 요청</li></ul>"
                 },
                 {
@@ -4650,158 +4644,163 @@ window.GUIDE_CONTENT['wholesale-orders'] = {
 };
 
 window.GUIDE_CONTENT['wholesale-settings'] = {
-  shots: [
-    { device: 'pc', src: '../assets/img/partner/wh-set-main-pc.webp', alt: '09SCM 도매설정 PC 화면', ratio: 2880 / 1840 },
-    { device: 'mobile', src: '../assets/img/partner/wh-set-main-mobile.webp', alt: '09SCM 도매설정 모바일 화면', ratio: 880 / 1828 }
-  ],
-  shotCaption: '09SCM 도매설정 화면 (PC / 모바일)',
-  overview:
-    '<p>도매상품을 공급할 때 적용할 카드결제 수수료, 공급범위(우리지역), 배송방식을 정하는 화면이에요. 여기서 정한 값은 구매자의 주문 결제금액과 배송비에 쓰여요.</p>' +
-    '<ul>' +
-      '<li>세 영역은 각자의 [저장]으로 따로 저장해요.</li>' +
-      '<li>처음에는 카드결제 수수료는 공급자부담, 배송방식은 기본배송비가 선택돼 있어요.</li>' +
-      '<li>결제수수료와 배송방식은 내 모든 도매상품에 똑같이 적용돼요. 상품마다 따로 정할 수 없어요.</li>' +
-    '</ul>',
-  steps:
-    '<h3>결제수수료 설정</h3>' +
-    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>카드결제 수수료 부담주체</td><td>[공급자부담], [구매자부담] 중 선택 (처음에는 공급자부담)</td></tr>' +
-      '<tr><td>카드결제 수수료율</td><td>[구매자부담]을 선택하면 나타나는 % 입력칸 (0 이상 100 미만의 숫자, 비워두면 0%)</td></tr>' +
-      '<tr><td>결제금액 반영</td><td>구매자부담이고 구매자가 카드로 결제할 때만 상품금액 × 수수료율을 결제금액에 더함 (배송비에는 붙지 않음) (원 미만 반올림, 계좌이체는 수수료 없음)</td></tr>' +
-    '</tbody></table></div>' +
-
-    '<h3>공급범위(우리지역) 설정</h3>' +
-    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>우리지역</td><td>공급범위를 [우리지역]으로 정하는 새 도매상품에 처음 채워지는 지역 (시·군·구 단위)</td></tr>' +
-      '<tr><td>기본 지역</td><td>내 사업장 주소의 시·군·구 ([기본]으로 표시, 삭제 불가, 사업장 주소가 바뀌면 기본 지역도 바뀐 주소 기준으로 적용)</td></tr>' +
-      '<tr><td>[지역 추가]</td><td>팝업에서 시·도, 시·군·구를 골라 추가</td></tr>' +
-      '<tr><td>등록 현황</td><td>&quot;등록 N/50곳&quot; (기본 지역 포함, 50곳이 되면 [지역 추가] 비활성)</td></tr>' +
-      '<tr><td>지역 삭제</td><td>추가한 지역 옆의 [×] (기본 지역은 삭제 불가)</td></tr>' +
-      '<tr><td>저장</td><td>추가·삭제한 내용은 아래 [저장]을 눌러야 반영</td></tr>' +
-    '</tbody></table></div>' +
-    '<p>공급범위가 우리지역인 상품은 등록한 시·군·구에 사업장 주소가 있는 구매자에게 보여요. 본사 소속 여부는 따지지 않아요. 구매자에게 노출되는 기준은 <a href="#wholesale-shop">도매상품 주문하기</a>에서 확인해주세요.</p>' +
-
-    '<h3>배송방식 설정</h3>' +
-    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>배송방식</td><td>[기본배송비], [착불], [무료배송] 중 선택 (처음에는 기본배송비)</td></tr>' +
-      '<tr><td>기본배송비</td><td>[기본배송비]를 선택하면 나타나는 원 입력칸 (0원 이상의 정수, 주문 건당 1회, 비워두면 0원)</td></tr>' +
-      '<tr><td>적용 범위</td><td>내 모든 도매상품에 똑같이 적용 (상품 화면에는 배송방식이 조회만 가능하게 표시)</td></tr>' +
-      '<tr><td>구매자 화면 표기</td><td>기본배송비(N원), 착불(별도부과), 무료배송(0원)</td></tr>' +
-    '</tbody></table></div>',
-  cases: [
+  "shots": [
     {
-      title: '카드결제 수수료를 구매자부담으로 정하면',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-fee-buyer-pc.webp', alt: '09SCM 구매자부담 수수료율 PC 화면', ratio: 4.7467 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-fee-buyer-mobile.webp', alt: '09SCM 구매자부담 수수료율 모바일 화면', ratio: 1.4667 }
-      ],
-      shotCaption: '09SCM 구매자부담 수수료율 입력 화면 (PC / 모바일)',
-      html:
-        '<ul>' +
-          '<li>[구매자부담]을 고르면 수수료율 입력칸이 나타나요. [공급자부담]일 때는 보이지 않아요.</li>' +
-          '<li>구매자가 카드로 결제하면 상품금액 × 수수료율이 결제금액에 더해지고 배송비에는 붙지 않아요. 예) 상품금액 100,000원, 배송비 3,000원, 수수료율 2.8%이면 수수료는 2,800원이에요.</li>' +
-          '<li>계좌이체로 결제하면 수수료가 붙지 않아요.</li>' +
-        '</ul>'
+      "device": "pc",
+      "src": "../assets/img/partner/wh-set-main-pc.webp",
+      "alt": "09SCM 도매설정 PC 화면",
+      "ratio": 1.565217391304348
     },
     {
-      title: '수수료율을 잘못 입력하면',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-fee-error-pc.webp', alt: '09SCM 수수료율 입력 오류 PC 화면', ratio: 4.3951 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-fee-error-mobile.webp', alt: '09SCM 수수료율 입력 오류 모바일 화면', ratio: 1.358 }
-      ],
-      shotCaption: '09SCM 수수료율 입력 오류 화면 (PC / 모바일)',
-      html:
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>수수료율이 0 이상 100 미만의 숫자가 아님</td><td>&quot;수수료율은 0 이상 100 미만의 숫자로 입력해주세요.&quot;</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>안내가 나오면 저장되지 않아요. 수수료율을 고친 뒤 다시 [저장]을 눌러요. 이 안내는 [구매자부담]을 선택했을 때만 나와요.</p>'
-    },
-    {
-      title: '지역을 추가할 때',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-region-pop-pc.webp', alt: '09SCM 지역 추가 팝업 PC 화면', ratio: 1.3441 }
-      ],
-      shotCaption: '09SCM 지역 추가 팝업 화면',
-      html:
-        '<ol>' +
-          '<li><b>[지역 추가] 누르기</b> 지역 추가 팝업이 열려요.</li>' +
-          '<li><b>지역 고르기</b> 시·도를 고른 뒤 시·군·구를 골라요. 시·군·구 목록은 고른 시·도에 맞게 바뀌어요.</li>' +
-          '<li><b>[추가] 누르기</b> 팝업이 닫히고 지역 목록에 추가돼요.</li>' +
-          '<li><b>[저장] 누르기</b> 영역 아래의 [저장]을 눌러야 반영돼요.</li>' +
-        '</ol>' +
-        '<p>지역을 빼려면 지역 옆의 [×]를 누르고 [저장]을 눌러요. 기본 지역은 빼지 못해요.</p>'
-    },
-    {
-      title: '지역을 추가하지 못할 때',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-region-error-pc.webp', alt: '09SCM 지역 추가 오류 PC 화면', ratio: 1.2315 }
-      ],
-      shotCaption: '09SCM 지역 추가 오류 화면',
-      html:
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>시·도를 고르지 않음</td><td>&quot;시·도를 선택해주세요.&quot;</td></tr>' +
-          '<tr><td>시·군·구를 고르지 않음</td><td>&quot;시·군·구를 선택해주세요.&quot;</td></tr>' +
-          '<tr><td>이미 등록한 지역 (기본 지역 포함)</td><td>&quot;이미 등록된 지역입니다.&quot;</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>안내가 나오면 팝업이 닫히지 않아요. 지역을 다시 고르고 [추가]를 눌러요.</p>'
-    },
-    {
-      title: '등록이 50곳이 되면',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-region-full-pc.webp', alt: '09SCM 지역 50곳 등록 PC 화면', ratio: 3.2511 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-region-full-mobile.webp', alt: '09SCM 지역 50곳 등록 모바일 화면', ratio: 0.4955 }
-      ],
-      shotCaption: '09SCM 지역 50곳 등록 화면 (PC / 모바일)',
-      html:
-        '<ul>' +
-          '<li>기본 지역을 포함해 최대 50곳까지 등록할 수 있어요. 등록 현황에 &quot;등록 50/50곳&quot;이 표시되면 [지역 추가]를 누를 수 없어요.</li>' +
-          '<li>지역을 삭제하면 다시 추가할 수 있어요. 삭제한 내용은 [저장]을 눌러야 반영돼요.</li>' +
-        '</ul>'
-    },
-    {
-      title: '사업장 주소가 바뀌면',
-      html:
-        '<ul>' +
-          '<li>기본 지역은 저장해 둔 값이 아니라 지금 사업장 주소에서 정해져요. 사업장 주소가 바뀌면 기본 지역도 바뀐 주소의 시·군·구로 바뀌어요.</li>' +
-          '<li>이미 등록한 우리지역 상품에도 똑같이 적용돼요. 상품 화면에서 따로 고치지 않아도 바뀐 기본 지역 기준으로 구매자에게 보여요. 그래서 상품이 보이는 구매자의 범위가 달라질 수 있어요.</li>' +
-          '<li>직접 추가한 지역은 주소가 바뀌어도 그대로 남아요.</li>' +
-          '<li>사업장 주소는 시스템관리 &gt; <a href="#system-member">회원정보</a>에서 확인해주세요.</li>' +
-        '</ul>'
-    },
-    {
-      title: '배송방식을 정할 때',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-ship-cod-pc.webp', alt: '09SCM 착불 선택 PC 화면', ratio: 6.5321 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-ship-cod-mobile.webp', alt: '09SCM 착불 선택 모바일 화면', ratio: 2.0183 }
-      ],
-      shotCaption: '09SCM 착불 선택 화면 (PC / 모바일)',
-      html:
-        '<ul>' +
-          '<li>[기본배송비]를 고르면 금액 입력칸이 나타나요. 입력한 금액은 주문 한 건당 한 번 결제금액에 더해져요.</li>' +
-          '<li>[착불], [무료배송]을 고르면 금액 입력칸이 숨겨져요. 두 경우 모두 결제금액에는 배송비가 0원으로 반영돼요. 착불은 구매자가 배송받을 때 택배사에 따로 지불해요.</li>' +
-        '</ul>'
-    },
-    {
-      title: '기본배송비를 잘못 입력하면',
-      shots: [
-        { device: 'pc', src: '../assets/img/partner/wh-set-ship-error-pc.webp', alt: '09SCM 기본배송비 입력 오류 PC 화면', ratio: 4.4087 },
-        { device: 'mobile', src: '../assets/img/partner/wh-set-ship-error-mobile.webp', alt: '09SCM 기본배송비 입력 오류 모바일 화면', ratio: 1.3622 }
-      ],
-      shotCaption: '09SCM 기본배송비 입력 오류 화면 (PC / 모바일)',
-      html:
-        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-          '<tr><td>기본배송비가 0원 이상의 정수가 아님</td><td>&quot;기본배송비는 0원 이상의 정수로 입력해주세요.&quot;</td></tr>' +
-        '</tbody></table></div>' +
-        '<p>안내가 나오면 저장되지 않아요. 금액을 고친 뒤 다시 [저장]을 눌러요. 이 안내는 [기본배송비]를 선택했을 때만 나와요.</p>'
+      "device": "mobile",
+      "src": "../assets/img/partner/wh-set-main-mobile.webp",
+      "alt": "09SCM 도매설정 모바일 화면",
+      "ratio": 0.4814004376367615
     }
   ],
-  trouble:
-    '<h3>설정을 바꿨는데 이미 접수된 주문은 그대로예요</h3>' +
-    '<p>결제수수료와 배송방식은 주문이 만들어질 때의 값이 주문에 저장돼요. 이후 설정을 바꿔도 이미 접수된 주문의 금액은 바뀌지 않고, 새로 들어오는 주문부터 적용돼요.</p>' +
-    '<h3>우리지역을 바꿨는데 기존 상품의 지역은 그대로예요</h3>' +
-    '<p>여기서 등록한 지역은 새 도매상품을 등록할 때 처음 채워지는 값이에요. 이미 등록한 상품의 지역은 <a href="#wholesale-mine">내 도매상품</a>에서 상품별로 바꿔요.</p>' +
-    '<h3>저장했는데 다른 영역의 변경이 반영되지 않아요</h3>' +
-    '<p>결제수수료, 공급범위, 배송방식은 영역마다 [저장]이 따로 있어요. 저장하지 않은 영역의 변경은 반영되지 않아요.</p>'
+  "shotCaption": "09SCM 도매설정 화면 (PC / 모바일)",
+  "overview": "<p>도매상품을 공급할 때 적용할 카드결제 수수료, 공급범위(우리지역), 배송방식을 정하는 화면이에요. 여기서 정한 값은 구매자의 주문 결제금액과 배송비에 쓰여요.</p><ul><li>세 영역은 각자의 [저장]으로 따로 저장해요.</li><li>처음에는 카드결제 수수료는 공급자부담, 배송방식은 기본배송비가 선택돼 있어요.</li><li>결제수수료와 배송방식은 내 모든 도매상품에 똑같이 적용돼요. 상품마다 따로 정할 수 없어요.</li></ul>",
+  "steps": "<h3>결제수수료 설정</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>카드결제 수수료 부담주체</td><td>[공급자부담], [구매자부담] 중 선택 (처음에는 공급자부담)</td></tr><tr><td>카드결제 수수료율</td><td>[구매자부담]을 선택하면 나타나는 % 입력칸 (0 이상 100 미만의 숫자, 비워두면 0%)</td></tr><tr><td>결제금액 반영</td><td>구매자부담이고 구매자가 카드로 결제할 때만 상품금액 × 수수료율을 결제금액에 더함 (배송비에는 붙지 않음) (원 미만 반올림, 계좌이체는 수수료 없음)</td></tr></tbody></table></div><h3>공급범위(우리지역) 설정</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>우리지역</td><td>공급범위를 [우리지역]으로 정하는 새 도매상품에 처음 채워지는 지역 (시·군·구 단위)</td></tr><tr><td>기본 지역</td><td>내 사업장 주소의 시·군·구 ([기본]으로 표시, 삭제 불가, 사업장 주소가 바뀌면 기본 지역도 바뀐 주소 기준으로 적용)</td></tr><tr><td>[지역 추가]</td><td>팝업에서 시·도, 시·군·구를 골라 추가</td></tr><tr><td>등록 현황</td><td>&quot;등록 N/50곳&quot; (기본 지역 포함, 50곳이 되면 [지역 추가] 비활성)</td></tr><tr><td>지역 삭제</td><td>추가한 지역 옆의 [×] (기본 지역은 삭제 불가)</td></tr><tr><td>저장</td><td>추가·삭제한 내용은 아래 [저장]을 눌러야 반영</td></tr></tbody></table></div><p>공급범위가 우리지역인 상품은 등록한 시·군·구에 사업장 주소가 있는 구매자에게 보여요. 본사 소속 여부는 따지지 않아요. 구매자에게 노출되는 기준은 <a href=\"#wholesale-shop\">도매상품 주문하기</a>에서 확인해주세요.</p><h3>배송방식 설정</h3><div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>배송방식</td><td>[기본배송비], [착불], [무료배송] 중 선택 (처음에는 기본배송비)</td></tr><tr><td>기본배송비</td><td>[기본배송비]를 선택하면 나타나는 원 입력칸 (0원 이상의 정수, 주문 건당 1회, 비워두면 0원)</td></tr><tr><td>적용 범위</td><td>내 모든 도매상품에 똑같이 적용 (상품 화면에는 배송방식이 조회만 가능하게 표시)</td></tr><tr><td>구매자 화면 표기</td><td>기본배송비(N원), 착불(별도부과), 무료배송(0원)</td></tr></tbody></table></div>",
+  "cases": [
+    {
+      "title": "카드결제 수수료를 구매자부담으로 정하면",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-set-fee-buyer-pc.webp",
+          "alt": "09SCM 구매자부담 수수료율 PC 화면",
+          "ratio": 4.7467
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-set-fee-buyer-mobile.webp",
+          "alt": "09SCM 구매자부담 수수료율 모바일 화면",
+          "ratio": 1.4667
+        }
+      ],
+      "shotCaption": "09SCM 구매자부담 수수료율 입력 화면 (PC / 모바일)",
+      "html": "<ul><li>[구매자부담]을 고르면 수수료율 입력칸이 나타나요. [공급자부담]일 때는 보이지 않아요.</li><li>구매자가 카드로 결제하면 상품금액 × 수수료율이 결제금액에 더해지고 배송비에는 붙지 않아요. 예) 상품금액 100,000원, 배송비 3,000원, 수수료율 2.8%이면 수수료는 2,800원이에요.</li><li>계좌이체로 결제하면 수수료가 붙지 않아요.</li></ul>"
+    },
+    {
+      "title": "수수료율을 잘못 입력하면",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-set-fee-error-pc.webp",
+          "alt": "09SCM 수수료율 입력 오류 PC 화면",
+          "ratio": 4.3951
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-set-fee-error-mobile.webp",
+          "alt": "09SCM 수수료율 입력 오류 모바일 화면",
+          "ratio": 1.358
+        }
+      ],
+      "shotCaption": "09SCM 수수료율 입력 오류 화면 (PC / 모바일)",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>수수료율이 0 이상 100 미만의 숫자가 아님</td><td>&quot;수수료율은 0 이상 100 미만의 숫자로 입력해주세요.&quot;</td></tr></tbody></table></div><p>안내가 나오면 저장되지 않아요. 수수료율을 고친 뒤 다시 [저장]을 눌러요. 이 안내는 [구매자부담]을 선택했을 때만 나와요.</p>"
+    },
+    {
+      "title": "지역을 추가할 때",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-set-region-pop-pc.webp",
+          "alt": "09SCM 지역 추가 팝업 PC 화면",
+          "ratio": 1.3441
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-set-region-pop-mobile.webp",
+          "alt": "09SCM 지역 추가 팝업 모바일 화면",
+          "ratio": 1.1828
+        }
+      ],
+      "shotCaption": "09SCM 지역 추가 팝업 화면 (PC / 모바일)",
+      "html": "<ol><li><b>[지역 추가] 누르기</b> 지역 추가 팝업이 열려요.</li><li><b>지역 고르기</b> 시·도를 고른 뒤 시·군·구를 골라요. 시·군·구 목록은 고른 시·도에 맞게 바뀌어요.</li><li><b>[추가] 누르기</b> 팝업이 닫히고 지역 목록에 추가돼요.</li><li><b>[저장] 누르기</b> 영역 아래의 [저장]을 눌러야 반영돼요.</li></ol><p>지역을 빼려면 지역 옆의 [×]를 누르고 [저장]을 눌러요. 기본 지역은 빼지 못해요.</p>"
+    },
+    {
+      "title": "지역을 추가하지 못할 때",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-set-region-error-pc.webp",
+          "alt": "09SCM 지역 추가 오류 PC 화면",
+          "ratio": 1.2315
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-set-region-error-mobile.webp",
+          "alt": "09SCM 지역 추가 오류 모바일 화면",
+          "ratio": 1.0837
+        }
+      ],
+      "shotCaption": "09SCM 지역 추가 오류 화면 (PC / 모바일)",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>시·도를 고르지 않음</td><td>&quot;시·도를 선택해주세요.&quot;</td></tr><tr><td>시·군·구를 고르지 않음</td><td>&quot;시·군·구를 선택해주세요.&quot;</td></tr><tr><td>이미 등록한 지역 (기본 지역 포함)</td><td>&quot;이미 등록된 지역입니다.&quot;</td></tr></tbody></table></div><p>안내가 나오면 팝업이 닫히지 않아요. 지역을 다시 고르고 [추가]를 눌러요.</p>"
+    },
+    {
+      "title": "등록이 50곳이 되면",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-set-region-full-pc.webp",
+          "alt": "09SCM 지역 50곳 등록 PC 화면",
+          "ratio": 3.2511
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-set-region-full-mobile.webp",
+          "alt": "09SCM 지역 50곳 등록 모바일 화면",
+          "ratio": 0.4955
+        }
+      ],
+      "shotCaption": "09SCM 지역 50곳 등록 화면 (PC / 모바일)",
+      "html": "<ul><li>기본 지역을 포함해 최대 50곳까지 등록할 수 있어요. 등록 현황에 &quot;등록 50/50곳&quot;이 표시되면 [지역 추가]를 누를 수 없어요.</li><li>지역을 삭제하면 다시 추가할 수 있어요. 삭제한 내용은 [저장]을 눌러야 반영돼요.</li></ul>"
+    },
+    {
+      "title": "사업장 주소가 바뀌면",
+      "html": "<ul><li>기본 지역은 저장해 둔 값이 아니라 지금 사업장 주소에서 정해져요. 사업장 주소가 바뀌면 기본 지역도 바뀐 주소의 시·군·구로 바뀌어요.</li><li>이미 등록한 우리지역 상품에도 똑같이 적용돼요. 상품 화면에서 따로 고치지 않아도 바뀐 기본 지역 기준으로 구매자에게 보여요. 그래서 상품이 보이는 구매자의 범위가 달라질 수 있어요.</li><li>직접 추가한 지역은 주소가 바뀌어도 그대로 남아요.</li><li>사업장 주소는 시스템관리 &gt; <a href=\"#system-member\">회원정보</a>에서 확인해주세요.</li></ul>"
+    },
+    {
+      "title": "배송방식을 정할 때",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-set-ship-cod-pc.webp",
+          "alt": "09SCM 착불 선택 PC 화면",
+          "ratio": 6.5321
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-set-ship-cod-mobile.webp",
+          "alt": "09SCM 착불 선택 모바일 화면",
+          "ratio": 2.0183
+        }
+      ],
+      "shotCaption": "09SCM 착불 선택 화면 (PC / 모바일)",
+      "html": "<ul><li>[기본배송비]를 고르면 금액 입력칸이 나타나요. 입력한 금액은 주문 한 건당 한 번 결제금액에 더해져요.</li><li>[착불], [무료배송]을 고르면 금액 입력칸이 숨겨져요. 두 경우 모두 결제금액에는 배송비가 0원으로 반영돼요. 착불은 구매자가 배송받을 때 택배사에 따로 지불해요.</li></ul>"
+    },
+    {
+      "title": "기본배송비를 잘못 입력하면",
+      "shots": [
+        {
+          "device": "pc",
+          "src": "../assets/img/partner/wh-set-ship-error-pc.webp",
+          "alt": "09SCM 기본배송비 입력 오류 PC 화면",
+          "ratio": 4.4087
+        },
+        {
+          "device": "mobile",
+          "src": "../assets/img/partner/wh-set-ship-error-mobile.webp",
+          "alt": "09SCM 기본배송비 입력 오류 모바일 화면",
+          "ratio": 1.3622
+        }
+      ],
+      "shotCaption": "09SCM 기본배송비 입력 오류 화면 (PC / 모바일)",
+      "html": "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody><tr><td>기본배송비가 0원 이상의 정수가 아님</td><td>&quot;기본배송비는 0원 이상의 정수로 입력해주세요.&quot;</td></tr></tbody></table></div><p>안내가 나오면 저장되지 않아요. 금액을 고친 뒤 다시 [저장]을 눌러요. 이 안내는 [기본배송비]를 선택했을 때만 나와요.</p>"
+    }
+  ],
+  "trouble": "<h3>설정을 바꿨는데 이미 접수된 주문은 그대로예요</h3><p>결제수수료와 배송방식은 주문이 만들어질 때의 값이 주문에 저장돼요. 이후 설정을 바꿔도 이미 접수된 주문의 금액은 바뀌지 않고, 새로 들어오는 주문부터 적용돼요.</p><h3>우리지역을 바꿨는데 기존 상품의 지역은 그대로예요</h3><p>여기서 등록한 지역은 새 도매상품을 등록할 때 처음 채워지는 값이에요. 이미 등록한 상품의 지역은 <a href=\"#wholesale-mine\">내 도매상품</a>에서 상품별로 바꿔요.</p><h3>저장했는데 다른 영역의 변경이 반영되지 않아요</h3><p>결제수수료, 공급범위, 배송방식은 영역마다 [저장]이 따로 있어요. 저장하지 않은 영역의 변경은 반영되지 않아요.</p>"
 };
 
 window.GUIDE_CONTENT['wholesale-mine'] = {
@@ -5298,7 +5297,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
                   "ratio": 2.4038
                 }
               ],
-              "shotCaption": "09SCM 주문접수관리 일괄변경 주문 미선택 화면",
+              "shotCaption": "09SCM 일괄변경 선택 안내 화면",
               "html": "<ul><li>안내: &quot;일괄 변경할 주문을 선택해주세요.&quot;</li></ul>"
             },
             {
@@ -5311,7 +5310,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
                   "ratio": 2.4038
                 }
               ],
-              "shotCaption": "09SCM 주문접수관리 일괄변경 처리 미선택 화면",
+              "shotCaption": "09SCM 일괄변경 선택 안내 화면",
               "html": "<ul><li>안내: &quot;변경할 처리 상태를 선택해주세요.&quot;</li></ul>"
             },
             {
@@ -5324,7 +5323,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
                   "ratio": 1.9531
                 }
               ],
-              "shotCaption": "09SCM 주문접수관리 일괄변경 전체 가능 화면",
+              "shotCaption": "09SCM 일괄변경 확인 화면",
               "html": "<ul><li>안내: 선택한 건수와 처리를 표시하고 진행 여부 확인</li><li>[진행]: 선택한 주문 모두 변경</li><li>완료 후: 선택 해제, 처리 건수 안내</li><li>알림: 도매구매 알림이 설정된 경우 구매자에게 시스템 알림이 발송될 수 있음</li></ul>"
             },
             {
@@ -5337,7 +5336,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
                   "ratio": 1.9531
                 }
               ],
-              "shotCaption": "09SCM 주문접수관리 일괄변경 일부 가능 화면",
+              "shotCaption": "09SCM 일괄변경 확인 화면",
               "html": "<ul><li>안내: &quot;선택한 2건 중 1건만 [배송대기] 처리됩니다.&quot;처럼 변경 가능한 건수 표시</li><li>[진행]: 조건에 맞는 주문만 변경, 나머지는 그대로 유지</li></ul>"
             },
             {
@@ -5350,7 +5349,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
                   "ratio": 2.4038
                 }
               ],
-              "shotCaption": "09SCM 주문접수관리 일괄변경 불가 화면",
+              "shotCaption": "09SCM 일괄변경 불가 안내 화면",
               "html": "<ul><li>안내: &quot;선택한 주문은 [배송대기] 처리할 수 없습니다.&quot;</li><li>결과: 변경되는 주문 없음</li></ul>"
             }
           ]
@@ -5874,7 +5873,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
                   "ratio": 6.0959
                 }
               ],
-              "shotCaption": "09SCM 정산 후 카드결제 처리 토스트 화면",
+              "shotCaption": "09SCM 정산 후 카드결제 환불 요청 안내 화면",
               "html": "<ul><li>처리 직후: &quot;환불을 요청했습니다. 정산금을 반환해야 환불이 완료됩니다.&quot; 토스트 표시</li><li>환불: PG사에 환불을 요청</li><li>결제상태: [환불대기]로 변경</li><li>안내: 주문 상세 결제 정보 제목 아래에 PG사 환불 요청 안내 표시 (공급자 화면에만 노출)</li><li>전환: 정산금 반환으로 환불이 완료되면 [결제취소]로 변경 (알림 없음)</li></ul>"
             },
             {
