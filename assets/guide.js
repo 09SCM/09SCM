@@ -315,6 +315,8 @@
         grid.forEach(function (line) {
           if (line[i] && k === 'mark') line[i].classList.add('c');
         });
+        var th = tb.querySelectorAll('thead th')[i];
+        if (th && k === 'mark') th.classList.add('c');
       });
       tb.insertBefore(cg, tb.firstChild);
       tb.classList.add('tpl');
