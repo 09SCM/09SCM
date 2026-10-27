@@ -10,18 +10,18 @@ var SHOT_DIMS = {
   'franchise-done': [2880, 1800, 880, 1800],
   'franchise-entry-bar': [2880, 208, null],
   'franchise-entry-menu': [2880, 1800, 880, 1800],
-  'franchise-error': [2880, 1280, 880, 1280],
+  'franchise-error': [2880, 960, 880, 960],
   'franchise-id-ok': [1536, 343, 880, 379],
   'franchise-phone-verified': [1536, 482, 880, 482],
   'franchise-terms': [2880, 1800, 880, 1800],
-  'reset-error': [2880, 1200, 880, 1200],
+  'reset-error': [2880, 960, 880, 960],
   'reset-sent': [1024, 1046, null],
   'reset-step2': [2880, 1800, 880, 1800],
   'reset-verified': [1024, 1046, null],
   'signup-alias-ok': [1336, 307, 880, 307],
   'signup-done': [2880, 1800, 880, 1800],
   'signup-done-plain': [2880, 1800, 880, 1800],
-  'signup-error': [2880, 1280, 880, 1280],
+  'signup-error': [2880, 960, 880, 960],
   'signup-phone-dup': [1336, 626, 880, 730],
   'signup-phone-ok': [1336, 626, 880, 730],
   'signup-phone-sent': [1336, 626, 880, 730],
@@ -196,34 +196,39 @@ window.GUIDE_CONTENT['start-login'] = {
         '<p>모든 필수 항목을 입력하고 [회원가입 완료]를 누르면 가입이 끝나고 <a href="#start-login/member-signup-done">가입 완료</a> 화면으로 이동해요. 이미 회원이라면 아래 [로그인]으로 이동해요.</p>',
       cases: [
         {
-          title: '이미 가입된 휴대폰번호이면',
-          shots: pair('signup-phone-dup', '09SCM 회원가입 이미 가입된 번호'),
-          shotCaption: '09SCM 회원가입 이미 가입된 번호 화면 (PC / 모바일)',
-          html: '<p>휴대폰번호 아래에 &quot;이미 가입된 휴대폰번호입니다.&quot; 안내가 나오고 [인증번호 발송]을 누를 수 없어요. 다른 번호로 [중복확인]을 다시 하거나, 이미 가입한 번호라면 로그인해요.</p>'
-        },
-        {
-          title: '사용할 수 있는 휴대폰번호이면',
-          shots: pair('signup-phone-ok', '09SCM 회원가입 사용 가능한 번호'),
-          shotCaption: '09SCM 회원가입 사용 가능한 번호 화면 (PC / 모바일)',
-          html: '<p>&quot;사용 가능한 휴대폰번호입니다.&quot; 안내가 나오고 [인증번호 발송]을 누를 수 있어요. 번호를 바꾸면 [중복확인]부터 다시 해요.</p>'
-        },
-        {
-          title: '인증번호를 발송하면',
-          shots: pair('signup-phone-sent', '09SCM 회원가입 인증번호 발송'),
-          shotCaption: '09SCM 회원가입 인증번호 발송 화면 (PC / 모바일)',
-          html: '<p>인증번호 아래에 &quot;인증번호가 발송되었습니다. 유효시간 03:00&quot; 안내가 나와요. 받은 숫자 6자리를 입력하고 [확인]을 눌러요.</p>'
-        },
-        {
-          title: '인증번호를 확인하면',
-          shots: pair('signup-phone-verified', '09SCM 회원가입 휴대폰번호 인증 완료'),
-          shotCaption: '09SCM 회원가입 휴대폰번호 인증 완료 화면 (PC / 모바일)',
-          html: '<p>&quot;휴대폰번호 인증이 완료되었습니다.&quot; 안내가 나와요. 인증번호를 다시 입력하면 인증이 풀려요.</p>'
-        },
-        {
-          title: '사용할 수 있는 회원주문 코드이면',
-          shots: pair('signup-alias-ok', '09SCM 회원가입 사용 가능한 회원주문 코드'),
-          shotCaption: '09SCM 회원가입 사용 가능한 회원주문 코드 화면 (PC / 모바일)',
-          html: '<p>&quot;사용할 수 있는 회원주문 코드입니다.&quot; 안내가 나와요. 코드를 바꾸면 [중복 확인]을 다시 해요.</p>'
+          group: '입력 단계에 따라',
+          rows: [
+            {
+              title: '이미 가입된 휴대폰번호이면',
+              shots: pair('signup-phone-dup', '09SCM 회원가입 이미 가입된 번호'),
+              shotCaption: '09SCM 회원가입 이미 가입된 번호 화면 (PC / 모바일)',
+              html: '<ul><li>안내: &quot;이미 가입된 휴대폰번호입니다.&quot;</li><li>[인증번호 발송]: 누를 수 없음</li><li>이어서: 다른 번호로 [중복확인] 또는 로그인</li></ul>'
+            },
+            {
+              title: '사용할 수 있는 휴대폰번호이면',
+              shots: pair('signup-phone-ok', '09SCM 회원가입 사용 가능한 번호'),
+              shotCaption: '09SCM 회원가입 사용 가능한 번호 화면 (PC / 모바일)',
+              html: '<ul><li>안내: &quot;사용 가능한 휴대폰번호입니다.&quot;</li><li>[인증번호 발송]: 누를 수 있음</li><li>번호 변경: [중복확인]부터 다시 진행</li></ul>'
+            },
+            {
+              title: '인증번호를 발송하면',
+              shots: pair('signup-phone-sent', '09SCM 회원가입 인증번호 발송'),
+              shotCaption: '09SCM 회원가입 인증번호 발송 화면 (PC / 모바일)',
+              html: '<ul><li>안내: &quot;인증번호가 발송되었습니다. 유효시간 03:00&quot;</li><li>이어서: 받은 숫자 6자리 입력 후 [확인]</li></ul>'
+            },
+            {
+              title: '인증번호를 확인하면',
+              shots: pair('signup-phone-verified', '09SCM 회원가입 휴대폰번호 인증 완료'),
+              shotCaption: '09SCM 회원가입 휴대폰번호 인증 완료 화면 (PC / 모바일)',
+              html: '<ul><li>안내: &quot;휴대폰번호 인증이 완료되었습니다.&quot;</li><li>인증번호 재입력: 인증 해제</li></ul>'
+            },
+            {
+              title: '사용할 수 있는 회원주문 코드이면',
+              shots: pair('signup-alias-ok', '09SCM 회원가입 사용 가능한 회원주문 코드'),
+              shotCaption: '09SCM 회원가입 사용 가능한 회원주문 코드 화면 (PC / 모바일)',
+              html: '<ul><li>안내: &quot;사용할 수 있는 회원주문 코드입니다.&quot;</li><li>코드 변경: [중복 확인] 재진행</li></ul>'
+            }
+          ]
         },
         {
           title: '약관 [보기]를 누르면',
@@ -433,28 +438,33 @@ window.GUIDE_CONTENT['start-login'] = {
           html: '<p>[가맹점 가입신청]은 본사 소매몰에만 보여요. 가맹점 소매몰에는 보이지 않아요.</p>'
         },
         {
-          title: '아이디 중복 확인을 통과하면',
-          shots: pair('franchise-id-ok', '09SCM 가맹점 가입 신청 사용 가능한 아이디'),
-          shotCaption: '09SCM 가맹점 가입 신청 사용 가능한 아이디 화면 (PC / 모바일)',
-          html: '<p>아이디 아래에 사용할 수 있다는 안내가 나와요. 아이디를 바꾸면 [중복 확인]을 다시 해요.</p>'
-        },
-        {
-          title: '휴대폰번호 인증을 마치면',
-          shots: pair('franchise-phone-verified', '09SCM 가맹점 가입 신청 휴대폰번호 인증 완료'),
-          shotCaption: '09SCM 가맹점 가입 신청 휴대폰번호 인증 완료 화면 (PC / 모바일)',
-          html: '<p>인증이 완료되었다는 안내가 나와요.</p>'
-        },
-        {
-          title: '사업자등록번호를 인증하면',
-          shots: pair('franchise-biz-ok', '09SCM 가맹점 가입 신청 사업자 인증 완료'),
-          shotCaption: '09SCM 가맹점 가입 신청 사업자 인증 완료 화면 (PC / 모바일)',
-          html: '<p>사업자등록번호 아래에 인증이 완료되었다는 안내가 나와요.</p>'
-        },
-        {
-          title: '법인사업자를 선택하면',
-          shots: pair('franchise-corp', '09SCM 가맹점 가입 신청 법인사업자'),
-          shotCaption: '09SCM 가맹점 가입 신청 법인사업자 화면 (PC / 모바일)',
-          html: '<p>법인등록번호 입력란이 나타나요. 숫자 13자리로 입력해요.</p>'
+          group: '입력 단계에 따라',
+          rows: [
+            {
+              title: '아이디 중복 확인을 통과하면',
+              shots: pair('franchise-id-ok', '09SCM 가맹점 가입 신청 사용 가능한 아이디'),
+              shotCaption: '09SCM 가맹점 가입 신청 사용 가능한 아이디 화면 (PC / 모바일)',
+              html: '<ul><li>안내: 사용할 수 있는 아이디라는 안내</li><li>아이디 변경: [중복 확인] 재진행</li></ul>'
+            },
+            {
+              title: '휴대폰번호 인증을 마치면',
+              shots: pair('franchise-phone-verified', '09SCM 가맹점 가입 신청 휴대폰번호 인증 완료'),
+              shotCaption: '09SCM 가맹점 가입 신청 휴대폰번호 인증 완료 화면 (PC / 모바일)',
+              html: '<ul><li>안내: 인증이 완료되었다는 안내</li></ul>'
+            },
+            {
+              title: '사업자등록번호를 인증하면',
+              shots: pair('franchise-biz-ok', '09SCM 가맹점 가입 신청 사업자 인증 완료'),
+              shotCaption: '09SCM 가맹점 가입 신청 사업자 인증 완료 화면 (PC / 모바일)',
+              html: '<ul><li>안내: 사업자등록번호 아래에 인증이 완료되었다는 안내</li></ul>'
+            },
+            {
+              title: '법인사업자를 선택하면',
+              shots: pair('franchise-corp', '09SCM 가맹점 가입 신청 법인사업자'),
+              shotCaption: '09SCM 가맹점 가입 신청 법인사업자 화면 (PC / 모바일)',
+              html: '<ul><li>법인등록번호: 입력란 표시 (숫자 13자리)</li></ul>'
+            }
+          ]
         },
         {
           title: '약관 [보기]를 누르면',

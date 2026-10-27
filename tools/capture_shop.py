@@ -225,7 +225,7 @@ def fr_error(page, dev):
     page.evaluate("document.querySelector('#businessPostalCode').value='16690'; document.querySelector('#businessAddress').value='경기 수원시 영통구 온마을로 27'")
     page.fill('input[name=businessAddressDetail]', '1층')
     page.check('#franchiseAgreeAll')
-    scroll_to(page, '.franchise-form-actions', 420)
+    scroll_to(page, '.franchise-form-actions', 300)
     page.click('.franchise-form-actions .primary-button')
     wait_toast(page)
 
@@ -253,7 +253,7 @@ with sync_playwright() as p:
     snap(b, 'signup-phone-sent', '?view=signup', phone_sent, SEC1, fit=True, margin=28)
     snap(b, 'signup-phone-verified', '?view=signup', phone_verified, SEC1, fit=True, margin=28)
     snap(b, 'signup-alias-ok', '?view=signup', alias_ok, ['.auth-field:has(#aliasCode)'], fit=True, margin=28)
-    snap(b, 'signup-error', '?view=signup', alias_dup, vh=640)
+    snap(b, 'signup-error', '?view=signup', alias_dup, vh=480)
     snap(b, 'signup-terms', '?view=terms')
     snap(b, 'signup-done', '?view=signup-complete', init=NICK)
     snap(b, 'signup-done-plain', '?view=signup-complete', init=PLAIN)
@@ -262,7 +262,7 @@ with sync_playwright() as p:
     snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['.auth-card'], margin=16, devices=(('pc', 1440),))
     snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['.auth-card'], margin=16, devices=(('pc', 1440),))
     snap(b, 'reset-step2', '?view=reset-password', reset_step2)
-    snap(b, 'reset-error', '?view=reset-password', reset_error, vh=600)
+    snap(b, 'reset-error', '?view=reset-password', reset_error, vh=480)
 
     # 가맹점 가입 신청
     snap(b, 'franchise-entry-bar', '', clip=(0, 0, 1440, 104), devices=(('pc', 1440),))
@@ -273,7 +273,7 @@ with sync_playwright() as p:
     snap(b, 'franchise-corp', '?view=franchise-signup', fr_corp, ['.business-type-field', '.auth-field:has(input[name=businessName])', '.auth-field:has(input[name=representativeName])', '#corporationNumberField', '.auth-field:has(#businessNumber)'], fit=True, margin=28)
     snap(b, 'franchise-terms', '?view=franchise-signup', fr_terms)
     snap(b, 'franchise-done', '?view=franchise-signup', lambda pg, dv: franchise_done(pg))
-    snap(b, 'franchise-error', '?view=franchise-signup', fr_error, vh=640)
+    snap(b, 'franchise-error', '?view=franchise-signup', fr_error, vh=480)
     b.close()
 
 json.dump({k: list(v) for k, v in DIMS.items()}, open('/tmp/claude-0/shot_dims.json', 'w'))
