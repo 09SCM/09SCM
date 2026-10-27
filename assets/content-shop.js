@@ -329,13 +329,13 @@ window.GUIDE_CONTENT['start-login'] = {
         {
           title: '인증번호를 발송하면',
           shots: pair('reset-sent', '09SCM 비밀번호 재설정 인증번호 발송'),
-          shotCaption: '09SCM 비밀번호 재설정 인증번호 발송 화면 (PC)',
+          shotCaption: '09SCM 비밀번호 재설정 인증번호 발송 화면',
           html: '<p>&quot;인증번호가 발송되었습니다. 유효시간 03:00&quot; 안내가 나와요. [다음]은 아직 누를 수 없어요.</p>'
         },
         {
           title: '인증번호를 확인하면',
           shots: pair('reset-verified', '09SCM 비밀번호 재설정 인증 완료'),
-          shotCaption: '09SCM 비밀번호 재설정 인증 완료 화면 (PC)',
+          shotCaption: '09SCM 비밀번호 재설정 인증 완료 화면',
           html: '<p>&quot;휴대폰번호 인증이 완료되었습니다.&quot; 안내가 나오고 [다음]을 누를 수 있어요.</p>'
         },
         {
@@ -423,7 +423,7 @@ window.GUIDE_CONTENT['start-login'] = {
           blocks: [
             {
               shots: [{ device: 'pc', src: '../assets/img/shop/franchise-entry-bar-pc.webp', alt: '09SCM 소매몰 상단 유틸리티바 PC 화면' }],
-              shotCaption: '09SCM 소매몰 상단 유틸리티바 화면 (PC)',
+              shotCaption: '09SCM 소매몰 상단 유틸리티바 화면',
               html: '<p>PC에서는 화면 맨 위 상단 유틸리티바의 [가맹점 가입신청]을 눌러요. 같은 바에 판매자가 관리자로 들어가는 [관리자 로그인]이 있어요. 모바일에는 이 바가 없어요.</p>'
             },
             {
@@ -506,7 +506,7 @@ window.GUIDE_CONTENT['start-login'] = {
             '</ul>'
         },
         {
-          title: '신청한 뒤에는',
+          title: '가맹점 가입을 신청하면',
           html:
             '<p>신청하면 계정이 바로 만들어져 이용대기 상태로 관리자에 로그인할 수 있어요. 이용대기 동안에는 시스템관리 메뉴만 쓸 수 있고, 온라인 결제 시스템(PayApp) 연동과 정기결제 카드 등록을 준비해요. 본사가 이용승인하면 모든 메뉴를 쓸 수 있어요.</p>' +
             '<p>이용대기 동안 소매몰에는 <a href="#start-gate">대문화면</a>이 나와요. 자세한 내용은 <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 이용가이드</a>에서 확인해요.</p>'
@@ -518,9 +518,7 @@ window.GUIDE_CONTENT['start-login'] = {
         '<h3>가입 신청하기가 보이지 않아요</h3>' +
         '<p>[가맹점 가입신청]은 본사 소매몰에만 보여요. 본사 소매몰에서 들어와요.</p>' +
         '<h3>아이디를 입력할 수 없어요</h3>' +
-        '<p>아이디는 영문 소문자로 시작하는 영문·숫자 조합 3~20자예요. 영문 소문자와 숫자 외의 글자는 입력되지 않아요.</p>' +
-        '<h3>법인등록번호 입력란이 보이지 않아요</h3>' +
-        '<p>사업자 유형에서 법인사업자를 선택하면 나타나요.</p>'
+        '<p>아이디는 영문 소문자로 시작하는 영문·숫자 조합 3~20자예요. 영문 소문자와 숫자 외의 글자는 입력되지 않아요.</p>'
     }
   ]
 };
