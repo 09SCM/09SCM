@@ -985,7 +985,7 @@ window.GUIDE_CONTENT['retail-order-list'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 취소요청 정보 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>영역: 취소·반품 정보 표시</li><li>구매자 요청 사유: 표시</li><li>환불계좌: 계좌이체 주문에만 표시</li><li>픽업·배달 정보의 처리상태: &quot;-&quot;로 표시</li></ul>"
+                  "html": "<ul><li>처리상태: &quot;-&quot;로 표시</li><li>취소·반품 정보: [취소요청] 또는 [반품요청], 요청 일시, 환불계좌(계좌이체 주문), 구매자 요청 사유 표시</li></ul>"
                 },
                 {
                   "shots": [
@@ -5547,7 +5547,7 @@ window.GUIDE_CONTENT['wholesale-receive'] = {
                     }
                   ],
                   "shotCaption": "09SCM 주문 상세 취소·반품 요청 영역 화면 (PC / 모바일)",
-                  "html": "<ul><li>영역: 취소·반품 정보 표시</li><li>구매자 요청 사유: 표시</li><li>환불계좌: 계좌이체 주문에만 표시</li><li>배송 정보의 처리상태: &quot;-&quot;로 표시</li></ul>"
+                  "html": "<ul><li>처리상태: &quot;-&quot;로 표시</li><li>취소·반품 정보: [취소요청] 또는 [반품요청], 요청 일시, 환불계좌(계좌이체 주문), 구매자 요청 사유 표시</li></ul>"
                 },
                 {
                   "shots": [
