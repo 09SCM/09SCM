@@ -265,8 +265,6 @@ with sync_playwright() as p:
     snap(b, 'reset-error', '?view=reset-password', reset_error, vh=480)
 
     # 가맹점 가입 신청
-    snap(b, 'franchise-entry-bar', '', clip=(0, 0, 1440, 104), devices=(('pc', 1440),))
-    snap(b, 'franchise-entry-menu', '', open_drawer)
     snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'], fit=True, margin=28)
     snap(b, 'franchise-phone-verified', '?view=franchise-signup', fr_phone_verified, ['.auth-field:has(#franchisePhone)', '.auth-field:has(#franchiseCode)'], fit=True, margin=28)
     snap(b, 'franchise-biz-ok', '?view=franchise-signup', fr_biz_ok, ['.auth-field:has(#businessNumber)'], fit=True, margin=28)

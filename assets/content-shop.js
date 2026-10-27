@@ -8,7 +8,7 @@ var ADMIN_GUIDE = 'partner.html#';
 var SHOT_DIMS = {
   'browse-main': [2880, 1800, 880, 1800],
   'browse-store': [2880, 228, 880, 542],
-  'browse-today': [2880, 1158, 880, 1572],
+  'browse-today': [2880, 1158, 880, 1530],
   'browse-empty': [2880, 1800, 880, 1800],
   'browse-top': [2880, 264, 880, 224],
   'browse-search': [2880, 402, 880, 346],
@@ -28,8 +28,6 @@ var SHOT_DIMS = {
   'franchise-biz-ok': [1536, 307, 880, 307],
   'franchise-corp': [1536, 786, 880, 961],
   'franchise-done': [2880, 1800, 880, 1800],
-  'franchise-entry-bar': [2880, 208, null],
-  'franchise-entry-menu': [2880, 1800, 880, 1800],
   'franchise-error': [2880, 960, 880, 960],
   'franchise-id-ok': [1536, 343, 880, 379],
   'franchise-phone-verified': [1536, 482, 880, 482],
@@ -440,22 +438,8 @@ window.GUIDE_CONTENT['start-login'] = {
       cases: [
         {
           title: '가맹점 가입 신청하기로 들어오려면',
-          blocks: [
-            {
-              shots: [{ device: 'pc', src: '../assets/img/shop/franchise-entry-bar-pc.webp', alt: '09SCM 소매몰 상단 유틸리티바 PC 화면' }],
-              shotCaption: '09SCM 소매몰 상단 유틸리티바 화면',
-              html: '<p>PC에서는 화면 맨 위 상단 유틸리티바의 [가맹점 가입신청]을 눌러요. 같은 바에 판매자가 관리자로 들어가는 [관리자 로그인]이 있어요. 모바일에는 이 바가 없어요.</p>'
-            },
-            {
-              shots: pair('franchise-entry-menu', '09SCM 소매몰 카테고리 메뉴'),
-              shotCaption: '09SCM 소매몰 카테고리 메뉴 화면 (PC / 모바일)',
-              html: '<p>PC·모바일 모두 [카테고리]를 눌러 메뉴를 열면 맨 아래에 [관리자 로그인 →]과 [가맹점 가입신청 →]이 있어요. [관리자 로그인 →]은 새 창으로 열려요.</p>'
-            }
-          ]
-        },
-        {
-          title: '가맹점 소매몰이면',
-          html: '<p>[가맹점 가입신청]은 본사 소매몰에만 보여요. 가맹점 소매몰에는 보이지 않아요.</p>'
+          html: '<p>소매몰 맨 위 유틸리티바의 [가맹점 가입신청]이나 카테고리 메뉴 맨 아래의 [가맹점 가입신청 →]을 눌러요. 위치는 <a href="#browse-main/main-common">공통 영역 보기</a>에서 확인해요.</p>' +
+            '<p>[가맹점 가입신청]은 본사 소매몰에만 보여요. 가맹점 소매몰에는 보이지 않아요.</p>'
         },
         {
           group: '입력 단계에 따라',
@@ -730,7 +714,7 @@ window.GUIDE_CONTENT['browse-main'] = {
         '<p>화면 맨 위의 검은 띠예요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>안내 문구</td><td>&quot;동네에서 함께 사는 즐거움&quot; (판매자가 바꿀 수 없는 고정 문구)</td></tr>' +
-          '<tr><td>가맹점 가입신청</td><td>가맹점 가입 신청 화면으로 이동 (<a href="#start-login/member-franchise">가맹점 가입 신청하기</a>)</td></tr>' +
+          '<tr><td>가맹점 가입신청</td><td>가맹점 가입 신청 화면으로 이동 (본사 소매몰에만 표시, 가맹점 소매몰에는 보이지 않음, <a href="#start-login/member-franchise">가맹점 가입 신청하기</a>)</td></tr>' +
           '<tr><td>관리자 로그인</td><td>판매자가 쓰는 관리자 로그인 화면으로 이동 (새 창으로 열림, <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 이용가이드</a>)</td></tr>' +
         '</tbody></table></div>' +
 
@@ -760,7 +744,7 @@ window.GUIDE_CONTENT['browse-main'] = {
           '<tr><td>배달상품</td><td>배달 가능 상품 목록으로 이동</td></tr>' +
           '<tr><td>전체상품</td><td>노출 중인 모든 상품의 목록으로 이동</td></tr>' +
           '<tr><td>1차·2차 카테고리</td><td>판매자가 상품카테고리에 등록한 카테고리 (관리자에서 정한 순서 그대로 표시, 누르면 해당 카테고리의 상품목록으로 이동)</td></tr>' +
-          '<tr><td>관리자 로그인 · 가맹점 가입신청</td><td>유틸리티바와 같은 링크 (메뉴 맨 아래)</td></tr>' +
+          '<tr><td>관리자 로그인 · 가맹점 가입신청</td><td>유틸리티바와 같은 링크 (메뉴 맨 아래, 가맹점 가입신청은 본사 소매몰에만 표시)</td></tr>' +
         '</tbody></table></div>' +
         '<p>판매자는 관리자의 <a href="' + ADMIN_GUIDE + 'retail-product-category">상품카테고리</a>에서 카테고리를 추가하고 순서를 바꿔요.</p>' +
 
