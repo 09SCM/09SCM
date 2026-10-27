@@ -5,27 +5,27 @@ window.GUIDE_CONTENT = window.GUIDE_CONTENT || {};
 var ADMIN_GUIDE_LOGIN = 'partner.html#start-login';
 
 var SHOT_DIMS = {
-  'franchise-biz-ok': [1424, 323, 880, 323],
-  'franchise-corp': [1424, 802, 880, 977],
+  'franchise-biz-ok': [1536, 307, 880, 307],
+  'franchise-corp': [1536, 786, 880, 961],
   'franchise-done': [2880, 1800, 880, 1800],
   'franchise-entry-bar': [2880, 208, null],
   'franchise-entry-menu': [2880, 1800, 880, 1800],
   'franchise-error': [2880, 1280, 880, 1280],
-  'franchise-id-ok': [1424, 359, 880, 395],
-  'franchise-phone-verified': [1424, 498, 880, 498],
+  'franchise-id-ok': [1536, 343, 880, 379],
+  'franchise-phone-verified': [1536, 482, 880, 482],
   'franchise-terms': [2880, 1800, 880, 1800],
   'reset-error': [2880, 1200, 880, 1200],
-  'reset-sent': [944, 630, 880, 630],
+  'reset-sent': [1056, 614, 880, 614],
   'reset-step2': [2880, 1800, 880, 1800],
-  'reset-verified': [944, 630, 880, 630],
-  'signup-alias-ok': [1224, 323, 880, 323],
+  'reset-verified': [1056, 614, 880, 614],
+  'signup-alias-ok': [1336, 307, 880, 307],
   'signup-done': [2880, 1800, 880, 1800],
   'signup-done-plain': [2880, 1800, 880, 1800],
   'signup-error': [2880, 1280, 880, 1280],
-  'signup-phone-dup': [1224, 642, 880, 746],
-  'signup-phone-ok': [1224, 642, 880, 746],
-  'signup-phone-sent': [1224, 642, 880, 746],
-  'signup-phone-verified': [1224, 642, 880, 746],
+  'signup-phone-dup': [1336, 626, 880, 730],
+  'signup-phone-ok': [1336, 626, 880, 730],
+  'signup-phone-sent': [1336, 626, 880, 730],
+  'signup-phone-verified': [1336, 626, 880, 730],
   'signup-terms': [2880, 1800, 880, 1800]
 };
 // 케이스 캡처 쌍(PC+모바일). 이미지 파일명은 assets/img/shop/{name}-pc|mobile.webp

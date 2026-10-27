@@ -64,8 +64,6 @@ def save(png, name):
 NO_FIXED = '#quickOrderLookup{display:none!important}'
 MODAL_BG = '.franchise-modal-backdrop,.franchise-terms-modal-backdrop{background:#f4f4f4!important}'
 
-FIT_CSS = 'html,body,.auth-card,.auth-page,main{background:#fff!important}.auth-card{border:0!important;box-shadow:none!important}'
-
 FIT_JS = """(sels) => {
   let l = 1e9, t = 1e9, r = 0, b = 0;
   const ok = el => { const q = el.getBoundingClientRect(); return q.width > 0 && q.height > 0; };
@@ -89,7 +87,7 @@ def snap(b, name, query, steps=None, targets=None, vh=900, margin=16, init=None,
         if init:
             ctx.add_init_script(init)
         page = open_page(ctx, query)
-        page.add_style_tag(content=NO_FIXED + css + (FIT_CSS if fit else ''))
+        page.add_style_tag(content=NO_FIXED + css)
         if steps:
             steps(page, dev)
         page.evaluate("document.activeElement && document.activeElement.blur()")
@@ -113,12 +111,16 @@ def snap(b, name, query, steps=None, targets=None, vh=900, margin=16, init=None,
               }));
               return [l, t, r, b, document.documentElement.scrollWidth, document.documentElement.scrollHeight];
             }""", targets)
+            if fit:
+                # 가로: 콘텐츠 박스(카드) 좌우 테두리까지 포함, 세로: 입력 영역 기준 여백
+                card = page.evaluate("(() => { const q = document.querySelector('.auth-card').getBoundingClientRect(); return [q.left + scrollX, q.right + scrollX]; })()")
+                rect[0] = card[0] - 24 + margin; rect[2] = card[1] + 24 - margin
             x = max(0, rect[0] - margin); y = max(0, rect[1] - margin)
             x2 = min(rect[4], rect[2] + margin); y2 = min(rect[5], rect[3] + margin)
             png = page.screenshot(full_page=True, clip={'x': x, 'y': y, 'width': x2 - x, 'height': y2 - y})
             if fit:
                 # 입력 영역(라벨·입력란·버튼·안내문) 기준으로 사방 동일 여백. 페이지 가장자리에서 모자라는 만큼은 흰 배경으로 채운다
-                dl, dt, dr, db = rect[0] - margin, rect[1] - margin, rect[2] + margin, rect[3] + margin
+                dl, dt, dr, db = max(0, rect[0] - margin), rect[1] - margin, min(rect[4], rect[2] + margin), rect[3] + margin
                 im = Image.open(io.BytesIO(png)).convert('RGB')
                 canvas = Image.new('RGB', (round((dr - dl) * 2), round((db - dt) * 2)), '#ffffff')
                 canvas.paste(im, (round((x - dl) * 2), round((y - dt) * 2)))
@@ -246,29 +248,29 @@ with sync_playwright() as p:
 
     # 회원가입 단계
     SEC1 = ['#signupForm > .auth-form-section:nth-of-type(1)']
-    snap(b, 'signup-phone-dup', '?view=signup', phone_dup, SEC1, fit=True, margin=32)
-    snap(b, 'signup-phone-ok', '?view=signup', phone_ok, SEC1, fit=True, margin=32)
-    snap(b, 'signup-phone-sent', '?view=signup', phone_sent, SEC1, fit=True, margin=32)
-    snap(b, 'signup-phone-verified', '?view=signup', phone_verified, SEC1, fit=True, margin=32)
-    snap(b, 'signup-alias-ok', '?view=signup', alias_ok, ['.auth-field:has(#aliasCode)'], fit=True, margin=32)
+    snap(b, 'signup-phone-dup', '?view=signup', phone_dup, SEC1, fit=True, margin=28)
+    snap(b, 'signup-phone-ok', '?view=signup', phone_ok, SEC1, fit=True, margin=28)
+    snap(b, 'signup-phone-sent', '?view=signup', phone_sent, SEC1, fit=True, margin=28)
+    snap(b, 'signup-phone-verified', '?view=signup', phone_verified, SEC1, fit=True, margin=28)
+    snap(b, 'signup-alias-ok', '?view=signup', alias_ok, ['.auth-field:has(#aliasCode)'], fit=True, margin=28)
     snap(b, 'signup-error', '?view=signup', alias_dup, vh=640)
     snap(b, 'signup-terms', '?view=terms')
     snap(b, 'signup-done', '?view=signup-complete', init=NICK)
     snap(b, 'signup-done-plain', '?view=signup-complete', init=PLAIN)
 
     # 비밀번호 재설정
-    snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['#resetStepOne .auth-form'], fit=True, margin=32)
-    snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['#resetStepOne .auth-form'], fit=True, margin=32)
+    snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['#resetStepOne .auth-form'], fit=True, margin=28)
+    snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['#resetStepOne .auth-form'], fit=True, margin=28)
     snap(b, 'reset-step2', '?view=reset-password', reset_step2)
     snap(b, 'reset-error', '?view=reset-password', reset_error, vh=600)
 
     # 가맹점 가입 신청
     snap(b, 'franchise-entry-bar', '', clip=(0, 0, 1440, 104), devices=(('pc', 1440),))
     snap(b, 'franchise-entry-menu', '', open_drawer)
-    snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'], fit=True, margin=32)
-    snap(b, 'franchise-phone-verified', '?view=franchise-signup', fr_phone_verified, ['.auth-field:has(#franchisePhone)', '.auth-field:has(#franchiseCode)'], fit=True, margin=32)
-    snap(b, 'franchise-biz-ok', '?view=franchise-signup', fr_biz_ok, ['.auth-field:has(#businessNumber)'], fit=True, margin=32)
-    snap(b, 'franchise-corp', '?view=franchise-signup', fr_corp, ['.business-type-field', '.auth-field:has(input[name=businessName])', '.auth-field:has(input[name=representativeName])', '#corporationNumberField', '.auth-field:has(#businessNumber)'], fit=True, margin=32)
+    snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'], fit=True, margin=28)
+    snap(b, 'franchise-phone-verified', '?view=franchise-signup', fr_phone_verified, ['.auth-field:has(#franchisePhone)', '.auth-field:has(#franchiseCode)'], fit=True, margin=28)
+    snap(b, 'franchise-biz-ok', '?view=franchise-signup', fr_biz_ok, ['.auth-field:has(#businessNumber)'], fit=True, margin=28)
+    snap(b, 'franchise-corp', '?view=franchise-signup', fr_corp, ['.business-type-field', '.auth-field:has(input[name=businessName])', '.auth-field:has(input[name=representativeName])', '#corporationNumberField', '.auth-field:has(#businessNumber)'], fit=True, margin=28)
     snap(b, 'franchise-terms', '?view=franchise-signup', fr_terms)
     snap(b, 'franchise-done', '?view=franchise-signup', lambda pg, dv: franchise_done(pg))
     snap(b, 'franchise-error', '?view=franchise-signup', fr_error, vh=640)
