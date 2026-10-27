@@ -15,9 +15,9 @@ var SHOT_DIMS = {
   'franchise-phone-verified': [1536, 482, 880, 482],
   'franchise-terms': [2880, 1800, 880, 1800],
   'reset-error': [2880, 1200, 880, 1200],
-  'reset-sent': [1056, 614, 880, 614],
+  'reset-sent': [1024, 1046, null],
   'reset-step2': [2880, 1800, 880, 1800],
-  'reset-verified': [1056, 614, 880, 614],
+  'reset-verified': [1024, 1046, null],
   'signup-alias-ok': [1336, 307, 880, 307],
   'signup-done': [2880, 1800, 880, 1800],
   'signup-done-plain': [2880, 1800, 880, 1800],
@@ -324,13 +324,13 @@ window.GUIDE_CONTENT['start-login'] = {
         {
           title: '인증번호를 발송하면',
           shots: pair('reset-sent', '09SCM 비밀번호 재설정 인증번호 발송'),
-          shotCaption: '09SCM 비밀번호 재설정 인증번호 발송 화면 (PC / 모바일)',
+          shotCaption: '09SCM 비밀번호 재설정 인증번호 발송 화면 (PC)',
           html: '<p>&quot;인증번호가 발송되었습니다. 유효시간 03:00&quot; 안내가 나와요. [다음]은 아직 누를 수 없어요.</p>'
         },
         {
           title: '인증번호를 확인하면',
           shots: pair('reset-verified', '09SCM 비밀번호 재설정 인증 완료'),
-          shotCaption: '09SCM 비밀번호 재설정 인증 완료 화면 (PC / 모바일)',
+          shotCaption: '09SCM 비밀번호 재설정 인증 완료 화면 (PC)',
           html: '<p>&quot;휴대폰번호 인증이 완료되었습니다.&quot; 안내가 나오고 [다음]을 누를 수 있어요.</p>'
         },
         {

@@ -259,8 +259,8 @@ with sync_playwright() as p:
     snap(b, 'signup-done-plain', '?view=signup-complete', init=PLAIN)
 
     # 비밀번호 재설정
-    snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['#resetStepOne .auth-form'], fit=True, margin=28)
-    snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['#resetStepOne .auth-form'], fit=True, margin=28)
+    snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['.auth-card'], margin=16, devices=(('pc', 1440),))
+    snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['.auth-card'], margin=16, devices=(('pc', 1440),))
     snap(b, 'reset-step2', '?view=reset-password', reset_step2)
     snap(b, 'reset-error', '?view=reset-password', reset_error, vh=600)
 
