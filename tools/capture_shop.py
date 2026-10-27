@@ -19,11 +19,6 @@ document.querySelectorAll('.field-message').forEach(function (el) {
 document.activeElement && document.activeElement.blur();
 """
 
-def save(png, name):
-    im = Image.open(io.BytesIO(png)).convert('RGB')
-    im.save(os.path.join(OUT, name + '.webp'), 'WEBP', quality=88)
-    print(name, im.size, round(im.size[0] / im.size[1], 4))
-
 def open_page(ctx, query):
     page = ctx.new_page()
     page.goto(BASE + query)
@@ -56,15 +51,193 @@ def lookup(page):
     page.wait_for_timeout(600)
     page.evaluate("window.scrollTo(0,0)")
 
+
+import json
+DIMS = {}
+
+def save(png, name):
+    im = Image.open(io.BytesIO(png)).convert('RGB')
+    im.save(os.path.join(OUT, name + '.webp'), 'WEBP', quality=88)
+    DIMS[name] = im.size
+    print(name, im.size, round(im.size[0] / im.size[1], 4))
+
+NO_FIXED = '#quickOrderLookup{display:none!important}'
+MODAL_BG = '.franchise-modal-backdrop,.franchise-terms-modal-backdrop{background:#f4f4f4!important}'
+
+def snap(b, name, query, steps=None, targets=None, vh=900, margin=16, init=None, css='', devices=DEVICES, clip=None):
+    """steps(page, dev)로 상태를 만든 뒤 촬영. targets가 있으면 해당 요소들의 합집합 영역만 여백을 두고 크롭, 없으면 뷰포트 전체."""
+    for dev, w in devices:
+        ctx = b.new_context(viewport={'width': w, 'height': vh}, device_scale_factor=2)
+        if init:
+            ctx.add_init_script(init)
+        page = open_page(ctx, query)
+        page.add_style_tag(content=NO_FIXED + css)
+        if steps:
+            steps(page, dev)
+        page.evaluate("document.activeElement && document.activeElement.blur()")
+        if clip:
+            save(page.screenshot(clip={'x': clip[0], 'y': clip[1], 'width': clip[2], 'height': clip[3]}), '%s-%s' % (name, dev))
+        elif targets:
+            rect = page.evaluate("""(sels) => {
+              let l = 1e9, t = 1e9, r = 0, b = 0;
+              sels.forEach(s => document.querySelectorAll(s).forEach(el => {
+                const q = el.getBoundingClientRect();
+                l = Math.min(l, q.left + scrollX); t = Math.min(t, q.top + scrollY);
+                r = Math.max(r, q.right + scrollX); b = Math.max(b, q.bottom + scrollY);
+              }));
+              return [l, t, r, b, document.documentElement.scrollWidth, document.documentElement.scrollHeight];
+            }""", targets)
+            x = max(0, rect[0] - margin); y = max(0, rect[1] - margin)
+            x2 = min(rect[4], rect[2] + margin); y2 = min(rect[5], rect[3] + margin)
+            save(page.screenshot(full_page=True, clip={'x': x, 'y': y, 'width': x2 - x, 'height': y2 - y}), '%s-%s' % (name, dev))
+        else:
+            save(page.screenshot(), '%s-%s' % (name, dev))
+        ctx.close()
+
+def scroll_to(page, sel, offset=110):
+    page.evaluate("""([s, o]) => { const el = document.querySelector(s); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - o); }""", [sel, offset])
+    page.wait_for_timeout(150)
+
+def wait_toast(page):
+    page.wait_for_timeout(700)
+
+# ---------- 단계 정의 ----------
+def phone_dup(page, dev):
+    page.fill('#signupPhone', '010-1234-5678')
+    page.click('#checkSignupPhone')
+
+def phone_ok(page, dev):
+    page.fill('#signupPhone', '010-2345-6789')
+    page.click('#checkSignupPhone')
+
+def phone_sent(page, dev):
+    phone_ok(page, dev)
+    page.click('#sendSignupCode')
+
+def phone_verified(page, dev):
+    phone_sent(page, dev)
+    page.fill('#signupCode', '123456')
+    page.click('#verifySignupCode')
+
+def alias_ok(page, dev):
+    page.fill('#aliasCode', '2468')
+    page.click('#checkAliasCode')
+
+def alias_dup(page, dev):
+    scroll_to(page, '#aliasCode', 200)
+    page.fill('#aliasCode', '7942')
+    page.click('#checkAliasCode')
+    wait_toast(page)
+
+def reset_sent(page, dev):
+    page.fill('#resetPhone', '010-2345-6789')
+    page.click('#sendResetCode')
+
+def reset_verified(page, dev):
+    reset_sent(page, dev)
+    page.fill('#resetCode', '123456')
+    page.click('#verifyResetCode')
+
+def reset_step2(page, dev):
+    reset_verified(page, dev)
+    page.click('#resetNext')
+    page.wait_for_timeout(200)
+
+def reset_error(page, dev):
+    reset_step2(page, dev)
+    page.fill('#newPassword', 'password1')
+    page.fill('#newPasswordConfirm', 'password2')
+    page.click('#newPasswordForm .auth-submit')
+    wait_toast(page)
+
+def open_drawer(page, dev):
+    page.click('#categoryOpen')
+    page.wait_for_timeout(700)
+
+def fr_id_ok(page, dev):
+    page.fill('#franchiseUserId', 'onmaeul01')
+    page.click('#checkFranchiseUserId')
+
+def fr_phone_verified(page, dev):
+    page.fill('#franchisePhone', '010-2345-6789')
+    page.click('#sendFranchiseCode')
+    page.fill('#franchiseCode', '123456')
+    page.click('#verifyFranchiseCode')
+
+def fr_biz_ok(page, dev):
+    page.fill('#businessNumber', '1234567890')
+    page.click('#verifyBusinessNumber')
+
+def fr_corp(page, dev):
+    page.check('input[name=businessType][value=corporation]')
+
+def fr_terms(page, dev):
+    page.evaluate("showFranchiseTermsModal('service', document.querySelector('[data-franchise-terms=service]'))")
+    page.wait_for_timeout(400)
+
+def fr_error(page, dev):
+    page.fill('input[name=memberName]', '홍길동')
+    page.fill('input[name=email]', 'owner@example.com')
+    page.fill('#franchiseUserId', 'onmaeul01')
+    page.fill('#franchisePassword', 'password1')
+    page.fill('#franchisePasswordConfirm', 'password1')
+    page.fill('#franchisePhone', '010-2345-6789')
+    page.fill('#franchiseCode', '123456')
+    page.fill('input[name=businessName]', '온마을 상점')
+    page.fill('input[name=representativeName]', '홍길동')
+    page.fill('#businessNumber', '1234567890')
+    page.evaluate("document.querySelector('#businessPostalCode').value='16690'; document.querySelector('#businessAddress').value='경기 수원시 영통구 온마을로 27'")
+    page.fill('input[name=businessAddressDetail]', '1층')
+    page.check('#franchiseAgreeAll')
+    scroll_to(page, '.franchise-form-actions', 420)
+    page.click('.franchise-form-actions .primary-button')
+    wait_toast(page)
+
+NICK = "sessionStorage.setItem('onmaeul-signup-complete', JSON.stringify({nicknameCode:'1111', chatNickname:'사과맘'}));"
+PLAIN = "sessionStorage.setItem('onmaeul-signup-complete', JSON.stringify({nicknameCode:'1111', chatNickname:''}));"
+
+
 with sync_playwright() as p:
     b = p.chromium.launch()
+    # 기본 화면
     shoot(b, 'intro', '')
     shoot(b, 'login', '?view=login')
     shoot(b, 'signup', '?view=signup', tall='.auth-card')
-    shoot(b, 'signup-done', '?view=signup-complete')
     shoot(b, 'reset', '?view=reset-password')
     shoot(b, 'franchise', '?view=franchise-signup', tall='.auth-card')
-    shoot(b, 'franchise-done', '?view=franchise-signup', action=franchise_done)
     shoot(b, 'gate', '?view=unavailable')
     shoot(b, 'gate-result', '?view=unavailable', action=lookup)
+
+    # 로그인 오류
+
+    # 회원가입 단계
+    SEC1 = ['#signupForm > .auth-form-section:nth-of-type(1)']
+    snap(b, 'signup-phone-dup', '?view=signup', phone_dup, SEC1)
+    snap(b, 'signup-phone-ok', '?view=signup', phone_ok, SEC1)
+    snap(b, 'signup-phone-sent', '?view=signup', phone_sent, SEC1)
+    snap(b, 'signup-phone-verified', '?view=signup', phone_verified, SEC1)
+    snap(b, 'signup-alias-ok', '?view=signup', alias_ok, ['.auth-field:has(#aliasCode)'])
+    snap(b, 'signup-error', '?view=signup', alias_dup, vh=640)
+    snap(b, 'signup-terms', '?view=terms')
+    snap(b, 'signup-done', '?view=signup-complete', init=NICK, targets=['.completion-hero', '.completion-card', '.completion-actions'])
+    snap(b, 'signup-done-plain', '?view=signup-complete', init=PLAIN, targets=['.completion-hero', '.completion-card', '.completion-actions'])
+
+    # 비밀번호 재설정
+    snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['#resetStepOne .auth-form'])
+    snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['#resetStepOne .auth-form'])
+    snap(b, 'reset-step2', '?view=reset-password', reset_step2)
+    snap(b, 'reset-error', '?view=reset-password', reset_error, vh=600)
+
+    # 가맹점 가입 신청
+    snap(b, 'franchise-entry-bar', '', clip=(1096, 0, 344, 33), devices=(('pc', 1440),))
+    snap(b, 'franchise-entry-menu', '', open_drawer, ['.category-drawer'], margin=0)
+    snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'])
+    snap(b, 'franchise-phone-verified', '?view=franchise-signup', fr_phone_verified, ['.auth-field:has(#franchisePhone)', '.auth-field:has(#franchiseCode)'])
+    snap(b, 'franchise-biz-ok', '?view=franchise-signup', fr_biz_ok, ['.auth-field:has(#businessNumber)'])
+    snap(b, 'franchise-corp', '?view=franchise-signup', fr_corp, ['.business-type-field', '#corporationNumberField', '.auth-field:has(#businessNumber)'])
+    snap(b, 'franchise-terms', '?view=franchise-signup', fr_terms, ['.franchise-terms-modal'], css=MODAL_BG)
+    snap(b, 'franchise-done', '?view=franchise-signup', lambda pg, dv: franchise_done(pg), ['.franchise-complete-modal'], css=MODAL_BG)
+    snap(b, 'franchise-error', '?view=franchise-signup', fr_error, vh=640)
     b.close()
+
+json.dump({k: list(v) for k, v in DIMS.items()}, open('/tmp/claude-0/shot_dims.json', 'w'))
