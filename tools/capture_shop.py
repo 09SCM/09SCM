@@ -64,7 +64,23 @@ def save(png, name):
 NO_FIXED = '#quickOrderLookup{display:none!important}'
 MODAL_BG = '.franchise-modal-backdrop,.franchise-terms-modal-backdrop{background:#f4f4f4!important}'
 
-def snap(b, name, query, steps=None, targets=None, vh=900, margin=16, init=None, css='', devices=DEVICES, clip=None):
+FIT_JS = """(sels) => {
+  let l = 1e9, t = 1e9, r = 0, b = 0;
+  const ok = el => { const q = el.getBoundingClientRect(); return q.width > 0 && q.height > 0; };
+  sels.forEach(s => document.querySelectorAll(s).forEach(root => {
+    root.querySelectorAll('*').forEach(el => {
+      const own = [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
+      const ctrl = /^(INPUT|BUTTON|SELECT|TEXTAREA)$/.test(el.tagName);
+      if (!(own || ctrl) || !ok(el)) return;
+      if (el.type === 'radio' || el.type === 'checkbox') { const w = el.closest('label') || el; var q = w.getBoundingClientRect(); } else { var q = el.getBoundingClientRect(); }
+      l = Math.min(l, q.left + scrollX); t = Math.min(t, q.top + scrollY);
+      r = Math.max(r, q.right + scrollX); b = Math.max(b, q.bottom + scrollY);
+    });
+  }));
+  return [l, t, r, b, document.documentElement.scrollWidth, document.documentElement.scrollHeight];
+}"""
+
+def snap(b, name, query, steps=None, targets=None, vh=900, margin=16, init=None, css='', devices=DEVICES, clip=None, fit=False):
     """steps(page, dev)로 상태를 만든 뒤 촬영. targets가 있으면 해당 요소들의 합집합 영역만 여백을 두고 크롭, 없으면 뷰포트 전체."""
     for dev, w in devices:
         ctx = b.new_context(viewport={'width': w, 'height': vh}, device_scale_factor=2)
@@ -78,7 +94,15 @@ def snap(b, name, query, steps=None, targets=None, vh=900, margin=16, init=None,
         if clip:
             save(page.screenshot(clip={'x': clip[0], 'y': clip[1], 'width': clip[2], 'height': clip[3]}), '%s-%s' % (name, dev))
         elif targets:
-            rect = page.evaluate("""(sels) => {
+            if fit:
+                page.evaluate("""(sels) => {
+                  const roots = sels.flatMap(q => [...document.querySelectorAll(q)]);
+                  document.querySelectorAll('.auth-card *').forEach(el => {
+                    if (roots.some(r => r.contains(el) || el.contains(r))) return;
+                    el.style.visibility = 'hidden';
+                  });
+                }""", targets)
+            rect = page.evaluate(FIT_JS if fit else """(sels) => {
               let l = 1e9, t = 1e9, r = 0, b = 0;
               sels.forEach(s => document.querySelectorAll(s).forEach(el => {
                 const q = el.getBoundingClientRect();
@@ -212,29 +236,29 @@ with sync_playwright() as p:
 
     # 회원가입 단계
     SEC1 = ['#signupForm > .auth-form-section:nth-of-type(1)']
-    snap(b, 'signup-phone-dup', '?view=signup', phone_dup, SEC1)
-    snap(b, 'signup-phone-ok', '?view=signup', phone_ok, SEC1)
-    snap(b, 'signup-phone-sent', '?view=signup', phone_sent, SEC1)
-    snap(b, 'signup-phone-verified', '?view=signup', phone_verified, SEC1)
-    snap(b, 'signup-alias-ok', '?view=signup', alias_ok, ['.auth-field:has(#aliasCode)'])
+    snap(b, 'signup-phone-dup', '?view=signup', phone_dup, SEC1, fit=True, margin=20)
+    snap(b, 'signup-phone-ok', '?view=signup', phone_ok, SEC1, fit=True, margin=20)
+    snap(b, 'signup-phone-sent', '?view=signup', phone_sent, SEC1, fit=True, margin=20)
+    snap(b, 'signup-phone-verified', '?view=signup', phone_verified, SEC1, fit=True, margin=20)
+    snap(b, 'signup-alias-ok', '?view=signup', alias_ok, ['.auth-field:has(#aliasCode)'], fit=True, margin=20)
     snap(b, 'signup-error', '?view=signup', alias_dup, vh=640)
     snap(b, 'signup-terms', '?view=terms')
     snap(b, 'signup-done', '?view=signup-complete', init=NICK, targets=['.completion-hero', '.completion-card', '.completion-actions'])
     snap(b, 'signup-done-plain', '?view=signup-complete', init=PLAIN, targets=['.completion-hero', '.completion-card', '.completion-actions'])
 
     # 비밀번호 재설정
-    snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['#resetStepOne .auth-form'])
-    snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['#resetStepOne .auth-form'])
+    snap(b, 'reset-sent', '?view=reset-password', reset_sent, ['#resetStepOne .auth-form'], fit=True, margin=20)
+    snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['#resetStepOne .auth-form'], fit=True, margin=20)
     snap(b, 'reset-step2', '?view=reset-password', reset_step2)
     snap(b, 'reset-error', '?view=reset-password', reset_error, vh=600)
 
     # 가맹점 가입 신청
-    snap(b, 'franchise-entry-bar', '', clip=(1096, 0, 344, 33), devices=(('pc', 1440),))
-    snap(b, 'franchise-entry-menu', '', open_drawer, ['.category-drawer'], margin=0)
-    snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'])
-    snap(b, 'franchise-phone-verified', '?view=franchise-signup', fr_phone_verified, ['.auth-field:has(#franchisePhone)', '.auth-field:has(#franchiseCode)'])
-    snap(b, 'franchise-biz-ok', '?view=franchise-signup', fr_biz_ok, ['.auth-field:has(#businessNumber)'])
-    snap(b, 'franchise-corp', '?view=franchise-signup', fr_corp, ['.business-type-field', '#corporationNumberField', '.auth-field:has(#businessNumber)'])
+    snap(b, 'franchise-entry-bar', '', clip=(0, 0, 1440, 104), devices=(('pc', 1440),))
+    snap(b, 'franchise-entry-menu', '', open_drawer)
+    snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'], fit=True, margin=20)
+    snap(b, 'franchise-phone-verified', '?view=franchise-signup', fr_phone_verified, ['.auth-field:has(#franchisePhone)', '.auth-field:has(#franchiseCode)'], fit=True, margin=20)
+    snap(b, 'franchise-biz-ok', '?view=franchise-signup', fr_biz_ok, ['.auth-field:has(#businessNumber)'], fit=True, margin=20)
+    snap(b, 'franchise-corp', '?view=franchise-signup', fr_corp, ['.business-type-field', '.auth-field:has(input[name=businessName])', '.auth-field:has(input[name=representativeName])', '#corporationNumberField', '.auth-field:has(#businessNumber)'], fit=True, margin=20)
     snap(b, 'franchise-terms', '?view=franchise-signup', fr_terms, ['.franchise-terms-modal'], css=MODAL_BG)
     snap(b, 'franchise-done', '?view=franchise-signup', lambda pg, dv: franchise_done(pg), ['.franchise-complete-modal'], css=MODAL_BG)
     snap(b, 'franchise-error', '?view=franchise-signup', fr_error, vh=640)

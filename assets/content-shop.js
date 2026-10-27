@@ -2,31 +2,30 @@
 // 키는 nav-shop.js의 leaf id. 값이 없는 섹션은 화면에 나타나지 않는다.
 window.GUIDE_CONTENT = window.GUIDE_CONTENT || {};
 
-var FRANCHISE_APPLY = 'https://superbeanchoi.github.io/09SCM-Shop/index.html?view=franchise-signup';
 var ADMIN_GUIDE_LOGIN = 'partner.html#start-login';
 
 var SHOT_DIMS = {
-  'franchise-biz-ok': [1356, 258, 812, 258],
-  'franchise-corp': [1356, 738, 812, 912],
+  'franchise-biz-ok': [1372, 274, 828, 274],
+  'franchise-corp': [1372, 754, 828, 928],
   'franchise-done': [1104, 682, 848, 758],
-  'franchise-entry-bar': [688, 66, null],
-  'franchise-entry-menu': [680, 1800, 680, 1800],
+  'franchise-entry-bar': [2880, 208, null],
+  'franchise-entry-menu': [2880, 1800, 880, 1800],
   'franchise-error': [2880, 1280, 880, 1280],
-  'franchise-id-ok': [1356, 294, 812, 330],
-  'franchise-phone-verified': [1356, 434, 812, 434],
+  'franchise-id-ok': [1372, 310, 828, 346],
+  'franchise-phone-verified': [1372, 450, 828, 450],
   'franchise-terms': [1344, 1344, 880, 1344],
   'reset-error': [2880, 1200, 880, 1200],
-  'reset-sent': [876, 566, 812, 566],
+  'reset-sent': [892, 582, 828, 582],
   'reset-step2': [2880, 1800, 880, 1800],
-  'reset-verified': [876, 566, 812, 566],
-  'signup-alias-ok': [1156, 258, 812, 258],
+  'reset-verified': [892, 582, 828, 582],
+  'signup-alias-ok': [1172, 274, 828, 274],
   'signup-done': [2848, 1112, 880, 1088],
   'signup-done-plain': [2848, 980, 880, 956],
   'signup-error': [2880, 1280, 880, 1280],
-  'signup-phone-dup': [1156, 634, 812, 730],
-  'signup-phone-ok': [1156, 634, 812, 730],
-  'signup-phone-sent': [1156, 634, 812, 730],
-  'signup-phone-verified': [1156, 634, 812, 730],
+  'signup-phone-dup': [1172, 594, 828, 698],
+  'signup-phone-ok': [1172, 594, 828, 698],
+  'signup-phone-sent': [1172, 594, 828, 698],
+  'signup-phone-verified': [1172, 594, 828, 698],
   'signup-terms': [2880, 1800, 880, 1800]
 };
 // 케이스 캡처 쌍(PC+모바일). 이미지 파일명은 assets/img/shop/{name}-pc|mobile.webp
@@ -158,7 +157,7 @@ window.GUIDE_CONTENT['start-login'] = {
           '<li>대표 배달지 등록 (선택)</li>' +
           '<li>약관 동의</li>' +
         '</ol>' +
-        '<p>가입이 끝나면 로그인된 상태로 가입 완료 화면이 나와요.</p>',
+        '<p>가입이 끝나면 로그인된 상태로 <a href="#start-login/member-signup-done">가입 완료</a> 화면이 나와요.</p>',
       steps:
         '<h3>01 휴대폰번호 인증</h3>' +
         '<p>[중복확인]을 통과해야 [인증번호 발송]을 누를 수 있어요.</p>' +
@@ -194,7 +193,7 @@ window.GUIDE_CONTENT['start-login'] = {
           '<tr><td>이용약관 동의 *</td><td>소매몰 이용약관 동의 ([보기]로 본문 확인)</td></tr>' +
           '<tr><td>개인정보처리방침 동의 *</td><td>개인정보처리방침 동의 ([보기]로 본문 확인)</td></tr>' +
         '</tbody></table></div>' +
-        '<p>모든 필수 항목을 입력하고 [회원가입 완료]를 누르면 가입이 끝나요. 이미 회원이라면 아래 [로그인]으로 이동해요.</p>',
+        '<p>모든 필수 항목을 입력하고 [회원가입 완료]를 누르면 가입이 끝나고 <a href="#start-login/member-signup-done">가입 완료</a> 화면으로 이동해요. 이미 회원이라면 아래 [로그인]으로 이동해요.</p>',
       cases: [
         {
           title: '이미 가입된 휴대폰번호이면',
@@ -237,41 +236,19 @@ window.GUIDE_CONTENT['start-login'] = {
           shots: pair('signup-error', '09SCM 회원가입 입력 오류'),
           shotCaption: '09SCM 회원가입 입력 오류 화면 (PC / 모바일)',
           html:
-            '<p>맞지 않는 부분이 있으면 화면 아래에 안내가 잠시 나타나요. 필수 항목이 비어 있으면 입력란에 안내가 먼저 나와요.</p>' +
-            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-              '<tr><td>휴대폰번호 11자리를 입력해 주세요.</td><td>11자리가 아닌 번호로 [중복확인]을 누른 경우</td></tr>' +
-              '<tr><td>휴대폰번호 중복확인을 먼저 완료해 주세요.</td><td>[중복확인] 없이 [인증번호 발송]을 누른 경우</td></tr>' +
-              '<tr><td>인증번호를 먼저 발송해 주세요.</td><td>인증번호 발송 없이 [확인]을 누른 경우</td></tr>' +
-              '<tr><td>인증번호 6자리를 입력해 주세요.</td><td>6자리가 아닌 인증번호로 [확인]을 누른 경우</td></tr>' +
-              '<tr><td>회원주문 코드 숫자 4자리를 입력해 주세요.</td><td>4자리가 아닌 코드로 [중복 확인]을 누른 경우</td></tr>' +
-              '<tr><td>이미 사용 중인 회원주문 코드입니다.</td><td>같은 소매몰의 다른 회원이 쓰는 코드로 [중복 확인]을 누른 경우</td></tr>' +
-              '<tr><td>휴대폰번호 중복확인을 완료해 주세요.</td><td>[회원가입 완료] 때 번호 중복확인을 마치지 않은 경우</td></tr>' +
-              '<tr><td>휴대폰번호 인증을 완료해 주세요.</td><td>[회원가입 완료] 때 번호 인증을 마치지 않은 경우</td></tr>' +
-              '<tr><td>회원주문 코드 중복 확인을 완료해 주세요.</td><td>[회원가입 완료] 때 코드 중복 확인을 마치지 않은 경우</td></tr>' +
-              '<tr><td>비밀번호가 일치하지 않습니다.</td><td>비밀번호와 비밀번호 확인이 다른 경우</td></tr>' +
+            '<p>맞지 않는 부분이 있으면 화면 아래에 안내가 잠시 나타나요. 필수 항목이 비어 있으면 입력란에 안내가 먼저 나와요. 나오는 안내 문구는 아래와 같아요.</p>' +
+            '<div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
+              '<tr><td>11자리가 아닌 번호로 [중복확인]을 누름</td><td>&quot;휴대폰번호 11자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>[중복확인] 없이 [인증번호 발송]을 누름</td><td>&quot;휴대폰번호 중복확인을 먼저 완료해 주세요.&quot;</td></tr>' +
+              '<tr><td>인증번호 발송 없이 [확인]을 누름</td><td>&quot;인증번호를 먼저 발송해 주세요.&quot;</td></tr>' +
+              '<tr><td>6자리가 아닌 인증번호로 [확인]을 누름</td><td>&quot;인증번호 6자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>4자리가 아닌 코드로 [중복 확인]을 누름</td><td>&quot;회원주문 코드 숫자 4자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>같은 소매몰의 다른 회원이 쓰는 코드로 [중복 확인]을 누름</td><td>&quot;이미 사용 중인 회원주문 코드입니다.&quot;</td></tr>' +
+              '<tr><td>휴대폰번호 중복확인 없이 [회원가입 완료]를 누름</td><td>&quot;휴대폰번호 중복확인을 완료해 주세요.&quot;</td></tr>' +
+              '<tr><td>휴대폰번호 인증 없이 [회원가입 완료]를 누름</td><td>&quot;휴대폰번호 인증을 완료해 주세요.&quot;</td></tr>' +
+              '<tr><td>회원주문 코드 중복 확인 없이 [회원가입 완료]를 누름</td><td>&quot;회원주문 코드 중복 확인을 완료해 주세요.&quot;</td></tr>' +
+              '<tr><td>비밀번호와 비밀번호 확인이 다름</td><td>&quot;비밀번호가 일치하지 않습니다.&quot;</td></tr>' +
             '</tbody></table></div>'
-        },
-        {
-          title: '닉네임을 입력하고 가입을 마치면',
-          shots: pair('signup-done', '09SCM 회원가입 완료'),
-          shotCaption: '09SCM 회원가입 완료 화면 (PC / 모바일)',
-          html:
-            '<p>로그인된 상태로 가입 완료 화면이 나와요.</p>' +
-            '<ul>' +
-              '<li>회원주문 코드와 채팅주문 닉네임이 표시돼요.</li>' +
-              '<li>회원주문 코드와 채팅주문 닉네임으로 채팅에서도 주문할 수 있다는 안내가 나와요. 이용 방법은 판매자에게 문의해요.</li>' +
-              '<li>[메인으로]를 누르면 소매몰 메인으로 이동해요.</li>' +
-            '</ul>'
-        },
-        {
-          title: '닉네임을 입력하지 않고 가입을 마치면',
-          shots: pair('signup-done-plain', '09SCM 회원가입 완료 닉네임 미입력'),
-          shotCaption: '09SCM 회원가입 완료 닉네임 미입력 화면 (PC / 모바일)',
-          html:
-            '<ul>' +
-              '<li>회원주문 코드만 표시돼요.</li>' +
-              '<li>회원주문 코드를 간편 주문 조회에 쓸 수 있다는 안내가 나와요.</li>' +
-            '</ul>'
         },
         {
           title: '탈퇴한 뒤 다시 가입하면',
@@ -285,6 +262,38 @@ window.GUIDE_CONTENT['start-login'] = {
         '<p>같은 소매몰의 다른 회원이 쓰는 코드이면 &quot;이미 사용 중인 회원주문 코드입니다.&quot; 안내가 나와요. 다른 숫자 4자리로 [중복 확인]을 다시 해요.</p>' +
         '<h3>[회원가입 완료]를 눌러도 가입되지 않아요</h3>' +
         '<p>휴대폰번호 중복확인, 휴대폰번호 인증, 회원주문 코드 중복 확인을 모두 마쳐야 해요. 비밀번호와 비밀번호 확인이 같은지, 필수 약관에 동의했는지도 확인해요.</p>'
+    },
+
+    {
+      id: 'member-signup-done',
+      label: '가입 완료 확인하기',
+      shots: pair('signup-done', '09SCM 회원가입 완료'),
+      shotCaption: '09SCM 회원가입 완료 화면 (PC / 모바일)',
+      overview:
+        '<p>회원가입을 마치면 로그인된 상태로 나오는 화면이에요. 가입한 회원주문 코드와 채팅주문 닉네임을 확인해요.</p>' +
+        '<ul>' +
+          '<li>[회원가입 완료]를 누르면 <a href="#start-login/member-signup">회원가입하기</a>에서 이 화면으로 이동해요.</li>' +
+          '<li>이 화면에서 바로 소매몰을 이용할 수 있어요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>회원정보</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>회원주문 코드</td><td>가입할 때 정한 숫자 4자리 코드</td></tr>' +
+          '<tr><td>채팅주문 닉네임</td><td>가입할 때 입력한 채팅주문 닉네임 (입력하지 않았다면 나타나지 않음)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>회원주문 코드와 채팅주문 닉네임으로 채팅에서도 주문할 수 있다는 안내가 나와요. 이용 방법은 판매자에게 문의해요. [메인으로]를 누르면 소매몰 메인으로 이동해요.</p>',
+      cases: [
+        {
+          title: '닉네임을 입력하지 않고 가입했으면',
+          shots: pair('signup-done-plain', '09SCM 회원가입 완료 닉네임 미입력'),
+          shotCaption: '09SCM 회원가입 완료 닉네임 미입력 화면 (PC / 모바일)',
+          html:
+            '<ul>' +
+              '<li>회원주문 코드만 나와요.</li>' +
+              '<li>회원주문 코드를 간편 주문 조회에 쓸 수 있다는 안내가 나와요.</li>' +
+            '</ul>'
+        }
+      ]
     },
 
     {
@@ -335,11 +344,11 @@ window.GUIDE_CONTENT['start-login'] = {
           shots: pair('reset-error', '09SCM 비밀번호 재설정 입력 오류'),
           shotCaption: '09SCM 비밀번호 재설정 입력 오류 화면 (PC / 모바일)',
           html:
-            '<p>맞지 않는 부분이 있으면 화면 아래에 안내가 잠시 나타나요.</p>' +
-            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-              '<tr><td>휴대폰번호 11자리를 입력해 주세요.</td><td>11자리가 아닌 번호로 [인증번호 발송]을 누른 경우</td></tr>' +
-              '<tr><td>인증번호 6자리를 입력해 주세요.</td><td>6자리가 아닌 인증번호로 [확인]을 누른 경우</td></tr>' +
-              '<tr><td>비밀번호가 일치하지 않습니다.</td><td>새 비밀번호와 새 비밀번호 확인이 다른 경우</td></tr>' +
+            '<p>맞지 않는 부분이 있으면 화면 아래에 안내가 잠시 나타나요. 나오는 안내 문구는 아래와 같아요.</p>' +
+            '<div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
+              '<tr><td>11자리가 아닌 번호로 [인증번호 발송]을 누름</td><td>&quot;휴대폰번호 11자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>6자리가 아닌 인증번호로 [확인]을 누름</td><td>&quot;인증번호 6자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>새 비밀번호와 새 비밀번호 확인이 다름</td><td>&quot;비밀번호가 일치하지 않습니다.&quot;</td></tr>' +
             '</tbody></table></div>'
         }
       ],
@@ -364,10 +373,7 @@ window.GUIDE_CONTENT['start-login'] = {
           '<li>본사 소매몰에서만 들어올 수 있어요. 들어오는 위치는 아래 &quot;가맹점 가입 신청하기로 들어오려면&quot;에서 확인해요.</li>' +
           '<li>소속 본사와 월 이용료는 화면 위쪽 안내에서 확인해요.</li>' +
           '<li>본사가 신청 내용을 확인한 뒤 입력한 휴대폰번호로 승인 결과를 안내해요.</li>' +
-        '</ul>' +
-        '<div class="link-row">' +
-          '<a href="' + FRANCHISE_APPLY + '" target="_blank" rel="noopener noreferrer">가맹점 가입신청</a>' +
-        '</div>',
+        '</ul>',
       steps:
         '<h3>가입 안내</h3>' +
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
@@ -411,14 +417,14 @@ window.GUIDE_CONTENT['start-login'] = {
           title: '가맹점 가입 신청하기로 들어오려면',
           blocks: [
             {
-              shots: pair('franchise-entry-bar', '09SCM 소매몰 상단 유틸리티바'),
+              shots: [{ device: 'pc', src: '../assets/img/shop/franchise-entry-bar-pc.webp', alt: '09SCM 소매몰 상단 유틸리티바 PC 화면' }],
               shotCaption: '09SCM 소매몰 상단 유틸리티바 화면 (PC)',
               html: '<p>PC에서는 화면 맨 위 상단 유틸리티바의 [가맹점 가입신청]을 눌러요. 같은 바에 판매자가 관리자로 들어가는 [관리자 로그인]이 있어요. 모바일에는 이 바가 없어요.</p>'
             },
             {
               shots: pair('franchise-entry-menu', '09SCM 소매몰 카테고리 메뉴'),
               shotCaption: '09SCM 소매몰 카테고리 메뉴 화면 (PC / 모바일)',
-              html: '<p>PC·모바일 모두 카테고리 메뉴를 열면 맨 아래에 [관리자 로그인 →]과 [가맹점 가입신청 →]이 있어요. [관리자 로그인 →]은 새 창으로 열려요.</p>'
+              html: '<p>PC·모바일 모두 [카테고리]를 눌러 메뉴를 열면 맨 아래에 [관리자 로그인 →]과 [가맹점 가입신청 →]이 있어요. [관리자 로그인 →]은 새 창으로 열려요.</p>'
             }
           ]
         },
@@ -466,16 +472,16 @@ window.GUIDE_CONTENT['start-login'] = {
           shots: pair('franchise-error', '09SCM 가맹점 가입 신청 입력 오류'),
           shotCaption: '09SCM 가맹점 가입 신청 입력 오류 화면 (PC / 모바일)',
           html:
-            '<p>맞지 않는 부분이 있으면 화면 아래에 안내가 잠시 나타나요. 필수 항목이 비어 있으면 입력란 안내가 먼저 나와요.</p>' +
-            '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-              '<tr><td>영문 소문자로 시작하는 영문·숫자 조합 3~20자로 입력해 주세요.</td><td>아이디 형식에 맞지 않는 값으로 [중복 확인]을 누른 경우</td></tr>' +
-              '<tr><td>아이디 중복 확인을 완료해 주세요.</td><td>[가입 신청] 때 아이디 중복 확인을 마치지 않은 경우</td></tr>' +
-              '<tr><td>비밀번호가 일치하지 않습니다.</td><td>비밀번호와 비밀번호 확인이 다른 경우</td></tr>' +
-              '<tr><td>휴대폰번호 11자리를 입력해 주세요.</td><td>11자리가 아닌 번호로 [인증번호 발송]을 누른 경우</td></tr>' +
-              '<tr><td>인증번호 6자리를 입력해 주세요.</td><td>6자리가 아닌 인증번호로 [인증하기]를 누른 경우</td></tr>' +
-              '<tr><td>휴대폰번호 인증을 완료해 주세요.</td><td>[가입 신청] 때 휴대폰번호 인증을 마치지 않은 경우</td></tr>' +
-              '<tr><td>사업자등록번호 10자리를 입력해 주세요.</td><td>10자리가 아닌 번호로 [사업자 인증]을 누른 경우</td></tr>' +
-              '<tr><td>사업자등록번호 인증을 완료해 주세요.</td><td>[가입 신청] 때 사업자등록번호 인증을 마치지 않은 경우</td></tr>' +
+            '<p>맞지 않는 부분이 있으면 화면 아래에 안내가 잠시 나타나요. 필수 항목이 비어 있으면 입력란 안내가 먼저 나와요. 나오는 안내 문구는 아래와 같아요.</p>' +
+            '<div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
+              '<tr><td>아이디 형식에 맞지 않는 값으로 [중복 확인]을 누름</td><td>&quot;영문 소문자로 시작하는 영문·숫자 조합 3~20자로 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>아이디 중복 확인 없이 [가입 신청]을 누름</td><td>&quot;아이디 중복 확인을 완료해 주세요.&quot;</td></tr>' +
+              '<tr><td>비밀번호와 비밀번호 확인이 다름</td><td>&quot;비밀번호가 일치하지 않습니다.&quot;</td></tr>' +
+              '<tr><td>11자리가 아닌 번호로 [인증번호 발송]을 누름</td><td>&quot;휴대폰번호 11자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>6자리가 아닌 인증번호로 [인증하기]를 누름</td><td>&quot;인증번호 6자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>휴대폰번호 인증 없이 [가입 신청]을 누름</td><td>&quot;휴대폰번호 인증을 완료해 주세요.&quot;</td></tr>' +
+              '<tr><td>10자리가 아닌 번호로 [사업자 인증]을 누름</td><td>&quot;사업자등록번호 10자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>사업자등록번호 인증 없이 [가입 신청]을 누름</td><td>&quot;사업자등록번호 인증을 완료해 주세요.&quot;</td></tr>' +
             '</tbody></table></div>'
         },
         {
