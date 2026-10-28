@@ -41,7 +41,9 @@ def rect(page, sels):
     }""", sels)
 
 def snap(b, name, query='', steps=None, area=None, margin=16, hide_quick=True, init=None, devices=DEVICES, vh=900, css='', hcrop=False, modal=False):
-    """area가 있으면 해당 영역만 남겨 세로로 크롭(가로 전체), 없으면 뷰포트 전체"""
+    """area가 있으면 해당 영역만 남겨 세로로 크롭(가로 전체), 없으면 뷰포트 전체. ONLY=이름,이름 이면 해당 캡처만 다시 촬영"""
+    if os.environ.get('ONLY') and name not in os.environ['ONLY'].split(','):
+        return
     for dev, w in devices:
         ctx = b.new_context(viewport={'width': w, 'height': vh}, device_scale_factor=2)
         if init:
