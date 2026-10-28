@@ -14,8 +14,7 @@ window.GUIDE_NAV = [
   ]},
   { id: 'order', label: '주문하기', children: [
     { id: 'order-cart', label: '장바구니' },
-    { id: 'order-pay', label: '주문·결제' },
-    { id: 'order-chat', label: '채팅주문' }
+    { id: 'order-pay', label: '주문·결제' }
   ]},
   { id: 'check', label: '주문조회', children: [
     { id: 'check-quick', label: '간편주문조회' },
