@@ -19,8 +19,7 @@ window.GUIDE_NAV = [
   { id: 'check', label: '주문조회', children: [
     { id: 'check-quick', label: '간편주문조회' },
     { id: 'check-history', label: '주문내역' },
-    { id: 'check-detail', label: '주문상세' },
-    { id: 'check-cancel', label: '취소·반품' }
+    { id: 'check-detail', label: '주문상세' }
   ]},
   { id: 'etc', label: '기타', children: [
     { id: 'etc-info', label: '내정보' },
