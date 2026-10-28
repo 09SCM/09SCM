@@ -158,6 +158,12 @@ def open_detail(num):
     def f(page, dev):
         page.click('[data-request-detail=%s]' % num); page.wait_for_timeout(500)
     return f
+def allow_return(num):
+    return "(() => { const o = mockOrders.find(x => x.orderNumber === '%s'); o.completedAt = new Date().toISOString(); renderPage(); })()" % num
+def open_return_transfer(page, dev):
+    page.evaluate(allow_return('RO20260907011')); page.wait_for_timeout(400)
+    page.click('[data-order-request=return][data-order-number=RO20260907011]'); page.wait_for_timeout(500)
+
 def filter_chat(page, dev):
     page.click('[data-order-channel-filter=채팅주문]'); page.wait_for_timeout(400)
 
@@ -186,6 +192,7 @@ with sync_playwright() as p:
     snap(b, 'check-modal-wait', HIST, steps=open_req('cancel', 'RO20260909009'), init=L, modal=True)
     snap(b, 'check-modal-request', HIST, steps=open_req('cancel', 'RO20260905013', True), init=L, vh=1060, modal=True)
     snap(b, 'check-modal-return', HIST, steps=open_req('return', 'RO20261025001'), init=L, modal=True)
+    snap(b, 'check-modal-return-transfer', HIST, steps=open_return_transfer, init=L, vh=1060, modal=True)
     snap(b, 'check-modal-pending', HIST, steps=open_detail('RO20260906012'), init=L, modal=True)
     snap(b, 'check-modal-done', HIST, steps=open_detail('RO20260915002'), init=L, modal=True)
     # 주문상세

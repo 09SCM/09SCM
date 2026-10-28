@@ -45,6 +45,17 @@ def franchise_done(page):
     page.evaluate("showFranchiseApplicationModal()")
     page.wait_for_timeout(400)
 
+def lookup_tab(page):
+    lookup(page)
+    page.click('[data-unavailable-tab=complete]')
+    page.wait_for_timeout(400)
+
+def lookup_none(page):
+    page.fill('input[inputmode="numeric"]', '0000')
+    page.click('button:has-text("조회")')
+    page.wait_for_timeout(600)
+    page.evaluate("window.scrollTo(0,0)")
+
 def lookup(page):
     page.fill('input[inputmode="numeric"]', '7942')
     page.click('button:has-text("조회")')
@@ -243,6 +254,8 @@ with sync_playwright() as p:
     shoot(b, 'franchise', '?view=franchise-signup', tall='.auth-card')
     shoot(b, 'gate', '?view=unavailable')
     shoot(b, 'gate-result', '?view=unavailable', action=lookup)
+    shoot(b, 'gate-complete', '?view=unavailable', action=lookup_tab)
+    shoot(b, 'gate-none', '?view=unavailable', action=lookup_none)
 
     # 로그인 오류
 
