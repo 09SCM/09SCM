@@ -74,6 +74,16 @@ def open_menu(page, dev):
     page.click('#categoryOpen')
     page.wait_for_timeout(700)
 
+def fit_full(page, dev):
+    page.wait_for_timeout(300)
+    h = page.evaluate("document.documentElement.scrollHeight")
+    page.set_viewport_size({'width': 1440 if dev == 'pc' else 440, 'height': h})
+    page.wait_for_timeout(400)
+    h2 = page.evaluate("document.documentElement.scrollHeight")
+    if h2 != h:
+        page.set_viewport_size({'width': 1440 if dev == 'pc' else 440, 'height': h2})
+        page.wait_for_timeout(300)
+
 def empty_all(page, dev):
     page.evaluate("products.forEach(p => { p.retailExposure = '미노출'; }); renderMain();")
     page.wait_for_timeout(300)
@@ -87,12 +97,15 @@ with sync_playwright() as p:
     snap(b, 'list-delivery', '?view=catalog&fulfillment=delivery')
     snap(b, 'list-search', '?view=catalog&q=' + '토마토')
     snap(b, 'list-empty', '?view=catalog&q=' + '없는상품')
-    # 상품상세: PC는 상세 영역 크롭, 모바일은 하단 고정 버튼이 보이는 뷰포트 상단
-    for name, pid in (('detail-main', 1), ('detail-soldout', 5), ('detail-pickup', 2)):
+    # 상품상세 대표컷: 유틸리티바부터 푸터까지 전체 (뷰포트 높이를 문서 높이에 맞춤)
+    snap(b, 'detail-main', '?view=product&id=1', steps=fit_full)
+    # 케이스: PC는 상세 영역, 모바일은 상품 정보 영역(하단 고정 버튼은 정보 영역 끝에 놓임)
+    for name, pid in (('detail-soldout', 5), ('detail-pickup', 2)):
         q = '?view=product&id=%d' % pid
         snap(b, name, q, area=['.detail-layout'], devices=(('pc', 1440),))
-        snap(b, name, q, devices=(('mobile', 440),))
-    snap(b, 'detail-info', '?view=product&id=1', area=['.simple-description'])
+        snap(b, name, q, area=['.detail-copy'], devices=(('mobile', 440),))
+    snap(b, 'detail-info', '?view=product&id=1', area=['.product-description'])
+    snap(b, 'detail-notfound', '?view=product&id=999')
     b.close()
 
 json.dump({k: list(v) for k, v in DIMS.items()}, open('/tmp/claude-0/list_dims.json', 'w'))

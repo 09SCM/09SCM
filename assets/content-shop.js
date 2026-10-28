@@ -10,7 +10,7 @@ var SHOT_DIMS = {
   'browse-store': [2880, 228, 880, 542],
   'browse-today': [2880, 1158, 880, 1530],
   'browse-empty': [2880, 1800, 880, 1800],
-  'browse-top': [2880, 264, 880, 224],
+  'browse-common': [2880, 2094, 880, 2226],
   'browse-search': [2880, 402, 880, 346],
   'browse-menu': [2880, 1800, 880, 1800],
   'browse-login': [2880, 264, 880, 312],
@@ -20,10 +20,11 @@ var SHOT_DIMS = {
   'list-delivery': [2880, 1800, 880, 1800],
   'list-search': [2880, 1800, 880, 1800],
   'list-empty': [2880, 1800, 880, 1800],
-  'detail-main': [2880, 1658, 880, 1800],
-  'detail-soldout': [2880, 1554, 880, 1800],
-  'detail-pickup': [2880, 1498, 880, 1800],
-  'detail-info': [2880, 828, 880, 1154],
+  'detail-main': [2880, 3646, 880, 4516],
+  'detail-soldout': [2880, 1554, 880, 1530],
+  'detail-notfound': [2880, 1800, 880, 1800],
+  'detail-pickup': [2880, 1498, 880, 1474],
+  'detail-info': [2880, 1244, 880, 908],
   'browse-footer': [2880, 298, 880, 616],
   'franchise-biz-ok': [1536, 307, 880, 307],
   'franchise-corp': [1536, 786, 880, 961],
@@ -702,7 +703,7 @@ window.GUIDE_CONTENT['browse-main'] = {
     {
       id: 'main-common',
       label: '공통 영역 보기',
-      shots: pair('browse-top', '09SCM 소매몰 공통 영역'),
+      shots: pair('browse-common', '09SCM 소매몰 공통 영역'),
       shotCaption: '09SCM 소매몰 공통 영역 화면 (PC / 모바일)',
       overview:
         '<p>메인화면뿐 아니라 소매몰의 모든 화면에 똑같이 나오는 영역이에요. 위쪽의 유틸리티바와 헤더, 카테고리 메뉴, 화면에 떠 있는 [주문 조회] 버튼, 아래쪽 푸터로 이루어져요.</p>' +
@@ -931,10 +932,12 @@ window.GUIDE_CONTENT['browse-detail'] = {
       shots: pair('detail-info', '09SCM 소매몰 상품 상세정보'),
       shotCaption: '09SCM 소매몰 상품 상세정보 화면 (PC / 모바일)',
       html:
-        '<p>판매자가 입력한 상세정보가 상품 정보 아래에 그대로 나와요.</p>'
+        '<p>판매자가 입력한 이미지와 글이 입력한 순서대로 상품 정보 아래에 나와요.</p>'
     },
     {
       title: '없는 주소로 들어오면',
+      shots: pair('detail-notfound', '09SCM 소매몰 없는 주소로 들어온'),
+      shotCaption: '09SCM 소매몰 없는 주소로 들어온 화면 (PC / 모바일)',
       html:
         '<p>상품이 삭제되었거나 노출이 해제된 경우, 주소가 잘못된 경우 모두 &quot;요청하신 페이지를 찾을 수 없습니다.&quot; 안내만 나와요. 다른 상품이나 메인화면으로 바꿔서 보여주지 않아요.</p>'
     }

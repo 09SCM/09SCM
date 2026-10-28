@@ -74,6 +74,22 @@ def open_menu(page, dev):
     page.click('#categoryOpen')
     page.wait_for_timeout(700)
 
+def common_full(page, dev):
+    # 대표컷: 유틸리티바~푸터와 [주문 조회] 버튼이 한 화면에 보이도록 메인 콘텐츠를 줄인다
+    page.evaluate("""(dev) => {
+      document.querySelectorAll('.availability-section').forEach(e => e.remove());
+      const keep = dev === 'pc' ? 4 : 2;
+      document.querySelectorAll('.featured-section .product-grid').forEach(g => [...g.children].filter(e => !e.querySelector('img')).forEach(e => e.remove()));
+      document.querySelectorAll('.featured-section .product-grid').forEach(g => [...g.children].slice(keep).forEach(e => e.remove()));
+    }""", dev)
+    page.wait_for_timeout(300)
+    w = 1440 if dev == 'pc' else 440
+    for _ in range(2):
+        h = page.evaluate("document.documentElement.scrollHeight")
+        if dev == 'pc' and _ == 0: h += 80  # 떠 있는 [주문 조회] 버튼이 푸터 글자를 가리지 않도록 아래 여백
+        page.set_viewport_size({'width': w, 'height': h})
+        page.wait_for_timeout(400)
+
 def empty_all(page, dev):
     page.evaluate("products.forEach(p => { p.retailExposure = '미노출'; }); renderMain();")
     page.wait_for_timeout(300)
@@ -86,7 +102,7 @@ with sync_playwright() as p:
     snap(b, 'browse-today', area=['.availability-section:first-of-type'])
     snap(b, 'browse-empty', steps=empty_all, hide_quick=False)
     # 공통 영역
-    snap(b, 'browse-top', area=['.utility-bar', '.main-header'], css='.search-panel{display:none!important}')
+    snap(b, 'browse-common', steps=common_full, hide_quick=False)
     snap(b, 'browse-search', steps=open_search, area=['.utility-bar', '.main-header'])
     snap(b, 'browse-menu', steps=open_menu)
     # 로그인한 상태: PC는 헤더, 모바일은 헤더에 로그인 메뉴가 없으므로 카테고리 메뉴 상단
