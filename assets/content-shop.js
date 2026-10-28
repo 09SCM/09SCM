@@ -1620,7 +1620,7 @@ window.GUIDE_CONTENT['check-history'] = {
             {
               title: '정산 후 카드결제 주문을 취소할 때',
               shots: pair('check-alert-settled', '09SCM 소매몰 정산 후 카드결제 주문 취소 실패 안내'),
-              shotCaption: '09SCM 소매몰 정산 후 카드결제 주문 취소 실패 안내 (PC)',
+              shotCaption: '09SCM 소매몰 정산 후 카드결제 주문 취소 실패 안내 화면',
               html:
                 '<ul><li>안내: &quot;주문을 취소하지 못했습니다. 판매자에게 문의해주세요.&quot;</li><li>주문: 기존 상태 유지</li><li>이어서: 판매자가 직권으로 취소 처리</li></ul>'
             },
