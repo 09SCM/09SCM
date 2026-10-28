@@ -20,11 +20,11 @@ var SHOT_DIMS = {
   'list-delivery': [2880, 1800, 880, 1800],
   'list-search': [2880, 1800, 880, 1800],
   'list-empty': [2880, 1800, 880, 1800],
-  'detail-main': [2880, 3646, 880, 4516],
+  'detail-main': [2880, 3960, 880, 4516],
   'detail-soldout': [2880, 1554, 880, 1530],
   'detail-notfound': [2880, 1800, 880, 1800],
   'detail-pickup': [2880, 1498, 880, 1474],
-  'detail-info': [2880, 1244, 880, 908],
+  'detail-info': [2880, 1558, 880, 908],
   'browse-footer': [2880, 298, 880, 616],
   'franchise-biz-ok': [1536, 307, 880, 307],
   'franchise-corp': [1536, 786, 880, 961],
@@ -939,7 +939,7 @@ window.GUIDE_CONTENT['browse-detail'] = {
       shots: pair('detail-notfound', '09SCM 소매몰 없는 주소로 들어온'),
       shotCaption: '09SCM 소매몰 없는 주소로 들어온 화면 (PC / 모바일)',
       html:
-        '<p>상품이 삭제되었거나 노출이 해제된 경우, 주소가 잘못된 경우 모두 &quot;요청하신 페이지를 찾을 수 없습니다.&quot; 안내만 나와요. 다른 상품이나 메인화면으로 바꿔서 보여주지 않아요.</p>'
+        '<p>상품이 삭제되었거나 노출이 해제된 경우, 주소가 잘못된 경우 모두 &quot;요청하신 페이지를 찾을 수 없습니다.&quot; 안내만 나와요.</p>'
     }
   ],
   trouble:

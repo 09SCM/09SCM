@@ -103,7 +103,7 @@ with sync_playwright() as p:
     for name, pid in (('detail-soldout', 5), ('detail-pickup', 2)):
         q = '?view=product&id=%d' % pid
         snap(b, name, q, area=['.detail-layout'], devices=(('pc', 1440),))
-        snap(b, name, q, area=['.detail-copy'], devices=(('mobile', 440),))
+        snap(b, name, q, steps=fit_full, area=['.detail-copy'], devices=(('mobile', 440),))
     snap(b, 'detail-info', '?view=product&id=1', area=['.product-description'])
     snap(b, 'detail-notfound', '?view=product&id=999')
     b.close()
