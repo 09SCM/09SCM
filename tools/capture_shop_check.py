@@ -40,7 +40,7 @@ def rect(page, sels):
       return [t, b, document.documentElement.scrollWidth, document.documentElement.scrollHeight];
     }""", sels)
 
-def snap(b, name, query='', steps=None, area=None, margin=16, hide_quick=True, init=None, devices=DEVICES, vh=900, css='', hcrop=False):
+def snap(b, name, query='', steps=None, area=None, margin=16, hide_quick=True, init=None, devices=DEVICES, vh=900, css='', hcrop=False, modal=False):
     """area가 있으면 해당 영역만 남겨 세로로 크롭(가로 전체), 없으면 뷰포트 전체"""
     for dev, w in devices:
         ctx = b.new_context(viewport={'width': w, 'height': vh}, device_scale_factor=2)
@@ -65,6 +65,9 @@ def snap(b, name, query='', steps=None, area=None, margin=16, hide_quick=True, i
                 lr = page.evaluate("(sels) => { let l = 1e9, r = 0; sels.forEach(s => document.querySelectorAll(s).forEach(el => { const q = el.getBoundingClientRect(); l = Math.min(l, q.left); r = Math.max(r, q.right); })); return [l, r]; }", area)
                 x = max(0, lr[0] - 16); cw = min(w, lr[1] + 16) - x
             png = page.screenshot(full_page=True, clip={'x': x, 'y': y, 'width': cw, 'height': y2 - y})
+        elif modal and dev == 'pc':
+            q = page.evaluate("(() => { const r = document.querySelector('.order-request-modal').getBoundingClientRect(); return [r.left, r.top, r.width, r.height]; })()")
+            png = page.screenshot(clip={'x': max(0, q[0] - 16), 'y': max(0, q[1] - 16), 'width': q[2] + 32, 'height': q[3] + 32})
         else:
             png = page.screenshot()
         save(png, '%s-%s' % (name, dev))
@@ -179,12 +182,12 @@ with sync_playwright() as p:
     snap(b, 'check-btn-detail', HIST, area=[card(13)], init=L, hcrop=True)
     snap(b, 'check-btn-rejected', HIST, area=[card(14)], init=L, hcrop=True)
     # 요청 팝업
-    snap(b, 'check-modal-cancel', HIST, steps=open_req('cancel', 'RO20260915001'), init=L)
-    snap(b, 'check-modal-wait', HIST, steps=open_req('cancel', 'RO20260909009'), init=L)
-    snap(b, 'check-modal-request', HIST, steps=open_req('cancel', 'RO20260905013', True), init=L, vh=1060)
-    snap(b, 'check-modal-return', HIST, steps=open_req('return', 'RO20261025001'), init=L)
-    snap(b, 'check-modal-pending', HIST, steps=open_detail('RO20260906012'), init=L)
-    snap(b, 'check-modal-done', HIST, steps=open_detail('RO20260915002'), init=L)
+    snap(b, 'check-modal-cancel', HIST, steps=open_req('cancel', 'RO20260915001'), init=L, modal=True)
+    snap(b, 'check-modal-wait', HIST, steps=open_req('cancel', 'RO20260909009'), init=L, modal=True)
+    snap(b, 'check-modal-request', HIST, steps=open_req('cancel', 'RO20260905013', True), init=L, vh=1060, modal=True)
+    snap(b, 'check-modal-return', HIST, steps=open_req('return', 'RO20261025001'), init=L, modal=True)
+    snap(b, 'check-modal-pending', HIST, steps=open_detail('RO20260906012'), init=L, modal=True)
+    snap(b, 'check-modal-done', HIST, steps=open_detail('RO20260915002'), init=L, modal=True)
     # 주문상세
     snap(b, 'check-detail-main', detail_q('RO20260914003'), steps=fit_full, init=L)
     snap(b, 'check-detail-delivery', detail_q('RO20260913005'), steps=fit_full, init=L)
