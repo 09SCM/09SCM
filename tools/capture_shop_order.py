@@ -101,6 +101,9 @@ def sub(n):
     return lambda page, dev: page.evaluate("(n) => document.querySelectorAll('.checkout-section')[n].scrollIntoView()", n)
 def pick_transfer(page, dev):
     jsclick(page, 'input[name=payment][value=transfer]'); page.wait_for_timeout(300)
+def pick_other(page, dev):
+    jsclick(page, 'input[name=deliveryAddressMode][value=manual]'); page.wait_for_timeout(300)
+    page.fill('#deliveryAddress', '경기 수원시 영통구 광교로 100, 202동 303호')
 def fill_and_submit(pay=None):
     def f(page, dev):
         if pay == 'transfer':
@@ -127,6 +130,9 @@ with sync_playwright() as p:
     # 주문서
     snap(b, 'order-main', '?view=order', steps=fit_full, init=draft_seed(PICK))
     snap(b, 'order-delivery', '?view=order', area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)', '.checkout-section:nth-of-type(5)'], init=draft_seed(DELI))
+    nomember = "localStorage.setItem('onmaeul-member', JSON.stringify({customerName:'홍길동',phone:'01012345678',email:'hongildong@example.com',nicknameCode:'7942',chatNickname:'산책러',addressName:'',address:'',deliveryRequest:''}));"
+    snap(b, 'order-delivery-none', '?view=order', area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)'], init=draft_seed(DELI) + nomember)
+    snap(b, 'order-delivery-other', '?view=order', steps=pick_other, area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)'], init=draft_seed(DELI))
     snap(b, 'order-transfer', '?view=order', steps=pick_transfer, area=['.checkout-section:nth-of-type(5)'], init=draft_seed(PICK))
     # 주문 완료 (실제 주문서 제출)
     snap(b, 'done-main', '?view=order', steps=fill_and_submit(), init=draft_seed(PICK), hide_quick=True)
