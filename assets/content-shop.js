@@ -599,17 +599,16 @@ window.GUIDE_CONTENT['start-gate'] = {
       '<tr><td>완료된 주문</td><td>픽업완료·배달완료되었거나 취소·반품이 승인된 주문의 건수와 목록</td></tr>' +
       '</tbody></table></div>' +
     '<h3>주문 카드</h3>' +
-    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr>' +
-      '</thead><tbody><tr><td>주문일</td><td>주문한 날짜</td></tr>' +
-      '<tr><td>공통 픽업가능일</td><td>픽업 주문에만 표시되는, 주문할 상품들의 픽업가능일이 모두 겹치는 기간</td></tr>' +
+    '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
+      '<tr><td>주문일</td><td>주문한 날짜</td></tr>' +
       '<tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr>' +
-      '<tr><td>주문상품</td><td>주문한 상품명과 수량 (대표 이미지는 첫 번째 상품, 픽업 주문은 상품별 픽업가능일도 표시)</td></tr>' +
       '<tr><td>수령방식</td><td>[픽업] 또는 [배달]</td></tr>' +
+      '<tr><td>공통 픽업가능일</td><td>픽업 주문에만 표시되는, 주문할 상품들의 픽업가능일이 모두 겹치는 기간</td></tr>' +
+      '<tr><td>주문상품</td><td>주문한 상품명과 수량</td></tr>' +
       '<tr><td>처리상태</td><td>주문의 진행 단계 (취소·반품이 요청 중이거나 승인된 주문은 -)</td></tr>' +
       '<tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소], [환불대기] 중 현재 상태</td></tr>' +
-      '<tr><td>결제금액</td><td>상품금액과 배달비를 더한 최종 결제금액</td></tr>' +
       '<tr><td>취소·반품</td><td>취소·반품 이력이 있는 주문의 현재 상태 (이력이 없으면 표시하지 않음)</td></tr>' +
-      '<tr><td>버튼</td><td>주문 상태에 맞는 취소·반품 버튼과 [주문 상세] (버튼이 나오는 조건은 <a href="#check-history/history-list">주문내역 보기</a>와 같음)</td></tr>' +
+      '<tr><td>결제금액</td><td>상품금액과 배달비를 더한 최종 결제금액</td></tr>' +
       '</tbody></table></div>',
   cases: [
     {
@@ -631,6 +630,16 @@ window.GUIDE_CONTENT['start-gate'] = {
       shotCaption: '09SCM 대문 완료된 주문 화면 (PC / 모바일)',
       html:
         '<p>[완료된 주문] 탭을 누르면 픽업완료·배달완료되었거나 취소·반품이 승인된 주문이 나와요.</p>'
+    },
+    {
+      title: '조회한 회원의 주문이 없으면',
+      shots: [
+        { device: 'pc', src: '../assets/img/shop/gate-empty-pc.webp', alt: '09SCM 대문 주문 없음 PC 화면', ratio: 1440 / 900 },
+        { device: 'mobile', src: '../assets/img/shop/gate-empty-mobile.webp', alt: '09SCM 대문 주문 없음 모바일 화면', ratio: 440 / 900 }
+      ],
+      shotCaption: '09SCM 대문 주문 없음 화면 (PC / 모바일)',
+      html:
+        '<p>해당 탭에 주문이 없으면 &quot;진행 중인 주문이 없습니다.&quot;(완료된 주문 탭은 &quot;완료된 주문이 없습니다.&quot;)가 나와요.</p>'
     },
     {
       title: '일치하는 회원주문 코드가 없으면',
@@ -1040,7 +1049,7 @@ window.GUIDE_CONTENT['order-cart'] = {
       '<tr><td>픽업 / 배달 탭</td><td>수령방식별로 담은 상품을 나눠 보여줌 (탭 옆 숫자는 해당 탭의 상품 수)</td></tr>' +
       '<tr><td>전체선택</td><td>현재 탭에서 주문할 수 있는 상품을 모두 선택 (품절 상품은 선택되지 않음)</td></tr>' +
       '<tr><td>[선택삭제]</td><td>선택한 상품을 장바구니에서 삭제</td></tr>' +
-      '<tr><td>상품 정보</td><td>카테고리, 상품명(누르면 <a href="#browse-detail">상품상세</a>로 이동), 판매가, 수령방식, 픽업 상품은 픽업가능일</td></tr>' +
+      '<tr><td>상품 정보</td><td>소매정보의 첫 번째 이미지, 카테고리, 상품명, 판매가, 수령방식, 픽업 상품은 픽업가능일 (상품명을 누르면 <a href="#browse-detail">상품상세</a>로 이동)</td></tr>' +
       '<tr><td>[변경]</td><td>상품의 수령방식 변경 (픽업·배달을 모두 지원하는 상품에만 표시)</td></tr>' +
       '<tr><td>수량</td><td>[−], [+]로 조절 (1개부터, 1회 최대구매수량과 판매가능수량 이내)</td></tr>' +
       '<tr><td>[삭제]</td><td>그 상품만 장바구니에서 삭제</td></tr>' +
@@ -1377,26 +1386,27 @@ window.GUIDE_CONTENT['check-quick'] = {
     '</ol>' +
     '<h3>조회 결과</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>회원주문 코드</td><td>조회한 회원의 숫자 4자리 코드</td></tr>' +
+      '<tr><td>회원주문 코드</td><td>가입할 때 정한 숫자 4자리 코드</td></tr>' +
       '<tr><td>채팅주문 닉네임</td><td>조회한 회원이 등록한 채팅주문 닉네임 (등록하지 않았다면 -)</td></tr>' +
       '<tr><td>진행 중 주문</td><td>수령이 끝나지 않았거나 취소·반품이 요청 중인 주문의 건수와 목록</td></tr>' +
       '<tr><td>완료된 주문</td><td>픽업완료·배달완료되었거나 취소·반품이 승인된 주문의 건수와 목록</td></tr>' +
     '</tbody></table></div>' +
     '<h3>주문 카드</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>주문일 · 주문번호</td><td>주문한 날짜와 주문번호</td></tr>' +
-      '<tr><td>수령방식</td><td>[픽업] 또는 [배달] (픽업 주문은 공통 픽업가능일도 표시)</td></tr>' +
-      '<tr><td>주문상품</td><td>주문한 상품과 수량</td></tr>' +
+      '<tr><td>주문일</td><td>주문한 날짜</td></tr>' +
+      '<tr><td>주문번호</td><td>주문마다 부여되는 번호</td></tr>' +
+      '<tr><td>수령방식</td><td>[픽업] 또는 [배달]</td></tr>' +
+      '<tr><td>공통 픽업가능일</td><td>픽업 주문에만 표시되는, 주문할 상품들의 픽업가능일이 모두 겹치는 기간</td></tr>' +
+      '<tr><td>주문상품</td><td>주문한 상품명과 수량</td></tr>' +
       '<tr><td>처리상태</td><td>주문의 진행 단계 (취소·반품이 요청 중이거나 승인된 주문은 -)</td></tr>' +
       '<tr><td>결제상태</td><td>[결제대기], [결제완료], [결제취소], [환불대기] 중 현재 상태</td></tr>' +
-      '<tr><td>취소·반품</td><td>취소·반품 이력이 있는 주문에만 표시되는 현재 상태</td></tr>' +
+      '<tr><td>취소·반품</td><td>취소·반품 이력이 있는 주문의 현재 상태 (이력이 없으면 표시하지 않음)</td></tr>' +
       '<tr><td>결제금액</td><td>상품금액과 배달비를 더한 최종 결제금액</td></tr>' +
-      '<tr><td>[주문 상세]</td><td>주문상세로 이동 (로그인 필요)</td></tr>' +
-      '<tr><td>취소·반품 버튼</td><td>[주문 취소], [취소 요청], [반품 요청], [취소·반품 상세] 중 주문 상태에 맞는 버튼 (표시 조건은 <a href="#check-history">주문내역</a>과 같음)</td></tr>' +
-    '</tbody></table></div>',
+      '<tr><td>버튼</td><td>주문 상태에 맞는 취소·반품 버튼과 [주문 상세] (버튼이 나오는 조건은 <a href="#check-history/history-list">주문내역 보기</a>와 같음)</td></tr>' +
+      '</tbody></table></div>',
   cases: [
     {
-      title: '회원주문 코드로 조회하면',
+      title: '회원주문 코드를 조회하면',
       shots: pair('check-quick-active', '09SCM 소매몰 간편 주문 조회 진행 중 주문'),
       shotCaption: '09SCM 소매몰 간편 주문 조회 진행 중 주문 화면 (PC / 모바일)',
       html:
@@ -1476,7 +1486,7 @@ window.GUIDE_CONTENT['check-history'] = {
           '<tr><td>결제금액</td><td>상품금액과 배달비를 더한 최종 결제금액</td></tr>' +
           '<tr><td>취소·반품</td><td>취소·반품 이력이 있는 주문의 현재 상태 (이력이 없으면 -)</td></tr>' +
           '<tr><td>버튼</td><td>주문 상태에 맞는 취소·반품 버튼과 [주문 상세]</td></tr>' +
-        '</tbody></table></div>',
+          '</tbody></table></div>',
       cases: [
 
         {
@@ -1689,7 +1699,7 @@ window.GUIDE_CONTENT['check-detail'] = {
 
     '<h3>주문상품</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>상품 이미지 · 상품명</td><td>카테고리와 상품명 (누르면 <a href="#browse-detail">상품상세</a>로 이동)</td></tr>' +
+      '<tr><td>상품 이미지 · 상품명</td><td>소매정보의 첫 번째 이미지와 소매 카테고리, 상품명 (누르면 <a href="#browse-detail">상품상세</a>로 이동)</td></tr>' +
       '<tr><td>수량 · 개당 금액</td><td>주문한 수량과 주문이 접수된 시점의 개당 판매가</td></tr>' +
       '<tr><td>픽업가능일</td><td>픽업 주문에만 표시되는 상품별 픽업가능일</td></tr>' +
       '<tr><td>상품 금액</td><td>개당 금액 × 수량</td></tr>' +

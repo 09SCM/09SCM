@@ -50,6 +50,12 @@ def lookup_tab(page):
     page.click('[data-unavailable-tab=complete]')
     page.wait_for_timeout(400)
 
+def lookup_empty(page):
+    page.fill('input[inputmode="numeric"]', '4826')
+    page.click('button:has-text("조회")')
+    page.wait_for_timeout(600)
+    page.evaluate("window.scrollTo(0,0)")
+
 def lookup_none(page):
     page.fill('input[inputmode="numeric"]', '0000')
     page.click('button:has-text("조회")')
@@ -256,6 +262,7 @@ with sync_playwright() as p:
     shoot(b, 'gate-result', '?view=unavailable', action=lookup)
     shoot(b, 'gate-complete', '?view=unavailable', action=lookup_tab)
     shoot(b, 'gate-none', '?view=unavailable', action=lookup_none)
+    shoot(b, 'gate-empty', '?view=unavailable', action=lookup_empty)
 
     # 로그인 오류
 
