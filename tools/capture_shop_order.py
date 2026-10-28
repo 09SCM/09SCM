@@ -126,6 +126,8 @@ with sync_playwright() as p:
     snap(b, 'cart-change', '?view=cart', steps=cart_change, hide_quick=True)
     snap(b, 'cart-nowindow', '?view=cart', steps=cart_nowindow, area=['.cart-page'],
          init=cart_seed([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 11, 'quantity': 1, 'fulfillment': 'pickup'}]))
+    snap(b, 'cart-soldout', '?view=cart', steps=cart_delivery, area=['.cart-page'],
+         init=cart_seed([{'id': 7, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 5, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 12, 'quantity': 2, 'fulfillment': 'delivery'}]))
     snap(b, 'cart-empty', '?view=cart', area=['.cart-page'], init=cart_seed([]))
     # 주문서
     snap(b, 'order-main', '?view=order', steps=fit_full, init=draft_seed(PICK))
