@@ -43,8 +43,6 @@ with sync_playwright() as p:
     ctx, page = logged_in(b, 540)
     page.add_style_tag(content='#contentWrapper{visibility:hidden!important}')
     save(page.screenshot(clip={'x': 0, 'y': 0, 'width': LNB_W + M, 'height': 540}), 'common-lnb-pc')
-    fb = page.locator('.lnb-footer').bounding_box()
-    save(page.screenshot(clip={'x': 0, 'y': fb['y'] - M, 'width': LNB_W + M, 'height': 540 - (fb['y'] - M)}), 'common-logout-pc')
     ctx.close()
     # 3) 대시보드 데이터 없음 케이스 (목업 데이터를 비운 상태로 다시 그린다)
     ctx, page = logged_in(b, 1500)

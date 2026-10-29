@@ -46,15 +46,10 @@ with sync_playwright() as p:
     page.click('#loginSubmit'); page.wait_for_timeout(300)
     crop_login_card(page, 'login-error-pw-pc')
     ctx.close()
-    # 3) 대시보드 (로그인 직후, 전체 길이)
+    # 3) 대시보드 (PC 1440x1500 고정, LNB 제외 — 이용가이드 디자인시스템 9절. 내용 높이에 맞춰 자르지 않는다)
     ctx, page = new_page(b, 1500)
-    page.add_style_tag(content='.lnb{display:none!important}')  # 대표 화면 캡처는 LNB 제외(차트가 본문 폭에 맞게 그려지도록 로그인 전에 숨긴다)
-    login(page)
-    # 본문 마지막 카드 아래 여백(본문 하단 패딩 60px)만 남기도록 화면 높이를 맞춘다
-    bottom = page.evaluate("Math.max(...[...document.querySelectorAll('#contentWrapper .card, #contentWrapper .page-section, #contentWrapper > .grid12 > *')].map(e => e.getBoundingClientRect().bottom))")
-    h = int(bottom) + 60
-    print('dashboard content bottom', bottom, '-> viewport', h)
-    page.set_viewport_size({'width': 1440, 'height': h}); page.wait_for_timeout(600)
+    page.add_style_tag(content='.lnb{display:none!important}')  # LNB 제외(차트가 본문 폭에 맞게 그려지도록 로그인 전에 숨긴다)
+    login(page); page.wait_for_timeout(800)
     save(page.screenshot(), 'dashboard-pc')
     ctx.close()
     b.close()

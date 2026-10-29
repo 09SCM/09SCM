@@ -54,7 +54,7 @@ window.GUIDE_CONTENT['start-intro'] = {
           '<tr><td>시스템 관리</td><td>누르면 공지사항, 약관 관리 메뉴가 펼쳐짐</td></tr>' +
           '<tr><td>[09SCM 관리자 바로가기]</td><td>09SCM 관리자(본사·가맹점 관리자)를 새 창으로 열기</td></tr>' +
           '<tr><td>[09SCM 홈페이지 바로가기]</td><td>09SCM 홈페이지를 새 창으로 열기</td></tr>' +
-          '<tr><td>[로그아웃]</td><td>확인 창 없이 로그인 화면으로 이동 (<a href="#start-login">로그인</a>)</td></tr>' +
+          '<tr><td>[로그아웃]</td><td>확인 창 없이 로그인 화면으로 이동 (로그아웃한 뒤에는 뒤로가기나 새로고침으로 관리자 화면에 다시 들어갈 수 없고, 다시 로그인해야 함)</td></tr>' +
         '</tbody></table></div>' }
   ]
 };
@@ -89,9 +89,6 @@ window.GUIDE_CONTENT['start-login'] = {
     '<p>로그인에 성공하면 이전에 보던 메뉴, 검색어, 필터, 선택 상태는 이어지지 않고 대시보드부터 시작해요. 로그인하면 화면 맨 위 오른쪽에 로그인한 계정의 정보가 표시돼요. 자세한 내용은 <a href="#start-intro/sec4">공통 영역 보기</a>에서 확인해주세요.</p>' +
     '<p>입력이 맞지 않으면 로그인되지 않아요. 안내 문구는 <a href="#start-login/cases">상황별로 달라져요</a>에서 확인해주세요.</p>' +
 
-    '<h3>로그아웃하기</h3>' +
-    '<p>왼쪽 메뉴 맨 아래 [로그아웃]을 누르면 확인 창 없이 바로 로그인 화면으로 돌아가요. 로그아웃한 뒤에는 뒤로가기나 새로고침으로 관리자 화면에 다시 들어갈 수 없고, 다시 로그인해야 해요.</p>' +
-    adminInlineShot('common-logout-pc', '09SCM 통합관리자 로그아웃 PC 화면', '09SCM 통합관리자 로그아웃 영역 화면', '248px') +
     '<p>로그인하지 않은 상태에서 관리자 화면 주소로 바로 들어가도 로그인 화면이 열려요.</p>',
   cases: [
     {
@@ -137,14 +134,14 @@ window.GUIDE_CONTENT['start-terms'] = {
         '<tr><td>도입신청</td><td>본사가 09SCM 홈페이지에서 솔루션 이용을 신청하는 것</td></tr>' +
       '</tbody></table></div>' +
       '<h3>본사 상태</h3>' +
-      '<div class="table-wrap"><table><thead><tr><th>상태</th><th>뜻</th></tr></thead><tbody>' +
+      '<div class="table-wrap"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody>' +
         '<tr><td>승인대기</td><td>도입신청이 접수되어 검토 전인 단계 (본사 계정과 소매몰은 아직 만들어지지 않음)</td></tr>' +
         '<tr><td>운영중</td><td>정상 운영 중인 본사 (운영중으로 처음 바뀌는 시점에 본사 계정과 소매몰 생성)</td></tr>' +
         '<tr><td>운영제한</td><td>운영 중이던 본사에 제한이 걸린 상태 (신규 가맹점 유치 중단 포함)</td></tr>' +
         '<tr><td>승인불가</td><td>도입신청을 승인하지 않은 상태</td></tr>' +
       '</tbody></table></div>' +
       '<h3>가맹점 이용상태</h3>' +
-      '<div class="table-wrap"><table><thead><tr><th>상태</th><th>뜻</th></tr></thead><tbody>' +
+      '<div class="table-wrap"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody>' +
         '<tr><td>이용대기</td><td>가입신청 후 본사의 이용승인을 기다리는 상태</td></tr>' +
         '<tr><td>이용승인</td><td>모든 메뉴를 정상으로 쓰는 상태</td></tr>' +
         '<tr><td>이용제한</td><td>신규 주문과 상품 등록이 제한된 상태</td></tr>' +
@@ -177,7 +174,7 @@ window.GUIDE_CONTENT['start-terms'] = {
 // ---- 대시보드 > 운영현황 ----
 window.GUIDE_CONTENT['dashboard-ops'] = {
   shots: [
-    { device: 'pc', src: IMG_ADMIN + 'dashboard-pc.webp', alt: '09SCM 통합관리자 대시보드 PC 화면', ratio: 1440 / 1153 }
+    { device: 'pc', src: IMG_ADMIN + 'dashboard-pc.webp', alt: '09SCM 통합관리자 대시보드 PC 화면', ratio: 1440 / 1500 }
   ],
   shotCaption: '09SCM 통합관리자 대시보드 화면',
   overview:
@@ -198,9 +195,9 @@ window.GUIDE_CONTENT['dashboard-ops'] = {
     '<div class="table-wrap"><table class="wide">' +
       '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
       '<tbody>' +
-        '<tr><td>승인 대기 본사</td><td>상태가 승인대기인 본사 수</td></tr>' +
-        '<tr><td>운영 본사</td><td>운영중과 운영제한 본사 수 (전체 본사는 승인대기·승인불가를 포함한 등록된 모든 본사)</td></tr>' +
-        '<tr><td>운영 가맹점</td><td>이용승인과 이용제한 가맹점 수 (전체 가맹점은 소속된 모든 가맹점)</td></tr>' +
+        '<tr><td>승인 대기 본사</td><td>상태가 [승인대기]인 본사 수</td></tr>' +
+        '<tr><td>운영 본사</td><td>[운영중]과 [운영제한] 본사 수 (전체 본사는 [승인대기]·[승인불가]를 포함한 등록된 모든 본사)</td></tr>' +
+        '<tr><td>운영 가맹점</td><td>[이용승인]과 [이용제한] 가맹점 수 (전체 가맹점은 소속된 모든 가맹점)</td></tr>' +
         '<tr><td>당월 신규 가입 가맹점</td><td>가입신청일이 이번 달인 가맹점 수 (이용상태와 관계없이 집계)</td></tr>' +
       '</tbody></table></div>' +
 
@@ -209,10 +206,10 @@ window.GUIDE_CONTENT['dashboard-ops'] = {
     '<div class="table-wrap"><table class="wide">' +
       '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
       '<tbody>' +
-        '<tr><td>당월 결제총액</td><td>이번 달 결제완료 금액 합계 (결제완료 주문 건수 포함)</td></tr>' +
+        '<tr><td>당월 결제총액</td><td>이번 달 [결제완료] 금액 합계 ([결제완료] 주문 건수 포함)</td></tr>' +
         '<tr><td>당월 페이앱 결제액</td><td>결제수단이 카드결제(페이앱)인 결제총액 (결제총액 대비 비율 포함)</td></tr>' +
         '<tr><td>당월 현장결제·계좌이체 결제액</td><td>결제수단이 현장결제·계좌이체인 결제총액 (결제총액 대비 비율 포함)</td></tr>' +
-        '<tr><td>당월 이용료 수납액</td><td>이용료 결제완료와 수기완납 금액의 합계</td></tr>' +
+        '<tr><td>당월 이용료 수납액</td><td>이용료 [결제완료]와 [수기완납] 금액의 합계</td></tr>' +
       '</tbody></table></div>' +
 
     '<h3>월별 매출 추이</h3>' +
@@ -227,10 +224,10 @@ window.GUIDE_CONTENT['dashboard-ops'] = {
         '<tr><td>[거래/매출 현황 보기 →]</td><td>거래/매출 현황을 기본 조건(이번달, 전체)으로 열기</td></tr>' +
       '</tbody></table></div>' +
     '<p>취소·환불은 결제한 달이 아니라 취소·반품을 승인한 달에서 빼요. 지난달에 결제한 건을 이번 달에 취소하면 이번 달 매출에서 빠지고, 그 때문에 매출액이 마이너스가 될 수도 있어요.</p>' +
-    '<p>정산이 끝난 카드결제 건은 환불을 요청한 날 취소·반품이 승인된 것으로 보기 때문에, 환불이 완료되기 전인 환불대기 상태에서도 그날의 취소·환불액에 들어가요.</p>' +
+    '<p>정산이 끝난 카드결제 건은 환불을 요청한 날 취소·반품이 승인된 것으로 보기 때문에, 환불이 완료되기 전인 [환불대기] 상태에서도 그날의 취소·환불액에 들어가요.</p>' +
 
     '<h3>승인 대기 본사</h3>' +
-    '<p>상태가 승인대기인 본사를 도입신청일시가 최근인 순서로 최대 5건 보여줘요. 제목 옆에 전체 건수가 표시되고, 5건이 넘으면 [본사 관리 보기 →]에서 전체를 확인해요.</p>' +
+    '<p>상태가 [승인대기]인 본사를 도입신청일시가 최근인 순서로 최대 5건 보여줘요. 제목 옆에 전체 건수가 표시되고, 5건이 넘으면 [본사 관리 보기 →]에서 전체를 확인해요.</p>' +
     '<div class="table-wrap"><table class="wide">' +
       '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
       '<tbody>' +
@@ -244,22 +241,22 @@ window.GUIDE_CONTENT['dashboard-ops'] = {
     '<div class="table-wrap"><table class="wide">' +
       '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
       '<tbody>' +
-        '<tr><td>운영제한 본사</td><td>상태가 운영제한인 본사 수 (운영 본사 대비 비율 포함)</td></tr>' +
-        '<tr><td>이용제한 가맹점</td><td>이용상태가 이용제한인 가맹점 수 (운영 가맹점 대비 비율 포함)</td></tr>' +
+        '<tr><td>운영제한 본사</td><td>상태가 [운영제한]인 본사 수 (운영 본사 대비 비율 포함)</td></tr>' +
+        '<tr><td>이용제한 가맹점</td><td>이용상태가 [이용제한]인 가맹점 수 (운영 가맹점 대비 비율 포함)</td></tr>' +
       '</tbody></table></div>',
   cases: [
     {
-      title: '카드를 눌러 이동해요',
+      title: '카드를 누르면',
       html:
         '<p>목록 하나로 바로 확인할 수 있는 항목만 눌러서 이동해요. 이동한 목록의 건수는 카드 숫자와 같아요.</p>' +
         '<div class="table-wrap"><table class="wide">' +
-          '<thead><tr><th>누르는 곳</th><th>이동하는 화면</th></tr></thead>' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
           '<tbody>' +
-            '<tr><td>승인 대기 본사 카드, [본사 관리 보기 →]</td><td><a href="#hq-list">본사 관리</a> (상태 필터 승인대기)</td></tr>' +
-            '<tr><td>승인 대기 본사 목록의 [상세보기]</td><td><a href="#hq-list">본사 관리</a>의 해당 본사 상세 (신청정보 탭)</td></tr>' +
-            '<tr><td>운영제한 본사 카드</td><td><a href="#hq-list">본사 관리</a> (상태 필터 운영제한)</td></tr>' +
-            '<tr><td>이용제한 가맹점 카드</td><td><a href="#franchise-list">가맹점 정보</a> (이용상태 필터 이용제한)</td></tr>' +
-            '<tr><td>[거래/매출 현황 보기 →]</td><td><a href="#trade-all">거래/매출 현황</a> (이번달, 전체)</td></tr>' +
+            '<tr><td>승인 대기 본사 카드, [본사 관리 보기 →]</td><td><a href="#hq-list">본사 관리</a> 열기 (상태 필터 [승인대기] 적용)</td></tr>' +
+            '<tr><td>승인 대기 본사 목록의 [상세보기]</td><td><a href="#hq-list">본사 관리</a>의 해당 본사 상세(신청정보 탭) 열기</td></tr>' +
+            '<tr><td>운영제한 본사 카드</td><td><a href="#hq-list">본사 관리</a> 열기 (상태 필터 [운영제한] 적용)</td></tr>' +
+            '<tr><td>이용제한 가맹점 카드</td><td><a href="#franchise-list">가맹점 정보</a> 열기 (이용상태 필터 [이용제한] 적용)</td></tr>' +
+            '<tr><td>[거래/매출 현황 보기 →]</td><td><a href="#trade-all">거래/매출 현황</a> 열기 (이번달, 전체)</td></tr>' +
           '</tbody></table></div>' +
         '<p>운영 본사, 운영 가맹점, 당월 신규 가입 가맹점과 당월 결제 카드는 눌러도 이동하지 않아요. 이동한 화면에서 왼쪽 메뉴를 다시 누르면 적용된 필터가 사라져요.</p>'
     },
@@ -287,7 +284,7 @@ window.GUIDE_CONTENT['dashboard-ops'] = {
       ]
     },
     {
-      title: '삭제된 본사와 가맹점은 이렇게 반영돼요',
+      title: '본사나 가맹점이 삭제되었다면',
       html: '<p>삭제된 본사와 가맹점의 거래·매출 이력은 결제총액, 월별 매출 추이 같은 합계에 계속 포함돼요. 삭제된 가맹점은 가맹점 수를 세는 카드에서는 빠져요.</p>'
     }
   ],
