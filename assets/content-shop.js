@@ -29,17 +29,17 @@ var SHOT_DIMS = {
   'cart-main': [2880, 1904, 880, 2512],
   'cart-delivery': [2880, 1456, 880, 1716],
   'cart-change': [2880, 1800, 880, 1800],
-  'cart-change-toast': [2880, 960, 880, 960],
-  'cart-overlap-toast': [2880, 960, 880, 960],
+  'cart-change-toast': [852, 190],
   'cart-soldout-toast': [2880, 960, 880, 960],
   'check-history-nomatch-toast': [2880, 960, 880, 960],
-  'check-toast-cancel-card': [2880, 960, 880, 960],
-  'check-toast-cancel-request': [2880, 960, 880, 960],
-  'check-toast-cancel-wait': [2880, 960, 880, 960],
-  'check-toast-return': [2880, 960, 880, 960],
+  'check-toast-cancel-card': [602, 190],
+  'check-toast-cancel-request': [518, 190],
+  'check-toast-cancel-wait': [454, 190],
+  'check-toast-return': [518, 190],
   'detail-cart-toast': [2880, 960, 880, 960],
   'login-done': [2880, 960, 880, 960],
   'order-input-toast': [2880, 960, 880, 960],
+  'order-recheck-toast': [2880, 960, 880, 960],
   'reset-done': [2880, 960, 880, 960],
   'store-copy-toast': [2880, 960, 880, 960],
   'cart-nowindow': [2880, 1510, 880, 1792],
@@ -1140,7 +1140,7 @@ window.GUIDE_CONTENT['order-cart'] = {
             },
             {
               shots: pair('cart-change-toast', '09SCM 소매몰 수령방식 변경 안내'),
-              shotCaption: '09SCM 소매몰 수령방식 변경 안내 화면 (PC / 모바일)',
+              shotCaption: '09SCM 소매몰 수령방식 변경 안내 화면',
               html:
                 '<ul><li>안내: &quot;○○을(를) 배달 장바구니로 이동했습니다.&quot;(픽업으로 바꾸면 &quot;픽업 장바구니&quot;)를 잠깐 표시</li></ul>'
             }
@@ -1171,24 +1171,14 @@ window.GUIDE_CONTENT['order-cart'] = {
     },
     {
       title: '장바구니를 보는 사이 상품 상태가 바뀌었으면',
-      blocks: [
-        {
-          html:
-          '<p>[선택상품 주문]이나 [전체주문]을 누르면 상품을 한 번 확인해요(상품상세의 [바로구매]도 같아요). 장바구니를 보는 사이 판매자가 상품을 품절로 바꾸거나 픽업가능일을 바꿔서 주문할 수 없게 되면, 주문서로 넘어가지 않고 아래 안내가 나와요. 여러 경우가 겹치면 아래 순서로 하나만 안내돼요.</p>' +
-          '<div class="table-wrap"><table><thead><tr><th>순서</th><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
-            '<tr><td>1</td><td>선택한 상품에 품절이 있음</td><td>&quot;품절 상품은 주문할 수 없습니다. 장바구니를 확인해 주세요.&quot;</td></tr>' +
-            '<tr><td>2</td><td>선택한 픽업 상품의 픽업가능일이 겹치지 않음</td><td>&quot;선택한 상품의 픽업 가능일이 겹치지 않습니다. 상품을 나눠 주문해 주세요.&quot;</td></tr>' +
-          '</tbody></table></div>'
-        },
-        {
-          shots: pair('cart-soldout-toast', '09SCM 소매몰 품절 상품 주문 안내'),
-          shotCaption: '09SCM 소매몰 품절 상품 주문 안내 화면 (PC / 모바일)'
-        },
-        {
-          shots: pair('cart-overlap-toast', '09SCM 소매몰 픽업가능일 겹침 안내'),
-          shotCaption: '09SCM 소매몰 픽업가능일 겹침 안내 화면 (PC / 모바일)'
-        }
-      ]
+      shots: pair('cart-soldout-toast', '09SCM 소매몰 품절 상품 주문 안내'),
+      shotCaption: '09SCM 소매몰 품절 상품 주문 안내 화면 (PC / 모바일)',
+      html:
+        '<p>[선택상품 주문]이나 [전체주문]을 누르면 상품을 한 번 확인해요(상품상세의 [바로구매]도 같아요). 장바구니를 보는 사이 판매자가 상품을 품절로 바꾸거나 픽업가능일을 바꿔서 주문할 수 없게 되면, 주문서로 넘어가지 않고 아래 안내가 나와요. 여러 경우가 겹치면 아래 순서로 하나만 안내돼요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>순서</th><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
+          '<tr><td>1</td><td>선택한 상품에 품절이 있음</td><td>&quot;품절 상품은 주문할 수 없습니다. 장바구니를 확인해 주세요.&quot;</td></tr>' +
+          '<tr><td>2</td><td>선택한 픽업 상품의 픽업가능일이 겹치지 않음</td><td>&quot;선택한 상품의 픽업 가능일이 겹치지 않습니다. 상품을 나눠 주문해 주세요.&quot;</td></tr>' +
+        '</tbody></table></div>'
     },
     {
       title: '담아 둔 상품이 장바구니에서 사라지면',
@@ -1308,6 +1298,8 @@ window.GUIDE_CONTENT['order-pay'] = {
 ,
         {
           title: '주문하는 사이 상품 상태가 바뀌었으면',
+          shots: pair('order-recheck-toast', '09SCM 소매몰 주문 시 품절 상품 안내'),
+          shotCaption: '09SCM 소매몰 주문 시 품절 상품 안내 화면 (PC / 모바일)',
           html:
             '<p>장바구니나 주문서를 보는 동안 다른 주문으로 재고가 줄거나 판매자가 상품을 품절·노출 중단할 수 있어서, [주문하기]를 누를 때 상품을 한 번 더 확인해요. 하나라도 주문할 수 없으면 주문과 결제가 진행되지 않고, 입력한 내용은 그대로 남아 있어요. 여러 경우가 겹치면 아래 순서로 하나만 안내돼요.</p>' +
             '<div class="table-wrap"><table><thead><tr><th>순서</th><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
@@ -1715,7 +1707,7 @@ window.GUIDE_CONTENT['check-history'] = {
                 },
                 {
                   shots: pair('check-toast-cancel-card', '09SCM 소매몰 카드결제 주문 취소 완료 안내'),
-                  shotCaption: '09SCM 소매몰 카드결제 주문 취소 완료 안내 화면 (PC / 모바일)'
+                  shotCaption: '09SCM 소매몰 카드결제 주문 취소 완료 안내 화면'
                 }
               ]
             },
@@ -1737,7 +1729,7 @@ window.GUIDE_CONTENT['check-history'] = {
                 },
                 {
                   shots: pair('check-toast-cancel-wait', '09SCM 소매몰 결제대기 주문 취소 완료 안내'),
-                  shotCaption: '09SCM 소매몰 결제대기 주문 취소 완료 안내 화면 (PC / 모바일)'
+                  shotCaption: '09SCM 소매몰 결제대기 주문 취소 완료 안내 화면'
                 }
               ]
             }
@@ -1757,7 +1749,7 @@ window.GUIDE_CONTENT['check-history'] = {
                 },
                 {
                   shots: pair('check-toast-cancel-request', '09SCM 소매몰 취소 요청 접수 안내'),
-                  shotCaption: '09SCM 소매몰 취소 요청 접수 안내 화면 (PC / 모바일)'
+                  shotCaption: '09SCM 소매몰 취소 요청 접수 안내 화면'
                 }
               ]
             },
@@ -1772,7 +1764,7 @@ window.GUIDE_CONTENT['check-history'] = {
                 },
                 {
                   shots: pair('check-toast-return', '09SCM 소매몰 반품 요청 접수 안내'),
-                  shotCaption: '09SCM 소매몰 반품 요청 접수 안내 화면 (PC / 모바일)'
+                  shotCaption: '09SCM 소매몰 반품 요청 접수 안내 화면'
                 }
               ]
             },

@@ -135,6 +135,15 @@ def draft_toast(items, tab=None):
         page.wait_for_timeout(500)
     return f
 
+def recheck_toast(page, dev):
+    """[주문하기] 시점 재검증: 주문서를 연 뒤 판매자가 상품을 품절로 바꾼 상황(대표 1건)"""
+    page.evaluate("products.find(p => p.id === 6).soldOut = true")
+    jsclick(page, '#orderAgreement')
+    page.evaluate("document.querySelector('#orderSubmit').scrollIntoView({block: 'center'})")
+    page.click('#orderSubmit')
+    page.add_style_tag(content=TOAST_CSS)
+    page.wait_for_timeout(500)
+
 def order_input_toast(page, dev):
     """계좌이체를 고르고 입금자명 없이 [주문하기]를 누를 때의 토스트(입력 오류 중 대표 한 건)"""
     jsclick(page, 'input[name=payment][value=transfer]')
@@ -175,8 +184,6 @@ with sync_playwright() as p:
     snap(b, 'cart-empty', '?view=cart', area=['.cart-page'], init=cart_seed([]))
     snap(b, 'cart-soldout-toast', '?view=cart', steps=draft_toast([{'id': 5, 'quantity': 1, 'fulfillment': 'delivery'}], tab='delivery'), vh=480,
          init=LOGIN_OK + cart_seed([{'id': 7, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 5, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 12, 'quantity': 2, 'fulfillment': 'delivery'}]))
-    snap(b, 'cart-overlap-toast', '?view=cart', steps=draft_toast([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 11, 'quantity': 1, 'fulfillment': 'pickup'}]), vh=480,
-         init=LOGIN_OK + cart_seed([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 6, 'quantity': 2, 'fulfillment': 'pickup'}]))
     # 주문서
     snap(b, 'order-main', '?view=order', steps=fit_full, init=draft_seed(PICK))
     snap(b, 'order-nowindow', '?view=order', steps=fit_full, init=draft_seed([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 11, 'quantity': 1, 'fulfillment': 'pickup'}]))
@@ -185,6 +192,7 @@ with sync_playwright() as p:
     snap(b, 'order-delivery-none', '?view=order', area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)'], init=draft_seed(DELI) + nomember)
     snap(b, 'order-delivery-other', '?view=order', steps=pick_other, area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)'], init=draft_seed(DELI))
     snap(b, 'order-input-toast', '?view=order', steps=order_input_toast, vh=480, init=draft_seed(PICK))
+    snap(b, 'order-recheck-toast', '?view=order', steps=recheck_toast, vh=480, init=draft_seed(PICK))
     snap(b, 'order-transfer', '?view=order', steps=pick_transfer, area=['.checkout-section:nth-of-type(5)'], init=draft_seed(PICK))
     # 주문 완료 (실제 주문서 제출)
     snap(b, 'done-main', '?view=order', steps=fill_and_submit(), init=draft_seed(PICK), hide_quick=True)
