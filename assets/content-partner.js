@@ -5,6 +5,14 @@ window.GUIDE_CONTENT = window.GUIDE_CONTENT || {};
 var HOME_APPLY = 'https://09scm.github.io/09SCM-Homepage/apply/';
 var FRANCHISE_APPLY = 'https://superbeanchoi.github.io/09SCM-Shop/index.html?view=franchise-signup';
 
+// 소개 페이지 본문 안에 넣는 PC+모바일 캡처 쌍 (가로 비율은 실제 이미지 크기: 1120×154, 880×154)
+function introShotPair(base, alt, caption) {
+  return '<div class="cshot"><div class="cshot-row cshot-pair">' +
+    '<figure class="shot-item shot-pc" style="flex:' + Math.round(1120 / 154 * 100000) + ' 1 0%"><img src="../assets/img/partner/' + base + '-pc.webp" alt="' + alt + ' PC 화면" loading="lazy"></figure>' +
+    '<figure class="shot-item shot-mobile" style="flex:' + Math.round(880 / 154 * 100000) + ' 1 0%"><img src="../assets/img/partner/' + base + '-mobile.webp" alt="' + alt + ' 모바일 화면" loading="lazy"></figure>' +
+    '</div><p class="shot-caption">' + caption + '</p></div>';
+}
+
 window.GUIDE_CONTENT['start-intro'] = {
   shots: [
     { device: 'pc', src: '../assets/img/partner/intro-pc.webp', alt: '09SCM 관리자 대시보드 화면' }
@@ -23,7 +31,25 @@ window.GUIDE_CONTENT['start-intro'] = {
       "<p>본사인지 가맹점인지, 가맹점은 도매공급권한이 있는지에 따라 보이는 메뉴가 달라요.</p>" +
       "<div class=\"table-wrap\"><table class=\"wide\"><thead><tr><th>메뉴</th><th class=\"c\">본사</th><th class=\"c\">가맹점<br>(도매공급권한 있음)</th><th class=\"c\">가맹점<br>(도매공급권한 없음)</th></tr></thead><tbody><tr><td>대시보드</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>대시보드의 도매 판매 영역</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">×</td></tr><tr><td>소매관리</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>소매관리 &gt; 상품목록의 [도매상품전환] 버튼</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">×</td></tr><tr><td>도매관리 &gt; 도매상품 주문하기, 주문내역</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>도매관리 &gt; 내 도매상품, 주문접수관리, 도매매출조회, 도매설정</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">×</td></tr><tr><td>가맹점관리</td><td class=\"c\">○</td><td class=\"c\">×</td><td class=\"c\">×</td></tr><tr><td>시스템관리 &gt; 회원정보, 알림설정, 공지사항</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>시스템관리 &gt; 이용료관리</td><td class=\"c\">×</td><td class=\"c\">○</td><td class=\"c\">○</td></tr></tbody></table></div>" +
       "<p>본사는 도매공급권한을 항상 가지고 있어요. 가맹점의 도매공급권한은 본사가 정해요.</p>" +
-      "<p>가맹점은 이용상태에 따라서도 보이는 메뉴가 달라져요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>" }
+      "<p>가맹점은 이용상태에 따라서도 보이는 메뉴가 달라져요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>" },
+    { id: 'sec6', label: "화면 오른쪽 위 계정 정보", html:
+      "<p>로그인하면 화면 맨 위 오른쪽에 지금 로그인한 계정의 정보가 표시돼요. 어떤 계정으로 들어와 있는지 여기서 확인해요.</p>" +
+      "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>" +
+        "<tr><td>회원 유형</td><td>로그인한 계정이 본사인지 가맹점인지 표시</td></tr>" +
+        "<tr><td>상호명</td><td>회원정보의 사업자정보에 등록된 상호명 (소매설정의 상호명과 다름)</td></tr>" +
+        "<tr><td>아이디</td><td>로그인할 때 쓴 아이디</td></tr>" +
+      "</tbody></table></div>" +
+      "<p>값은 <a href=\"#system-member\">시스템관리 &gt; 회원정보</a>에서 확인해요. 사업자정보는 보기만 할 수 있어요. 바꾸려면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해요.</p>" +
+      "<h3>PC와 모바일에서 달라요</h3>" +
+      "<div class=\"table-wrap\"><table><thead><tr><th>화면</th><th>표시되는 정보</th></tr></thead><tbody>" +
+        "<tr><td>PC</td><td>알림 아이콘, 회원 유형, 상호명, 아이디</td></tr>" +
+        "<tr><td>모바일</td><td>알림 아이콘, 회원 유형 (화면이 좁아 상호명과 아이디는 표시하지 않음)</td></tr>" +
+      "</tbody></table></div>" +
+      "<p>모바일에서 상호명과 아이디를 확인하려면 시스템관리 &gt; 회원정보를 열어요.</p>" +
+      "<h3>본사 계정</h3>" +
+      introShotPair('header-hq', '09SCM 본사 계정 헤더', '09SCM 본사 계정 헤더 화면 (PC / 모바일)') +
+      "<h3>가맹점 계정</h3>" +
+      introShotPair('header-fr', '09SCM 가맹점 계정 헤더', '09SCM 가맹점 계정 헤더 화면 (PC / 모바일)') }
   ]
 };
 
@@ -56,7 +82,7 @@ window.GUIDE_CONTENT['start-login'] = {
   cases:
     '<h3>본사와 가맹점</h3>' +
     '<p>회원 유형에 따라 사용 가능한 메뉴가 달라요. 자세한 내용은 <a href="#start-intro">09SCM 관리자 소개</a>에서 확인해주세요.</p>' +
-    '<p>로그인하면 화면 오른쪽 상단에 회원 유형(본사/가맹점), 상호명, 아이디가 표시돼요. 지금 어떤 계정으로 들어와 있는지 여기서 확인해요.</p>' +
+    '<p>로그인하면 화면 오른쪽 상단에 회원 유형(본사/가맹점), 상호명, 아이디가 표시돼요. 지금 어떤 계정으로 들어와 있는지 여기서 확인해요. 자세한 내용은 <a href=\"#start-intro/sec6\">화면 오른쪽 위 계정 정보</a>에서 확인해주세요.</p>' +
 
     '<h3>이용상태</h3>' +
     '<p>이용상태는 가맹점 계정에 적용돼요.</p>' +
