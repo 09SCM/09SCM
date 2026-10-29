@@ -418,6 +418,35 @@
   .terms-meta { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
 
   .table-scroll { overflow-x: auto; }
+
+  /* ---------- 표 템플릿 (디자인시스템: 컬럼 폭 클래스) ---------- */
+  /* 체크 40 / S 96 / M 128 / L 152 / 가변(최소 160, 표당 1개) / 관리 120. 고정폭 컬럼은 말줄임 없이 줄바꿈. 표 최소 폭 = 컬럼 폭 합계(JS), 좁으면 .table-scroll 안에서 가로 스크롤 */
+  table.tpl-table { table-layout: fixed; }
+  .tpl-table th, .tpl-table td { white-space: normal; overflow-wrap: anywhere; }
+  .tpl-table .col-check { width: 40px; text-align: center; }
+  .tpl-table .c-s { width: 96px; }
+  .tpl-table .c-m { width: 128px; }
+  .tpl-table .c-l { width: 152px; }
+  .tpl-table .c-flex { min-width: 160px; }
+  .tpl-table .col-actions { width: 120px; }
+  .tpl-table .th-sub { display: block; white-space: nowrap; }
+
+  /* ---------- 목록 필터바 · 1차 탭 모바일 (860px 이하) ---------- */
+  @media (max-width: 860px) {
+    .hq-list-toolbar { flex-wrap: nowrap; }
+    .hq-list-toolbar .form-input { max-width: none; min-width: 0; }
+    .hq-list-toolbar button { flex: none; white-space: nowrap; }
+    .filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .filter-row .sort-select { min-width: 0; width: 100%; }
+    .filter-row > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .sales-filter .form-row { flex-wrap: wrap; }
+    .sales-filter .form-input.date { flex: 1 1 0; width: auto; min-width: 0; }
+    .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-item { flex: none; white-space: nowrap; }
+    .table-toolbar { flex-wrap: wrap; }
+    .table-toolbar .sort-select, .table-toolbar .btn-sm { font-size: 12px; height: 36px; min-width: 90px; }
+  }
   .hq-table { width: 100%; border-collapse: collapse; font-size: 14px; white-space: nowrap; }
   .hq-table th, .hq-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
   .hq-table th { color: var(--text-secondary); font-weight: 700; background: var(--bg); }
@@ -991,6 +1020,20 @@
   // 페이지당 20건, 번호 5개 노출(◀ 1 2 3 4 5 ▶), 1페이지뿐이어도 노출, 첫/마지막 페이지의 ◀▶는 비활성.
   const LIST_PAGE_SIZE = 20;
   function clampPage(page, total, size) { return Math.min(Math.max(1, page), Math.max(1, Math.ceil(total / size))); }
+  // 표 템플릿 — 컬럼 폭 클래스 합계를 표 최소 폭으로 지정(고정 레이아웃에서 컬럼이 좁아지지 않고 .table-scroll 안에서 가로 스크롤)
+  const TPL_COL_W = { 'col-check': 40, 'c-s': 96, 'c-m': 128, 'c-l': 152, 'c-flex': 160, 'col-actions': 120 };
+  function applyTableTemplates() {
+    document.querySelectorAll('table.tpl-table').forEach(t => {
+      let sum = 0;
+      t.querySelectorAll('thead th').forEach(th => {
+        const k = Object.keys(TPL_COL_W).find(c => th.classList.contains(c));
+        sum += k ? TPL_COL_W[k] : 96;
+      });
+      const v = sum + 'px';
+      if (t.style.minWidth !== v) t.style.minWidth = v;
+    });
+  }
+  new MutationObserver(applyTableTemplates).observe(document.body, { childList: true, subtree: true });
   function pagerHTML(attr, page, total, size) {
     const last = Math.max(1, Math.ceil(total / size));
     let st, en;
@@ -1166,13 +1209,13 @@
             </select>
           </div>
           <div class="table-scroll">
-            <table class="hq-table">
+            <table class="hq-table tpl-table">
               <thead>
                 <tr>
-                  <th style="width:36px; text-align:center;"><input type="checkbox" id="hqSelectAllCheckbox" ${allChecked ? 'checked' : ''}></th>
-                  <th>도입신청일시</th><th>본사정보</th><th>회원정보</th><th>소매몰 URL</th>
-                  <th>가맹점 수</th><th class="num">당월 매출액</th><th class="num">당월 이용료 수납액</th>
-                  <th>상태</th><th class="manage-col">관리</th>
+                  <th class="col-check"><input type="checkbox" id="hqSelectAllCheckbox" ${allChecked ? 'checked' : ''}></th>
+                  <th class="c-m">도입신청일시</th><th class="c-flex">본사정보</th><th class="c-m">회원정보</th><th class="c-l">소매몰 URL</th>
+                  <th class="c-s">가맹점 수</th><th class="num c-m">당월 매출액</th><th class="num c-m">당월 이용료 수납액</th>
+                  <th class="c-s">상태</th><th class="manage-col col-actions">관리</th>
                 </tr>
               </thead>
               <tbody>${rows}</tbody>
@@ -2287,12 +2330,12 @@
             </select>
           </div>
           <div class="table-scroll">
-            <table class="hq-table">
+            <table class="hq-table tpl-table">
               <thead>
                 <tr>
-                  <th>소속 본사</th><th>가맹점정보</th><th>소매몰 URL</th>
-                  <th class="num">당월 매출액</th><th class="num">적용이용료</th>
-                  <th>이용상태</th><th>가입신청일시</th><th class="manage-col">관리</th>
+                  <th class="c-m">소속 본사</th><th class="c-flex">가맹점정보</th><th class="c-l">소매몰 URL</th>
+                  <th class="num c-m">당월 매출액</th><th class="num c-m">적용이용료</th>
+                  <th class="c-s">이용상태</th><th class="c-m">가입신청일시</th><th class="manage-col col-actions">관리</th>
                 </tr>
               </thead>
               <tbody>${rows}</tbody>
@@ -2879,8 +2922,8 @@
         <span class="table-count">전체 ${list.length}건</span>
         <select class="sort-select" id="salesListSort">${[['sales', '매출액순'], ['order', '주문순'], ['name', '상호명순']].map(([k, l]) => `<option value="${k}" ${sortKey === k ? 'selected' : ''}>${l}</option>`).join('')}</select>
       </div>
-      ${list.length ? `<div class="table-scroll"><table class="hq-table sales-list-table">
-        <thead><tr><th>${isHq ? '본사정보' : '가맹점정보'}</th><th>${isHq ? '가맹점 수' : '소속 본사'}</th><th>주문건수</th><th>매출액</th><th>${isHq ? '운영상태' : '이용상태'}</th><th class="manage-col">관리</th></tr></thead>
+      ${list.length ? `<div class="table-scroll"><table class="hq-table tpl-table sales-list-table">
+        <thead><tr><th class="c-flex">${isHq ? '본사정보' : '가맹점정보'}</th><th class="${isHq ? 'c-s' : 'c-m'}">${isHq ? '가맹점 수' : '소속 본사'}</th><th class="c-s">주문건수</th><th class="c-m">매출액</th><th class="c-s">${isHq ? '운영상태' : '이용상태'}</th><th class="manage-col col-actions">관리</th></tr></thead>
         <tbody>${rows}</tbody></table></div>${pager}` : `<div class="sales-empty">검색 결과가 없습니다.</div>`}`;
   }
 
@@ -3097,8 +3140,8 @@
         <td class="manage-col"><div class="manage-cell"><button type="button" class="btn-secondary btn-sm" data-dash-hq="${h.id}">상세보기</button></div></td>
       </tr>`).join('');
     const waitBody = wait.length
-      ? `<div class="table-scroll"><table class="hq-table"><colgroup><col style="width:22%"><col style="width:34%"><col style="width:34%"><col style="width:120px"></colgroup>
-          <thead><tr><th>도입신청일시</th><th>본사정보</th><th>회원정보</th><th class="manage-col">관리</th></tr></thead><tbody>${waitRows}</tbody></table></div>`
+      ? `<div class="table-scroll"><table class="hq-table tpl-table">
+          <thead><tr><th class="c-m">도입신청일시</th><th class="c-flex">본사정보</th><th class="c-m">회원정보</th><th class="manage-col col-actions">관리</th></tr></thead><tbody>${waitRows}</tbody></table></div>`
       : '<div class="dash-empty">승인 대기 중인 본사가 없습니다.</div>';
 
     const limRate = (n, d, base) => (d > 0 ? `${base} 대비 ${Math.round(n / d * 100)}%` : `${base} 대비 -`);
@@ -3463,10 +3506,10 @@
           </div>
           <div class="tabs" style="margin-bottom:14px;">${tabs}</div>
           <div class="table-toolbar"><span class="table-count">전체 ${all.length}건 | 선택 ${noticeSel.size}건</span></div>
-          ${rows.length ? `<div class="table-scroll"><table class="hq-table">
+          ${rows.length ? `<div class="table-scroll"><table class="hq-table tpl-table">
             <thead><tr>
-              <th style="width:36px; text-align:center;"><input type="checkbox" id="noticeSelAll" ${allChecked ? 'checked' : ''}></th>
-              <th>번호</th><th>제목</th><th>노출대상</th><th>노출여부</th><th>작성자</th><th>등록일</th><th>조회수</th><th class="manage-col">관리</th>
+              <th class="col-check"><input type="checkbox" id="noticeSelAll" ${allChecked ? 'checked' : ''}></th>
+              <th class="c-s">번호</th><th class="c-flex">제목</th><th class="c-s">노출대상</th><th class="c-s">노출여부</th><th class="c-s">작성자</th><th class="c-s">등록일</th><th class="c-s">조회수</th><th class="manage-col col-actions">관리</th>
             </tr></thead><tbody>${body}</tbody></table></div>` : `<div class="sales-empty">${emptyMsg}</div>`}
           ${pagerHTML('data-notice-page', noticePage, all.length, LIST_PAGE_SIZE)}
         </div>
@@ -3799,8 +3842,8 @@
           <div class="terms-block">
             <h3 class="form-section-title">개정 이력</h3>
             <div class="table-toolbar"><span class="table-count">전체 ${all.length}건</span></div>
-            ${rows ? `<div class="table-scroll"><table class="hq-table"><thead><tr>
-              <th>번호</th><th>버전</th><th>등록일시</th><th>시행일</th><th>등록자</th><th class="manage-col">관리</th>
+            ${rows ? `<div class="table-scroll"><table class="hq-table tpl-table"><thead><tr>
+              <th class="c-s">번호</th><th class="c-flex">버전</th><th class="c-m">등록일시</th><th class="c-s">시행일</th><th class="c-m">등록자</th><th class="manage-col col-actions">관리</th>
             </tr></thead><tbody>${rows}</tbody></table></div>` : '<div class="sales-empty">등록된 개정 이력이 없습니다.</div>'}
             ${pagerHTML('data-terms-page', pg, all.length, LIST_PAGE_SIZE)}
           </div>
