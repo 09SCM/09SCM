@@ -21,9 +21,9 @@ window.GUIDE_NAV = [
     { id: 'check-history', label: '주문내역' },
     { id: 'check-detail', label: '주문상세' }
   ]},
-  { id: 'etc', label: '기타', children: [
-    { id: 'etc-info', label: '내정보' },
-    { id: 'etc-address', label: '배달지관리' },
-    { id: 'etc-withdraw', label: '회원탈퇴' }
+  { id: 'mypage', label: '마이페이지', children: [
+    { id: 'mypage-info', label: '내정보' },
+    { id: 'mypage-address', label: '배달지관리' },
+    { id: 'mypage-withdraw', label: '회원탈퇴' }
   ]}
 ];
