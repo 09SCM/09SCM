@@ -330,6 +330,9 @@ details.guide-more[open] > summary { margin-bottom: var(--sp-2); }
 .guide-section .shot-caption { margin: var(--sp-2) 0 0; }
 .shot-pair .shot-item { min-width: 0; }
 .shot-one .shot-item { width: calc(50% - 8px); }
+/* 통합관리자 이용가이드: 대표 이미지(맨 위 캡처)는 본문 폭 전체로 보여준다 */
+.guide-admin .main-col > .shot .shot-one .shot-item,
+.guide-admin .guide-screen > .shot .shot-one .shot-item { width: 100%; }
 @media (max-width: 860px) {
   .shot-pair { gap: var(--sp-2); }
   .shot-one .shot-item { width: 100%; }
