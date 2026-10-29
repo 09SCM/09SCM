@@ -4,6 +4,7 @@ window.GUIDE_NAV = [
   { id: 'start', label: '시작하기', children: [
     { id: 'start-intro', label: '09SCM 소매몰 소개', type: 'page' },
     { id: 'start-login', label: '회원가입·로그인' },
+    { id: 'start-policy', label: '이용약관·개인정보처리방침' },
     { id: 'start-gate', label: '대문화면' },
     { id: 'start-terms', label: '용어집', type: 'page' }
   ]},

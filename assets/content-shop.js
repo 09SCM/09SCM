@@ -341,7 +341,7 @@ window.GUIDE_CONTENT['start-login'] = {
           title: '약관 [보기]를 누르면',
           shots: pair('signup-terms', '09SCM 회원가입 약관'),
           shotCaption: '09SCM 회원가입 약관 보기 화면 (PC / 모바일)',
-          html: '<p>소매몰의 이용약관 또는 개인정보처리방침 화면으로 이동해요. 두 화면은 구성이 같고 제목과 본문만 달라요.</p>'
+          html: '<p>소매몰의 이용약관 또는 개인정보처리방침 화면으로 이동해요. 두 화면은 구성이 같고 제목과 본문만 달라요. 약관은 판매자가 관리해요. 자세한 내용은 <a href="#start-policy/shop-terms">소매몰 이용약관·개인정보처리방침</a>에서 확인해요.</p>'
         },
         {
           title: '입력이 맞지 않으면',
@@ -580,7 +580,7 @@ window.GUIDE_CONTENT['start-login'] = {
           shots: pair('franchise-terms', '09SCM 가맹점 가입 신청 약관'),
           shotCaption: '09SCM 가맹점 가입 신청 약관 팝업 화면 (PC / 모바일)',
           html:
-            '<p>약관 본문이 팝업으로 열려요. 이용약관, 개인정보처리방침, 마케팅정보 수신동의 팝업은 구성이 같고 제목과 본문만 달라요.</p>' +
+            '<p>약관 본문이 팝업으로 열려요. 이용약관, 개인정보처리방침, 마케팅정보 수신동의 팝업은 구성이 같고 제목과 본문만 달라요. 이 약관은 09SCM 솔루션 약관이에요. 자세한 내용은 <a href="#start-policy/franchise-terms">가맹점 가입 신청 약관</a>에서 확인해요.</p>' +
             '<ul>' +
               '<li>× 또는 [확인]을 누르거나 팝업 밖을 누르면 닫혀요.</li>' +
               '<li>모바일에서는 팝업이 화면 아래에 붙어 열려요.</li>' +
@@ -630,6 +630,101 @@ window.GUIDE_CONTENT['start-login'] = {
         '<p>[가맹점 가입신청]은 본사 소매몰에만 보여요. 본사 소매몰에서 들어와요.</p>' +
         '<h3>아이디를 입력할 수 없어요</h3>' +
         '<p>아이디는 영문 소문자로 시작하는 영문·숫자 조합 3~20자예요. 영문 소문자와 숫자 외의 글자는 입력되지 않아요.</p>'
+    }
+  ]
+};
+
+window.GUIDE_CONTENT['start-policy'] = {
+  screens: [
+    {
+      id: 'shop-terms',
+      label: '소매몰 이용약관·개인정보처리방침',
+      shots: pair('signup-terms', '09SCM 소매몰 이용약관 보기'),
+      shotCaption: '09SCM 소매몰 이용약관 보기 화면 (PC / 모바일)',
+      overview:
+        '<p>소매몰을 이용하는 회원에게 보여주는 이용약관과 개인정보처리방침이에요. 소매몰마다 판매자(본사·가맹점)가 따로 관리해요.</p>' +
+        '<ul>' +
+          '<li>판매자가 관리자의 <a href="' + ADMIN_GUIDE + 'retail-settings">소매설정</a> &gt; 이용약관·개인정보처리방침 탭에서 내용을 등록해요.</li>' +
+          '<li>소매설정에는 09SCM 기본 약관 템플릿이 미리 채워져 있어요. 판매자가 소매몰에 맞게 고쳐서 저장할 수 있어요.</li>' +
+          '<li>회원가입에서는 두 약관 모두 필수 동의 항목이에요.</li>' +
+        '</ul>' +
+        '<h3>소매몰에서 만나는 약관은 두 가지예요</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>소매몰 약관</td><td>소매몰 회원용. 판매자가 소매설정에서 등록하고 회원가입과 소매몰 푸터에서 확인</td></tr>' +
+          '<tr><td><a href="#start-policy/franchise-terms">가맹점 가입 신청 약관</a></td><td>가맹점 가입 신청자용. 09SCM 운영 측이 등록하고 가맹점 가입 신청에서 확인</td></tr>' +
+        '</tbody></table></div>',
+      steps:
+        '<h3>화면 구성</h3>' +
+        '<p>이용약관과 개인정보처리방침 화면은 구성이 같고 제목과 본문만 달라요.</p>' +
+        '<div class="table-wrap"><table><thead><tr><th>구분</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>이용약관</td><td>소매몰 이용 조건에 관한 약관</td></tr>' +
+          '<tr><td>개인정보처리방침</td><td>소매몰의 개인정보 처리 기준</td></tr>' +
+        '</tbody></table></div>' +
+
+        '<h3>어디서 볼 수 있나요</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>위치</th><th>설명</th></tr></thead><tbody>' +
+          '<tr><td>회원가입 약관 동의</td><td>약관 동의 항목의 [보기]로 이동 (<a href="#start-login/member-signup">회원가입하기</a>)</td></tr>' +
+          '<tr><td>소매몰 푸터</td><td>화면 맨 아래 이용약관·개인정보처리방침 링크로 이동 (<a href="#browse-main/main-common">공통 영역 보기</a>)</td></tr>' +
+        '</tbody></table></div>',
+      cases: [
+        {
+          title: '회원가입에서 [보기]를 누르면',
+          shots: pair('signup-terms', '09SCM 회원가입 약관'),
+          shotCaption: '09SCM 회원가입 약관 보기 화면 (PC / 모바일)',
+          html: '<p>해당 약관 화면으로 이동해요.</p>'
+        },
+        {
+          title: '소매몰 맨 아래에서 누르면',
+          shots: pair('browse-footer', '09SCM 소매몰 푸터'),
+          shotCaption: '09SCM 소매몰 푸터 화면 (PC / 모바일)',
+          html: '<p>푸터의 이용약관 또는 개인정보처리방침을 누르면 해당 약관 화면으로 이동해요. 로그인하지 않아도 볼 수 있어요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>약관 내용이 궁금하거나 소매몰 운영 방식과 달라 보여요</h3>' +
+        '<p>소매몰 약관은 판매자가 관리하는 문서예요. 내용에 대한 문의는 판매자에게 해 주세요.</p>' +
+        '<h3>약관 내용을 바꾸고 싶어요 (판매자)</h3>' +
+        '<p>관리자 소매설정의 이용약관·개인정보처리방침 탭에서 고치고 [저장]을 눌러요. 자세한 방법은 <a href="' + ADMIN_GUIDE + 'retail-settings">09SCM 관리자 이용가이드</a>에서 확인해요.</p>'
+    },
+    {
+      id: 'franchise-terms',
+      label: '가맹점 가입 신청 약관',
+      shots: pair('franchise-terms', '09SCM 가맹점 가입 신청 약관'),
+      shotCaption: '09SCM 가맹점 가입 신청 약관 팝업 화면 (PC / 모바일)',
+      overview:
+        '<p>가맹점 가입 신청 화면에서 동의하는 약관이에요. 09SCM 솔루션을 이용하는 조건에 관한 약관이며, 소매몰 회원용 약관과는 다른 문서예요.</p>' +
+        '<ul>' +
+          '<li>09SCM 운영 측이 통합관리자에서 등록하고 관리해요. 판매자가 내용을 바꾸거나 소매설정에서 고칠 수 없어요.</li>' +
+          '<li>종류마다 가장 최근에 등록된 약관 하나가 적용돼요.</li>' +
+          '<li>본사가 가입할 때 동의하는 약관과 같은 문서예요.</li>' +
+          '<li>소매몰 회원용 약관은 <a href="#start-policy/shop-terms">소매몰 이용약관·개인정보처리방침</a>에서 확인해요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>동의 항목</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>약관</th><th>동의</th></tr></thead><tbody>' +
+          '<tr><td>이용약관</td><td>필수</td></tr>' +
+          '<tr><td>개인정보처리방침</td><td>필수</td></tr>' +
+          '<tr><td>마케팅정보 수신동의</td><td>선택 (동의하지 않아도 가입 신청 가능)</td></tr>' +
+        '</tbody></table></div>' +
+        '<p>동의 항목의 위치와 입력 방법은 <a href="#start-login/member-franchise">가맹점 가입 신청하기</a>에서 확인해요.</p>',
+      cases: [
+        {
+          title: '약관 [보기]를 누르면',
+          shots: pair('franchise-terms', '09SCM 가맹점 가입 신청 약관'),
+          shotCaption: '09SCM 가맹점 가입 신청 약관 팝업 화면 (PC / 모바일)',
+          html:
+            '<p>약관 본문이 팝업으로 열려요. 세 약관의 팝업은 구성이 같고 제목과 본문만 달라요.</p>' +
+            '<ul>' +
+              '<li>× 또는 [확인]을 누르거나 팝업 밖을 누르면 닫혀요.</li>' +
+              '<li>모바일에서는 팝업이 화면 아래에 붙어 열려요.</li>' +
+            '</ul>'
+        }
+      ],
+      trouble:
+        '<h3>약관 내용을 바꿔 달라고 하고 싶어요</h3>' +
+        '<p>이 약관은 판매자가 고칠 수 없어요. 문의는 본사 또는 09SCM 운영 측에 해 주세요.</p>' +
+        '<h3>동의한 약관을 가입 후에 다시 보고 싶어요</h3>' +
+        '<p>관리자 시스템관리의 <a href="' + ADMIN_GUIDE + 'system-member">회원정보</a>에서 동의 여부를 확인할 수 있어요.</p>'
     }
   ]
 };
@@ -934,7 +1029,7 @@ window.GUIDE_CONTENT['browse-main'] = {
           title: '화면 맨 아래로 내리면',
           shots: pair('browse-footer', '09SCM 소매몰 푸터'),
           shotCaption: '09SCM 소매몰 푸터 화면 (PC / 모바일)',
-          html: '<p>사업자 정보와 이용약관, 개인정보처리방침이 나와요.</p>'
+          html: '<p>사업자 정보와 이용약관, 개인정보처리방침이 나와요. 약관을 누르면 <a href="#start-policy/shop-terms">소매몰 이용약관·개인정보처리방침</a> 화면으로 이동해요.</p>'
         }
       ],
       trouble:
