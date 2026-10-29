@@ -362,8 +362,22 @@
   .badge-warning { background: rgba(229,161,0,0.12); color: var(--warning); }
   .badge-error { background: rgba(224,54,46,0.12); color: var(--error); }
 
-  .hq-list-toolbar { margin-bottom: 14px; display: flex; gap: 8px; }
-  .hq-list-toolbar .form-input { flex: 1; max-width: 420px; }
+  /* ---------- 공통 상단 영역: 페이지 타이틀(.card-head) + 필터바(.filter-bar) ---------- */
+  /* 타이틀은 줄바꿈하지 않고, 우측 버튼은 폭이 부족하면 다음 줄 우측으로 내린다 */
+  .card-head { flex-wrap: wrap; gap: 12px; }
+  .card-head h2 { white-space: nowrap; }
+  .card-head > :last-child:not(h2) { margin-left: auto; }
+  /* 필터바: 묶음 단위로만 줄바꿈 — .fb-field(라벨+컨트롤) / .fb-search(검색 입력+버튼) / .fb-dates(시작일~종료일) / .fb-actions(우측 버튼) */
+  .filter-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 16px; margin-bottom: 14px; }
+  .fb-field { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .fb-field > label { font-size: 14px; color: var(--text-secondary); white-space: nowrap; }
+  .fb-search { display: flex; align-items: center; gap: 8px; flex: 1 1 320px; max-width: 480px; min-width: 0; }
+  .fb-search .form-input { flex: 1; min-width: 0; max-width: none; }
+  .fb-search button { flex: none; white-space: nowrap; }
+  .fb-dates { display: flex; align-items: center; gap: 8px; }
+  .fb-dates .form-input.date { flex: none; width: 150px; min-width: 0; }
+  .fb-actions { margin-left: auto; display: flex; gap: 8px; }
+  .filter-bar .hq-filter-tabs { margin: 0; }
   .hq-filter-tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
   .filter-tab {
     height: 32px; padding: 0 14px; border-radius: 4px;
@@ -395,8 +409,6 @@
   .notice-link { color: var(--text-body); cursor: pointer; background: none; border: none; padding: 0; font: inherit; text-align: left; }
   .notice-link:hover { color: var(--key); text-decoration: underline; }
   .attach-ico { display: inline-flex; vertical-align: -2px; margin-left: 6px; color: var(--text-secondary); }
-  .filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-  .filter-row .sort-select { min-width: 120px; }
   .editor-wrap { flex: 1; min-width: 280px; }
   .editor-toolbar { display: flex; gap: 6px; margin-bottom: 6px; }
   .editor-toolbar .btn-sm { min-width: 32px; }
@@ -414,7 +426,8 @@
   .toast { position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%); background: #1A1A1A; color: #fff; padding: 10px 18px; border-radius: 4px; font-size: 14px; z-index: 30; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
   .term-modal { width: 640px; }
   .terms-block { margin-bottom: 28px; }
-  .terms-block-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .terms-block-head h3, .terms-block-head h4 { white-space: nowrap; }
+  .terms-block-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
   .terms-meta { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
 
   .table-scroll { overflow-x: auto; }
@@ -430,17 +443,19 @@
   .tpl-table .c-flex { min-width: 160px; }
   .tpl-table .col-actions { width: 120px; }
   .tpl-table .th-sub { display: block; white-space: nowrap; }
+  /* 집계 표(매출 추이): 가변 컬럼 없이 전 컬럼 고정폭 클래스, 남는 폭은 컬럼 폭 비율대로 분배(table-layout 고정 + width 100%) */
+  .tpl-agg th, .tpl-agg td { white-space: normal; }
+  @media (max-width: 860px) { .tpl-agg th:first-child, .tpl-agg td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); box-shadow: 1px 0 0 var(--border); } .tpl-agg th:first-child { background: var(--bg); } }
 
   /* ---------- 목록 필터바 · 1차 탭 모바일 (860px 이하) ---------- */
   @media (max-width: 860px) {
-    .hq-list-toolbar { flex-wrap: nowrap; }
-    .hq-list-toolbar .form-input { max-width: none; min-width: 0; }
-    .hq-list-toolbar button { flex: none; white-space: nowrap; }
-    .filter-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .filter-row .sort-select { min-width: 0; width: 100%; }
-    .filter-row > :last-child:nth-child(odd) { grid-column: 1 / -1; }
-    .sales-filter .form-row { flex-wrap: wrap; }
-    .sales-filter .form-input.date { flex: 1 1 0; width: auto; min-width: 0; }
+    .filter-bar { gap: 12px 8px; }
+    .filter-bar .sort-select { min-width: 90px; }
+    .fb-field { flex: 1 1 100%; }
+    .fb-search { flex: 1 1 100%; max-width: none; }
+    .fb-dates { flex: 1 1 100%; }
+    .fb-dates .form-input.date { flex: 1 1 0; width: auto; }
+    .fb-actions { margin-left: 0; flex: 1 1 100%; justify-content: flex-end; }
     .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .tabs::-webkit-scrollbar { display: none; }
     .tab-item { flex: none; white-space: nowrap; }
@@ -549,7 +564,7 @@
   .re-toolbar { background: var(--bg); border-bottom: 1px solid var(--border); padding: 6px 8px; }
   .re-toolbar.disabled .re-row { opacity: .45; pointer-events: none; }
   .re-row { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-  .re-btn { min-width: 28px; height: 28px; padding: 0 6px; border: 1px solid transparent; background: transparent; border-radius: 3px; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: var(--text-body); font-family: inherit; position: relative; }
+  .re-btn { min-width: 28px; height: 28px; padding: 0 6px; border: 1px solid transparent; background: transparent; border-radius: 3px; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: var(--text-body); font-family: inherit; position: relative; }
   .re-btn:hover { background: var(--surface); border-color: var(--border); }
   .re-b { font-weight: 700; } .re-i { font-style: italic; } .re-u { text-decoration: underline; } .re-s { text-decoration: line-through; }
   .re-hl { background: #fff2a8; }
@@ -566,7 +581,7 @@
   .re-body { position: relative; display: flex; }
   .re-area, .re-src { flex: 1; width: 100%; height: 100%; overflow-y: auto; padding: 14px 16px; font-size: 14px; line-height: 1.6; outline: none; border: 0; background: var(--surface); font-family: inherit; resize: none; }
   .re-area[hidden], .re-src[hidden] { display: none; }
-  .re-src { font-family: Consolas, monospace; font-size: 13px; }
+  .re-src { font-family: Consolas, monospace; font-size: 14px; }
   .re-area table, .viewer table { border-collapse: collapse; margin: 8px 0; }
   .re-area td, .viewer td, .viewer th { border: 1px solid #bbb; min-width: 60px; padding: 6px 8px; }
   .re-area blockquote, .viewer blockquote { margin: 8px 0; padding: 4px 14px; border-left: 3px solid #bbb; color: var(--text-secondary); }
@@ -597,8 +612,6 @@
   :root[data-theme="dark"] .lg-total { background: #4FB99A; }
   .hq-table tr.sum-row td { font-weight: 700; background: var(--key-tint); }
   .hq-table td.neg { color: var(--error); }
-  .sales-search { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; }
-  .sales-search .form-input { max-width: 420px; }
   .sales-empty { border: 1px dashed var(--border); border-radius: 4px; min-height: 180px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 14px; margin-top: 14px; text-align: center; padding: 16px; }
   .sales-selected { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 14px 0 16px; padding: 12px 16px; background: var(--bg); border-radius: 4px; }
   .sales-selected-main { display: flex; align-items: center; gap: 10px; font-size: 14px; flex-wrap: wrap; }
@@ -1197,10 +1210,10 @@
               <button type="button" class="btn-secondary btn-sm" id="hqBulkDeleteBtn" ${hqSelectedIds.size === 0 ? 'disabled' : ''}>삭제</button>
             </div>
           </div>
-          <div class="hq-list-toolbar">
+          <div class="filter-bar"><div class="fb-search">
             <input type="text" class="form-input" id="hqSearchInput" placeholder="아이디, 이름, 상호명, 대표자명, 사업자번호 검색" value="${escapeAttr(hqSearchDraft)}">
             <button type="button" class="btn-secondary" id="hqSearchBtn">검색</button>
-          </div>
+</div></div>
           <div class="hq-filter-tabs">${filterTabsHTML}</div>
           <div class="table-toolbar">
             <span class="table-count">전체 ${totalCount}건 | 선택 ${hqSelectedIds.size}건</span>
@@ -1214,7 +1227,7 @@
                 <tr>
                   <th class="col-check"><input type="checkbox" id="hqSelectAllCheckbox" ${allChecked ? 'checked' : ''}></th>
                   <th class="c-m">도입신청일시</th><th class="c-flex">본사정보</th><th class="c-m">회원정보</th><th class="c-l">소매몰 URL</th>
-                  <th class="c-s">가맹점 수</th><th class="num c-m">당월 매출액</th><th class="num c-m">당월 이용료 수납액</th>
+                  <th class="c-s">가맹점 수</th><th class="num c-m">당월 매출액</th><th class="num c-m">당월 이용료<span class="th-sub">수납액</span></th>
                   <th class="c-s">상태</th><th class="manage-col col-actions">관리</th>
                 </tr>
               </thead>
@@ -2315,10 +2328,10 @@
             <h2>가맹점 정보</h2>
             <button type="button" class="btn-secondary btn-sm" id="franchiseExcelBtn">엑셀 다운로드</button>
           </div>
-          <div class="hq-list-toolbar">
+          <div class="filter-bar"><div class="fb-search">
             <input type="text" class="form-input" id="franchiseSearchInput" placeholder="소속본사 상호명, 가맹 상호명, 가맹 대표자명, 가맹 사업자번호 검색" value="${escapeAttr(franchiseSearchDraft)}">
             <button type="button" class="btn-secondary" id="franchiseSearchBtn">검색</button>
-          </div>
+</div></div>
           <div class="hq-filter-tabs">${filterTabsHTML}</div>
           <div class="table-toolbar">
             <span class="table-count">전체 ${totalCount}건</span>
@@ -2869,9 +2882,7 @@
     const pager = pagerHTML('data-sales-page', salesPage, rowsAll.length, SALES_PAGE_SIZE);
     const unitTabs = [['day', '일별'], ['week', '주별'], ['month', '월별']].map(([k, l]) =>
       `<button type="button" class="filter-tab ${salesUnit === k ? 'active' : ''}" data-sales-unit="${k}">${l}</button>`).join('');
-    const ncol = showFee ? 6 : 5;
-    const colgroup = `<colgroup><col style="width:16%">${Array.from({ length: ncol }, () => `<col style="width:${(84 / ncol).toFixed(2)}%">`).join('')}</colgroup>`;
-
+    
     return `
       <div class="grid12 stat-grid" style="margin-bottom:6px;">${cards}</div>
       <p class="sales-hint">※ 페이앱 결제액 + 현장결제·계좌이체 결제액 = 결제총액 · 결제 완료된 건만 집계하며 미수납·결제대기 건은 제외합니다.</p>
@@ -2881,9 +2892,8 @@
       </div>
       ${salesChartHTML(buckets, showFee)}
       <div class="table-scroll">
-        <table class="hq-table sales-table">
-          ${colgroup}
-          <thead><tr><th>기간</th><th class="num">페이앱 매출액</th><th class="num">현장결제·계좌이체 매출액</th><th class="num">총매출액</th><th class="num">주문건수</th><th class="num">취소·환불건수</th>${showFee ? '<th class="num">이용료 수납액</th>' : ''}</tr></thead>
+        <table class="hq-table tpl-table sales-table tpl-agg">
+          <thead><tr><th class="c-s">기간</th><th class="num c-l">페이앱 매출액</th><th class="num c-l">현장결제·계좌이체 매출액</th><th class="num c-l">총매출액</th><th class="num c-s">주문건수</th><th class="num c-s">취소·환불건수</th>${showFee ? '<th class="num c-l">이용료 수납액</th>' : ''}</tr></thead>
           <tbody>${sumRow}${rows.map(b => tr(b)).join('')}</tbody>
         </table>
       </div>
@@ -2946,10 +2956,10 @@
     }
     const ph = isHq ? '상호명, 대표자명, 사업자번호 검색' : '소속본사 상호명, 가맹 상호명, 가맹 대표자명, 가맹 사업자번호 검색';
     return `
-      <div class="sales-search">
+      <div class="filter-bar"><div class="fb-search">
         <input type="text" class="form-input" id="salesSearchInput" data-scope="${scope}" placeholder="${ph}" value="${escapeHtml(salesQueryDraft[scope])}">
         <button type="button" class="btn-secondary" id="salesSearchBtn" data-scope="${scope}">검색</button>
-      </div>
+      </div></div>
       ${salesListHTML(scope)}`;
   }
 
@@ -2971,15 +2981,16 @@
             </div>
           </div>
           <div class="sales-filter">
-            <div class="form-row">
-              <label class="field-label">조회기간</label>
-              <div class="hq-filter-tabs" style="margin:0;">${chips}</div>
-              <input type="date" class="form-input date" id="salesFrom" value="${d.from}" min="${SALES_DATA_START}" max="${SALES_TODAY}" ${custom ? '' : 'disabled'}>
-              <span>~</span>
-              <input type="date" class="form-input date" id="salesTo" value="${d.to}" min="${SALES_DATA_START}" max="${SALES_TODAY}" ${custom ? '' : 'disabled'}>
-              <label class="field-label" style="margin-left:12px;">거래유형</label>
-              <select class="sort-select" id="salesType">${['전체', '소매', '도매'].map(t => `<option ${d.type === t ? 'selected' : ''}>${t}</option>`).join('')}</select>
-              <div class="sales-filter-actions">
+            <div class="filter-bar" style="margin-bottom:0;">
+              <div class="fb-field"><label>조회기간</label><div class="hq-filter-tabs">${chips}</div></div>
+              <div class="fb-dates">
+                <input type="date" class="form-input date" id="salesFrom" value="${d.from}" min="${SALES_DATA_START}" max="${SALES_TODAY}" ${custom ? '' : 'disabled'}>
+                <span>~</span>
+                <input type="date" class="form-input date" id="salesTo" value="${d.to}" min="${SALES_DATA_START}" max="${SALES_TODAY}" ${custom ? '' : 'disabled'}>
+              </div>
+              <div class="fb-field"><label>거래유형</label>
+                <select class="sort-select" id="salesType">${['전체', '소매', '도매'].map(t => `<option ${d.type === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+              <div class="fb-actions">
                 <button type="button" class="btn-secondary" id="salesResetBtn">초기화</button>
                 <button type="button" class="btn-primary" id="salesApplyBtn">조회</button>
               </div>
@@ -3498,11 +3509,13 @@
               <button type="button" class="btn-secondary btn-sm" id="noticeBulkDelBtn" ${noticeSel.size === 0 ? 'disabled' : ''}>삭제</button>
             </div>
           </div>
-          <div class="filter-row">
-            <label class="field-label" style="width:auto; min-width:0;">노출여부</label>
-            <select class="sort-select" id="noticeExposeSel">${['전체', '노출', '미노출'].map(v => `<option ${noticeExpose === v ? 'selected' : ''}>${v}</option>`).join('')}</select>
-            <input type="text" class="form-input" id="noticeSearchInput" style="flex:none; width:420px;" placeholder="제목 검색" value="${escapeAttr(noticeQDraft)}">
-            <button type="button" class="btn-secondary" id="noticeSearchBtn">검색</button>
+          <div class="filter-bar">
+            <div class="fb-field"><label>노출여부</label>
+            <select class="sort-select" id="noticeExposeSel">${['전체', '노출', '미노출'].map(v => `<option ${noticeExpose === v ? 'selected' : ''}>${v}</option>`).join('')}</select></div>
+            <div class="fb-search">
+              <input type="text" class="form-input" id="noticeSearchInput" placeholder="제목 검색" value="${escapeAttr(noticeQDraft)}">
+              <button type="button" class="btn-secondary" id="noticeSearchBtn">검색</button>
+            </div>
           </div>
           <div class="tabs" style="margin-bottom:14px;">${tabs}</div>
           <div class="table-toolbar"><span class="table-count">전체 ${all.length}건 | 선택 ${noticeSel.size}건</span></div>
