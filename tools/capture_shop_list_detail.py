@@ -41,7 +41,9 @@ def rect(page, sels):
     }""", sels)
 
 def snap(b, name, query='', steps=None, area=None, margin=16, hide_quick=True, init=None, devices=DEVICES, vh=900, css=''):
-    """area가 있으면 해당 영역만 남겨 세로로 크롭(가로 전체), 없으면 뷰포트 전체"""
+    """area가 있으면 해당 영역만 남겨 세로로 크롭(가로 전체), 없으면 뷰포트 전체. ONLY=이름,이름 이면 해당 캡처만 다시 촬영"""
+    if os.environ.get('ONLY') and name not in os.environ['ONLY'].split(','):
+        return
     for dev, w in devices:
         ctx = b.new_context(viewport={'width': w, 'height': vh}, device_scale_factor=2)
         if init:
@@ -106,6 +108,13 @@ with sync_playwright() as p:
         snap(b, name, q, steps=fit_full, area=['.detail-copy'], devices=(('mobile', 440),))
     snap(b, 'detail-info', '?view=product&id=1', area=['.product-description'])
     snap(b, 'detail-notfound', '?view=product&id=999')
+    # 장바구니 담기 안내(토스트): 입력 오류 토스트와 같은 규격(PC 1440x480 / 모바일 440x480)
+    def add_cart_toast(page, dev):
+        page.evaluate("document.querySelector('#addToCart').scrollIntoView({block: 'center'})")
+        page.click('#addToCart')
+        page.add_style_tag(content='.toast{transition:none!important}')
+        page.wait_for_timeout(500)
+    snap(b, 'detail-cart-toast', '?view=product&id=1', steps=add_cart_toast, vh=480, hide_quick=True)
     b.close()
 
 json.dump({k: list(v) for k, v in DIMS.items()}, open('/tmp/claude-0/list_dims.json', 'w'))

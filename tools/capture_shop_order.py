@@ -121,6 +121,36 @@ def fill_and_submit(pay=None):
     return f
 
 
+TOAST_CSS = '.toast{transition:none!important}'
+CLIP_OK = "Object.defineProperty(navigator, 'clipboard', {value: {writeText: () => Promise.resolve()}, configurable: true});"
+
+def draft_toast(items, tab=None):
+    """주문 직전 확인에서 막힐 때의 토스트(장바구니의 [선택상품 주문]과 같은 saveOrderDraft)"""
+    def f(page, dev):
+        if tab:
+            page.click('[data-cart-tab=%s]' % tab); page.wait_for_timeout(300)
+        page.evaluate("document.querySelector('.cart-page').scrollIntoView()")
+        page.evaluate("(items) => saveOrderDraft(items, 'cart-selected')", items)
+        page.add_style_tag(content=TOAST_CSS)
+        page.wait_for_timeout(500)
+    return f
+
+def order_input_toast(page, dev):
+    """계좌이체를 고르고 입금자명 없이 [주문하기]를 누를 때의 토스트(입력 오류 중 대표 한 건)"""
+    jsclick(page, 'input[name=payment][value=transfer]')
+    jsclick(page, '#orderAgreement')
+    page.evaluate("document.querySelector('#depositorName').scrollIntoView({block: 'center'})")
+    page.click('#orderSubmit')
+    page.add_style_tag(content=TOAST_CSS)
+    page.wait_for_timeout(500)
+
+def copy_account_toast(page, dev):
+    """메인의 매장 정보에서 계좌이체 [복사]를 눌렀을 때의 토스트"""
+    page.evaluate("document.querySelector('#copyAccount').scrollIntoView({block: 'center'})")
+    page.click('#copyAccount')
+    page.add_style_tag(content=TOAST_CSS)
+    page.wait_for_timeout(500)
+
 def change_and_toast(page, dev):
     """수령방식 변경 후 나타나는 토스트를 촬영한다(변경으로 이동한 상품이 함께 보이게 스크롤)"""
     page.click('[data-change-fulfillment]'); page.wait_for_timeout(500)
@@ -143,6 +173,10 @@ with sync_playwright() as p:
     snap(b, 'cart-soldout', '?view=cart', steps=cart_delivery, area=['.cart-page'],
          init=cart_seed([{'id': 7, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 5, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 12, 'quantity': 2, 'fulfillment': 'delivery'}]))
     snap(b, 'cart-empty', '?view=cart', area=['.cart-page'], init=cart_seed([]))
+    snap(b, 'cart-soldout-toast', '?view=cart', steps=draft_toast([{'id': 5, 'quantity': 1, 'fulfillment': 'delivery'}], tab='delivery'), vh=480,
+         init=LOGIN_OK + cart_seed([{'id': 7, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 5, 'quantity': 1, 'fulfillment': 'delivery'}, {'id': 12, 'quantity': 2, 'fulfillment': 'delivery'}]))
+    snap(b, 'cart-overlap-toast', '?view=cart', steps=draft_toast([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 11, 'quantity': 1, 'fulfillment': 'pickup'}]), vh=480,
+         init=LOGIN_OK + cart_seed([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 6, 'quantity': 2, 'fulfillment': 'pickup'}]))
     # 주문서
     snap(b, 'order-main', '?view=order', steps=fit_full, init=draft_seed(PICK))
     snap(b, 'order-nowindow', '?view=order', steps=fit_full, init=draft_seed([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 11, 'quantity': 1, 'fulfillment': 'pickup'}]))
@@ -150,11 +184,13 @@ with sync_playwright() as p:
     nomember = "localStorage.setItem('onmaeul-member', JSON.stringify({customerName:'홍길동',phone:'01012345678',email:'hongildong@example.com',nicknameCode:'7942',chatNickname:'산책러',addressName:'',address:'',deliveryRequest:''}));"
     snap(b, 'order-delivery-none', '?view=order', area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)'], init=draft_seed(DELI) + nomember)
     snap(b, 'order-delivery-other', '?view=order', steps=pick_other, area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)'], init=draft_seed(DELI))
+    snap(b, 'order-input-toast', '?view=order', steps=order_input_toast, vh=480, init=draft_seed(PICK))
     snap(b, 'order-transfer', '?view=order', steps=pick_transfer, area=['.checkout-section:nth-of-type(5)'], init=draft_seed(PICK))
     # 주문 완료 (실제 주문서 제출)
     snap(b, 'done-main', '?view=order', steps=fill_and_submit(), init=draft_seed(PICK), hide_quick=True)
     snap(b, 'done-transfer', '?view=order', steps=fill_and_submit('transfer'), init=draft_seed(PICK), hide_quick=True)
     snap(b, 'done-delivery', '?view=order', steps=fill_and_submit(), init=draft_seed(DELI), hide_quick=True)
+    snap(b, 'store-copy-toast', '', steps=copy_account_toast, vh=480, init=CLIP_OK, hide_quick=True)
     b.close()
 
 json.dump({k: list(v) for k, v in DIMS.items()}, open('/tmp/claude-0/order_dims.json', 'w'))

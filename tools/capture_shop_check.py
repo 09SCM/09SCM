@@ -169,6 +169,34 @@ def open_return_transfer(page, dev):
 def filter_chat(page, dev):
     page.click('[data-order-channel-filter=채팅주문]'); page.wait_for_timeout(400)
 
+TOAST_CSS = '.toast{transition:none!important}'
+def toast_ready(page):
+    page.add_style_tag(content=TOAST_CSS)
+    page.wait_for_timeout(500)
+
+def history_nomatch(page, dev):
+    # 조회 조건에 맞는 주문이 없을 때: 처리상태를 이력이 없는 값으로 두고 [조회]
+    page.select_option('#orderStatusFilter', '취소반려')
+    page.click('#orderHistorySearch')
+    toast_ready(page)
+
+def request_result(kind, num, mutate=False, fill_refund=False):
+    """취소·반품 창에서 요청까지 마친 직후의 토스트"""
+    def f(page, dev):
+        n = num or page.get_attribute('[data-order-request=%s]' % kind, 'data-order-number')  # num이 없으면 지금 반품 가능한 첫 주문(주문번호가 실행일 기준으로 생성됨)
+        open_req(kind, n, mutate)(page, dev)
+        if page.query_selector('textarea[name=requestReason]'):
+            page.fill('textarea[name=requestReason]', '단순 변심으로 취소하려고 합니다.')
+        if page.query_selector('select[name=refundBank]'):
+            page.select_option('select[name=refundBank]', '국민은행')
+            page.fill('input[name=refundAccount]', '1234-56-789012')
+            page.fill('input[name=refundHolder]', '홍길동')
+        page.click('#orderRequestForm button[type=submit]')
+        page.wait_for_timeout(300)
+        page.evaluate("(n) => { const el = document.querySelector('[data-order-number=\"' + n + '\"]'); const card = el && el.closest('.order-history-card'); if (card) { const h = document.querySelector('header'); window.scrollTo(0, card.getBoundingClientRect().top + scrollY - (h ? h.getBoundingClientRect().bottom : 0) - 16); } }", n)
+        toast_ready(page)
+    return f
+
 L = LOGIN_OK
 with sync_playwright() as p:
     b = p.chromium.launch()
@@ -189,12 +217,17 @@ with sync_playwright() as p:
     snap(b, 'check-btn-none', HIST, area=[card(8)], init=L, hcrop=True)
     snap(b, 'check-btn-detail', HIST, area=[card(13)], init=L, hcrop=True)
     snap(b, 'check-btn-rejected', HIST, area=[card(14)], init=L, hcrop=True)
+    snap(b, 'check-history-nomatch-toast', HIST, steps=history_nomatch, init=L, vh=480)
     # 요청 팝업
     snap(b, 'check-modal-cancel', HIST, steps=open_req('cancel', 'RO20260915001'), init=L, modal=True)
     snap(b, 'check-modal-wait', HIST, steps=open_req('cancel', 'RO20260909009'), init=L, modal=True)
     snap(b, 'check-modal-request', HIST, steps=open_req('cancel', 'RO20260905013', True), init=L, vh=1060, modal=True)
     snap(b, 'check-modal-return', HIST, steps=open_req('return', 'RO20261025001'), init=L, modal=True)
     snap(b, 'check-modal-return-transfer', HIST, steps=open_return_transfer, init=L, vh=1060, modal=True)
+    snap(b, 'check-toast-cancel-card', HIST, steps=request_result('cancel', 'RO20260913005'), init=L, vh=480)
+    snap(b, 'check-toast-cancel-wait', HIST, steps=request_result('cancel', 'RO20260909009'), init=L, vh=480)
+    snap(b, 'check-toast-cancel-request', HIST, steps=request_result('cancel', 'RO20260905013', True), init=L, vh=480)
+    snap(b, 'check-toast-return', HIST, steps=request_result('return', None), init=L, vh=480)
     snap(b, 'check-modal-pending', HIST, steps=open_detail('RO20260906012'), init=L, modal=True)
     snap(b, 'check-modal-done', HIST, steps=open_detail('RO20260915002'), init=L, modal=True)
     # 주문상세

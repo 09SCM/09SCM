@@ -30,6 +30,18 @@ var SHOT_DIMS = {
   'cart-delivery': [2880, 1456, 880, 1716],
   'cart-change': [2880, 1800, 880, 1800],
   'cart-change-toast': [2880, 960, 880, 960],
+  'cart-overlap-toast': [2880, 960, 880, 960],
+  'cart-soldout-toast': [2880, 960, 880, 960],
+  'check-history-nomatch-toast': [2880, 960, 880, 960],
+  'check-toast-cancel-card': [2880, 960, 880, 960],
+  'check-toast-cancel-request': [2880, 960, 880, 960],
+  'check-toast-cancel-wait': [2880, 960, 880, 960],
+  'check-toast-return': [2880, 960, 880, 960],
+  'detail-cart-toast': [2880, 960, 880, 960],
+  'login-done': [2880, 960, 880, 960],
+  'order-input-toast': [2880, 960, 880, 960],
+  'reset-done': [2880, 960, 880, 960],
+  'store-copy-toast': [2880, 960, 880, 960],
   'cart-nowindow': [2880, 1510, 880, 1792],
   'cart-soldout': [2880, 1816, 880, 2152],
   'check-alert-settled': [480, 178],
@@ -184,6 +196,12 @@ window.GUIDE_CONTENT['start-login'] = {
         '<h3>화면 아래 링크</h3>' +
         '<p>[회원가입]은 <a href="#start-login/member-signup">회원가입하기</a>로, [비밀번호 재설정]은 <a href="#start-login/member-reset">비밀번호 재설정하기</a>로 이동해요.</p>',
       cases: [
+        {
+          title: '로그인하면',
+          shots: pair('login-done', '09SCM 로그인 완료 안내'),
+          shotCaption: '09SCM 로그인 완료 안내 화면 (PC / 모바일)',
+          html: '<p>&quot;로그인되었습니다.&quot; 안내가 잠깐 나온 뒤 소매몰 메인으로 이동해요. 주문하려다 로그인 화면으로 왔다면 주문서로 돌아가요.</p>'
+        },
         {
           title: '휴대폰번호 형식이 맞지 않으면',
           html: '<p>휴대폰번호가 010-0000-0000 형식의 숫자 11자리가 아니면 입력란에 형식 안내가 나오고 로그인되지 않아요.</p>'
@@ -410,6 +428,12 @@ window.GUIDE_CONTENT['start-login'] = {
           shots: pair('reset-step2', '09SCM 새 비밀번호 설정'),
           shotCaption: '09SCM 새 비밀번호 설정 화면 (PC / 모바일)',
           html: '<p>새 비밀번호와 새 비밀번호 확인을 입력하는 화면으로 바뀌어요. 입력한 뒤 [비밀번호 변경 완료]를 눌러요.</p>'
+        },
+        {
+          title: '비밀번호를 변경하면',
+          shots: pair('reset-done', '09SCM 비밀번호 변경 완료 안내'),
+          shotCaption: '09SCM 비밀번호 변경 완료 안내 화면 (PC / 모바일)',
+          html: '<p>&quot;비밀번호가 변경되었습니다.&quot; 안내가 잠깐 나온 뒤 로그인 화면으로 이동해요. 새 비밀번호로 로그인해요.</p>'
         },
         {
           title: '입력이 맞지 않으면',
@@ -760,6 +784,12 @@ window.GUIDE_CONTENT['browse-main'] = {
         '</tbody></table></div>',
       cases: [
         {
+          title: '매장정보의 [복사]를 누르면',
+          shots: pair('store-copy-toast', '09SCM 소매몰 계좌 복사 안내'),
+          shotCaption: '09SCM 소매몰 계좌 복사 안내 화면 (PC / 모바일)',
+          html: '<p>표시된 계좌정보가 복사되고 &quot;계좌이체 계좌를 복사했습니다.&quot; 안내가 잠깐 나와요. 복사하지 못하면 &quot;입금계좌: ○○…&quot;처럼 계좌정보를 안내로 보여줘요.</p>'
+        },
+        {
           title: '세 영역에 보여줄 상품이 하나도 없으면',
           shots: pair('browse-empty', '09SCM 소매몰 메인 상품이 없는'),
           shotCaption: '09SCM 소매몰 메인 상품이 없는 화면 (PC / 모바일)',
@@ -1016,6 +1046,13 @@ window.GUIDE_CONTENT['browse-detail'] = {
         '<p>판매자가 입력한 이미지와 글이 입력한 순서대로 상품 정보 아래에 나와요.</p>'
     },
     {
+      title: '장바구니에 담으면',
+      shots: pair('detail-cart-toast', '09SCM 소매몰 장바구니 담기 안내'),
+      shotCaption: '09SCM 소매몰 장바구니 담기 안내 화면 (PC / 모바일)',
+      html:
+        '<p>&quot;○○ 2개를 픽업 장바구니에 담았습니다.&quot; 안내가 잠깐 나와요. 배달로 담으면 &quot;배달 장바구니&quot;로 나오고, 헤더의 장바구니 숫자가 바뀌어요. 같은 상품을 같은 수령방식으로 다시 담으면 수량이 늘어나요.</p>'
+    },
+    {
       title: '로그인하지 않고 주문하려면',
       html:
         '<p>상품 보기와 [장바구니 담기]는 로그인하지 않아도 되지만, [바로 주문]을 누르면 &quot;주문하려면 로그인이 필요합니다.&quot; 안내 후 로그인 화면으로 이동해요. 로그인하면 주문서로 돌아와요. 회원정보가 없을 때의 안내는 <a href="#order-cart">장바구니</a>에서 확인해요.</p>'
@@ -1134,12 +1171,24 @@ window.GUIDE_CONTENT['order-cart'] = {
     },
     {
       title: '장바구니를 보는 사이 상품 상태가 바뀌었으면',
-      html:
-        '<p>[선택상품 주문]이나 [전체주문]을 누르면 상품을 한 번 확인해요(상품상세의 [바로구매]도 같아요). 장바구니를 보는 사이 판매자가 상품을 품절로 바꾸거나 픽업가능일을 바꿔서 주문할 수 없게 되면, 주문서로 넘어가지 않고 아래 안내가 나와요. 여러 경우가 겹치면 아래 순서로 하나만 안내돼요.</p>' +
-        '<div class="table-wrap"><table><thead><tr><th>순서</th><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
-          '<tr><td>1</td><td>선택한 상품에 품절이 있음</td><td>&quot;품절 상품은 주문할 수 없습니다. 장바구니를 확인해 주세요.&quot;</td></tr>' +
-          '<tr><td>2</td><td>선택한 픽업 상품의 픽업가능일이 겹치지 않음</td><td>&quot;선택한 상품의 픽업 가능일이 겹치지 않습니다. 상품을 나눠 주문해 주세요.&quot;</td></tr>' +
-        '</tbody></table></div>'
+      blocks: [
+        {
+          html:
+          '<p>[선택상품 주문]이나 [전체주문]을 누르면 상품을 한 번 확인해요(상품상세의 [바로구매]도 같아요). 장바구니를 보는 사이 판매자가 상품을 품절로 바꾸거나 픽업가능일을 바꿔서 주문할 수 없게 되면, 주문서로 넘어가지 않고 아래 안내가 나와요. 여러 경우가 겹치면 아래 순서로 하나만 안내돼요.</p>' +
+          '<div class="table-wrap"><table><thead><tr><th>순서</th><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
+            '<tr><td>1</td><td>선택한 상품에 품절이 있음</td><td>&quot;품절 상품은 주문할 수 없습니다. 장바구니를 확인해 주세요.&quot;</td></tr>' +
+            '<tr><td>2</td><td>선택한 픽업 상품의 픽업가능일이 겹치지 않음</td><td>&quot;선택한 상품의 픽업 가능일이 겹치지 않습니다. 상품을 나눠 주문해 주세요.&quot;</td></tr>' +
+          '</tbody></table></div>'
+        },
+        {
+          shots: pair('cart-soldout-toast', '09SCM 소매몰 품절 상품 주문 안내'),
+          shotCaption: '09SCM 소매몰 품절 상품 주문 안내 화면 (PC / 모바일)'
+        },
+        {
+          shots: pair('cart-overlap-toast', '09SCM 소매몰 픽업가능일 겹침 안내'),
+          shotCaption: '09SCM 소매몰 픽업가능일 겹침 안내 화면 (PC / 모바일)'
+        }
+      ]
     },
     {
       title: '담아 둔 상품이 장바구니에서 사라지면',
@@ -1244,6 +1293,8 @@ window.GUIDE_CONTENT['order-pay'] = {
 ,
         {
       title: '입력 내용이 맞지 않으면',
+      shots: pair('order-input-toast', '09SCM 소매몰 주문서 입력 오류'),
+      shotCaption: '09SCM 소매몰 주문서 입력 오류 화면 (PC / 모바일)',
       html:
         '<div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody><tr><td>주문자명·휴대폰번호(11자리)·회원주문 코드가 비어 있음</td><td>&quot;주문자 정보를 확인해 주세요.&quot;</td></tr><tr><td>배달 주문에서 배달 주소가 비어 있음</td><td>&quot;배달 주소를 입력해 주세요.&quot;</td></tr><tr><td>계좌이체에서 입금자명이 비어 있음</td><td>&quot;입금자명을 입력해 주세요.&quot;</td></tr><tr><td>주문내용동의에 체크하지 않음</td><td>&quot;주문내용동의가 필요합니다.&quot;</td></tr></tbody></table></div>'
     },
@@ -1551,6 +1602,13 @@ window.GUIDE_CONTENT['check-history'] = {
             '<p>&quot;주문내역이 없습니다.&quot;가 나와요.</p>'
         },
         {
+          title: '조회 조건에 맞는 주문이 없으면',
+          shots: pair('check-history-nomatch-toast', '09SCM 소매몰 조건에 맞는 주문 없음 안내'),
+          shotCaption: '09SCM 소매몰 조건에 맞는 주문 없음 안내 화면 (PC / 모바일)',
+          html:
+            '<p>선택한 조건에 맞는 주문이 없으면 &quot;조건에 맞는 주문이 없습니다.&quot; 안내가 잠깐 나오고 목록이 비어 총 0건으로 바뀌어요.</p>'
+        },
+        {
           group: '주문 상태에 따른 버튼',
           rows: [
             {
@@ -1648,10 +1706,18 @@ window.GUIDE_CONTENT['check-history'] = {
           rows: [
             {
               title: '정산 전 카드결제 주문을 취소할 때',
-              shots: pair('check-modal-cancel', '09SCM 소매몰 주문 취소 확인'),
-              shotCaption: '09SCM 소매몰 주문 취소 확인 화면 (PC / 모바일)',
-              html:
-                '<ul><li>요청 사유: 입력 없음</li><li>안내: &quot;주문과 카드결제가 즉시 취소됩니다.&quot;</li><li>요청 후: &quot;주문과 카드결제가 취소되었습니다.&quot; 안내, 결제상태 [결제취소]</li></ul>'
+              blocks: [
+                {
+                  shots: pair('check-modal-cancel', '09SCM 소매몰 주문 취소 확인'),
+                  shotCaption: '09SCM 소매몰 주문 취소 확인 화면 (PC / 모바일)',
+                  html:
+                  '<ul><li>요청 사유: 입력 없음</li><li>안내: &quot;주문과 카드결제가 즉시 취소됩니다.&quot;</li><li>요청 후: &quot;주문과 카드결제가 취소되었습니다.&quot; 안내, 결제상태 [결제취소]</li></ul>'
+                },
+                {
+                  shots: pair('check-toast-cancel-card', '09SCM 소매몰 카드결제 주문 취소 완료 안내'),
+                  shotCaption: '09SCM 소매몰 카드결제 주문 취소 완료 안내 화면 (PC / 모바일)'
+                }
+              ]
             },
             {
               title: '정산 후 카드결제 주문을 취소할 때',
@@ -1662,10 +1728,18 @@ window.GUIDE_CONTENT['check-history'] = {
             },
             {
               title: '결제대기 주문을 취소할 때',
-              shots: pair('check-modal-wait', '09SCM 소매몰 결제대기 주문 취소 확인'),
-              shotCaption: '09SCM 소매몰 결제대기 주문 취소 확인 화면 (PC / 모바일)',
-              html:
-                '<ul><li>대상: 계좌이체·현장결제 주문</li><li>요청 사유: 입력 없음</li><li>안내: &quot;결제대기 주문이므로 주문이 즉시 취소됩니다.&quot;</li><li>요청 후: &quot;주문이 취소되었습니다.&quot; 안내, 결제상태 [결제취소]</li></ul>'
+              blocks: [
+                {
+                  shots: pair('check-modal-wait', '09SCM 소매몰 결제대기 주문 취소 확인'),
+                  shotCaption: '09SCM 소매몰 결제대기 주문 취소 확인 화면 (PC / 모바일)',
+                  html:
+                  '<ul><li>대상: 계좌이체·현장결제 주문</li><li>요청 사유: 입력 없음</li><li>안내: &quot;결제대기 주문이므로 주문이 즉시 취소됩니다.&quot;</li><li>요청 후: &quot;주문이 취소되었습니다.&quot; 안내, 결제상태 [결제취소]</li></ul>'
+                },
+                {
+                  shots: pair('check-toast-cancel-wait', '09SCM 소매몰 결제대기 주문 취소 완료 안내'),
+                  shotCaption: '09SCM 소매몰 결제대기 주문 취소 완료 안내 화면 (PC / 모바일)'
+                }
+              ]
             }
           ]
         },
@@ -1674,17 +1748,33 @@ window.GUIDE_CONTENT['check-history'] = {
           rows: [
             {
               title: '계좌이체·현장결제 주문의 취소를 요청할 때',
-              shots: pair('check-modal-request', '09SCM 소매몰 취소 요청'),
-              shotCaption: '09SCM 소매몰 취소 요청 화면 (PC / 모바일)',
-              html:
-                '<ul><li>대상: 결제상태가 [결제완료]인 주문</li><li>요청 사유: 입력 (필수)</li><li>환불정보: 계좌이체 주문만 입력 (현장결제는 입력 없음)</li><li>안내: &quot;판매자 확인 후 주문이 취소됩니다.&quot;</li><li>요청 후: &quot;취소 요청이 접수되었습니다.&quot; 안내, 취소·반품 [취소요청]</li></ul>'
+              blocks: [
+                {
+                  shots: pair('check-modal-request', '09SCM 소매몰 취소 요청'),
+                  shotCaption: '09SCM 소매몰 취소 요청 화면 (PC / 모바일)',
+                  html:
+                  '<ul><li>대상: 결제상태가 [결제완료]인 주문</li><li>요청 사유: 입력 (필수)</li><li>환불정보: 계좌이체 주문만 입력 (현장결제는 입력 없음)</li><li>안내: &quot;판매자 확인 후 주문이 취소됩니다.&quot;</li><li>요청 후: &quot;취소 요청이 접수되었습니다.&quot; 안내, 취소·반품 [취소요청]</li></ul>'
+                },
+                {
+                  shots: pair('check-toast-cancel-request', '09SCM 소매몰 취소 요청 접수 안내'),
+                  shotCaption: '09SCM 소매몰 취소 요청 접수 안내 화면 (PC / 모바일)'
+                }
+              ]
             },
             {
               title: '카드결제·현장결제 주문의 반품을 요청할 때',
-              shots: pair('check-modal-return', '09SCM 소매몰 반품 요청'),
-              shotCaption: '09SCM 소매몰 반품 요청 화면 (PC / 모바일)',
-              html:
-                '<ul><li>요청 사유: 입력 (필수)</li><li>환불정보: 입력 없음</li><li>안내: &quot;판매자 확인 후 반품이 처리됩니다.&quot;</li><li>요청 후: &quot;반품 요청이 접수되었습니다.&quot; 안내, 취소·반품 [반품요청]</li></ul>'
+              blocks: [
+                {
+                  shots: pair('check-modal-return', '09SCM 소매몰 반품 요청'),
+                  shotCaption: '09SCM 소매몰 반품 요청 화면 (PC / 모바일)',
+                  html:
+                  '<ul><li>요청 사유: 입력 (필수)</li><li>환불정보: 입력 없음</li><li>안내: &quot;판매자 확인 후 반품이 처리됩니다.&quot;</li><li>요청 후: &quot;반품 요청이 접수되었습니다.&quot; 안내, 취소·반품 [반품요청]</li></ul>'
+                },
+                {
+                  shots: pair('check-toast-return', '09SCM 소매몰 반품 요청 접수 안내'),
+                  shotCaption: '09SCM 소매몰 반품 요청 접수 안내 화면 (PC / 모바일)'
+                }
+              ]
             },
             {
               title: '계좌이체 주문의 반품을 요청할 때',

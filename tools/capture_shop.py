@@ -98,7 +98,9 @@ FIT_JS = """(sels) => {
 }"""
 
 def snap(b, name, query, steps=None, targets=None, vh=900, margin=16, init=None, css='', devices=DEVICES, clip=None, fit=False):
-    """steps(page, dev)로 상태를 만든 뒤 촬영. targets가 있으면 해당 요소들의 합집합 영역만 여백을 두고 크롭, 없으면 뷰포트 전체."""
+    """steps(page, dev)로 상태를 만든 뒤 촬영. targets가 있으면 해당 요소들의 합집합 영역만 여백을 두고 크롭, 없으면 뷰포트 전체. ONLY=이름,이름 이면 해당 캡처만 다시 촬영"""
+    if os.environ.get('ONLY') and name not in os.environ['ONLY'].split(','):
+        return
     for dev, w in devices:
         ctx = b.new_context(viewport={'width': w, 'height': vh}, device_scale_factor=2)
         if init:
@@ -153,6 +155,27 @@ def scroll_to(page, sel, offset=110):
 
 def wait_toast(page):
     page.wait_for_timeout(700)
+
+def settle_toast(page):
+    """토스트가 완전히 나타난 상태로 촬영하기 위해 전환 효과를 끄고 잠시 기다린다"""
+    page.add_style_tag(content='.toast{transition:none!important}')
+    page.wait_for_timeout(500)
+
+# 로그인·비밀번호 변경 완료 후 화면 이동(setTimeout)을 막아 토스트가 뜬 화면에서 촬영
+NO_REDIRECT = "(() => { const st = window.setTimeout; window.setTimeout = function (f, t) { if ((t === 500 || t === 600) && String(f).indexOf('location.href') > -1) return 0; return st.apply(window, arguments); }; })();"
+
+def login_done(page, dev):
+    page.fill('input[name=phone]', '010-1234-5678')
+    page.fill('input[name=password]', 'password1')
+    page.click('#loginForm button[type=submit]')
+    settle_toast(page)
+
+def reset_done(page, dev):
+    reset_step2(page, dev)
+    page.fill('#newPassword', 'password1')
+    page.fill('#newPasswordConfirm', 'password1')
+    page.click('#newPasswordForm .auth-submit')
+    settle_toast(page)
 
 # ---------- 단계 정의 ----------
 def phone_dup(page, dev):
@@ -283,6 +306,8 @@ with sync_playwright() as p:
     snap(b, 'reset-verified', '?view=reset-password', reset_verified, ['.auth-card'], margin=16, devices=(('pc', 1440),))
     snap(b, 'reset-step2', '?view=reset-password', reset_step2)
     snap(b, 'reset-error', '?view=reset-password', reset_error, vh=480)
+    snap(b, 'reset-done', '?view=reset-password', reset_done, vh=480, init=NO_REDIRECT)
+    snap(b, 'login-done', '?view=login', login_done, vh=480, init=NO_REDIRECT)
 
     # 가맹점 가입 신청
     snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'], fit=True, margin=28)
