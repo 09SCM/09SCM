@@ -82,8 +82,9 @@
               '<span class="history-meta"><span class="history-path">' + esc(it.path) + '</span>' +
               '<a href="' + esc(it.link) + '">바로가기</a></span></li>';
           }).join('');
-          return '<details class="history-version"><summary><b>' + esc(v.version) + '</b>' +
-            '<span class="history-sub">' + esc(v.date) + ' · ' + esc(v.push) + (v.note ? ' · ' + esc(v.note) : '') + '</span></summary>' +
+          var sub = '<span class="history-sub">' + esc(v.date) + ' · ' + esc(v.push) + (v.note ? ' · ' + esc(v.note) : '') + '</span>';
+          if (!items) { return '<div class="history-version history-flat"><b>' + esc(v.version) + '</b>' + sub + '</div>'; }
+          return '<details class="history-version"><summary><b>' + esc(v.version) + '</b>' + sub + '</summary>' +
             '<ul class="history-items">' + items + '</ul></details>';
         }).join('');
       });

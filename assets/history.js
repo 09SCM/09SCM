@@ -1,42 +1,19 @@
 // 이용가이드 변경 이력 — 인덱스 카드의 히스토리에 표시한다. 최신 버전이 위로 오도록 앞에 추가한다.
-// 버전: 배포 버전(version-*.js와 일치) / date: 업데이트 일시(YY.MM.DD HH:MM) / push: 반영 커밋 ID(7자리)
-// items: summary(수정 내용 1줄) / path(섹션 경로) / link(해당 위치 링크, 이용가이드 기준 상대 주소)
+// version: 배포 버전(version-*.js와 일치) / date: 업데이트 일시(YY.MM.DD HH:MM) / push: 반영 커밋 ID(7자리) / note: 비고
+// items(선택): summary(수정 내용 1줄) / path(섹션 경로) / link(해당 위치 링크, 이용가이드 기준 상대 주소). 없으면 펼침 없이 한 줄로 표시한다.
 window.GUIDE_HISTORY = {
-  shop: [
-    {
-      version: 'v1.0', date: '26.10.29 14:55', push: 'ec49a06', note: '최초작성',
-      items: [
-        { summary: '시작하기 5개 화면 최초 작성', path: '시작하기', link: './guide/shop.html#start-intro' },
-        { summary: '둘러보기 3개 화면 최초 작성', path: '둘러보기', link: './guide/shop.html#browse-main' },
-        { summary: '주문하기 2개 화면 최초 작성', path: '주문하기', link: './guide/shop.html#order-cart' },
-        { summary: '주문조회 3개 화면 최초 작성', path: '주문조회', link: './guide/shop.html#check-quick' },
-        { summary: '마이페이지 3개 화면 최초 작성', path: '마이페이지', link: './guide/shop.html#mypage-info' },
-      ]
-    }
-  ],
+  admin: [],
   partner: [
     {
-      version: 'v1.0', date: '26.10.27 10:42', push: '54a2fdc', note: '최초작성',
+      version: 'v1.1', date: '26.10.29 14:48', push: 'cd8a7a3',
       items: [
-        { summary: '시작하기 3개 화면 최초 작성', path: '시작하기', link: './guide/partner.html#start-intro' },
-        { summary: '대시보드 1개 화면 최초 작성', path: '대시보드', link: './guide/partner.html#dashboard-ops' },
-        { summary: '소매관리 8개 화면 최초 작성', path: '소매관리', link: './guide/partner.html#retail-product-list' },
-        { summary: '도매관리 6개 화면 최초 작성', path: '도매관리', link: './guide/partner.html#wholesale-shop' },
-        { summary: '가맹점관리 4개 화면 최초 작성', path: '가맹점관리', link: './guide/partner.html#franchise-list' },
-        { summary: '시스템관리 4개 화면 최초 작성', path: '시스템관리', link: './guide/partner.html#system-member' },
+        { summary: '헤더 오른쪽 위 계정 정보(회원 유형·상호명·아이디) 설명과 PC·모바일 캡처 추가', path: '시작하기 > 09SCM 관리자 소개 > 화면 오른쪽 위 계정 정보', link: './guide/partner.html#start-intro/sec6' },
+        { summary: '로그인 후 표시되는 계정 정보 문장에서 새 구역으로 연결', path: '시작하기 > 가입신청·로그인', link: './guide/partner.html#start-login' }
       ]
-    }
+    },
+    { version: 'v1.0', date: '26.10.27 10:42', push: '54a2fdc', note: '최초작성' }
   ],
-  admin: [
-    {
-      version: 'v1.0', date: '26.10.07 16:25', push: 'c999849', note: '최초작성',
-      items: [
-        { summary: '시작하기 2개 화면 최초 작성', path: '시작하기', link: './guide/admin.html#start-login' },
-        { summary: '대시보드 1개 화면 최초 작성', path: '대시보드', link: './guide/admin.html#dashboard-ops' },
-        { summary: '본사/가맹점 관리 2개 화면 최초 작성', path: '본사/가맹점 관리', link: './guide/admin.html#hq-list' },
-        { summary: '거래/매출 현황 3개 화면 최초 작성', path: '거래/매출 현황', link: './guide/admin.html#trade-all' },
-        { summary: '시스템 관리 2개 화면 최초 작성', path: '시스템 관리', link: './guide/admin.html#system-notice' },
-      ]
-    }
-  ],
+  shop: [
+    { version: 'v1.0', date: '26.10.29 14:55', push: 'ec49a06', note: '최초작성' }
+  ]
 };

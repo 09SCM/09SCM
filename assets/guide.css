@@ -131,6 +131,7 @@ a { color: inherit; }
 .history-body { margin-top: var(--sp-3); }
 .history-version { border: 1px solid var(--border); border-radius: 6px; padding: var(--sp-3); }
 .history-version + .history-version { margin-top: var(--sp-2); }
+.history-flat { padding-left: calc(var(--sp-3) + 14px); font-size: 14px; }
 .history-sub { margin-left: var(--sp-2); font-size: 12px; color: var(--text-secondary); }
 .history-items { list-style: none; margin: var(--sp-3) 0 0; padding: 0; }
 .history-items li { padding: var(--sp-2) 0; border-top: 1px solid var(--border); }
