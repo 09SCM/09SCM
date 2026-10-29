@@ -54,7 +54,7 @@ window.GUIDE_CONTENT['start-intro'] = {
           '<tr><td>시스템 관리</td><td>누르면 공지사항, 약관 관리 메뉴가 펼쳐짐</td></tr>' +
           '<tr><td>[09SCM 관리자 바로가기]</td><td>09SCM 관리자(본사·가맹점 관리자)를 새 창으로 열기</td></tr>' +
           '<tr><td>[09SCM 홈페이지 바로가기]</td><td>09SCM 홈페이지를 새 창으로 열기</td></tr>' +
-          '<tr><td>[로그아웃]</td><td>확인 창 없이 로그인 화면으로 이동 (로그아웃한 뒤에는 뒤로가기나 새로고침으로 관리자 화면에 다시 들어갈 수 없고, 다시 로그인해야 함)</td></tr>' +
+          '<tr><td>[로그아웃]</td><td>로그인 화면으로 이동</td></tr>' +
         '</tbody></table></div>' }
   ]
 };
@@ -87,9 +87,7 @@ window.GUIDE_CONTENT['start-login'] = {
         '<tr><td>[로그인]</td><td>입력한 내용으로 로그인 시도 (입력칸에서 Enter로도 가능)</td></tr>' +
       '</tbody></table></div>' +
     '<p>로그인에 성공하면 이전에 보던 메뉴, 검색어, 필터, 선택 상태는 이어지지 않고 대시보드부터 시작해요. 로그인하면 화면 맨 위 오른쪽에 로그인한 계정의 정보가 표시돼요. 자세한 내용은 <a href="#start-intro/sec4">공통 영역 보기</a>에서 확인해주세요.</p>' +
-    '<p>입력이 맞지 않으면 로그인되지 않아요. 안내 문구는 <a href="#start-login/cases">상황별로 달라져요</a>에서 확인해주세요.</p>' +
-
-    '<p>로그인하지 않은 상태에서 관리자 화면 주소로 바로 들어가도 로그인 화면이 열려요.</p>',
+    '<p>입력이 맞지 않으면 로그인되지 않아요. 안내 문구는 <a href="#start-login/cases">상황별로 달라져요</a>에서 확인해주세요.</p>',
   cases: [
     {
       title: '입력이 맞지 않으면',
@@ -174,7 +172,7 @@ window.GUIDE_CONTENT['start-terms'] = {
 // ---- 대시보드 > 운영현황 ----
 window.GUIDE_CONTENT['dashboard-ops'] = {
   shots: [
-    { device: 'pc', src: IMG_ADMIN + 'dashboard-pc.webp', alt: '09SCM 통합관리자 대시보드 PC 화면', ratio: 1440 / 1500 }
+    { device: 'pc', src: IMG_ADMIN + 'dashboard-pc.webp', alt: '09SCM 통합관리자 대시보드 PC 화면', ratio: 1440 / 1153 }
   ],
   shotCaption: '09SCM 통합관리자 대시보드 화면',
   overview:
