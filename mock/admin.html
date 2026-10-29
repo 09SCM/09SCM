@@ -509,6 +509,38 @@
     .bottom-bar { left: 0; padding: 12px 16px; }
   }
 
+
+  /* ---------- 모바일 공통 (860px 이하): 줄바꿈된 버튼은 좌측 정렬, 입력 행은 라벨 위·입력 아래, 하단바 정리 ---------- */
+  .terms-title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; min-width: 0; }
+  .nw { white-space: nowrap; }
+  tr.sum-row td:first-child { background: color-mix(in srgb, var(--key) 10%, var(--surface)); }
+  @media (max-width: 860px) {
+    .card-head > :last-child:not(h2) { margin-left: 0; }
+    .fb-actions { justify-content: flex-start; }
+    .terms-block-head { align-items: flex-start; }
+    .terms-title { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .fb-dates .form-input.date { width: 0; }
+
+    .form-row > .field-label { flex: 1 1 100%; width: auto; min-width: 0; }
+    .form-row > .form-input { flex: 1 1 0; min-width: 0; width: auto; }
+    .form-row > textarea.form-input { flex: 1 1 100%; }
+    .field-hint, .field-error { margin-left: 0; }
+    .detail-grid { grid-template-columns: 1fr; row-gap: 2px; }
+    .detail-grid dd { margin-bottom: 10px; }
+    .re-foot { flex-wrap: wrap; gap: 4px 8px; }
+    .re-resize { white-space: nowrap; }
+
+    .bottom-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+    .bottom-bar-field { flex-wrap: wrap; gap: 6px 10px; }
+    .bottom-bar-field .field-label { white-space: nowrap; flex: none; }
+    .bottom-bar-field .form-input { min-width: 0; flex: 1 1 0; }
+    .bottom-bar-field .field-hint { flex: 1 1 100%; margin: 0; }
+    .bottom-bar-actions { flex-wrap: wrap; gap: 8px; }
+    .bottom-bar-actions > button { flex: 1 1 0; }
+    .bottom-bar-actions .inline-confirm { flex: 1 1 100%; }
+    .hq-detail { padding-bottom: 150px; }
+  }
+
   .memo-list { display: flex; flex-direction: column; gap: 10px; }
   .memo-item { border: 1px solid var(--border); border-radius: 4px; padding: 10px 14px; }
   .memo-text { font-size: 14px; margin-bottom: 6px; }
@@ -546,10 +578,6 @@
   .sales-table { table-layout: fixed; }
   .sales-list-table th.manage-col, .sales-list-table td.manage-col { width: 120px; }
   .sales-table th { white-space: normal; }
-  .sales-filter .form-row { margin-bottom: 0; gap: 12px; }
-  .sales-filter .field-label { width: auto; min-width: 0; }
-  .sales-filter .form-input.date { flex: none; width: 150px; min-width: 0; }
-  .sales-filter-actions { margin-left: auto; display: flex; gap: 8px; }
   .sales-filter-error { font-size: 12px; color: var(--error); margin-top: 8px; }
   .sales-base { font-size: 12px; color: var(--text-secondary); }
   .stat-basis { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--border); font-size: 12px; color: var(--text-secondary); }
@@ -621,6 +649,7 @@
   .dash-page { display: flex; flex-direction: column; gap: 24px; }
   .dash-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .dash-head p { margin: 0; font-size: 14px; color: var(--text-secondary); }
+  @media (max-width: 860px) { .dash-head { flex-direction: column; align-items: flex-start; gap: 4px; } }
   .dash-stat.card { padding: 20px 24px; }
   .dash-stat.emph-warn { border-color: var(--warning); }
   .dash-stat.emph-warn .stat-value { color: var(--warning); }
@@ -3844,9 +3873,9 @@
           <div class="tabs">${tabs}</div>
           <div class="terms-block" style="margin-top:20px;">
             <div class="terms-block-head">
-              <div style="display:flex; align-items:baseline; gap:10px;">
+              <div class="terms-title">
                 <h3 class="form-section-title" style="margin:0;">현재 시행본</h3>
-                <span class="terms-meta" style="margin:0;">v${cur.ver} · 등록일시 ${fmtD(cur.regDate)} · 시행일 ${fmtD(cur.effective)}</span>
+                <span class="terms-meta" style="margin:0;"><span class="nw">v${cur.ver}</span> · <span class="nw">등록일시 ${fmtD(cur.regDate)}</span> · <span class="nw">시행일 ${fmtD(cur.effective)}</span></span>
               </div>
               <button type="button" class="btn-primary btn-sm" id="termsRegBtn">개정 등록</button>
             </div>
