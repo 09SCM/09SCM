@@ -42,6 +42,8 @@ def rect(page, sels):
 
 def snap(b, name, query='', steps=None, area=None, margin=16, hide_quick=True, init=None, devices=DEVICES, vh=900, css=''):
     """area가 있으면 해당 영역만 남겨 세로로 크롭(가로 전체), 없으면 뷰포트 전체"""
+    if os.environ.get('ONLY') and name not in os.environ['ONLY'].split(','):
+        return
     for dev, w in devices:
         ctx = b.new_context(viewport={'width': w, 'height': vh}, device_scale_factor=2)
         if init:
@@ -118,12 +120,38 @@ def fill_and_submit(pay=None):
         fit_full(page, dev)
     return f
 
+
+def change_and_toast(page, dev):
+    """수령방식 변경 후 나타나는 토스트만 남긴다(토스트가 보이는 2.2초 안에 촬영)"""
+    page.click('[data-change-fulfillment]'); page.wait_for_timeout(500)
+    page.evaluate("document.querySelector('#fulfillmentChangeForm input:not(:checked)').click()")
+    page.click('#fulfillmentChangeForm button[type=submit]'); page.wait_for_timeout(400)
+    page.evaluate("""() => { const st = document.createElement('style');
+      st.textContent = 'body *{visibility:hidden!important}.toast,.toast *{visibility:visible!important}.toast{transition:none!important}';
+      document.head.appendChild(st); }""")
+
+def snap_toast(b, name, steps, init=None):
+    for dev, w in DEVICES:
+        ctx = b.new_context(viewport={'width': w, 'height': 900}, device_scale_factor=2)
+        if init: ctx.add_init_script(init)
+        page = ctx.new_page(); page.goto(BASE + '?view=cart'); page.wait_for_timeout(700)
+        page.add_style_tag(content=NO_FIXED)
+        steps(page, dev)
+        r = page.evaluate("(() => { const q = document.querySelector('.toast').getBoundingClientRect(); return [q.left, q.top, q.width, q.height]; })()")
+        m = 16
+        x = max(0, r[0] - m); y = max(0, r[1] - m)
+        png = page.screenshot(clip={'x': x, 'y': y, 'width': min(w - x, r[2] + 2 * m), 'height': min(900 - y, r[3] + 2 * m)})
+        save(png, '%s-%s' % (name, dev))
+        ctx.close()
+
 with sync_playwright() as p:
     b = p.chromium.launch()
     # 장바구니
     snap(b, 'cart-main', '?view=cart', steps=cart_main)
     snap(b, 'cart-delivery', '?view=cart', steps=cart_delivery, area=['.cart-page'])
     snap(b, 'cart-change', '?view=cart', steps=cart_change, hide_quick=True)
+    if not os.environ.get('ONLY') or 'cart-change-toast' in os.environ['ONLY'].split(','):
+        snap_toast(b, 'cart-change-toast', change_and_toast)
     snap(b, 'cart-nowindow', '?view=cart', steps=cart_nowindow, area=['.cart-page'],
          init=cart_seed([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 11, 'quantity': 1, 'fulfillment': 'pickup'}]))
     snap(b, 'cart-soldout', '?view=cart', steps=cart_delivery, area=['.cart-page'],
@@ -131,6 +159,7 @@ with sync_playwright() as p:
     snap(b, 'cart-empty', '?view=cart', area=['.cart-page'], init=cart_seed([]))
     # 주문서
     snap(b, 'order-main', '?view=order', steps=fit_full, init=draft_seed(PICK))
+    snap(b, 'order-nowindow', '?view=order', steps=fit_full, init=draft_seed([{'id': 1, 'quantity': 1, 'fulfillment': 'pickup'}, {'id': 11, 'quantity': 1, 'fulfillment': 'pickup'}]))
     snap(b, 'order-delivery', '?view=order', area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)', '.checkout-section:nth-of-type(5)'], init=draft_seed(DELI))
     nomember = "localStorage.setItem('onmaeul-member', JSON.stringify({customerName:'홍길동',phone:'01012345678',email:'hongildong@example.com',nicknameCode:'7942',chatNickname:'산책러',addressName:'',address:'',deliveryRequest:''}));"
     snap(b, 'order-delivery-none', '?view=order', area=['.checkout-section:nth-of-type(3)', '.checkout-section:nth-of-type(4)'], init=draft_seed(DELI) + nomember)
