@@ -74,12 +74,6 @@ window.GUIDE_CONTENT['start-intro'] = {
       "<p>이용제한 상태인 계정은 모든 화면 맨 위에 이용제한 안내 배너가 함께 표시돼요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>" +
       "<h3>왼쪽 메뉴</h3>" +
       "<p>위쪽의 대메뉴 버튼을 누르면 그 아래 메뉴 목록이 바뀌어요. 계정에 따라 보이는 대메뉴가 달라요. 자세한 내용은 <a href=\"#start-intro/sec5\">계정에 따라 메뉴가 달라요</a>에서 확인해주세요.</p>" +
-      introCaseTable('계정에 따라 달라요', [
-        { title: '본사 계정', shot: introLnbCell('lnb-hq-pc', '09SCM 본사 계정 왼쪽 메뉴 PC 화면'),
-          html: "<ul><li>대메뉴 버튼: 대시보드, 소매관리, 도매관리, 가맹점관리</li></ul>" },
-        { title: '가맹점 계정', shot: introLnbCell('lnb-fr-pc', '09SCM 가맹점 계정 왼쪽 메뉴 PC 화면'),
-          html: "<ul><li>대메뉴 버튼: 대시보드, 소매관리, 도매관리 (가맹점관리는 본사만 표시)</li></ul>" }
-      ]) +
       "<div class=\"table-wrap\"><table class=\"wide\"><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>" +
         "<tr><td>대메뉴 버튼</td><td>누르면 아래 메뉴 목록이 해당 대메뉴의 메뉴로 바뀜</td></tr>" +
         "<tr><td>메뉴 목록</td><td>선택한 대메뉴의 메뉴. 하위 메뉴가 있는 메뉴는 누르면 펼쳐지거나 접힘</td></tr>" +
@@ -87,6 +81,12 @@ window.GUIDE_CONTENT['start-intro'] = {
         "<tr><td>[시스템관리]</td><td>메뉴 목록을 시스템관리 메뉴(회원정보, 이용료관리, 알림설정, 공지사항)로 바꿈 (이용료관리는 가맹점 계정에만 표시)</td></tr>" +
         "<tr><td>[로그아웃]</td><td>로그아웃하고 로그인 화면으로 이동 (<a href=\"#start-login\">가입신청·로그인</a>)</td></tr>" +
       "</tbody></table></div>" +
+      introCaseTable('계정에 따라 달라요', [
+        { title: '본사 계정', shot: introLnbCell('lnb-hq-pc', '09SCM 본사 계정 왼쪽 메뉴 PC 화면'),
+          html: "<ul><li>대메뉴 버튼: 대시보드, 소매관리, 도매관리, 가맹점관리</li></ul>" },
+        { title: '가맹점 계정', shot: introLnbCell('lnb-fr-pc', '09SCM 가맹점 계정 왼쪽 메뉴 PC 화면'),
+          html: "<ul><li>대메뉴 버튼: 대시보드, 소매관리, 도매관리 (가맹점관리는 본사만 표시)</li></ul>" }
+      ]) +
       "<p>모바일에서는 왼쪽 메뉴가 화면에 고정되어 있지 않고, 헤더 왼쪽의 메뉴 버튼을 누르면 열려요.</p>" }
   ]
 };
