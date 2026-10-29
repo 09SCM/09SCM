@@ -4,7 +4,7 @@
 window.GUIDE_HISTORY = {
   shop: [
     {
-      version: 'v1.0', date: '26.10.29 14:55', push: '__PUSH__', note: '최초작성',
+      version: 'v1.0', date: '26.10.29 14:55', push: 'ec49a06', note: '최초작성',
       items: [
         { summary: '시작하기 5개 화면 최초 작성', path: '시작하기', link: './guide/shop.html#start-intro' },
         { summary: '둘러보기 3개 화면 최초 작성', path: '둘러보기', link: './guide/shop.html#browse-main' },
