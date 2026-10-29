@@ -13,11 +13,26 @@ function introShotPair(base, alt, caption) {
     '</div><p class="shot-caption">' + caption + '</p></div>';
 }
 
-// 공통 영역 > 왼쪽 메뉴 캡처 (PC, 496×1600 = 232px 메뉴 + 16px 여백)
-function introLnbShot(name, alt, caption) {
+// 소개 페이지 본문 안의 케이스 표 (guide.js 케이스 표와 같은 마크업: 케이스 / 화면 / 상세내용)
+function introCaseTable(group, rows) {
+  return '<div class="case case-table"><h3>' + group + '</h3><div class="ctable"><div class="ctable-head"><div>케이스</div><div>화면</div><div>상세내용</div></div>' +
+    rows.map(function (r) {
+      return '<div class="ctable-row"><div class="ctable-name">' + r.title + '</div><div class="ctable-blocks"><div class="ctable-block">' +
+        '<div class="ctable-shot">' + r.shot + '</div><div class="ctable-desc">' + r.html + '</div></div></div></div>';
+    }).join('') + '</div></div>';
+}
+// 헤더 캡처: PC 위, 모바일 아래로 쌓는다 (1120×154, 880×154)
+function introHeaderCell(base, alt) {
+  return '<div class="cshot"><div class="cshot-row cshot-stack">' +
+    '<figure class="shot-item shot-pc"><img src="../assets/img/partner/' + base + '-pc.webp" alt="' + alt + ' PC 화면" loading="lazy"></figure>' +
+    '<figure class="shot-item shot-mobile"><img src="../assets/img/partner/' + base + '-mobile.webp" alt="' + alt + ' 모바일 화면" loading="lazy"></figure>' +
+    '</div><p class="shot-caption">PC / 모바일</p></div>';
+}
+// 왼쪽 메뉴 캡처: PC 496×1080 (232px 메뉴 + 16px 여백)
+function introLnbCell(name, alt) {
   return '<div class="cshot"><div class="cshot-row cshot-one">' +
     '<figure class="shot-item shot-pc" style="width:248px;max-width:100%"><img src="../assets/img/partner/' + name + '.webp" alt="' + alt + '" loading="lazy"></figure>' +
-    '</div><p class="shot-caption">' + caption + '</p></div>';
+    '</div></div>';
 }
 
 window.GUIDE_CONTENT['start-intro'] = {
@@ -49,22 +64,24 @@ window.GUIDE_CONTENT['start-intro'] = {
         "<tr><td>상호명</td><td>회원정보의 사업자정보에 등록된 상호명 (소매설정의 상호명과 다름)</td></tr>" +
         "<tr><td>아이디</td><td>로그인할 때 쓴 아이디</td></tr>" +
       "</tbody></table></div>" +
-      "<p>값은 <a href=\"#system-member\">시스템관리 &gt; 회원정보</a>에서 확인해요. 사업자정보는 보기만 할 수 있어요. 바꾸려면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해요.</p>" +
-      "<p>PC와 모바일에서 표시되는 정보가 달라요.</p>" +
-      "<div class=\"table-wrap\"><table><thead><tr><th>화면</th><th>표시되는 정보</th></tr></thead><tbody>" +
-        "<tr><td>PC</td><td>알림 아이콘, 회원 유형, 상호명, 아이디</td></tr>" +
-        "<tr><td>모바일</td><td>알림 아이콘, 회원 유형 (화면이 좁아 상호명과 아이디는 표시하지 않음)</td></tr>" +
-      "</tbody></table></div>" +
-      "<p>모바일에서 상호명과 아이디를 확인하려면 시스템관리 &gt; 회원정보를 열어요.</p>" +
-      introShotPair('header-hq', '09SCM 본사 계정 헤더', '09SCM 본사 계정 헤더 화면 (PC / 모바일)') +
-      introShotPair('header-fr', '09SCM 가맹점 계정 헤더', '09SCM 가맹점 계정 헤더 화면 (PC / 모바일)') +
+      introCaseTable('계정에 따라 달라요', [
+        { title: '본사 계정', shot: introHeaderCell('header-hq', '09SCM 본사 계정 헤더'),
+          html: "<ul><li>회원 유형: 본사</li><li>PC: 알림 아이콘, 회원 유형, 상호명, 아이디 표시</li><li>모바일: 알림 아이콘, 회원 유형만 표시 (화면이 좁아 상호명과 아이디는 표시하지 않음)</li></ul>" },
+        { title: '가맹점 계정', shot: introHeaderCell('header-fr', '09SCM 가맹점 계정 헤더'),
+          html: "<ul><li>회원 유형: 가맹점</li><li>PC: 알림 아이콘, 회원 유형, 상호명, 아이디 표시</li><li>모바일: 알림 아이콘, 회원 유형만 표시 (화면이 좁아 상호명과 아이디는 표시하지 않음)</li></ul>" }
+      ]) +
+      "<p>모바일에서 상호명과 아이디를 확인하려면 <a href=\"#system-member\">시스템관리 &gt; 회원정보</a>를 열어요. 사업자정보는 보기만 할 수 있어요. 바꾸려면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해요.</p>" +
       "<p>이용제한 상태인 계정은 모든 화면 맨 위에 이용제한 안내 배너가 함께 표시돼요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>" +
       "<h3>왼쪽 메뉴</h3>" +
       "<p>위쪽의 대메뉴 버튼을 누르면 그 아래 메뉴 목록이 바뀌어요. 계정에 따라 보이는 대메뉴가 달라요. 자세한 내용은 <a href=\"#start-intro/sec5\">계정에 따라 메뉴가 달라요</a>에서 확인해주세요.</p>" +
-      introLnbShot('lnb-hq-pc', '09SCM 본사 계정 왼쪽 메뉴 PC 화면', '09SCM 본사 계정 왼쪽 메뉴 화면') +
-      introLnbShot('lnb-fr-pc', '09SCM 가맹점 계정 왼쪽 메뉴 PC 화면', '09SCM 가맹점 계정 왼쪽 메뉴 화면') +
+      introCaseTable('계정에 따라 달라요', [
+        { title: '본사 계정', shot: introLnbCell('lnb-hq-pc', '09SCM 본사 계정 왼쪽 메뉴 PC 화면'),
+          html: "<ul><li>대메뉴 버튼: 대시보드, 소매관리, 도매관리, 가맹점관리</li></ul>" },
+        { title: '가맹점 계정', shot: introLnbCell('lnb-fr-pc', '09SCM 가맹점 계정 왼쪽 메뉴 PC 화면'),
+          html: "<ul><li>대메뉴 버튼: 대시보드, 소매관리, 도매관리 (가맹점관리는 본사만 표시)</li></ul>" }
+      ]) +
       "<div class=\"table-wrap\"><table class=\"wide\"><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>" +
-        "<tr><td>대메뉴 버튼</td><td>대시보드, 소매관리, 도매관리 (본사는 가맹점관리 추가). 누르면 아래 메뉴 목록이 해당 대메뉴의 메뉴로 바뀜</td></tr>" +
+        "<tr><td>대메뉴 버튼</td><td>누르면 아래 메뉴 목록이 해당 대메뉴의 메뉴로 바뀜</td></tr>" +
         "<tr><td>메뉴 목록</td><td>선택한 대메뉴의 메뉴. 하위 메뉴가 있는 메뉴는 누르면 펼쳐지거나 접힘</td></tr>" +
         "<tr><td>[내 소매몰]</td><td>내 소매몰을 새 창으로 열기</td></tr>" +
         "<tr><td>[시스템관리]</td><td>메뉴 목록을 시스템관리 메뉴(회원정보, 이용료관리, 알림설정, 공지사항)로 바꿈 (이용료관리는 가맹점 계정에만 표시)</td></tr>" +
