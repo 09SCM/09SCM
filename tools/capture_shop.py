@@ -166,7 +166,19 @@ NO_REDIRECT = "(() => { const st = window.setTimeout; window.setTimeout = functi
 
 def login_done(page, dev):
     page.fill('input[name=phone]', '010-1234-5678')
-    page.fill('input[name=password]', 'password1')
+    page.fill('input[name=password]', 'demo1234')
+    page.click('#loginForm button[type=submit]')
+    settle_toast(page)
+
+def login_error(page, dev):
+    page.fill('input[name=phone]', '010-1234-5678')
+    page.fill('input[name=password]', 'wrongpass1')
+    page.click('#loginForm button[type=submit]')
+    settle_toast(page)
+
+def login_restricted(page, dev):
+    page.fill('input[name=phone]', '010-5555-7777')
+    page.fill('input[name=password]', 'demo1234')
     page.click('#loginForm button[type=submit]')
     settle_toast(page)
 
@@ -206,7 +218,7 @@ def alias_dup(page, dev):
     wait_toast(page)
 
 def reset_sent(page, dev):
-    page.fill('#resetPhone', '010-2345-6789')
+    page.fill('#resetPhone', '010-1234-5678')
     page.click('#sendResetCode')
 
 def reset_verified(page, dev):
@@ -308,6 +320,8 @@ with sync_playwright() as p:
     snap(b, 'reset-error', '?view=reset-password', reset_error, vh=480)
     snap(b, 'reset-done', '?view=reset-password', reset_done, vh=480, init=NO_REDIRECT)
     snap(b, 'login-done', '?view=login', login_done, vh=480, init=NO_REDIRECT)
+    snap(b, 'login-error-toast', '?view=login', login_error, vh=480)
+    snap(b, 'login-restricted-toast', '?view=login', login_restricted, vh=480)
 
     # 가맹점 가입 신청
     snap(b, 'franchise-id-ok', '?view=franchise-signup', fr_id_ok, ['.auth-field:has(#franchiseUserId)'], fit=True, margin=28)

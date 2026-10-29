@@ -81,8 +81,14 @@ def address_empty(page, dev):
     page.evaluate(to_bottom('#deliveryAddressForm .mypage-actions'))
     page.click('#deliveryAddressForm button[type=submit]'); settle(page)
 
+def withdraw_error(page, dev):
+    page.fill('input[name=password]', 'wrongpass1')
+    page.evaluate("document.querySelector('input[name=agreeWithdrawal]').click()")
+    page.evaluate(to_bottom('#withdrawalForm .mypage-actions'))
+    page.click('#withdrawalForm button[type=submit]'); settle(page)
+
 def withdraw_done(page, dev):
-    page.fill('input[name=password]', 'password1')
+    page.fill('input[name=password]', 'demo1234')
     page.evaluate("document.querySelector('input[name=agreeWithdrawal]').click()")
     page.evaluate(to_bottom('#withdrawalForm .mypage-actions'))
     page.click('#withdrawalForm button[type=submit]'); settle(page)
@@ -98,6 +104,7 @@ with sync_playwright() as p:
     snap(b, 'mypage-address-error-toast', '?view=delivery-address', L, steps=address_empty, vh=480)
     snap(b, 'mypage-withdraw-main', '?view=withdrawal', NEW, steps=fit_full)
     snap(b, 'mypage-withdraw-blocked', '?view=withdrawal', L, steps=fit_full)
+    snap(b, 'mypage-withdraw-error-toast', '?view=withdrawal', NEW, steps=withdraw_error, vh=480)
     snap(b, 'mypage-withdraw-done-toast', '?view=withdrawal', NEW + NO_REDIRECT, steps=withdraw_done, vh=480)
     b.close()
 print(json.dumps({k: list(v) for k, v in DIMS.items()}))

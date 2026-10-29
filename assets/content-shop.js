@@ -39,6 +39,8 @@ var SHOT_DIMS = {
   'detail-cart-toast': [2880, 960, 880, 960],
   'login-done': [2880, 960, 880, 960],
   'order-input-toast': [2880, 960, 880, 960],
+  'login-error-toast': [2880, 960, 880, 960],
+  'login-restricted-toast': [2880, 960, 880, 960],
   'mypage-address-error-toast': [2880, 960, 880, 960],
   'mypage-address-main': [2880, 1800, 880, 2358],
   'mypage-address-saved-toast': [2880, 960, 880, 960],
@@ -48,6 +50,7 @@ var SHOT_DIMS = {
   'mypage-info-saved-toast': [2880, 960, 880, 960],
   'mypage-withdraw-blocked': [2880, 1842, 880, 2404],
   'mypage-withdraw-done-toast': [2880, 960, 880, 960],
+  'mypage-withdraw-error-toast': [2880, 960, 880, 960],
   'mypage-withdraw-main': [2880, 1800, 880, 2278],
   'order-recheck-toast': [2880, 960, 880, 960],
   'reset-done': [2880, 960, 880, 960],
@@ -214,6 +217,8 @@ window.GUIDE_CONTENT['start-login'] = {
         },
         {
           title: '입력이 맞지 않으면',
+          shots: pair('login-error-toast', '09SCM 로그인 입력 오류'),
+          shotCaption: '09SCM 로그인 입력 오류 화면 (PC / 모바일)',
           html:
             '<p>맞지 않는 부분이 있으면 로그인되지 않아요. 휴대폰번호나 비밀번호가 비어 있거나 번호가 11자리가 아니면 입력란에 안내가 나오고, 번호와 비밀번호가 맞지 않으면 화면 아래에 안내가 잠시 나타나요. 비밀번호 입력값은 안내가 나올 때마다 비워져요. 나오는 안내 문구는 아래와 같아요.</p>' +
             '<div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
@@ -223,6 +228,8 @@ window.GUIDE_CONTENT['start-login'] = {
         },
         {
           title: '이용제한 회원이면',
+          shots: pair('login-restricted-toast', '09SCM 이용제한 회원 로그인 안내'),
+          shotCaption: '09SCM 이용제한 회원 로그인 안내 화면 (PC / 모바일)',
           html:
             '<p>번호와 비밀번호가 맞아도 이용제한 회원은 로그인할 수 없어요. &quot;현재 이용이 제한되어 로그인할 수 없습니다. 자세한 사항은 판매자에게 문의해 주세요.&quot; 안내가 나와요. 신규 주문(링크주문·채팅주문)도 할 수 없고, 채팅주문을 보내면 &quot;현재 이용이 제한되어 주문이 접수되지 않았습니다. 자세한 사항은 판매자에게 문의해주세요.&quot; 안내가 와요.</p>'
         },
@@ -462,6 +469,7 @@ window.GUIDE_CONTENT['start-login'] = {
               '<tr><td>11자리가 아닌 번호로 [인증번호 발송]을 누름</td><td>&quot;휴대폰번호 11자리를 입력해 주세요.&quot;</td></tr>' +
               '<tr><td>가입하지 않은 번호(탈퇴한 번호 포함)로 [인증번호 발송]을 누름</td><td>&quot;가입되지 않은 휴대폰번호입니다.&quot;</td></tr>' +
               '<tr><td>6자리가 아닌 인증번호로 [확인]을 누름</td><td>&quot;인증번호 6자리를 입력해 주세요.&quot;</td></tr>' +
+              '<tr><td>인증번호 발송 없이 [확인]을 누름</td><td>&quot;인증번호를 먼저 발송해 주세요.&quot;</td></tr>' +
               '<tr><td>발송한 인증번호와 다른 번호로 [확인]을 누름</td><td>&quot;인증번호가 일치하지 않습니다.&quot;</td></tr>' +
               '<tr><td>유효시간(3분)이 지난 뒤 [확인]을 누름</td><td>&quot;인증번호 유효시간이 지났습니다. 인증번호를 다시 받아 주세요.&quot;</td></tr>' +
               '<tr><td>새 비밀번호와 새 비밀번호 확인이 다름</td><td>&quot;비밀번호가 일치하지 않습니다.&quot;</td></tr>' +
@@ -2069,6 +2077,8 @@ window.GUIDE_CONTENT['mypage-withdraw'] = {
     },
     {
       title: '입력이 맞지 않으면',
+      shots: pair('mypage-withdraw-error-toast', '09SCM 소매몰 회원탈퇴 입력 오류'),
+      shotCaption: '09SCM 소매몰 회원탈퇴 입력 오류 화면 (PC / 모바일)',
       html:
         '<p>맞지 않는 부분이 있으면 탈퇴되지 않고 화면 아래에 안내가 잠시 나타나요. 나오는 안내 문구는 아래와 같아요.</p>' +
         '<div class="table-wrap"><table><thead><tr><th>상황</th><th>안내 문구</th></tr></thead><tbody>' +
