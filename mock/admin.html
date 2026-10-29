@@ -450,7 +450,6 @@
   /* ---------- 목록 필터바 · 1차 탭 모바일 (860px 이하) ---------- */
   @media (max-width: 860px) {
     .filter-bar { gap: 12px 8px; }
-    .filter-bar .sort-select { min-width: 90px; }
     .fb-field { flex: 1 1 100%; }
     .fb-search { flex: 1 1 100%; max-width: none; }
     .fb-dates { flex: 1 1 100%; }
@@ -518,6 +517,9 @@
     .card-head > :last-child:not(h2) { margin-left: 0; }
     .fb-actions { justify-content: flex-start; }
     .terms-block-head { align-items: flex-start; }
+    .detail-header-title { display: grid; grid-template-columns: auto 1fr; gap: 8px 10px; align-items: center; min-width: 0; flex: 1 1 100%; }
+    .detail-header-title > .btn-sm:first-child { grid-column: 1 / -1; justify-self: start; }
+    .detail-header-title > .badge, .detail-header-title > .tag { justify-self: start; }
     .terms-title { flex-direction: column; align-items: flex-start; gap: 2px; }
     .fb-dates .form-input.date { width: 0; }
 
