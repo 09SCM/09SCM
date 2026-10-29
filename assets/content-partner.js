@@ -13,6 +13,13 @@ function introShotPair(base, alt, caption) {
     '</div><p class="shot-caption">' + caption + '</p></div>';
 }
 
+// 공통 영역 > 왼쪽 메뉴 캡처 (PC, 496×1600 = 232px 메뉴 + 16px 여백)
+function introLnbShot(name, alt, caption) {
+  return '<div class="cshot"><div class="cshot-row cshot-one">' +
+    '<figure class="shot-item shot-pc" style="width:248px;max-width:100%"><img src="../assets/img/partner/' + name + '.webp" alt="' + alt + '" loading="lazy"></figure>' +
+    '</div><p class="shot-caption">' + caption + '</p></div>';
+}
+
 window.GUIDE_CONTENT['start-intro'] = {
   shots: [
     { device: 'pc', src: '../assets/img/partner/intro-pc.webp', alt: '09SCM 관리자 대시보드 화면' }
@@ -32,24 +39,38 @@ window.GUIDE_CONTENT['start-intro'] = {
       "<div class=\"table-wrap\"><table class=\"wide\"><thead><tr><th>메뉴</th><th class=\"c\">본사</th><th class=\"c\">가맹점<br>(도매공급권한 있음)</th><th class=\"c\">가맹점<br>(도매공급권한 없음)</th></tr></thead><tbody><tr><td>대시보드</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>대시보드의 도매 판매 영역</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">×</td></tr><tr><td>소매관리</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>소매관리 &gt; 상품목록의 [도매상품전환] 버튼</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">×</td></tr><tr><td>도매관리 &gt; 도매상품 주문하기, 주문내역</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>도매관리 &gt; 내 도매상품, 주문접수관리, 도매매출조회, 도매설정</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">×</td></tr><tr><td>가맹점관리</td><td class=\"c\">○</td><td class=\"c\">×</td><td class=\"c\">×</td></tr><tr><td>시스템관리 &gt; 회원정보, 알림설정, 공지사항</td><td class=\"c\">○</td><td class=\"c\">○</td><td class=\"c\">○</td></tr><tr><td>시스템관리 &gt; 이용료관리</td><td class=\"c\">×</td><td class=\"c\">○</td><td class=\"c\">○</td></tr></tbody></table></div>" +
       "<p>본사는 도매공급권한을 항상 가지고 있어요. 가맹점의 도매공급권한은 본사가 정해요.</p>" +
       "<p>가맹점은 이용상태에 따라서도 보이는 메뉴가 달라져요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>" },
-    { id: 'sec6', label: "화면 오른쪽 위 계정 정보", html:
-      "<p>로그인하면 화면 맨 위 오른쪽에 지금 로그인한 계정의 정보가 표시돼요. 어떤 계정으로 들어와 있는지 여기서 확인해요.</p>" +
-      "<div class=\"table-wrap\"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>" +
+    { id: 'sec6', label: "공통 영역 보기", html:
+      "<p>로그인하면 모든 화면에 똑같이 나오는 영역이에요. 맨 위의 헤더와 왼쪽 메뉴로 이루어져요.</p>" +
+      "<h3>헤더</h3>" +
+      "<p>화면 맨 위에 지금 보고 있는 대메뉴 이름이 나오고, 오른쪽에 지금 로그인한 계정의 정보가 표시돼요. 어떤 계정으로 들어와 있는지 여기서 확인해요.</p>" +
+      "<div class=\"table-wrap\"><table class=\"wide\"><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>" +
+        "<tr><td>알림 아이콘</td><td>알림센터 열기</td></tr>" +
         "<tr><td>회원 유형</td><td>로그인한 계정이 본사인지 가맹점인지 표시</td></tr>" +
         "<tr><td>상호명</td><td>회원정보의 사업자정보에 등록된 상호명 (소매설정의 상호명과 다름)</td></tr>" +
         "<tr><td>아이디</td><td>로그인할 때 쓴 아이디</td></tr>" +
       "</tbody></table></div>" +
       "<p>값은 <a href=\"#system-member\">시스템관리 &gt; 회원정보</a>에서 확인해요. 사업자정보는 보기만 할 수 있어요. 바꾸려면 본사 계정은 09SCM 고객센터에, 가맹점 계정은 소속 본사에 문의해요.</p>" +
-      "<h3>PC와 모바일에서 달라요</h3>" +
+      "<p>PC와 모바일에서 표시되는 정보가 달라요.</p>" +
       "<div class=\"table-wrap\"><table><thead><tr><th>화면</th><th>표시되는 정보</th></tr></thead><tbody>" +
         "<tr><td>PC</td><td>알림 아이콘, 회원 유형, 상호명, 아이디</td></tr>" +
         "<tr><td>모바일</td><td>알림 아이콘, 회원 유형 (화면이 좁아 상호명과 아이디는 표시하지 않음)</td></tr>" +
       "</tbody></table></div>" +
       "<p>모바일에서 상호명과 아이디를 확인하려면 시스템관리 &gt; 회원정보를 열어요.</p>" +
-      "<h3>본사 계정</h3>" +
       introShotPair('header-hq', '09SCM 본사 계정 헤더', '09SCM 본사 계정 헤더 화면 (PC / 모바일)') +
-      "<h3>가맹점 계정</h3>" +
-      introShotPair('header-fr', '09SCM 가맹점 계정 헤더', '09SCM 가맹점 계정 헤더 화면 (PC / 모바일)') }
+      introShotPair('header-fr', '09SCM 가맹점 계정 헤더', '09SCM 가맹점 계정 헤더 화면 (PC / 모바일)') +
+      "<p>이용제한 상태인 계정은 모든 화면 맨 위에 이용제한 안내 배너가 함께 표시돼요. 자세한 내용은 <a href=\"#start-login\">가입신청·로그인</a>에서 확인해주세요.</p>" +
+      "<h3>왼쪽 메뉴</h3>" +
+      "<p>위쪽의 대메뉴 버튼을 누르면 그 아래 메뉴 목록이 바뀌어요. 계정에 따라 보이는 대메뉴가 달라요. 자세한 내용은 <a href=\"#start-intro/sec5\">계정에 따라 메뉴가 달라요</a>에서 확인해주세요.</p>" +
+      introLnbShot('lnb-hq-pc', '09SCM 본사 계정 왼쪽 메뉴 PC 화면', '09SCM 본사 계정 왼쪽 메뉴 화면') +
+      introLnbShot('lnb-fr-pc', '09SCM 가맹점 계정 왼쪽 메뉴 PC 화면', '09SCM 가맹점 계정 왼쪽 메뉴 화면') +
+      "<div class=\"table-wrap\"><table class=\"wide\"><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>" +
+        "<tr><td>대메뉴 버튼</td><td>대시보드, 소매관리, 도매관리 (본사는 가맹점관리 추가). 누르면 아래 메뉴 목록이 해당 대메뉴의 메뉴로 바뀜</td></tr>" +
+        "<tr><td>메뉴 목록</td><td>선택한 대메뉴의 메뉴. 하위 메뉴가 있는 메뉴는 누르면 펼쳐지거나 접힘</td></tr>" +
+        "<tr><td>[내 소매몰]</td><td>내 소매몰을 새 창으로 열기</td></tr>" +
+        "<tr><td>[시스템관리]</td><td>메뉴 목록을 시스템관리 메뉴(회원정보, 이용료관리, 알림설정, 공지사항)로 바꿈 (이용료관리는 가맹점 계정에만 표시)</td></tr>" +
+        "<tr><td>[로그아웃]</td><td>로그아웃하고 로그인 화면으로 이동 (<a href=\"#start-login\">가입신청·로그인</a>)</td></tr>" +
+      "</tbody></table></div>" +
+      "<p>모바일에서는 왼쪽 메뉴가 화면에 고정되어 있지 않고, 헤더 왼쪽의 메뉴 버튼을 누르면 열려요.</p>" }
   ]
 };
 
