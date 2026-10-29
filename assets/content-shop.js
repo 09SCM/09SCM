@@ -1941,7 +1941,7 @@ window.GUIDE_CONTENT['mypage-info'] = {
       shots: pair('mypage-info-saved-toast', '09SCM 소매몰 회원정보 저장 안내'),
       shotCaption: '09SCM 소매몰 회원정보 저장 안내 화면 (PC / 모바일)',
       html:
-        '<p>&quot;회원정보가 저장되었습니다.&quot; 안내가 잠깐 나와요. 같은 화면에 그대로 머물러요.</p>'
+        '<p>&quot;회원정보가 저장되었습니다.&quot; 안내가 잠깐 나와요.</p>'
     },
     {
       title: '입력이 맞지 않으면',
@@ -1989,7 +1989,7 @@ window.GUIDE_CONTENT['mypage-address'] = {
       shots: pair('mypage-address-saved-toast', '09SCM 소매몰 대표 배달지 저장 안내'),
       shotCaption: '09SCM 소매몰 대표 배달지 저장 안내 화면 (PC / 모바일)',
       html:
-        '<p>&quot;대표 배달지가 저장되었습니다.&quot; 안내가 잠깐 나와요. 같은 화면에 그대로 머물러요.</p>'
+        '<p>&quot;대표 배달지가 저장되었습니다.&quot; 안내가 잠깐 나와요.</p>'
     },
     {
       title: '입력이 맞지 않으면',
@@ -2027,10 +2027,10 @@ window.GUIDE_CONTENT['mypage-withdraw'] = {
     '</ol>' +
     '<h3>탈퇴 전에 알아두세요</h3>' +
     '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
-      '<tr><td>로그인과 이용</td><td>탈퇴하면 현재 계정으로 로그인하거나 회원 서비스를 쓸 수 없어요.</td></tr>' +
-      '<tr><td>주문·결제 기록</td><td>관련 법령에서 정한 기간 동안 보관될 수 있어요.</td></tr>' +
-      '<tr><td>진행 중인 주문</td><td>픽업완료·배달완료가 아니고 취소가 승인되지 않은 주문이에요(취소·반품을 요청 중인 주문 포함). 처리가 끝난 뒤에 탈퇴할 수 있어요.</td></tr>' +
-      '<tr><td>다시 가입하기</td><td>같은 휴대폰번호로 다시 가입할 수 있지만 새 회원으로 가입돼요. 이전 회원정보와 주문은 이어지지 않아요.</td></tr>' +
+      '<tr><td>로그인과 이용</td><td>현재 계정으로 로그인, 회원 서비스 이용 불가</td></tr>' +
+      '<tr><td>주문·결제 기록</td><td>관련 법령에서 정한 기간 동안 보관될 수 있음</td></tr>' +
+      '<tr><td>진행 중인 주문</td><td>픽업완료·배달완료가 아니고 취소가 승인되지 않은 주문 (취소·반품 요청 중인 주문 포함), 처리가 끝난 뒤 탈퇴 가능</td></tr>' +
+      '<tr><td>다시 가입하기</td><td>같은 휴대폰번호로 재가입 가능 (새 회원으로 가입되며 이전 회원정보·주문은 이어지지 않음)</td></tr>' +
     '</tbody></table></div>',
   cases: [
     {
