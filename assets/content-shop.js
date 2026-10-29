@@ -29,7 +29,7 @@ var SHOT_DIMS = {
   'cart-main': [2880, 1904, 880, 2512],
   'cart-delivery': [2880, 1456, 880, 1716],
   'cart-change': [2880, 1800, 880, 1800],
-  'cart-change-toast': [820, 158],
+  'cart-change-toast': [2880, 960, 880, 960],
   'cart-nowindow': [2880, 1510, 880, 1792],
   'cart-soldout': [2880, 1816, 880, 2152],
   'check-alert-settled': [480, 178],
@@ -1103,7 +1103,7 @@ window.GUIDE_CONTENT['order-cart'] = {
             },
             {
               shots: pair('cart-change-toast', '09SCM 소매몰 수령방식 변경 안내'),
-              shotCaption: '09SCM 소매몰 수령방식 변경 안내 화면',
+              shotCaption: '09SCM 소매몰 수령방식 변경 안내 화면 (PC / 모바일)',
               html:
                 '<ul><li>안내: &quot;○○을(를) 배달 장바구니로 이동했습니다.&quot;(픽업으로 바꾸면 &quot;픽업 장바구니&quot;)를 잠깐 표시</li></ul>'
             }
