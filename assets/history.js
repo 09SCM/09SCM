@@ -12,10 +12,10 @@ window.GUIDE_HISTORY = {
   ],
   partner: [
     {
-      version: 'v1.1', date: '26.10.29 14:48', push: 'cd8a7a3',
+      version: 'v1.1', date: '26.10.29 18:31', push: '1123cea',
       items: [
-        { summary: '헤더 오른쪽 위 계정 정보(회원 유형·상호명·아이디) 설명과 PC·모바일 캡처 추가', path: '시작하기 > 09SCM 관리자 소개 > 화면 오른쪽 위 계정 정보', link: './guide/partner.html#start-intro/sec6' },
-        { summary: '로그인 후 표시되는 계정 정보 문장에서 새 구역으로 연결', path: '시작하기 > 가입신청·로그인', link: './guide/partner.html#start-login' }
+        { summary: "소개에 '공통 영역 보기' 구역 추가: 헤더 및 왼쪽 메뉴 설명 보충", path: '시작하기 > 09SCM 관리자 소개 > 공통 영역 보기', link: './guide/partner.html#start-intro/sec6' },
+        { summary: '로그인 후 표시되는 계정 정보 안내 문장 추가, 공통 영역 보기로 연결', path: '시작하기 > 가입신청·로그인', link: './guide/partner.html#start-login' }
       ]
     },
     { version: 'v1.0', date: '26.10.27 10:42', push: '54a2fdc', note: '최초작성' }
