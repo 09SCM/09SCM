@@ -39,6 +39,7 @@
           <a class="btn-primary" href="./guide/admin.html">이용가이드</a>
           <a class="btn-secondary" href="./mock/admin.html" target="_blank" rel="noopener noreferrer">화면보기</a>
         </div>
+        <details class="card-history" data-history="admin"><summary>히스토리</summary><div class="history-body"></div></details>
       </article>
 
       <article class="card system-card col-4">
@@ -48,6 +49,7 @@
           <a class="btn-primary" href="./guide/partner.html">이용가이드</a>
           <a class="btn-secondary" href="./mock/partner.html" target="_blank" rel="noopener noreferrer">화면보기</a>
         </div>
+        <details class="card-history" data-history="partner"><summary>히스토리</summary><div class="history-body"></div></details>
       </article>
 
       <article class="card system-card col-4">
@@ -57,13 +59,36 @@
           <a class="btn-primary" href="./guide/shop.html">이용가이드</a>
           <a class="btn-secondary" href="https://superbeanchoi.github.io/09SCM-Shop/" target="_blank" rel="noopener noreferrer">화면보기</a>
         </div>
+        <details class="card-history" data-history="shop"><summary>히스토리</summary><div class="history-body"></div></details>
       </article>
     </section>
   </main>
 
   <footer class="site-footer">09SCM</footer>
 
+  <script src="./assets/history.js"></script>
   <script>
+    // 카드별 히스토리: 버전 → 항목(수정 내용 1줄, 섹션 경로, 바로가기 링크) 순서로 펼친다
+    (function () {
+      var data = window.GUIDE_HISTORY || {};
+      function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+      document.querySelectorAll('[data-history]').forEach(function (box) {
+        var list = data[box.getAttribute('data-history')] || [];
+        var body = box.querySelector('.history-body');
+        if (!list.length) { body.innerHTML = '<p class="history-empty">등록된 이력이 없어요.</p>'; return; }
+        body.innerHTML = list.map(function (v) {
+          var items = (v.items || []).map(function (it) {
+            return '<li><span class="history-summary">' + esc(it.summary) + '</span>' +
+              '<span class="history-meta"><span class="history-path">' + esc(it.path) + '</span>' +
+              '<a href="' + esc(it.link) + '">바로가기</a></span></li>';
+          }).join('');
+          return '<details class="history-version"><summary><b>' + esc(v.version) + '</b>' +
+            '<span class="history-sub">' + esc(v.date) + ' · ' + esc(v.push) + (v.note ? ' · ' + esc(v.note) : '') + '</span></summary>' +
+            '<ul class="history-items">' + items + '</ul></details>';
+        }).join('');
+      });
+    })();
+
     document.querySelectorAll('[data-soon]').forEach(function (button) {
       button.addEventListener('click', function () {
         alert('준비 중입니다.');
