@@ -17,7 +17,7 @@ window.GUIDE_NAV = [
     { id: 'order-pay', label: '주문·결제' }
   ]},
   { id: 'check', label: '주문조회', children: [
-    { id: 'check-quick', label: '간편주문조회' },
+    { id: 'check-quick', label: '간편 주문 조회' },
     { id: 'check-history', label: '주문내역' },
     { id: 'check-detail', label: '주문상세' }
   ]},
