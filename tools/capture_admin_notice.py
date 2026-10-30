@@ -89,7 +89,7 @@ with sync_playwright() as p:
     b = p.chromium.launch()
     # 1) 공지사항 목록 (대표)
     ctx, page = login(b); open_notice(page); hide_lnb(page)
-    page.set_viewport_size({'width': 1440, 'height': 1500}); page.wait_for_timeout(300)   # 목록 대표 화면은 PC 1440×1500 고정 규격
+    page.set_viewport_size({'width': 1440, 'height': 900}); page.wait_for_timeout(300)   # 목록 대표 화면은 첫 화면(1440×900)만 촬영
     save(page.screenshot(), 'notice-list-pc')
     ctx.close()
     # 2) 검색 결과 없음
