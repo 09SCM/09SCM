@@ -116,7 +116,11 @@ with sync_playwright() as p:
     page.click('#tfLoadCur'); page.wait_for_timeout(300)
     page.click('#termsFormSave'); page.wait_for_timeout(400)
     page.click('#cfOk'); page.wait_for_timeout(400)
-    # 안내 토스트: 알럿형 팝업과 같은 폭(452px)으로, 토스트 중심에 맞춰 여백을 두고 자른다
+    # 안내 토스트: 알럿형 팝업과 같은 폭(452px)으로, 토스트 중심에 맞춰 여백을 두고 자른다.
+    # 여백에 뒤 화면의 글자·선이 비치지 않게 토스트 외 요소는 숨기고 배경은 흰색으로 둔다.
+    page.evaluate(HIDE_OTHERS_JS, page.locator('#toastEl').element_handle())
+    page.evaluate("document.documentElement.style.background = document.body.style.background = '#fff'")
+    page.wait_for_timeout(200)
     tb = page.locator('#toastEl').bounding_box(); cx = tb['x'] + tb['width'] / 2
     save(page.screenshot(clip={'x': cx - 226, 'y': max(tb['y'] - 32, 0), 'width': 452, 'height': tb['height'] + 64}), 'terms-reg-done-pc')
     ctx.close()

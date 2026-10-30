@@ -590,3 +590,286 @@ window.GUIDE_CONTENT['system-terms'] = {
     }
   ]
 };
+
+// ---- 시스템 관리 > 공지사항 ----
+window.GUIDE_CONTENT['system-notice'] = {
+  screens: [
+    {
+      id: 'list',
+      label: '공지사항 보기',
+      shots: [
+        { device: 'pc', src: IMG_ADMIN + 'notice-list-pc.webp', alt: '09SCM 통합관리자 공지사항 PC 화면', ratio: 2880 / 3000 }
+      ],
+      shotCaption: '09SCM 통합관리자 공지사항 화면',
+      overview:
+        '<p>09SCM 운영자가 본사·가맹점 관리자에게 전하는 공지를 올리고 관리하는 화면이에요. 공지 등록, 수정, 삭제를 할 수 있어요.</p>' +
+        '<ul>' +
+          '<li>이 목록에는 통합관리자에서 올린 09SCM 공지만 나와요. 본사가 가맹점에게 올린 공지(우리본사 공지)는 나오지 않아요. (<a href="partner.html#franchise-notice">09SCM 관리자 이용가이드</a>)</li>' +
+          '<li>누구에게 보이는지(노출대상)와 보일지 말지(노출여부)는 따로 정해요. 노출여부가 [미노출]이면 노출대상과 관계없이 09SCM 어디에도 보이지 않아요.</li>' +
+          '<li>노출대상이나 노출여부를 바꾸면 09SCM에 바로 반영돼요. 정해진 날짜에 맞춰 올리는 예약 게시는 없어요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>공지 찾기</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>노출여부</td><td>전체, 노출, 미노출 중 선택</td></tr>' +
+            '<tr><td>검색</td><td>제목으로 검색 (영문 대소문자 구분 없음, [검색]을 누르거나 Enter를 눌러야 반영)</td></tr>' +
+            '<tr><td>노출대상 탭</td><td>전체, 본사, 본사/가맹점 중 선택</td></tr>' +
+          '</tbody></table></div>' +
+        '<p>노출여부, 검색어, 노출대상 탭은 함께 적용돼요. 목록은 등록일이 최근인 공지부터 한 페이지에 20건씩 보여줘요.</p>' +
+        '<p>상세·등록·수정 화면에서 목록으로 돌아오면 고른 조건과 페이지가 그대로 유지돼요. 왼쪽 메뉴로 다시 열면 처음 상태로 돌아가요.</p>' +
+
+        '<h3>목록 항목</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>체크박스</td><td>삭제할 공지 선택 (헤더 체크박스는 현재 페이지 전체 선택)</td></tr>' +
+            '<tr><td>번호</td><td>지금 보이는 목록의 순번 (맨 위 공지가 가장 큰 번호, 공지 고유 번호 아님)</td></tr>' +
+            '<tr><td>제목</td><td>공지 제목 (첨부파일이 있으면 아이콘 표시, 누르면 <a href="#system-notice/detail">공지사항 상세 보기</a>로 이동)</td></tr>' +
+            '<tr><td>노출대상</td><td>본사 / 본사/가맹점</td></tr>' +
+            '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
+            '<tr><td>작성자</td><td>공지를 올린 운영자</td></tr>' +
+            '<tr><td>등록일</td><td>운영자가 정한 등록일</td></tr>' +
+            '<tr><td>조회수</td><td>09SCM 본사·가맹점 관리자가 공지 상세를 연 횟수</td></tr>' +
+            '<tr><td>관리</td><td>[상세보기], [수정], [삭제] 버튼</td></tr>' +
+          '</tbody></table></div>' +
+        '<p>건수는 목록 위에 "전체 N건 | 선택 N건"으로 보여줘요. 전체는 조건을 적용한 뒤의 건수예요.</p>' +
+
+        '<h3>상단 버튼</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>[+ 공지사항 등록]</td><td>새 공지를 올리는 <a href="#system-notice/form">공지사항 등록·수정하기</a> 화면으로 이동</td></tr>' +
+            '<tr><td>[삭제]</td><td>체크박스로 고른 공지를 한 번에 삭제 (고른 공지가 없으면 누를 수 없음, 선택은 현재 페이지에서만 유지되고 페이지를 넘기면 해제)</td></tr>' +
+          '</tbody></table></div>' +
+
+        '<h3>누구에게 보이나요</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>구분</th><th>보이는 계정</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>노출대상 본사, 노출</td><td>09SCM 본사 계정 전체</td></tr>' +
+            '<tr><td>노출대상 본사/가맹점, 노출</td><td>09SCM 본사 계정 전체와 소속 가맹점 계정 전체</td></tr>' +
+            '<tr><td>미노출</td><td>보이는 계정 없음</td></tr>' +
+          '</tbody></table></div>' +
+        '<p>특정 본사나 가맹점만 골라서 보여주는 기능은 없어요.</p>',
+      cases: [
+        {
+          group: '데이터가 없을 때',
+          rows: [
+            {
+              title: '검색 결과가 없으면',
+              shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-empty-search-pc.webp', alt: '09SCM 통합관리자 공지사항 검색 결과 없음 PC 화면', ratio: 2848 / 702 }],
+              shotCaption: '09SCM 통합관리자 공지사항 검색 결과 없음 화면',
+              html: '<ul><li>안내: "검색 결과가 없습니다."</li><li>건수: 전체 0건 | 선택 0건</li></ul>'
+            },
+            {
+              title: '등록된 공지가 없으면',
+              shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-empty-all-pc.webp', alt: '09SCM 통합관리자 등록된 공지 없음 PC 화면', ratio: 2848 / 702 }],
+              shotCaption: '09SCM 통합관리자 등록된 공지 없음 화면',
+              html: '<ul><li>안내: "등록된 공지사항이 없습니다."</li><li>건수: 전체 0건 | 선택 0건</li></ul>'
+            }
+          ]
+        },
+        {
+          group: '확인·안내가 나올 때',
+          rows: [
+            {
+              title: '삭제를 확인할 때',
+              shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-delete-pc.webp', alt: '09SCM 통합관리자 공지사항 삭제 확인 PC 화면', ratio: 904 / 350 }],
+              shotCaption: '09SCM 통합관리자 공지사항 삭제 확인 화면',
+              html:
+                '<ul>' +
+                  '<li>조건: 관리 컬럼의 [삭제]를 누름</li>' +
+                  '<li>안내: 삭제한 데이터는 복구할 수 없다는 문구</li>' +
+                  '<li>[삭제]: 공지와 첨부파일을 삭제, 09SCM에서도 해당 공지가 사라짐</li>' +
+                  '<li>[취소]: 확인 창을 닫음</li>' +
+                '</ul>'
+            },
+            {
+              title: '선택한 공지의 삭제를 확인할 때',
+              shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-bulk-delete-pc.webp', alt: '09SCM 통합관리자 공지사항 선택 삭제 확인 PC 화면', ratio: 904 / 350 }],
+              shotCaption: '09SCM 통합관리자 공지사항 선택 삭제 확인 화면',
+              html:
+                '<ul>' +
+                  '<li>조건: 체크박스로 공지를 고르고 상단 [삭제]를 누름</li>' +
+                  '<li>안내: 선택한 건수와 복구할 수 없다는 문구</li>' +
+                  '<li>[삭제]: 고른 공지와 첨부파일을 모두 삭제</li>' +
+                  '<li>[취소]: 확인 창을 닫음</li>' +
+                '</ul>'
+            },
+            {
+              title: '삭제가 끝나면',
+              shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-deleted-pc.webp', alt: '09SCM 통합관리자 공지사항 삭제 완료 안내 PC 화면', ratio: 904 / 210 }],
+              shotCaption: '09SCM 통합관리자 공지사항 삭제 완료 안내 화면',
+              html: '<ul><li>이동: 공지사항 목록 (상세 화면에서 삭제해도 목록으로 이동)</li><li>안내: "삭제되었습니다." 잠시 표시</li></ul>'
+            }
+          ]
+        }
+      ],
+      trouble:
+        '<h3>올린 공지가 본사·가맹점에게 보이지 않아요</h3>' +
+        '<p>노출여부가 [미노출]이면 어디에도 보이지 않아요. 노출대상이 [본사]이면 가맹점에는 보이지 않아요. 공지를 수정해서 노출여부와 노출대상을 확인해요.</p>' +
+        '<h3>조회수가 오르지 않아요</h3>' +
+        '<p>조회수는 09SCM 본사·가맹점 관리자가 공지 상세를 열 때만 올라요. 통합관리자에서 공지를 열어본 건 집계하지 않아요.</p>' +
+        '<h3>본사가 올린 공지가 이 목록에 없어요</h3>' +
+        '<p>이 목록에는 통합관리자에서 올린 09SCM 공지만 나와요. 본사가 가맹점에게 올린 공지는 본사의 가맹점관리 &gt; 공지사항에서 확인해요.</p>'
+    },
+    {
+      id: 'detail',
+      label: '공지사항 상세 보기',
+      shots: [
+        { device: 'pc', src: IMG_ADMIN + 'notice-detail-pc.webp', alt: '09SCM 통합관리자 공지사항 상세 PC 화면', ratio: 2880 / 1800 }
+      ],
+      shotCaption: '09SCM 통합관리자 공지사항 상세 화면',
+      overview:
+        '<p>올린 공지의 내용을 확인하는 화면이에요. 공지사항 보기에서 공지 제목이나 [상세보기]를 누르면 열려요.</p>' +
+        '<ul>' +
+          '<li>이 화면에서 공지를 열어도 조회수는 오르지 않아요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>화면 구성</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>← 목록으로</td><td>공지사항 목록으로 이동 (아래 [목록]과 같음)</td></tr>' +
+            '<tr><td>제목</td><td>공지 제목</td></tr>' +
+            '<tr><td>노출대상</td><td>본사 / 본사/가맹점</td></tr>' +
+            '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
+            '<tr><td>작성자</td><td>공지를 올린 운영자</td></tr>' +
+            '<tr><td>등록일</td><td>운영자가 정한 등록일</td></tr>' +
+            '<tr><td>조회수</td><td>09SCM 본사·가맹점 관리자가 공지 상세를 연 횟수</td></tr>' +
+            '<tr><td>첨부파일</td><td>첨부된 파일의 이름과 용량 (없으면 "첨부파일 없음")</td></tr>' +
+            '<tr><td>내용</td><td>입력한 서식 그대로 보여주는 공지 본문 (읽기 전용)</td></tr>' +
+          '</tbody></table></div>' +
+
+        '<h3>하단 버튼</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>[목록]</td><td>공지사항 목록으로 이동 (고른 조건과 페이지 유지)</td></tr>' +
+            '<tr><td>[수정]</td><td>이 공지를 고치는 <a href="#system-notice/form">공지사항 등록·수정하기</a> 화면으로 이동</td></tr>' +
+            '<tr><td>[삭제]</td><td>삭제 확인 창을 거쳐 삭제하고 목록으로 이동 (확인 창은 <a href="#system-notice/list">공지사항 보기</a>의 삭제 확인과 같음)</td></tr>' +
+          '</tbody></table></div>',
+      cases: [
+        {
+          title: '첨부파일이 없으면',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-detail-nofile-pc.webp', alt: '09SCM 통합관리자 공지사항 첨부파일 없음 PC 화면', ratio: 2848 / 508 }],
+          shotCaption: '09SCM 통합관리자 공지사항 첨부파일 없음 화면',
+          html: '<ul><li>첨부파일: "첨부파일 없음" 표시</li></ul>'
+        }
+      ]
+    },
+    {
+      id: 'form',
+      label: '공지사항 등록·수정하기',
+      shots: [
+        { device: 'pc', src: IMG_ADMIN + 'notice-form-pc.webp', alt: '09SCM 통합관리자 공지사항 등록 PC 화면', ratio: 2880 / 1800 }
+      ],
+      shotCaption: '09SCM 통합관리자 공지사항 등록 화면',
+      overview:
+        '<p>공지를 새로 올리거나 올린 공지를 고치는 화면이에요. 공지사항 보기의 [+ 공지사항 등록]을 누르면 등록, [수정]을 누르면 수정으로 열려요. 등록과 수정은 같은 항목을 써요.</p>' +
+        '<ul>' +
+          '<li>필수 항목(*)을 모두 입력하고 아래의 [등록]이나 [저장]을 눌러야 반영돼요.</li>' +
+          '<li>작성자는 공지를 처음 올린 운영자이고, 수정해도 바뀌지 않아요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>입력 항목</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>노출대상 *</td><td>본사, 본사/가맹점 중 선택 (본사는 본사 계정에만, 본사/가맹점은 본사와 소속 가맹점 전체에 보임, 처음에는 선택된 값 없음)</td></tr>' +
+            '<tr><td>노출여부 *</td><td>노출, 미노출 중 선택 (미노출은 09SCM 어디에도 보이지 않음, 처음에는 선택된 값 없음)</td></tr>' +
+            '<tr><td>등록일 *</td><td>목록에 표시되고 정렬 기준이 되는 날짜 (달력에서 선택, 처음에는 오늘 날짜, 과거·미래 날짜 제한 없음)</td></tr>' +
+            '<tr><td>제목 *</td><td>공지 제목 (100자 이내)</td></tr>' +
+            '<tr><td>내용 *</td><td>공지 본문 (서식 에디터로 입력)</td></tr>' +
+            '<tr><td>첨부파일</td><td>공지에 첨부할 파일 ([파일 추가]로 선택, 최대 5개, 파일당 10MB 이내, 문서·이미지·압축 파일만 가능, 실행 파일 불가)</td></tr>' +
+          '</tbody></table></div>' +
+        '<p>*는 필수 항목이에요.</p>' +
+
+        '<h3>하단 버튼</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>[취소]</td><td>작성을 마치지 않고 돌아감 (등록은 공지사항 목록, 수정은 해당 공지 상세, 위쪽 [← 목록으로]와 같음)</td></tr>' +
+            '<tr><td>[등록]</td><td>새 공지를 저장하고 공지사항 목록으로 이동 (등록할 때만 표시)</td></tr>' +
+            '<tr><td>[저장]</td><td>고친 내용을 저장하고 해당 공지 상세로 이동 (수정할 때만 표시)</td></tr>' +
+          '</tbody></table></div>',
+      cases: [
+        {
+          title: '올린 공지를 수정할 때',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-edit-pc.webp', alt: '09SCM 통합관리자 공지사항 수정 PC 화면', ratio: 2848 / 1408 }],
+          shotCaption: '09SCM 통합관리자 공지사항 수정 화면',
+          html:
+            '<ul>' +
+              '<li>입력 항목: 올린 내용이 채워진 채로 열림</li>' +
+              '<li>첨부파일: 올린 파일마다 [삭제]로 개별 삭제, [파일 추가]로 추가</li>' +
+              '<li>노출 반영: 노출대상이나 노출여부를 바꾸고 [저장]하면 09SCM에 바로 반영</li>' +
+            '</ul>'
+        },
+        {
+          title: '필수 항목이 비어 있으면',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-form-error-pc.webp', alt: '09SCM 통합관리자 공지사항 입력 오류 PC 화면', ratio: 2848 / 1364 }],
+          shotCaption: '09SCM 통합관리자 공지사항 입력 오류 화면',
+          html:
+            '<p>[등록]이나 [저장]을 눌러도 저장되지 않고, 비어 있는 항목 아래에 안내가 나와요. 나오는 안내 문구는 아래와 같아요.</p>' +
+            '<div class="table-wrap"><table class="wide">' +
+              '<thead><tr><th>상황</th><th>안내 문구</th></tr></thead>' +
+              '<tbody>' +
+                '<tr><td>노출대상을 선택하지 않음</td><td>"노출대상을 선택해 주세요."</td></tr>' +
+                '<tr><td>노출여부를 선택하지 않음</td><td>"노출여부를 선택해 주세요."</td></tr>' +
+                '<tr><td>등록일을 선택하지 않음</td><td>"등록일을 선택해 주세요."</td></tr>' +
+                '<tr><td>제목을 입력하지 않음</td><td>"제목을 입력해 주세요."</td></tr>' +
+                '<tr><td>내용을 입력하지 않음</td><td>"내용을 입력해 주세요."</td></tr>' +
+              '</tbody></table></div>'
+        },
+        {
+          title: '첨부파일을 추가하지 못하면',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-attach-error-pc.webp', alt: '09SCM 통합관리자 공지사항 첨부파일 오류 PC 화면', ratio: 2848 / 240 }],
+          shotCaption: '09SCM 통합관리자 공지사항 첨부파일 오류 화면',
+          html:
+            '<p>파일을 고르는 즉시 파일 아래에 안내가 나오고, 해당 파일은 추가되지 않아요.</p>' +
+            '<div class="table-wrap"><table class="wide">' +
+              '<thead><tr><th>상황</th><th>안내 문구</th></tr></thead>' +
+              '<tbody>' +
+                '<tr><td>허용되지 않는 형식의 파일 (실행 파일 등)</td><td>"{파일명}: 허용되지 않는 형식입니다."</td></tr>' +
+                '<tr><td>파일 용량이 10MB를 넘음</td><td>"{파일명}: 파일당 10MB 이내만 추가할 수 있습니다."</td></tr>' +
+                '<tr><td>이미 5개를 추가한 상태에서 파일 추가</td><td>"첨부파일은 최대 5개까지 추가할 수 있습니다."</td></tr>' +
+              '</tbody></table></div>'
+        },
+        {
+          group: '확인·안내가 나올 때',
+          rows: [
+            {
+              title: '작성 취소를 확인할 때',
+              shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-leave-pc.webp', alt: '09SCM 통합관리자 공지사항 작성 취소 확인 PC 화면', ratio: 904 / 350 }],
+              shotCaption: '09SCM 통합관리자 공지사항 작성 취소 확인 화면',
+              html:
+                '<ul>' +
+                  '<li>조건: 입력한 내용이 있는 상태에서 [취소]나 [← 목록으로]를 누름</li>' +
+                  '<li>[나가기]: 입력한 내용을 저장하지 않고 돌아감 (등록은 공지사항 목록, 수정은 해당 공지 상세)</li>' +
+                  '<li>[취소]: 확인 창을 닫고 작성 화면에 그대로 머묾</li>' +
+                  '<li>입력한 내용이 없을 때: 확인 없이 바로 돌아감</li>' +
+                '</ul>'
+            },
+            {
+              title: '저장이 끝나면',
+              shots: [{ device: 'pc', src: IMG_ADMIN + 'notice-saved-pc.webp', alt: '09SCM 통합관리자 공지사항 저장 완료 안내 PC 화면', ratio: 904 / 210 }],
+              shotCaption: '09SCM 통합관리자 공지사항 저장 완료 안내 화면',
+              html:
+                '<ul>' +
+                  '<li>이동: [등록]은 공지사항 목록, [저장]은 해당 공지 상세</li>' +
+                  '<li>안내: "저장되었습니다." 잠시 표시</li>' +
+                '</ul>'
+            }
+          ]
+        }
+      ],
+      trouble:
+        '<h3>등록일을 미래 날짜로 했는데 공지가 바로 보여요</h3>' +
+        '<p>등록일은 목록에 표시하고 정렬하는 기준일이에요. 보이는 시점은 등록일이 아니라 노출여부로 정해지고, [노출]로 저장하면 바로 보여요. 예약 게시는 지원하지 않아요.</p>' +
+        '<h3>공지를 삭제하지 않고 잠시 내리고 싶어요</h3>' +
+        '<p>공지를 수정해서 노출여부를 [미노출]로 바꿔요. 삭제하면 09SCM에서도 사라지고 복구할 수 없어요.</p>'
+    }
+  ]
+};
