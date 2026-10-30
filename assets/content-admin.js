@@ -721,11 +721,17 @@ window.GUIDE_CONTENT['system-notice'] = {
       overview:
         '<p>올린 공지의 내용을 확인하는 화면이에요. 공지사항 보기에서 공지 제목이나 [상세보기]를 누르면 열려요.</p>',
       steps:
-        '<h3>화면 구성</h3>' +
+        '<h3>상단 버튼</h3>' +
         '<div class="table-wrap"><table class="wide">' +
           '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
           '<tbody>' +
-            '<tr><td>← 목록으로</td><td>공지사항 목록으로 이동 (아래 [목록]과 같음)</td></tr>' +
+            '<tr><td>[← 목록으로]</td><td>공지사항 목록으로 이동 (하단 [목록]과 같음)</td></tr>' +
+          '</tbody></table></div>' +
+
+        '<h3>공지 정보</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
             '<tr><td>제목</td><td>공지 제목</td></tr>' +
             '<tr><td>노출대상</td><td>본사 / 본사/가맹점</td></tr>' +
             '<tr><td>노출여부</td><td>노출 / 미노출</td></tr>' +
@@ -733,6 +739,12 @@ window.GUIDE_CONTENT['system-notice'] = {
             '<tr><td>등록일</td><td>공지 등록일 (등록·수정할 때 운영자가 정한 날짜)</td></tr>' +
             '<tr><td>조회수</td><td>09SCM 본사·가맹점 관리자가 공지 상세를 연 횟수</td></tr>' +
             '<tr><td>첨부파일</td><td>첨부된 파일의 이름과 용량 (없으면 "첨부파일 없음")</td></tr>' +
+          '</tbody></table></div>' +
+
+        '<h3>공지 내용</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
             '<tr><td>내용</td><td>입력한 서식 그대로 보여주는 공지 본문 (읽기 전용)</td></tr>' +
           '</tbody></table></div>' +
 
@@ -766,6 +778,13 @@ window.GUIDE_CONTENT['system-notice'] = {
           '<li>작성자는 공지를 처음 올린 운영자이고, 수정해도 바뀌지 않아요.</li>' +
         '</ul>',
       steps:
+        '<h3>상단 버튼</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>[← 목록으로]</td><td>작성을 마치지 않고 돌아감 (하단 [취소]와 같음)</td></tr>' +
+          '</tbody></table></div>' +
+
         '<h3>입력 항목</h3>' +
         '<div class="table-wrap"><table class="wide">' +
           '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
@@ -783,7 +802,7 @@ window.GUIDE_CONTENT['system-notice'] = {
         '<div class="table-wrap"><table class="wide">' +
           '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
           '<tbody>' +
-            '<tr><td>[취소]</td><td>작성을 마치지 않고 돌아감 (등록은 공지사항 목록, 수정은 해당 공지 상세, 위쪽 [← 목록으로]와 같음)</td></tr>' +
+            '<tr><td>[취소]</td><td>작성을 마치지 않고 돌아감 (등록은 공지사항 목록, 수정은 해당 공지 상세)</td></tr>' +
             '<tr><td>[등록]</td><td>새 공지를 저장하고 공지사항 목록으로 이동 (등록할 때만 표시)</td></tr>' +
             '<tr><td>[저장]</td><td>고친 내용을 저장하고 해당 공지 상세로 이동 (수정할 때만 표시)</td></tr>' +
           '</tbody></table></div>',
