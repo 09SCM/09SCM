@@ -536,7 +536,7 @@ window.GUIDE_CONTENT['system-terms'] = {
               '</tbody></table></div>'
         },
         {
-          group: '알럿 케이스',
+          group: '확인·안내가 나올 때',
           rows: [
             {
               title: '덮어쓰기를 확인할 때',
