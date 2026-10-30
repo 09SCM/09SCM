@@ -78,7 +78,8 @@
         if (!list.length) { body.innerHTML = '<p class="history-empty">등록된 이력이 없어요.</p>'; return; }
         body.innerHTML = list.map(function (v) {
           var items = (v.items || []).map(function (it) {
-            return '<li><span class="history-summary">' + esc(it.summary) + '</span>' +
+            var detail = (it.detail || []).map(function (d) { return '<span class="history-detail">' + esc(d) + '</span>'; }).join('');
+            return '<li><span class="history-summary">' + esc(it.summary) + '</span>' + detail +
               '<span class="history-meta"><span class="history-path">' + esc(it.path) + '</span>' +
               '<a href="' + esc(it.link) + '">바로가기</a></span></li>';
           }).join('');
