@@ -12,6 +12,16 @@ function adminInlineShot(name, alt, caption, cssWidth) {
     '</div><p class="shot-caption">' + caption + '</p></div>';
 }
 
+// 케이스 표(케이스 / 화면 / 상세내용)를 본문 html 안에 직접 쓰는 헬퍼 — 페이지 유형 화면용
+function adminCaseTable(group, rows) {
+  return '<div class="case case-table"><h3>' + group + '</h3><div class="ctable"><div class="ctable-head"><div>케이스</div><div>화면</div><div>상세내용</div></div>' +
+    rows.map(function (r) {
+      return '<div class="ctable-row"><div class="ctable-name">' + r.title + '</div><div class="ctable-blocks"><div class="ctable-block">' +
+        '<div class="ctable-shot"><div class="cshot"><div class="cshot-row cshot-one"><figure class="shot-item shot-pc"><img src="' + IMG_ADMIN + r.shot + '.webp" alt="' + r.alt + '" loading="lazy"></figure></div>' +
+        '<p class="shot-caption">' + r.caption + '</p></div></div><div class="ctable-desc">' + r.html + '</div></div></div></div>';
+    }).join('') + '</div></div>';
+}
+
 // ---- 시작하기 > 09SCM 통합관리자 소개 ----
 window.GUIDE_CONTENT['start-intro'] = {
   shots: [
@@ -74,37 +84,76 @@ window.GUIDE_CONTENT['start-home'] = {
   shotCaption: '09SCM 홈페이지 메인 화면',
   sections: [
     { id: 'sec1', label: '09SCM 홈페이지란', html:
-      '<p>09SCM을 소개하고 본사의 도입신청을 받는 첫 화면이에요. 신청하는 분은 홈페이지에서 시작하고, 접수된 신청은 통합관리자의 <a href="#hq-list">본사 관리</a>에서 확인해요.</p>' },
+      '<p>09SCM을 소개하고 본사의 도입신청을 받는 첫 화면이에요. 신청하는 분은 홈페이지에서 시작하고, 접수된 신청은 통합관리자의 <a href="#hq-list">본사 관리</a>에서 확인해요.</p>' +
+      '<div class="link-row">' +
+        '<a href="https://09scm.github.io/09SCM-Homepage/" target="_blank" rel="noopener noreferrer">09SCM 홈페이지</a>' +
+      '</div>' },
     { id: 'sec2', label: '메인 화면', html:
       '<div class="table-wrap"><table class="wide">' +
         '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
         '<tbody>' +
-          '<tr><td>솔루션 소개·핵심 기능·이용 흐름·도입 절차·FAQ</td><td>09SCM을 소개하는 안내 영역. 위쪽 메뉴를 누르면 해당 영역으로 이동</td></tr>' +
+          '<tr><td>솔루션 소개·핵심 기능·이용 흐름·도입 절차·FAQ</td><td>09SCM을 소개하는 안내 영역 (위쪽 메뉴를 누르면 해당 영역으로 이동)</td></tr>' +
           '<tr><td>[솔루션 도입신청]</td><td>솔루션 도입신청 화면으로 이동</td></tr>' +
-          '<tr><td>[09SCM 로그인]</td><td>본사·가맹점 로그인 화면(09SCM 관리자)으로 이동</td></tr>' +
+          '<tr><td>[09SCM 로그인]</td><td>본사·가맹점 로그인 화면으로 이동 (<a href="partner.html#start-login">09SCM 관리자 이용가이드</a>)</td></tr>' +
         '</tbody></table></div>' },
     { id: 'sec3', label: '솔루션 도입신청', html:
+      '<p>본사가 09SCM 도입을 신청하는 화면이에요. 위쪽에 도입 절차(도입신청 → 신청심사 → 결제연동 → 계정승인 → 이용시작)가 표시되고, 아래의 4개 영역을 차례로 입력해요. *는 필수 항목이에요.</p>' +
       adminInlineShot('home-apply-pc', '09SCM 홈페이지 솔루션 도입신청 PC 화면', '09SCM 홈페이지 솔루션 도입신청 화면', '560px') +
-      '<div class="table-wrap"><table class="wide">' +
-        '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
-        '<tbody>' +
-          '<tr><td>01 회원정보</td><td>아이디(중복확인), 이름, 휴대폰번호(인증번호 확인), 이메일</td></tr>' +
-          '<tr><td>02 본사 사업자 정보</td><td>사업자 유형(개인사업자/법인사업자), 본사명, 대표자명, 사업자등록번호, 법인등록번호(법인사업자만), 업태, 업종, 사업장 주소</td></tr>' +
-          '<tr><td>03 솔루션 도입 정보</td><td>현재 또는 예상 가맹점 수, 문의 및 요청사항</td></tr>' +
-          '<tr><td>04 솔루션 이용 및 약관 동의</td><td>[필수] 이용약관, [필수] 개인정보처리방침, [선택] 마케팅정보 수신동의. 각 항목의 [보기]를 누르면 약관 내용을 확인</td></tr>' +
-        '</tbody></table></div>' +
-      '<p>신청을 마치면 접수 완료 안내가 나오고, 신청 내용은 본사 관리에 승인대기 상태로 들어와요.</p>' +
-      adminInlineShot('home-apply-terms-pc', '09SCM 홈페이지 솔루션 도입신청 약관 동의 PC 화면', '09SCM 홈페이지 솔루션 도입신청 약관 동의 화면', '560px') +
-      '<p>약관 동의에 나오는 약관은 통합관리자의 <a href="#system-terms">약관 관리</a>에서 관리해요.</p>' },
+      adminCaseTable('입력 영역', [
+        { title: '01 회원정보', shot: 'home-apply-s1-pc', alt: '09SCM 홈페이지 도입신청 회원정보 PC 화면', caption: '09SCM 홈페이지 회원정보 입력 화면',
+          html: '<ul>' +
+            '<li>아이디 *: 영문 소문자로 시작하는 영문·숫자 3~20자 ([중복확인]으로 사용 가능 여부 확인, 소매몰 주소와 관리자 로그인에 사용되며 승인 후 변경 불가)</li>' +
+            '<li>이름 *: 신청자 이름</li>' +
+            '<li>휴대폰번호 *: 숫자 11자리 ([인증번호 발송] 후 받은 인증번호를 입력하고 [확인])</li>' +
+            '<li>이메일 *: 신청 결과를 안내받을 이메일</li>' +
+          '</ul>' },
+        { title: '02 본사 사업자 정보', shot: 'home-apply-s2-pc', alt: '09SCM 홈페이지 도입신청 본사 사업자 정보 PC 화면', caption: '09SCM 홈페이지 본사 사업자 정보 입력 화면',
+          html: '<ul>' +
+            '<li>사업자 유형 *: 개인사업자 또는 법인사업자 선택 (기본값 개인사업자, 법인사업자를 고르면 법인등록번호 * 입력란 표시)</li>' +
+            '<li>본사명(상호/법인명) *, 대표자명 *: 본사 상호(법인명)와 대표자 이름</li>' +
+            '<li>사업자등록번호 *: 숫자 10자리 ([사업자인증]으로 형식 확인)</li>' +
+            '<li>업태, 업종: 선택 입력</li>' +
+            '<li>사업장 주소 *: [주소찾기]로 우편번호·기본주소를 채우고 상세주소 입력</li>' +
+          '</ul>' },
+        { title: '03 솔루션 도입 정보', shot: 'home-apply-s3-pc', alt: '09SCM 홈페이지 도입신청 솔루션 도입 정보 PC 화면', caption: '09SCM 홈페이지 솔루션 도입 정보 입력 화면',
+          html: '<ul>' +
+            '<li>현재 또는 예상 가맹점 수: 선택 입력 (숫자, 단위 개)</li>' +
+            '<li>문의 및 요청사항: 선택 입력 (도입 상담 시 참고)</li>' +
+          '</ul>' },
+        { title: '04 솔루션 이용 및 약관 동의', shot: 'home-apply-s4-pc', alt: '09SCM 홈페이지 도입신청 약관 동의 PC 화면', caption: '09SCM 홈페이지 솔루션 이용 및 약관 동의 화면',
+          html: '<ul>' +
+            '<li>전체 동의: 아래 3종을 한 번에 선택</li>' +
+            '<li>[필수] 이용약관, [필수] 개인정보처리방침: 동의해야 신청 가능</li>' +
+            '<li>[선택] 마케팅정보 수신동의: 동의하지 않아도 신청 가능</li>' +
+            '<li>[보기]: 약관 내용을 팝업으로 확인</li>' +
+            '<li>약관 내용: 통합관리자의 <a href="#system-terms">약관 관리</a>에서 관리</li>' +
+          '</ul>' }
+      ]) +
+      '<h3>접수가 끝나면</h3>' +
+      adminInlineShot('home-apply-done-pc', '09SCM 홈페이지 솔루션 도입신청 접수 완료 PC 화면', '09SCM 홈페이지 솔루션 도입신청 접수 완료 화면', '448px') +
+      '<ul>' +
+        '<li>안내: "솔루션 도입신청이 접수되었습니다", "신청 내용을 심사한 후 본사 계정 발급 절차를 안내해드립니다."</li>' +
+        '<li>[메인으로]: 홈페이지 메인 화면으로 이동</li>' +
+        '<li>[09SCM 솔루션 소개]: 메인 화면의 솔루션 소개 영역으로 이동</li>' +
+      '</ul>' +
+      '<p>접수된 신청은 본사 관리에 승인대기 상태로 들어와요.</p>' },
     { id: 'sec4', label: '푸터 이용약관·개인정보처리방침', html:
+      '<p>홈페이지 맨 아래 푸터에서 이용약관과 개인정보처리방침 페이지로 이동해요.</p>' +
       adminInlineShot('home-footer-pc', '09SCM 홈페이지 푸터 PC 화면', '09SCM 홈페이지 푸터 화면', '100%') +
-      '<div class="table-wrap"><table class="wide">' +
-        '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
-        '<tbody>' +
-          '<tr><td>이용약관</td><td>09SCM 이용약관 페이지로 이동</td></tr>' +
-          '<tr><td>개인정보처리방침</td><td>09SCM 개인정보처리방침 페이지로 이동</td></tr>' +
-        '</tbody></table></div>' +
-      '<p>푸터에 나오는 약관도 <a href="#system-terms">약관 관리</a>에서 관리해요.</p>' }
+      adminCaseTable('푸터에서 이동하는 페이지', [
+        { title: '이용약관을 누르면', shot: 'home-terms-pc', alt: '09SCM 홈페이지 이용약관 PC 화면', caption: '09SCM 홈페이지 이용약관 화면',
+          html: '<ul>' +
+            '<li>시행일, 버전: 현재 시행본의 시행일과 버전</li>' +
+            '<li>시행본: 이용약관 본문</li>' +
+            '<li>약관 내용: 통합관리자의 <a href="#system-terms">약관 관리</a>에서 관리</li>' +
+          '</ul>' },
+        { title: '개인정보처리방침을 누르면', shot: 'home-privacy-pc', alt: '09SCM 홈페이지 개인정보처리방침 PC 화면', caption: '09SCM 홈페이지 개인정보처리방침 화면',
+          html: '<ul>' +
+            '<li>시행일, 버전: 현재 시행본의 시행일과 버전</li>' +
+            '<li>시행본: 개인정보처리방침 본문</li>' +
+            '<li>약관 내용: 통합관리자의 <a href="#system-terms">약관 관리</a>에서 관리</li>' +
+          '</ul>' }
+      ]) }
   ]
 };
 

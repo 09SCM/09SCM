@@ -31,8 +31,31 @@ with sync_playwright() as p:
     page.goto(BASE + '/apply/'); page.wait_for_timeout(1200)
     page.add_style_tag(content='nextjs-portal{display:none!important}')
     save(page.screenshot(), 'home-apply-pc')
-    sec = page.locator('section', has=page.locator('h2', has_text='솔루션 이용 및 약관 동의')).last
-    crop(page, sec, 'home-apply-terms-pc')
+    # 도입신청 입력 영역 4개 (섹션 크롭, 16px 여백). 고정 헤더가 크롭에 겹치지 않게 숨긴다
+    page.add_style_tag(content='header{display:none!important}')
+    for i, name in enumerate(['home-apply-s1-pc', 'home-apply-s2-pc', 'home-apply-s3-pc', 'home-apply-s4-pc']):
+        crop(page, page.locator('form.application-form section.form-section').nth(i), name)
+    # 접수 완료 팝업: 필수 항목을 채우고 제출
+    page.fill('input[placeholder*="영문 소문자로 시작"]', 'hqtest01')
+    page.fill('input[placeholder="이름 입력"]', '홍길동')
+    page.fill('input[placeholder="010-1234-5678"]', '01012345678')
+    page.get_by_role('button', name='인증번호 발송').click()
+    page.fill('input[aria-label="인증번호"]', '123456')
+    page.fill('input[placeholder="name@example.com"]', 'hq@example.com')
+    page.fill('input[placeholder="본사명 입력"]', '테스트 본사')
+    page.fill('input[placeholder="대표자명 입력"]', '홍길동')
+    page.locator('form.application-form section.form-section').nth(1).locator('input[placeholder="123-45-67890"]').fill('1234567890')
+    page.get_by_role('button', name='주소찾기').click()
+    page.fill('input[placeholder="상세주소 입력"]', '101호')
+    page.locator('.agreement-all input').check()
+    page.get_by_role('button', name='솔루션 도입신청').click(); page.wait_for_timeout(500)
+    page.evaluate("document.querySelectorAll('.modal-backdrop').forEach(b => { b.style.background = '#fff'; b.style.backdropFilter = 'none'; })")
+    crop(page, page.locator('.modal-backdrop .modal').last, 'home-apply-done-pc')
+    # 푸터에서 이동하는 약관 페이지 (PC 1440x900 뷰포트)
+    for path, name in [('/terms/', 'home-terms-pc'), ('/privacy/', 'home-privacy-pc')]:
+        page.goto(BASE + path); page.wait_for_timeout(1000)
+        page.add_style_tag(content='nextjs-portal{display:none!important}')
+        save(page.screenshot(), name)
     page.locator('footer.site-footer').scroll_into_view_if_needed(); page.wait_for_timeout(300)
     page.evaluate('window.scrollTo(0, document.body.scrollHeight)'); page.wait_for_timeout(300)
     crop(page, page.locator('footer.site-footer'), 'home-footer-pc', margin=0)
