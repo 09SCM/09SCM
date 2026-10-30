@@ -15799,7 +15799,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   }
 
   function demoAccountRows() {
-    const rows = [{ id: HQ_LOGIN_ID, label: '본사' }, { id: HQ_RESTRICTED_LOGIN_ID, label: '본사 · 운영제한' }];
+    const rows = [{ id: HQ_LOGIN_ID, label: '본사 · 운영중' }, { id: HQ_RESTRICTED_LOGIN_ID, label: '본사 · 운영제한' }];
     FRANCHISE_LIST.filter(f => !f.demo).sort((a, b) => (a.id < b.id ? -1 : 1)).forEach(f => {
       rows.push({ id: f.id, label: '가맹점 · ' + f.status + (f.status === '이용승인' || f.status === '이용제한' ? (f.wholesaleSupply ? ' · 도매공급권한 보유' : ' · 도매공급권한 없음') : '') });
     });
