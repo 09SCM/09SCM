@@ -24,14 +24,14 @@ function introCaseTable(group, rows) {
 // 헤더 캡처: PC 위, 모바일 아래로 쌓는다 (1120×154, 880×154)
 function introHeaderCell(base, alt) {
   return '<div class="cshot"><div class="cshot-row cshot-stack">' +
-    '<figure class="shot-item shot-pc"><img src="../assets/img/partner/' + base + '-pc.webp" alt="' + alt + ' PC 화면" loading="lazy"></figure>' +
-    '<figure class="shot-item shot-mobile"><img src="../assets/img/partner/' + base + '-mobile.webp" alt="' + alt + ' 모바일 화면" loading="lazy"></figure>' +
+    '<figure class="shot-item shot-pc" style="width:50%"><img src="../assets/img/partner/' + base + '-pc.webp" alt="' + alt + ' PC 화면" loading="lazy"></figure>' +
+    '<figure class="shot-item shot-mobile" style="width:50%"><img src="../assets/img/partner/' + base + '-mobile.webp" alt="' + alt + ' 모바일 화면" loading="lazy"></figure>' +
     '</div><p class="shot-caption">PC / 모바일</p></div>';
 }
 // 왼쪽 메뉴 캡처: PC 496×1080 (232px 메뉴 + 16px 여백)
 function introLnbCell(name, alt) {
   return '<div class="cshot"><div class="cshot-row cshot-one">' +
-    '<figure class="shot-item shot-pc" style="width:248px;max-width:100%"><img src="../assets/img/partner/' + name + '.webp" alt="' + alt + '" loading="lazy"></figure>' +
+    '<figure class="shot-item shot-pc" style="width:50%"><img src="../assets/img/partner/' + name + '.webp" alt="' + alt + '" loading="lazy"></figure>' +
     '</div></div>';
 }
 

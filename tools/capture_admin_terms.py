@@ -37,6 +37,10 @@ def open_terms(page):
     page.get_by_text('시스템 관리', exact=True).first.click(); page.wait_for_timeout(300)
     page.get_by_text('약관 관리', exact=True).first.click(); page.wait_for_timeout(500)
 
+def hide_lnb(page):
+    # 대표·케이스 화면 캡처는 LNB를 제외한다(이용가이드 디자인시스템 9절)
+    page.add_style_tag(content='.lnb{display:none!important} .bottom-bar{left:0!important}'); page.wait_for_timeout(300)
+
 def full(page, name):
     h = page.evaluate('Math.max(document.documentElement.scrollHeight, 900)')
     page.set_viewport_size({'width': 1440, 'height': h}); page.wait_for_timeout(300)
@@ -56,7 +60,7 @@ def crop(page, loc, name, margin=M):
 with sync_playwright() as p:
     b = p.chromium.launch()
     # 1) 약관 관리 화면 (이용약관 탭) 전체
-    ctx, page = login(b); open_terms(page)
+    ctx, page = login(b); open_terms(page); hide_lnb(page)
     full(page, 'terms-main-pc')
     ctx.close()
     # 2) 개정 이력 없음 (마케팅정보 수신동의 탭) - 개정 이력 영역
@@ -70,7 +74,7 @@ with sync_playwright() as p:
     crop_modal(page, 'terms-detail-pc')
     ctx.close()
     # 4) 개정 등록 화면 / 입력 오류 / 등록 확인
-    ctx, page = login(b); open_terms(page)
+    ctx, page = login(b); open_terms(page); hide_lnb(page)
     page.click('#termsRegBtn'); page.wait_for_timeout(400)
     full(page, 'terms-reg-pc')
     page.click('#termsFormSave'); page.wait_for_timeout(400)

@@ -12,6 +12,12 @@ function adminInlineShot(name, alt, caption, cssWidth) {
     '</div><p class="shot-caption">' + caption + '</p></div>';
 }
 
+// 세로로 긴 캡처 1장 (예외: 본문 폭의 1/4, 860px 이하 50%)
+function adminQuarterShot(name, alt, caption) {
+  return '<div class="shot"><div class="shot-row shot-one shot-quarter"><figure class="shot-item shot-pc"><img src="' + IMG_ADMIN + name + '.webp" alt="' + alt + '" loading="lazy"></figure></div>' +
+    '<p class="shot-caption">' + caption + '</p></div>';
+}
+
 // 알럿형 팝업 캡처 1장 (이용가이드 디자인시스템 9절: 본문 폭의 절반, 좌측 정렬, 860px 이하 100%)
 function adminAlertShot(name, alt, caption) {
   return '<div class="shot"><div class="shot-row shot-one"><figure class="shot-item shot-pc"><img src="' + IMG_ADMIN + name + '.webp" alt="' + alt + '" loading="lazy"></figure></div>' +
@@ -58,7 +64,7 @@ window.GUIDE_CONTENT['start-intro'] = {
       '<p>로그인하면 모든 화면에 똑같이 나오는 영역이에요. 맨 위의 헤더와 왼쪽 메뉴로 이루어져요.</p>' +
       '<h3>헤더</h3>' +
       '<p>화면 맨 위 오른쪽에 지금 로그인한 계정의 정보가 표시돼요.</p>' +
-      adminInlineShot('common-header-pc', '09SCM 통합관리자 헤더 PC 화면', '09SCM 통합관리자 헤더 화면', '560px') +
+      adminAlertShot('common-header-pc', '09SCM 통합관리자 헤더 PC 화면', '09SCM 통합관리자 헤더 화면') +
       '<div class="table-wrap"><table class="wide">' +
         '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
         '<tbody>' +
@@ -67,7 +73,7 @@ window.GUIDE_CONTENT['start-intro'] = {
           '<tr><td>아이디</td><td>로그인할 때 쓴 아이디</td></tr>' +
         '</tbody></table></div>' +
       '<h3>왼쪽 메뉴</h3>' +
-      adminInlineShot('common-lnb-pc', '09SCM 통합관리자 왼쪽 메뉴 PC 화면', '09SCM 통합관리자 왼쪽 메뉴 화면', '248px') +
+      adminQuarterShot('common-lnb-pc', '09SCM 통합관리자 왼쪽 메뉴 PC 화면', '09SCM 통합관리자 왼쪽 메뉴 화면') +
       '<div class="table-wrap"><table class="wide">' +
         '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
         '<tbody>' +
