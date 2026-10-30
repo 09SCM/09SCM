@@ -2556,7 +2556,18 @@ window.GUIDE_CONTENT['franchise-list'] = {
           '<tr><td>이용승인</td><td>로그인 가능, 모든 메뉴를 정상 사용</td></tr>' +
           '<tr><td>이용제한</td><td>로그인 가능, 신규 주문·상품 등록은 막히고 진행 중인 주문 처리는 계속 가능, 소매몰은 접근제한 화면 (신규 주문 불가)</td></tr>' +
           '<tr><td>이용불가</td><td>로그인 불가, 등록한 도소매 상품은 모두 품절·미노출, 소매몰은 접근제한 화면 (신규 주문 불가)</td></tr>' +
-        '</tbody></table></div>',
+        '</tbody></table></div>' +
+        '<h3>이용제한일 때 기능별 사용 범위</h3>' +
+        '<div class="table-wrap"><table><thead><tr><th>기능</th><th>도매공급권한 보유</th><th>도매공급권한 미보유</th></tr></thead><tbody>' +
+              '<tr><td>도매상품 주문하기 > 장바구니 [주문하기]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
+              '<tr><td>도매상품 주문하기 > 상품 상세 [바로구매]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
+              '<tr><td>도매관리 > 내 도매상품 [도매상품등록]</td><td>사용 불가</td><td>메뉴 없음</td></tr>' +
+              '<tr><td>소매관리 > [소매상품등록], [소매정보등록]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
+              '<tr><td>소매관리 > 상품목록 [도매상품전환]</td><td>사용 불가</td><td>버튼 없음</td></tr>' +
+              '<tr><td>소매몰 신규 주문 (<a href="shop.html#start-intro/sec6">접근제한 화면</a>)</td><td>사용 불가</td><td>사용 불가</td></tr>' +
+              '<tr><td>진행 중인 주문·배송·정산 처리</td><td>사용</td><td>사용</td></tr>' +
+              '<tr><td>시스템관리</td><td>사용</td><td>사용</td></tr>' +
+            '</tbody></table></div>',
       steps:
         '<h3>이용상태 바꾸기</h3>' +
         '<ol>' +
@@ -2581,135 +2592,181 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '</ul>',
       cases: [
         {
-          title: '이용대기 — 가맹점 화면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-wait-pc.webp', alt: '09SCM 이용대기 가맹점 PC 화면', ratio: 2880 / 1520 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 모바일 화면', ratio: 880 / 1800 }
-          ],
-          shotCaption: '09SCM 가맹점 계정 이용대기 화면 (PC / 모바일)',
-          html:
-            '<p>로그인하면 시스템관리만 보여요. 회원정보에서 PayApp 연동을 하고, 이용료관리에서 정기결제 카드를 등록하며 이용 시작을 준비해요. 소매몰은 접근제한 화면이 보여요.</p>'
+          group: '이용대기일 때',
+          rows: [
+            {
+              title: '가맹점 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-wait-pc.webp', alt: '09SCM 이용대기 가맹점 PC 화면', ratio: 2880 / 1520 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 모바일 화면', ratio: 880 / 1800 }
+              ],
+              shotCaption: '09SCM 가맹점 계정 이용대기 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>메뉴:</b> 시스템관리만 노출</li>' +
+                '<li><b>준비 작업:</b> 회원정보에서 PayApp 연동, 이용료관리에서 정기결제 카드 등록</li>' +
+                '<li><b>소매몰:</b> <a href="shop.html#start-intro/sec6">접근제한 화면</a></li>' +
+              '</ul>'
+            },
+            {
+              title: '본사 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-b-wait-pc.webp', alt: '09SCM 이용대기 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-b-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+              ],
+              shotCaption: '09SCM 본사 계정 이용대기 가맹점 상세 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>하단 바:</b> [이용승인], [이용불가], [삭제] 노출</li>' +
+                '<li><b>[이용승인]:</b> PayApp 연동이 끝나기 전에는 누를 수 없음</li>' +
+                '<li><b>[이용불가], [삭제]:</b> 연동 여부와 상관없이 사용 가능</li>' +
+              '</ul>'
+            }
+          ]
         },
         {
-          title: '이용대기 — 본사 화면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-b-wait-pc.webp', alt: '09SCM 이용대기 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-b-wait-mobile.webp', alt: '09SCM 이용대기 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
-          ],
-          shotCaption: '09SCM 본사 계정 이용대기 가맹점 상세 화면 (PC / 모바일)',
-          html:
-            '<p>하단 바에 [이용승인], [이용불가], [삭제]가 보여요. PayApp 연동이 끝나기 전에는 [이용승인]을 누를 수 없어요. [이용불가]와 [삭제]는 연동 여부와 상관없이 쓸 수 있어요.</p>'
+          group: '이용승인일 때',
+          rows: [
+            {
+              title: '가맹점 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-approved-user-pc.webp', alt: '09SCM 이용승인 가맹점 PC 화면', ratio: 2880 / 1520 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-approved-user-mobile.webp', alt: '09SCM 이용승인 가맹점 모바일 화면', ratio: 880 / 1800 }
+              ],
+              shotCaption: '09SCM 가맹점 계정 이용승인 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>메뉴:</b> 대시보드부터 모든 메뉴를 정상 사용</li>' +
+                '<li><b>소매몰:</b> 정상 노출</li>' +
+              '</ul>'
+            },
+            {
+              title: '본사 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-approved-pc.webp', alt: '09SCM 이용승인 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-approved-mobile.webp', alt: '09SCM 이용승인 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+              ],
+              shotCaption: '09SCM 본사 계정 이용승인 가맹점 상세 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>하단 바:</b> [이용제한]만 노출</li>' +
+              '</ul>'
+            }
+          ]
         },
         {
-          title: '이용승인 — 가맹점 화면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-approved-user-pc.webp', alt: '09SCM 이용승인 가맹점 PC 화면', ratio: 2880 / 1520 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-approved-user-mobile.webp', alt: '09SCM 이용승인 가맹점 모바일 화면', ratio: 880 / 1800 }
-          ],
-          shotCaption: '09SCM 가맹점 계정 이용승인 화면 (PC / 모바일)',
-          html:
-            '<p>대시보드부터 모든 메뉴를 정상적으로 사용할 수 있고, 소매몰도 정상으로 열려요.</p>'
+          group: '이용제한일 때',
+          rows: [
+            {
+              title: '이용제한으로 바꿀 때',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-restricted-confirm-pc.webp', alt: '09SCM 이용제한 변경 확인 팝업 PC 화면', ratio: 936 / 396 }
+              ],
+              shotCaption: '09SCM 이용제한 변경 확인 화면',
+              html:
+                '<ul>' +
+                '<li><b>[변경]:</b> 신규 도매 주문, 도매상품 등록, 소매상품 등록 차단</li>' +
+                '<li><b>진행 중인 주문:</b> 처리 계속 가능</li>' +
+              '</ul>'
+            },
+            {
+              title: '도매공급권한이 있는 가맹점 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-restricted-supply-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) PC 화면', ratio: 2880 / 1520 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-supply-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) 모바일 화면', ratio: 880 / 1800 }
+              ],
+              shotCaption: '09SCM 가맹점 계정 이용제한 도매공급권한 보유 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>안내 배너:</b> 모든 화면 맨 위에 계속 노출</li>' +
+                '<li><b>신규 행위 버튼:</b> 흐리게 비활성, 주소로 직접 들어가도 차단</li>' +
+                '<li><b>계속 사용 가능:</b> 진행 중인 주문·배송·정산 처리, 시스템관리</li>' +
+                '<li><b>소매몰:</b> <a href="shop.html#start-intro/sec6">접근제한 화면</a>, 신규 주문 불가</li>' +
+              '</ul>'
+            },
+            {
+              title: '도매공급권한이 없는 가맹점 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) PC 화면', ratio: 2880 / 1520 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) 모바일 화면', ratio: 880 / 1800 }
+              ],
+              shotCaption: '09SCM 가맹점 계정 이용제한 도매공급권한 미보유 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>메뉴:</b> 내 도매상품, 주문접수관리, 도매매출조회, 도매설정이 처음부터 노출되지 않음</li>' +
+                '<li><b>그 외 제한:</b> 도매공급권한이 있을 때와 동일</li>' +
+              '</ul>'
+            },
+            {
+              title: '본사 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-b-restricted-pc.webp', alt: '09SCM 이용제한 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-b-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+              ],
+              shotCaption: '09SCM 본사 계정 이용제한 가맹점 상세 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>하단 바:</b> [이용승인], [이용불가] 노출</li>' +
+                '<li><b>[이용승인]:</b> 언제든 되돌릴 수 있음</li>' +
+                '<li><b>[이용불가]:</b> 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수 표시</li>' +
+              '</ul>'
+            }
+          ]
         },
         {
-          title: '이용승인 — 본사 화면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-approved-pc.webp', alt: '09SCM 이용승인 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-approved-mobile.webp', alt: '09SCM 이용승인 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
-          ],
-          shotCaption: '09SCM 본사 계정 이용승인 가맹점 상세 화면 (PC / 모바일)',
-          html:
-            '<p>하단 바에 [이용제한]만 보여요.</p>'
+          group: '이용불가일 때',
+          rows: [
+            {
+              title: '이용불가로 바꿀 때',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-unavailable-confirm-pc.webp', alt: '09SCM 이용불가 변경 확인 팝업 PC 화면', ratio: 936 / 442 }
+              ],
+              shotCaption: '09SCM 이용불가 변경 확인 화면',
+              html:
+                '<ul>' +
+                '<li><b>[변경]:</b> 로그인 차단, 가맹점이 등록한 도소매 상품이 모두 품절·미노출로 변경</li>' +
+              '</ul>'
+            },
+            {
+              title: '가맹점 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 로그인 PC 화면', ratio: 2880 / 1520 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 로그인 모바일 화면', ratio: 880 / 1800 }
+              ],
+              shotCaption: '09SCM 가맹점 계정 이용불가 로그인 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>로그인:</b> 아이디와 비밀번호를 맞게 입력해도 차단, 본사 문의 안내 노출</li>' +
+                '<li><b>소매몰:</b> <a href="shop.html#start-intro/sec6">접근제한 화면</a>, 신규 주문 불가</li>' +
+              '</ul>'
+            },
+            {
+              title: '본사 계정으로 보면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-st-b-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
+                { device: 'mobile', src: '../assets/img/partner/fr-st-b-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
+              ],
+              shotCaption: '09SCM 본사 계정 이용불가 가맹점 상세 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>하단 바:</b> [이용불가 해제], [삭제] 노출</li>' +
+                '<li><b>[관리자접속]:</b> 누를 수 없음</li>' +
+                '<li><b>[이용불가 해제]:</b> 이용대기로 복귀, 품절·미노출 상품은 자동으로 복구되지 않으므로 가맹점이 상품별로 직접 변경</li>' +
+              '</ul>'
+            }
+          ]
         },
         {
-          title: '이용제한으로 바꾸면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-confirm-pc.webp', alt: '09SCM 이용제한 변경 확인 팝업 PC 화면', ratio: 936 / 396 }
-          ],
-          shotCaption: '09SCM 이용제한 변경 확인 화면',
-          html:
-            '<p>[이용제한]을 누르면 확인 창이 열려요. [변경]을 누르면 신규 도매 주문, 도매상품 등록, 소매상품 등록이 막혀요. 이미 진행 중인 주문 처리는 계속할 수 있어요.</p>'
-        },
-        {
-          title: '이용제한이고 도매공급권한이 있으면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-supply-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) PC 화면', ratio: 2880 / 1520 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-supply-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 보유) 모바일 화면', ratio: 880 / 1800 }
-          ],
-          shotCaption: '09SCM 가맹점 계정 이용제한 도매공급권한 보유 화면 (PC / 모바일)',
-          html:
-            '<p>모든 화면 맨 위에 이용제한 안내 배너가 계속 보여요. 메뉴는 그대로 보이지만 신규 행위 버튼은 흐리게 비활성으로 보이고, 주소로 직접 들어가도 막혀요. 이미 진행 중인 주문·배송·정산 처리와 시스템관리는 계속 쓸 수 있어요. 소매몰은 접근제한 화면으로 바뀌어 신규 주문을 받지 않아요.</p>'
-        },
-        {
-          title: '이용제한이고 도매공급권한이 없으면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-restricted-pc.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) PC 화면', ratio: 2880 / 1520 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점(도매공급권한 미보유) 모바일 화면', ratio: 880 / 1800 }
-          ],
-          shotCaption: '09SCM 가맹점 계정 이용제한 도매공급권한 미보유 화면 (PC / 모바일)',
-          html:
-            '<p>도매공급 메뉴(내 도매상품, 주문접수관리, 도매매출조회, 도매설정)가 처음부터 보이지 않아요.</p>'
-        },
-        {
-          title: '이용제한이면',
-          html:
-            '<div class="table-wrap"><table><thead><tr><th>기능</th><th>도매공급권한 보유</th><th>도매공급권한 미보유</th></tr></thead><tbody>' +
-              '<tr><td>도매상품 주문하기 > 장바구니 [주문하기]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
-              '<tr><td>도매상품 주문하기 > 상품 상세 [바로구매]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
-              '<tr><td>도매관리 > 내 도매상품 [도매상품등록]</td><td>사용 불가</td><td>메뉴 없음</td></tr>' +
-              '<tr><td>소매관리 > [소매상품등록], [소매정보등록]</td><td>사용 불가</td><td>사용 불가</td></tr>' +
-              '<tr><td>소매관리 > 상품목록 [도매상품전환]</td><td>사용 불가</td><td>버튼 없음</td></tr>' +
-              '<tr><td>소매몰 신규 주문 (접근제한 화면)</td><td>사용 불가</td><td>사용 불가</td></tr>' +
-              '<tr><td>진행 중인 주문·배송·정산 처리</td><td>사용</td><td>사용</td></tr>' +
-              '<tr><td>시스템관리</td><td>사용</td><td>사용</td></tr>' +
-            '</tbody></table></div>'
-        },
-        {
-          title: '이용제한 — 본사 화면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-b-restricted-pc.webp', alt: '09SCM 이용제한 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-b-restricted-mobile.webp', alt: '09SCM 이용제한 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
-          ],
-          shotCaption: '09SCM 본사 계정 이용제한 가맹점 상세 화면 (PC / 모바일)',
-          html:
-            '<p>하단 바에 [이용승인]과 [이용불가]가 보여요. [이용승인]으로 언제든 되돌릴 수 있어요. [이용불가]는 진행 중인 주문이 없을 때만 누를 수 있고, 주문이 있으면 하단 바에 진행중 주문 건수가 표시돼요.</p>'
-        },
-        {
-          title: '이용불가로 바꾸면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-unavailable-confirm-pc.webp', alt: '09SCM 이용불가 변경 확인 팝업 PC 화면', ratio: 936 / 442 }
-          ],
-          shotCaption: '09SCM 이용불가 변경 확인 화면',
-          html:
-            '<p>[이용불가]를 누르면 확인 창이 열려요. [변경]을 누르면 로그인이 막히고, 가맹점이 등록한 도소매 상품이 모두 품절·미노출로 바뀌어요.</p>'
-        },
-        {
-          title: '이용불가 — 가맹점 화면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 로그인 PC 화면', ratio: 2880 / 1520 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 로그인 모바일 화면', ratio: 880 / 1800 }
-          ],
-          shotCaption: '09SCM 가맹점 계정 이용불가 로그인 화면 (PC / 모바일)',
-          html:
-            '<p>아이디와 비밀번호를 맞게 입력해도 로그인이 막히고 본사로 문의하라는 안내가 나와요. 소매몰도 접근제한 화면으로 바뀌어 신규 주문을 받지 않아요.</p>'
-        },
-        {
-          title: '이용불가 — 본사 화면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-st-b-blocked-pc.webp', alt: '09SCM 이용불가 가맹점 상세 PC 화면', ratio: 2880 / 1280 },
-            { device: 'mobile', src: '../assets/img/partner/fr-st-b-blocked-mobile.webp', alt: '09SCM 이용불가 가맹점 상세 모바일 화면', ratio: 880 / 2000 }
-          ],
-          shotCaption: '09SCM 본사 계정 이용불가 가맹점 상세 화면 (PC / 모바일)',
-          html:
-            '<p>하단 바에 [이용불가 해제]와 [삭제]가 보여요. [관리자접속]은 누를 수 없어요. [이용불가 해제]를 누르면 이용대기로 돌아가지만, 품절·미노출로 바뀐 상품은 자동으로 되돌아오지 않아요. 가맹점이 상품별로 직접 바꿔야 해요.</p>'
-        },
-        {
-          title: '도매공급권한을 회수하면',
+          title: '도매공급권한을 회수할 때',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-st-supply-revoke-confirm-pc.webp', alt: '09SCM 도매공급권한 회수 확인 팝업 PC 화면', ratio: 936 / 442 }
           ],
           shotCaption: '09SCM 도매공급권한 회수 확인 화면',
           html:
-            '<p>미보유를 고르고 [변경]을 누르면 확인 창이 열려요. [변경]을 누르면 도매공급 메뉴가 막히고, 가맹점이 등록한 도매상품이 모두 품절·미노출로 바뀌어요. 소매정보는 그대로 유지돼요.</p>'
+            '<ul>' +
+                '<li><b>[변경]:</b> 도매공급 메뉴 차단, 가맹점이 등록한 도매상품이 모두 품절·미노출로 변경</li>' +
+                '<li><b>소매정보:</b> 그대로 유지</li>' +
+              '</ul>'
         }
       ],
       trouble:
