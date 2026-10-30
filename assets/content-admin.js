@@ -1098,12 +1098,13 @@ window.GUIDE_CONTENT['trade-hq'] = {
       cases: [
         {
           title: '조회기간에 거래가 없으면',
-          shots: tradeShot('trade-hq-zero-pc', '09SCM 통합관리자 본사 매출 거래 없음 PC 화면', 2848, 660),
+          shots: tradeShot('trade-hq-zero-pc', '09SCM 통합관리자 본사 매출 거래 없음 PC 화면', 2848, 1324),
           shotCaption: '09SCM 통합관리자 본사 매출 거래 없음 화면',
           html:
             '<ul>' +
               '<li>금액: 결제총액, 취소·환불액, 매출액, 결제수단별 결제액, 이용료 수납액 0원</li>' +
               '<li>건수: 주문 0건, 취소·환불 0건</li>' +
+              '<li>추이 차트: 막대 없음</li>' +
               '<li>추이 표: 모든 행 0</li>' +
             '</ul>'
         }
@@ -1169,12 +1170,13 @@ window.GUIDE_CONTENT['trade-franchise'] = {
       cases: [
         {
           title: '조회기간에 거래가 없으면',
-          shots: tradeShot('trade-fr-zero-pc', '09SCM 통합관리자 가맹점 매출 거래 없음 PC 화면', 2848, 660),
+          shots: tradeShot('trade-fr-zero-pc', '09SCM 통합관리자 가맹점 매출 거래 없음 PC 화면', 2848, 1324),
           shotCaption: '09SCM 통합관리자 가맹점 매출 거래 없음 화면',
           html:
             '<ul>' +
               '<li>금액: 결제총액, 취소·환불액, 매출액, 결제수단별 결제액 0원</li>' +
               '<li>건수: 주문 0건, 취소·환불 0건</li>' +
+              '<li>추이 차트: 막대 없음</li>' +
               '<li>추이 표: 모든 행 0</li>' +
             '</ul>'
         }

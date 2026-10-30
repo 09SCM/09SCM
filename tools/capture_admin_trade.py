@@ -118,10 +118,13 @@ if ONLY in (None, 'zero'):
         b = p.chromium.launch()
 
         def zero_shot(page, name):
-            # 거래가 없을 때 달라지는 요약 카드 영역만 자른다(주변 UI는 가린다)
+            # 거래가 없을 때 달라지는 요약 카드와 추이 차트 영역을 자른다(주변 UI는 가린다)
             hide_lnb(page)
-            hide(page, '.card-head, .sales-filter, .tabs, .sales-base, .sales-selected, .sales-hint, .sales-chart-head, .sales-legend, .sales-chart-scroll, .table-scroll')
-            crop(page, page.locator('.stat-grid'), name)
+            h = page.evaluate('Math.max(document.documentElement.scrollHeight, 900)')
+            page.set_viewport_size({'width': 1440, 'height': h}); page.wait_for_timeout(300)
+            hide(page, '.card-head, .sales-filter, .tabs, .sales-base, .sales-selected, .table-scroll, [data-sales-page]')
+            page.evaluate("(()=>{const h=document.querySelectorAll('.sales-hint'); if(h.length>1) h[h.length-1].style.visibility='hidden'; document.querySelectorAll('.pager,.pagination').forEach(e=>e.style.visibility='hidden')})()")
+            crop_between(page, page.locator('.stat-grid'), page.locator('.sales-chart-scroll'), page.locator('.sales-body'), name)
 
         # 본사: 프레시메이트, 조회기간 오늘, 거래유형 도매
         ctx, page = login(b); open_trade(page); tab(page, 'hq')
