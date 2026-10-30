@@ -974,7 +974,7 @@ window.GUIDE_CONTENT['trade-all'] = {
   shots: tradeShot('trade-all-pc', '09SCM 통합관리자 거래/매출 전체 현황 PC 화면', 2880, 3118),
   shotCaption: '09SCM 통합관리자 전체 현황 화면',
   overview:
-    '<p>09SCM을 통해 발생한 본사와 가맹점의 개별 매출로 결제·취소환불·매출 규모와 추이를 보는 화면이에요.</p>' +
+    '<p>본사와 가맹점의 매출을 종합해서 결제·취소환불·매출 규모와 추이를 확인하는 화면이에요.</p>' +
     '<ul>' +
       '<li>본사나 가맹점별로 따로 보려면 <a href="#trade-hq">본사별 현황</a>, <a href="#trade-franchise">가맹점별 현황</a> 탭을 사용해요.</li>' +
     '</ul>',
