@@ -16,6 +16,15 @@ def save(png, name):
     im.save(os.path.join(OUT, name + '.webp'), 'WEBP', quality=88)
     print(name, im.size)
 
+HIDE_OTHERS_JS = """(box) => {
+  // 팝업 뒤의 화면은 숨기고(자리는 유지), 팝업과 실제 딤 배경만 남긴다
+  let el = box;
+  while (el && el.parentElement && el !== document.body) {
+    Array.from(el.parentElement.children).forEach(s => { if (s !== el) s.style.visibility = 'hidden'; });
+    el = el.parentElement;
+  }
+}"""
+
 def login(b, h=900):
     ctx = b.new_context(viewport={'width': 1440, 'height': h}, device_scale_factor=2)
     page = ctx.new_page(); page.goto(URL); page.wait_for_timeout(500)
@@ -34,8 +43,8 @@ def full(page, name):
     save(page.screenshot(), name)
 
 def crop_modal(page, name, margin=M):
-    # 팝업 뒤 배경 UI가 여백에 비치지 않도록 오버레이를 흰색으로 덮고 팝업만 자른다
-    page.evaluate("document.querySelectorAll('.modal-box').forEach(b => { b.parentElement.style.background = '#fff'; })")
+    # 팝업 뒤 화면 UI가 여백에 비치지 않도록 숨기고, 팝업 + 딤 배경 여백 16px로 자른다(그림자·딤 그대로 유지)
+    page.evaluate(HIDE_OTHERS_JS, page.locator('.modal-box').last.element_handle())
     page.wait_for_timeout(200)
     crop(page, page.locator('.modal-box').last, name, margin)
 

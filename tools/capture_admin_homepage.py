@@ -9,6 +9,15 @@ OUT = os.path.join(ROOT, 'assets', 'img', 'admin')
 BASE = 'http://localhost:3111'
 M = 16
 
+HIDE_OTHERS_JS = """(box) => {
+  // 팝업 뒤의 화면은 숨기고(자리는 유지), 팝업과 실제 딤 배경만 남긴다
+  let el = box;
+  while (el && el.parentElement && el !== document.body) {
+    Array.from(el.parentElement.children).forEach(s => { if (s !== el) s.style.visibility = 'hidden'; });
+    el = el.parentElement;
+  }
+}"""
+
 def save(png, name):
     im = Image.open(io.BytesIO(png)).convert('RGB')
     im.save(os.path.join(OUT, name + '.webp'), 'WEBP', quality=88)
@@ -55,7 +64,7 @@ with sync_playwright() as p:
     page.fill('input[placeholder="상세주소 입력"]', '101호')
     page.locator('.agreement-all input').check()
     page.get_by_role('button', name='솔루션 도입신청').click(); page.wait_for_timeout(500)
-    page.evaluate("document.querySelectorAll('.modal-backdrop').forEach(b => { b.style.background = '#fff'; b.style.backdropFilter = 'none'; const m = b.querySelector('.modal'); if (m) m.style.boxShadow = 'none'; })")
+    page.evaluate(HIDE_OTHERS_JS, page.locator('.modal-backdrop .modal').last.element_handle())
     crop(page, page.locator('.modal-backdrop .modal').last, 'home-apply-done-pc')
     # 푸터에서 이동하는 약관 페이지 (PC 1440x900 뷰포트)
     for path, name in [('/terms/', 'home-terms-pc'), ('/privacy/', 'home-privacy-pc')]:
