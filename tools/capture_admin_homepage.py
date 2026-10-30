@@ -33,8 +33,14 @@ with sync_playwright() as p:
     save(page.screenshot(), 'home-apply-pc')
     # 도입신청 입력 영역 4개 (섹션 크롭, 16px 여백). 고정 헤더가 크롭에 겹치지 않게 숨긴다
     page.add_style_tag(content='header{display:none!important}')
+    secs = page.locator('form.application-form section.form-section')
     for i, name in enumerate(['home-apply-s1-pc', 'home-apply-s2-pc', 'home-apply-s3-pc', 'home-apply-s4-pc']):
-        crop(page, page.locator('form.application-form section.form-section').nth(i), name)
+        if i == 1:  # 법인등록번호 입력란이 보이도록 법인사업자를 선택해 촬영한 뒤 개인사업자로 되돌린다
+            page.get_by_label('법인사업자').check(); page.wait_for_timeout(200)
+            crop(page, secs.nth(i), name)
+            page.get_by_label('개인사업자').check(); page.wait_for_timeout(200)
+        else:
+            crop(page, secs.nth(i), name)
     # 접수 완료 팝업: 필수 항목을 채우고 제출
     page.fill('input[placeholder*="영문 소문자로 시작"]', 'hqtest01')
     page.fill('input[placeholder="이름 입력"]', '홍길동')
@@ -49,7 +55,7 @@ with sync_playwright() as p:
     page.fill('input[placeholder="상세주소 입력"]', '101호')
     page.locator('.agreement-all input').check()
     page.get_by_role('button', name='솔루션 도입신청').click(); page.wait_for_timeout(500)
-    page.evaluate("document.querySelectorAll('.modal-backdrop').forEach(b => { b.style.background = '#fff'; b.style.backdropFilter = 'none'; })")
+    page.evaluate("document.querySelectorAll('.modal-backdrop').forEach(b => { b.style.background = '#fff'; b.style.backdropFilter = 'none'; const m = b.querySelector('.modal'); if (m) m.style.boxShadow = 'none'; })")
     crop(page, page.locator('.modal-backdrop .modal').last, 'home-apply-done-pc')
     # 푸터에서 이동하는 약관 페이지 (PC 1440x900 뷰포트)
     for path, name in [('/terms/', 'home-terms-pc'), ('/privacy/', 'home-privacy-pc')]:

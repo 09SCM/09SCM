@@ -12,6 +12,12 @@ function adminInlineShot(name, alt, caption, cssWidth) {
     '</div><p class="shot-caption">' + caption + '</p></div>';
 }
 
+// 알럿형 팝업 캡처 1장 (이용가이드 디자인시스템 9절: 본문 폭의 절반, 좌측 정렬, 860px 이하 100%)
+function adminAlertShot(name, alt, caption) {
+  return '<div class="shot"><div class="shot-row shot-one"><figure class="shot-item shot-pc"><img src="' + IMG_ADMIN + name + '.webp" alt="' + alt + '" loading="lazy"></figure></div>' +
+    '<p class="shot-caption">' + caption + '</p></div>';
+}
+
 // 케이스 표(케이스 / 화면 / 상세내용)를 본문 html 안에 직접 쓰는 헬퍼 — 페이지 유형 화면용
 function adminCaseTable(group, rows) {
   return '<div class="case case-table"><h3>' + group + '</h3><div class="ctable"><div class="ctable-head"><div>케이스</div><div>화면</div><div>상세내용</div></div>' +
@@ -97,8 +103,8 @@ window.GUIDE_CONTENT['start-home'] = {
           '<tr><td>[09SCM 로그인]</td><td>본사·가맹점 로그인 화면으로 이동 (<a href="partner.html#start-login">09SCM 관리자 이용가이드</a>)</td></tr>' +
         '</tbody></table></div>' },
     { id: 'sec3', label: '솔루션 도입신청', html:
-      '<p>본사가 09SCM 도입을 신청하는 화면이에요. 위쪽에 도입 절차(도입신청 → 신청심사 → 결제연동 → 계정승인 → 이용시작)가 표시되고, 아래의 4개 영역을 차례로 입력해요. *는 필수 항목이에요.</p>' +
-      adminInlineShot('home-apply-pc', '09SCM 홈페이지 솔루션 도입신청 PC 화면', '09SCM 홈페이지 솔루션 도입신청 화면', '560px') +
+      '<p>본사가 09SCM 도입을 신청하는 화면이에요. 4개 영역을 차례로 입력해요. *는 필수 항목이에요.</p>' +
+      adminInlineShot('home-apply-pc', '09SCM 홈페이지 솔루션 도입신청 PC 화면', '09SCM 홈페이지 솔루션 도입신청 화면', '100%') +
       adminCaseTable('입력 영역', [
         { title: '01 회원정보', shot: 'home-apply-s1-pc', alt: '09SCM 홈페이지 도입신청 회원정보 PC 화면', caption: '09SCM 홈페이지 회원정보 입력 화면',
           html: '<ul>' +
@@ -107,11 +113,12 @@ window.GUIDE_CONTENT['start-home'] = {
             '<li>휴대폰번호 *: 숫자 11자리 ([인증번호 발송] 후 받은 인증번호를 입력하고 [확인])</li>' +
             '<li>이메일 *: 신청 결과를 안내받을 이메일</li>' +
           '</ul>' },
-        { title: '02 본사 사업자 정보', shot: 'home-apply-s2-pc', alt: '09SCM 홈페이지 도입신청 본사 사업자 정보 PC 화면', caption: '09SCM 홈페이지 본사 사업자 정보 입력 화면',
+        { title: '02 본사 사업자 정보', shot: 'home-apply-s2-pc', alt: '09SCM 홈페이지 도입신청 본사 사업자 정보 PC 화면', caption: '09SCM 홈페이지 본사 사업자 정보 법인사업자 선택 화면',
           html: '<ul>' +
-            '<li>사업자 유형 *: 개인사업자 또는 법인사업자 선택 (기본값 개인사업자, 법인사업자를 고르면 법인등록번호 * 입력란 표시)</li>' +
+            '<li>사업자 유형 *: 개인사업자 또는 법인사업자 선택 (기본값 개인사업자)</li>' +
             '<li>본사명(상호/법인명) *, 대표자명 *: 본사 상호(법인명)와 대표자 이름</li>' +
             '<li>사업자등록번호 *: 숫자 10자리 ([사업자인증]으로 형식 확인)</li>' +
+            '<li>법인등록번호 *: 숫자 13자리 (법인사업자를 고르면 입력란 표시)</li>' +
             '<li>업태, 업종: 선택 입력</li>' +
             '<li>사업장 주소 *: [주소찾기]로 우편번호·기본주소를 채우고 상세주소 입력</li>' +
           '</ul>' },
@@ -130,7 +137,7 @@ window.GUIDE_CONTENT['start-home'] = {
           '</ul>' }
       ]) +
       '<h3>접수가 끝나면</h3>' +
-      adminInlineShot('home-apply-done-pc', '09SCM 홈페이지 솔루션 도입신청 접수 완료 PC 화면', '09SCM 홈페이지 솔루션 도입신청 접수 완료 화면', '448px') +
+      adminAlertShot('home-apply-done-pc', '09SCM 홈페이지 솔루션 도입신청 접수 완료 PC 화면', '09SCM 홈페이지 솔루션 도입신청 접수 완료 화면') +
       '<ul>' +
         '<li>안내: "솔루션 도입신청이 접수되었습니다", "신청 내용을 심사한 후 본사 계정 발급 절차를 안내해드립니다."</li>' +
         '<li>[메인으로]: 홈페이지 메인 화면으로 이동</li>' +
