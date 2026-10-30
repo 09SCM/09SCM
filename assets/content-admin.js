@@ -508,8 +508,8 @@ window.GUIDE_CONTENT['system-terms'] = {
             '<tr><td>버전</td><td>약관 종류별 등록 순서대로 자동으로 정해지는 버전 (변경 불가)</td></tr>' +
             '<tr><td>시행일 *</td><td>약관을 시행하는 날짜 (달력에서 선택, 등록일과 달라도 되고 과거·미래 날짜 제한 없음, 등록한 즉시 교체되며 시행일에 맞춰 교체되지는 않음)</td></tr>' +
             '<tr><td>변경 사유 *</td><td>개정한 이유 (개정 이력 상세에서만 확인)</td></tr>' +
-            '<tr><td>내용 *</td><td>약관 본문 (서식 에디터로 입력, 공통 / 본사 가입 / 가맹점 가입 부분으로 나누고 구분 제목을 본문에 표기, 한 버전으로 등록)</td></tr>' +
-            '<tr><td>[현재 시행본 불러오기]</td><td>현재 시행본의 본문을 에디터에 채움 (입력된 내용이 있으면 덮어쓸지 확인)</td></tr>' +
+            '<tr><td>내용 *</td><td>약관 본문</td></tr>' +
+            '<tr><td>[현재 시행본 불러오기]</td><td>현재 시행본의 본문을 에디터에 채움</td></tr>' +
           '</tbody></table></div>' +
         '<p>*는 필수 항목이에요.</p>' +
 
@@ -517,13 +517,13 @@ window.GUIDE_CONTENT['system-terms'] = {
         '<div class="table-wrap"><table class="wide">' +
           '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
           '<tbody>' +
-            '<tr><td>[취소]</td><td>해당 탭으로 돌아감 (입력한 내용이 있으면 "작성 중인 내용을 버리고 돌아가시겠습니까?" 확인 후 입력 내용 삭제)</td></tr>' +
+            '<tr><td>[취소]</td><td>해당 탭으로 돌아감</td></tr>' +
             '<tr><td>[등록]</td><td>등록 확인 후 새 버전을 현재 시행본으로 등록</td></tr>' +
           '</tbody></table></div>',
       cases: [
         {
           title: '필수 항목이 비어 있으면',
-          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-error-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 입력 오류 PC 화면', ratio: 2880 / 1894 }],
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-error-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 입력 오류 PC 화면', ratio: 2848 / 1128 }],
           shotCaption: '09SCM 통합관리자 약관 개정 등록 입력 오류 화면',
           html:
             '<p>[등록]을 눌러도 저장되지 않고, 비어 있는 항목 아래에 안내가 나와요. 나오는 안내 문구는 아래와 같아요.</p>' +
@@ -536,12 +536,45 @@ window.GUIDE_CONTENT['system-terms'] = {
               '</tbody></table></div>'
         },
         {
+          title: '덮어쓰기를 확인할 때',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-overwrite-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 덮어쓰기 확인 PC 화면', ratio: 904 / 348 }],
+          shotCaption: '09SCM 통합관리자 약관 개정 등록 덮어쓰기 확인 화면',
+          html:
+            '<p>에디터에 입력한 내용이 있는 상태에서 [현재 시행본 불러오기]를 누르면 확인 창이 나와요.</p>' +
+            '<div class="table-wrap"><table class="wide">' +
+              '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+              '<tbody>' +
+                '<tr><td>[덮어쓰기]</td><td>입력한 내용을 현재 시행본의 본문으로 바꿈</td></tr>' +
+                '<tr><td>[취소]</td><td>입력한 내용을 그대로 두고 확인 창을 닫음</td></tr>' +
+              '</tbody></table></div>'
+        },
+        {
+          title: '작성 취소를 확인할 때',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-leave-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 작성 취소 확인 PC 화면', ratio: 904 / 350 }],
+          shotCaption: '09SCM 통합관리자 약관 개정 등록 작성 취소 확인 화면',
+          html:
+            '<p>입력한 내용이 있는 상태에서 [취소]나 [← 목록으로]를 누르면 확인 창이 나와요. 입력한 내용이 없으면 확인 없이 바로 돌아가요.</p>' +
+            '<div class="table-wrap"><table class="wide">' +
+              '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+              '<tbody>' +
+                '<tr><td>[나가기]</td><td>입력한 내용을 저장하지 않고 해당 탭으로 돌아감</td></tr>' +
+                '<tr><td>[취소]</td><td>확인 창을 닫고 작성 화면에 그대로 머뭄</td></tr>' +
+              '</tbody></table></div>'
+        },
+        {
           title: '등록을 확인할 때',
           shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-confirm-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 확인 PC 화면', ratio: 904 / 386 }],
           shotCaption: '09SCM 통합관리자 약관 개정 등록 확인 화면',
           html:
             '<p>필수 항목을 모두 입력하고 [등록]을 누르면 확인 창이 나와요. 등록하면 바로 현재 시행본으로 바뀌고 이후 수정·삭제할 수 없다는 안내와, 이전 시행본은 개정 이력으로 이동한다는 안내가 함께 나와요.</p>' +
-            '<p>[등록]을 누르면 해당 탭으로 돌아가고 "저장되었습니다." 안내가 나와요.</p>'
+            '<p>확인 창의 [등록]을 누르면 새 버전이 등록돼요.</p>'
+        },
+        {
+          title: '등록이 끝나면',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-done-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 완료 안내 PC 화면', ratio: 904 / 210 }],
+          shotCaption: '09SCM 통합관리자 약관 개정 등록 완료 안내 화면',
+          html:
+            '<p>해당 탭으로 돌아가고 "저장되었습니다." 안내가 잠시 나와요.</p>'
         }
       ],
       trouble:
