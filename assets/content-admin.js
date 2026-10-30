@@ -275,7 +275,8 @@ window.GUIDE_CONTENT['start-terms'] = {
         '<tr><td>본사별 현황</td><td>본사별로 도소매 매출과 이용료 수납액을 보는 화면</td></tr>' +
         '<tr><td>가맹점별 현황</td><td>가맹점별로 도소매 매출을 보는 화면</td></tr>' +
         '<tr><td>실시간 집계</td><td>화면을 열거나 새로고침한 시점의 최신 값을 보여주는 방식 (한국 시간 기준)</td></tr>' +
-      '</tbody></table></div>' },
+      '</tbody></table></div>' +
+      '<p>통합관리자에서는 개별 본사·가맹점의 결제 건별 내역은 다루지 않고, 매출 합계와 추이만 다뤄요.</p>' },
     { id: 'sec3', label: 'PayApp', html:
       '<div class="table-wrap"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody>' +
         '<tr><td>PayApp</td><td>온라인 결제를 처리하는 외부 서비스</td></tr>' +
