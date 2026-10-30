@@ -3,6 +3,7 @@
 window.GUIDE_NAV = [
   { id: 'start', label: '시작하기', children: [
     { id: 'start-intro', label: '09SCM 통합관리자 소개', type: 'page' },
+    { id: 'start-home', label: '09SCM 홈페이지', type: 'page' },
     { id: 'start-login', label: '로그인' },
     { id: 'start-terms', label: '용어집', type: 'page' }
   ]},
