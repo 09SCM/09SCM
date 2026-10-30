@@ -331,3 +331,152 @@ window.GUIDE_CONTENT['dashboard-ops'] = {
     '<h3>다른 화면의 숫자와 달라 보여요</h3>' +
     '<p>대시보드의 수치는 본사 관리, 가맹점 정보, 거래/매출 현황의 수치와 같아야 해요. 화면마다 열어 둔 시점이 다르면 값이 다르게 보일 수 있으니 각 화면을 새로고침한 뒤 다시 비교해요.</p>'
 };
+
+// ---- 시스템 관리 > 약관 관리 ----
+window.GUIDE_CONTENT['system-terms'] = {
+  screens: [
+    {
+      id: 'main',
+      label: '약관 관리 보기',
+      shots: [
+        { device: 'pc', src: IMG_ADMIN + 'terms-main-pc.webp', alt: '09SCM 통합관리자 약관 관리 PC 화면', ratio: 2880 / 1836 }
+      ],
+      shotCaption: '09SCM 통합관리자 약관 관리 화면',
+      overview:
+        '<p>09SCM 솔루션의 약관을 확인하고 개정하는 화면이에요. 탭마다 지금 적용 중인 약관(현재 시행본)과 이전 버전(개정 이력)이 나와요.</p>' +
+        '<ul>' +
+          '<li>이용약관, 개인정보처리방침, 마케팅정보 수신동의 3종을 탭으로 나눠 관리해요.</li>' +
+          '<li>이 약관은 09SCM 홈페이지의 <a href="#start-intro/sec5">솔루션 도입신청 약관 동의와 푸터</a>, 각 본사 소매몰의 가맹점 가입신청에서 함께 써요.</li>' +
+          '<li>소매몰 이용자(소비자)가 회원가입할 때 보는 이용약관·개인정보처리방침은 이 화면에서 다루지 않아요. 각 소매몰에서 따로 관리해요. (<a href="partner.html#retail-settings/settings-terms">09SCM 관리자 이용가이드</a>)</li>' +
+        '</ul>',
+      steps:
+        '<h3>탭</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>탭</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>이용약관</td><td>솔루션 이용 조건 (화면을 처음 열면 이 탭이 열림)</td></tr>' +
+            '<tr><td>개인정보처리방침</td><td>개인정보 처리 기준</td></tr>' +
+            '<tr><td>마케팅정보 수신동의</td><td>도입신청·가맹점 가입신청에서 선택으로 동의받는 문서</td></tr>' +
+          '</tbody></table></div>' +
+
+        '<h3>현재 시행본</h3>' +
+        '<p>탭에서 가장 최근에 등록한 버전을 읽기 전용으로 보여줘요.</p>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>버전</td><td>약관 종류별 등록 순서대로 정해진 버전</td></tr>' +
+            '<tr><td>등록일시</td><td>개정을 등록한 일시</td></tr>' +
+            '<tr><td>시행일</td><td>등록할 때 선택한 시행일</td></tr>' +
+            '<tr><td>[개정 등록]</td><td>새 버전을 등록하는 <a href="#system-terms/register">약관 개정 등록하기</a> 화면으로 이동</td></tr>' +
+          '</tbody></table></div>' +
+
+        '<h3>개정 이력</h3>' +
+        '<p>현재 시행본을 뺀 이전 버전을 최신순으로 한 페이지에 20건씩 보여줘요.</p>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>번호</td><td>목록 순번 (최신 버전이 가장 큰 번호)</td></tr>' +
+            '<tr><td>버전</td><td>약관 종류별 등록 순서대로 정해진 버전</td></tr>' +
+            '<tr><td>등록일시</td><td>개정을 등록한 일시</td></tr>' +
+            '<tr><td>시행일</td><td>등록할 때 선택한 시행일</td></tr>' +
+            '<tr><td>등록자</td><td>개정을 등록한 운영자</td></tr>' +
+            '<tr><td>관리</td><td>[상세보기] 버튼 (이전 버전 내용을 팝업으로 확인)</td></tr>' +
+          '</tbody></table></div>',
+      cases: [
+        {
+          title: '이전 버전을 확인할 때',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-detail-pc.webp', alt: '09SCM 통합관리자 약관 개정 이력 상세 PC 화면', ratio: 904 / 1390 }],
+          shotCaption: '09SCM 통합관리자 약관 개정 이력 상세 화면',
+          html:
+            '<p>개정 이력의 [상세보기]를 누르면 팝업이 열려요. 확인만 할 수 있어요.</p>' +
+            '<div class="table-wrap"><table class="wide">' +
+              '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+              '<tbody>' +
+                '<tr><td>버전, 등록일시, 시행일, 등록자</td><td>개정 이력 목록과 같은 값</td></tr>' +
+                '<tr><td>변경 사유</td><td>개정을 등록할 때 입력한 사유 (이 팝업에서만 확인)</td></tr>' +
+                '<tr><td>본문</td><td>그 버전의 약관 내용</td></tr>' +
+              '</tbody></table></div>' +
+            '<p>[닫기]를 누르면 보던 탭과 목록 페이지가 그대로 유지돼요.</p>'
+        },
+        {
+          title: '개정 이력이 없으면',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-no-history-pc.webp', alt: '09SCM 통합관리자 약관 개정 이력 없음 PC 화면', ratio: 2384 / 648 }],
+          shotCaption: '09SCM 통합관리자 약관 개정 이력 없음 화면',
+          html:
+            '<ul>' +
+              '<li>현재 시행본만 등록된 약관: 개정 이력에 "등록된 개정 이력이 없습니다." 안내</li>' +
+              '<li>등록된 버전이 없는 약관: 현재 시행본에 "등록된 약관이 없습니다." 안내</li>' +
+            '</ul>'
+        }
+      ],
+      trouble:
+        '<h3>방금 등록한 버전이 개정 이력에 안 보여요</h3>' +
+        '<p>가장 최근에 등록한 버전은 현재 시행본에 나와요. 개정 이력에는 그 이전 버전만 나와요.</p>'
+    },
+    {
+      id: 'register',
+      label: '약관 개정 등록하기',
+      shots: [
+        { device: 'pc', src: IMG_ADMIN + 'terms-reg-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 PC 화면', ratio: 2880 / 1800 }
+      ],
+      shotCaption: '09SCM 통합관리자 약관 개정 등록 화면',
+      overview:
+        '<p>약관의 새 버전을 등록하는 화면이에요. 약관 관리의 [개정 등록]을 누르면 열려요. 제목에 약관 종류가 함께 표시돼요. 예) 이용약관 개정 등록</p>' +
+        '<ul>' +
+          '<li>등록하면 바로 새 버전이 현재 시행본으로 바뀌고, 이전 버전은 개정 이력으로 이동해요.</li>' +
+          '<li>등록한 버전은 수정하거나 삭제할 수 없어요.</li>' +
+          '<li>개정을 등록해도 공지사항은 자동으로 만들어지지 않아요.</li>' +
+        '</ul>',
+      steps:
+        '<h3>입력 항목</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>약관 종류</td><td>진입한 탭의 약관 종류 (변경 불가)</td></tr>' +
+            '<tr><td>버전</td><td>약관 종류별 등록 순서대로 자동으로 정해지는 버전 (변경 불가)</td></tr>' +
+            '<tr><td>시행일 *</td><td>약관을 시행하는 날짜 (달력에서 선택, 등록일과 달라도 되고 과거·미래 날짜 제한 없음, 등록한 즉시 교체되며 시행일에 맞춰 교체되지는 않음)</td></tr>' +
+            '<tr><td>변경 사유 *</td><td>개정한 이유 (개정 이력 상세에서만 확인)</td></tr>' +
+            '<tr><td>내용 *</td><td>약관 본문 (서식 에디터로 입력, 공통 / 본사 가입 / 가맹점 가입 부분으로 나누고 구분 제목을 본문에 표기, 한 버전으로 등록)</td></tr>' +
+            '<tr><td>[현재 시행본 불러오기]</td><td>현재 시행본의 본문을 에디터에 채움 (입력된 내용이 있으면 덮어쓸지 확인)</td></tr>' +
+          '</tbody></table></div>' +
+        '<p>*는 필수 항목이에요.</p>' +
+
+        '<h3>하단 버튼</h3>' +
+        '<div class="table-wrap"><table class="wide">' +
+          '<thead><tr><th>항목</th><th>설명</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>[취소]</td><td>해당 탭으로 돌아감 (입력한 내용이 있으면 "작성 중인 내용을 버리고 돌아가시겠습니까?" 확인 후 입력 내용 삭제)</td></tr>' +
+            '<tr><td>[등록]</td><td>등록 확인 후 새 버전을 현재 시행본으로 등록</td></tr>' +
+          '</tbody></table></div>',
+      cases: [
+        {
+          title: '필수 항목이 비어 있으면',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-error-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 입력 오류 PC 화면', ratio: 2880 / 1894 }],
+          shotCaption: '09SCM 통합관리자 약관 개정 등록 입력 오류 화면',
+          html:
+            '<p>[등록]을 눌러도 저장되지 않고, 비어 있는 항목 아래에 안내가 나와요. 나오는 안내 문구는 아래와 같아요.</p>' +
+            '<div class="table-wrap"><table class="wide">' +
+              '<thead><tr><th>상황</th><th>안내 문구</th></tr></thead>' +
+              '<tbody>' +
+                '<tr><td>시행일을 선택하지 않고 [등록]을 누름</td><td>"시행일을 입력해 주세요."</td></tr>' +
+                '<tr><td>변경 사유를 입력하지 않고 [등록]을 누름</td><td>"변경 사유를 입력해 주세요."</td></tr>' +
+                '<tr><td>내용을 입력하지 않고 [등록]을 누름</td><td>"내용을 입력해 주세요."</td></tr>' +
+              '</tbody></table></div>'
+        },
+        {
+          title: '등록을 확인할 때',
+          shots: [{ device: 'pc', src: IMG_ADMIN + 'terms-reg-confirm-pc.webp', alt: '09SCM 통합관리자 약관 개정 등록 확인 PC 화면', ratio: 904 / 386 }],
+          shotCaption: '09SCM 통합관리자 약관 개정 등록 확인 화면',
+          html:
+            '<p>필수 항목을 모두 입력하고 [등록]을 누르면 확인 창이 나와요. 등록하면 바로 현재 시행본으로 바뀌고 이후 수정·삭제할 수 없다는 안내와, 이전 시행본은 개정 이력으로 이동한다는 안내가 함께 나와요.</p>' +
+            '<p>[등록]을 누르면 해당 탭으로 돌아가고 "저장되었습니다." 안내가 나와요.</p>'
+        }
+      ],
+      trouble:
+        '<h3>잘못 등록한 약관을 고치고 싶어요</h3>' +
+        '<p>등록한 버전은 수정하거나 삭제할 수 없어요. 새 버전을 다시 등록하면 그 버전이 현재 시행본이 되고, 잘못 등록한 버전은 개정 이력에 남아요.</p>' +
+        '<h3>개정했는데 안내가 따로 가지 않아요</h3>' +
+        '<p>약관을 개정해도 공지사항은 자동으로 만들어지지 않아요. 개정을 미리 알려야 하면 <a href="#system-notice">공지사항</a>을 따로 등록해요.</p>'
+    }
+  ]
+};
