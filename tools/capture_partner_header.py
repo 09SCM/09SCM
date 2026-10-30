@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 URL = 'file://' + os.path.join(ROOT, 'mock', 'partner.html')
 OUT = os.path.join(ROOT, 'assets', 'img', 'partner')
 PW = 'a1234'
-ACCOUNTS = {'hq': 'bonsa', 'fr': 'ga02'}   # 본사, 가맹점(이용승인·도매공급권한 보유)
+ACCOUNTS = {'hq': 'bonsa1', 'fr': 'ga02'}   # 본사, 가맹점(이용승인·도매공급권한 보유)
 TOPBAR_H = 61
 MARGIN = 16
 

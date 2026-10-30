@@ -114,7 +114,7 @@ if __name__ == '__main__':
             for label, size in (('pc', pc), ('mobile', mo)):
                 if size is None: continue
                 w, h = size
-                ctx, page = new_page(b, w, h, 'bonsa')
+                ctx, page = new_page(b, w, h, 'bonsa1')
                 goto_franchise(page, menu)
                 if prep: prep(page, label)
                 page.wait_for_timeout(250)
@@ -124,7 +124,7 @@ if __name__ == '__main__':
         for name, prep, mode, clip_text, pc, mo in TAB_STEPS:
             if only and not any(o in name for o in only): continue
             for label, (w, h) in (('pc', pc), ('mobile', mo)):
-                ctx, page = new_page(b, w, h, 'bonsa')
+                ctx, page = new_page(b, w, h, 'bonsa1')
                 goto_franchise(page, '가맹점 목록')
                 prep(page, label)
                 page.wait_for_timeout(250)

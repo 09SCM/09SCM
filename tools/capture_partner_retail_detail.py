@@ -1,7 +1,7 @@
 # 소매관리 > 주문목록 > 주문 상세 이용가이드 캡처(대표·배달 케이스. 결제대기·노쇼후보·취소요청·처리완료 케이스는 capture_partner_case_blocks.py의 섹션·하단 바 크롭) (mock/partner.html -> assets/img/partner/order-detail*.webp)
 # 사용: python3 tools/capture_partner_retail_detail.py
 # 규격: PC 1440 폭(LNB 제외, 하단 고정바 전체 폭, 화면 전체 높이), 모바일 440 폭(화면 전체 높이), 2배 해상도
-# 계정: bonsa(본사)
+# 계정: bonsa1(본사)
 import io, os
 from playwright.sync_api import sync_playwright
 from PIL import Image
@@ -26,7 +26,7 @@ def save(png, name):
 
 def login(page):
     page.goto(URL); page.wait_for_timeout(400)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.mouse.move(0, 0); page.wait_for_timeout(800)
 
 def fit_height(page, minh=700, maxh=3000):

@@ -14,7 +14,7 @@ SECS = "[...document.querySelectorAll('.form-section')]"
 SEC_STARTS = lambda t: SECS + ".find(s => s.innerText.trim().startsWith(%r))" % t
 FIELD_STARTS = lambda t: "[...document.querySelectorAll('.form-field')].find(f => f.innerText.trim().startsWith(%r))" % t
 
-def page_for(b, device, acct='bonsa'):
+def page_for(b, device, acct='bonsa1'):
     pc = device == 'pc'
     ctx, page = S.new_page(b, 1440 if pc else 440, 1500 if pc else 1200, acct)
     return ctx, page

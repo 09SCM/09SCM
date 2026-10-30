@@ -1,7 +1,7 @@
 # 이용가이드 "섹션 + 하단 바" 혼재 케이스 캡처(장바구니 품절·구매불가는 카드 푸터가 같은 카드 안에 있어 한 장) (mock/partner.html -> assets/img/partner/*-sec-*.webp, *-bar-*.webp)
 # 사용: python3 tools/capture_partner_case_blocks.py   (ONLY=이름,이름 으로 일부만 저장)
 # 규격: 섹션 크롭은 상하좌우 16px 여백(모바일은 화면 폭 전체), 하단 바 크롭은 PC 1440 전체 폭·모바일 440 폭에 위쪽 28px 여백, 2배 해상도
-# 계정: bonsa(본사)
+# 계정: bonsa1(본사)
 import io, os
 from playwright.sync_api import sync_playwright
 from PIL import Image
@@ -21,7 +21,7 @@ def save(png, name):
 
 def login(page):
     page.goto(URL); page.wait_for_timeout(400)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.mouse.move(0, 0); page.wait_for_timeout(800)
 
 def go_menu(page, top, label):

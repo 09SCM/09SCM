@@ -56,7 +56,7 @@ if __name__ == '__main__':
                 if name.startswith(('frm-notice-form', 'frm-notice-attach', 'frm-notice-detail', 'frm-notice-edit')):
                     w, h = (1440, 1150) if label == 'pc' else (440, 1500)
                 if label == 'mobile' and not mobile: continue
-                ctx, page = new_page(b, w, h, 'bonsa')
+                ctx, page = new_page(b, w, h, 'bonsa1')
                 goto_franchise(page, menu)
                 if prep: prep(page, label)
                 page.wait_for_timeout(250)

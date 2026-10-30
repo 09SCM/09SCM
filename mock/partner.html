@@ -1730,7 +1730,7 @@
   </div>
 </div>
 
-<div class="restrict-banner" id="restrictBanner" role="status" hidden>이 계정은 이용제한 상태입니다. 도소매 기능 이용이 제한되며, 해제하려면 본사로 문의해 주세요.</div>
+<div class="restrict-banner" id="restrictBanner" role="status" hidden>이 계정은 이용이 제한된 상태입니다. 도소매 기능 이용이 제한되며, 해제하려면 관리 담당자에게 문의해 주세요.</div>
 
 <div class="app" id="app">
   <div class="scrim" id="scrim"></div>
@@ -5549,7 +5549,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
   let MEMBER_ACCOUNT = {
     managerName: MY_PROFILE.managerName, // 담당자 이름 — 가입신청서 "회원정보 > 이름"에 대응
     email: MY_PROFILE.email,
-    loginId: 'bonsa',                    // 가입 후 변경 불가(가입신청서 안내 문구와 동일)
+    loginId: 'bonsa1',                   // 가입 후 변경 불가(가입신청서 안내 문구와 동일)
     phone: MY_PROFILE.phone,
     wholesaleSupply: true,               // 도매공급권한 보유 여부 — 대시보드 도매 판매 영역 노출 조건
     termsMarketing: true,                // 마케팅정보 수신동의[선택] 동의 여부 — 필수 2종은 가입 시 동의 완료 상태로 고정
@@ -5832,8 +5832,8 @@ ${regionFieldHTML('set', '우리지역', false, true)}
       shippingMethod: 'fixed', paidAt: '26.09.14 10:30', settled: true,
       itemsTotal: 24000, shippingFee: 3000, cardFeeAmount: 672, cardFeeRate: 2.8, grandTotal: 27672, createdAt: '26.09.14 10:30' },
   ];
-  // 도매 구매자는 구매 계정 아이디(buyerId)로 식별한다. 시드의 매입 주문은 기본 계정(bonsa)의 구매 건이다.
-  ORDER_LIST.forEach(o => { if (!o.buyerId && o.seller !== MY_SELLER_NAME) o.buyerId = 'bonsa'; });
+  // 도매 구매자는 구매 계정 아이디(buyerId)로 식별한다. 시드의 매입 주문은 기본 계정(bonsa1)의 구매 건이다.
+  ORDER_LIST.forEach(o => { if (!o.buyerId && o.seller !== MY_SELLER_NAME) o.buyerId = 'bonsa1'; });
   // 시드 주문의 주문자 정보 — 상호명(구매 계정 사업자정보)과 담당자 이름을 분리한다(신규 주문과 같은 구조).
   const SEED_BUYER_MANAGERS = ['김민준', '이서연', '박지호', '최유진', '정도윤', '강하은', '조현우', '윤서아', '장민재', '임수빈', '한지우'];
   const seedManagerByCompany = {};
@@ -6208,7 +6208,7 @@ ${regionFieldHTML('set', '우리지역', false, true)}
 
   // 주문내역(구매자 모드) — 본 계정이 다른 공급사에 발주한 매입 주문
   function myPurchases() {
-    return ORDER_LIST.filter(o => o.buyerId === MEMBER_ACCOUNT.loginId);
+    return ORDER_LIST.filter(o => o.buyerId === MEMBER_ACCOUNT.loginId || (isHQ() && o.buyerId === HQ_LOGIN_ID));
   }
 
   // ==================================================================
@@ -14830,7 +14830,8 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   let RETAIL_NOTIFICATION_BALANCE = { remaining: 1240, sentAlimtalk: 780, sentLms: 32 };
   // 계정별 알림톡 잔여·사용 상태 — 잔여건수가 5건 미만이 되면 알림톡 사용하기를 자동으로 끄고 시스템 알림을 1회 발송한다.
   const NOTI_STATE_BY_ACCOUNT = {
-    bonsa: { balance: RETAIL_NOTIFICATION_BALANCE, on: true },
+    bonsa1: { balance: RETAIL_NOTIFICATION_BALANCE, on: true },
+    bonsa2: { balance: Object.assign({}, RETAIL_NOTIFICATION_BALANCE), on: true },
     ga03: { balance: { remaining: 3, sentAlimtalk: 410, sentLms: 12 }, on: true },
   };
   function loadNotificationState(id) {
@@ -15666,7 +15667,8 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
 
   // ---- 로그인 · 세션 · 접근 제어 ----
   const DEMO_PASSWORD = 'a1234';
-  const HQ_LOGIN_ID = 'bonsa';
+  const HQ_LOGIN_ID = 'bonsa1';
+  const HQ_RESTRICTED_LOGIN_ID = 'bonsa2'; // 운영제한 상태의 본사 데모 계정(제재 범위는 가맹점 이용제한과 같다)
   let SESSION = null; // { id, type: '본사' | '가맹점' }
   const HQ_STATE = {
     profile: Object.assign({}, MY_PROFILE),
@@ -15686,7 +15688,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   function isHQ() { return !!SESSION && SESSION.type === '본사'; }
   function sessionStatus() { const f = sessionFranchise(); return f ? f.status : null; }
   function canSupply() { return isHQ() || !!MEMBER_ACCOUNT.wholesaleSupply; }
-  function restrictedNow() { return sessionStatus() === '이용제한'; }
+  function restrictedNow() { return sessionStatus() === '이용제한' || (isHQ() && SESSION.id === HQ_RESTRICTED_LOGIN_ID); }
 
   function navCatAllowed(cat) {
     if (!SESSION) return false;
@@ -15734,7 +15736,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     document.querySelectorAll('#contentWrapper ' + sel.split(', ').join(', #contentWrapper ')).forEach(b => {
       if (b.disabled) return;
       b.disabled = true;
-      b.title = '이용제한 상태에서는 사용할 수 없습니다.';
+      b.title = '현재 상태에서는 사용할 수 없습니다.';
     });
   }
   new MutationObserver(applyRestrictionUI).observe(document.getElementById('contentWrapper'), { childList: true, subtree: true });
@@ -15766,7 +15768,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     FEE_HISTORY.length = 0;
     if (acct.type === '본사') {
       Object.assign(MY_PROFILE, HQ_STATE.profile);
-      MEMBER_ACCOUNT = HQ_STATE.account;
+      MEMBER_ACCOUNT = acct.id === HQ_RESTRICTED_LOGIN_ID ? Object.assign({}, HQ_STATE.account, { loginId: acct.id }) : HQ_STATE.account;
       MEMBER_BUSINESS = HQ_STATE.business;
       PAYAPP_LINK = HQ_STATE.payapp;
       FEE_INFO = HQ_STATE.fee;
@@ -15797,7 +15799,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
   }
 
   function demoAccountRows() {
-    const rows = [{ id: HQ_LOGIN_ID, label: '본사' }];
+    const rows = [{ id: HQ_LOGIN_ID, label: '본사' }, { id: HQ_RESTRICTED_LOGIN_ID, label: '본사 · 운영제한' }];
     FRANCHISE_LIST.filter(f => !f.demo).sort((a, b) => (a.id < b.id ? -1 : 1)).forEach(f => {
       rows.push({ id: f.id, label: '가맹점 · ' + f.status + (f.status === '이용승인' || f.status === '이용제한' ? (f.wholesaleSupply ? ' · 도매공급권한 보유' : ' · 도매공급권한 없음') : '') });
     });
@@ -15823,7 +15825,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
     if (!id) return { ok: false, message: '아이디를 입력해 주세요.' };
     if (!pw) return { ok: false, message: '비밀번호를 입력해 주세요.' };
     let acct = null;
-    if (id === HQ_LOGIN_ID) acct = { id, type: '본사' };
+    if (id === HQ_LOGIN_ID || id === HQ_RESTRICTED_LOGIN_ID) acct = { id, type: '본사' };
     else {
       const f = FRANCHISE_LIST.find(x => x.id === id && !x.demo);
       if (f) acct = { id, type: '가맹점', franchise: f };

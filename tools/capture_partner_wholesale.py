@@ -1,7 +1,7 @@
 # 도매관리 > 도매상품 주문하기·주문내역 이용가이드 캡처 (mock/partner.html -> assets/img/partner/wh-*.webp)
 # 사용: python3 tools/capture_partner_wholesale.py
 # 규격: PC 1440×1500(LNB 제외, 하단 고정바 전체 폭), 모바일 440×1200(고정바가 있는 화면은 화면 전체 높이), 2배 해상도
-# 계정: bonsa(본사) — 도매 구매 이력이 있는 계정
+# 계정: bonsa1(본사) — 도매 구매 이력이 있는 계정
 import io, os, sys
 from playwright.sync_api import sync_playwright
 from PIL import Image
@@ -21,7 +21,7 @@ def save(png, name):
 
 def login(page):
     page.goto(URL); page.wait_for_timeout(400)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.mouse.move(0, 0); page.wait_for_timeout(800)   # 마우스를 치워 hover 상태가 찍히지 않게 한다
 
 def go_menu(page, label):

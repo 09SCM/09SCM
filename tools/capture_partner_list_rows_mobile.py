@@ -17,7 +17,7 @@ def save(png, name):
 
 def login(page):
     page.goto(URL); page.wait_for_timeout(500)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.wait_for_timeout(800)
 
 def go_retail(page, label):

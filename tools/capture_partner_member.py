@@ -15,7 +15,7 @@ def save(png, name):
 
 def open_detail(page, w):
     page.goto(URL); page.wait_for_timeout(400)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.wait_for_timeout(800)
     if w > 860:
         page.add_style_tag(content=':root{--lnb-w:0px!important}.lnb{display:none!important}')

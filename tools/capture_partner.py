@@ -18,7 +18,7 @@ def login_full(page, name):
     save(page.screenshot(), name)
 
 def login(page):
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.wait_for_timeout(800)
 
 with sync_playwright() as p:
@@ -29,7 +29,7 @@ with sync_playwright() as p:
         page.goto(URL); page.wait_for_timeout(500)
         login_full(page, 'login-' + label)
         if label == 'pc':
-            page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+            page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
             page.click('#loginSubmitBtn'); page.wait_for_timeout(800)
             save(page.screenshot(), 'intro-pc')
         ctx.close()

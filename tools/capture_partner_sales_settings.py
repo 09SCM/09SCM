@@ -25,7 +25,7 @@ def goto_menu(page, label):
 def new_page(b, w, h):
     ctx = b.new_context(viewport={'width': w, 'height': h}, device_scale_factor=2)
     page = ctx.new_page(); page.goto(URL); page.wait_for_timeout(400)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.wait_for_timeout(800)
     if w > 860: page.add_style_tag(content=HIDE_LNB)
     return ctx, page

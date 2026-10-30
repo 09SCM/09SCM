@@ -1,7 +1,7 @@
 # 소매관리 > 상품관리 이용가이드 대표 화면·출처별 안내 캡처 (mock/partner.html -> assets/img/partner/*.webp)
 # 사용: python3 tools/capture_partner_product_screens.py   (ONLY=이름,이름 으로 일부만 저장)
 # 규격: PC 1440 폭(LNB 제외, 하단 고정바 전체 폭) / 모바일 440 폭, 2배 해상도. 목록은 PC 1440×1500·모바일 440×1200, 등록·수정은 화면 전체 높이.
-# 섹션 크롭은 상하좌우 16px 여백(모바일은 화면 폭 전체). 계정: bonsa(본사)
+# 섹션 크롭은 상하좌우 16px 여백(모바일은 화면 폭 전체). 계정: bonsa1(본사)
 import io, os
 from playwright.sync_api import sync_playwright
 from PIL import Image
@@ -21,7 +21,7 @@ def save(png, name):
 
 def login(page):
     page.goto(URL); page.wait_for_timeout(400)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.mouse.move(0, 0); page.wait_for_timeout(800)
 
 def go_product_list(page):

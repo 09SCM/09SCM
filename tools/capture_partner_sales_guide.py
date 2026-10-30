@@ -98,7 +98,7 @@ def franchise(b):
     )
     for name, prep in steps:
         for label, (w, h) in (('pc', PC), ('mobile', MO)):
-            ctx, page = sys_new_page(b, w, h, 'bonsa'); page.evaluate(SEED_JS)
+            ctx, page = sys_new_page(b, w, h, 'bonsa1'); page.evaluate(SEED_JS)
             goto_franchise(page, '통합매출조회')
             prep(page); page.wait_for_timeout(500)
             sys_save(page.screenshot(), '%s-%s' % (name, label)); ctx.close()

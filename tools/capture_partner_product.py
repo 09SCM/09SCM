@@ -16,7 +16,7 @@ def save(png, name):
 
 def open_convert(page):
     page.goto(URL); page.wait_for_timeout(500)
-    page.fill('#loginIdInput', 'bonsa'); page.fill('#loginPwInput', 'a1234')
+    page.fill('#loginIdInput', 'bonsa1'); page.fill('#loginPwInput', 'a1234')
     page.click('#loginSubmitBtn'); page.wait_for_timeout(800)
     page.evaluate("""() => {
       const find = t => [...document.querySelectorAll('a,button,li,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === t);

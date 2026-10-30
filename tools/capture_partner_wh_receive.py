@@ -1,7 +1,7 @@
 # 이용가이드 도매 > 주문접수관리(공급자) 캡처: 주문목록(대표·행·탭·일괄변경) / 주문 상세(섹션·하단 바) / 배송확정 팝업 / 취소·반품 처리 팝업
 # (mock/partner.html -> assets/img/partner/wh-recv-*.webp)
 # 사용: python3 tools/capture_partner_wh_receive.py   (ONLY=이름,이름 으로 일부만 저장 / 이름은 -pc,-mobile 제외한 접두)
-# 기준: 공급자 계정은 bonsa(우리마켓 본사). 샘플 주문은 목업 시드를 그대로 쓰고, 시드에 없는 조합만 캡처 중 메모리 상의 주문 데이터를 바꾼다(목업 파일은 수정하지 않는다).
+# 기준: 공급자 계정은 bonsa1(우리마켓 본사). 샘플 주문은 목업 시드를 그대로 쓰고, 시드에 없는 조합만 캡처 중 메모리 상의 주문 데이터를 바꾼다(목업 파일은 수정하지 않는다).
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from playwright.sync_api import sync_playwright

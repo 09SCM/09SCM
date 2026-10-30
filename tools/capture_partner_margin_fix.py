@@ -139,7 +139,7 @@ def run(device, b):
     for name, prep, mode, clip, pcsize, mosize in F.TAB_STEPS:
         if not name.startswith(('fr-d-error', 'fr-d-corp', 'fr-d-payapp', 'fr-d-fee-custom', 'fr-d-pay-')) or not want(name): continue
         w, h = pcsize if pc else mosize
-        ctx, page = S.new_page(b, w, h, 'bonsa'); F.goto_franchise(page, '가맹점 목록'); prep(page, device); page.wait_for_timeout(300)
+        ctx, page = S.new_page(b, w, h, 'bonsa1'); F.goto_franchise(page, '가맹점 목록'); prep(page, device); page.wait_for_timeout(300)
         if mode == 'between':
             exprs = [BETWEEN(clip[0], clip[1]) + '[0]', BETWEEN(clip[0], clip[1]) + '[1]']
         else:
