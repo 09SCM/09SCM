@@ -20,6 +20,16 @@ window.GUIDE_HISTORY = {
   ],
   partner: [
     {
+      version: 'v1.1', date: '26.11.02 18:24', push: 'c7ba382',
+      items: [
+        { summary: '이용제한 가맹점 캡처를 새 배너 문구 기준으로 재촬영', path: '가맹점 관리 > 가맹점목록 > 이용상태 변경하기', link: './guide/partner.html#franchise-list' },
+        { summary: "소개에 '공통 영역 보기' 구역 추가: 헤더 및 왼쪽 메뉴 설명 보충", path: '시작하기 > 09SCM 관리자 소개 > 공통 영역 보기', link: './guide/partner.html#start-intro/sec6' },
+        { summary: '로그인 후 표시되는 계정 정보 안내 문장 추가, 공통 영역 보기로 연결', path: '시작하기 > 가입신청·로그인', link: './guide/partner.html#start-login' },
+        { summary: '이용불가 가맹점 로그인 캡처를 변경된 안내 문구 기준으로 재촬영', path: '가맹점 관리 > 가맹점목록 > 이용상태 변경하기', link: './guide/partner.html#franchise-list/status-change' },
+        { summary: '용어집 표현 보완: 대문화면, 소매몰, 결제총액, 취소·환불액, 총주문건수, 회원주문 코드', path: '시작하기 > 용어집', link: './guide/partner.html#start-terms' }
+      ]
+    },
+    {
       version: '목업 수정', date: '26.11.02 13:20', push: '061ffca',
       items: [
         { summary: '이용불가 가맹점 로그인 안내 문구를 관리 담당자 문의로 변경', detail: ['안내 : 이용이 불가한 계정입니다. 관리 담당자에게 문의해 주세요.'], path: '가맹관리자 화면 > 로그인', link: './mock/partner.html' }
@@ -31,14 +41,6 @@ window.GUIDE_HISTORY = {
         { summary: '본사 계정이 운영제한일 때도 이용제한과 같은 제한 적용 (소매몰 접근 불가, 도소매 등록·전환 버튼 비활성)', path: '가맹관리자 화면 > 공통 > 이용제한 상태', link: './mock/partner.html' },
         { summary: '이용제한 배너·비활성 버튼 안내 문구를 가맹점·본사 공통 문구로 통일', detail: ['배너 : 이 계정은 이용이 제한된 상태입니다. 도소매 기능 이용이 제한되며, 해제하려면 관리 담당자에게 문의해 주세요.', '툴팁 : 현재 상태에서는 사용할 수 없습니다.'], path: '가맹관리자 화면 > 공통 > 이용제한 배너', link: './mock/partner.html' },
         { summary: '로그인 데모 계정 변경: 본사 bonsa → bonsa1(본사 · 운영중), bonsa2(본사 · 운영제한) 추가', path: '가맹관리자 화면 > 로그인', link: './mock/partner.html' }
-      ]
-    },
-    {
-      version: 'v1.1', date: '26.10.30 17:50', push: 'dd38247',
-      items: [
-        { summary: '이용제한 가맹점 캡처를 새 배너 문구 기준으로 재촬영', path: '가맹점 관리 > 가맹점목록 > 이용상태 변경하기', link: './guide/partner.html#franchise-list' },
-        { summary: "소개에 '공통 영역 보기' 구역 추가: 헤더 및 왼쪽 메뉴 설명 보충", path: '시작하기 > 09SCM 관리자 소개 > 공통 영역 보기', link: './guide/partner.html#start-intro/sec6' },
-        { summary: '로그인 후 표시되는 계정 정보 안내 문장 추가, 공통 영역 보기로 연결', path: '시작하기 > 가입신청·로그인', link: './guide/partner.html#start-login' }
       ]
     },
     { version: 'v1.0', date: '26.10.27 10:42', push: '54a2fdc', note: '최초작성' }
