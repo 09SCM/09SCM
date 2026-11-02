@@ -1187,7 +1187,7 @@ window.GUIDE_CONTENT['trade-franchise'] = {
 
 // ---- 본사/가맹점 관리 > 본사 관리 ----
 // 캡처 크기(가로 × 세로 px). tools/capture_admin_hq.py로 촬영한 원본 기준.
-var HQ_SIZES = {"hq-bulk-delete-pc": [904, 430], "hq-d-access-pc": [904, 350], "hq-d-biz-ok-pc": [2848, 982], "hq-d-corp-pc": [2848, 918], "hq-d-go-franchise-pc": [2880, 1800], "hq-d-go-sales-pc": [2880, 1800], "hq-d-id-dup-pc": [2848, 700], "hq-d-id-locked-pc": [2848, 644], "hq-d-memo-add-pc": [2848, 648], "hq-d-memo-empty-pc": [2848, 424], "hq-d-memo-pc": [2848, 492], "hq-d-payapp-alert-pc": [904, 348], "hq-d-payapp-edit-pc": [2848, 660], "hq-d-payapp-empty-pc": [2848, 570], "hq-d-payapp-pc": [2848, 570], "hq-d-payapp-verified-pc": [2848, 660], "hq-d-pw-edit-pc": [2848, 836], "hq-d-pw-error-pc": [2848, 892], "hq-d-save-error-pc": [2848, 550], "hq-d-trade-pc": [2848, 868], "hq-d-trade-zero-pc": [2848, 868], "hq-d-wait-id-pc": [2848, 644], "hq-delete-fr-pc": [904, 430], "hq-delete-pc": [904, 350], "hq-deleted-pc": [2848, 1080], "hq-detail-pc": [2880, 3132], "hq-filter-limit-pc": [2848, 612], "hq-filter-reject-pc": [2848, 612], "hq-filter-run-pc": [2848, 612], "hq-filter-wait-pc": [2848, 612], "hq-list-pc": [2880, 1800], "hq-reg-biz-ok-pc": [2848, 890], "hq-reg-corp-pc": [2848, 918], "hq-reg-done-pc": [2848, 1548], "hq-reg-id-dup-pc": [2848, 856], "hq-reg-id-ok-pc": [2848, 864], "hq-reg-id-rule-pc": [2848, 856], "hq-reg-payapp-fail-pc": [2848, 592], "hq-reg-payapp-ok-pc": [2848, 536], "hq-reg-pc": [2880, 3094], "hq-reg-rule-error-pc": [2848, 510], "hq-s-approve-error-pc": [2880, 162], "hq-s-approved-pc": [2880, 162], "hq-s-limit-done-pc": [2880, 162], "hq-s-limit-partner-pc": [2880, 1520], "hq-s-limit-pc": [2880, 162], "hq-s-limit-select-pc": [2880, 162], "hq-s-reject-done-pc": [2880, 162], "hq-s-reject-pc": [2880, 162], "hq-s-revoke-done-pc": [2880, 162], "hq-s-run-pc": [2880, 162], "hq-s-wait-pc": [2880, 162], "hq-s-wait-ready-pc": [2880, 162], "hq-search-biz-pc": [2848, 612], "hq-search-empty-pc": [2848, 378], "hq-sms-pc": [904, 658], "hq-status-pc": [2880, 1800]};
+var HQ_SIZES = {"hq-bulk-delete-pc": [904, 430], "hq-d-access-pc": [904, 350], "hq-d-biz-ok-pc": [2848, 982], "hq-d-corp-pc": [2848, 918], "hq-d-go-franchise-pc": [2880, 1800], "hq-d-go-sales-pc": [2880, 1800], "hq-d-id-dup-pc": [2848, 700], "hq-d-id-locked-pc": [2848, 644], "hq-d-memo-add-pc": [2848, 648], "hq-d-memo-empty-pc": [2848, 424], "hq-d-memo-pc": [2848, 492], "hq-d-payapp-alert-pc": [904, 348], "hq-d-payapp-edit-pc": [2848, 660], "hq-d-payapp-empty-pc": [2848, 570], "hq-d-payapp-pc": [2848, 570], "hq-d-payapp-verified-pc": [2848, 660], "hq-d-pw-edit-pc": [2848, 836], "hq-d-pw-error-pc": [2848, 892], "hq-d-save-error-pc": [2848, 550], "hq-d-trade-zero-pc": [2848, 868], "hq-d-wait-id-pc": [2848, 644], "hq-delete-fr-pc": [904, 430], "hq-delete-pc": [904, 350], "hq-deleted-pc": [2848, 1080], "hq-detail-pc": [2880, 3132], "hq-list-pc": [2880, 1800], "hq-reg-biz-ok-pc": [2848, 890], "hq-reg-corp-pc": [2848, 918], "hq-reg-done-pc": [2848, 1548], "hq-reg-id-dup-pc": [2848, 856], "hq-reg-id-ok-pc": [2848, 864], "hq-reg-id-rule-pc": [2848, 856], "hq-reg-payapp-fail-pc": [2848, 592], "hq-reg-payapp-ok-pc": [2848, 536], "hq-reg-pc": [2880, 3094], "hq-reg-rule-error-pc": [2848, 510], "hq-s-approve-error-pc": [2880, 162], "hq-s-approved-pc": [2880, 162], "hq-s-limit-done-pc": [2880, 162], "hq-s-limit-partner-pc": [2880, 1520], "hq-s-limit-pc": [2880, 162], "hq-s-limit-select-pc": [2880, 162], "hq-s-reject-done-pc": [2880, 162], "hq-s-reject-pc": [2880, 162], "hq-s-revoke-done-pc": [2880, 162], "hq-s-run-pc": [2880, 162], "hq-s-wait-pc": [2880, 162], "hq-s-wait-ready-pc": [2880, 162], "hq-search-biz-pc": [2848, 612], "hq-search-empty-pc": [2848, 378], "hq-sms-pc": [904, 658], "hq-status-pc": [2880, 1800]};
 
 function hqShot(name, alt) {
   var s = HQ_SIZES[name] || [2880, 1800];
@@ -1352,7 +1352,7 @@ window.GUIDE_CONTENT['hq-list'] = {
         tradeTable([
           ['판매자 아이디, 연동 KEY, 연동 VALUE', '이 본사의 페이앱 연동 값 (입력하지 않아도 등록할 수 있음)'],
           ['검증상태', '검증완료 / 미검증 (세 값 중 하나라도 변경하면 미검증으로 돌아감)'],
-          ['[유효성 검증]', '세 값을 모두 입력한 뒤 눌러 검증 (검증완료는 등록할 때 그대로 저장됨, 등록 조건은 아님)']
+          ['[유효성 검증]', '세 값을 모두 입력한 뒤 눌러 검증 (등록 조건은 아님, 검증하지 않고 등록하면 상세에서 미연동으로 보임)']
         ]) +
 
         '<h3>이용약관 동의</h3>' +
@@ -1399,7 +1399,7 @@ window.GUIDE_CONTENT['hq-list'] = {
             hqCase('연동 값이 모두 입력되지 않았으면', 'hq-reg-payapp-fail-pc', '본사 직접등록 페이앱 검증 입력 부족',
               hqList(['조건: 판매자 아이디, 연동 KEY, 연동 VALUE 중 비어 있는 값이 있는 채로 [유효성 검증]을 누름', '안내: "판매자 아이디, 연동 KEY, 연동 VALUE를 모두 입력해 주세요."', '검증상태: 미검증'])),
             hqCase('검증에 성공하면', 'hq-reg-payapp-ok-pc', '본사 직접등록 페이앱 검증완료',
-              hqList(['조건: 세 값을 모두 입력하고 [유효성 검증]을 누름', '검증상태: 검증완료 (등록하면 그대로 저장되어 상세의 페이앱 연동 탭에서도 연동완료로 보임)']))
+              hqList(['조건: 세 값을 모두 입력하고 [유효성 검증]을 누름', '검증상태: 검증완료 (이 상태로 등록하면 상세의 페이앱 연동 탭에 연동완료로 보임)']))
           ]
         },
         hqCase('입력이 맞지 않으면', 'hq-reg-rule-error-pc', '본사 직접등록 입력 오류',
@@ -1547,7 +1547,7 @@ window.GUIDE_CONTENT['hq-list'] = {
           group: '가맹점·매출 요약 탭에서',
           rows: [
             hqCase('소속 가맹점이 없으면', 'hq-d-trade-zero-pc', '본사 상세 가맹점 없음',
-              hqList(['조건: 승인대기·승인불가 본사처럼 소속 가맹점이 없는 본사', '모든 카드가 0으로 표시됨 (비율은 "-")', '[해당 본사 가맹점 보기 →], [거래/매출 현황 이동 →]은 그대로 누를 수 있음'])),
+              hqList(['조건: 승인대기·승인불가 본사처럼 소속 가맹점이 없는 본사', '모든 카드가 0으로 표시됨 (비율은 "-")'])),
             hqCase('[해당 본사 가맹점 보기 →]를 누르면', 'hq-d-go-franchise-pc', '본사의 가맹점 정보 목록',
               hqList(['이동: <a href="#franchise-list">가맹점 정보</a> 목록', '표시: 검색창에 이 본사의 상호명이 입력되어 이 본사 소속 가맹점이 조회된 상태 (이용상태 [전체], 가입신청일시순)'])),
             hqCase('[거래/매출 현황 이동 →]을 누르면', 'hq-d-go-sales-pc', '본사 거래/매출 현황',
@@ -1558,23 +1558,37 @@ window.GUIDE_CONTENT['hq-list'] = {
           group: '내부메모 탭에서',
           rows: [
             hqCase('메모가 있으면', 'hq-d-memo-pc', '본사 상세 내부메모',
-              hqList(['메모와 작성 일시가 최신 메모부터 나옴', '안내: "본사 내부 참고용이며, 해당 본사에게는 노출되지 않습니다."', '[삭제]: 메모를 바로 삭제하며 복구할 수 없음'])),
+              hqList(['메모와 작성 일시가 최신 메모부터 나옴', '[삭제]: 메모를 바로 삭제하며 복구할 수 없음'])),
             hqCase('메모를 추가하면', 'hq-d-memo-add-pc', '본사 상세 내부메모 추가',
               hqList(['조건: 메모를 입력하고 [추가]를 누름', '표시: 새 메모가 맨 위에 작성 일시와 함께 나타나고 입력칸은 비워짐', '내용 없이 [추가]를 누르면: 추가되지 않음'])),
             hqCase('메모가 없으면', 'hq-d-memo-empty-pc', '본사 상세 내부메모 없음',
               hqList(['안내: "등록된 메모가 없습니다."']))
           ]
         },
-        hqCase('신청정보 탭에서 이미 사용 중인 아이디로 변경하면', 'hq-d-id-dup-pc', '본사 상세 아이디 중복',
-          '<p>다른 본사·가맹점이 쓰는 아이디로 변경하고 [중복확인]을 누르면 "이미 사용 중인 아이디입니다."가 나와요. 이 상태에서 [저장]을 눌러도 같은 안내가 나오고 저장되지 않아요.</p>'),
-        hqCase('신청정보 탭에서 비밀번호 변경이 되지 않으면', 'hq-d-pw-error-pc', '본사 상세 비밀번호 변경 오류',
-          '<p>[변경]을 눌렀을 때 새 비밀번호가 맞지 않으면 안내가 나오고 비밀번호는 변경되지 않아요. 안내 문구는 아래와 같아요.</p>' +
-          tradeTable([
-            ['새 비밀번호가 비어 있거나 규칙에 맞지 않음', '"비밀번호는 공백 없이 영문과 숫자를 포함한 8~20자로 입력해 주세요."'],
-            ['비밀번호와 비밀번호 확인이 다름', '"비밀번호와 비밀번호 확인이 일치하지 않습니다."']
-          ], '상황', '안내 문구')),
-        hqCase('신청정보 탭에서 저장이 되지 않으면', 'hq-d-save-error-pc', '본사 상세 신청정보 저장 오류',
-          '<p>입력한 항목이 규칙에 맞지 않거나 변경한 아이디가 이미 사용 중인 값인 채로 [저장]을 누르면 안내가 한 건 나오고 저장되지 않아요. 안내 문구는 <a href="#hq-list/register">본사 직접등록하기</a>의 입력 오류와 같아요.</p>'),
+        {
+          title: '신청정보 탭에서 입력이 맞지 않으면',
+          blocks: [
+            {
+              shots: hqShot('hq-d-id-dup-pc', '본사 상세 아이디 중복'),
+              shotCaption: '09SCM 통합관리자 본사 상세 아이디 중복 화면',
+              html: '<p>다른 본사·가맹점이 쓰는 아이디로 변경하고 [중복확인]을 누르면 "이미 사용 중인 아이디입니다."가 나와요. 이 상태에서 [저장]을 눌러도 같은 안내가 나오고 저장되지 않아요.</p>'
+            },
+            {
+              shots: hqShot('hq-d-pw-error-pc', '본사 상세 비밀번호 변경 오류'),
+              shotCaption: '09SCM 통합관리자 본사 상세 비밀번호 변경 오류 화면',
+              html: '<p>[비밀번호 변경]에서 [변경]을 눌렀을 때 새 비밀번호가 맞지 않으면 안내가 나오고 비밀번호는 변경되지 않아요. 안내 문구는 아래와 같아요.</p>' +
+                tradeTable([
+                  ['새 비밀번호가 비어 있거나 규칙에 맞지 않음', '"비밀번호는 공백 없이 영문과 숫자를 포함한 8~20자로 입력해 주세요."'],
+                  ['비밀번호와 비밀번호 확인이 다름', '"비밀번호와 비밀번호 확인이 일치하지 않습니다."']
+                ], '상황', '안내 문구')
+            },
+            {
+              shots: hqShot('hq-d-save-error-pc', '본사 상세 신청정보 저장 오류'),
+              shotCaption: '09SCM 통합관리자 본사 상세 신청정보 저장 오류 화면',
+              html: '<p>입력한 항목이 규칙에 맞지 않은 채로 [저장]을 누르면 안내가 한 건 나오고 저장되지 않아요. 안내 문구는 <a href="#hq-list/register">본사 직접등록하기</a>의 입력 오류와 같아요.</p>'
+            }
+          ]
+        },
         hqCase('이 본사의 관리자 화면을 열려면', 'hq-d-access-pc', '본사 관리자접속 안내',
           '<p>운영중·운영제한 본사의 상세 상단 [관리자접속]을 누르면 "OO의 본사 관리자로 접속합니다.", "새 창에서 해당 계정의 관리자 화면이 열립니다." 안내가 나와요. 승인대기·승인불가 본사에는 버튼이 없어요.</p>' +
           '<ul><li>[접속]: 새 창으로 이 본사의 09SCM 관리자 화면을 열고 확인 창을 닫아요.</li><li>[취소]: 확인 창을 닫아요.</li></ul>')
@@ -1636,7 +1650,7 @@ window.GUIDE_CONTENT['hq-list'] = {
             hqCase('페이앱 연동 검증이 끝나면', 'hq-s-wait-ready-pc', '본사 승인대기 운영승인 가능',
               hqList(['표시: 안내 문구가 사라지고 [운영승인]을 누를 수 있게 됨', '필수 항목이 모두 저장되어 있어야 운영승인이 처리됨'])),
             hqCase('필수 항목이 비어 있으면', 'hq-s-approve-error-pc', '본사 운영승인 필수 항목 오류',
-              hqList(['조건: 필수 항목(비밀번호 등) 중 저장되지 않은 항목이 있는 채로 [운영승인]을 누름', '안내: "필수 항목을 모두 입력해야 운영승인할 수 있습니다."', '상태는 승인대기 그대로'])),
+              hqList(['조건: 필수 항목(비밀번호 등) 중 저장되지 않은 항목이 있는 채로 [운영승인]을 누름', '안내: "필수 항목을 모두 입력해야 운영승인할 수 있습니다."'])),
             hqCase('운영승인이 되면', 'hq-s-approved-pc', '본사 운영승인 완료',
               hqList(['상태: 운영중으로 변경되고, 영역이 운영중·운영제한 선택으로 변경됨', '09SCM 본사 계정과 소매몰이 만들어지고, 상세 상단에 [관리자접속]이 나타남'])),
             hqCase('승인불가로 처리하면', 'hq-s-reject-done-pc', '본사 승인불가 처리 완료',

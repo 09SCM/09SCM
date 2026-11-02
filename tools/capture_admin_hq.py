@@ -105,11 +105,6 @@ def list_shots(b):
     view900(page, 'hq-list-pc')
     ctx.close()
 
-    for tab, name in (('승인대기', 'hq-filter-wait-pc'), ('운영중', 'hq-filter-run-pc'), ('운영제한', 'hq-filter-limit-pc'), ('승인불가', 'hq-filter-reject-pc')):
-        ctx, page = login(b); open_hq(page); hide_lnb(page)
-        page.click('[data-hq-filter="%s"]' % tab); page.wait_for_timeout(300)
-        list_filter_shot(page, name)
-        ctx.close()
 
     # 검색 결과 없음 / 사업자번호(하이픈 없이) 검색
     ctx, page = login(b); open_hq(page); hide_lnb(page)
@@ -288,9 +283,6 @@ def detail_shots(b):
     ctx.close()
 
     # 가맹점·매출 요약 탭
-    ctx, page = open_detail(b, 'hq2', 'trade')
-    body_shot(page, 'hq-d-trade-pc')
-    ctx.close()
     ctx, page = open_detail(b, 'hq1', 'trade')
     body_shot(page, 'hq-d-trade-zero-pc')
     ctx.close()
