@@ -1187,7 +1187,7 @@ window.GUIDE_CONTENT['trade-franchise'] = {
 
 // ---- 본사/가맹점 관리 > 본사 관리 ----
 // 캡처 크기(가로 × 세로 px). tools/capture_admin_hq.py로 촬영한 원본 기준.
-var HQ_SIZES = {"hq-bulk-delete-pc": [904, 430], "hq-d-access-pc": [904, 350], "hq-d-corp-pc": [2848, 918], "hq-d-go-franchise-pc": [2880, 1800], "hq-d-go-sales-pc": [2880, 1800], "hq-d-id-dup-pc": [2848, 700], "hq-d-id-locked-pc": [2848, 644], "hq-d-memo-add-pc": [2848, 648], "hq-d-memo-empty-pc": [2848, 424], "hq-d-memo-pc": [2848, 492], "hq-d-payapp-alert-pc": [904, 348], "hq-d-payapp-edit-pc": [2848, 660], "hq-d-payapp-empty-pc": [2848, 570], "hq-d-payapp-pc": [2848, 570], "hq-d-payapp-verified-pc": [2848, 660], "hq-d-pw-edit-pc": [2848, 836], "hq-d-pw-error-pc": [2848, 892], "hq-d-save-error-pc": [2848, 550], "hq-d-trade-pc": [2848, 868], "hq-d-trade-zero-pc": [2848, 868], "hq-d-wait-id-pc": [2848, 644], "hq-delete-fr-pc": [904, 430], "hq-delete-pc": [904, 350], "hq-deleted-pc": [2848, 1080], "hq-detail-pc": [2880, 3132], "hq-filter-limit-pc": [2848, 612], "hq-filter-reject-pc": [2848, 612], "hq-filter-run-pc": [2848, 612], "hq-filter-wait-pc": [2848, 612], "hq-list-pc": [2880, 1800], "hq-reg-addr-pc": [2848, 826], "hq-reg-biz-dup-pc": [2848, 882], "hq-reg-biz-ok-pc": [2848, 890], "hq-reg-corp-pc": [2848, 918], "hq-reg-done-pc": [2848, 1548], "hq-reg-id-dup-pc": [2848, 856], "hq-reg-id-ok-pc": [2848, 864], "hq-reg-id-rule-pc": [2848, 856], "hq-reg-payapp-fail-pc": [2848, 592], "hq-reg-payapp-ok-pc": [2848, 536], "hq-reg-pc": [2880, 3094], "hq-reg-pw-error-pc": [2848, 510], "hq-reg-rule-error-pc": [2848, 510], "hq-reg-terms-error-pc": [2848, 510], "hq-s-approve-error-pc": [2880, 162], "hq-s-approved-pc": [2880, 162], "hq-s-limit-done-pc": [2880, 162], "hq-s-limit-partner-pc": [2880, 1520], "hq-s-limit-pc": [2880, 162], "hq-s-limit-select-pc": [2880, 162], "hq-s-reject-done-pc": [2880, 162], "hq-s-reject-pc": [2880, 162], "hq-s-revoke-done-pc": [2880, 162], "hq-s-run-pc": [2880, 162], "hq-s-wait-pc": [2880, 162], "hq-s-wait-ready-pc": [2880, 162], "hq-search-biz-pc": [2848, 612], "hq-search-empty-pc": [2848, 378], "hq-sms-pc": [904, 658], "hq-status-pc": [2880, 1800]};
+var HQ_SIZES = {"hq-bulk-delete-pc": [904, 430], "hq-d-access-pc": [904, 350], "hq-d-corp-pc": [2848, 918], "hq-d-go-franchise-pc": [2880, 1800], "hq-d-go-sales-pc": [2880, 1800], "hq-d-id-dup-pc": [2848, 700], "hq-d-id-locked-pc": [2848, 644], "hq-d-memo-add-pc": [2848, 648], "hq-d-memo-empty-pc": [2848, 424], "hq-d-memo-pc": [2848, 492], "hq-d-payapp-alert-pc": [904, 348], "hq-d-payapp-edit-pc": [2848, 660], "hq-d-payapp-empty-pc": [2848, 570], "hq-d-payapp-pc": [2848, 570], "hq-d-payapp-verified-pc": [2848, 660], "hq-d-pw-edit-pc": [2848, 836], "hq-d-pw-error-pc": [2848, 892], "hq-d-save-error-pc": [2848, 550], "hq-d-trade-pc": [2848, 868], "hq-d-trade-zero-pc": [2848, 868], "hq-d-wait-id-pc": [2848, 644], "hq-delete-fr-pc": [904, 430], "hq-delete-pc": [904, 350], "hq-deleted-pc": [2848, 1080], "hq-detail-pc": [2880, 3132], "hq-filter-limit-pc": [2848, 612], "hq-filter-reject-pc": [2848, 612], "hq-filter-run-pc": [2848, 612], "hq-filter-wait-pc": [2848, 612], "hq-list-pc": [2880, 1800], "hq-reg-addr-pc": [2848, 826], "hq-reg-biz-ok-pc": [2848, 890], "hq-reg-corp-pc": [2848, 918], "hq-reg-done-pc": [2848, 1548], "hq-reg-id-dup-pc": [2848, 856], "hq-reg-id-ok-pc": [2848, 864], "hq-reg-id-rule-pc": [2848, 856], "hq-reg-payapp-fail-pc": [2848, 592], "hq-reg-payapp-ok-pc": [2848, 536], "hq-reg-pc": [2880, 3094], "hq-reg-pw-error-pc": [2848, 510], "hq-reg-rule-error-pc": [2848, 510], "hq-reg-terms-error-pc": [2848, 510], "hq-s-approve-error-pc": [2880, 162], "hq-s-approved-pc": [2880, 162], "hq-s-limit-done-pc": [2880, 162], "hq-s-limit-partner-pc": [2880, 1520], "hq-s-limit-pc": [2880, 162], "hq-s-limit-select-pc": [2880, 162], "hq-s-reject-done-pc": [2880, 162], "hq-s-reject-pc": [2880, 162], "hq-s-revoke-done-pc": [2880, 162], "hq-s-run-pc": [2880, 162], "hq-s-wait-pc": [2880, 162], "hq-s-wait-ready-pc": [2880, 162], "hq-search-biz-pc": [2848, 612], "hq-search-empty-pc": [2848, 378], "hq-sms-pc": [904, 658], "hq-status-pc": [2880, 1800]};
 
 function hqShot(name, alt) {
   var s = HQ_SIZES[name] || [2880, 1800];
@@ -1399,7 +1399,7 @@ window.GUIDE_CONTENT['hq-list'] = {
           ['[취소]', '입력한 내용을 버리고 본사 목록으로 돌아감'],
           ['[등록]', '입력한 내용으로 승인대기 본사를 만들고 본사 목록으로 이동']
         ]) +
-        '<p>값을 입력한 항목은 위 규칙을 지켜야 하고, 아이디나 사업자등록번호가 이미 등록되어 있으면 등록할 수 없어요. 등록하지 못하면 화면 아래에 안내가 한 건 나오고 입력한 내용은 그대로 남아요.</p>',
+        '<p>값을 입력한 항목은 위 규칙을 지켜야 하고, 이미 사용 중인 아이디이면 등록할 수 없어요. 등록하지 못하면 화면 아래에 안내가 한 건 나오고 입력한 내용은 그대로 남아요.</p>',
       cases: [
         {
           group: '아이디를 확인할 때',
@@ -1417,8 +1417,6 @@ window.GUIDE_CONTENT['hq-list'] = {
           rows: [
             hqCase('사업자인증이 되면', 'hq-reg-biz-ok-pc', '본사 직접등록 사업자인증 완료',
               hqList(['조건: 사업자등록번호를 입력하고 [사업자인증]을 누름', '안내: "사업자 인증이 완료되었습니다." (입력칸 아래, 초록색)'])),
-            hqCase('이미 등록된 사업자등록번호이면', 'hq-reg-biz-dup-pc', '본사 직접등록 사업자등록번호 중복',
-              hqList(['조건: 이미 본사로 등록된 사업자등록번호에서 [사업자인증]을 누름', '안내: "이미 본사로 등록된 사업자등록번호입니다." (입력칸 아래, 빨간색)', '등록: 이 번호로는 등록할 수 없음'])),
             hqCase('법인사업자를 고르면', 'hq-reg-corp-pc', '본사 직접등록 법인사업자',
               hqList(['조건: 사업자유형에서 [법인사업자]를 고름', '법인등록번호 입력칸이 나타남 ([개인사업자]를 고르면 사라짐)'])),
             hqCase('주소를 찾으면', 'hq-reg-addr-pc', '본사 직접등록 주소찾기',
@@ -1440,7 +1438,7 @@ window.GUIDE_CONTENT['hq-list'] = {
             hqCase('약관에 동의하지 않았으면', 'hq-reg-terms-error-pc', '본사 직접등록 약관 미동의 오류',
               hqList(['조건: 이용약관 또는 개인정보처리방침에 체크하지 않고 [등록]을 누름', '안내: "이용약관과 개인정보처리방침에 모두 동의해 주세요." (화면 아래, 빨간색)', '입력한 내용은 그대로 남음'])),
             hqCase('비밀번호가 서로 다르면', 'hq-reg-pw-error-pc', '본사 직접등록 비밀번호 불일치 오류',
-              hqList(['조건: 비밀번호와 비밀번호 확인이 다른 채로 [등록]을 누름', '안내: "비밀번호와 비밀번호 확인이 일치하지 않습니다." (화면 아래, 빨간색)', '아이디나 사업자등록번호가 이미 등록되어 있을 때: [중복확인], [사업자인증]과 같은 문구가 화면 아래에 나옴']))
+              hqList(['조건: 비밀번호와 비밀번호 확인이 다른 채로 [등록]을 누름', '안내: "비밀번호와 비밀번호 확인이 일치하지 않습니다." (화면 아래, 빨간색)', '이미 사용 중인 아이디일 때: [중복확인]과 같은 문구가 화면 아래에 나옴']))
           ]
         },
         hqCase('입력 규칙에 맞지 않으면', 'hq-reg-rule-error-pc', '본사 직접등록 입력 규칙 오류',
@@ -1463,7 +1461,7 @@ window.GUIDE_CONTENT['hq-list'] = {
       ],
       trouble:
         '<h3>[등록]을 눌렀는데 등록되지 않아요</h3>' +
-        '<p>화면 아래의 안내를 확인해요. 이용약관과 개인정보처리방침에 모두 체크했는지, 입력한 항목이 규칙에 맞는지, 아이디나 사업자등록번호가 이미 등록되어 있지 않은지 살펴봐요.</p>' +
+        '<p>화면 아래의 안내를 확인해요. 이용약관과 개인정보처리방침에 모두 체크했는지, 입력한 항목이 규칙에 맞는지, 아이디가 이미 사용 중이지 않은지 살펴봐요.</p>' +
         '<h3>등록했는데 운영중이 아니에요</h3>' +
         '<p>직접등록한 본사도 [승인대기]로 시작해요. 상세 화면에서 <a href="#hq-list/status">운영승인</a>을 해야 09SCM 본사 계정과 소매몰이 만들어져요.</p>'
     },
@@ -1512,7 +1510,7 @@ window.GUIDE_CONTENT['hq-list'] = {
             '</ul>'],
           ['솔루션도입정보', '예상 가맹점 수, 문의 및 요청사항 (도입 신청 때 접수된 내용)'],
           ['이용약관 동의', '이용약관[필수], 개인정보처리방침[필수], 마케팅정보 수신동의[선택]의 동의 여부 (조회만 가능)'],
-          ['[저장]', '신청정보를 한 번에 저장. 아이디를 바꿨다면 중복 여부, 사업자등록번호를 바꿨다면 이미 등록된 번호인지 확인한 뒤 저장함']
+          ['[저장]', '신청정보를 한 번에 저장. 아이디를 바꿨다면 중복 여부를 확인한 뒤 저장함']
         ]) +
 
         '<h3>페이앱 연동 탭</h3>' +
@@ -1572,7 +1570,7 @@ window.GUIDE_CONTENT['hq-list'] = {
             hqCase('법인사업자로 바꾸면', 'hq-d-corp-pc', '본사 상세 법인사업자 선택',
               hqList(['조건: 사업자유형에서 [법인사업자]를 고름', '법인등록번호 입력칸이 나타남 (법인등록번호도 운영승인 필수 항목이 됨)', '개인사업자로 바꾸고 저장하면 법인등록번호는 비워짐'])),
             hqCase('저장이 되지 않으면', 'hq-d-save-error-pc', '본사 상세 신청정보 저장 오류',
-              hqList(['조건: 입력한 항목이 규칙에 맞지 않거나 바꾼 아이디·사업자등록번호가 이미 등록된 값인 채로 [저장]을 누름', '안내: [저장] 위에 빨간색으로 한 건 (문구는 <a href="#hq-list/register">본사 직접등록하기</a>의 입력 규칙 오류와 같음)', '저장되지 않고 입력한 내용은 그대로 남음'])),
+              hqList(['조건: 입력한 항목이 규칙에 맞지 않거나 바꾼 아이디가 이미 사용 중인 값인 채로 [저장]을 누름', '안내: [저장] 위에 빨간색으로 한 건 (문구는 <a href="#hq-list/register">본사 직접등록하기</a>의 입력 규칙 오류와 같음)', '저장되지 않고 입력한 내용은 그대로 남음'])),
           ]
         },
         {

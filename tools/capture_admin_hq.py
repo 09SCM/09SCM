@@ -168,8 +168,8 @@ def reg_shots(b):
         fit(page); crop(page, sec(page, '회원정보'), name)
         ctx.close()
 
-    # 사업자인증: 완료 / 이미 등록
-    for val, name in (('234-56-78901', 'hq-reg-biz-ok-pc'), ('123-45-67890', 'hq-reg-biz-dup-pc')):
+    # 사업자인증 완료
+    for val, name in (('234-56-78901', 'hq-reg-biz-ok-pc'),):
         ctx, page = reg_open(b)
         page.fill('#hqRegBizRegNo', val); page.click('#hqRegBizAuthBtn'); page.wait_for_timeout(300)
         fit(page); crop(page, sec(page, '사업자정보'), name)
