@@ -22,11 +22,11 @@ window.GUIDE_HISTORY = {
     {
       version: 'v1.1', date: '26.11.02 18:24', push: 'c7ba382',
       items: [
+        { summary: '용어집 표현 보완: 대문화면, 소매몰, 결제총액, 취소·환불액, 총주문건수, 회원주문 코드', path: '시작하기 > 용어집', link: './guide/partner.html#start-terms' },
+        { summary: '이용불가 가맹점 로그인 캡처를 변경된 안내 문구 기준으로 재촬영', path: '가맹점 관리 > 가맹점목록 > 이용상태 변경하기', link: './guide/partner.html#franchise-list/status-change' },
         { summary: '이용제한 가맹점 캡처를 새 배너 문구 기준으로 재촬영', path: '가맹점 관리 > 가맹점목록 > 이용상태 변경하기', link: './guide/partner.html#franchise-list' },
         { summary: "소개에 '공통 영역 보기' 구역 추가: 헤더 및 왼쪽 메뉴 설명 보충", path: '시작하기 > 09SCM 관리자 소개 > 공통 영역 보기', link: './guide/partner.html#start-intro/sec6' },
-        { summary: '로그인 후 표시되는 계정 정보 안내 문장 추가, 공통 영역 보기로 연결', path: '시작하기 > 가입신청·로그인', link: './guide/partner.html#start-login' },
-        { summary: '이용불가 가맹점 로그인 캡처를 변경된 안내 문구 기준으로 재촬영', path: '가맹점 관리 > 가맹점목록 > 이용상태 변경하기', link: './guide/partner.html#franchise-list/status-change' },
-        { summary: '용어집 표현 보완: 대문화면, 소매몰, 결제총액, 취소·환불액, 총주문건수, 회원주문 코드', path: '시작하기 > 용어집', link: './guide/partner.html#start-terms' }
+        { summary: '로그인 후 표시되는 계정 정보 안내 문장 추가, 공통 영역 보기로 연결', path: '시작하기 > 가입신청·로그인', link: './guide/partner.html#start-login' }
       ]
     },
     {
