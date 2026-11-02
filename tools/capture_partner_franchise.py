@@ -67,6 +67,7 @@ TAB_STEPS = [
     ('fr-d-tab-fee', seq(open_detail('ga04', 'fee'), hide_bar), 'custom', TAB_RANGE, DET_FULL, DET_FULL_MO),
     ('fr-d-tab-memo', seq(open_detail('ga04', 'memo'), hide_bar), 'custom', TAB_RANGE, DET_FULL, DET_FULL_MO),
     ('fr-d-error', seq(open_detail('ga03'), hide_bar, fill('#fdManagerName', ''), fill('#fdBizRegNo', '123-45-67890'), click('#fdSaveMemberBtn')), 'between', ('회원 정보', '비밀번호 변경'), DET_FULL, DET_FULL_MO),
+    ('fr-d-biz-ok', seq(open_detail('ga03'), hide_bar, click('#fdBizVerifyBtn')), 'between', ('사업자 정보', 'PayApp 연동 정보'), DET_FULL, DET_FULL_MO),
     ('fr-d-corp', seq(open_detail('ga03'), hide_bar, do(lambda p: p.select_option('#fdBizPersonType', 'corp'))), 'between', ('사업자 정보', 'PayApp 연동 정보'), DET_FULL, DET_FULL_MO),
     ('fr-d-payapp-unlinked', seq(open_detail('ga01'), hide_bar), 'between', ('PayApp 연동 정보', '이용약관 동의'), DET_FULL, DET_FULL_MO),
     ('fr-d-payapp-linked', seq(open_detail('ga03'), hide_bar), 'between', ('PayApp 연동 정보', '이용약관 동의'), DET_FULL, DET_FULL_MO),
