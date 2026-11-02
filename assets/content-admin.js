@@ -106,7 +106,7 @@ window.GUIDE_CONTENT['start-home'] = {
         '<tbody>' +
           '<tr><td>솔루션 소개·핵심 기능·이용 흐름·도입 절차·FAQ</td><td>09SCM을 소개하는 안내 영역 (위쪽 메뉴를 누르면 해당 영역으로 이동)</td></tr>' +
           '<tr><td>[솔루션 도입신청]</td><td>솔루션 도입신청 화면으로 이동</td></tr>' +
-          '<tr><td>[09SCM 로그인]</td><td>본사·가맹점 로그인 화면으로 이동 (<a href="partner.html#start-login">09SCM 관리자 이용가이드</a>)</td></tr>' +
+          '<tr><td>[09SCM 로그인]</td><td>본사·가맹점 로그인 화면으로 이동 (<a href="partner.html#start-login">본사·가맹점 관리자 이용가이드</a>)</td></tr>' +
         '</tbody></table></div>' },
     { id: 'sec3', label: '솔루션 도입신청', html:
       '<p>본사가 09SCM 도입을 신청하는 화면이에요. 4개 영역을 차례로 입력해요. *는 필수 항목이에요.</p>' +
@@ -423,7 +423,7 @@ window.GUIDE_CONTENT['system-terms'] = {
         '<ul>' +
           '<li>이용약관, 개인정보처리방침, 마케팅정보 수신동의 3종을 탭으로 나눠 관리해요.</li>' +
           '<li>이 약관은 09SCM 홈페이지의 <a href="#start-home">솔루션 도입신청 약관 동의와 푸터</a>, 각 본사 소매몰의 가맹점 가입신청에서 함께 써요.</li>' +
-          '<li>소매몰 이용자(소비자)가 회원가입할 때 보는 이용약관·개인정보처리방침은 이 화면에서 다루지 않아요. 각 소매몰에서 따로 관리해요. (<a href="partner.html#retail-settings/settings-terms">09SCM 관리자 이용가이드</a>)</li>' +
+          '<li>소매몰 이용자(소비자)가 회원가입할 때 보는 이용약관·개인정보처리방침은 이 화면에서 다루지 않아요. 각 소매몰에서 따로 관리해요. (<a href="partner.html#retail-settings/settings-terms">본사·가맹점 관리자 이용가이드</a>)</li>' +
         '</ul>',
       steps:
         '<h3>탭</h3>' +
@@ -608,7 +608,7 @@ window.GUIDE_CONTENT['system-notice'] = {
       overview:
         '<p>09SCM 운영자가 본사·가맹점 관리자에게 전하는 공지를 올리고 관리하는 화면이에요.</p>' +
         '<ul>' +
-          '<li>이 목록에는 통합관리자에서 올린 09SCM 공지만 나와요. 본사가 가맹점에게 올린 공지(우리본사 공지)는 나오지 않아요. (<a href="partner.html#franchise-notice">09SCM 관리자 이용가이드</a>)</li>' +
+          '<li>이 목록에는 통합관리자에서 올린 09SCM 공지만 나와요. 본사가 가맹점에게 올린 공지(우리본사 공지)는 나오지 않아요. (<a href="partner.html#franchise-notice">본사·가맹점 관리자 이용가이드</a>)</li>' +
           '<li>노출대상(공지가 보이는 계정)과 노출여부(공지를 보여줄지 여부)는 따로 정해요. [미노출]이면 노출대상과 관계없이 09SCM 어디에도 보이지 않아요.</li>' +
         '</ul>',
       steps:
@@ -1630,7 +1630,7 @@ window.GUIDE_CONTENT['hq-list'] = {
 
         '<h3>운영제한일 때</h3>' +
         tradeTable([
-          ['가맹점 이용제한과 같은 제재', '기능별 사용 범위는 <a href="partner.html#franchise-list/status-change">09SCM 관리자 이용가이드</a>의 이용제한일 때 기능별 사용 범위 참고'],
+          ['가맹점 이용제한과 같은 제재', '기능별 사용 범위는 <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 이용가이드</a>의 이용제한일 때 기능별 사용 범위 참고'],
           ['신규 가맹점 유치 중단', '소매몰에서 가맹점 가입 신청을 받지 않음'],
           ['소속 가맹점', '본사가 [운영제한]이 되어도 소속 가맹점의 이용상태는 변경되지 않음']
         ]),
@@ -1679,7 +1679,7 @@ window.GUIDE_CONTENT['hq-list'] = {
               hqList([
                 '배너: 고정 표시, 닫을 수 없음 — "이 계정은 이용이 제한된 상태입니다. 도소매 기능 이용이 제한되며, 해제하려면 관리 담당자에게 문의해 주세요."',
                 '제한된 기능의 버튼: 비활성화, 마우스를 올리면 "현재 상태에서는 사용할 수 없습니다."',
-                '기능별 사용 범위: <a href="partner.html#franchise-list/status-change">09SCM 관리자 이용가이드</a> 참고',
+                '기능별 사용 범위: <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 이용가이드</a> 참고',
                 '[운영중]으로 변경하면: 배너가 사라지고 버튼이 다시 활성화됨'
               ]))
           ]
@@ -1698,7 +1698,7 @@ window.GUIDE_CONTENT['hq-list'] = {
 
 // ---- 본사/가맹점 관리 > 가맹점 정보 ----
 // 캡처 크기(가로 × 세로 px). tools/capture_admin_franchise.py로 촬영한 원본 기준.
-var FR_SIZES = {"fr-d-access-pc": [904, 350], "fr-d-payapp-alert-pc": [904, 348], "fr-d-payapp-edit-pc": [2848, 556], "fr-d-payapp-empty-pc": [2848, 466], "fr-d-payapp-pc": [2848, 466], "fr-d-payapp-verified-pc": [2848, 556], "fr-detail-pc": [2880, 3580], "fr-list-pc": [2880, 1800], "fr-search-biz-pc": [2848, 462], "fr-search-empty-pc": [2848, 336]};
+var FR_SIZES = {"fr-d-access-pc": [904, 350], "fr-d-payapp-alert-pc": [904, 348], "fr-d-payapp-edit-pc": [2848, 556], "fr-d-payapp-empty-pc": [2848, 466], "fr-d-payapp-pc": [2848, 466], "fr-d-payapp-verified-pc": [2848, 556], "fr-detail-pc": [2880, 3580], "fr-list-pc": [2880, 1800], "fr-search-hq-pc": [2848, 588], "fr-search-empty-pc": [2848, 336]};
 
 function frShot(name, alt) {
   var s = FR_SIZES[name] || [2880, 1800];
@@ -1754,10 +1754,10 @@ window.GUIDE_CONTENT['franchise-list'] = {
         {
           group: '검색할 때',
           rows: [
-            frCase('사업자번호로 검색하면', 'fr-search-biz-pc', '가맹점 정보 사업자번호 검색 결과',
+            frCase('소속 본사 상호명으로 검색하면', 'fr-search-hq-pc', '가맹점 정보 소속 본사 상호명 검색 결과',
               hqList([
-                '조건: 검색창에 하이픈(-) 없이 가맹 사업자번호를 입력하고 [검색]을 누름',
-                '결과: 하이픈을 무시하고 일치하는 가맹점만 표시, 건수도 검색 결과 기준으로 변경됨'
+                '조건: 검색창에 소속 본사 상호명을 입력하고 [검색]을 누름',
+                '결과: 그 본사에 소속된 가맹점만 표시, 건수도 검색 결과 기준으로 변경됨'
               ])),
             frCase('검색 결과가 없으면', 'fr-search-empty-pc', '가맹점 정보 검색 결과 없음',
               hqList([
@@ -1771,7 +1771,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '<h3>가맹점이 목록에 없어요</h3>' +
         '<p>검색어가 남아 있거나 다른 이용상태 탭이 골라져 있는지 확인해요. 09SCM에서 삭제한 가맹점은 목록에 나오지 않아요. 삭제한 가맹점의 거래·매출은 <a href="#trade-all">거래/매출 현황의 전체 현황</a> 합계에는 계속 포함돼요.</p>' +
         '<h3>소속 본사가 "-"로 보여요</h3>' +
-        '<p>소속 본사가 삭제되어 연결이 끊긴 가맹점이에요. 통합관리자에서는 가맹점의 소속 본사를 변경할 수 없어요.</p>' +
+        '<p>소속 본사가 삭제되어 본사와의 연결이 끊긴 가맹점이에요.</p>' +
         '<h3>당월 매출액이 다르게 보여요</h3>' +
         '<p>값은 화면을 열거나 새로고침한 시점의 최신 값이에요. <a href="#trade-franchise">가맹점별 현황</a>과 비교할 때는 같은 조건(이번달, 전체)에서 두 화면을 모두 새로고침한 뒤 확인해요.</p>'
     },
@@ -1786,12 +1786,12 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '<ul>' +
           '<li>거래/매출 현황의 <a href="#trade-franchise/detail">가맹점 매출 상세</a>에서 [가맹점 상세 이동 →]을 눌러도 이 화면이 열려요.</li>' +
           '<li>PayApp 연동 정보만 수정할 수 있고, 나머지 항목은 조회만 해요.</li>' +
-          '<li>이용상태와 도매공급권한은 가맹점을 관리하는 본사가 09SCM 관리자에서 바꿔요. 방법은 <a href="partner.html#franchise-list/status-change">09SCM 관리자 이용가이드</a>에서 확인해요.</li>' +
+          '<li>이용상태와 도매공급권한은 가맹점을 관리하는 본사가 09SCM 관리자에서 바꿔요. 방법은 <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 이용가이드</a>에서 확인해요.</li>' +
         '</ul>',
       steps:
         '<h3>상단 버튼</h3>' +
         tradeTable([
-          ['[← 목록으로]', '가맹점 목록으로 돌아감 (검색·이용상태 탭·정렬·페이지가 유지됨)'],
+          ['[← 목록으로]', '가맹점 목록으로 돌아감'],
           ['[관리자접속]', '이 가맹점의 09SCM 관리자 화면을 새 창으로 열기 (<a href="#franchise-list/detail">이 가맹점의 관리자 화면을 열려면</a> 참고)']
         ]) +
 
@@ -1869,7 +1869,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
             frCase('연동 값이 있으면', 'fr-d-payapp-pc', '가맹점 상세 PayApp 연동 조회',
               hqList(['판매자 아이디, 연동 KEY, 연동 VALUE가 보이고 검증상태는 연동완료'])),
             frCase('연동 값이 없으면', 'fr-d-payapp-empty-pc', '가맹점 상세 PayApp 연동 없음',
-              hqList(['세 값이 모두 "미입력", 검증상태는 미연동', '[이용대기] 가맹점: 가입 직후에는 연동 전이라 이 상태가 정상 (연동은 가맹점 본인이 하거나 운영자가 이 화면에서 입력)'])),
+              hqList(['세 값이 모두 "미입력", 검증상태는 미연동', '[이용대기] 가맹점: 가입 직후에는 연동 전이라 이 상태가 정상'])),
             frCase('연동 값을 변경하려 하면', 'fr-d-payapp-alert-pc', '가맹점 상세 PayApp 연동정보 변경 확인',
               hqList(['조건: 연동 값이 있는 가맹점에서 [연동정보 변경]을 누름', '안내: "연동정보를 변경하면 기존 정산계좌 등 연동 정보가 모두 바뀌어 문제가 발생할 수 있습니다. 계속하시겠습니까?"', '[계속]: 검증상태를 미검증으로 변경하고 편집 상태로 전환', '[취소]: 변경하지 않고 확인 창을 닫음'])),
             frCase('연동 값을 고치는 중이면', 'fr-d-payapp-edit-pc', '가맹점 상세 PayApp 연동 편집',

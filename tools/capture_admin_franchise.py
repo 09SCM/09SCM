@@ -25,12 +25,12 @@ def list_shots(b):
     view900(page, 'fr-list-pc')
     ctx.close()
 
-    # 검색 결과 없음 / 사업자번호(하이픈 없이) 검색
+    # 검색 결과 없음 / 소속 본사 상호명 검색
     ctx, page = login(b); open_fr(page); hide_lnb(page)
     page.fill('#franchiseSearchInput', '없는상호'); page.click('#franchiseSearchBtn'); page.wait_for_timeout(300)
     list_filter_shot(page, 'fr-search-empty-pc')
-    page.fill('#franchiseSearchInput', '1244578901'); page.click('#franchiseSearchBtn'); page.wait_for_timeout(300)
-    list_filter_shot(page, 'fr-search-biz-pc')
+    page.fill('#franchiseSearchInput', '써니팜'); page.click('#franchiseSearchBtn'); page.wait_for_timeout(300)
+    list_filter_shot(page, 'fr-search-hq-pc')
     ctx.close()
 
 
@@ -41,13 +41,13 @@ def open_detail(b, fid):
 
 
 def detail_shots(b):
-    # 대표: 이용제한 가맹점(모든 항목이 채워진 가맹점)
-    ctx, page = open_detail(b, 'hj365')
+    # 대표: 이용승인 가맹점(모든 항목이 채워진 정상 이용 가맹점)
+    ctx, page = open_detail(b, 'hm7218')
     full(page, 'fr-detail-pc')
     ctx.close()
 
     # PayApp 연동 정보: 값 있음 / 값 없음
-    ctx, page = open_detail(b, 'hj365')
+    ctx, page = open_detail(b, 'hm7218')
     fit(page); crop(page, sec(page, 'PayApp 연동 정보'), 'fr-d-payapp-pc')
     ctx.close()
     ctx, page = open_detail(b, 'wj9021')
@@ -55,7 +55,7 @@ def detail_shots(b):
     ctx.close()
 
     # 연동 값 변경: 확인 창 -> 편집 -> 검증완료
-    ctx, page = open_detail(b, 'hj365')
+    ctx, page = open_detail(b, 'hm7218')
     page.click('#frPayappEditBtn'); page.wait_for_timeout(300)
     crop_modal(page, 'fr-d-payapp-alert-pc')
     page.click('#frPayappAlertContinue'); page.wait_for_timeout(300)
@@ -65,7 +65,7 @@ def detail_shots(b):
     ctx.close()
 
     # 관리자접속
-    ctx, page = open_detail(b, 'hj365')
+    ctx, page = open_detail(b, 'hm7218')
     page.click('#franchiseAdminAccessBtn'); page.wait_for_timeout(300)
     # 목업 전용 안내 문구는 실제 화면에 없으므로 가린다
     page.evaluate("document.querySelectorAll('.modal-box p').forEach(p => { if (p.textContent.indexOf('※ 목업') === 0) p.remove(); })")
