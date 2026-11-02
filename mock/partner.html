@@ -15831,7 +15831,7 @@ ${crRefundDetailHTML(o, o.itemsTotal != null ? 'wholesale' : 'retail')}` : '';
       if (f) acct = { id, type: '가맹점', franchise: f };
     }
     if (!acct || pw !== DEMO_PASSWORD) return { ok: false, message: '아이디 또는 비밀번호가 올바르지 않습니다.', clearPw: true };
-    if (acct.type === '가맹점' && acct.franchise.status === '이용불가') return { ok: false, message: '이용이 불가한 계정입니다. 본사로 문의해 주세요.', clearPw: true };
+    if (acct.type === '가맹점' && acct.franchise.status === '이용불가') return { ok: false, message: '이용이 불가한 계정입니다. 관리 담당자에게 문의해 주세요.', clearPw: true };
     return { ok: true, acct };
   }
 
