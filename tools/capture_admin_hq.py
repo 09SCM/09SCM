@@ -119,13 +119,6 @@ def list_shots(b):
     list_filter_shot(page, 'hq-search-biz-pc')
     ctx.close()
 
-    # 선택
-    ctx, page = login(b); open_hq(page); hide_lnb(page)
-    page.check('[data-hq-row-check="hq1"]'); page.check('[data-hq-row-check="hq2"]'); page.wait_for_timeout(300)
-    fit(page)
-    crop_between(page, page.locator('.card-head'), page.locator('.table-scroll'), page.locator('.page-section'), 'hq-select-pc')
-    ctx.close()
-
     # SMS 발송
     ctx, page = login(b); open_hq(page)
     page.click('[data-hq-sms="hq2"]'); page.wait_for_timeout(300)
@@ -341,8 +334,20 @@ def detail_shots(b):
 
 # ---- 상태 변경 ----
 def bar_shot(page, name):
+    # 하단 고정 바: 뒤의 화면은 숨기고(자리는 유지), 바 위쪽에 16px 여백을 두고 자른다. 촬영 뒤 숨김은 되돌린다
     page.set_viewport_size({'width': 1440, 'height': 900}); page.wait_for_timeout(200)
-    crop(page, page.locator('.bottom-bar'), name, 0)
+    page.evaluate("""() => {
+      let el = document.querySelector('.bottom-bar');
+      while (el && el.parentElement && el !== document.body) {
+        Array.from(el.parentElement.children).forEach(s => { if (s !== el && s.style.visibility !== 'hidden') { s.style.visibility = 'hidden'; s.dataset.barHid = '1'; } });
+        el = el.parentElement;
+      }
+    }""")
+    page.wait_for_timeout(150)
+    box = page.locator('.bottom-bar').bounding_box()
+    y0 = max(box['y'] - M, 0)
+    save(page.screenshot(clip={'x': 0, 'y': y0, 'width': box['width'], 'height': box['y'] + box['height'] - y0}), name)
+    page.evaluate("document.querySelectorAll('[data-bar-hid]').forEach(e => { e.style.visibility = ''; delete e.dataset.barHid; })")
 
 
 def status_shots(b):
