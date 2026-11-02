@@ -297,7 +297,6 @@ def detail_shots(b):
 
     # 내부메모 탭
     ctx, page = open_detail(b, 'hq2', 'memo')
-    body_shot(page, 'hq-d-memo-pc')
     page.fill('#hqMemoInput', '26.10.30 사업자등록증 사본 재확인 요청함.'); page.click('#hqMemoAddBtn'); page.wait_for_timeout(300)
     body_shot(page, 'hq-d-memo-add-pc')
     ctx.close()

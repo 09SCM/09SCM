@@ -55,7 +55,7 @@ window.GUIDE_CONTENT['start-intro'] = {
       '</ul>' },
     { id: 'sec4', label: '시작부터 운영까지', html:
       '<ol>' +
-        '<li><b>신청</b> 본사가 <a href="https://09scm.github.io/09SCM-Homepage/apply/" target="_blank" rel="noopener noreferrer">09SCM 홈페이지의 솔루션 도입신청</a>을 작성하면 본사 관리에 승인대기로 접수돼요.</li>' +
+        '<li><b>신청</b> 본사가 <a href="https://09scm.github.io/09SCM-Homepage/apply/" target="_blank" rel="noopener noreferrer">09SCM 홈페이지의 솔루션 도입신청</a>을 작성하면 본사 관리에 [승인대기]로 접수돼요.</li>' +
         '<li><b>심사·결제 연동 확인</b> 운영자가 신청 내용을 확인하고, 결제 연동(PayApp) 정보를 입력해 검증해요.</li>' +
         '<li><b>승인</b> 결제 연동 검증이 끝나면 운영승인을 눌러요. 승인하면 본사 계정과 소매몰이 만들어져요.</li>' +
         '<li><b>운영</b> 본사는 소매몰에서 가맹점 가입신청을 받아 운영해요. 운영 중에는 대시보드와 거래/매출 현황에서 현황을 확인해요.</li>' +
@@ -149,7 +149,7 @@ window.GUIDE_CONTENT['start-home'] = {
         '<li>[메인으로]: 홈페이지 메인 화면으로 이동</li>' +
         '<li>[09SCM 솔루션 소개]: 메인 화면의 솔루션 소개 영역으로 이동</li>' +
       '</ul>' +
-      '<p>접수된 신청은 본사 관리에 승인대기 상태로 들어와요.</p>' },
+      '<p>접수된 신청은 본사 관리에 [승인대기] 상태로 들어와요.</p>' },
     { id: 'sec4', label: '푸터 이용약관·개인정보처리방침', html:
       '<p>홈페이지 맨 아래 푸터에서 이용약관과 개인정보처리방침 페이지로 이동해요.</p>' +
       adminInlineShot('home-footer-pc', '09SCM 홈페이지 푸터 PC 화면', '09SCM 홈페이지 푸터 화면', '100%') +
@@ -251,7 +251,7 @@ window.GUIDE_CONTENT['start-terms'] = {
       '<h3>본사 상태</h3>' +
       '<div class="table-wrap"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody>' +
         '<tr><td>승인대기</td><td>도입신청이 접수되어 검토 전인 단계 (본사 계정과 소매몰은 아직 만들어지지 않음)</td></tr>' +
-        '<tr><td>운영중</td><td>정상 운영 중인 본사 (운영중으로 처음 바뀌는 시점에 본사 계정과 소매몰 생성)</td></tr>' +
+        '<tr><td>운영중</td><td>정상 운영 중인 본사 ([운영중]으로 처음 바뀌는 시점에 본사 계정과 소매몰 생성)</td></tr>' +
         '<tr><td>운영제한</td><td>운영 중이던 본사에 제한이 걸린 상태 (신규 가맹점 유치 중단 포함)</td></tr>' +
         '<tr><td>승인불가</td><td>도입신청을 승인하지 않은 상태</td></tr>' +
       '</tbody></table></div>' +
@@ -262,7 +262,7 @@ window.GUIDE_CONTENT['start-terms'] = {
         '<tr><td>이용제한</td><td>신규 주문과 상품 등록이 제한된 상태</td></tr>' +
         '<tr><td>이용불가</td><td>로그인할 수 없는 상태</td></tr>' +
       '</tbody></table></div>' +
-      '<p>본사 상태와 가맹점 이용상태는 서로 다른 체계라서 이름을 섞어 쓰지 않아요. 본사가 운영제한이 되어도 소속 가맹점의 이용상태는 자동으로 바뀌지 않아요.</p>' },
+      '<p>본사 상태와 가맹점 이용상태는 서로 다른 체계라서 이름을 섞어 쓰지 않아요. 본사가 [운영제한]이 되어도 소속 가맹점의 이용상태는 자동으로 바뀌지 않아요.</p>' },
     { id: 'sec2', label: '매출과 결제', html:
       '<div class="table-wrap"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody>' +
         '<tr><td>결제총액</td><td>결제가 완료된 금액의 합계 (구매자가 부담한 카드수수료, 배달·배송비 포함)</td></tr>' +
@@ -1187,7 +1187,7 @@ window.GUIDE_CONTENT['trade-franchise'] = {
 
 // ---- 본사/가맹점 관리 > 본사 관리 ----
 // 캡처 크기(가로 × 세로 px). tools/capture_admin_hq.py로 촬영한 원본 기준.
-var HQ_SIZES = {"hq-bulk-delete-pc": [904, 430], "hq-d-access-pc": [904, 350], "hq-d-biz-ok-pc": [2848, 982], "hq-d-corp-pc": [2848, 918], "hq-d-go-franchise-pc": [2880, 1800], "hq-d-go-sales-pc": [2880, 1800], "hq-d-id-dup-pc": [2848, 700], "hq-d-id-locked-pc": [2848, 644], "hq-d-memo-add-pc": [2848, 648], "hq-d-memo-empty-pc": [2848, 424], "hq-d-memo-pc": [2848, 492], "hq-d-payapp-alert-pc": [904, 348], "hq-d-payapp-edit-pc": [2848, 660], "hq-d-payapp-empty-pc": [2848, 570], "hq-d-payapp-pc": [2848, 570], "hq-d-payapp-verified-pc": [2848, 660], "hq-d-pw-edit-pc": [2848, 836], "hq-d-pw-error-pc": [2848, 892], "hq-d-save-error-pc": [2848, 550], "hq-d-trade-zero-pc": [2848, 868], "hq-d-wait-id-pc": [2848, 644], "hq-delete-fr-pc": [904, 430], "hq-delete-pc": [904, 350], "hq-deleted-pc": [2848, 1080], "hq-detail-pc": [2880, 3132], "hq-list-pc": [2880, 1800], "hq-reg-biz-ok-pc": [2848, 890], "hq-reg-corp-pc": [2848, 918], "hq-reg-done-pc": [2848, 1548], "hq-reg-id-dup-pc": [2848, 856], "hq-reg-id-ok-pc": [2848, 864], "hq-reg-id-rule-pc": [2848, 856], "hq-reg-payapp-fail-pc": [2848, 592], "hq-reg-payapp-ok-pc": [2848, 536], "hq-reg-pc": [2880, 3094], "hq-reg-rule-error-pc": [2848, 510], "hq-s-approve-error-pc": [2880, 162], "hq-s-approved-pc": [2880, 162], "hq-s-limit-done-pc": [2880, 162], "hq-s-limit-partner-pc": [2880, 1520], "hq-s-limit-pc": [2880, 162], "hq-s-limit-select-pc": [2880, 162], "hq-s-reject-done-pc": [2880, 162], "hq-s-reject-pc": [2880, 162], "hq-s-revoke-done-pc": [2880, 162], "hq-s-run-pc": [2880, 162], "hq-s-wait-pc": [2880, 162], "hq-s-wait-ready-pc": [2880, 162], "hq-search-biz-pc": [2848, 612], "hq-search-empty-pc": [2848, 378], "hq-sms-pc": [904, 658], "hq-status-pc": [2880, 1800]};
+var HQ_SIZES = {"hq-bulk-delete-pc": [904, 430], "hq-d-access-pc": [904, 350], "hq-d-biz-ok-pc": [2848, 982], "hq-d-corp-pc": [2848, 918], "hq-d-go-franchise-pc": [2880, 1800], "hq-d-go-sales-pc": [2880, 1800], "hq-d-id-dup-pc": [2848, 700], "hq-d-id-locked-pc": [2848, 644], "hq-d-memo-add-pc": [2848, 648], "hq-d-memo-empty-pc": [2848, 424], "hq-d-payapp-alert-pc": [904, 348], "hq-d-payapp-edit-pc": [2848, 660], "hq-d-payapp-empty-pc": [2848, 570], "hq-d-payapp-pc": [2848, 570], "hq-d-payapp-verified-pc": [2848, 660], "hq-d-pw-edit-pc": [2848, 836], "hq-d-pw-error-pc": [2848, 892], "hq-d-save-error-pc": [2848, 550], "hq-d-trade-zero-pc": [2848, 868], "hq-d-wait-id-pc": [2848, 644], "hq-delete-fr-pc": [904, 430], "hq-delete-pc": [904, 350], "hq-deleted-pc": [2848, 1080], "hq-detail-pc": [2880, 3132], "hq-list-pc": [2880, 1800], "hq-reg-biz-ok-pc": [2848, 890], "hq-reg-corp-pc": [2848, 918], "hq-reg-done-pc": [2848, 1548], "hq-reg-id-dup-pc": [2848, 856], "hq-reg-id-ok-pc": [2848, 864], "hq-reg-id-rule-pc": [2848, 856], "hq-reg-payapp-fail-pc": [2848, 592], "hq-reg-payapp-ok-pc": [2848, 536], "hq-reg-pc": [2880, 3094], "hq-reg-rule-error-pc": [2848, 510], "hq-s-approve-error-pc": [2880, 162], "hq-s-approved-pc": [2880, 162], "hq-s-limit-done-pc": [2880, 162], "hq-s-limit-partner-pc": [2880, 1520], "hq-s-limit-pc": [2880, 162], "hq-s-limit-select-pc": [2880, 162], "hq-s-reject-done-pc": [2880, 162], "hq-s-reject-pc": [2880, 162], "hq-s-revoke-done-pc": [2880, 162], "hq-s-run-pc": [2880, 162], "hq-s-wait-pc": [2880, 162], "hq-s-wait-ready-pc": [2880, 162], "hq-search-biz-pc": [2848, 612], "hq-search-empty-pc": [2848, 378], "hq-sms-pc": [904, 658], "hq-status-pc": [2880, 1800]};
 
 function hqShot(name, alt) {
   var s = HQ_SIZES[name] || [2880, 1800];
@@ -1519,11 +1519,11 @@ window.GUIDE_CONTENT['hq-list'] = {
             hqCase('운영중·운영제한 본사의 아이디이면', 'hq-d-id-locked-pc', '운영중 본사 아이디 수정 불가',
               hqList(['조건: 본사 상태가 [운영중] 또는 [운영제한]', '아이디 입력칸과 [중복확인]이 비활성화되어 변경할 수 없음'])),
             hqCase('승인대기·승인불가 본사의 아이디이면', 'hq-d-wait-id-pc', '승인대기 본사 아이디 수정 가능',
-              hqList(['조건: 본사 상태가 [승인대기] 또는 [승인불가]', '아이디를 변경하고 [중복확인]을 할 수 있음', '비밀번호가 없는 본사는 "비밀번호 없음"이 표시됨 (운영승인 전에 [비밀번호 변경]으로 정해야 함)'])),
+              hqList(['조건: 본사 상태가 [승인대기] 또는 [승인불가]', '아이디를 변경하고 [중복확인]을 할 수 있음'])),
             hqCase('비밀번호를 변경하려면', 'hq-d-pw-edit-pc', '본사 상세 비밀번호 변경',
               hqList(['조건: [비밀번호 변경]을 누름', '새 비밀번호와 비밀번호 확인 입력칸, [취소], [변경]이 나타남', '[변경]: 새 비밀번호로 변경하고 조회 상태로 돌아감', '[취소]: 변경하지 않고 돌아감'])),
             hqCase('법인사업자로 변경하면', 'hq-d-corp-pc', '본사 상세 법인사업자 선택',
-              hqList(['조건: 사업자유형에서 [법인사업자]를 고름', '법인등록번호 입력칸이 나타남 (법인등록번호도 운영승인 필수 항목이 됨)', '개인사업자로 변경하고 저장하면 법인등록번호는 비워짐'])),
+              hqList(['조건: 사업자유형에서 [법인사업자]를 고름', '법인등록번호 입력칸이 나타남 (법인등록번호도 운영승인 필수 항목이 됨)'])),
             hqCase('사업자등록번호를 변경하면', 'hq-d-biz-ok-pc', '본사 상세 사업자등록번호 변경 후 사업자인증',
               hqList(['조건: 사업자등록번호를 변경하고 [사업자인증]을 누름', '안내: "사업자 인증이 완료되었습니다."']))
           ]
@@ -1557,9 +1557,9 @@ window.GUIDE_CONTENT['hq-list'] = {
             hqCase('연동 값을 변경하려 하면', 'hq-d-payapp-alert-pc', '본사 상세 페이앱 연동정보 변경 확인',
               hqList(['조건: 연동 값이 있는 본사에서 [연동정보 변경]을 누름', '안내: "연동정보를 변경하면 기존 정산계좌 등 연동 정보가 모두 바뀌어 문제가 발생할 수 있습니다. 계속하시겠습니까?"', '[계속]: 검증상태를 미검증으로 변경하고 편집 상태로 전환', '[취소]: 변경하지 않고 확인 창을 닫음'])),
             hqCase('연동 값을 고치는 중이면', 'hq-d-payapp-edit-pc', '본사 상세 페이앱 연동 편집',
-              hqList(['제목: "페이앱 연동 정보 (편집중)"', '검증상태: 미검증', '[변경]: 검증완료 전에는 누를 수 없음', '[유효성 검증]: 연동 값이 유효하면 검증완료로 변경됨'])),
+              hqList(['제목: "페이앱 연동 정보 (편집중)"', '검증상태: 미검증'])),
             hqCase('검증이 끝나면', 'hq-d-payapp-verified-pc', '본사 상세 페이앱 연동 검증완료',
-              hqList(['검증상태: 검증완료', '[변경]: 누를 수 있게 됨. 누르면 새 값으로 변경되고 조회 상태로 돌아가며 검증상태는 연동완료가 됨']))
+              hqList(['검증상태: 검증완료', '[변경]: 누를 수 있게 됨']))
           ]
         },
         {
@@ -1576,10 +1576,8 @@ window.GUIDE_CONTENT['hq-list'] = {
         {
           group: '내부메모 탭에서',
           rows: [
-            hqCase('메모가 있으면', 'hq-d-memo-pc', '본사 상세 내부메모',
-              hqList(['메모와 작성 일시가 최신 메모부터 나옴', '[삭제]: 메모를 바로 삭제하며 복구할 수 없음'])),
             hqCase('메모를 추가하면', 'hq-d-memo-add-pc', '본사 상세 내부메모 추가',
-              hqList(['조건: 메모를 입력하고 [추가]를 누름', '표시: 새 메모가 맨 위에 작성 일시와 함께 나타나고 입력칸은 비워짐', '내용 없이 [추가]를 누르면: 추가되지 않음'])),
+              hqList(['조건: 메모를 입력하고 [추가]를 누름', '표시: 새 메모가 작성 일시와 함께 맨 위에 나타나고 입력칸은 비워짐 (메모는 최신순으로 위에서부터 나옴)'])),
             hqCase('메모가 없으면', 'hq-d-memo-empty-pc', '본사 상세 내부메모 없음',
               hqList(['안내: "등록된 메모가 없습니다."']))
           ]
@@ -1643,7 +1641,7 @@ window.GUIDE_CONTENT['hq-list'] = {
             hqCase('페이앱 연동 검증을 하지 않았으면', 'hq-s-wait-pc', '본사 승인대기 하단 영역',
               hqList(['표시: 상태 배지([승인대기]), [승인불가], [운영승인]', '안내: "페이앱 연동 검증을 완료해야 운영승인할 수 있습니다."', '[운영승인]: 비활성화되어 누를 수 없음'])),
             hqCase('페이앱 연동 검증이 끝나면', 'hq-s-wait-ready-pc', '본사 승인대기 운영승인 가능',
-              hqList(['표시: 안내 문구가 사라지고 [운영승인]을 누를 수 있게 됨', '필수 항목이 모두 저장되어 있어야 운영승인이 처리됨'])),
+              hqList(['표시: 안내 문구가 사라지고 [운영승인]을 누를 수 있게 됨'])),
             hqCase('필수 항목이 비어 있으면', 'hq-s-approve-error-pc', '본사 운영승인 필수 항목 오류',
               hqList(['조건: 필수 항목(비밀번호 등) 중 저장되지 않은 항목이 있는 채로 [운영승인]을 누름', '안내: "필수 항목을 모두 입력해야 운영승인할 수 있습니다."'])),
             hqCase('운영승인이 되면', 'hq-s-approved-pc', '본사 운영승인 완료',
