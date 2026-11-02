@@ -2437,6 +2437,68 @@ window.GUIDE_CONTENT['franchise-list'] = {
       ],
       cases: [
         {
+          group: '회원정보 탭에서',
+          rows: [
+            {
+              title: '사업자등록번호를 바꾸면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-d-biz-ok-pc.webp', alt: '09SCM 가맹점 사업자등록번호 변경 PC 화면', ratio: 2848 / 1868},
+                { device: 'mobile', src: '../assets/img/partner/fr-d-biz-ok-mobile.webp', alt: '09SCM 가맹점 사업자등록번호 변경 모바일 화면', ratio: 880 / 1904}
+              ],
+              shotCaption: '09SCM 가맹점 사업자등록번호 변경 후 사업자인증 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>조건:</b> 사업자등록번호를 바꿈</li>' +
+                '<li><b>인증:</b> 인증이 풀려 [사업자인증]을 다시 눌러야 저장할 수 있음</li>' +
+                '<li><b>안내:</b> 인증이 끝나면 사업자등록번호 아래에 &quot;인증되었습니다.&quot;</li>' +
+                '</ul>'
+            },
+            {
+              title: '법인사업자이면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-d-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 1.4369},
+                { device: 'mobile', src: '../assets/img/partner/fr-d-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 0.4361}
+              ],
+              shotCaption: '09SCM 법인사업자 사업자 정보 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>조건:</b> 사업자 유형에서 법인사업자를 고름</li>' +
+                '<li><b>법인등록번호:</b> 입력란이 나타나고 필수로 입력</li>' +
+                '<li><b>개인사업자로 바꾸면:</b> 입력란이 사라지고 저장할 때 값이 비워짐</li>' +
+                '</ul>'
+            },
+            {
+              title: 'PayApp 연동 전이면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-d-payapp-unlinked-pc.webp', alt: '09SCM PayApp 연동 전 가맹점 PC 화면', ratio: 2.9002},
+                { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-unlinked-mobile.webp', alt: '09SCM PayApp 연동 전 가맹점 모바일 화면', ratio: 0.8644}
+              ],
+              shotCaption: '09SCM PayApp 연동 전 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>표시:</b> 연동 상태 미연동, 연동 정보 입력란</li>' +
+                '<li><b>연동:</b> 판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력하고 [연동하기]를 누름</li>' +
+                '<li><b>빈 값이 있으면:</b> &quot;판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력해주세요.&quot;</li>' +
+                '<li><b>연동 주체:</b> 가맹점은 시스템관리 &gt; 회원정보에서, 본사는 이 화면에서 대신 연동할 수 있음</li>' +
+                '<li><b>[이용승인]:</b> 미연동 가맹점은 누를 수 없음</li>' +
+                '</ul>'
+            },
+            {
+              title: 'PayApp 연동이 끝났다면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-d-payapp-linked-pc.webp', alt: '09SCM PayApp 연동 완료 가맹점 PC 화면', ratio: 3.229},
+                { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-linked-mobile.webp', alt: '09SCM PayApp 연동 완료 가맹점 모바일 화면', ratio: 0.9977}
+              ],
+              shotCaption: '09SCM PayApp 연동 완료 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>표시:</b> 연동완료, 연동한 정보 확인 (연동 KEY와 VALUE는 일부만 표시)</li>' +
+                '<li><b>변경:</b> 최초 연동 이후에는 바꾸거나 해제할 수 없음</li>' +
+                '</ul>'
+            }
+          ]
+        },
+        {
           title: '저장이 막히면',
           shots: [
             { device: 'pc', src: '../assets/img/partner/fr-d-error-pc.webp', alt: '09SCM 회원정보 입력 오류 PC 화면', ratio: 2.507},
@@ -2463,76 +2525,50 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>안내가 나오면 저장되지 않아요. 오류는 회원 정보 위쪽에 한꺼번에 표시돼요. 해당 항목을 고친 뒤 다시 [저장]을 눌러요.</p>'
         },
         {
-          title: '사업자등록번호를 바꾸면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-biz-ok-pc.webp', alt: '09SCM 가맹점 사업자등록번호 변경 PC 화면', ratio: 2848 / 1868},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-biz-ok-mobile.webp', alt: '09SCM 가맹점 사업자등록번호 변경 모바일 화면', ratio: 880 / 1904}
-          ],
-          shotCaption: '09SCM 가맹점 사업자등록번호 변경 후 사업자인증 화면 (PC / 모바일)',
-          html:
-            '<p>사업자등록번호를 바꾸면 인증이 풀려서, [사업자인증]을 다시 눌러야 저장할 수 있어요. 인증이 끝나면 사업자등록번호 아래에 &quot;인증되었습니다.&quot;가 나와요.</p>'
-        },
-        {
-          title: '법인사업자이면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-corp-pc.webp', alt: '09SCM 법인사업자 사업자 정보 PC 화면', ratio: 1.4369},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-corp-mobile.webp', alt: '09SCM 법인사업자 사업자 정보 모바일 화면', ratio: 0.4361}
-          ],
-          shotCaption: '09SCM 법인사업자 사업자 정보 화면 (PC / 모바일)',
-          html:
-            '<p>사업자 유형을 법인사업자로 고르면 법인등록번호 입력란이 나타나고, 필수로 입력해야 해요. 개인사업자로 바꾸면 입력란이 사라지고 저장할 때 값이 비워져요.</p>'
-        },
-        {
-          title: 'PayApp 연동 전이면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-unlinked-pc.webp', alt: '09SCM PayApp 연동 전 가맹점 PC 화면', ratio: 2.9002},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-unlinked-mobile.webp', alt: '09SCM PayApp 연동 전 가맹점 모바일 화면', ratio: 0.8644}
-          ],
-          shotCaption: '09SCM PayApp 연동 전 화면 (PC / 모바일)',
-          html:
-            '<p>연동 상태가 미연동이고 연동 정보 입력란이 보여요. 판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력하고 [연동하기]를 누르면 연동이 끝나요. 하나라도 비어 있으면 &quot;판매자 회원 아이디, 연동 KEY, 연동 VALUE를 모두 입력해주세요.&quot; 안내가 나와요.</p>' +
-            '<p>가맹점은 본인 관리자 화면의 시스템관리 > 회원정보에서 연동하고, 본사는 이 화면에서 대신 연동할 수 있어요. 미연동 가맹점은 [이용승인]을 누를 수 없어요.</p>'
-        },
-        {
-          title: 'PayApp 연동이 끝났다면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-payapp-linked-pc.webp', alt: '09SCM PayApp 연동 완료 가맹점 PC 화면', ratio: 3.229},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-payapp-linked-mobile.webp', alt: '09SCM PayApp 연동 완료 가맹점 모바일 화면', ratio: 0.9977}
-          ],
-          shotCaption: '09SCM PayApp 연동 완료 화면 (PC / 모바일)',
-          html:
-            '<p>연동 상태가 연동완료로 보이고 연동한 정보를 확인할 수 있어요. 연동 KEY와 VALUE는 일부만 보여요. 최초 연동 이후에는 바꾸거나 해제할 수 없어요.</p>'
-        },
-        {
-          title: '개별 이용료를 적용하면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-fee-custom-pc.webp', alt: '09SCM 개별 이용료 적용 PC 화면', ratio: 8.1371},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-fee-custom-mobile.webp', alt: '09SCM 개별 이용료 적용 모바일 화면', ratio: 2.0657}
-          ],
-          shotCaption: '09SCM 개별 이용료 적용 화면 (PC / 모바일)',
-          html:
-            '<p>[이 가맹점에 개별 이용료 적용]을 체크하면 개별 이용료 입력란이 나타나요. 숫자만 입력할 수 있고, 1원 이상이어야 저장돼요. 입력하지 않거나 1원 미만이면 [저장]을 눌렀을 때 &quot;개별 이용료는 1원 이상의 숫자로 입력해주세요.&quot; 안내가 나와요.</p>' +
-            '<p>체크를 해제하고 [저장]하면 다시 기본 이용료가 적용돼요. 가맹점 목록의 적용이용료에는 개별 이용료가 적용된 가맹점에 [개별] 표시가 붙어요.</p>'
-        },
-        {
-          title: '정기결제를 등록한 가맹점이면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-pay-reg-pc.webp', alt: '09SCM 정기결제 등록 가맹점 PC 화면', ratio: 6.5622},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-reg-mobile.webp', alt: '09SCM 정기결제 등록 가맹점 모바일 화면', ratio: 1.5942}
-          ],
-          shotCaption: '09SCM 정기결제 등록 가맹점 화면 (PC / 모바일)',
-          html:
-            '<p>정기결제여부가 등록으로 표시되고, 결제수단과 정기결제일을 확인할 수 있어요. 이용료 정기결제가 실패해도 정기결제여부는 자동으로 미등록으로 바뀌지 않아요.</p>'
-        },
-        {
-          title: '정기결제를 등록하지 않았다면',
-          shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-pay-none-pc.webp', alt: '09SCM 정기결제 미등록 가맹점 PC 화면', ratio: 6.5622},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-pay-none-mobile.webp', alt: '09SCM 정기결제 미등록 가맹점 모바일 화면', ratio: 1.5942}
-          ],
-          shotCaption: '09SCM 정기결제 미등록 가맹점 화면 (PC / 모바일)',
-          html:
-            '<p>정기결제여부가 미등록이고 결제수단과 정기결제일은 -로 표시돼요.</p>'
+          group: '이용료정보 탭에서',
+          rows: [
+            {
+              title: '개별 이용료를 적용하면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-d-fee-custom-pc.webp', alt: '09SCM 개별 이용료 적용 PC 화면', ratio: 8.1371},
+                { device: 'mobile', src: '../assets/img/partner/fr-d-fee-custom-mobile.webp', alt: '09SCM 개별 이용료 적용 모바일 화면', ratio: 2.0657}
+              ],
+              shotCaption: '09SCM 개별 이용료 적용 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>조건:</b> [이 가맹점에 개별 이용료 적용]을 체크</li>' +
+                '<li><b>입력:</b> 개별 이용료 입력란이 나타남 (숫자만, 1원 이상)</li>' +
+                '<li><b>비어 있거나 1원 미만이면:</b> [저장] 시 &quot;개별 이용료는 1원 이상의 숫자로 입력해주세요.&quot;</li>' +
+                '<li><b>체크 해제 후 [저장]:</b> 다시 기본 이용료 적용</li>' +
+                '<li><b>가맹점 목록:</b> 적용이용료에 [개별] 표시</li>' +
+                '</ul>'
+            },
+            {
+              title: '정기결제를 등록한 가맹점이면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-d-pay-reg-pc.webp', alt: '09SCM 정기결제 등록 가맹점 PC 화면', ratio: 6.5622},
+                { device: 'mobile', src: '../assets/img/partner/fr-d-pay-reg-mobile.webp', alt: '09SCM 정기결제 등록 가맹점 모바일 화면', ratio: 1.5942}
+              ],
+              shotCaption: '09SCM 정기결제 등록 가맹점 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>표시:</b> 정기결제여부 등록, 결제수단과 정기결제일 확인</li>' +
+                '<li><b>정기결제 실패:</b> 정기결제여부는 자동으로 미등록으로 바뀌지 않음</li>' +
+                '</ul>'
+            },
+            {
+              title: '정기결제를 등록하지 않았다면',
+              shots: [
+                { device: 'pc', src: '../assets/img/partner/fr-d-pay-none-pc.webp', alt: '09SCM 정기결제 미등록 가맹점 PC 화면', ratio: 6.5622},
+                { device: 'mobile', src: '../assets/img/partner/fr-d-pay-none-mobile.webp', alt: '09SCM 정기결제 미등록 가맹점 모바일 화면', ratio: 1.5942}
+              ],
+              shotCaption: '09SCM 정기결제 미등록 가맹점 화면 (PC / 모바일)',
+              html:
+                '<ul>' +
+                '<li><b>표시:</b> 정기결제여부 미등록, 결제수단과 정기결제일은 -</li>' +
+                '</ul>'
+            }
+          ]
         }
       ],
       trouble:
