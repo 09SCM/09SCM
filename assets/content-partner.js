@@ -148,7 +148,7 @@ window.GUIDE_CONTENT['start-terms'] = {
       "<div class=\"table-wrap\"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody><tr><td>결제총액</td><td>결제가 완료된 금액의 합계 (결제완료일시 기준, 배달비 포함)</td></tr><tr><td>취소·환불액</td><td>취소·반품이 승인되어 돌려준 금액의 합계 (취소·반품 승인일시 기준, [환불대기]인 주문도 포함)</td></tr><tr><td>매출액</td><td>결제총액 − 취소·환불액 (취소·환불이 더 크면 마이너스 가능)</td></tr><tr><td>총주문건수</td><td>접수된 주문 건수 (주문접수일시 기준, 결제·취소 여부와 관계없음, 통합관리자의 주문건수와는 기준이 다름)</td></tr></tbody></table></div>" +
       "<p>매출은 화면을 열거나 새로고침한 시점의 값을 한국 시간 기준으로 보여줘요. 이용료로 받은 금액(이용료 수납액)은 매출액에 포함되지 않아요.</p>" },
     { id: "sec6", label: "PayApp", html:
-      "<div class=\"table-wrap\"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody><tr><td>PayApp</td><td>온라인 결제를 처리하는 외부 서비스 (정산과 수수료 정보는 PayApp 계정 관리자 페이지에서 별도 확인)</td></tr><tr><td>PayApp 연동정보</td><td>판매자 회원 아이디, 연동 KEY, 연동 VALUE (연동 상태에 따라 연동완료, 미연동으로 표시)</td></tr></tbody></table></div>" }
+      "<div class=\"table-wrap\"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody><tr><td>PayApp</td><td>온라인 결제를 처리하는 외부 서비스 (정산과 수수료 정보는 PayApp 계정 관리자 페이지에서 별도 확인)</td></tr><tr><td>PayApp 연동정보</td><td>판매자 회원 아이디, 연동 KEY, 연동 VALUE (연동 상태에 따라 [연동완료], [미연동]으로 표시)</td></tr></tbody></table></div>" }
   ]
 };
 
