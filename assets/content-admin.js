@@ -245,7 +245,7 @@ window.GUIDE_CONTENT['start-terms'] = {
         '<tr><td>통합관리자</td><td>09SCM을 운영하는 담당자가 본사와 가맹점의 현황, 매출, 공지, 약관을 관리하는 화면</td></tr>' +
         '<tr><td>본사</td><td>09SCM을 도입해 소속 가맹점을 관리하는 계정. 통합관리자에서 신청부터 승인, 운영 상태까지 직접 관리</td></tr>' +
         '<tr><td>가맹점</td><td>본사에 소속된 계정. 통합관리자에서는 조회만 하고, PayApp 연동정보만 수정 가능</td></tr>' +
-        '<tr><td>소매몰</td><td>본사와 가맹점이 각자 운영하는 고객용 쇼핑 사이트</td></tr>' +
+        '<tr><td>소매몰</td><td>본사와 가맹점이 각자 운영하는 공동구매 쇼핑몰</td></tr>' +
         '<tr><td>도입신청</td><td>본사가 09SCM 홈페이지에서 솔루션 이용을 신청하는 것</td></tr>' +
       '</tbody></table></div>' +
       '<h3>본사 상태</h3>' +
@@ -280,7 +280,8 @@ window.GUIDE_CONTENT['start-terms'] = {
     { id: 'sec3', label: 'PayApp', html:
       '<div class="table-wrap"><table><thead><tr><th>용어</th><th>뜻</th></tr></thead><tbody>' +
         '<tr><td>PayApp</td><td>온라인 결제를 처리하는 외부 서비스</td></tr>' +
-        '<tr><td>PayApp 연동정보</td><td>판매자 아이디, 연동 KEY, 연동 VALUE (검증 결과에 따라 연동완료, 미연동으로 표시)</td></tr>' +
+        '<tr><td>PayApp 연동정보</td><td>판매자 아이디, 연동 KEY, 연동 VALUE</td></tr>' +
+        '<tr><td>검증상태</td><td>조회 중에는 연동 여부를 연동완료 / 미연동으로, 편집 중에는 새 값의 검증 여부를 검증완료 / 미검증으로 표시</td></tr>' +
         '<tr><td>유효성 검증</td><td>입력한 PayApp 연동정보가 쓸 수 있는 값인지 확인하는 기능</td></tr>' +
       '</tbody></table></div>' }
   ]
