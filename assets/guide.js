@@ -331,6 +331,17 @@
   }
   window.addEventListener('hashchange', route);
 
+  // 좌측 로고는 인덱스가 아니라 이 이용가이드의 최상위 화면(목차의 첫 화면)으로 이동한다. 인덱스 이동은 하단 [이용가이드 메인]이 맡는다.
+  var logoEl = document.querySelector('.lnb-logo');
+  if (logoEl && leaves.length) {
+    var homeId = leaves[0].id;
+    logoEl.setAttribute('href', '#' + homeId);
+    logoEl.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (location.hash === '#' + homeId) route(); else location.hash = homeId;
+    });
+  }
+
   document.getElementById('menuBtn').addEventListener('click', function () { appEl.classList.add('nav-open'); });
   document.getElementById('scrim').addEventListener('click', function () { appEl.classList.remove('nav-open'); });
 
