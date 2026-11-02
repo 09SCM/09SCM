@@ -2463,17 +2463,14 @@ window.GUIDE_CONTENT['franchise-list'] = {
             '<p>안내가 나오면 저장되지 않아요. 오류는 회원 정보 위쪽에 한꺼번에 표시돼요. 해당 항목을 고친 뒤 다시 [저장]을 눌러요.</p>'
         },
         {
-          title: '사업자등록번호를 인증하면',
+          title: '사업자등록번호를 바꾸면',
           shots: [
-            { device: 'pc', src: '../assets/img/partner/fr-d-biz-ok-pc.webp', alt: '09SCM 가맹점 사업자인증 완료 PC 화면', ratio: 2848 / 1868},
-            { device: 'mobile', src: '../assets/img/partner/fr-d-biz-ok-mobile.webp', alt: '09SCM 가맹점 사업자인증 완료 모바일 화면', ratio: 880 / 1904}
+            { device: 'pc', src: '../assets/img/partner/fr-d-biz-ok-pc.webp', alt: '09SCM 가맹점 사업자등록번호 변경 PC 화면', ratio: 2848 / 1868},
+            { device: 'mobile', src: '../assets/img/partner/fr-d-biz-ok-mobile.webp', alt: '09SCM 가맹점 사업자등록번호 변경 모바일 화면', ratio: 880 / 1904}
           ],
-          shotCaption: '09SCM 가맹점 사업자인증 완료 화면 (PC / 모바일)',
+          shotCaption: '09SCM 가맹점 사업자등록번호 변경 후 사업자인증 화면 (PC / 모바일)',
           html:
-            '<ul>' +
-              '<li>조건: 사업자등록번호를 입력하고 [사업자인증]을 누름</li>' +
-              '<li>안내: 사업자등록번호 아래에 "인증되었습니다."</li>' +
-            '</ul>'
+            '<p>사업자등록번호를 바꾸면 인증이 풀려서, [사업자인증]을 다시 눌러야 저장할 수 있어요. 인증이 끝나면 사업자등록번호 아래에 &quot;인증되었습니다.&quot;가 나와요.</p>'
         },
         {
           title: '법인사업자이면',

@@ -275,7 +275,7 @@ def detail_shots(b):
     crop(page, sec(page, '사업자정보'), 'hq-d-corp-pc')
     ctx.close()
     ctx, page = open_detail(b, 'hq2')
-    page.click('#hqBizAuthBtn'); page.wait_for_timeout(300)
+    page.fill('#hqBizRegNo', '234-56-78901'); page.click('#hqBizAuthBtn'); page.wait_for_timeout(300)
     fit(page); page.add_style_tag(content='.bottom-bar{visibility:hidden}')
     crop(page, sec(page, '사업자정보'), 'hq-d-biz-ok-pc')
     ctx.close()
