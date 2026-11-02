@@ -2226,7 +2226,7 @@
       id: 'hm7218', hqId: 'hq2',
       userId: 'hm7218', name: '이서연', email: 'hm7218@example.com', phone: '010-3312-9087',
       bizType: '법인', companyName: '한마음마트 봉담점', ceoName: '이서연',
-      bizRegNo: '208-81-44190', bizCategory1: '도소매업', bizCategory2: '생활용품',
+      bizRegNo: '208-81-44190', corpRegNo: '110111-2345678', bizCategory1: '도소매업', bizCategory2: '생활용품',
       address: '경기 화성시 봉담읍 삼천병마로 210', addressDetail: '',
       status: '이용승인', wholesaleSupply: true,
       appliedAt: '2026-07-20 15:45', lastLoginAt: '2026-09-27 17:05',
@@ -2463,6 +2463,7 @@
             <h3 class="form-section-title">사업자정보</h3>
             <div class="form-row"><label class="field-label">사업자유형</label><span class="readonly-value">${f.bizType === '법인' ? '법인사업자' : '개인사업자'}</span></div>
             <div class="form-row"><label class="field-label">사업자등록번호</label><span class="readonly-value">${escapeHtml(f.bizRegNo)}</span></div>
+            ${f.bizType === '법인' ? `<div class="form-row"><label class="field-label">법인등록번호</label><span class="readonly-value">${escapeHtml(f.corpRegNo)}</span></div>` : ''}
             <div class="form-row"><label class="field-label">상호명</label><span class="readonly-value">${escapeHtml(f.companyName)}</span></div>
             <div class="form-row"><label class="field-label">대표자명</label><span class="readonly-value">${escapeHtml(f.ceoName)}</span></div>
             <div class="form-row"><label class="field-label">업태 / 업종</label><span class="readonly-value">${escapeHtml(f.bizCategory1)} / ${escapeHtml(f.bizCategory2)}</span></div>
