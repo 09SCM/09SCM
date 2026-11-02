@@ -180,10 +180,6 @@ def reg_shots(b):
     page.check('input[name="hqRegBizType"][value="법인"]'); page.wait_for_timeout(300)
     fit(page); crop(page, sec(page, '사업자정보'), 'hq-reg-corp-pc')
     ctx.close()
-    ctx, page = reg_open(b)
-    page.click('#hqRegAddressFindBtn'); page.wait_for_timeout(300)
-    fit(page); crop(page, sec(page, '사업자정보'), 'hq-reg-addr-pc')
-    ctx.close()
 
     # 페이앱 유효성 검증: 입력 부족 / 검증완료
     ctx, page = reg_open(b)
@@ -196,25 +192,15 @@ def reg_shots(b):
     fit(page); crop(page, sec(page, '페이앱 연동정보'), 'hq-reg-payapp-ok-pc')
     ctx.close()
 
-    # 등록 오류: 약관 미동의 / 입력 규칙 위반 / 비밀번호 불일치
+    # 등록 오류: 입력 규칙 위반
     def err_shot(page, name):
         fit(page)
         crop_between(page, sec(page, '이용약관 동의'), page.locator('.form-actions').last, page.locator('.tab-body'), name)
 
     ctx, page = reg_open(b)
-    page.click('#hqRegisterSaveBtn'); page.wait_for_timeout(300)
-    err_shot(page, 'hq-reg-terms-error-pc')
-    ctx.close()
-    ctx, page = reg_open(b)
     page.fill('#hqRegPhone', '0101234'); page.check('#hqRegTermsService'); page.check('#hqRegTermsPrivacy')
     page.click('#hqRegisterSaveBtn'); page.wait_for_timeout(300)
     err_shot(page, 'hq-reg-rule-error-pc')
-    ctx.close()
-    ctx, page = reg_open(b)
-    page.fill('#hqRegPassword', 'abc12345'); page.fill('#hqRegPasswordConfirm', 'abc12340')
-    page.check('#hqRegTermsService'); page.check('#hqRegTermsPrivacy')
-    page.click('#hqRegisterSaveBtn'); page.wait_for_timeout(300)
-    err_shot(page, 'hq-reg-pw-error-pc')
     ctx.close()
 
     # 등록 완료
