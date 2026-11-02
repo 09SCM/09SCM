@@ -3,6 +3,7 @@
 // items(선택): summary(수정 내용 1줄) / path(섹션 경로) / link(해당 위치 링크, 이용가이드 기준 상대 주소). 없으면 펼침 없이 한 줄로 표시한다.
 window.GUIDE_HISTORY = {
   admin: [
+    { version: 'v1.0', date: '26.11.02 17:14', push: '57d7efe', note: '최초작성' },
     {
       version: '목업 수정', date: '26.10.30 17:50', push: 'd31f83e',
       items: [
