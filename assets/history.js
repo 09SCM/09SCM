@@ -23,7 +23,8 @@ window.GUIDE_HISTORY = {
       items: [
         { summary: '본사 계정이 운영제한일 때도 이용제한과 같은 제한 적용 (소매몰 접근 불가, 도소매 등록·전환 버튼 비활성)', path: '가맹관리자 화면 > 공통 > 이용제한 상태', link: './mock/partner.html' },
         { summary: '이용제한 배너·비활성 버튼 안내 문구를 가맹점·본사 공통 문구로 통일', detail: ['배너 : 이 계정은 이용이 제한된 상태입니다. 도소매 기능 이용이 제한되며, 해제하려면 관리 담당자에게 문의해 주세요.', '툴팁 : 현재 상태에서는 사용할 수 없습니다.'], path: '가맹관리자 화면 > 공통 > 이용제한 배너', link: './mock/partner.html' },
-        { summary: '로그인 데모 계정 변경: 본사 bonsa → bonsa1(본사 · 운영중), bonsa2(본사 · 운영제한) 추가', path: '가맹관리자 화면 > 로그인', link: './mock/partner.html' }
+        { summary: '로그인 데모 계정 변경: 본사 bonsa → bonsa1(본사 · 운영중), bonsa2(본사 · 운영제한) 추가', path: '가맹관리자 화면 > 로그인', link: './mock/partner.html' },
+        { summary: '이용불가 가맹점 로그인 안내 문구를 관리 담당자 문의로 변경', detail: ['안내 : 이용이 불가한 계정입니다. 관리 담당자에게 문의해 주세요.'], path: '가맹관리자 화면 > 로그인', link: './mock/partner.html' }
       ]
     },
     {
