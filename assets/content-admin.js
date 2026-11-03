@@ -1,6 +1,6 @@
-// 통합관리자 이용가이드 — 화면별 본문
+// 통합관리자 기능가이드 — 화면별 본문
 // 키는 nav-admin.js의 leaf id. 값이 없는 섹션은 화면에 나타나지 않는다.
-// 통합관리자는 운영용 PC 화면이라 캡처는 PC 1장만 쓴다(이용가이드 디자인시스템 9-2절).
+// 통합관리자는 운영용 PC 화면이라 캡처는 PC 1장만 쓴다(기능가이드 디자인시스템 9-2절).
 window.GUIDE_CONTENT = window.GUIDE_CONTENT || {};
 
 var IMG_ADMIN = '../assets/img/admin/';
@@ -18,7 +18,7 @@ function adminQuarterShot(name, alt, caption) {
     '<p class="shot-caption">' + caption + '</p></div>';
 }
 
-// 알럿형 팝업 캡처 1장 (이용가이드 디자인시스템 9절: 본문 폭의 절반, 좌측 정렬, 860px 이하 100%)
+// 알럿형 팝업 캡처 1장 (기능가이드 디자인시스템 9절: 본문 폭의 절반, 좌측 정렬, 860px 이하 100%)
 function adminAlertShot(name, alt, caption) {
   return '<div class="shot"><div class="shot-row shot-one"><figure class="shot-item shot-pc"><img src="' + IMG_ADMIN + name + '.webp" alt="' + alt + '" loading="lazy"></figure></div>' +
     '<p class="shot-caption">' + caption + '</p></div>';
@@ -106,7 +106,7 @@ window.GUIDE_CONTENT['start-home'] = {
         '<tbody>' +
           '<tr><td>솔루션 소개·핵심 기능·이용 흐름·도입 절차·FAQ</td><td>09SCM을 소개하는 안내 영역 (위쪽 메뉴를 누르면 해당 영역으로 이동)</td></tr>' +
           '<tr><td>[솔루션 도입신청]</td><td>솔루션 도입신청 화면으로 이동</td></tr>' +
-          '<tr><td>[09SCM 로그인]</td><td>본사·가맹점 로그인 화면으로 이동 (<a href="partner.html#start-login">본사·가맹점 관리자 이용가이드</a>)</td></tr>' +
+          '<tr><td>[09SCM 로그인]</td><td>본사·가맹점 로그인 화면으로 이동 (<a href="partner.html#start-login">본사·가맹점 관리자 기능가이드</a>)</td></tr>' +
         '</tbody></table></div>' },
     { id: 'sec3', label: '솔루션 도입신청', html:
       '<p>본사가 09SCM 도입을 신청하는 화면이에요. 4개 영역을 차례로 입력해요. *는 필수 항목이에요.</p>' +
@@ -425,7 +425,7 @@ window.GUIDE_CONTENT['system-terms'] = {
         '<ul>' +
           '<li>이용약관, 개인정보처리방침, 마케팅정보 수신동의 3종을 탭으로 나눠 관리해요.</li>' +
           '<li>이 약관은 09SCM 홈페이지의 <a href="#start-home">솔루션 도입신청 약관 동의와 푸터</a>, 각 본사 소매몰의 가맹점 가입신청에서 함께 써요.</li>' +
-          '<li>소매몰 이용자(소비자)가 회원가입할 때 보는 이용약관·개인정보처리방침은 이 화면에서 다루지 않아요. 각 소매몰에서 따로 관리해요. (<a href="partner.html#retail-settings/settings-terms">본사·가맹점 관리자 이용가이드</a>)</li>' +
+          '<li>소매몰 이용자(소비자)가 회원가입할 때 보는 이용약관·개인정보처리방침은 이 화면에서 다루지 않아요. 각 소매몰에서 따로 관리해요. (<a href="partner.html#retail-settings/settings-terms">본사·가맹점 관리자 기능가이드</a>)</li>' +
         '</ul>',
       steps:
         '<h3>탭</h3>' +
@@ -610,7 +610,7 @@ window.GUIDE_CONTENT['system-notice'] = {
       overview:
         '<p>09SCM 운영자가 본사·가맹점 관리자에게 전하는 공지를 올리고 관리하는 화면이에요.</p>' +
         '<ul>' +
-          '<li>이 목록에는 통합관리자에서 올린 09SCM 공지만 나와요. 본사가 가맹점에게 올린 공지(우리본사 공지)는 나오지 않아요. (<a href="partner.html#franchise-notice">본사·가맹점 관리자 이용가이드</a>)</li>' +
+          '<li>이 목록에는 통합관리자에서 올린 09SCM 공지만 나와요. 본사가 가맹점에게 올린 공지(우리본사 공지)는 나오지 않아요. (<a href="partner.html#franchise-notice">본사·가맹점 관리자 기능가이드</a>)</li>' +
           '<li>노출대상(공지가 보이는 계정)과 노출여부(공지를 보여줄지 여부)는 따로 정해요. [미노출]이면 노출대상과 관계없이 09SCM 어디에도 보이지 않아요.</li>' +
         '</ul>',
       steps:
@@ -1632,7 +1632,7 @@ window.GUIDE_CONTENT['hq-list'] = {
 
         '<h3>운영제한일 때</h3>' +
         tradeTable([
-          ['가맹점 이용제한과 같은 제재', '기능별 사용 범위는 <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 이용가이드</a>의 이용제한일 때 기능별 사용 범위 참고'],
+          ['가맹점 이용제한과 같은 제재', '기능별 사용 범위는 <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 기능가이드</a>의 이용제한일 때 기능별 사용 범위 참고'],
           ['신규 가맹점 유치 중단', '소매몰에서 가맹점 가입 신청을 받지 않음'],
           ['소속 가맹점', '본사가 [운영제한]이 되어도 소속 가맹점의 이용상태는 변경되지 않음']
         ]),
@@ -1681,7 +1681,7 @@ window.GUIDE_CONTENT['hq-list'] = {
               hqList([
                 '배너: 고정 표시, 닫을 수 없음 — "이 계정은 이용이 제한된 상태입니다. 도소매 기능 이용이 제한되며, 해제하려면 관리 담당자에게 문의해 주세요."',
                 '제한된 기능의 버튼: 비활성화, 마우스를 올리면 "현재 상태에서는 사용할 수 없습니다."',
-                '기능별 사용 범위: <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 이용가이드</a> 참고',
+                '기능별 사용 범위: <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 기능가이드</a> 참고',
                 '[운영중]으로 변경하면: 배너가 사라지고 버튼이 다시 활성화됨'
               ]))
           ]
@@ -1788,7 +1788,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
         '<ul>' +
           '<li>거래/매출 현황의 <a href="#trade-franchise/detail">가맹점 매출 상세</a>에서 [가맹점 상세 이동 →]을 눌러도 이 화면이 열려요.</li>' +
           '<li>PayApp 연동 정보만 수정할 수 있고, 나머지 항목은 조회만 해요.</li>' +
-          '<li>이용상태와 도매공급권한은 가맹점을 관리하는 본사가 본사·가맹점 관리자에서 바꿔요. 방법은 <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 이용가이드</a>에서 확인해요.</li>' +
+          '<li>이용상태와 도매공급권한은 가맹점을 관리하는 본사가 본사·가맹점 관리자에서 바꿔요. 방법은 <a href="partner.html#franchise-list/status-change">본사·가맹점 관리자 기능가이드</a>에서 확인해요.</li>' +
         '</ul>',
       steps:
         '<h3>상단 버튼</h3>' +
@@ -1858,7 +1858,7 @@ window.GUIDE_CONTENT['franchise-list'] = {
           ['[변경]', '검증을 통과한 값으로 변경하고 조회 상태로 돌아감 (검증완료 전에는 누를 수 없음)'],
           ['[취소]', '변경하지 않고 조회 상태로 돌아감']
         ]) +
-        '<p>본사 상세의 <a href="#hq-list/detail">페이앱 연동 탭</a>과 같은 방식이에요. 편집을 시작하면 새 값은 미검증에서 시작하고, 값을 하나라도 변경하면 다시 미검증으로 돌아가요. [유효성 검증]에 성공한 뒤 [변경]으로 반영하면 연동완료가 돼요.<br>가맹점 본인과 본사는 최초 연동만 할 수 있고, 통합관리자에서는 최초 입력부터 이후 수정까지 할 수 있어요. 본사·가맹점의 연동 방법은 <a href="partner.html#franchise-list/detail-tabs">본사·가맹점 관리자 이용가이드</a>에서 확인해요.</p>' +
+        '<p>본사 상세의 <a href="#hq-list/detail">페이앱 연동 탭</a>과 같은 방식이에요. 편집을 시작하면 새 값은 미검증에서 시작하고, 값을 하나라도 변경하면 다시 미검증으로 돌아가요. [유효성 검증]에 성공한 뒤 [변경]으로 반영하면 연동완료가 돼요.<br>가맹점 본인과 본사는 최초 연동만 할 수 있고, 통합관리자에서는 최초 입력부터 이후 수정까지 할 수 있어요. 본사·가맹점의 연동 방법은 <a href="partner.html#franchise-list/detail-tabs">본사·가맹점 관리자 기능가이드</a>에서 확인해요.</p>' +
 
         '<h3>이용약관 동의</h3>' +
         tradeTable([
