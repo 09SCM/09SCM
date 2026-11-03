@@ -1,4 +1,4 @@
-// 소매몰 이용가이드 — 목차 구조
+// 소매몰 기능가이드 — 목차 구조
 // type 'page' = 소개·용어 등 본문, 그 외 = 소매몰 화면 하나
 window.GUIDE_NAV = [
   { id: 'start', label: '시작하기', children: [

@@ -1,4 +1,4 @@
-// 09SCM 소매몰 이용가이드 — 화면별 본문
+// 09SCM 소매몰 기능가이드 — 화면별 본문
 // 키는 nav-shop.js의 leaf id. 값이 없는 섹션은 화면에 나타나지 않는다.
 window.GUIDE_CONTENT = window.GUIDE_CONTENT || {};
 
@@ -194,7 +194,7 @@ window.GUIDE_CONTENT['start-login'] = {
         '<ul>' +
           '<li>처음이라면 [회원가입]을, 비밀번호가 기억나지 않으면 [비밀번호 재설정]을 눌러요.</li>' +
           '<li>로그인하지 않아도 상품은 둘러볼 수 있어요. 주문하려고 하면 로그인 안내가 나와요.</li>' +
-          '<li>판매자(본사·가맹점)는 [관리자 로그인]으로 관리자에 들어가요. 위치는 <a href="#start-login/member-franchise">가맹점 가입 신청하기</a>에서, 사용 방법은 <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 이용가이드</a>에서 확인해요.</li>' +
+          '<li>판매자(본사·가맹점)는 [관리자 로그인]으로 관리자에 들어가요. 위치는 <a href="#start-login/member-franchise">가맹점 가입 신청하기</a>에서, 사용 방법은 <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 기능가이드</a>에서 확인해요.</li>' +
         '</ul>',
       steps:
         '<h3>로그인 정보</h3>' +
@@ -620,7 +620,7 @@ window.GUIDE_CONTENT['start-login'] = {
           title: '가맹점 가입을 신청하면',
           html:
             '<p>신청하면 계정이 바로 만들어져 이용대기 상태로 관리자에 로그인할 수 있어요. 이용대기 동안에는 시스템관리 메뉴만 쓸 수 있고, 온라인 결제 시스템(PayApp) 연동과 정기결제 카드 등록을 준비해요. 본사가 이용승인하면 모든 메뉴를 쓸 수 있어요.</p>' +
-            '<p>이용대기 동안 소매몰에는 <a href="#start-gate">대문화면</a>이 나와요. 자세한 내용은 <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 이용가이드</a>에서 확인해요.</p>'
+            '<p>이용대기 동안 소매몰에는 <a href="#start-gate">대문화면</a>이 나와요. 자세한 내용은 <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 기능가이드</a>에서 확인해요.</p>'
         }
       ],
       trouble:
@@ -686,7 +686,7 @@ window.GUIDE_CONTENT['start-policy'] = {
         '<h3>약관 내용이 궁금하거나 소매몰 운영 방식과 달라 보여요</h3>' +
         '<p>소매몰 약관은 판매자가 관리하는 문서예요. 내용에 대한 문의는 판매자에게 해 주세요.</p>' +
         '<h3>약관 내용을 바꾸고 싶어요 (판매자)</h3>' +
-        '<p>관리자 소매설정의 이용약관·개인정보처리방침 탭에서 고치고 [저장]을 눌러요. 약관을 갱신하면 시행일도 그 시점으로 바뀌어요. 자세한 방법은 <a href="' + ADMIN_GUIDE + 'retail-settings">09SCM 관리자 이용가이드</a>에서 확인해요.</p>'
+        '<p>관리자 소매설정의 이용약관·개인정보처리방침 탭에서 고치고 [저장]을 눌러요. 약관을 갱신하면 시행일도 그 시점으로 바뀌어요. 자세한 방법은 <a href="' + ADMIN_GUIDE + 'retail-settings">09SCM 관리자 기능가이드</a>에서 확인해요.</p>'
     },
     {
       id: 'franchise-terms',
@@ -958,7 +958,7 @@ window.GUIDE_CONTENT['browse-main'] = {
         '<div class="table-wrap"><table><thead><tr><th>항목</th><th>설명</th></tr></thead><tbody>' +
           '<tr><td>안내 문구</td><td>&quot;동네에서 함께 사는 즐거움&quot; (판매자가 바꿀 수 없는 고정 문구)</td></tr>' +
           '<tr><td>가맹점 가입신청</td><td>가맹점 가입 신청 화면으로 이동 (본사 소매몰에만 표시, 가맹점 소매몰에는 보이지 않음, <a href="#start-login/member-franchise">가맹점 가입 신청하기</a>)</td></tr>' +
-          '<tr><td>관리자 로그인</td><td>판매자가 쓰는 관리자 로그인 화면으로 이동 (새 창으로 열림, <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 이용가이드</a>)</td></tr>' +
+          '<tr><td>관리자 로그인</td><td>판매자가 쓰는 관리자 로그인 화면으로 이동 (새 창으로 열림, <a href="' + ADMIN_GUIDE_LOGIN + '">09SCM 관리자 기능가이드</a>)</td></tr>' +
         '</tbody></table></div>' +
 
         '<h3>헤더</h3>' +
@@ -1536,7 +1536,7 @@ window.GUIDE_CONTENT['order-pay'] = {
 
         '<h3>접수 후 확인과 취소</h3>' +
         '<p>채팅으로 접수된 주문도 소매몰 <a href="#check-history">주문내역</a>에서 똑같이 조회해요. 취소하려면 채팅방이 아니라 소매몰 <a href="#check-history">주문내역</a>에서 해야 해요.</p>' +
-        '<p>채팅주문 접수 기준과 판매자 처리 방법은 <a href="' + ADMIN_GUIDE + 'retail-order-chat">09SCM 관리자 이용가이드의 채팅주문설정</a>에서 확인할 수 있어요.</p>',
+        '<p>채팅주문 접수 기준과 판매자 처리 방법은 <a href="' + ADMIN_GUIDE + 'retail-order-chat">09SCM 관리자 기능가이드의 채팅주문설정</a>에서 확인할 수 있어요.</p>',
       cases: [
         {
           title: '여러 상품이 모두 접수되면',

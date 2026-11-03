@@ -1,5 +1,5 @@
 (function () {
-  // 이용가이드 공통 렌더러 — 목차는 nav-*.js(window.GUIDE_NAV)에서 읽는다
+  // 기능가이드 공통 렌더러 — 목차는 nav-*.js(window.GUIDE_NAV)에서 읽는다
     var NAV = window.GUIDE_NAV;
 
   var SCREEN_SECTIONS = [
@@ -184,7 +184,7 @@
     });
 
     titleEl.textContent = leaf.trail[0].label;
-    document.title = leaf.label + ' | 09SCM 이용가이드';
+    document.title = leaf.label + ' | 09SCM 기능가이드';
 
     var sub = subTrail(leaf);
     var head = '<div class="screen-head">' + (sub ? '<span class="eyebrow"></span>' : '') + '<h1></h1></div>';
@@ -331,7 +331,7 @@
   }
   window.addEventListener('hashchange', route);
 
-  // 좌측 로고는 인덱스가 아니라 이 이용가이드의 최상위 화면(목차의 첫 화면)으로 이동한다. 인덱스 이동은 하단 [이용가이드 메인]이 맡는다.
+  // 좌측 로고는 인덱스가 아니라 이 기능가이드의 최상위 화면(목차의 첫 화면)으로 이동한다. 인덱스 이동은 하단 [기능가이드 메인]이 맡는다.
   var logoEl = document.querySelector('.lnb-logo');
   if (logoEl && leaves.length) {
     var homeId = leaves[0].id;

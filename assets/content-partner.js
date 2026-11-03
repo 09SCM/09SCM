@@ -1,4 +1,4 @@
-// 본사·가맹점 관리자 이용가이드 — 화면별 본문
+// 본사·가맹점 관리자 기능가이드 — 화면별 본문
 // 키는 nav-partner.js의 leaf id. 값이 없는 섹션은 화면에 나타나지 않는다.
 window.GUIDE_CONTENT = window.GUIDE_CONTENT || {};
 
